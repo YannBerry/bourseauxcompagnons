@@ -1,0 +1,9 @@
+venv/
+media/
+collected_static/
+__pycache__
+*.pyc
+bac.sublime-project
+bac.sublime-workspace
+settings.py
+bac/settings.py

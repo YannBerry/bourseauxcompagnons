@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Créer une sortie | {{ block.super }}{% endblock %}
+
+{% block content %}
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
+            {% if form.title.help_text %}
+                <p class="helptext">{{ form.title.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-3 mb-4">
+            {{ form.start_date.label_tag }}
+            {{ form.start_date }}
+            {{ form.start_date.errors }}
+            {% if form.start_date.help_text %}
+                <p class="helptext">{{ form.start_date.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-3 mb-4">
+            {{ form.end_date.label_tag }}
+            {{ form.end_date }}
+            {{ form.end_date.errors }}
+            {% if form.end_date.help_text %}
+                <p class="helptext">{{ form.end_date.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-12 mb-4">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {{ form.description.errors }}
+            {% if form.description.help_text %}
+                <p class="helptext">{{ form.description.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-12 mb-4">
+            {{ form.activities.label_tag }}
+            {{ form.activities }}
+            {{ form.activities.errors }}
+            {% if form.activities.help_text %}
+                <p class="helptext">{{ form.activities.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-12 mb-4">
+            {{ form.topo_link.label_tag }}
+            {{ form.topo_link }}
+            {{ form.topo_link.errors }}
+            {% if form.topo_link.help_text %}
+                <p class="helptext">{{ form.topo_link.help_text|safe }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <input type="submit" value="Enregistrer" class="btn btn-primary mb-4" />
+    {% if outing %}
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary mb-4" role="button">Annuler</a>
+    {% endif %}
+</form>
+{% endblock%}

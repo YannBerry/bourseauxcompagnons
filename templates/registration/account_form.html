@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Modifier mon compte | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+            <div class="col-sm-6 mb-4">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
+                {% if form.email.help_text %}
+                    <p class="helptext">{{ form.email.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {{ form.username.errors }}
+                {% if form.username.help_text %}
+                    <p class="helptext">{{ form.username.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
+                {% if form.first_name.help_text %}
+                    <p class="helptext">{{ form.first_name.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+                {% if form.last_name.help_text %}
+                    <p class="helptext">{{ form.last_name.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+        {% if customuser %}
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">Annuler</a>
+        {% endif %}
+        <a href="{% url 'password_change' %}" class="btn btn-secondary" role="button">Changer de mot de passe</a>
+    </form>
+</div>
+{% endblock%}

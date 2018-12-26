@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Mon profil | {{ block.super }}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if messages %}
+        <ul class="messages list-unstyled">
+            {% for message in messages %}
+                <li{% if message.tags %} class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row align-items-center mb-2">
+        <div class="col-12 col-sm-auto col-md-auto mb-2 mr-auto mr-md-0">
+            <a href="{% url 'update-profile' user.username %}" class="btn btn-primary btn-block" role="button">Mettre à jour mon profil public</a>
+        </div>
+        <div class="col-12 col-sm-auto col-md-auto mb-2 mr-md-auto">
+            <a href="{% url 'update-account' user.username %}" class="btn btn-primary btn-block" role="button">Paramètres de mon compte</a>
+        </div>
+        <div class="col-12 col-md-auto mb-2">
+            <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">Supprimer mon compte</a>
+        </div>
+    </div>
+    {% if user.outing_set.all %}
+        <p>Sorties que j'ai créées :</p>
+        <ul class="row no-gutters list-unstyled">
+        {% for outing in user.outing_set.all %}
+            <li class="col-12 ">
+                <div class="card">
+                    <div class="card-body py-2">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-auto mr-auto">
+                                <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
+                            </div>
+                            <div class="col-auto col-lg-auto">
+                                <a href="{% url 'outings:update' outing.slug %}" class="btn btn-primary" role="button">Modifier</a>
+                            </div>
+                            <div class="col-auto col-lg-auto">
+                                <a href="{% url 'outings:delete' outing.slug %}" class="btn btn-danger" role="button">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+        <div class="row mb-4">
+            <div class="col-12">            
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-block" role="button">Créer une sortie</a>
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <a href="{% url 'login' %}" class="btn btn-success btn-block" role="button">Connexion</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,127 @@
+/* ADD PROFILE AND ADD OUTING BUTTONS */
+.btn-circle{
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    font-size: 60px;
+    line-height: 1.05;
+    border-radius: 35px;
+}
+
+.btn-add{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+}
+
+/* CHECKBOX MULTIPLE WIDGET */
+
+ul#id_activities{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* FORMS */
+
+.helptext{
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom:0;
+}
+
+.helptext>ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+label.required{
+    font-weight: bold;
+}
+
+.is-invalid,
+.contains_errors_as_ul_p>input,
+.contains_errors_as_ul_p>textarea{
+    border: 1px solid rgb(220, 53, 69);
+}
+
+.is-valid{
+    border: 1px solid rgb(40, 167, 69);
+}
+
+.errorlist{
+    margin:0;
+    padding:0;
+}
+
+.errorlist>li{
+    position: relative;
+    list-style-type: none;
+    font-size: 0.75rem;
+    color: #721c24;
+}
+
+.nonfield{
+    margin:0;
+    padding:0;
+}
+
+.nonfield>li{
+    position: relative;
+    list-style-type: none;
+    margin: 0 0 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.custom-form-check-inline{
+    padding: 0.375rem 0 !important;
+    border-radius: 0.25rem;
+}
+
+.custom-form-check-inline>li{
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 0;
+    margin-right: 0.75rem;
+}
+
+/* Placeholder color of the title of the bootstrap-select tag */
+
+.bootstrap-select>.dropdown-toggle.bs-placeholder,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:hover{color:#999}
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success:hover{color:rgba(255,255,255,1)}

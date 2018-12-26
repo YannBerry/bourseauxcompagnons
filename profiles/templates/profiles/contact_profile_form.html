@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h1>Prenez contact avec {{ username }}</h1>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            {{ form.from_email.label_tag }}
+                            {{ form.from_email }}
+                            {{ form.from_email.errors }}
+                            {% if form.from_email.help_text %}
+                                <p class="helptext">{{ form.from_email.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-12 mb-4">
+                            {{ form.subject.label_tag }}
+                            {{ form.subject }}
+                            {{ form.subject.errors }}
+                            {% if form.subject.help_text %}
+                                <p class="helptext">{{ form.subject.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-12 mb-4">
+                            {{ form.message.label_tag }}
+                            {{ form.message }}
+                            {{ form.message.errors }}
+                            {% if form.message.help_text %}
+                                <p class="helptext">{{ form.message.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

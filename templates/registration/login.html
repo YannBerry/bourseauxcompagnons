@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Connexion | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mb-4">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h1>Se connecter</h1>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                            {{ form.username.errors }}
+                            {% if form.username.help_text %}
+                                <p class="helptext">{{ form.username.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-12 mb-4">
+                            {{ form.password.label_tag }}
+                            {{ form.password }}
+                            {{ form.password.errors }}
+                            {% if form.password.help_text %}
+                                <p class="helptext">{{ form.password.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-auto">
+                            <button class="btn btn-primary" type="submit">Se connecter</button>
+                        </div>
+                        <div class="form-group col-auto">
+                            <a class="btn btn-danger" href="{% url 'password_reset' %}">Mot de passe oublié</a>
+                        </div>
+                        <div class="form-group col-auto">
+                            <a class="btn btn-success" href="{% url 'profile_register' %}">Pas encore de compte ? Créer un profil</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

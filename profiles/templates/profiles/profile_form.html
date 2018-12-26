@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Modifier mon profil | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div>
+    <form enctype="multipart/form-data" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+            <div class="col-sm-4 mb-4">
+                {{ form.public_profile.label_tag }}
+                {{ form.public_profile }}
+                {{ form.public_profile.errors }}
+                {% if form.public_profile.help_text %}
+                    <p class="helptext">{{ form.public_profile.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-4 mb-4">
+                {{ form.profile_picture.label_tag }}
+                {{ form.profile_picture }}
+                {{ form.profile_picture.errors }}
+                {% if form.profile_picture.help_text %}
+                    <p class="helptext">{{ form.profile_picture.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-4 mb-4">
+                {{ form.birthdate.label_tag }}
+                {{ form.birthdate }}
+                {{ form.birthdate.errors }}
+                {% if form.birthdate.help_text %}
+                    <p class="helptext">{{ form.birthdate.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.activities.label_tag }}
+                {{ form.activities }}
+                {{ form.activities.errors }}
+                {% if form.activities.help_text %}
+                    <p class="helptext">{{ form.activities.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.availability_area.label_tag }}
+                {{ form.availability_area }}
+                {{ form.availability_area.errors }}
+                {% if form.availability_area.help_text %}
+                    <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-12 mb-4">
+                {{ form.introduction.label_tag }}
+                {{ form.introduction }}
+                {{ form.introduction.errors }}
+                {% if form.introduction.help_text %}
+                    <div class="helptext">{{ form.introduction.help_text|safe }}</div>
+                {% endif %}
+            </div>
+            <div class="col-12 mb-4">
+                {{ form.list_of_courses.label_tag }}
+                {{ form.list_of_courses }}
+                {{ form.list_of_courses.errors }}
+                {% if form.list_of_courses.help_text %}
+                    <p class="helptext">{{ form.list_of_courses.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+        {% if profile %}
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">Annuler</a>
+        {% endif %}
+    </form>
+    {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+</div>
+{% endblock%}

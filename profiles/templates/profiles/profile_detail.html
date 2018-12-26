@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nom du profil | {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-start mb-3">
+                <div class="col-4 col-md-2 order-md-1">
+                    {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" class="img-fluid mb-2" alt="Profile picture">
+                    {% else %}
+                    <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
+                    {% endif %}
+                </div>
+                <div class="col-auto ml-auto order-md-3">
+                    <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-success">Prendre contact</a>
+                </div>
+                <div class="col-auto order-md-2">
+                    <h5>{% include "profiles/snippets/username.html" %}</h5>
+                    <p>
+                        Zone de disponibilité : {{ profile.availability_area }}<br>
+                        {% if profile.age %}Âge : {{ profile.age }} ans<br>{% endif %}
+                        Recherche des partenaires pour 
+                        {% for activity in profile.activities.all %}
+                            <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+            {% if profile.introduction %}
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-justify card-text">{{ profile.introduction|linebreaksbr }}</p>
+                </div>
+            </div>
+            {% endif %}
+            {% if profile.list_of_courses %}
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h1 class="h5">Liste de courses résumée :</h1>
+                    <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if profile.user.outing_set.all %}
+        <h1 class="h2">Ses propositions de sorties actives</h1>
+        <div class="row">
+            {% for outing in profile.user.outing_set.all %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a></h5>
+                        <p class="card-text">
+                            {{ outing.duration }} jours<br>
+                            {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}<br>
+                            {% for activity in outing.activities.all %}
+                                <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock%}

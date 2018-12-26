@@ -1,0 +1,129 @@
+from django.http import Http404
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.decorators import method_decorator
+from django.db.models import Q
+from django.contrib.postgres.search import (
+    SearchVector,
+    SearchQuery,
+    SearchRank,
+    TrigramSimilarity
+)
+from django.contrib.postgres.aggregates import StringAgg
+from django.db.models.functions import Greatest
+
+import functools
+import operator
+from datetime import date
+
+from outings.models import Outing
+from activities.models import Activity
+from outings.forms import OutingForm
+from profiles.decorators import profile_required
+
+
+#VIEWS FOR ANONYM WEB SURFERS
+
+class OutingListView(ListView):
+    '''
+    By default this view displays the current and future outings (start_date or end_date >= today).
+    If a search is launched it displays the outings matching the search query.
+    If a filter is activated it displays the outings according to the filter.
+    '''
+    template_name = "outings/outing_list.html"
+    nb_of_results = 0
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['all_activities'] = Activity.objects.all()
+        context['nb_of_results'] = self.nb_of_results
+        context['keywords'] = self.request.GET.get('k') or None
+        context['selected_activities'] = self.request.GET.getlist('a') or None
+        return context
+
+    def get_queryset(self):
+        main_queryset = Outing.objects.filter(Q(start_date__gte=date.today()) | Q(end_date__gte=date.today()))
+        keywords = self.request.GET.get('k')
+        if keywords:
+            keywords_list = keywords.split()
+            language = 'french_unaccent'
+            '''
+            __unaccent can't be used in SearchVector. Then we defined a "french_unaccent" config based on french and using the postgre unaccent extension
+            
+            in psql :
+            CREATE TEXT SEARCH CONFIGURATION french_unaccent( COPY = french );
+            ALTER TEXT SEARCH CONFIGURATION french_unaccent
+            ALTER MAPPING FOR hword, hword_part, word
+            WITH unaccent, french_stem;
+            '''
+            search_query = functools.reduce(operator.and_, [SearchQuery(k, config=language) for k in keywords_list])
+            search_vector = (
+                SearchVector('title', weight='A', config=language) +
+                SearchVector('description', weight='B', config=language) +
+                SearchVector(StringAgg('activities__name', delimiter=' '), weight='B', config=language)
+            )
+            search_rank = SearchRank(search_vector, search_query)
+            trigram_similarity = Greatest(TrigramSimilarity('title', keywords), TrigramSimilarity('description', keywords))
+            keywords_queryset = main_queryset.annotate(rank=search_rank+trigram_similarity).filter(rank__gte=0.05).order_by('-rank', 'start_date')
+        selected_activities = self.request.GET.getlist('a')
+        
+        if keywords and selected_activities:
+            queryset = keywords_queryset.filter(
+                eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities))
+            )
+            self.nb_of_results = len(queryset)
+        # elif self.request.GET.get('k') and self.request.GET.getlist('a') and self.request.GET.get('d'):
+        #     min_date = self.request.GET.get('d')
+        #     max_date = self.request.GET.get('d')
+        #     keywords = self.request.GET.get('k')
+        #     selected_activities = self.request.GET.getlist('a')
+        #     queryset = Outing.objects.filter(
+        #         eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities)),
+        #         functools.reduce(operator.and_, [Q(title__icontains=k) for k in keywords_list]),
+        #         start_date__range=(min_date, max_date) # doc django : https://docs.djangoproject.com/fr/2.1/ref/models/querysets/#range
+        #     )
+        #     self.nb_of_results = len(queryset)
+        elif selected_activities:
+            queryset = main_queryset.filter(
+                eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities))
+            ).distinct('start_date', 'id')
+            self.nb_of_results = len(queryset)
+        elif keywords:
+            queryset = keywords_queryset
+            #print(queryset.values_list('title', 'rank'))
+            self.nb_of_results = len(queryset)
+        else:
+            queryset = main_queryset
+        return queryset
+
+
+class OutingDetailView(DetailView):
+    model = Outing
+
+
+#VIEWS FOR AUTHENTICATED PROFILES
+
+@method_decorator([login_required, profile_required], name='dispatch')
+class OutingCreateView(SuccessMessageMixin, CreateView):
+    form_class = OutingForm
+    template_name = 'outings/outing_form.html'
+    success_message = "Votre sortie est désormais publiée !"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class OutingUpdateView(UpdateView):
+    model = Outing
+    form_class = OutingForm
+
+
+class OutingDeleteView(DeleteView):
+    model = Outing
+    success_url = reverse_lazy('my-profile')

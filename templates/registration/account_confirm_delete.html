@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer mon compte | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{ user.username }} êtes-vous sûr de vouloir supprimer votre compte ?</p>
+        <input type=submit value="Supprimer" class="btn btn-danger" />
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">Annuler</a>
+    </form>
+</div>
+{% endblock%}

@@ -1,0 +1,9 @@
+{% if profile.user.first_name and profile.user.last_name %}
+    {{ profile.user.first_name }} {{ profile.user.last_name }} ({{ profile.user.username }})
+{% elif profile.user.first_name and not profile.user.last_name %}
+    {{ profile.user.first_name }} ({{ profile.user.username }})
+{% elif not profile.user.first_name and profile.user.last_name %}
+    {{ profile.user.last_name }} ({{ profile.user.username }})
+{% else %}
+    {{ profile.user.username }}
+{% endif %}

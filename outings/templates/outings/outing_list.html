@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
+
+{% block leftsidebar %}
+    <form type="GET" action="{% url 'outings:search' %}">
+        <div class="form-row">
+            <div class="form-group col-6 col-sm-4 col-xl-12">
+                <input class="form-control" type="search" placeholder="Mots-clés..." aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
+            </div>
+            <div class="form-group col-6 col-sm-6 col-xl-12">
+                <select multiple class="selectpicker form-control" title="Filtrer par Activités" data-style="btn-info" data-selected-text-format="count > 3" data-actions-box="true" name="a">
+                    {% for activity in all_activities %}
+                        <option><a href="#">{{ activity.name }}</a></option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-12 col-sm-2 col-xl-12">
+                <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block rightsidebar %}
+    <div class="text-center d-none d-xl-block">
+        <a href="{% url 'outings:create' %}" class="btn btn-success">{% trans "Add an outing" %}</a>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    {% if outing_list %}
+        {% if keywords is not None and selected_activities is not None %}
+            <p>
+                {% blocktrans count counter=nb_of_results %}
+                There is one outing containing '{{ keywords }}' in its title or description and belongs to one of the following categories:
+                {% plural %}
+                {{ counter }} outings contain '{{ keywords }}' in there title or description and belong to one of the following categories:
+                {% endblocktrans %}
+                {% for activity in selected_activities %}
+                    <span class="badge badge-pill badge-info">{{ activity }}</span>
+                {% endfor %}
+            </p>
+        {% elif keywords is not None %}
+            <p>{{ nb_of_results }} sorties contiennent '{{ keywords }}' dans leur titre ou leur description</p>
+        {% elif selected_activities is not None %}
+            <p>{{ nb_of_results }} sorties sont classées dans une des catégories suivantes :
+                {% for activity in selected_activities %}
+                    <span class="badge badge-pill badge-info">{{ activity }}</span>
+                {% endfor %}
+            </p>
+        {% endif %}
+        <ul class="row list-unstyled">
+            {% for outing in outing_list %}
+                <li class="col-sm-6 col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="">{{ outing.title }}</a></h5>
+                            <p class="card-text">
+                                {% if outing.duration > 1 %}
+                                    {{ outing.duration }} jours
+                                {% else %}
+                                    Dans la journée
+                                {% endif %}<br>
+                                {% if outing.start_date == outing.end_date %}
+                                    {{ outing.start_date|date:"SHORT_DATE_FORMAT" }}
+                                {% else %}
+                                    {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}
+                                {% endif %}<br>
+                                {% for activity in outing.activities.all %}
+                                    <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul>
+    {% else %}
+        <p>Aucune sortie ne correspond à vos critères de recherche.</p>
+    {% endif %}
+    <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>
+{% endblock %}
