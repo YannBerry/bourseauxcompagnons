@@ -2,6 +2,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
+from django.http import HttpResponse
 # libraries for static
 from django.conf import settings
 from django.conf.urls.static import static
@@ -16,6 +17,7 @@ from profiles.views import (
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+    path('robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
     path('', TemplateView.as_view(template_name='homepage.html'), name='homepage'),
     path(_('accounts/'), include('django.contrib.auth.urls')),
     path(_('accounts/register/profile/'), ProfileRegisterView.as_view(), name='profile_register'),
