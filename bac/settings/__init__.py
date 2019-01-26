@@ -129,7 +129,7 @@ LANGUAGES = [
     ('es', 'Spanish'),
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
