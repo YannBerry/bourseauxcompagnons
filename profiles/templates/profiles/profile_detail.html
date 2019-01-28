@@ -14,15 +14,15 @@
                     <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
                     {% endif %}
                 </div>
-                <div class="col-auto ml-auto order-md-3">
-                    <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-success">Prendre contact</a>
+                <div class="col-8 col-md-3 order-md-3">
+                    <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-success float-right">Prendre contact</a>
                 </div>
-                <div class="col-auto order-md-2">
+                <div class="col-12 col-md-7 order-md-2">
                     <h5>{% include "profiles/snippets/username.html" %}</h5>
                     <p>
                         Zone de disponibilité : {{ profile.availability_area }}<br>
                         {% if profile.age %}Âge : {{ profile.age }} ans<br>{% endif %}
-                        Recherche des partenaires pour 
+                        Recherche des partenaires pour
                         {% for activity in profile.activities.all %}
                             <span class="badge badge-pill badge-info">{{ activity.name }}</span>
                         {% endfor %}
