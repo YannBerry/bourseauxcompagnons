@@ -86,7 +86,7 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
     form_class = ProfileCreationForm
     template_name = 'profiles/profile_register.html'
     success_url = reverse_lazy('my-profile')
-    success_message = "IMPORTANT : par défault votre profile est public. C'est à dire qu'il apparait dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur 'Mettre à jour mon profil' pour le compléter ou le privatiser."
+    success_message = "IMPORTANT : par défault votre profil est public. C'est à dire qu'il apparait dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur 'Mettre à jour mon profil' pour le compléter ou le privatiser."
 
     def form_valid(self, form):
         '''

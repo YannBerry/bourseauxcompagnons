@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 11:06+0000\n"
+"POT-Creation-Date: 2019-02-02 14:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,51 +38,51 @@ msgstr "cotation"
 msgid "grades"
 msgstr "cotations"
 
-#: bac/urls.py:20
+#: bac/urls.py:22
 msgid "accounts/"
 msgstr "comptes/"
 
-#: bac/urls.py:21
+#: bac/urls.py:23
 msgid "accounts/register/profile/"
 msgstr "comptes/inscription/profil/"
 
-#: bac/urls.py:22
+#: bac/urls.py:24
 msgid "accounts/profiles/my-profile/"
 msgstr "comptes/profils/mon-profil/"
 
-#: bac/urls.py:23
+#: bac/urls.py:25
 msgid "accounts/<username>/update/"
 msgstr "comptes/<username>/mise-a-jour/"
 
-#: bac/urls.py:24
+#: bac/urls.py:26
 msgid "accounts/profiles/<username>/update/"
 msgstr "comptes/profils/<username>/mise-a-jour/"
 
-#: bac/urls.py:25
+#: bac/urls.py:27
 msgid "accounts/<username>/delete/"
 msgstr "comptes/<username>/suppression/"
 
-#: bac/urls.py:26
+#: bac/urls.py:28
 msgid "profiles/"
 msgstr "profils/"
 
-#: bac/urls.py:27
+#: bac/urls.py:29
 msgid "outings/"
 msgstr "sorties/"
 
-#: bac/urls.py:28
+#: bac/urls.py:30
 msgid "contact/"
 msgstr "contact/"
 
-#: bac/urls.py:29
+#: bac/urls.py:31
 msgid "features/"
 msgstr "fonctionnalites/"
 
-#: bac/urls.py:30
+#: bac/urls.py:32
 msgid "admin/"
 msgstr "admin/"
 
-#: bac/urls.py:31
+#: bac/urls.py:33
 msgid "concept/"
 msgstr "concept/"
 
@@ -183,8 +183,6 @@ msgid "outings"
 msgstr "sorties"
 
 #: outings/templates/outings/outing_list.html:5
-#, fuzzy
-#| msgid "outings"
 msgid "Outings"
 msgstr "Sorties"
 
@@ -193,8 +191,6 @@ msgid "Filter"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:29
-#, fuzzy
-#| msgid "outing"
 msgid "Add an outing"
 msgstr "Ajouter une sortie"
 
@@ -218,8 +214,8 @@ msgid ""
 "                "
 msgid_plural ""
 "\n"
-"                %(nb_of_results)s outings contain '%(keywords)s' in there "
-"title or description and belong to one of the following categories:\n"
+"                %(counter)s outings contain '%(keywords)s' in there title or "
+"description and belong to one of the following categories:\n"
 "                "
 msgstr[0] ""
 "\n"
@@ -358,6 +354,18 @@ msgstr "<username>/contact/"
 #: profiles/urls.py:17
 msgid "<username>/contact/done/"
 msgstr "<username>/contact/fait/"
+
+#: templates/base.html:26
+msgid "MOUNTAIN PARTNERS"
+msgstr "BOURSE AUX COMPAGNONS"
+
+#: templates/base.html:33
+msgid "PROFILES"
+msgstr "PROFILS"
+
+#: templates/base.html:36
+msgid "OUTINGS"
+msgstr "SORTIES"
 
 #: templates/homepage.html:4
 msgid "Partners for your mountain outings"
