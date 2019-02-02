@@ -60,7 +60,8 @@ def ContactProfileView(request, **kwargs):
         if form.is_valid():
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
-            message = form.cleaned_data['message']
+            contact_message = form.cleaned_data['message']
+            message = render_to_string('profiles/contact_profile_email.html', {'profile': request.user.username, 'message': contact_message})
             recipient = [CustomUser.objects.get(username=kwargs['username']).email]
             try:
                 email = EmailMessage(
