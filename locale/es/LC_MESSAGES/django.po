@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-02 14:52+0100\n"
+"POT-Creation-Date: 2019-02-02 17:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,16 +323,44 @@ msgstr ""
 msgid "<username>/contact/done/"
 msgstr ""
 
+#: templates/base.html:11
+msgid "Mountain Partners"
+msgstr ""
+
 #: templates/base.html:26
 msgid "MOUNTAIN PARTNERS"
 msgstr ""
 
-#: templates/base.html:33
+#: templates/base.html:33 templates/homepage.html:16
 msgid "PROFILES"
 msgstr ""
 
-#: templates/base.html:36
+#: templates/base.html:36 templates/homepage.html:24
 msgid "OUTINGS"
+msgstr ""
+
+#: templates/base.html:39
+msgid "CONCEPT"
+msgstr ""
+
+#: templates/base.html:42
+msgid "CONTACT"
+msgstr ""
+
+#: templates/base.html:45
+msgid "FEATURES"
+msgstr ""
+
+#: templates/base.html:87
+msgid "My profile"
+msgstr ""
+
+#: templates/base.html:89
+msgid "Sign out"
+msgstr ""
+
+#: templates/base.html:96
+msgid "Sign in"
 msgstr ""
 
 #: templates/homepage.html:4
@@ -349,6 +377,18 @@ msgstr ""
 
 #: templates/homepage.html:11
 msgid "climbing partners"
+msgstr ""
+
+#: templates/homepage.html:17
+msgid ""
+"Need to build a strong companionship with a mountain partner to share "
+"outings in the mountain on a regular basis?"
+msgstr ""
+
+#: templates/homepage.html:25
+msgid ""
+"Need one or more mountain partners to come with you in your next mountain "
+"outing?"
 msgstr ""
 
 #: venv/lib/python3.6/site-packages/django/contrib/messages/apps.py:7

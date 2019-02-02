@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-02 14:52+0100\n"
+"POT-Creation-Date: 2019-02-02 17:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -195,18 +195,6 @@ msgid "Add an outing"
 msgstr "Ajouter une sortie"
 
 #: outings/templates/outings/outing_list.html:38
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                There is one outing containing '%(keywords)s' in its "
-#| "title or description and belongs to one of the following categories:\n"
-#| "                "
-#| msgid_plural ""
-#| "\n"
-#| "                %(nb_of_results)s sorties contiennent '%(keywords)s' dans "
-#| "leur titre ou leur description et appartiennent à une des catégories "
-#| "suivantes :\n"
-#| "                "
 msgid ""
 "\n"
 "                There is one outing containing '%(keywords)s' in its title "
@@ -355,17 +343,45 @@ msgstr "<username>/contact/"
 msgid "<username>/contact/done/"
 msgstr "<username>/contact/fait/"
 
+#: templates/base.html:11
+msgid "Mountain Partners"
+msgstr "Bourse aux compagnons"
+
 #: templates/base.html:26
 msgid "MOUNTAIN PARTNERS"
 msgstr "BOURSE AUX COMPAGNONS"
 
-#: templates/base.html:33
+#: templates/base.html:33 templates/homepage.html:16
 msgid "PROFILES"
 msgstr "PROFILS"
 
-#: templates/base.html:36
+#: templates/base.html:36 templates/homepage.html:24
 msgid "OUTINGS"
 msgstr "SORTIES"
+
+#: templates/base.html:39
+msgid "CONCEPT"
+msgstr "CONCEPT"
+
+#: templates/base.html:42
+msgid "CONTACT"
+msgstr "CONTACT"
+
+#: templates/base.html:45
+msgid "FEATURES"
+msgstr "FONCTIONNALITES"
+
+#: templates/base.html:87
+msgid "My profile"
+msgstr "Mon profil"
+
+#: templates/base.html:89
+msgid "Sign out"
+msgstr "Déconnexion"
+
+#: templates/base.html:96
+msgid "Sign in"
+msgstr "Connexion"
 
 #: templates/homepage.html:4
 msgid "Partners for your mountain outings"
@@ -382,6 +398,20 @@ msgstr "compagnons de cordée"
 #: templates/homepage.html:11
 msgid "climbing partners"
 msgstr "partenaires d'escalade"
+
+#: templates/homepage.html:17
+msgid ""
+"Need to build a strong companionship with a mountain partner to share "
+"outings in the mountain on a regular basis?"
+msgstr ""
+"Besoin d'un partenaire de montagne régulier pour vos sorties en montagne ?"
+
+#: templates/homepage.html:25
+msgid ""
+"Need one or more mountain partners to come with you in your next mountain "
+"outing?"
+msgstr ""
+"Besoin d'un ou plusieurs partenaires pour votre prochaine sortie en montagne ?"
 
 #: venv/lib/python3.6/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"
