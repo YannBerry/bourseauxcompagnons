@@ -6,9 +6,9 @@
 {% block content %}
 <div class="row align-items-center" style="height: 90vh;margin-top: -30px;">
     <div class="col-12 text-center">
-        <h1 class="mb-4">{% trans "Find:" %}</h1>
+        <h1 class="mb-4">{% trans "Find buddies to enjoy the outdoors" %}</h1>
         <h2>{% trans "moutaineering partners" %}</h2>
-        <h2>{% trans "climbing partners" %}</h2>
+        <h2>{% trans "rock climbing partners" %}</h2>
     </div>
     <div class="col-lg-6">
         <div class="card bg-light">
@@ -22,16 +22,16 @@
         <div class="card bg-light">
             <div class="card-body text-center">
                 <h2 class="card-title"><a href="{% url 'outings:list' %}">{% trans "OUTINGS" %}</a></h2>
-                <p class="card-text h4">{% trans "Need one or more mountain partners to come with you in your next mountain outing?" %}</p>
+                <p class="card-text h4">{% trans "Join or Publish a mountain outing!" %}</p>
             </div>
         </div>
     </div>
     <div class="col-12 text-center">
-        <h3>partenaires de ski de randonnée</h3>
-        <h3>partenaires de cascade de glace</h3>
-        <h3>partenaires de parapente</h3>
-        <h3>partenaires de trekking</h3>
-        <h3>partenaires de trail</h3>
+        <h3>{% trans "ski touring partners" %}</h3>
+        <h3>{% trans "ice climbing partners" %}</h3>
+        <h3>{% trans "paragliding partners" %}</h3>
+        <h3>{% trans "trekking partners" %}</h3>
+        <h3>{% trans "trail running partners" %}</h3>
         <h3>...</h3>
     </div>
 </div>
