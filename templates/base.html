@@ -46,31 +46,25 @@
                     </li>-->
                 </ul>
                 <ul class="navbar-nav mr-2">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" id="languageChoice">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ LANGUAGE_CODE }}
+                            {{ LANGUAGE_CODE|upper }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            {% for lang_code, lang_name in LANGUAGES %}
-                                {% language lang_code %}
-                                    <a class="dropdown-item" href="#">{{ lang_name }}</a>
-                                {% endlanguage %}
-                            {% endfor %}
+                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <ul class="nav navbar-nav navbar-right">
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <li>
+                                            <button class="dropdown-item" href="#" type="submit" name="language" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                                {{ language.name_local|capfirst }} ({{ language.code|upper }})
+                                            </button>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </form>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                            <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <select name="language">
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages %}
-                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                        {{ language.name_local }} ({{ language.code }})
-                                    </option>
-                                {% endfor %}
-                            </select>
-                            <input type="submit" value="Go">
-                        </form>
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
@@ -122,5 +116,12 @@
         <!-- bootstrap-select JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-fr_FR.min.js"></script>
+        <script>
+            function selected(){
+                console.log("selected");
+            }
+            let languageChoiceElt = document.getElementById("languageChoice");
+            languageChoiceElt.addEventListener("click", selected);
+        </script>
     </body>
 </html>
