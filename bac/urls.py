@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
+from core.views import HomepageView
 from profiles.views import (
     ProfileRegisterView,
     ProfileUpdateView,
@@ -18,7 +19,7 @@ from profiles.views import (
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
-    path('', TemplateView.as_view(template_name='homepage.html'), name='homepage'),
+    path('', HomepageView.as_view(), name='homepage'),
     path(_('accounts/'), include('django.contrib.auth.urls')),
     path(_('accounts/register/profile/'), ProfileRegisterView.as_view(), name='profile_register'),
     path(_('accounts/profiles/my-profile/'), TemplateView.as_view(template_name='profiles/my_profile.html'), name='my-profile'),

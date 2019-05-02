@@ -6,15 +6,28 @@
 {% block content %}
 <div class="row align-items-center" style="height: 90vh;margin-top: -30px;">
     <div class="col-12 text-center">
-        <h1 class="mb-4">{% trans "Find buddies to enjoy the outdoors" %}</h1>
-        <h2>{% trans "moutaineering partners" %}</h2>
-        <h2>{% trans "rock climbing partners" %}</h2>
+        <h1 class="mb-4">{% trans "Find the right buddies to enjoy the outdoors" %}</h1>
+        <h2>{% trans "moutaineering, ski touring, ice climbing, paragliding, trekking, trail running" %}</h2>
     </div>
     <div class="col-lg-6">
         <div class="card bg-light">
             <div class="card-body text-center">
                 <h2 class="card-title"><a href="{% url 'profiles:list' %}">{% trans "PROFILES" %}</a></h2>
                 <p class="card-text h4">{% trans "Need to build a strong companionship with a mountain partner to share outings in the mountain on a regular basis?" %}</p>
+                <form type="GET" action="{% url 'profiles:search' %}">
+                    <div class="form-row">
+                        <div class="form-group col-12 col-sm-10 col-xl-12">
+                            <ul id="id_activities" class="custom-form-check-inline">
+                                {% for activity in all_activities %}
+                                <li><label for="id_activities_{{ activity }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity }}">{{ activity }}</label></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="form-group col-12 col-sm-2 col-xl-12">
+                            <button class="btn btn-outline-success btn-block" type="submit">Filtrer</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -23,16 +36,22 @@
             <div class="card-body text-center">
                 <h2 class="card-title"><a href="{% url 'outings:list' %}">{% trans "OUTINGS" %}</a></h2>
                 <p class="card-text h4">{% trans "Join or Publish a mountain outing!" %}</p>
+                <form type="GET" action="{% url 'outings:search' %}">
+                    <div class="form-row">
+                        <div class="form-group col-12 col-sm-10 col-xl-12">
+                            <ul id="id_activities" class="custom-form-check-inline">
+                                {% for activity in all_activities %}
+                                <li><label for="id_activities_{{ activity }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity }}">{{ activity }}</label></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="form-group col-12 col-sm-2 col-xl-12">
+                            <button class="btn btn-outline-success btn-block" type="submit">Filtrer</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-    <div class="col-12 text-center">
-        <h3>{% trans "ski touring partners" %}</h3>
-        <h3>{% trans "ice climbing partners" %}</h3>
-        <h3>{% trans "paragliding partners" %}</h3>
-        <h3>{% trans "trekking partners" %}</h3>
-        <h3>{% trans "trail running partners" %}</h3>
-        <h3>...</h3>
     </div>
 </div>
 {% endblock%}
