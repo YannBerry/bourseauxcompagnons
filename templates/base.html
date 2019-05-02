@@ -46,7 +46,7 @@
                     </li>-->
                 </ul>
                 <ul class="navbar-nav mr-2">
-                    <li class="nav-item dropdown" id="languageChoice">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ LANGUAGE_CODE|upper }}
                         </a>
@@ -67,8 +67,8 @@
                         </div>
                     </li>
                 </ul>
-                {% if user.is_authenticated %}
                 <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% if user.profile.profile_picture %}
@@ -83,14 +83,11 @@
                             <a class="dropdown-item" href="{% url 'logout' %}">{% trans "Sign out" %}</a>
                         </div>
                     </li>
-                </ul>
-                {% else %}
-                <ul class="navbar-nav">
+                    {% else %}
                     <li class="nav-item">
                         <a class="btn btn-outline-light" href="{% url 'login' %}">{% trans "Sign in" %}</a>
                     </li>
-                </ul>
-                {% endif %}
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -116,12 +113,6 @@
         <!-- bootstrap-select JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-fr_FR.min.js"></script>
-        <script>
-            function selected(){
-                console.log("selected");
-            }
-            let languageChoiceElt = document.getElementById("languageChoice");
-            languageChoiceElt.addEventListener("click", selected);
-        </script>
+        {% block js %}{% endblock %}
     </body>
 </html>

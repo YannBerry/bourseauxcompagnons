@@ -9,63 +9,144 @@
         <div class="card">
             <div class="card-body">
                 <h1>Créez votre profil</h1>
-                <form method="post" novalidate class="mt-4">
+                <form method="post" novalidate class="mt-4" id="profile_register_form">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     <div class="row">
                         <div class="col-md-6 mb-4">
                             {{ form.username.label_tag }}
-                            {{ form.username }}
-                            {{ form.username.errors }}
                             {% if form.username.help_text %}
                                 <p class="helptext">{{ form.username.help_text|safe }}</p>
                             {% endif %}
+                            {{ form.username }}
+                            {{ form.username.errors }}
                         </div>
                         <div class="col-md-6 mb-4">
                             {{ form.email.label_tag }}
-                            {{ form.email }}
-                            {{ form.email.errors }}
                             {% if form.email.help_text %}
                                 <p class="helptext">{{ form.email.help_text|safe }}</p>
                             {% endif %}
+                            {{ form.email }}
+                            {{ form.email.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.password1.label_tag }}
-                            {{ form.password1 }}
-                            {{ form.password1.errors }}
                             {% if form.password1.help_text %}
                                 <div class="helptext">{{ form.password1.help_text|safe }}</div>
                             {% endif %}
+                            {{ form.password1 }}
+                            {{ form.password1.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.password2.label_tag }}
-                            {{ form.password2 }}
-                            {{ form.password2.errors }}
                             {% if form.password2.help_text %}
                                 <p class="helptext">{{ form.password2.help_text|safe }}</p>
                             {% endif %}
+                            {{ form.password2 }}
+                            {{ form.password2.errors }}
                         </div>
                         <div class="col-6 mb-4">
                             {{ form.activities.label_tag }}
-                            {{ form.activities }}
-                            {{ form.activities.errors }}
                             {% if form.activities.help_text %}
                                 <p class="helptext">{{ form.activities.help_text|safe }}</p>
                             {% endif %}
+                            {{ form.activities }}
+                            {{ form.activities.errors }}
                         </div>
                         <div class="col-6 mb-4">
                             {{ form.availability_area.label_tag }}
-                            {{ form.availability_area }}
-                            {{ form.availability_area.errors }}
                             {% if form.availability_area.help_text %}
                                 <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
                             {% endif %}
+                            {{ form.availability_area }}
+                            {{ form.availability_area.errors }}
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Créer</button>
+                    <a href="{% url 'profile_register' %}" class="btn btn-secondary" role="button">Annuler</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    // Hide helptext of all elements of the form
+    let helptextElts = document.getElementsByClassName("helptext");
+    Array.from(helptextElts).forEach(function (e) {
+        e.style.display = "none";
+    });
+
+    // Apply dynamic formatting on the form elements
+    let form = document.getElementById("profile_register_form");
+    let formElts = form.elements;
+    let formElt = "";
+    for (let i = 1; i < formElts.length; i++) {
+        formElt = form.elements[i];
+        formElt.addEventListener("focus", function () {
+            // Apply formatting on the focused case
+            //this.style.backgroundColor = "rgba(128,189,255,0.25)";
+            // Display the helptext only on the focused case
+            helptextElt = this.parentNode.getElementsByClassName("helptext");
+            if (helptextElt[0] !== undefined) {
+                helptextElt[0].style.display = "block";
+            }
+        });
+        formElt.addEventListener("blur", function () {
+            // Delete the formatting once the focused case is quited
+            //this.style.backgroundColor = "#fff";
+            // Delete the helptext once the focused case is quited
+            helptextElt = this.parentNode.getElementsByClassName("helptext");
+            if (helptextElt[0] !== undefined) {
+                helptextElt[0].style.display = "none";
+            }
+        });        
+    }
+
+    /*
+    // Password 1 verification on client side with JS (length >= 8 and contains at least one lowercase letter)
+    formElts.password1.addEventListener("input", function () {
+        let pwd1 = this.value;
+        pwd1Length = pwd1.length;
+        
+        if (pwd1Length >= 8) {
+            color = "green";
+        } else {
+            color = "red";
+        }
+        
+        let pwd1Letter = "Password must contain at least one lowercase letter (a-z)";
+        regex = /[a-z]/;
+        if (regex.test(pwd1)) {
+            pwd1Letter = "";
+        }
+
+        let pwd1LengthElt = document.getElementById("pwd_length");
+        pwd1LengthElt.textContent = "Password length: " + pwd1Length + " | " + pwd1Letter; // Add in HTML : <div id="pwd_length"></div>
+        pwd1LengthElt.style.color = color;
+    })
+
+    /*
+    // Display the phone number only if the user click on the button
+    let phoneNumber = "0678987654";
+    let phoneNumberZoneElt = document.createElement("div");
+    let buttonElt = document.createElement("button");
+    buttonElt.textContent = "Phone number";
+    phoneNumberZoneElt.appendChild(buttonElt);
+    buttonElt.addEventListener("click", function () {
+        let phoneNumberElt = document.createElement("div");
+        phoneNumberElt.textContent = phoneNumber;
+        phoneNumberZoneElt.innerHTML = "";
+        phoneNumberZoneElt.appendChild(phoneNumberElt);
+    });
+    let phoneZoneElt = document.createElement("p");
+    phoneZoneElt.appendChild(phoneNumberZoneElt);
+    document.getElementById("phNumZone").appendChild(phoneZoneElt); // ADD <div id="phNumZone"></div> in the HTML
+    */
+</script>
+
 {% endblock %}
