@@ -130,8 +130,8 @@ LANGUAGES = [
     ('en', 'English'),
     ('fr', 'French'),
     ('es', 'Spanish'),
+    ('it', 'Italian'),
 ]
-
 
 
 TIME_ZONE = 'Europe/Paris'

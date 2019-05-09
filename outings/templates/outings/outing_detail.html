@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}{{ outing.title }} | {{ block.super }}{% endblock %}
 
@@ -7,7 +8,7 @@
     {% if messages %}
         <ul class="messages list-unstyled">
             {% for message in messages %}
-                <li{% if message.tags %} class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li {% if message.tags %}class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -15,15 +16,15 @@
     {% for activity in outing.activities.all %}
     <span class="badge badge-pill badge-info">{{ activity.name }}</span>
     {% endfor %}
-    <p>
-        {% if outing.start_date == outing.end_date %}
-            Dans la journée du {{ outing.start_date|date:"SHORT_DATE_FORMAT" }}
-        {% else %}
-            Sur {{ outing.duration }} jours du {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} au {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}
-        {% endif %}
+    <p>        
+        {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
+        During the {{ start_date }}.
+        {% plural %}
+        On {{ duration }} days. From the {{ start_date }} to the {{ end_date }}.
+        {% endblocktrans %}
     </p>
     {% if outing.topo_link %}
-    <p><a href="{{ outing.topo_link }}" target="_blank">Lien vers le topo de la sortie !</a></p>
+    <p><a href="{{ outing.topo_link }}" target="_blank">{% trans 'Link to the outing topo!' %}</a></p>
     {% endif %}
     <p class="text-justify">{{ outing.description|linebreaksbr }}</p>
     <p>Proposé par <a href="{{ outing.author.profile.get_absolute_url }}">{{ outing.author.username }}</a>.</p>

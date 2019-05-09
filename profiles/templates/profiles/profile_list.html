@@ -2,13 +2,13 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Liste des profils | {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Profiles list' %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
     <form type="GET" action="{% url 'profiles:search' %}">
         <div class="form-row">
             <div class="form-group col-12 col-sm-10 col-xl-12">
-                <select multiple class="selectpicker form-control" title="Filtrer par Activités" data-style="btn-info" data-selected-text-format="count > 3" data-actions-box="true" name="a">
+                <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
                     {% for activity in all_activities %}
                         <option><a href="#">{{ activity.name }}</a></option>
                     {% endfor %}
@@ -33,7 +33,12 @@
 {% block content %}
     {% if profile_list %}
         {% if selected_activities is not None %}
-            <p>{{ nb_of_results }} profils sont classées dans une des catégories suivantes :
+            <p>
+                {% blocktrans count counter=nb_of_results %}
+                One profile belongs to one of the following categories:
+                {% plural %}
+                {{ counter }} profiles belong to one of the following categories:
+                {% endblocktrans %}
                 {% for activity in selected_activities %}
                     <span class="badge badge-pill badge-info">{{ activity }}</span>
                 {% endfor %}
@@ -56,7 +61,7 @@
                                     <h5><a href="{{ profile.get_absolute_url }}">{% include "profiles/snippets/username.html" %}</a></h5>
                                     <p class="card-text">
                                         <span class="font-weight-bold">{{ profile.availability_area }}</span>
-                                        {% if profile.age %}<br>{{ profile.age }} ans{% endif %}
+                                        {% if profile.age %}<br>{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
                                     </p>
                                 </div>
                             </div>
@@ -76,7 +81,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>Aucun profil ne correspond à vos critères de recherche.</p>
+        <p>{% trans 'There is no profile matching your search criteria.' %}</p>
     {% endif %}
     {% if user.is_anonymous %}
         <a href="{% url 'profile_register' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>

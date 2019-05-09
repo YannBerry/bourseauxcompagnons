@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Suppression de {{ outing.title }} | {{ block.super }}{% endblock %}
+{% block title %}{% blocktrans with outing_title=outing.title %}Removal of {{ outing_title }}{% endblocktrans %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
     <form method="POST">
         {% csrf_token %}
-        <p>Êtes-vous sûr de vouloir supprimer votre sortie {{ outing.title }} ?</p>
-        <input type=submit value="Supprimer" class="btn btn-danger" />
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">Annuler</a>
+        <p>{% blocktrans with outing_title=outing.title %}Are you sure you want to delete your outing '{{ outing_title }}'?{% endblocktrans %}</p>
+        <input type=submit value="{% trans 'Delete' %}" class="btn btn-danger">
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% trans "Cancel" %}</a>
     </form>
 </div>
 {% endblock%}

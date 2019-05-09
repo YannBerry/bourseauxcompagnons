@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Prise de contact effectuée | {{ block.super }}{% endblock %}
+{% block title %}{% trans "Contact made successfully" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
-    <p>Nous avons bien reçu votre mail. Nous revenons vers vous dès que possible !</p>
+    <p>{% trans "Your message as been sent successfully. We will get back to you as soon as possible!" %}</p>
 </div>
 {% endblock %}

@@ -8,10 +8,10 @@
     <form type="GET" action="{% url 'outings:search' %}">
         <div class="form-row">
             <div class="form-group col-6 col-sm-4 col-xl-12">
-                <input class="form-control" type="search" placeholder="Mots-clés..." aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
+                <input class="form-control" type="search" placeholder="{% trans 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
             </div>
             <div class="form-group col-6 col-sm-6 col-xl-12">
-                <select multiple class="selectpicker form-control" title="Filtrer par Activités" data-style="btn-info" data-selected-text-format="count > 3" data-actions-box="true" name="a">
+                <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
                     {% for activity in all_activities %}
                         <option><a href="#">{{ activity.name }}</a></option>
                     {% endfor %}
@@ -36,7 +36,7 @@
         {% if keywords is not None and selected_activities is not None %}
             <p>
                 {% blocktrans count counter=nb_of_results %}
-                There is one outing containing '{{ keywords }}' in its title or description and belongs to one of the following categories:
+                One outing contains '{{ keywords }}' in its title or description and belongs to one of the following categories:
                 {% plural %}
                 {{ counter }} outings contain '{{ keywords }}' in there title or description and belong to one of the following categories:
                 {% endblocktrans %}
@@ -45,9 +45,20 @@
                 {% endfor %}
             </p>
         {% elif keywords is not None %}
-            <p>{{ nb_of_results }} sorties contiennent '{{ keywords }}' dans leur titre ou leur description</p>
+            <p>
+                {% blocktrans count counter=nb_of_results %}
+                One outing contains '{{ keywords }}' in its title or description
+                {% plural %}
+                {{ counter }} outings contain '{{ keywords }}' in there title or description
+                {% endblocktrans %}
+            </p>
         {% elif selected_activities is not None %}
-            <p>{{ nb_of_results }} sorties sont classées dans une des catégories suivantes :
+            <p>
+                {% blocktrans count counter=nb_of_results %}
+                One outing belongs to one of the following categories:
+                {% plural %}
+                {{ counter }} outings belong to one of the following categories:
+                {% endblocktrans %}
                 {% for activity in selected_activities %}
                     <span class="badge badge-pill badge-info">{{ activity }}</span>
                 {% endfor %}
@@ -60,16 +71,12 @@
                         <div class="card-body">
                             <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="">{{ outing.title }}</a></h5>
                             <p class="card-text">
-                                {% if outing.duration > 1 %}
-                                    {{ outing.duration }} jours
-                                {% else %}
-                                    Dans la journée
-                                {% endif %}<br>
-                                {% if outing.start_date == outing.end_date %}
-                                    {{ outing.start_date|date:"SHORT_DATE_FORMAT" }}
-                                {% else %}
-                                    {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}
-                                {% endif %}<br>
+                                {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
+                                During the day<br>{{ start_date }}
+                                {% plural %}
+                                {{ duration }} days<br>{{ start_date }} - {{ end_date }}
+                                {% endblocktrans %}
+                                <br>
                                 {% for activity in outing.activities.all %}
                                     <span class="badge badge-pill badge-info">{{ activity.name }}</span>
                                 {% endfor %}
@@ -81,7 +88,7 @@
         </ul>
         <ul>
     {% else %}
-        <p>Aucune sortie ne correspond à vos critères de recherche.</p>
+        <p>{% trans 'There is no outing fitting your search criteria.' %}</p>
     {% endif %}
     <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>
 {% endblock %}

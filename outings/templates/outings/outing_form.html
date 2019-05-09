@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Créer une sortie | {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Create an outing' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <form method="post" novalidate>
@@ -56,9 +57,9 @@
             {% endif %}
         </div>
     </div>
-    <input type="submit" value="Enregistrer" class="btn btn-primary mb-4" />
+    <input type="submit" value="{% trans 'Create' %}" class="btn btn-primary mb-4" />
     {% if outing %}
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary mb-4" role="button">Annuler</a>
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary mb-4" role="button">{% trans 'Cancel' %}</a>
     {% endif %}
 </form>
 {% endblock%}
