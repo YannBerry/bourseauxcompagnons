@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator
 from django.db.models import Q
+from django.utils.translation import get_language
 from django.contrib.postgres.search import (
     SearchVector,
     SearchQuery,
@@ -49,6 +50,8 @@ class OutingListView(ListView):
     def get_queryset(self):
         main_queryset = Outing.objects.filter(Q(start_date__gte=date.today()) | Q(end_date__gte=date.today()))
         keywords = self.request.GET.get('k')
+        activities_in_current_language = 'activities__name_{}'.format(get_language())
+        selected_activities = self.request.GET.getlist('a')
         if keywords:
             keywords_list = keywords.split()
             language = 'french_unaccent'
@@ -65,16 +68,15 @@ class OutingListView(ListView):
             search_vector = (
                 SearchVector('title', weight='A', config=language) +
                 SearchVector('description', weight='B', config=language) +
-                SearchVector(StringAgg('activities__name', delimiter=' '), weight='B', config=language)
+                SearchVector(StringAgg(f'{ activities_in_current_language }', delimiter=' '), weight='B', config=language)
             )
             search_rank = SearchRank(search_vector, search_query)
             trigram_similarity = Greatest(TrigramSimilarity('title', keywords), TrigramSimilarity('description', keywords))
             keywords_queryset = main_queryset.annotate(rank=search_rank+trigram_similarity).filter(rank__gte=0.05).order_by('-rank', 'start_date')
-        selected_activities = self.request.GET.getlist('a')
         
         if keywords and selected_activities:
             queryset = keywords_queryset.filter(
-                eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities))
+                eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities))
             )
             self.nb_of_results = len(queryset)
         # elif self.request.GET.get('k') and self.request.GET.getlist('a') and self.request.GET.get('d'):
@@ -90,7 +92,7 @@ class OutingListView(ListView):
         #     self.nb_of_results = len(queryset)
         elif selected_activities:
             queryset = main_queryset.filter(
-                eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities))
+                eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities))
             ).distinct('start_date', 'id')
             self.nb_of_results = len(queryset)
         elif keywords:

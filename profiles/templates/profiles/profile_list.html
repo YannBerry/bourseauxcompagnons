@@ -76,7 +76,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>Aucun profil n'a encore été créée.</p>
+        <p>Aucun profil ne correspond à vos critères de recherche.</p>
     {% endif %}
     {% if user.is_anonymous %}
         <a href="{% url 'profile_register' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>

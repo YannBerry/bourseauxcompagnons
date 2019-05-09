@@ -2,11 +2,13 @@ from django.contrib import admin
 
 from activities.models import Activity, Grade
 
+from modeltranslation.admin import TranslationAdmin
+
 
 class GradeInline(admin.TabularInline):
     model = Grade
 
-class ActivityAdmin(admin.ModelAdmin):
+class ActivityAdmin(TranslationAdmin):
     inlines = [
         GradeInline,
     ]

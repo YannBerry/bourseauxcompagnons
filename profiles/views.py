@@ -8,6 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+from django.utils.translation import get_language
 # Sending Emails
 from django.core.mail import EmailMessage, BadHeaderError
 from django.core.mail import send_mail
@@ -37,9 +38,10 @@ class ProfileListView(ListView):
 
     def get_queryset(self):
         if self.request.GET.getlist('a'):
+            activities_in_current_language = 'activities__name_{}'.format(get_language())
             selected_activities = self.request.GET.getlist('a')
             queryset = Profile.objects.filter(
-                eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities)),
+                eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
                 public_profile='True'
             ).distinct('last_update', 'user_id')
             self.nb_of_results = len(queryset)

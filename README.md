@@ -1,5 +1,5 @@
 # Objectif de bourseauxcampagnons.fr
-Trouver des partenaires pour les sorties en montagne (alpinisme, escalade, ski, etc.).
+Trouver des partenaires pour les sorties en montagne (alpinisme, escalade, ski de randonnée, parapente, etc.).
 
 # Technical specifications
 - Framework : Django

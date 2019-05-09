@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
 
-{% block title %}Création d'un profil | {{ block.super }}{% endblock %}
+{% block title %}{% trans "Profile creation" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 
@@ -8,7 +10,7 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-body">
-                <h1>Créez votre profil</h1>
+                <h1>{% trans "Create your profile" %}</h1>
                 <form method="post" novalidate class="mt-4" id="profile_register_form">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
@@ -62,8 +64,8 @@
                             {{ form.availability_area.errors }}
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit">Créer</button>
-                    <a href="{% url 'profile_register' %}" class="btn btn-secondary" role="button">Annuler</a>
+                    <button class="btn btn-primary" type="submit">{% trans "Create" %}</button>
+                    <a href="{% url 'profile_register' %}" class="btn btn-secondary" role="button">{% trans "Cancel" %}</a>
                 </form>
             </div>
         </div>
@@ -74,6 +76,7 @@
 
 {% block js %}
 
+<script src="{% static 'js/ajax.js' %}"></script>
 <script>
     // Hide helptext of all elements of the form
     let helptextElts = document.getElementsByClassName("helptext");
@@ -107,6 +110,23 @@
         });        
     }
 
+    // Testing asynchonous HTTP request
+    /*
+    ajaxGet("http://127.0.0.1:8000/sorties/", function (response) {
+        console.log(response);
+    })
+    
+
+    ajaxGet("/static/js/test_c2c.json/", function (response) {
+        console.log(response);
+        let route = JSON.parse(response);
+        console.log(route);
+        route.activities.forEach(function (activity) {
+            console.log(activity);
+        });
+    })
+    */
+    
     /*
     // Password 1 verification on client side with JS (length >= 8 and contains at least one lowercase letter)
     formElts.password1.addEventListener("input", function () {

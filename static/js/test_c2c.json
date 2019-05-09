@@ -1,0 +1,147 @@
+{
+    "activities": ["rock_climbing"],
+    "aid_rating": null,
+    "available_langs": ["fr", "es"],
+    "climbing_outdoor_type": "multi",
+    "configuration": ["pillar"],
+    "difficulties_height": null,
+    "document_id": 570170,
+    "durations": ["1"],
+    "elevation_max": 125,
+    "elevation_min": 1,
+    "engagement_rating": "II",
+    "equipment_rating": "P1",
+    "exposition_rock_rating": "E1",
+    "glacier_gear": "no",
+    "global_rating": "TD-",
+    "height_diff_access": null,
+    "height_diff_difficulties": 120,
+    "height_diff_down": null,
+    "height_diff_up": 120,
+    "lift_access": null,
+    "main_waypoint_id": 40500,
+    "orientations": ["W"],
+    "protected": false,
+    "quality": "medium",
+    "risk_rating": null,
+    "rock_free_rating": "6a+",
+    "rock_required_rating": "6a",
+    "rock_types": ["calcaire"],
+    "route_types": ["traverse"],
+    "type": "r",
+    "version": 2,
+
+    "areas": [{
+        "area_type": "country",
+        "available_langs": null,
+        "document_id": 14274,
+        "locales": [{
+        "lang": "fr",
+        "title": "France",
+        "version": 4
+        }],
+        "protected": false,
+        "type": "a",
+        "version": 11
+    }],
+
+    "maps": [{
+        "available_langs": null,
+        "code": "3145ET",
+        "document_id": 105797,
+        "editor": "IGN",
+        "locales": [{
+        "version": 2,
+        "title": "Marseille - Les Calanques",
+        "lang": "fr"
+        }],
+        "protected": false,
+        "type": "m",
+        "version": 2
+    }],
+
+    "geometry": {
+        "geom": {"coordinates": [611122.6131542395, 5342985.625247918], "type": "Point"},
+        "geom_detail": {"coordinates": [[611102.3095686013, 5342958.155690879], [611142.9167398778, 5343013.094804958]], "type": "LineString"},
+        "version": 2
+    },
+
+
+    "locales": [{
+        "description": "",
+        "external_resources": "Topo \"Devenson et Gardiole\" de Lucchesi (1976)",
+        "gear": null,
+        "lang": "fr",
+        "remarks": "",
+        "route_history": "",
+        "summary": null,
+        "title": "La Sonia",
+        "title_prefix": "Calanque de l'Eissadon",
+        "topic_id": 163662,
+        "version": 10
+    }],
+
+
+    "associations": {
+        "xreports": [],
+        "routes": [],
+        "recent_outings": {
+            "total": 8,
+            "documents": [{}]
+    },
+        "waypoints": [{
+            "document_id": 40500,
+            "areas": [{
+        "document_id": 14463,
+        "available_langs": null,
+        "version": 9,
+        "area_type": "range",
+        "locales": [{
+            "version": 3,
+            "title": "Provence",
+            "lang": "fr"
+        }],
+        "type": "a",
+        "protected": false
+        }],
+            "available_langs": ["fr"],
+            "version": 4,
+            "waypoint_type": "climbing_outdoor",
+            "quality": "medium",
+            "geometry": {
+        "geom": "{\"coordinates\": [611065.9694920249, 5343014.131302915], \"type\": \"Point\"}",
+        "version": 4
+            },
+            "locales": [{
+        "version": 15,
+        "title": "Calanque de l'Eissadon",
+        "summary": "",
+        "lang": "fr"
+            }],
+            "type": "w",
+            "elevation": 200,
+            "protected": false
+    }],
+        "images": [{
+            "areas": [],
+            "author": null,
+            "available_langs": ["fr"],
+            "document_id": 576750,
+            "filename": "1415453692_1857002073.jpg",
+            "geometry": {
+        "geom": null,
+        "version": 2
+            },
+            "locales": [{
+        "lang": "fr",
+        "title": "Histoire de s'y retrouver un peu...",
+        "version": 1
+        }],
+            "protected": false,
+            "type": "i",
+            "version": 2
+    }],
+        "articles": [],
+        "books": []
+    }
+}
