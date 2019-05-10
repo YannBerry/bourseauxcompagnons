@@ -63,6 +63,7 @@ def ContactProfileView(request, **kwargs):
         form = ContactProfileForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
+            subject_prefixed = '[bourseauxcompagnons] ' + subject 
             from_email = form.cleaned_data['from_email']
             recipients = [CustomUser.objects.get(username=kwargs['username']).email]
             contact_message = form.cleaned_data['message']
@@ -77,10 +78,11 @@ def ContactProfileView(request, **kwargs):
             plain_message = strip_tags(html_message)
             try:
                 email = EmailMultiAlternatives(
-                    subject,
+                    subject_prefixed,
                     plain_message,
                     from_email,
                     recipients,
+                    bcc=['contact@bourseauxcompagnons.fr'],
                 )
                 email.attach_alternative(html_message, "text/html")
                 email.send()
@@ -90,7 +92,7 @@ def ContactProfileView(request, **kwargs):
     else:
         if request.user.is_authenticated:
             form = ContactProfileForm(initial={'from_email': request.user.email,
-                                                'subject': _('[bourseauxcompagnons] Initial contact'),
+                                                'subject': _('Initial contact'),
                                                 'message': _('Hi ')+kwargs['username']+',\n'})
         else:
             form = ContactProfileForm()
