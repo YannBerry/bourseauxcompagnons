@@ -71,7 +71,7 @@ def ContactProfileView(request, **kwargs):
                 html_content = '<p>This is an <strong>important</strong> message.</p>'
                 email = EmailMultiAlternatives(
                     subject,
-                    text_message,
+                    text_content,
                     from_email,
                     recipients,
                 )
