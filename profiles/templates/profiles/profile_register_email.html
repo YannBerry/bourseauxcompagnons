@@ -1,10 +1,6 @@
-{% autoescape off %}
-Bienvenue sur Bourse aux compagnons !
+<p style="margin-bottom: 1em;">Bienvenue sur Bourse aux compagnons !<p>
 
-Votre nom d'utilisateur, en cas d'oubli : {{ customuser.get_username }}
+<p>Votre profil apparait désormais dans la liste des profils de Bourse aux compagnons : <a href="https://www.bourseauxcompagnons.fr/profils/{{ customuser.username }}/">voir mon profil</a><br>
+Votre identifiant de connexion, en cas d'oubli : {{ customuser.get_username }}</p>
 
-Sportivement,
-
-Bourse aux compagnons
-https://bourseauxcompagnons.fr
-{% endautoescape %}
+<p>Sportivement,<br><a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a></p>

@@ -71,7 +71,6 @@ def ContactProfileView(request, **kwargs):
                 'profiles/contact_profile_email.html',
                 {'profile_contacted': CustomUser.objects.get(username=kwargs['username']).username,
                 'profile_making_contact': request.user.username,
-                'profile_making_contact_email': from_email,
                 'message': contact_message
                 }
             )
@@ -112,16 +111,23 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         '''
         1. Save the valid form (useless because already saved through ProfileCreationForm but it provides me with self.object which is the customuser)
-        2. Login the new profile
-        3. Redirect to success_url.
+        2. Send an confirmation email to the new profile
+        3. Login the new profile
+        4. Redirect to success_url.
 
         No authentication.
         '''
         response = super().form_valid(form)
-        recipient = self.object.email
-        message = render_to_string('profiles/profile_register_email.html', {'customuser': self.object})
-        send_mail(_("Profile creation"), message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", [recipient])
+
+        subject="Profil créé"
+        subject_prefixed = '[Account] ' + subject 
+        recipients = [self.object.email]
+        html_message = render_to_string('profiles/profile_register_email.html', {'customuser': self.object})
+        plain_message = strip_tags(html_message)
+        send_mail(subject_prefixed, plain_message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", recipients, html_message=html_message)
+        
         login(self.request, self.object)
+        
         return response
 
 
