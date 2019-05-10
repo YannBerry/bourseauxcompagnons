@@ -66,7 +66,14 @@ def ContactProfileView(request, **kwargs):
             from_email = form.cleaned_data['from_email']
             recipients = [CustomUser.objects.get(username=kwargs['username']).email]
             contact_message = form.cleaned_data['message']
-            html_message = render_to_string('profiles/contact_profile_email.html', {'profile': request.user.username, 'message': contact_message})
+            html_message = render_to_string(
+                'profiles/contact_profile_email.html',
+                {'profile_contacted': CustomUser.objects.get(username=kwargs['username']).username,
+                'profile_making_contact': request.user.username,
+                'profile_making_contact_email': from_email,
+                'message': contact_message
+                }
+            )
             plain_message = strip_tags(html_message)
             try:
                 email = EmailMultiAlternatives(
@@ -77,14 +84,6 @@ def ContactProfileView(request, **kwargs):
                 )
                 email.attach_alternative(html_message, "text/html")
                 email.send()
-            # try:
-            #     email = EmailMessage(
-            #         subject,
-            #         message,
-            #         from_email,
-            #         recipients,
-            #     )
-            #     email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('profiles:contact-profile-done', username=kwargs['username'])

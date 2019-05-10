@@ -1,6 +1,8 @@
-<p>Vous avez reçu un message de la part de <a href="https://www.bourseauxcompagnons.fr/profils/{{ profile }}/">{{ profile }}</a> :)</p>
-<div style="color=DodgerBlue;">
+<p style="margin-bottom: 1em;">Bonjour {{ profile_contacted }},</p>
+<p>Vous avez reçu un message depuis la Bourse aux compagnons {% if profile_making_contact %}de la part de <a href="https://www.bourseauxcompagnons.fr/profils/{{ profile_making_contact }}/">{{ profile_making_contact }}</a> {% endif %}:)</p>
+<div style="color:DodgerBlue; margin-bottom: 1em;">
 {% autoescape off %}
 {{ message }}
 {% endautoescape %}
 </div>
+<p>Sportivement,<br><a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a></p>
