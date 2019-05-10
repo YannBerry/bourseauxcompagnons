@@ -8,9 +8,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
 # Sending Emails
-from django.core.mail import EmailMessage, BadHeaderError
+from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
@@ -62,23 +63,35 @@ def ContactProfileView(request, **kwargs):
         if form.is_valid():
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
+            recipients = [CustomUser.objects.get(username=kwargs['username']).email]
             contact_message = form.cleaned_data['message']
-            message = render_to_string('profiles/contact_profile_email.html', {'profile': request.user.username, 'message': contact_message})
-            recipient = [CustomUser.objects.get(username=kwargs['username']).email]
+            html_message = render_to_string('profiles/contact_profile_email.html', {'profile': request.user.username, 'message': contact_message})
             try:
-                email = EmailMessage(
+                text_content = 'This is an important message.'
+                email = EmailMultiAlternatives(
                     subject,
-                    message,
+                    text_message,
                     from_email,
-                    recipient,
+                    recipients,
                 )
+                email.attach_alternative(html_message, "text/html")
                 email.send()
+            # try:
+            #     email = EmailMessage(
+            #         subject,
+            #         message,
+            #         from_email,
+            #         recipients,
+            #     )
+            #     email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('profiles:contact-profile-done', username=kwargs['username'])
     else:
         if request.user.is_authenticated:
-            form = ContactProfileForm(initial={'from_email': request.user.email, 'subject': '[bourseauxcompagnons] Prise de contact', 'message': 'Bonjour '+kwargs['username']+',\n'})
+            form = ContactProfileForm(initial={'from_email': request.user.email,
+                                                'subject': _('[bourseauxcompagnons] Initial contact'),
+                                                'message': _('Hi ')+kwargs['username']+',\n'})
         else:
             form = ContactProfileForm()
     return render(request, "profiles/contact_profile_form.html", {'form': form, 'username': kwargs['username']})
@@ -89,7 +102,10 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
     form_class = ProfileCreationForm
     template_name = 'profiles/profile_register.html'
     success_url = reverse_lazy('my-profile')
-    success_message = "IMPORTANT : par défault votre profil est public. C'est à dire qu'il apparait dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur 'Mettre à jour mon profil' pour le compléter ou le privatiser."
+    success_message = _("WARNING : your profile is public by default. That is to say that it will be displayed "
+                        "in the profile list available on bourseauxcompagnons. Click on "
+                        "'Update my profile' to complete it or make it private."
+                        )
 
     def form_valid(self, form):
         '''
@@ -102,7 +118,7 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
         response = super().form_valid(form)
         recipient = self.object.email
         message = render_to_string('profiles/profile_register_email.html', {'customuser': self.object})
-        send_mail("Création de votre compte", message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", [recipient])
+        send_mail(_("Profile creation"), message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", [recipient])
         login(self.request, self.object)
         return response
 

@@ -31,7 +31,7 @@ urlpatterns = [
     path(_('contact/'), include('contactpage.urls')),
     path(_('features/'), include('features.urls')),
     path(_('admin/'), admin.site.urls),
-    path(_('concept/'), TemplateView.as_view(template_name='concept/index.html'), name='concept'),
+    #path(_('concept/'), TemplateView.as_view(template_name='concept/index.html'), name='concept'),
 ]
 
 if settings.DEBUG:

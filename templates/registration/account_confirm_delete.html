@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Supprimer mon compte | {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Delete my account' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
     <form method="POST">
         {% csrf_token %}
-        <p>{{ user.username }} êtes-vous sûr de vouloir supprimer votre compte ?</p>
-        <input type=submit value="Supprimer" class="btn btn-danger" />
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">Annuler</a>
+        <p>{% blocktrans with user_username=user.username %}{{ user_username }} are you sure you want to delete your account?{% endblocktrans %}</p>
+        <input type=submit value="{% trans 'Delete' %}" class="btn btn-danger" />
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% trans 'Cancel' %}</a>
     </form>
 </div>
 {% endblock%}

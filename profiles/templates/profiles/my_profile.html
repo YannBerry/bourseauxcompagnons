@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Mon profil | {{ block.super }}{% endblock %}
+{% block title %}{% trans 'My profile' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -13,17 +14,17 @@
     {% endif %}
     <div class="row align-items-center mb-2">
         <div class="col-12 col-sm-auto col-md-auto mb-2 mr-auto mr-md-0">
-            <a href="{% url 'update-profile' user.username %}" class="btn btn-primary btn-block" role="button">Mettre à jour mon profil public</a>
+            <a href="{% url 'update-profile' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my public profile' %}</a>
         </div>
         <div class="col-12 col-sm-auto col-md-auto mb-2 mr-md-auto">
-            <a href="{% url 'update-account' user.username %}" class="btn btn-primary btn-block" role="button">Paramètres de mon compte</a>
+            <a href="{% url 'update-account' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Account settings' %}</a>
         </div>
         <div class="col-12 col-md-auto mb-2">
-            <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">Supprimer mon compte</a>
+            <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
         </div>
     </div>
     {% if user.outing_set.all %}
-        <p>Sorties que j'ai créées :</p>
+        <p>{% trans 'Outings I created:' %}</p>
         <ul class="row no-gutters list-unstyled">
         {% for outing in user.outing_set.all %}
             <li class="col-12 ">
@@ -34,10 +35,10 @@
                                 <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:update' outing.slug %}" class="btn btn-primary" role="button">Modifier</a>
+                                <a href="{% url 'outings:update' outing.slug %}" class="btn btn-primary" role="button">{% trans 'Update' %}</a>
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:delete' outing.slug %}" class="btn btn-danger" role="button">Supprimer</a>
+                                <a href="{% url 'outings:delete' outing.slug %}" class="btn btn-danger" role="button">{% trans 'Delete' %}</a>
                             </div>
                         </div>
                     </div>
@@ -49,14 +50,14 @@
     {% else %}
         <div class="row mb-4">
             <div class="col-12">            
-                <a href="{% url 'outings:create' %}" class="btn btn-success btn-block" role="button">Créer une sortie</a>
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-block" role="button">{% trans 'Create an outing' %}</a>
             </div>
         </div>
     {% endif %}
 {% else %}
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{% url 'login' %}" class="btn btn-success btn-block" role="button">Connexion</a>
+            <a href="{% url 'login' %}" class="btn btn-success btn-block" role="button">{% trans 'Sign in' %}</a>
         </div>
     </div>
 {% endif %}
