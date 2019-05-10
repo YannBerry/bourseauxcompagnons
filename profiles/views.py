@@ -14,6 +14,7 @@ from django.utils.translation import get_language
 from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 from profiles.models import Profile, CustomUser
 from activities.models import Activity
@@ -66,16 +67,15 @@ def ContactProfileView(request, **kwargs):
             recipients = [CustomUser.objects.get(username=kwargs['username']).email]
             contact_message = form.cleaned_data['message']
             html_message = render_to_string('profiles/contact_profile_email.html', {'profile': request.user.username, 'message': contact_message})
+            plain_message = strip_tags(html_message)
             try:
-                text_content = 'This is an important message.'
-                html_content = '<p>This is an <strong>important</strong> message.</p>'
                 email = EmailMultiAlternatives(
                     subject,
-                    text_content,
+                    plain_message,
                     from_email,
                     recipients,
                 )
-                email.attach_alternative(html_content, "text/html")
+                email.attach_alternative(html_message, "text/html")
                 email.send()
             # try:
             #     email = EmailMessage(
