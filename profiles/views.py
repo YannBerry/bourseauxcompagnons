@@ -68,13 +68,14 @@ def ContactProfileView(request, **kwargs):
             html_message = render_to_string('profiles/contact_profile_email.html', {'profile': request.user.username, 'message': contact_message})
             try:
                 text_content = 'This is an important message.'
+                html_content = '<p>This is an <strong>important</strong> message.</p>'
                 email = EmailMultiAlternatives(
                     subject,
                     text_message,
                     from_email,
                     recipients,
                 )
-                email.attach_alternative(html_message, "text/html")
+                email.attach_alternative(html_content, "text/html")
                 email.send()
             # try:
             #     email = EmailMessage(
