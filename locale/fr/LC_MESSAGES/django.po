@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-10 11:10+0200\n"
+"POT-Creation-Date: 2019-05-16 00:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,10 +81,6 @@ msgstr "fonctionnalites/"
 #: bac/urls.py:33
 msgid "admin/"
 msgstr "admin/"
-
-#: bac/urls.py:34
-msgid "concept/"
-msgstr "concept/"
 
 #: contactpage/forms.py:8 profiles/forms.py:177
 msgid "Your e-mail address"
@@ -171,7 +167,7 @@ msgstr "début"
 #. Translators: Use the date format of your language for this exemple.
 #: outings/models.py:27
 msgid "Exemple: 25/05/2020"
-msgstr "Exemple : 05/25/2020"
+msgstr "Exemple : 25/05/2020"
 
 #: outings/models.py:28
 msgid "end"
@@ -221,12 +217,16 @@ msgstr ""
 
 #: outings/templates/outings/outing_confirm_delete.html:11
 #: profiles/templates/profiles/my_profile.html:41
+#: templates/registration/account_confirm_delete.html:11
 msgid "Delete"
 msgstr "Supprimer"
 
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:62
+#: profiles/templates/profiles/profile_form.html:71
 #: profiles/templates/profiles/profile_register.html:68
+#: templates/registration/account_confirm_delete.html:12
+#: templates/registration/account_form.html:47
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -515,7 +515,7 @@ msgstr ""
 msgid "Get in touch with %(username)s"
 msgstr "Prenez contact avec %(username)s"
 
-#: profiles/templates/profiles/my_profile.html:4 templates/base.html:81
+#: profiles/templates/profiles/my_profile.html:4 templates/base.html:78
 msgid "My profile"
 msgstr "Mon profil"
 
@@ -528,6 +528,7 @@ msgid "Account settings"
 msgstr "Paramètres du compte"
 
 #: profiles/templates/profiles/my_profile.html:23
+#: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
@@ -539,9 +540,21 @@ msgstr "Sorties que j'ai créées :"
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: profiles/templates/profiles/my_profile.html:60 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:60 templates/base.html:85
+#: templates/registration/login.html:4 templates/registration/login.html:11
+#: templates/registration/login.html:35
+#: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
 msgstr "Connexion"
+
+#: profiles/templates/profiles/profile_form.html:4
+msgid "Update my profile"
+msgstr "Mettre à jour mon profil"
+
+#: profiles/templates/profiles/profile_form.html:69
+#: templates/registration/account_form.html:45
+msgid "Save"
+msgstr "Enregistrer"
 
 #: profiles/templates/profiles/profile_list.html:5
 msgid "Profiles list"
@@ -581,7 +594,7 @@ msgstr "%(profile_age)s ans"
 msgid "There is no profile matching your search criteria."
 msgstr "Aucun profil ne correspond à vos critères de recherche."
 
-#: profiles/templates/profiles/profile_register.html:5 profiles/views.py:111
+#: profiles/templates/profiles/profile_register.html:5
 msgid "Profile creation"
 msgstr "Création du profil"
 
@@ -597,15 +610,15 @@ msgstr "<username>/contact/"
 msgid "<username>/contact/done/"
 msgstr "<username>/contact/fait/"
 
-#: profiles/views.py:83
-msgid "[bourseauxcompagnons] Initial contact"
-msgstr "[bourseauxcompagnons] Prise de contact"
+#: profiles/views.py:94
+msgid "Initial contact"
+msgstr "Prise de contact"
 
-#: profiles/views.py:84
+#: profiles/views.py:95
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:95
+#: profiles/views.py:106
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -615,47 +628,61 @@ msgstr ""
 "dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur "
 "'Mettre à jour mon profil' pour le compléter ou le privatiser."
 
-#: templates/base.html:11
+#: templates/404.html:10 templates/404.html:26 templates/base.html:11
 msgid "Mountain Partners"
 msgstr "Bourse aux compagnons"
+
+#: templates/404.html:27
+msgid "This page does not exist (error 404)"
+msgstr "Cette page n'existe pas (erreur 404)"
+
+#: templates/404.html:28
+msgid "Go to Homepage"
+msgstr "Retourner à l'accueil"
+
+#: templates/base.html:12
+msgid ""
+"Find partners for your outings in the mountain. Visit and contact for free "
+"the profiles and outings. Sort by activity, level, experience, etc. Made by "
+"a moutaineer who struggled for finding moutain partners."
+msgstr ""
+"Trouvez des partenaires pour vos sorties en montagne. Consulter et contactez "
+"gratuitement les profils et les sorties. Triez par activité, niveau, expérience "
+", etc. Réalisé par un alpiniste qui a bataillé à trouver des compagnons de cordée." 
 
 #: templates/base.html:26
 msgid "MOUNTAIN PARTNERS"
 msgstr "BOURSE AUX COMPAGNONS"
 
-#: templates/base.html:33 templates/homepage.html:15
+#: templates/base.html:33 templates/index.html:15
 msgid "PROFILES"
 msgstr "PROFILS"
 
-#: templates/base.html:36 templates/homepage.html:37
+#: templates/base.html:36 templates/index.html:37
 msgid "OUTINGS"
 msgstr "SORTIES"
 
 #: templates/base.html:39
-msgid "CONCEPT"
-msgstr "CONCEPT"
-
-#: templates/base.html:42
 msgid "CONTACT"
 msgstr "CONTACT"
 
-#: templates/base.html:45
+#: templates/base.html:42
 msgid "FEATURES"
 msgstr "FONCTIONNALITES"
 
-#: templates/base.html:83
+#: templates/base.html:80
 msgid "Sign out"
 msgstr "Déconnexion"
 
-#: templates/homepage.html:4
+#: templates/index.html:4
 msgid "Partners for your mountain outings"
 msgstr "Des partenaires pour vos sorties en montagne"
 
-#: templates/homepage.html:9
+#: templates/index.html:9
 msgid "Find the right buddies to enjoy the outdoors"
 msgstr "Trouver des partenaires de montagne adaptés"
 
-#: templates/homepage.html:10
+#: templates/index.html:10
 msgid ""
 "moutaineering, ski touring, ice climbing, paragliding, trekking, trail "
 "running"
@@ -663,13 +690,105 @@ msgstr ""
 "Alpinisme, ski de randonnée, cascade de glace, parapente, randonnée, trail, "
 "course à pied"
 
-#: templates/homepage.html:16
+#: templates/index.html:16
 msgid ""
 "Need to build a strong companionship with a mountain partner to share "
 "outings in the mountain on a regular basis?"
 msgstr ""
 "Besoin d'un partenaire de montagne régulier pour vos sorties en montagne ?"
 
-#: templates/homepage.html:38
+#: templates/index.html:38
 msgid "Join or Publish a mountain outing!"
 msgstr "Rejoignez ou publier une sortie en montagne !"
+
+#: templates/index.html:57
+msgid ""
+"Who? Sportsmen and sportswomen striking to find partners to explore the "
+"outdoors. Especially mountains."
+msgstr ""
+
+#: templates/index.html:58
+msgid ""
+"What? Find partners that match your activities, your level and your "
+"aspirations."
+msgstr ""
+
+#: templates/index.html:59
+msgid "How?"
+msgstr ""
+
+#: templates/index.html:61
+msgid ""
+"Watch profiles and outings. Contact directly the ones fitting your interest."
+msgstr ""
+
+#: templates/index.html:62
+msgid ""
+"Create your own profile or outings to be contacted by potential partners."
+msgstr ""
+
+#: templates/registration/account_confirm_delete.html:10
+#, python-format
+msgid "%(user_username)s are you sure you want to delete your account?"
+msgstr "%(user_username)s êtes-vous sûr de vouloir supprimer votre compte? "
+
+#: templates/registration/account_form.html:4
+msgid "Update my account"
+msgstr "Mettre mon compte à jour"
+
+#: templates/registration/account_form.html:49
+msgid "Update my password"
+msgstr "Changer mon mot de passe"
+
+#: templates/registration/login.html:38
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
+
+#: templates/registration/login.html:41
+msgid "No account? Create a profile!"
+msgstr "Pas de compte ? Créez un profil !"
+
+#: templates/registration/password_change_done.html:12
+msgid ""
+"The next time you will sign in you will be able to use your new password!"
+msgstr ""
+"La prochaine fois que vous vous connecterez vous pourrez renseigner votre "
+"nouveau mot de passe"
+
+#: templates/registration/password_change_form.html:15
+#: templates/registration/password_reset_confirm.html:16
+msgid "Update password"
+msgstr "Mettre à jour le mot de passe"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "Your new password has been activated. You just have to sign in."
+msgstr ""
+"Votre nouveau mot de passe est activé. Vous n'avez plus qu'à vous connecter."
+
+#: templates/registration/password_reset_confirm.html:21
+#, python-format
+msgid ""
+"\n"
+"                        The reset link for the password is not valid anymore "
+"because it has already been used. Please ask for a <a href="
+"\"%(url_password_reset)s\">new password reset</a>.\n"
+"                        "
+msgstr ""
+"\n"
+"                        Le lien de réinitialisation de votre mot de passe "
+"n'est plus valide car il a déjà été utilisé. Veuillez demander une <a href="
+"\"%(url_password_reset)s\">nouvelle réinitialisation du mot de passe</a>.\n"
+"                        "
+
+#: templates/registration/password_reset_done.html:8
+msgid ""
+"If you don't receive any e-mail, please check that you have filled the form "
+"out with the e-mail address you used to register and check your spam."
+msgstr ""
+"Si vous ne recevez aucun email, veuillez vérifier que vous avez bien "
+"renseigné le formulaire avec l'adresse email que vous avez utilisé pour vous "
+"enregistrer et vérifiez votre spam."
+
+#: templates/registration/password_reset_form.html:15
+msgid "Submit and receive a confirmation e-mail"
+msgstr "Valider et recevoir un email de confirmation"

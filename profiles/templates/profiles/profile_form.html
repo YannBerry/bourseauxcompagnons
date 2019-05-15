@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Modifier mon profil | {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Update my profile' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
@@ -65,13 +66,13 @@
                 {% endif %}
             </div>
         </div>
-        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+        <input type="submit" value="{% trans 'Save' %}" class="btn btn-primary" />
         {% if profile %}
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">Annuler</a>
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% trans 'Cancel' %}</a>
         {% endif %}
     </form>
-    {% if uploaded_file_url %}
+    <!-- {% if uploaded_file_url %}
     <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-  {% endif %}
+    {% endif %} -->
 </div>
 {% endblock%}
