@@ -3,64 +3,85 @@
 
 {% block title %}{% trans "Partners for your mountain outings" %} | {{ block.super }}{% endblock %}
 
+{% block banner %}
+<div class="d-flex align-items-center position-relative vh-100" style="height: 100%; background: url('/static/img/bg_1.JPG') no-repeat; background-size: cover; z-index: 10; background-attachment: fixed;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-2 order-xl-1">
+            </div>
+            <div class="col-xl-2 order-xl-3">
+            </div>
+            <div class="col-xl-8 order-xl-2">
+                <div class="col-lg-5">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h1 class="card-text h4 p-4">{% trans "Find the right buddies to enjoy the mountains." %}</h1>
+                            <form type="GET" action="{% url 'profiles:search' %}">
+                                <div class="form-row">
+                                    <div class="form-group col-12 col-sm-10 col-xl-12">
+                                        <ul id="id_activities" class="custom-form-check-inline">
+                                            {% for activity in all_activities %}
+                                            <li><label for="id_activities_{{ activity }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity }}">{{ activity }}</label></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-2 col-xl-12">
+                                        <button class="btn btn-outline-success btn-block text-uppercase" type="submit">{% trans "Search Profile" %}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
-<div class="row">
-    <div class="col-12 text-center">
-        <h1 class="mb-4">{% trans "Find the right buddies to enjoy the outdoors" %}</h1>
-        <h2>{% trans "moutaineering, ski touring, ice climbing, paragliding, trekking, trail running" %}</h2>
+<div class="row text-center py-5">
+    <div class="col-12 pb-5">
+        <h2>Concept</h2>
     </div>
-    <div class="col-lg-6">
-        <div class="card bg-light">
-            <div class="card-body text-center">
-                <h2 class="card-title"><a href="{% url 'profiles:list' %}">{% trans "PROFILES" %}</a></h2>
-                <p class="card-text h4">{% trans "Need to build a strong companionship with a mountain partner to share outings in the mountain on a regular basis?" %}</p>
-                <form type="GET" action="{% url 'profiles:search' %}">
-                    <div class="form-row">
-                        <div class="form-group col-12 col-sm-10 col-xl-12">
-                            <ul id="id_activities" class="custom-form-check-inline">
-                                {% for activity in all_activities %}
-                                <li><label for="id_activities_{{ activity }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity }}">{{ activity }}</label></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="form-group col-12 col-sm-2 col-xl-12">
-                            <button class="btn btn-outline-success btn-block" type="submit">Filtrer</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <h3>{% trans 'For whom?' %}</h3>
+        <p>{% trans 'Sportsmen and sportswomen struggling to find partners to explore the outdoors. Especially the mountains.' %}</p>
     </div>
-    <div class="col-lg-6">
-        <div class="card bg-light">
-            <div class="card-body text-center">
-                <h2 class="card-title"><a href="{% url 'outings:list' %}">{% trans "OUTINGS" %}</a></h2>
-                <p class="card-text h4">{% trans "Join or Publish a mountain outing!" %}</p>
-                <form type="GET" action="{% url 'outings:search' %}">
-                    <div class="form-row">
-                        <div class="form-group col-12 col-sm-10 col-xl-12">
-                            <ul id="id_activities" class="custom-form-check-inline">
-                                {% for activity in all_activities %}
-                                <li><label for="id_activities_{{ activity }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity }}">{{ activity }}</label></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="form-group col-12 col-sm-2 col-xl-12">
-                            <button class="btn btn-outline-success btn-block" type="submit">Filtrer</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <h3>{% trans 'What for?' %}</h3>
+        <p>{% trans 'Find partners that match your activities, your level and your aspirations.' %}</p>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <h3>{% trans 'How it works?' %}</h3>
+        <ul class="list-unstyled">
+            <li>{% trans 'Watch profiles and outings. Contact directly the ones fitting your interest.' %}</li>
+            <li>{% trans 'Publish your own profile or outings to be contacted by potential partners.' %}</li>
+        </ul>
+    </div>
+</div>
+<div class="row text-center py-5">
+    <div class="col-12 pb-5">
+        <h2>{% trans 'Last profiles created' %}</h2>
     </div>
     <div class="col-12">
-        <h1 class="h2">{% trans 'Who? Sportsmen and sportswomen striking to find partners to explore the outdoors. Especially mountains.' %}</h1>
-        <h1 class="h2">{% trans 'What? Find partners that match your activities, your level and your aspirations.' %}</h1>
-        <h1 class="h2">{% trans 'How?' %}</h1>
-        <ul>
-            <li>{% trans 'Watch profiles and outings. Contact directly the ones fitting your interest.' %}</li>
-            <li>{% trans 'Create your own profile or outings to be contacted by potential partners.' %}</li>
-        </ul>
+        <p>{% trans 'Upcoming feature' %}</p>
+    </div>
+</div>
+<div class="row text-center py-5">
+    <div class="col-12 pb-5">
+        <h2>{% trans 'Last outings suggested' %}</h2>
+    </div>
+    <div class="col-12">
+        <p>{% trans 'Upcoming feature' %}</p>
+    </div>
+</div>
+<div class="row text-center py-5">
+    <div class="col-12 pb-5">
+        <h2>{% trans 'Map of profiles' %}</h2>
+    </div>
+    <div class="col-12">
+        <p>{% trans 'Upcoming feature' %}</p>
     </div>
 </div>
 {% endblock%}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-16 00:53+0200\n"
+"POT-Creation-Date: 2019-07-04 12:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,6 +101,7 @@ msgstr ""
 
 #: contactpage/templates/contactpage/contactpage.html:4
 #: profiles/templates/profiles/contact_profile_form.html:4
+#: templates/base.html:44
 msgid "Contact"
 msgstr ""
 
@@ -247,7 +248,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: outings/templates/outings/outing_list.html:5
+#: outings/templates/outings/outing_list.html:5 templates/base.html:36
 msgid "Outings"
 msgstr ""
 
@@ -578,27 +579,19 @@ msgstr ""
 #: templates/base.html:12
 msgid ""
 "Find partners for your outings in the mountain. Visit and contact for free "
-"the profiles and outings. Sort by activity, level, experience, etc. Made by "
-"a moutaineer who struggled for finding moutain partners."
+"the profiles and outings. Sort by activity, level, experience, location, "
+"etc. Made by a moutaineer who struggled for finding moutain partners."
 msgstr ""
 
 #: templates/base.html:26
 msgid "MOUNTAIN PARTNERS"
 msgstr ""
 
-#: templates/base.html:33 templates/index.html:15
-msgid "PROFILES"
-msgstr ""
-
-#: templates/base.html:36 templates/index.html:37
-msgid "OUTINGS"
+#: templates/base.html:33
+msgid "Profiles"
 msgstr ""
 
 #: templates/base.html:39
-msgid "CONTACT"
-msgstr ""
-
-#: templates/base.html:42
 msgid "FEATURES"
 msgstr ""
 
@@ -610,50 +603,61 @@ msgstr ""
 msgid "Partners for your mountain outings"
 msgstr ""
 
-#: templates/index.html:9
-msgid "Find the right buddies to enjoy the outdoors"
+#: templates/index.html:18
+msgid "Find the right buddies to enjoy the mountains."
 msgstr ""
 
-#: templates/index.html:10
+#: templates/index.html:29
+msgid "Search Profile"
+msgstr ""
+
+#: templates/index.html:48
+msgid "For whom?"
+msgstr ""
+
+#: templates/index.html:49
 msgid ""
-"moutaineering, ski touring, ice climbing, paragliding, trekking, trail "
-"running"
+"Sportsmen and sportswomen struggling to find partners to explore the "
+"outdoors. Especially the mountains."
 msgstr ""
 
-#: templates/index.html:16
+#: templates/index.html:52
+msgid "What for?"
+msgstr ""
+
+#: templates/index.html:53
 msgid ""
-"Need to build a strong companionship with a mountain partner to share "
-"outings in the mountain on a regular basis?"
+"Find partners that match your activities, your level and your aspirations."
 msgstr ""
 
-#: templates/index.html:38
-msgid "Join or Publish a mountain outing!"
-msgstr ""
-
-#: templates/index.html:57
-msgid ""
-"Who? Sportsmen and sportswomen striking to find partners to explore the "
-"outdoors. Especially mountains."
+#: templates/index.html:56
+msgid "How it works?"
 msgstr ""
 
 #: templates/index.html:58
 msgid ""
-"What? Find partners that match your activities, your level and your "
-"aspirations."
-msgstr ""
-
-#: templates/index.html:59
-msgid "How?"
-msgstr ""
-
-#: templates/index.html:61
-msgid ""
 "Watch profiles and outings. Contact directly the ones fitting your interest."
 msgstr ""
 
-#: templates/index.html:62
+#: templates/index.html:59
 msgid ""
-"Create your own profile or outings to be contacted by potential partners."
+"Publish your own profile or outings to be contacted by potential partners."
+msgstr ""
+
+#: templates/index.html:65
+msgid "Last profiles created"
+msgstr ""
+
+#: templates/index.html:68 templates/index.html:76 templates/index.html:84
+msgid "Upcoming feature"
+msgstr ""
+
+#: templates/index.html:73
+msgid "Last outings suggested"
+msgstr ""
+
+#: templates/index.html:81
+msgid "Map of profiles"
 msgstr ""
 
 #: templates/registration/account_confirm_delete.html:10

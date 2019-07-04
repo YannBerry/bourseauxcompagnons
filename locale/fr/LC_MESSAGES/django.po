@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-16 00:53+0200\n"
+"POT-Creation-Date: 2019-07-04 12:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,6 +101,7 @@ msgstr "Veuillez corriger la ou les erreurs détectées."
 
 #: contactpage/templates/contactpage/contactpage.html:4
 #: profiles/templates/profiles/contact_profile_form.html:4
+#: templates/base.html:44
 msgid "Contact"
 msgstr "Contact"
 
@@ -263,7 +264,7 @@ msgstr "Ajouter une sortie"
 msgid "Create"
 msgstr "Créer"
 
-#: outings/templates/outings/outing_list.html:5
+#: outings/templates/outings/outing_list.html:5 templates/base.html:36
 msgid "Outings"
 msgstr "Sorties"
 
@@ -643,30 +644,23 @@ msgstr "Retourner à l'accueil"
 #: templates/base.html:12
 msgid ""
 "Find partners for your outings in the mountain. Visit and contact for free "
-"the profiles and outings. Sort by activity, level, experience, etc. Made by "
-"a moutaineer who struggled for finding moutain partners."
+"the profiles and outings. Sort by activity, level, experience, location, "
+"etc. Made by a moutaineer who struggled for finding moutain partners."
 msgstr ""
 "Trouvez des partenaires pour vos sorties en montagne. Consulter et contactez "
-"gratuitement les profils et les sorties. Triez par activité, niveau, expérience "
-", etc. Réalisé par un alpiniste qui a bataillé à trouver des compagnons de cordée." 
+"gratuitement les profils et les sorties. Triez par activité, niveau, "
+"expérience, localisation etc. Réalisé par un alpiniste qui a bataillé à "
+"trouver des compagnons de cordée."
 
 #: templates/base.html:26
 msgid "MOUNTAIN PARTNERS"
 msgstr "BOURSE AUX COMPAGNONS"
 
-#: templates/base.html:33 templates/index.html:15
-msgid "PROFILES"
-msgstr "PROFILS"
-
-#: templates/base.html:36 templates/index.html:37
-msgid "OUTINGS"
-msgstr "SORTIES"
+#: templates/base.html:33
+msgid "Profiles"
+msgstr "Profils"
 
 #: templates/base.html:39
-msgid "CONTACT"
-msgstr "CONTACT"
-
-#: templates/base.html:42
 msgid "FEATURES"
 msgstr "FONCTIONNALITES"
 
@@ -678,54 +672,70 @@ msgstr "Déconnexion"
 msgid "Partners for your mountain outings"
 msgstr "Des partenaires pour vos sorties en montagne"
 
-#: templates/index.html:9
-msgid "Find the right buddies to enjoy the outdoors"
-msgstr "Trouver des partenaires de montagne adaptés"
+#: templates/index.html:18
+msgid "Find the right buddies to enjoy the mountains."
+msgstr "Trouvez des partenaires de montagne adaptés."
 
-#: templates/index.html:10
+#: templates/index.html:29
+msgid "Search Profile"
+msgstr "Rechercher un compagnon"
+
+#: templates/index.html:48
+msgid "For whom?"
+msgstr "Pour qui ?"
+
+#: templates/index.html:49
 msgid ""
-"moutaineering, ski touring, ice climbing, paragliding, trekking, trail "
-"running"
+"Sportsmen and sportswomen struggling to find partners to explore the "
+"outdoors. Especially the mountains."
 msgstr ""
-"Alpinisme, ski de randonnée, cascade de glace, parapente, randonnée, trail, "
-"course à pied"
+"Sportifs et sportives qui bataillent à trouver des compagnons pour sortir en "
+"montagne."
 
-#: templates/index.html:16
+#: templates/index.html:52
+msgid "What for?"
+msgstr "Pour quoi ?"
+
+#: templates/index.html:53
 msgid ""
-"Need to build a strong companionship with a mountain partner to share "
-"outings in the mountain on a regular basis?"
+"Find partners that match your activities, your level and your aspirations."
 msgstr ""
-"Besoin d'un partenaire de montagne régulier pour vos sorties en montagne ?"
+"Trouvez des compagnons qui correspondent à vos activités, votre niveau et vos "
+"projets."
 
-#: templates/index.html:38
-msgid "Join or Publish a mountain outing!"
-msgstr "Rejoignez ou publier une sortie en montagne !"
-
-#: templates/index.html:57
-msgid ""
-"Who? Sportsmen and sportswomen striking to find partners to explore the "
-"outdoors. Especially mountains."
-msgstr ""
+#: templates/index.html:56
+msgid "How it works?"
+msgstr "Comment ça marche ?"
 
 #: templates/index.html:58
 msgid ""
-"What? Find partners that match your activities, your level and your "
-"aspirations."
-msgstr ""
-
-#: templates/index.html:59
-msgid "How?"
-msgstr ""
-
-#: templates/index.html:61
-msgid ""
 "Watch profiles and outings. Contact directly the ones fitting your interest."
 msgstr ""
+"Regardez les profils et les sorties proposés. Puis contactez directement ceux "
+"qui vous intéressent."
 
-#: templates/index.html:62
+#: templates/index.html:59
 msgid ""
-"Create your own profile or outings to be contacted by potential partners."
+"Publish your own profile or outings to be contacted by potential partners."
 msgstr ""
+"Publiez votre propre profil ou vos propres sorties pour être contacté "
+"par de potentiel partenaires."
+
+#: templates/index.html:65
+msgid "Last profiles created"
+msgstr "Derniers profils créés"
+
+#: templates/index.html:68 templates/index.html:76 templates/index.html:84
+msgid "Upcoming feature"
+msgstr "Fonctionnalité à venir"
+
+#: templates/index.html:73
+msgid "Last outings suggested"
+msgstr "Dernières sorties proposées"
+
+#: templates/index.html:81
+msgid "Map of profiles"
+msgstr "Carte des profils"
 
 #: templates/registration/account_confirm_delete.html:10
 #, python-format
@@ -792,3 +802,4 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
+

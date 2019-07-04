@@ -9,7 +9,7 @@
         <meta name="robots" content="noindex, nofollow">
 
         <title>{% block title %}{% trans "Mountain Partners" %}{% endblock %}</title>
-        <meta name="description" content="{% trans 'Find partners for your outings in the mountain. Visit and contact for free the profiles and outings. Sort by activity, level, experience, etc. Made by a moutaineer who struggled for finding moutain partners.' %}">
+        <meta name="description" content="{% trans 'Find partners for your outings in the mountain. Visit and contact for free the profiles and outings. Sort by activity, level, experience, location, etc. Made by a moutaineer who struggled for finding moutain partners.' %}">
         <meta name="author" content="Yann Berry">
         <link rel="icon" href="{% static 'favicon.ico' %}">
 
@@ -30,19 +30,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profiles:list' %}">[ {% trans "PROFILES" %} ]</a>
+                        <a class="nav-link text-uppercase" href="{% url 'profiles:list' %}">{% trans "Profiles" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'outings:list' %}">[ {% trans "OUTINGS" %} ]</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contactpage:contact-page' %}">{% trans "CONTACT" %}</a>
+                        <a class="nav-link text-uppercase" href="{% url 'outings:list' %}">{% trans "Outings" %}</a>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="{% url 'features:votes' %}">{% trans "FEATURES" %}</a>
                     </li>-->
                 </ul>
                 <ul class="navbar-nav mr-2">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="{% url 'contactpage:contact-page' %}">{% trans "Contact" %}</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ LANGUAGE_CODE|upper }}
@@ -64,7 +64,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav text-uppercase">
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,6 +88,8 @@
                 </ul>
             </div>
         </nav>
+
+        {% block banner %}{% endblock %}
 
         <div class="container-fluid bg-light">
             <div class="row" style="padding-top: 30px;">

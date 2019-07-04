@@ -1,3 +1,8 @@
+/* FULL SCREEN HOME BACKGROUND & MAP */
+body, html{
+    height: 100%;
+}
+
 /* ADD PROFILE AND ADD OUTING BUTTONS */
 .btn-circle{
     width: 70px;
