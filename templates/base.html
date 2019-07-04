@@ -29,11 +29,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="{% url 'profiles:list' %}">{% trans "Profiles" %}</a>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><img src="{% static 'img/icon_profile.png' %}" class="ml-2" height=25 alt="Profile icon"></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="{% url 'outings:list' %}">{% trans "Outings" %}</a>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" height=25 alt="Outing icon"></a>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="{% url 'features:votes' %}">{% trans "FEATURES" %}</a>

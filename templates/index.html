@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Partners for your mountain outings" %} | {{ block.super }}{% endblock %}
@@ -13,7 +14,7 @@
             </div>
             <div class="col-xl-8 order-xl-2">
                 <div class="col-lg-5">
-                    <div class="card bg-light">
+                    <div class="card" style="background-color: rgba(225,225,225,0.9);">
                         <div class="card-body text-center">
                             <h1 class="card-text h4 p-4">{% trans "Find the right buddies to enjoy the mountains." %}</h1>
                             <form type="GET" action="{% url 'profiles:search' %}">
@@ -60,28 +61,70 @@
         </ul>
     </div>
 </div>
-<div class="row text-center py-5">
-    <div class="col-12 pb-5">
+<div class="row py-5">
+    <div class="col-12 pb-5 text-center">
         <h2>{% trans 'Last profiles created' %}</h2>
     </div>
-    <div class="col-12">
-        <p>{% trans 'Upcoming feature' %}</p>
-    </div>
+    {% for profile in 5_last_profiles %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-start">
+                        <div class="col-3 mb-2">
+                            {% if profile.profile_picture %}
+                            <img src="{{ profile.profile_picture.url }}" class="img-fluid" alt="Profile picture">
+                            {% else %}
+                            <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
+                            {% endif %}
+                        </div>
+                        <div class="col-9">
+                            <h5><a href="{{ profile.get_absolute_url }}">{% include "profiles/snippets/username.html" %}</a></h5>
+                            <p class="card-text">
+                                <span class="font-weight-bold">{{ profile.availability_area }}</span>
+                                {% if profile.age %}<br>{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="card-text">
+                                {% for activity in profile.activities.all %}
+                                    <span class="badge badge-pill badge-info mb-1">{{ activity.name }}</span>
+                                {% endfor %}<br>
+                                {{ profile.introduction|truncatechars:200 }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
-<div class="row text-center py-5">
-    <div class="col-12 pb-5">
+<div class="row py-5">
+    <div class="col-12 text-center pb-5">
         <h2>{% trans 'Last outings suggested' %}</h2>
     </div>
-    <div class="col-12">
-        <p>{% trans 'Upcoming feature' %}</p>
-    </div>
-</div>
-<div class="row text-center py-5">
-    <div class="col-12 pb-5">
-        <h2>{% trans 'Map of profiles' %}</h2>
-    </div>
-    <div class="col-12">
-        <p>{% trans 'Upcoming feature' %}</p>
-    </div>
+    <ul class="row list-unstyled">
+            {% for outing in 5_last_outings %}
+                <li class="col-sm-6 col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="">{{ outing.title }}</a></h5>
+                            <p class="card-text">
+                                {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
+                                During the day<br>{{ start_date }}
+                                {% plural %}
+                                {{ duration }} days<br>{{ start_date }} - {{ end_date }}
+                                {% endblocktrans %}
+                                <br>
+                                {% for activity in outing.activities.all %}
+                                    <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
 </div>
 {% endblock%}
