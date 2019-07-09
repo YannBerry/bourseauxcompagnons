@@ -89,10 +89,9 @@
             </div>
         </nav>
 
-        {% block banner %}{% endblock %}
-
+        {% block index %}
         <div class="container-fluid bg-light">
-            <div class="row" style="padding-top: 30px;">
+            <div class="row pt-5">
                 <div class="col-xl-2 order-xl-1">
                     {% block leftsidebar %}{% endblock %}
                 </div>
@@ -104,6 +103,7 @@
                 </main>
             </div>
         </div>
+        {% endblock %}
 
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
