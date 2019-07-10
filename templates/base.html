@@ -14,7 +14,7 @@
         <link rel="icon" href="{% static 'favicon.ico' %}">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- bootstrap-select CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
         <!-- Custom CSS -->
@@ -22,18 +22,18 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="min-height: 60px;">
             <a class="navbar-brand" href="{% url 'homepage' %}" style="font-size:1.2rem">{% trans "MOUNTAIN PARTNERS" %}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto d-inline-flex align-items-center">
                     <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><img src="{% static 'img/icon_profile.png' %}" class="ml-2" height=25 alt="Profile icon"></a>
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><div><img src="{% static 'img/icon_profile.png' %}" class="ml-2" height="25" alt="Profile icon"></div></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" height=25 alt="Outing icon"></a>
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" height="25" alt="Outing icon"></a>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="{% url 'features:votes' %}">{% trans "FEATURES" %}</a>
@@ -107,8 +107,8 @@
 
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!-- bootstrap-select JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-fr_FR.min.js"></script>
