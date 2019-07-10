@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-04 16:54+0200\n"
+"POT-Creation-Date: 2019-07-10 18:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,7 +314,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: outings/templates/outings/outing_list.html:74 templates/index.html:114
+#: outings/templates/outings/outing_list.html:74
 #, python-format
 msgid ""
 "\n"
@@ -506,7 +506,7 @@ msgstr ""
 msgid "Profiles list"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:27
+#: profiles/templates/profiles/profile_list.html:27 templates/index.html:119
 msgid "Add my profile"
 msgstr ""
 
@@ -524,7 +524,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:64 templates/index.html:84
+#: profiles/templates/profiles/profile_list.html:64 templates/index.html:97
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
@@ -580,7 +580,7 @@ msgstr ""
 msgid ""
 "Find partners for your outings in the mountain. Visit and contact for free "
 "the profiles and outings. Sort by activity, level, experience, location, "
-"etc. Made by a moutaineer who struggled for finding moutain partners."
+"etc. Made by a mountaineer who struggled for finding mountain partners."
 msgstr ""
 
 #: templates/base.html:26
@@ -604,52 +604,78 @@ msgid "Partners for your mountain outings"
 msgstr ""
 
 #: templates/index.html:19
-msgid "Find the right buddies to enjoy the mountains."
+msgid "Find partners for your outings in the mountain."
 msgstr ""
 
 #: templates/index.html:30
 msgid "Search Profile"
 msgstr ""
 
-#: templates/index.html:49
+#: templates/index.html:51
 msgid "For whom?"
 msgstr ""
 
-#: templates/index.html:50
+#: templates/index.html:52
 msgid ""
 "Sportsmen and sportswomen struggling to find partners to explore the "
 "outdoors. Especially the mountains."
 msgstr ""
 
-#: templates/index.html:53
+#: templates/index.html:55
 msgid "What for?"
 msgstr ""
 
-#: templates/index.html:54
+#: templates/index.html:56
 msgid ""
 "Find partners that match your activities, your level and your aspirations."
 msgstr ""
 
-#: templates/index.html:57
+#: templates/index.html:59
 msgid "How it works?"
 msgstr ""
 
-#: templates/index.html:59
+#: templates/index.html:61
 msgid ""
 "Watch profiles and outings. Contact directly the ones fitting your interest."
 msgstr ""
 
-#: templates/index.html:60
+#: templates/index.html:62
 msgid ""
 "Publish your own profile or outings to be contacted by potential partners."
 msgstr ""
 
-#: templates/index.html:66
+#: templates/index.html:79
 msgid "Last profiles created"
 msgstr ""
 
-#: templates/index.html:105
+#: templates/index.html:125
+msgid "Display all the profiles"
+msgstr ""
+
+#: templates/index.html:141
 msgid "Last outings suggested"
+msgstr ""
+
+#: templates/index.html:149
+#, python-format
+msgid ""
+"\n"
+"                                    During the day<br>%(start_date)s\n"
+"                                    "
+msgid_plural ""
+"\n"
+"                                    %(duration)s days<br>%(start_date)s - "
+"%(end_date)s\n"
+"                                    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/index.html:166
+msgid "Add my outing"
+msgstr ""
+
+#: templates/index.html:171
+msgid "Display all the outings"
 msgstr ""
 
 #: templates/registration/account_confirm_delete.html:10

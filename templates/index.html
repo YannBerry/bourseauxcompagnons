@@ -16,7 +16,7 @@
                 <div class="col-md-6 col-xl-6">
                     <div class="card" style="background-color: rgba(225,225,225,0.9);">
                         <div class="card-body text-center">
-                            <h1 class="card-text h4 p-4">{% trans "Find the right buddies to enjoy the mountains." %}</h1>
+                            <h1 class="card-text h4 p-4">{% trans "Find partners for your outings in the mountain." %}</h1>
                             <form type="GET" action="{% url 'profiles:search' %}">
                                 <div class="form-row">
                                     <div class="form-group col-12">
@@ -80,7 +80,7 @@
                 </div>
                 {% for profile in 5_last_profiles %}
                     <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card">
+                        <div class="card" onclick="document.location='{{ profile.get_absolute_url }}'" style="cursor: pointer;">
                             <div class="card-body">
                                 <div class="row align-items-start">
                                     <div class="col-3 mb-2">
@@ -91,7 +91,7 @@
                                         {% endif %}
                                     </div>
                                     <div class="col-9">
-                                        <h5><a href="{{ profile.get_absolute_url }}" class="stretched-link">{% include "profiles/snippets/username.html" %}</a></h5>
+                                        <h5><a href="{{ profile.get_absolute_url }}">{% include "profiles/snippets/username.html" %}</a></h5>
                                         <p class="card-text">
                                             <span class="font-weight-bold">{{ profile.availability_area }}</span>
                                             {% if profile.age %}<br>{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
@@ -112,13 +112,15 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="card bg-success" style="height: 100%;">
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <p class="card-title text-uppercase align-middle mb-0"><a href="{% url 'profile_register' %}" class="stretched-link text-light">{% trans "Add yours" %}</a></p>
+                {% if user.is_anonymous %}
+                    <div class="col-sm-6 col-lg-4 mb-4">
+                        <div class="card bg-success" style="height: 100%;">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'profile_register' %}" class="stretched-link text-light" style="text-decoration: none;">{% trans "Add my profile" %}</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
                 <div class="col-12">
                     <a class="text-info" href="{% url 'profiles:list' %}">{% trans "Display all the profiles" %} ></a>
                 </div>
@@ -161,7 +163,7 @@
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card bg-success" style="height: 100%;">
                         <div class="card-body d-flex align-items-center justify-content-center">
-                            <p class="card-title text-uppercase align-middle mb-0"><a href="{% url 'outings:create' %}" class="stretched-link text-light">{% trans "Add yours" %}</a></p>
+                            <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'outings:create' %}" class="stretched-link text-light" style="text-decoration: none;">{% trans "Add my outing" %}</a></p>
                         </div>
                     </div>
                 </div>
