@@ -35,10 +35,10 @@
     {% if outing_list %}
         {% if keywords is not None and selected_activities is not None %}
             <p>
-                {% blocktrans count counter=nb_of_results %}
-                One outing contains '{{ keywords }}' in its title or description and belongs to one of the following categories:
+                {% blocktrans with k=keywords count counter=nb_of_results %}
+                One outing contains '{{ k }}' in its title or description and belongs to one of the following categories:
                 {% plural %}
-                {{ counter }} outings contain '{{ keywords }}' in there title or description and belong to one of the following categories:
+                {{ counter }} outings contain '{{ k }}' in there title or description and belong to one of the following categories:
                 {% endblocktrans %}
                 {% for activity in selected_activities %}
                     <span class="badge badge-pill badge-info">{{ activity }}</span>
@@ -46,10 +46,10 @@
             </p>
         {% elif keywords is not None %}
             <p>
-                {% blocktrans count counter=nb_of_results %}
-                One outing contains '{{ keywords }}' in its title or description
+                {% blocktrans with k=keywords count counter=nb_of_results %}
+                One outing contains '{{ k }}' in its title or description
                 {% plural %}
-                {{ counter }} outings contain '{{ keywords }}' in there title or description
+                {{ counter }} outings contain '{{ k }}' in there title or description
                 {% endblocktrans %}
             </p>
         {% elif selected_activities is not None %}
