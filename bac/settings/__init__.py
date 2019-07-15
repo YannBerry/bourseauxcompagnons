@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres', # needed for the unaccent and trigram lookups (to install postgre extensions : CREATE EXTENSION unaccent; and pg_trgm;)
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +93,7 @@ WSGI_APPLICATION = 'bac.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis', #'django.db.backends.postgresql',
         'NAME': 'bac',
         'USER': 'yann',
         'PASSWORD': '',
