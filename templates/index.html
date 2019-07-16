@@ -206,7 +206,7 @@
     }).addTo(pmap);
 
     {% for p in profiles %}
-        L.marker([{{ p.location.y }}, {{ p.location.y }}]).bindPopup("<a href='{{ p.get_absolute_url }}'>test</a>").addTo(pmap);
+        L.marker([{{ p.location.y }}, {{ p.location.x }}]).bindPopup("<a href='{{ p.get_absolute_url }}'>test</a>").addTo(pmap);
     {% endfor %}
 
     var circle = L.circle([44.899416, 6.642179], {
