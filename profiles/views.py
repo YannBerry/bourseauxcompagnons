@@ -8,8 +8,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+# Translation
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
+# GeoDjango
+from django.contrib.gis.db.models.functions import Distance
 # Sending Emails
 from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.core.mail import send_mail
@@ -20,6 +23,10 @@ from profiles.models import Profile, CustomUser
 from activities.models import Activity
 from profiles.forms import ProfileCreationForm, AccountForm, ProfileForm, ContactProfileForm
 
+from django.contrib.gis.geos import Point
+longitude = 8.191788
+latitude = 48.761681
+user_location = Point(longitude, latitude, srid=4326)
 
 # VIEWS FOR ANONYM WEB SURFERS
 
@@ -48,7 +55,8 @@ class ProfileListView(ListView):
             ).distinct('last_update', 'user_id')
             self.nb_of_results = len(queryset)
         else:
-            queryset = Profile.objects.filter(public_profile='True')
+            queryset = Profile.objects.annotate(distance=Distance('location', user_location)).order_by('distance').filter(public_profile='True')
+            #queryset = Profile.objects.filter(public_profile='True')
         return queryset
 
 

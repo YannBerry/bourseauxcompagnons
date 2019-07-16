@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
+from django.contrib.gis.admin import OSMGeoAdmin #subclass of GeoModelAdmin
 from django.contrib.auth.admin import UserAdmin
 
 from profiles.models import CustomUser, Profile
@@ -25,12 +26,10 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
 
-
-class ProfileAdmin(admin.ModelAdmin):
+class ProfileAdmin(OSMGeoAdmin):
     readonly_fields = ['age']
     class Meta:
         model = Profile
-
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Profile, ProfileAdmin)

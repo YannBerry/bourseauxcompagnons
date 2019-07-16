@@ -1,5 +1,5 @@
 from django.utils.translation import gettext_lazy as _
-from django.db import models
+from django.contrib.gis.db import models #from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 # Library for the function user_directory_path_pict
@@ -42,6 +42,7 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, primary_key=True)
     public_profile = models.BooleanField(verbose_name=_('public profile'), default=True, help_text=_("When your profile is public, it is displayed in the profiles list."))
+    location = models.PointField(null=True, blank=True)
     introduction = models.TextField(
         verbose_name=_('introduction'),
         help_text=_("Take your time to write a concise introduction that makes people want to know your better! The first 200 characters are displayed in the profiles list ;)"),

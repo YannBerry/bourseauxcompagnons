@@ -11,6 +11,7 @@ class HomepageView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['all_activities'] = Activity.objects.all()
+        context['profiles'] = Profile.objects.filter(public_profile='True')
         context['5_last_profiles'] = Profile.objects.order_by('-user_id')[:5]
         context['5_last_outings'] = Outing.objects.order_by('-id')[:5]
         return context
