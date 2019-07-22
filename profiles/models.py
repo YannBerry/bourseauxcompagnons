@@ -42,7 +42,7 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, primary_key=True)
     public_profile = models.BooleanField(verbose_name=_('public profile'), default=True, help_text=_("When your profile is public, it is displayed in the profiles list."))
-    location = models.PointField(null=True, blank=True)
+    location = models.PointField(verbose_name=_('location'), null=True, blank=True)
     introduction = models.TextField(
         verbose_name=_('introduction'),
         help_text=_("Take your time to write a concise introduction that makes people want to know your better! The first 200 characters are displayed in the profiles list ;)"),
@@ -51,10 +51,16 @@ class Profile(models.Model):
     list_of_courses = models.TextField(verbose_name=_('list of courses'), blank=True)
     activities = models.ManyToManyField(Activity, blank=False, verbose_name=_('activities'))
     #grades = models.ManyToManyField(Grade, blank=True, verbose_name=_('grades'))
-    availability_area = models.CharField(
+    availability_area_geo = models.PolygonField(
         verbose_name=_('availability area'),
+        help_text=_("Click on the map to build the area where you are available for going out in the mountains."),
+        null=True,
+        blank=True
+    )
+    availability_area = models.CharField(
+        verbose_name=_('availability area (further details)'),
         max_length=250,
-        help_text=_("Exemples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'")
+        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'")
     )
     birthdate = models.DateField(
         verbose_name=_('birthdate'),

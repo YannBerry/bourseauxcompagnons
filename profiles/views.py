@@ -62,6 +62,14 @@ class ProfileListView(ListView):
 
 class ProfileDetailView(DetailView):
     '''A view for the web surfer to detail a specific profile'''
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        profile = get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
+        if profile.availability_area_geo is not None:
+            poly_tuple = profile.availability_area_geo.coords[0]
+            context['availability_area_geo_poly'] = [[i[1], i[0]] for i in poly_tuple] or None
+        return context
+
     def get_object(self):
         return get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
 

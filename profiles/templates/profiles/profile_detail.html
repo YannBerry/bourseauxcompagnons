@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Nom du profil | {{ block.super }}{% endblock %}
+{% block title %}{{ profile.user.username }} | {{ block.super }}{% endblock %}
 
 {% block content %}
     <div class="card mb-4">
@@ -20,7 +21,7 @@
                 <div class="col-12 col-md-7 order-md-2">
                     <h5>{% include "profiles/snippets/username.html" %}</h5>
                     <p>
-                        Zone de disponibilité : {{ profile.availability_area }}<br>
+                        {% trans "Availability area:" %} {{ profile.availability_area }}<br>
                         {% if profile.age %}Âge : {{ profile.age }} ans<br>{% endif %}
                         Recherche des partenaires pour
                         {% for activity in profile.activities.all %}
@@ -30,19 +31,29 @@
                 </div>
             </div>
             {% if profile.introduction %}
-            <div class="row">
-                <div class="col-12">
-                    <p class="text-justify card-text">{{ profile.introduction|linebreaksbr }}</p>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-justify card-text">{{ profile.introduction|linebreaksbr }}</p>
+                    </div>
                 </div>
-            </div>
             {% endif %}
             {% if profile.list_of_courses %}
-            <div class="row mt-3">
-                <div class="col-12">
-                    <h1 class="h5">Liste de courses résumée :</h1>
-                    <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h1 class="h5">{% trans "List of main courses" %}</h1>
+                        <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+            {% if profile.availability_area_geo %}
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h1 class="h5">{% trans "Availability area" %}</h1>
+                        <div id="availability_area_geo_map" class="col-12" style="height: 550px;">
+                            
+                        </div>
+                    <div class="col-12">
+                </div>
             {% endif %}
         </div>
     </div>
@@ -69,3 +80,22 @@
         </div>
     {% endif %}
 {% endblock%}
+
+{% block js %}
+<script>
+    var amap = L.map('availability_area_geo_map');
+
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        minZoom: 3,
+        maxZoom: 16,
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+    }).addTo(amap);
+
+    {% if availability_area_geo_poly %}
+        // var polygon = L.polygon([[43, 5],[47, 5],[47, 6],[43, 5]]).addTo(amap);
+        var polygon = L.polygon({{ availability_area_geo_poly }}).addTo(amap);
+        amap.fitBounds(polygon.getBounds());
+    {% endif %}
+
+</script>
+{% endblock %}
