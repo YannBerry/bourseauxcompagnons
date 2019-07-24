@@ -92,7 +92,6 @@
     }).addTo(amap);
 
     {% if availability_area_geo_poly %}
-        // var polygon = L.polygon([[43, 5],[47, 5],[47, 6],[43, 5]]).addTo(amap);
         var polygon = L.polygon({{ availability_area_geo_poly }}).addTo(amap);
         amap.fitBounds(polygon.getBounds());
     {% endif %}

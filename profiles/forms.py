@@ -3,6 +3,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import models
 from django.db import transaction
+# GeoDjango
+from django.contrib.gis.geos import Point
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity
@@ -48,7 +50,7 @@ class ProfileCreationForm(CustomUserCreationForm):
     )
     availability_area = forms.CharField(
         label=_('Availability area'),
-        help_text=_("Exemples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'"),
+        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'"),
         required=True
     )
 
@@ -133,11 +135,27 @@ class AccountForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     required_css_class = 'required'
 
+    '''
+    location = forms.CharField(
+        label=_('Location'),
+        max_length=200,
+        help_text=_("Click on the map to show where you live."),
+        required=False
+    )
+    '''
+
+    availability_area_geo = forms.CharField(
+        label=_('Availability area'),
+        max_length=200,
+        help_text=_("Click on the map to build the area where you are available for going out in the mountains."),
+        required=False
+    )
+
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
         if self.is_bound:
-            for field in [f for f in self.fields if f not in ('public_profile', 'activities')]:
+            for field in [f for f in self.fields if f not in ('public_profile', 'location', 'availability_area_geo', 'activities')]:
                 if self.has_error(field):
                     self.fields[field].widget.attrs.update({'class': 'form-control is-invalid'})
                 else:
@@ -147,21 +165,24 @@ class ProfileForm(forms.ModelForm):
             else:
                 self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
         else:
-            for field in [f for f in self.fields if f not in ('public_profile', 'activities')]:
+            for field in [f for f in self.fields if f not in ('public_profile', 'location', 'availability_area_geo', 'activities')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
             self.fields['public_profile'].widget.attrs.update({'class': 'custom-form-check-inline'})
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
 
     class Meta:
         model = Profile
-        fields = ['public_profile', 'profile_picture', 'availability_area', 'activities', 'introduction', 'list_of_courses', 'birthdate']
+        fields = ['public_profile', 'profile_picture', 'location', 'availability_area_geo', 'availability_area', 'activities', 'introduction', 'list_of_courses', 'birthdate']
         widgets = {
             'activities': forms.CheckboxSelectMultiple(),
         }
 
     def clean(self):
         cleaned_data = super().clean()
-        
+        '''
+        coordinates = self.cleaned_data.get('location').split(',')
+        location = Point(float(coordinates[0]),float(coordinates[1]))
+        '''
         if self.errors:
             self.add_error(
                 None,

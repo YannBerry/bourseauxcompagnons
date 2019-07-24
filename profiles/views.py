@@ -158,6 +158,14 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
 
     def get_object(self):
         return get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
+    '''
+    def form_valid(self, form):
+        coordinates = form.cleaned_data['location'].split(',')
+        print(coordinates)
+        form.instance.location = Point(float(coordinates[0]),float(coordinates[1]))
+        return super().form_valid(form)
+    '''
+
 
 
 class AccountUpdateView(UserPassesTestMixin, UpdateView):

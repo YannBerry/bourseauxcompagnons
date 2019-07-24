@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css" />
+{% endblock %}
+
 {% block title %}{% trans 'Update my profile' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
@@ -49,6 +53,24 @@
                     <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
                 {% endif %}
             </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.location.label_tag }}
+                <div id="locationformmap" class="col-12" style="height: 350px;"></div>
+                <input id="locationcoordinates" name="location" value="" type="hidden"/>
+                {{ form.location.errors }}
+                {% if form.location.help_text %}
+                    <p class="helptext">{{ form.location.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.availability_area_geo.label_tag }}
+                <div id="availabilityformmap" class="col-12" style="height: 350px;"></div>
+                <input id="" name="" value="" type="hidden"/>
+                {{ form.availability_area_geo.errors }}
+                {% if form.availability_area_geo.help_text %}
+                    <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
+                {% endif %}
+            </div>
             <div class="col-12 mb-4">
                 {{ form.introduction.label_tag }}
                 {{ form.introduction }}
@@ -76,3 +98,43 @@
     {% endif %} -->
 </div>
 {% endblock%}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.js"></script>
+<script>
+    var lmap = L.map('locationformmap').locate({setView: true, maxZoom: 2});
+
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        minZoom: 3,
+        maxZoom: 16,
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+    }).addTo(lmap);
+
+    function onMapClick(e) {
+        var lat = e.latlng.lat;
+        var lng = e.latlng.lng;
+
+        if (typeof marker != 'undefined') {
+            lmap.removeLayer(marker);
+            marker = L.marker([lat, lng]).addTo(lmap);
+        }
+        else {
+            marker = L.marker([lat, lng]).addTo(lmap);
+        }
+        
+        document.getElementById("locationcoordinates").value = 'Point(' + lng + ', ' + lat + ')';
+    }
+    lmap.on('click', onMapClick);
+
+</script>
+<script>
+    var amap = L.map('availabilityformmap', {drawControl: true}).locate({setView: true, maxZoom: 2});
+
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        minZoom: 3,
+        maxZoom: 16,
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+    }).addTo(amap);
+
+</script>
+{% endblock %}
