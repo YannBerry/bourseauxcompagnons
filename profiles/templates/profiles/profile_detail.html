@@ -49,11 +49,17 @@
                     </div>
                 </div>
             {% endif %}
-            {% if profile.availability_area_geo %}
+            {% if profile.location or profile.availability_area_geo %}
                 <div class="row mt-3">
                     <div class="col-12">
+                        {% if profile.location and profile.availability_area_geo %}
+                        <h1 class="h5">{% trans "Location & Availability area" %}</h1>
+                        {% elif profile.location and not profile.availability_area_geo %}
+                        <h1 class="h5">{% trans "Location" %}</h1>
+                        {% else %}
                         <h1 class="h5">{% trans "Availability area" %}</h1>
-                        <div id="availability_map" class="col-12" style="height: 550px;"></div>
+                        {% endif %}
+                        <div id="location_map" class="col-12" style="height: 450px;"></div>
                     </div>
                 </div>
             {% endif %}
@@ -85,15 +91,15 @@
 
 {% block js %}
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-{% if availability_area_geo_poly %}
+{% if profile.location or availability_area_geo_poly %}
 <script>
     // BASE MAP
         var attribution = new ol.control.Attribution({
             collapsible: true
         });
-        var amap = new ol.Map({
+        var lmap = new ol.Map({
             // TARGET
-            target: 'availability_map',
+            target: 'location_map',
 
             // ATTRIBUTIONS OF THE BASE MAP
             controls: ol.control.defaults({attribution: false}).extend([attribution]),
@@ -120,19 +126,54 @@
             })
         });
 
+        const source = new ol.source.Vector();
+        const layer = new ol.layer.Vector({
+            source: source
+        });
+        lmap.addLayer(layer);
+
+    {% if profile.location %}
+    // DISPLAYING LOCATION
+        var geojsonObject = {
+            "type": "Feature",
+            "properties": "",
+            "geometry": {{ profile.location.geojson|safe }}
+        };
+        // const profileLocIconStyle = new ol.style.Style({
+        //     image: new ol.style.Icon({
+        //         anchor: [0.5, 0.5],
+        //         anchorXUnits: 'fraction',
+        //         anchorYUnits: 'fraction',
+        //         src: '{% static "img/icon_male_map.png" %}',
+        //         scale: 0.8,
+        //         opacity: 1
+        //     })
+        // });
+        const locationFeatures = (new ol.format.GeoJSON({featureProjection: lmap.getView().getProjection()})).readFeatures(geojsonObject);
+        source.addFeatures(locationFeatures);
+    {% endif %}
+
+    {% if availability_area_geo_poly %}
     // DISPLAYING AVAILABILITY AREA
-        const polygon = new ol.Feature({
-            geometry: new ol.geom.Polygon([{{ availability_area_geo_poly }}]).transform('EPSG:4326', amap.getView().getProjection())
+        // const availabilityPolyStyle = new ol.style.Style({
+        //     fill: new ol.style.Fill({
+        //         color: 'rgba(50, 150, 255, 0.3)'
+        //     }),
+        //     stroke: new ol.style.Stroke({
+        //         color: 'rgba(50, 150, 255, 1)',
+        //         width: 2
+        //     })
+        // });
+        const polygonFeature = new ol.Feature({
+            geometry: new ol.geom.Polygon([{{ availability_area_geo_poly }}]).transform('EPSG:4326', lmap.getView().getProjection())
         });
-        const availabilitySource = new ol.source.Vector({
-            features: [polygon]
-        });
-        const availabilityLayer = new ol.layer.Vector({
-            source: availabilitySource
-        });
-        amap.addLayer(availabilityLayer);
-        amap.getView().fit(availabilitySource.getExtent(), {
-            maxZoom: 18,
+        // polygonFeature.setStyle(availabilityPolyStyle);
+        source.addFeature(polygonFeature);
+    {% endif %}
+
+    // FITTING THE ZOOM TO THE FEATURES
+    lmap.getView().fit(source.getExtent(), {
+            maxZoom: 10,
             duration: 500
         });
 </script>
