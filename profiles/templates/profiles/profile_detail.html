@@ -2,6 +2,10 @@
 {% load static %}
 {% load i18n %}
 
+{% block css %}
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+{% endblock %}
+
 {% block title %}{{ profile.user.username }} | {{ block.super }}{% endblock %}
 
 {% block content %}
@@ -49,9 +53,7 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <h1 class="h5">{% trans "Availability area" %}</h1>
-                        <div id="availability_area_geo_map" class="col-12" style="height: 550px;">
-                            
-                        </div>
+                        <div id="availability_map" class="col-12" style="height: 550px;"></div>
                     </div>
                 </div>
             {% endif %}
@@ -82,19 +84,57 @@
 {% endblock%}
 
 {% block js %}
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+{% if availability_area_geo_poly %}
 <script>
-    var amap = L.map('availability_area_geo_map');
+    // BASE MAP
+        var attribution = new ol.control.Attribution({
+            collapsible: true
+        });
+        var amap = new ol.Map({
+            // TARGET
+            target: 'availability_map',
 
-    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        minZoom: 3,
-        maxZoom: 16,
-        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-    }).addTo(amap);
+            // ATTRIBUTIONS OF THE BASE MAP
+            controls: ol.control.defaults({attribution: false}).extend([attribution]),
 
-    {% if availability_area_geo_poly %}
-        var polygon = L.polygon({{ availability_area_geo_poly }}).addTo(amap);
-        amap.fitBounds(polygon.getBounds());
-    {% endif %}
+            // LAYERS
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.XYZ({
+                        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png',
+                        attributions: ['Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                        ],
+                    })
+                })
+            ],
 
+            loadTilesWhileAnimating: true,
+
+            // VIEW (default projection is Spherical Mercator (EPSG:3857), with meters as map units)
+            view: new ol.View({
+                center: ol.proj.fromLonLat([7.41, 48.82]),
+                zoom: 4,
+                minZoom:2,
+                maxZoom: 18
+            })
+        });
+
+    // DISPLAYING AVAILABILITY AREA
+        const polygon = new ol.Feature({
+            geometry: new ol.geom.Polygon([{{ availability_area_geo_poly }}]).transform('EPSG:4326', amap.getView().getProjection())
+        });
+        const availabilitySource = new ol.source.Vector({
+            features: [polygon]
+        });
+        const availabilityLayer = new ol.layer.Vector({
+            source: availabilitySource
+        });
+        amap.addLayer(availabilityLayer);
+        amap.getView().fit(availabilitySource.getExtent(), {
+            maxZoom: 18,
+            duration: 500
+        });
 </script>
+{% endif %}
 {% endblock %}

@@ -67,7 +67,7 @@ class ProfileDetailView(DetailView):
         profile = get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
         if profile.availability_area_geo is not None:
             poly_tuple = profile.availability_area_geo.coords[0]
-            context['availability_area_geo_poly'] = [[i[1], i[0]] for i in poly_tuple] or None
+            context['availability_area_geo_poly'] = [[i[0], i[1]] for i in poly_tuple] or None
         return context
 
     def get_object(self):

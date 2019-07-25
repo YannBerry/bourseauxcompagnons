@@ -1,8 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block css %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+<style>
+.locate {
+  top: 5em;
+  left: .5em;
+}
+
+#tools {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+#tools a {
+  display: inline-block;
+  padding: 0.5rem;
+  background: white;
+  cursor: pointer;
+}
+</style>
 {% endblock %}
 
 {% block title %}{% trans 'Update my profile' %} | {{ block.super }}{% endblock %}
@@ -64,7 +84,11 @@
             </div>
             <div class="col-sm-6 mb-4">
                 {{ form.availability_area_geo.label_tag }}
-                <div id="availabilityformmap" class="col-12" style="height: 350px;"></div>
+                <div id="availabilityformmap" class="col-12" style="height: 350px;">
+                    <div id="tools">
+                        <a id="download" download="features.json">Download</a>
+                    </div>
+                </div>
                 <input id="" name="" value="" type="hidden"/>
                 {{ form.availability_area_geo.errors }}
                 {% if form.availability_area_geo.help_text %}
@@ -100,16 +124,215 @@
 {% endblock%}
 
 {% block js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.js"></script>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
-    var lmap = L.map('locationformmap').locate({setView: true, maxZoom: 2});
+    // BASE MAP
+        var attribution = new ol.control.Attribution({
+            collapsible: true
+        });
+        var map = new ol.Map({
+            // TARGET
+            target: 'locationformmap',
 
-    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        minZoom: 3,
-        maxZoom: 16,
-        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-    }).addTo(lmap);
+            // ATTRIBUTIONS OF THE BASE MAP
+            controls: ol.control.defaults({attribution: false}).extend([attribution]),
 
+            // LAYERS
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.XYZ({
+                        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png',
+                        attributions: ['Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                        ],
+                    })
+                })
+            ],
+
+            loadTilesWhileAnimating: true,
+
+            // VIEW (default projection is Spherical Mercator (EPSG:3857), with meters as map units)
+            view: new ol.View({
+                center: ol.proj.fromLonLat([7.41, 48.82]),
+                zoom: 4,
+                minZoom:2,
+                maxZoom: 18
+            })
+        });
+
+    // GEOLOCATION
+        // Creating the geolocation source included in a specific layer linked with the map
+        const geolocSource = new ol.source.Vector();
+        const geolocLayer = new ol.layer.Vector({
+            source: geolocSource
+        });
+        map.addLayer(geolocLayer);
+        // Defining success and error functions and the options object
+        function success(pos) {
+            const coords = [pos.coords.longitude, pos.coords.latitude];
+            const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
+            geolocSource.clear(true);
+            geolocSource.addFeatures([
+                new ol.Feature(accuracy.transform('EPSG:4326', map.getView().getProjection())),
+                new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
+            ]);
+        };
+        function error(err) {
+            alert('ERROR(' + err.code + '): ' + err.message);
+        };
+        options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        // Activate the geolocation
+        navigator.geolocation.watchPosition(success, error, options);
+        // Create a button to allow the user to center the map on its geolocation
+        const locate = document.createElement('div');
+        locate.className = 'ol-control ol-unselectable locate';
+        locate.innerHTML = '<button type="button" title="Locate me">◎</button>';
+        locate.addEventListener('click', function() {
+            if (!geolocSource.isEmpty()) {
+                map.getView().fit(geolocSource.getExtent(), {
+                    maxZoom: 18,
+                    duration: 500
+                });
+            } else {
+                return false;
+            }
+        });
+        map.addControl(new ol.control.Control({
+            element: locate
+        }));
+
+    // LOCATION ADDED BY USER
+        const locSource = new ol.source.Vector();
+        const locLayer = new ol.layer.Vector({
+            source: locSource
+        });
+        const profileLocIconStyle = new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '{% static "img/icon_male_map.png" %}',
+                scale: 0.8,
+                opacity: 1
+            })
+        });
+        map.addInteraction(new ol.interaction.Draw({
+            type: 'Point',
+            source: locSource,
+            style: profileLocIconStyle
+        }));
+        map.addLayer(locLayer);
+</script>
+<script>
+    // BASE MAP
+        var attribution = new ol.control.Attribution({
+            collapsible: true
+        });
+        var amap = new ol.Map({
+            // TARGET
+            target: 'availabilityformmap',
+
+            // ATTRIBUTIONS OF THE BASE MAP
+            controls: ol.control.defaults({attribution: false}).extend([attribution]),
+
+            // LAYERS
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.XYZ({
+                        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png',
+                        attributions: ['Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                        ],
+                    })
+                })
+            ],
+
+            loadTilesWhileAnimating: true,
+
+            // VIEW (default projection is Spherical Mercator (EPSG:3857), with meters as map units)
+            view: new ol.View({
+                center: ol.proj.fromLonLat([7.41, 48.82]),
+                zoom: 4,
+                minZoom:2,
+                maxZoom: 18
+            })
+        });
+
+    // GEOLOCATION
+        // Creating the geolocation source included in a specific layer linked with the map
+        const ageolocSource = new ol.source.Vector();
+        const ageolocLayer = new ol.layer.Vector({
+            source: geolocSource
+        });
+        amap.addLayer(ageolocLayer);
+        // Defining success and error functions and the options object
+        function success(pos) {
+            const coords = [pos.coords.longitude, pos.coords.latitude];
+            const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
+            ageolocSource.clear(true);
+            ageolocSource.addFeatures([
+                new ol.Feature(accuracy.transform('EPSG:4326', amap.getView().getProjection())),
+                new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
+            ]);
+        };
+        function error(err) {
+            alert('ERROR(' + err.code + '): ' + err.message);
+        };
+        options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        // Activate the geolocation
+        navigator.geolocation.watchPosition(success, error, options);
+        // Create a button to allow the user to center the map on its geolocation
+        const alocate = document.createElement('div');
+        alocate.className = 'ol-control ol-unselectable locate';
+        alocate.innerHTML = '<button type="button" title="Locate me">◎</button>';
+        alocate.addEventListener('click', function() {
+            if (!geolocSource.isEmpty()) {
+                amap.getView().fit(ageolocSource.getExtent(), {
+                    maxZoom: 18,
+                    duration: 500
+                });
+            } else {
+                return false;
+            }
+        });
+        amap.addControl(new ol.control.Control({
+            element: alocate
+        }));
+
+    // AVAILABILITY AREA ADDED BY USER
+        const areaSource = new ol.source.Vector();
+        const areaLayer = new ol.layer.Vector({
+            source: areaSource
+        });
+        amap.addInteraction(new ol.interaction.Draw({
+            type: 'Polygon',
+            source: areaSource
+        }));
+        amap.addInteraction(new ol.interaction.Modify({
+            source: areaSource
+        }));
+        amap.addLayer(areaLayer);
+        const format = new ol.format.GeoJSON({featureProjection: 'EPSG:3857'});
+        const download = document.getElementById('download');
+        areaSource.on('change', function() {
+            const features = areaSource.getFeatures();
+            const json = format.writeFeatures(features);
+            download.href = 'data:text/json;charset=utf-8,' + json;
+        });
+        // Allowing user to add their area dragging in a geoJSON file in the map
+        amap.addInteraction(new ol.interaction.DragAndDrop({
+            source: areaSource,
+            formatConstructors: [ol.format.GeoJSON]
+        }));
+</script>
+
+<!-- <script>
     function onMapClick(e) {
         var lat = e.latlng.lat;
         var lng = e.latlng.lng;
@@ -126,15 +349,6 @@
     }
     lmap.on('click', onMapClick);
 
-</script>
-<script>
-    var amap = L.map('availabilityformmap', {drawControl: true}).locate({setView: true, maxZoom: 2});
+</script> -->
 
-    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        minZoom: 3,
-        maxZoom: 16,
-        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-    }).addTo(amap);
-
-</script>
 {% endblock %}

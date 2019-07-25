@@ -369,6 +369,17 @@
         map.addLayer(markersLayer);
         // Initializing markers list
         const markersFeatures = [];
+        // Defining icon style
+        var profileLocIconStyle = new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 0.5],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '{% static "img/icon_male_map.png" %}',
+                scale: 0.8,
+                opacity: 1
+            })
+        });
         // Filling markers list
         {% for p in profiles %}
         {% if p.location %}
@@ -379,11 +390,13 @@
                 profile_username: '{{ p.user.username }}',
                 profile_url: '{{ p.get_absolute_url }}'
             });
+            feature.setStyle(profileLocIconStyle);
             markersFeatures.push(feature);
         {% endif %}
         {% endfor %}
-        // Displaying markers list
+        // Updating markers list
         markersSource.addFeatures(markersFeatures);
+
         // Creating POPUPS linked with there markers
         // Creating the overlay
         var popup = new ol.Overlay({
@@ -422,35 +435,5 @@
             );
             map.getTargetElement().style.cursor = hit ? 'pointer' : '';
         });
-
-    // const source = new ol.source.Vector();
-
-    // const editablelayer = new ol.layer.Vector({
-    //     source: source
-    // });
-    // map.addLayer(editablelayer);
-
-    // map.addInteraction(new ol.interaction.DragAndDrop({
-    //     source: source,
-    //     formatConstructors: [ol.format.GeoJSON]
-    // }));
-
-    // map.addInteraction(new ol.interaction.Modify({
-    //     source: source
-    // }));
-
-    // map.addInteraction(new ol.interaction.Draw({
-    //     type: 'Polygon',
-    //     source: source
-    // }));
-
-    // const format = new ol.format.GeoJSON({featureProjection: 'EPSG:3857'});
-    // const download = document.getElementById('download');
-    // source.on('change', function() {
-    //     const features = source.getFeatures();
-    //     const json = format.writeFeatures(features);
-    //     download.href = 'data:text/json;charset=utf-8,' + json;
-    // });
-
 </script>
 {% endblock %}
