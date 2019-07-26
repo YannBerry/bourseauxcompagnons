@@ -126,9 +126,36 @@
             })
         });
 
+    // DEFINING LAYER, SOURCE AND STYLES PER GEOMETRY
+        var styles = {
+            'Point': new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'fraction',
+                    src: '{% static "img/icon_male_map.png" %}',
+                    scale: 0.8,
+                    opacity: 1
+                })
+            }),
+            'Polygon': new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(50, 150, 255, 1)',
+                    lineDash: [5],
+                    width: 2
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(50, 150, 255, 0.3)'
+                })
+            })
+        };
+        var styleFunction = function(feature) {
+            return styles[feature.getGeometry().getType()];
+        };
         const source = new ol.source.Vector();
         const layer = new ol.layer.Vector({
-            source: source
+            source: source,
+            style: styleFunction
         });
         lmap.addLayer(layer);
 
@@ -136,12 +163,15 @@
     // DISPLAYING LOCATION
         var geojsonObject = {
             "type": "Feature",
-            "properties": "",
-            "geometry": {{ profile.location.geojson|safe }}
+            "geometry": {{ profile.location.geojson|safe }},
+            "properties": {
+                "name": "{{ profile.user.username}}"
+            }
         };
         // const profileLocIconStyle = new ol.style.Style({
+        //     geometry: 'Point',
         //     image: new ol.style.Icon({
-        //         anchor: [0.5, 0.5],
+        //         anchor: [0.5, 1],
         //         anchorXUnits: 'fraction',
         //         anchorYUnits: 'fraction',
         //         src: '{% static "img/icon_male_map.png" %}',
@@ -150,7 +180,9 @@
         //     })
         // });
         const locationFeatures = (new ol.format.GeoJSON({featureProjection: lmap.getView().getProjection()})).readFeatures(geojsonObject);
+        // locationFeatures[0].setStyle(profileLocIconStyle);
         source.addFeatures(locationFeatures);
+
     {% endif %}
 
     {% if availability_area_geo_poly %}
