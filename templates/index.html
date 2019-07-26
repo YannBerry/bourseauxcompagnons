@@ -353,7 +353,7 @@
         locate.addEventListener('click', function() {
             if (!geolocSource.isEmpty()) {
                 map.getView().fit(geolocSource.getExtent(), {
-                    maxZoom: 14,
+                    maxZoom: 10,
                     duration: 500
                 });
             }
