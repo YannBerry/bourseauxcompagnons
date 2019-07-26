@@ -193,7 +193,7 @@
         locate.addEventListener('click', function() {
             if (!geolocSource.isEmpty()) {
                 map.getView().fit(geolocSource.getExtent(), {
-                    maxZoom: 18,
+                    maxZoom: 14,
                     duration: 500
                 });
             } else {
@@ -294,7 +294,7 @@
         alocate.addEventListener('click', function() {
             if (!geolocSource.isEmpty()) {
                 amap.getView().fit(ageolocSource.getExtent(), {
-                    maxZoom: 18,
+                    maxZoom: 14,
                     duration: 500
                 });
             } else {
