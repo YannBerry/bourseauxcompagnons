@@ -84,6 +84,7 @@
             </div>
             <div class="col-sm-6 mb-4">
                 {{ form.availability_area_geo.label_tag }}
+                {{ form.availability_area_geo.value.json }}
                 <div id="availabilityformmap" class="col-12" style="height: 350px;">
                     <div id="tools">
                         <a id="download" download="features.json">Download</a>
@@ -204,11 +205,7 @@
             element: locate
         }));
 
-    // LOCATION ADDED BY USER
-        const locSource = new ol.source.Vector();
-        const locLayer = new ol.layer.Vector({
-            source: locSource
-        });
+    // DEFINING LAYER, SOURCE & STYLE
         const profileLocIconStyle = new ol.style.Style({
             image: new ol.style.Icon({
                 anchor: [0.5, 1],
@@ -219,12 +216,45 @@
                 opacity: 1
             })
         });
+        const source = new ol.source.Vector();
+        const layer = new ol.layer.Vector({
+            source: source,
+            style: profileLocIconStyle
+        });
+        map.addLayer(layer);
+
+    {% if form.location.value is not None %}
+    // DISPLAYING CURRENT LOCATION
+        var geojsonObject = {
+            "type": "Feature",
+            "geometry": {{ form.location.value.json|safe }},
+            "properties": {
+                "name": "{{ profile.user.username}}"
+            }
+        };
+        const locationFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
+        source.addFeatures(locationFeatures);
+        // ZOOMING IN THE CURRENT LOCATION
+        if (!source.isEmpty()) {
+            map.getView().fit(source.getExtent(), {
+                maxZoom: 10,
+                duration: 500
+            });
+        }
+    {% endif %}
+
+    // ADDING INTERACTION TO ALLOW THE USER TO MOVE THE CURRENT LOCATION
+        map.addInteraction(new ol.interaction.Modify({
+            source: source,
+            pixelTolerance: 30
+        }));
+        
+    // ADDING INTERACTION TO ALLOW THE USER TO CREATE A LOCATION
         map.addInteraction(new ol.interaction.Draw({
             type: 'Point',
-            source: locSource,
+            source: source,
             style: profileLocIconStyle
         }));
-        map.addLayer(locLayer);
 </script>
 <script>
     // BASE MAP
@@ -264,7 +294,7 @@
         // Creating the geolocation source included in a specific layer linked with the map
         const ageolocSource = new ol.source.Vector();
         const ageolocLayer = new ol.layer.Vector({
-            source: geolocSource
+            source: ageolocSource
         });
         amap.addLayer(ageolocLayer);
         // Defining success and error functions and the options object
