@@ -24,7 +24,7 @@
   cursor: pointer;
 }
 </style>
-<!-- <style>
+<style>
     .ol-popup {
         position: absolute;
         background-color: white;
@@ -58,6 +58,9 @@
         left: 48px;
         margin-left: -11px;
     }
+    .ol-popup:hover {
+        cursor: pointer;
+    }
     .ol-popup-closer {
         text-decoration: none;
         position: absolute;
@@ -67,7 +70,7 @@
     .ol-popup-closer:after {
         content: "✖";
     }
-</style> -->
+</style>
 {% endblock %}
 
 {% block title %}{% trans "Partners for your mountain outings" %} | {{ block.super }}{% endblock %}
@@ -255,12 +258,7 @@
                     <h2>{% trans 'Profiles map' %}</h2>
                 </div>
                 <div id="profilesmap" class="col-12" style="height: 550px;">
-                    <div id="tools">
-                        <a id="download" download="features.json">Download</a>
-                    </div>
                 </div>
-                <!-- Popup -->
-                <div id="popup"></div>
             </div>
         </div>
     </div>
@@ -389,9 +387,14 @@
             var feature = new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([{{ p.location.x|unlocalize }}, {{ p.location.y|unlocalize }}]))
             });
+            var profileActivities = [];
+            {% for activity in p.activities.all %}
+                profileActivities.push('{{ activity.name }}');
+            {% endfor %}
             feature.setProperties({
                 profile_username: '{{ p.user.username }}',
-                profile_url: '{{ p.get_absolute_url }}'
+                profile_url: '{{ p.get_absolute_url }}',
+                profile_activities: profileActivities
             });
             feature.setStyle(profileLocIconStyle);
             markersFeatures.push(feature);
@@ -400,14 +403,22 @@
         // Updating markers list
         markersSource.addFeatures(markersFeatures);
 
+
         // Creating POPUPS linked with there markers
         // Creating the overlay
+        var popupElt = document.createElement("div");
+        popupElt.id = "popup";
+        popupElt.classList.add("ol-popup");
+        profilesmapElt = document.getElementById('profilesmap');
+        profilesmapElt.appendChild(popupElt);        
         var popup = new ol.Overlay({
-            element: document.getElementById('popup')
+            element: popupElt,
+            offset: [0, -30]
         });
         map.addOverlay(popup);
-        // Displaying a popup when clicking on a marker
+        // Display a popup when a marker is clicked
         map.on('click', function(evt) {
+            // Detect the click on a marker
             var feature = map.forEachFeatureAtPixel(
                 evt.pixel,
                 function(feature) {
@@ -417,12 +428,41 @@
                     return layer === markersLayer;
                 }}
             );
-            var element = popup.getElement();
+            // Display profile info if the marker is clicked
             if (feature) {
+                // Popup positioning
                 var coordinates = feature.getGeometry().getCoordinates();
                 popup.setPosition(coordinates);
-                element.innerHTML = "<a href='"+ feature.get('profile_url') +"'>" + feature.get('profile_username') +"</a>";
+                // Popup reset (avoid the 'popupElt.innerHTML = "";' solution which is of bad performance)
+                while (popupElt.firstChild) {
+                    popupElt.removeChild(popupElt.firstChild);
+                } 
+                // Popup content
+                    // Title (username)
+                var titleElt = document.createElement("h4");
+                titleElt.classList.add("ol-popup-title");
+                titleElt.textContent = feature.get("profile_username");
+                popupElt.appendChild(titleElt);
+                    // Activities
+                var activitiesElt = document.createElement("p");
+                activitiesElt.classList.add("card-text");
+                for(var i = 0; i < feature.get("profile_activities").length; i++){
+                    var activityElt = document.createElement("span");
+                    activityElt.classList.add("badge", "badge-pill", "badge-info");
+                    activitiesElt.appendChild(activityElt);
+                    activityElt.textContent = feature.get("profile_activities")[i];
+                }
+                popupElt.appendChild(activitiesElt);
+                // Clickable popup and redirection to the profile's page
+                var profileUrlOnClick = "document.location='" + feature.get('profile_url') + "'";
+                popupElt.setAttribute("onclick", profileUrlOnClick);
+                    // Other solution that doesn't work:
+                        // function linkToProfilePage() {
+                        //     document.location = feature.get("profile_url");
+                        // };
+                        // popupElt.addEventListener("click", linkToProfilePage());
             } else {
+                // If a click is made outside of a marker then no popup is displayed
                 popup.setPosition(undefined);
             }
         });
