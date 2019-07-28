@@ -84,7 +84,6 @@
             </div>
             <div class="col-sm-6 mb-4">
                 {{ form.availability_area_geo.label_tag }}
-                {{ form.availability_area_geo.value.json }}
                 <div id="availabilityformmap" class="col-12" style="height: 350px;">
                     <div id="tools">
                         <a id="download" download="features.json">Download</a>
@@ -228,9 +227,7 @@
         var geojsonObject = {
             "type": "Feature",
             "geometry": {{ form.location.value.json|safe }},
-            "properties": {
-                "name": "{{ profile.user.username}}"
-            }
+            "properties": {}
         };
         const locationFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
         source.addFeatures(locationFeatures);
@@ -248,7 +245,7 @@
             source: source,
             pixelTolerance: 30
         }));
-        
+
     // ADDING INTERACTION TO ALLOW THE USER TO CREATE A LOCATION
         map.addInteraction(new ol.interaction.Draw({
             type: 'Point',
@@ -335,19 +332,46 @@
             element: alocate
         }));
 
-    // AVAILABILITY AREA ADDED BY USER
+
+    // DEFINING LAYER, SOURCE
         const areaSource = new ol.source.Vector();
         const areaLayer = new ol.layer.Vector({
             source: areaSource
         });
+        amap.addLayer(areaLayer);
+
+    {% if form.availability_area_geo.value is not None %}
+    // DISPLAYING CURRENT LOCATION
+        var geojsonObject = {
+            "type": "Feature",
+            "geometry": {{ form.availability_area_geo.value.json|safe }},
+            "properties": {}
+        };
+        const areaFeatures = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection()})).readFeatures(geojsonObject);
+        areaSource.addFeatures(areaFeatures);
+        // ZOOMING IN THE CURRENT LOCATION
+        if (!areaSource.isEmpty()) {
+            amap.getView().fit(areaSource.getExtent(), {
+                maxZoom: 10,
+                duration: 500
+            });
+        }
+    {% endif %}
+
+    // ADDING INTERACTION TO ALLOW THE USER TO MOVE THE CURRENT LOCATION
+        amap.addInteraction(new ol.interaction.Modify({
+            source: areaSource
+        }));
+        
+    // ADDING INTERACTION TO ALLOW THE USER TO CREATE A LOCATION
         amap.addInteraction(new ol.interaction.Draw({
             type: 'Polygon',
             source: areaSource
         }));
-        amap.addInteraction(new ol.interaction.Modify({
-            source: areaSource
-        }));
-        amap.addLayer(areaLayer);
+
+
+
+    // DOWNLOAD THE POLYGON DRAWN
         const format = new ol.format.GeoJSON({featureProjection: 'EPSG:3857'});
         const download = document.getElementById('download');
         areaSource.on('change', function() {
