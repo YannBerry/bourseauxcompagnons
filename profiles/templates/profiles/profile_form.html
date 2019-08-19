@@ -224,13 +224,24 @@
 
     {% if form.location.value is not None %}
     // DISPLAYING CURRENT LOCATION
+        // ADDING THE LOCATION TO THE MAP
+        const currentLocation = {{ form.location.value.json|safe }};
         var geojsonObject = {
-            "type": "Feature",
-            "geometry": {{ form.location.value.json|safe }},
-            "properties": {}
+            "type":"FeatureCollection",
+            "features":[{
+                "type": "Feature",
+                "geometry": currentLocation,
+                "properties": null
+            }]
         };
         const locationFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
         source.addFeatures(locationFeatures);
+        // INITIALIZING THE LOCATION FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
+        const locationGeojsonStr = (new ol.format.GeoJSON()).writeFeatures(locationFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
+        const locationGeojsonObj = JSON.parse(locationGeojsonStr);
+        const locationGeojsonGeom = locationGeojsonObj.features[0].geometry;
+        const locationGeojsonGeomStr = JSON.stringify(locationGeojsonGeom);
+        document.getElementById('locationcoordinates').value = locationGeojsonGeomStr;
         // ZOOMING IN THE CURRENT LOCATION
         if (!source.isEmpty()) {
             map.getView().fit(source.getExtent(), {
@@ -258,8 +269,7 @@
 
     // GETTING THE COORDINATES OF THE ADDED LOCATION
         location_draw.on("drawend",function(e){
-            var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326' 
-            // pass the feature as an array
+            var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326'
             var geojsonStr = writer.writeFeatures([e.feature]);
             var geojsonObj = JSON.parse(geojsonStr);
             var geojsonGeom = geojsonObj.features[0].geometry;
@@ -377,6 +387,13 @@
         };
         const areaFeatures = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection()})).readFeatures(geojsonObject);
         areaSource.addFeatures(areaFeatures);
+        // INITIALIZING THE AVAILABILITY_AREA_GEO FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
+        const areaGeojsonStr = (new ol.format.GeoJSON()).writeFeatures(areaFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
+        const areaGeojsonObj = JSON.parse(areaGeojsonStr);
+        const areaGeojsonGeom = areaGeojsonObj.features[0].geometry;
+        const areaGeojsonGeomStr = JSON.stringify(areaGeojsonGeom);
+        console.log(areaGeojsonGeomStr);
+        document.getElementById('areacoordinates').value = areaGeojsonGeomStr;
         // ZOOMING IN THE CURRENT LOCATION
         if (!areaSource.isEmpty()) {
             amap.getView().fit(areaSource.getExtent(), {
