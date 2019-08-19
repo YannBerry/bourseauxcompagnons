@@ -89,7 +89,7 @@
                         <a id="download" download="features.json">Download</a>
                     </div>
                 </div>
-                <input id="" name="" value="" type="hidden"/>
+                <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
                 {{ form.availability_area_geo.errors }}
                 {% if form.availability_area_geo.help_text %}
                     <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
@@ -241,17 +241,45 @@
     {% endif %}
 
     // ADDING INTERACTION TO ALLOW THE USER TO MOVE THE CURRENT LOCATION
-        map.addInteraction(new ol.interaction.Modify({
-            source: source,
-            pixelTolerance: 30
-        }));
+        // location_update = new ol.interaction.Modify({
+        //     source: source,
+        //     pixelTolerance: 30
+        // });
+        // map.addInteraction(location_update);
 
     // ADDING INTERACTION TO ALLOW THE USER TO CREATE A LOCATION
-        map.addInteraction(new ol.interaction.Draw({
+        // source.clear();
+        var location_draw = new ol.interaction.Draw({
             type: 'Point',
             source: source,
             style: profileLocIconStyle
-        }));
+        });
+        map.addInteraction(location_draw);
+
+    // GETTING THE COORDINATES OF THE ADDED LOCATION
+        location_draw.on("drawend",function(e){
+            var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326' 
+            // pass the feature as an array
+            var geojsonStr = writer.writeFeatures([e.feature]);
+            var geojsonObj = JSON.parse(geojsonStr);
+            var geojsonGeom = geojsonObj.features[0].geometry;
+            var geojsonGeomStr = JSON.stringify(geojsonGeom);
+            document.getElementById('locationcoordinates').value = geojsonGeomStr;
+            // coord = e.feature.getGeometry().getCoordinates();
+            // // coord = ol.proj.transform(coord, 'EPSG:3857', 'EPSG:4326');
+            // // alert(coord);
+            // var lon = coord[0];
+            // var lat = coord[1];
+            // document.getElementById('locationcoordinates').value = "POINT(" + lon + " " + lat + ")";
+            // document.getElementById('locationcoordinates').value = coord;
+        });
+        // location_update.on("drawend",function(e){
+        //     var writer = new ol.format.GeoJSON();
+        //     //pass the feature as an array
+        //     var geojsonStr = writer.writeFeatures([e.feature]);
+        //     alert(geojsonStr);
+        // });
+
 </script>
 <script>
     // BASE MAP
@@ -341,7 +369,7 @@
         amap.addLayer(areaLayer);
 
     {% if form.availability_area_geo.value is not None %}
-    // DISPLAYING CURRENT LOCATION
+    // DISPLAYING CURRENT AREA
         var geojsonObject = {
             "type": "Feature",
             "geometry": {{ form.availability_area_geo.value.json|safe }},
@@ -358,18 +386,29 @@
         }
     {% endif %}
 
-    // ADDING INTERACTION TO ALLOW THE USER TO MOVE THE CURRENT LOCATION
+    // ADDING INTERACTION TO ALLOW THE USER TO ALTER THE CURRENT AREA
         amap.addInteraction(new ol.interaction.Modify({
             source: areaSource
         }));
         
-    // ADDING INTERACTION TO ALLOW THE USER TO CREATE A LOCATION
-        amap.addInteraction(new ol.interaction.Draw({
+    // ADDING INTERACTION TO ALLOW THE USER TO CREATE AN AREA
+        var area_draw = new ol.interaction.Draw({
             type: 'Polygon',
             source: areaSource
-        }));
+        });
+        amap.addInteraction(area_draw);
 
-
+    // GETTING THE COORDINATES OF THE ADDED LOCATION
+        area_draw.on("drawend",function(e){
+            var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326' 
+            // pass the feature as an array
+            var geojsonStr = writer.writeFeatures([e.feature]);
+            var geojsonObj = JSON.parse(geojsonStr);
+            var geojsonGeom = geojsonObj.features[0].geometry;
+            var geojsonGeomStr = JSON.stringify(geojsonGeom);
+            console.log(geojsonGeomStr);
+            document.getElementById('areacoordinates').value = geojsonGeomStr;
+        });
 
     // DOWNLOAD THE POLYGON DRAWN
         const format = new ol.format.GeoJSON({featureProjection: 'EPSG:3857'});

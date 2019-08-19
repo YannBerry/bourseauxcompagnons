@@ -135,22 +135,6 @@ class AccountForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     required_css_class = 'required'
 
-    '''
-    location = forms.CharField(
-        label=_('Location'),
-        max_length=200,
-        help_text=_("Click on the map to show where you live."),
-        required=False
-    )
-    '''
-
-    availability_area_geo = forms.CharField(
-        label=_('Availability area'),
-        max_length=200,
-        help_text=_("Click on the map to build the area where you are available for going out in the mountains."),
-        required=False
-    )
-
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
@@ -179,10 +163,12 @@ class ProfileForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        '''
-        coordinates = self.cleaned_data.get('location').split(',')
-        location = Point(float(coordinates[0]),float(coordinates[1]))
-        '''
+        # coordinates = self.cleaned_data.get('location')
+        # print(coordinates)
+        # coordinates = self.cleaned_data.get('location').split(',')
+        # print(coordinates[0])
+        # print(coordinates[1])
+        # location = Point(float(coordinates[0]),float(coordinates[1]))
         if self.errors:
             self.add_error(
                 None,

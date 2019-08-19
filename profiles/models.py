@@ -42,7 +42,11 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, primary_key=True)
     public_profile = models.BooleanField(verbose_name=_('public profile'), default=True, help_text=_("When your profile is public, it is displayed in the profiles list."))
-    location = models.PointField(verbose_name=_('location'), null=True, blank=True)
+    location = models.PointField(
+        verbose_name=_('location'),
+        help_text=_("Click on the map to show where you live."),
+        null=True,
+        blank=True)
     introduction = models.TextField(
         verbose_name=_('introduction'),
         help_text=_("Take your time to write a concise introduction that makes people want to know your better! The first 200 characters are displayed in the profiles list ;)"),
