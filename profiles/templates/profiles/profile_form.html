@@ -438,7 +438,6 @@
             element: alocate
         }));
 
-
     // DEFINING LAYER, SOURCE
         const areaSource = new ol.source.Vector();
         const areaLayer = new ol.layer.Vector({
@@ -471,10 +470,10 @@
         }
     {% endif %}
 
-    // ADDING INTERACTION TO ALLOW THE USER TO ALTER THE CURRENT AREA
-        amap.addInteraction(new ol.interaction.Modify({
-            source: areaSource
-        }));
+    // // ADDING INTERACTION TO ALLOW THE USER TO ALTER THE CURRENT AREA
+    //     amap.addInteraction(new ol.interaction.Modify({
+    //         source: areaSource
+    //     }));
         
     // ADDING INTERACTION TO ALLOW THE USER TO CREATE AN AREA
         var area_draw = new ol.interaction.Draw({
@@ -484,6 +483,9 @@
         amap.addInteraction(area_draw);
 
     // GETTING THE COORDINATES OF THE ADDED AREA
+        area_draw.on("drawstart",function(e){
+            areaSource.clear();
+        });
         area_draw.on("drawend",function(e){
             var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326' 
             // pass the feature as an array
