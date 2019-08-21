@@ -5,9 +5,14 @@
 {% block css %}
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 <style>
-.locate {
+.locate-button {
   top: 5em;
   left: .5em;
+}
+
+.delete-button {
+    top: 7.5em;
+    left: .5em;
 }
 
 #tools {
@@ -84,11 +89,7 @@
             </div>
             <div class="col-sm-6 mb-4">
                 {{ form.availability_area_geo.label_tag }}
-                <div id="availabilityformmap" class="col-12" style="height: 350px;">
-                    <div id="tools">
-                        <a id="download" download="features.json">Download</a>
-                    </div>
-                </div>
+                <div id="availabilityformmap" class="col-12" style="height: 350px;"></div>
                 <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
                 {{ form.availability_area_geo.errors }}
                 {% if form.availability_area_geo.help_text %}
@@ -208,7 +209,7 @@
         }
         // Create a button to allow the user to center the map on its geolocation
         const locate = document.createElement('div');
-        locate.className = 'ol-control ol-unselectable locate';
+        locate.className = 'ol-control ol-unselectable locate-button';
         locate.innerHTML = '<button type="button" title="Locate me">◎</button>';
         locate.addEventListener('click', function() {
             if (!geolocSource.isEmpty()) {
@@ -286,7 +287,7 @@
         });
         map.addInteraction(location_draw);
 
-    // GETTING THE COORDINATES OF THE ADDED LOCATION
+    // PASSING THE COORDINATES OF THE ADDED LOCATION TO THE DJANGO FORM
         location_draw.on("drawstart",function(e){
             source.clear();
         });
@@ -311,6 +312,18 @@
         //     var geojsonStr = writer.writeFeatures([e.feature]);
         //     alert(geojsonStr);
         // });
+
+    // ADDING BUTTON TO ALLOW THE USER TO DELETE ITS LOCATION
+        const deleteLocation = document.createElement('div');
+        deleteLocation.className = 'ol-control ol-unselectable delete-button';
+        deleteLocation.innerHTML = '<button type="button" title="Delete location">x</button>';
+        deleteLocation.addEventListener('click', function() {
+            source.clear();
+            document.getElementById('locationcoordinates').value = null;
+        });
+        map.addControl(new ol.control.Control({
+            element: deleteLocation
+        }));
 
 </script>
 <script>
@@ -359,7 +372,7 @@
         amap.addLayer(ageolocLayer);
         // Create a button to allow the user to center the map on its geolocation
         const alocate = document.createElement('div');
-        alocate.className = 'ol-control ol-unselectable locate';
+        alocate.className = 'ol-control ol-unselectable locate-button';
         alocate.innerHTML = '<button type="button" title="Locate me">◎</button>';
         alocate.addEventListener('click', function() {
             // Defining success and error functions and the options object
@@ -458,7 +471,7 @@
         });
         amap.addInteraction(area_draw);
 
-    // GETTING THE COORDINATES OF THE ADDED LOCATION
+    // GETTING THE COORDINATES OF THE ADDED AREA
         area_draw.on("drawend",function(e){
             var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326' 
             // pass the feature as an array
@@ -470,38 +483,39 @@
             document.getElementById('areacoordinates').value = geojsonGeomStr;
         });
 
-    // DOWNLOAD THE POLYGON DRAWN
-        const format = new ol.format.GeoJSON({featureProjection: 'EPSG:3857'});
-        const download = document.getElementById('download');
-        areaSource.on('change', function() {
-            const features = areaSource.getFeatures();
-            const json = format.writeFeatures(features);
-            download.href = 'data:text/json;charset=utf-8,' + json;
+    // ADDING BUTTON TO ALLOW THE USER TO DELETE ITS AVAILABILITY AREA
+        const deleteArea = document.createElement('div');
+        deleteArea.className = 'ol-control ol-unselectable delete-button';
+        deleteArea.innerHTML = '<button type="button" title="Delete area">x</button>';
+        deleteArea.addEventListener('click', function() {
+            areaSource.clear();
+            document.getElementById('areacoordinates').value = null;
         });
-        // Allowing user to add their area dragging in a geoJSON file in the map
+        amap.addControl(new ol.control.Control({
+            element: deleteArea
+        }));
+
+    // UPLOAD AREA DRAGGING IN GEOJSON FILE IN THE MAP
         amap.addInteraction(new ol.interaction.DragAndDrop({
             source: areaSource,
             formatConstructors: [ol.format.GeoJSON]
         }));
+
+    // // DOWNLOAD THE POLYGON DRAWN
+    //     const downloadArea = document.createElement('div');
+    //     downloadArea.className = 'ol-control ol-unselectable locate-button';
+    //     downloadArea.innerHTML = '<a id="download" download="features.json"><button type="button" title="Download area">-></button></a>';
+    //     downloadArea.addEventListener('click', function() {
+    //         const format = new ol.format.GeoJSON({featureProjection: 'EPSG:3857'});
+    //         const download = document.getElementById('download');
+    //         areaSource.on('change', function() {
+    //             const features = areaSource.getFeatures();
+    //             const json = format.writeFeatures(features);
+    //             download.href = 'data:text/json;charset=utf-8,' + json;
+    //         });
+    //     });
+    //     amap.addControl(new ol.control.Control({
+    //         element: downloadArea
+    //     }));
 </script>
-
-<!-- <script>
-    function onMapClick(e) {
-        var lat = e.latlng.lat;
-        var lng = e.latlng.lng;
-
-        if (typeof marker != 'undefined') {
-            lmap.removeLayer(marker);
-            marker = L.marker([lat, lng]).addTo(lmap);
-        }
-        else {
-            marker = L.marker([lat, lng]).addTo(lmap);
-        }
-        
-        document.getElementById("locationcoordinates").value = 'Point(' + lng + ', ' + lat + ')';
-    }
-    lmap.on('click', onMapClick);
-
-</script> -->
-
 {% endblock %}
