@@ -159,6 +159,9 @@
             })
         });
 
+    // FULLSCREEN OPTION
+        map.addControl(new ol.control.FullScreen());
+
     // GEOLOCATION
         // Creating the geolocation source included in a specific layer linked with the map
         const geolocSource = new ol.source.Vector();
@@ -343,6 +346,9 @@
                 maxZoom: 18
             })
         });
+
+    // FULLSCREEN OPTION
+        amap.addControl(new ol.control.FullScreen());
 
     // GEOLOCATION
         // Creating the geolocation source included in a specific layer linked with the map
