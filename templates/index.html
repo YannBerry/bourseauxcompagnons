@@ -312,31 +312,49 @@
             source: geolocSource
         });
         map.addLayer(geolocLayer);
-        // Defining success and error functions and the options object
-        function success(pos) {
-            const coords = [pos.coords.longitude, pos.coords.latitude];
-            const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
-            geolocSource.clear(true);
-            geolocSource.addFeatures([
-                new ol.Feature(accuracy.transform('EPSG:4326', map.getView().getProjection())),
-                new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
-            ]);
-        };
-        function error(err) {
-            alert('ERROR(' + err.code + '): ' + err.message);
-        };
-        options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-        };
-        // Activate the geolocation
-        navigator.geolocation.watchPosition(success, error, options);
         // Create a button to allow the user to center the map on its geolocation
         const locate = document.createElement('div');
         locate.className = 'ol-control ol-unselectable locate';
         locate.innerHTML = '<button title="Locate me">◎</button>';
         locate.addEventListener('click', function() {
+            // Defining success and error functions and the options object
+            function success(pos) {
+                const coords = [pos.coords.longitude, pos.coords.latitude];
+                const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
+                geolocSource.clear(true);
+                geolocSource.addFeatures([
+                    new ol.Feature(accuracy.transform('EPSG:4326', map.getView().getProjection())),
+                    new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
+                ]);
+            };
+            function error(err) {
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("User denied the request for Geolocation.");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Location information is unavailable.");
+                        break;
+                    case error.TIMEOUT:
+                        alert("The request to get user location timed out.");
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        alert("An unknown error occurred.");
+                        break;
+                }
+            };
+            options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+            // Activate the geolocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error, options);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+            // Zoom on the geolocation
             if (!geolocSource.isEmpty()) {
                 map.getView().fit(geolocSource.getExtent(), {
                     maxZoom: 10,

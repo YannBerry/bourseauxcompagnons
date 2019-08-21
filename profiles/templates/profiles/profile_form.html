@@ -259,7 +259,6 @@
         // map.addInteraction(location_update);
 
     // ADDING INTERACTION TO ALLOW THE USER TO CREATE A LOCATION
-        // source.clear();
         var location_draw = new ol.interaction.Draw({
             type: 'Point',
             source: source,
@@ -268,6 +267,9 @@
         map.addInteraction(location_draw);
 
     // GETTING THE COORDINATES OF THE ADDED LOCATION
+        location_draw.on("drawstart",function(e){
+            source.clear();
+        });
         location_draw.on("drawend",function(e){
             var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326'
             var geojsonStr = writer.writeFeatures([e.feature]);
