@@ -177,7 +177,20 @@
             ]);
         };
         function error(err) {
-            alert('ERROR(' + err.code + '): ' + err.message);
+            switch(err.code) {
+                case err.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case err.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case err.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case err.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
         };
         options = {
             enableHighAccuracy: true,
@@ -185,7 +198,11 @@
             maximumAge: 0
         };
         // Activate the geolocation
-        navigator.geolocation.watchPosition(success, error, options);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
         // Create a button to allow the user to center the map on its geolocation
         const locate = document.createElement('div');
         locate.className = 'ol-control ol-unselectable locate';
@@ -334,31 +351,49 @@
             source: ageolocSource
         });
         amap.addLayer(ageolocLayer);
-        // Defining success and error functions and the options object
-        function success(pos) {
-            const coords = [pos.coords.longitude, pos.coords.latitude];
-            const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
-            ageolocSource.clear(true);
-            ageolocSource.addFeatures([
-                new ol.Feature(accuracy.transform('EPSG:4326', amap.getView().getProjection())),
-                new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
-            ]);
-        };
-        function error(err) {
-            alert('ERROR(' + err.code + '): ' + err.message);
-        };
-        options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-        };
-        // Activate the geolocation
-        navigator.geolocation.watchPosition(success, error, options);
         // Create a button to allow the user to center the map on its geolocation
         const alocate = document.createElement('div');
         alocate.className = 'ol-control ol-unselectable locate';
         alocate.innerHTML = '<button type="button" title="Locate me">◎</button>';
         alocate.addEventListener('click', function() {
+            // Defining success and error functions and the options object
+            function success(pos) {
+                const coords = [pos.coords.longitude, pos.coords.latitude];
+                const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
+                ageolocSource.clear(true);
+                ageolocSource.addFeatures([
+                    new ol.Feature(accuracy.transform('EPSG:4326', amap.getView().getProjection())),
+                    new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
+                ]);
+            };
+            function error(err) {
+                switch(err.code) {
+                    case err.PERMISSION_DENIED:
+                        alert("User denied the request for Geolocation.");
+                        break;
+                    case err.POSITION_UNAVAILABLE:
+                        alert("Location information is unavailable.");
+                        break;
+                    case err.TIMEOUT:
+                        alert("The request to get user location timed out.");
+                        break;
+                    case err.UNKNOWN_ERROR:
+                        alert("An unknown error occurred.");
+                        break;
+                }
+            };
+            options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+            // Activate the geolocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error, options);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+            // Zoom on the geolocation
             if (!geolocSource.isEmpty()) {
                 amap.getView().fit(ageolocSource.getExtent(), {
                     maxZoom: 14,
