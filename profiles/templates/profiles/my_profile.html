@@ -27,7 +27,7 @@
         <p>{% trans 'Outings I created:' %}</p>
         <ul class="row no-gutters list-unstyled">
         {% for outing in user.outing_set.all %}
-            <li class="col-12 ">
+            <li class="col-12">
                 <div class="card">
                     <div class="card-body py-2">
                         <div class="row align-items-center">
@@ -45,6 +45,9 @@
                 </div>
             </li>
         {% endfor %}
+            <li class="col-12 pt-2">
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-block" role="button">{% trans 'Create an outing' %}</a>
+            </li>
         </ul>
     </div>
     {% else %}
