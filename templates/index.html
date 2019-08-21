@@ -267,7 +267,7 @@
     */
 
     // BASE MAP
-        var attribution = new ol.control.Attribution({
+        var attributionCustom = new ol.control.Attribution({
             collapsible: true
         });
         var map = new ol.Map({
@@ -275,7 +275,13 @@
             target: 'profilesmap',
 
             // ATTRIBUTIONS OF THE BASE MAP
-            controls: ol.control.defaults({attribution: false}).extend([attribution]),
+            controls: ol.control.defaults({attribution: false, rotate: false}).extend([attributionCustom]),
+
+            // INTERACTIONS
+            interactions: ol.interaction.defaults({
+                altShiftDragRotate: false,
+                pinchRotate: false
+            }),
 
             // LAYERS
             layers: [
