@@ -75,6 +75,7 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/it.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/plugins/rangePlugin.js"></script>
 <script>
     flatpickr("#id_start_date", {
         locale: "{{ LANGUAGE_CODE }}",
@@ -82,13 +83,14 @@
         altFormat: "F j, Y",
         dateFormat: "Y-m-d",
         minDate: "today",
+        plugins: [new rangePlugin({ input: "#id_end_date"})],
     });
-    flatpickr("#id_end_date", {
-        locale: "{{ LANGUAGE_CODE }}",
-        altInput: true,
-        altFormat: "F j, Y",
-        dateFormat: "Y-m-d",
-        minDate: "today",
-    });
+    // flatpickr("#id_end_date", {
+    //     locale: "{{ LANGUAGE_CODE }}",
+    //     altInput: true,
+    //     altFormat: "F j, Y",
+    //     dateFormat: "Y-m-d",
+    //     minDate: "today",
+    // });
 </script>
 {% endblock %}

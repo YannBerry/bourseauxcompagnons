@@ -115,15 +115,18 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/it.js"></script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
-    flatpickr("#id_birthdate", {
+    var birthdateCalendar = flatpickr("#id_birthdate", {
         locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
         dateFormat: "Y-m-d",
     });
 
     var birthdateClearElt = document.getElementById('id_{{ form.birthdate.name }}_clear');
     birthdateClearElt.addEventListener("click", function() {
-        var birthdateElt = document.getElementById('id_{{ form.birthdate.name }}');
-        birthdateElt.value = null;
+        birthdateCalendar.clear();
+        // var birthdateElt = document.getElementById('id_{{ form.birthdate.name }}');
+        // birthdateElt.value = null;
     });
 
     function isMobileDevice() {
