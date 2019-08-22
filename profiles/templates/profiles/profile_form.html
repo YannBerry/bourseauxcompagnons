@@ -37,7 +37,7 @@
                 {{ form.birthdate.label_tag }}
                 <div class="input-group">
                     <input type="text" name="{{ form.birthdate.name }}"{% if form.birthdate.value != None %} value="{{ form.birthdate.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.birthdate.name }}">
-                    <div class="input-group-append">
+                    <div id="id_{{ form.birthdate.name }}_clear_container" class="input-group-append">
                         <button id="id_{{ form.birthdate.name }}_clear" type="button" class="btn btn-danger" title="Clear">X</button>
                     </div>
                 </div>
@@ -126,6 +126,15 @@
         birthdateElt.value = null;
     });
 
+    function isMobileDevice() {
+        return ;
+    };
+
+    // HIDE THE DELETE BUTTON IF THE WEBSITE IS DISPLAYED ON A SMARTPHONE
+    var birthdateClearContainerElt = document.getElementById('id_{{ form.birthdate.name }}_clear_container');
+    if (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1) {
+        birthdateClearContainerElt.style.display = "none";
+    }
 </script>
 <script>
     // BASE MAP
