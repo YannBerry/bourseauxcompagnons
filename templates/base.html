@@ -1,7 +1,9 @@
 {% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ LANGUAGE_CODE }}">
     <head>
         <!-- Required for Bootstrap -->
         <meta charset="UTF-8">
@@ -55,7 +57,7 @@
                                     {% get_language_info_list for LANGUAGES as languages %}
                                     {% for language in languages %}
                                         <li>
-                                            <button class="dropdown-item" href="#" type="submit" name="language" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                            <button lang="{{ language.code }}" class="dropdown-item" href="#" type="submit" name="language" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
                                                 {{ language.name_local|capfirst }} ({{ language.code|upper }})
                                             </button>
                                         </li>
