@@ -35,9 +35,11 @@
             </div>
             <div class="col-sm-4 mb-4">
                 {{ form.birthdate.label_tag }}
-                <div class="flatpickr">
+                <div class="input-group">
                     <input type="text" name="{{ form.birthdate.name }}"{% if form.birthdate.value != None %} value="{{ form.birthdate.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.birthdate.name }}">
-                    <a class="input-button" title="clear" data-clear><i>X</i></a>
+                    <div class="input-group-append">
+                        <button id="id_{{ form.birthdate.name }}_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                    </div>
                 </div>
                 {{ form.birthdate.errors }}
                 {% if form.birthdate.help_text %}
@@ -115,10 +117,15 @@
 <script>
     flatpickr("#id_birthdate", {
         locale: "{{ LANGUAGE_CODE }}",
-        altInput: true,
-        altFormat: "F j, Y",
         dateFormat: "Y-m-d",
     });
+
+    var birthdateClearElt = document.getElementById('id_{{ form.birthdate.name }}_clear');
+    birthdateClearElt.addEventListener("click", function() {
+        var birthdateElt = document.getElementById('id_{{ form.birthdate.name }}');
+        birthdateElt.value = null;
+    });
+
 </script>
 <script>
     // BASE MAP
