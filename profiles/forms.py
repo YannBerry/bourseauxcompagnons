@@ -135,10 +135,6 @@ class AccountForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     required_css_class = 'required'
 
-    # date = forms.DateField(
-    #     input_formats=['%d/%m/%Y'], # import datetime initial=datetime.date.today
-    # )
-
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)

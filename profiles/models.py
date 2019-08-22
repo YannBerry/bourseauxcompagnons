@@ -64,11 +64,11 @@ class Profile(models.Model):
     availability_area = models.CharField(
         verbose_name=_('availability area (further details)'),
         max_length=250,
-        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'")
+        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'.")
     )
     birthdate = models.DateField(
         verbose_name=_('birthdate'),
-        help_text=_('Used to display your age on your public profile. Exemple: 05/25/2000'),
+        help_text=_('Used to display your age on your public profile.'),
         null=True,
         blank=True
     )

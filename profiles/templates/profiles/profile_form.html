@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% load l10n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -58,9 +59,7 @@
             </div>
             <div class="col-sm-4 mb-4">
                 {{ form.birthdate.label_tag }}
-                {% localize off %}
-                    {{ form.birthdate }}
-                {% endlocalize %}
+                <input type="text" name="{{ form.birthdate.name }}"{% if form.birthdate.value != None %} value="{{ form.birthdate.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.birthdate.name }}">
                 {{ form.birthdate.errors }}
                 {% if form.birthdate.help_text %}
                     <p class="helptext">{{ form.birthdate.help_text|safe }}</p>
@@ -130,10 +129,16 @@
 
 {% block js %}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/it.js"></script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
     flatpickr("#id_birthdate", {
-        dateFormat: "d/m/Y",
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
     });
 </script>
 <script>
