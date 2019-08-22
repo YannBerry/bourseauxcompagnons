@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans 'My profile' %} | {{ block.super }}{% endblock %}
 
@@ -24,7 +25,12 @@
         </div>
     </div>
     {% if user.outing_set.all %}
-        <p>{% trans 'Outings I created:' %}</p>
+        <div class="row mb-2">
+            <div class="col-sm-auto mr-auto"><h2>{% trans 'My outings' %}</h2></div>
+            <div class="col-sm-auto">
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Add new' %}</a>
+            </div>
+        </div>
         <ul class="row no-gutters list-unstyled">
         {% for outing in user.outing_set.all %}
             <li class="col-12">
@@ -35,19 +41,16 @@
                                 <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:update' outing.slug %}" class="btn btn-primary" role="button">{% trans 'Update' %}</a>
+                                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="Edit icon" title="{% trans 'Edit' %}"></a>
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:delete' outing.slug %}" class="btn btn-danger" role="button">{% trans 'Delete' %}</a>
+                                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="Delete icon" title="{% trans 'Delete' %}"></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </li>
         {% endfor %}
-            <li class="col-12 pt-2">
-                <a href="{% url 'outings:create' %}" class="btn btn-success btn-block" role="button">{% trans 'Create an outing' %}</a>
-            </li>
         </ul>
     </div>
     {% else %}

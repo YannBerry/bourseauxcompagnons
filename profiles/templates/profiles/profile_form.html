@@ -7,30 +7,6 @@
 {% block css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
-<style>
-.locate-button {
-  top: 5em;
-  left: .5em;
-}
-
-.delete-button {
-    top: 7.5em;
-    left: .5em;
-}
-
-#tools {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 999;
-}
-#tools a {
-  display: inline-block;
-  padding: 0.5rem;
-  background: white;
-  cursor: pointer;
-}
-</style>
 {% endblock %}
 
 {% block title %}{% trans 'Update my profile' %} | {{ block.super }}{% endblock %}
@@ -59,7 +35,10 @@
             </div>
             <div class="col-sm-4 mb-4">
                 {{ form.birthdate.label_tag }}
-                <input type="text" name="{{ form.birthdate.name }}"{% if form.birthdate.value != None %} value="{{ form.birthdate.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.birthdate.name }}">
+                <div class="flatpickr">
+                    <input type="text" name="{{ form.birthdate.name }}"{% if form.birthdate.value != None %} value="{{ form.birthdate.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.birthdate.name }}">
+                    <a class="input-button" title="clear" data-clear><i>X</i></a>
+                </div>
                 {{ form.birthdate.errors }}
                 {% if form.birthdate.help_text %}
                     <p class="helptext">{{ form.birthdate.help_text|safe }}</p>

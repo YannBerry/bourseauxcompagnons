@@ -20,13 +20,8 @@ class Outing(models.Model):
         verbose_name=_('description'),
         help_text=_("Take the time to write concise description that makes people want to join you!")
     )
-    
-    start_date = models.DateField(
-        verbose_name=_('start'),
-        # Translators: Use the date format of your language for this exemple.
-        help_text=_("Exemple: 25/05/2020"))
+    start_date = models.DateField(verbose_name=_('start'))
     end_date = models.DateField(verbose_name=_('end'))
-    duration = models.IntegerField(verbose_name=_('duration'), null=True, blank=True)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('authors'))
     activities = models.ManyToManyField(Activity, blank=False, verbose_name=_('activities'))
     topo_link = models.URLField(
@@ -44,13 +39,11 @@ class Outing(models.Model):
     def __str__(self):
         return self.title
 
+    @property
     def duration(self):
-        duration = self.end_date.day - self.start_date.day + 1
+        delta = self.end_date - self.start_date
+        duration = delta.days +1
         return duration
-
-    def save(self, *args, **kwargs):
-        self.duration = self.duration()
-        return super().save(*args, **kwargs)
     
     def get_absolute_url(self):
         return reverse('outings:detail', kwargs={'slug': self.slug})

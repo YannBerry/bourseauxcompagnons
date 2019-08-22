@@ -72,7 +72,6 @@ class Profile(models.Model):
         null=True,
         blank=True
     )
-    age = models.IntegerField(verbose_name=_('age'), null=True, blank=True)
     profile_picture = models.ImageField(verbose_name = _('profile picture'), upload_to=user_directory_path_pict, null=True, blank=True)
     last_update = models.DateTimeField(verbose_name=_('last update'), auto_now=True)
 
@@ -84,15 +83,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.email
 
-    def age_from_birthdate(self):
-        today = date.today()
-        age = today.year - self.birthdate.year -((today.month, today.day)<(self.birthdate.month, self.birthdate.day))
+    @property    
+    def age(self):
+        if self.birthdate!=None:
+            today = date.today()
+            age = today.year - self.birthdate.year -((today.month, today.day)<(self.birthdate.month, self.birthdate.day))
+        else:
+            age = None
         return age
-
-    def save(self, *args, **kwargs):
-        if self.birthdate:
-            self.age = self.age_from_birthdate()
-        return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('profiles:detail', kwargs={'username': self.user.username})
