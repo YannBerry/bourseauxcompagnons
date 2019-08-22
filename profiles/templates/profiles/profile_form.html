@@ -131,8 +131,9 @@
     };
 
     // HIDE THE DELETE BUTTON IF THE WEBSITE IS DISPLAYED ON A SMARTPHONE
+    var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|webOS|BlackBerry|IEMobile|Opera Mini)/i)
     var birthdateClearContainerElt = document.getElementById('id_{{ form.birthdate.name }}_clear_container');
-    if (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1) {
+    if (isMobile) {
         birthdateClearContainerElt.style.display = "none";
     }
 </script>
