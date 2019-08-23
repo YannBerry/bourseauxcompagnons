@@ -82,14 +82,9 @@
 {% block js %}
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
-// CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES
-    {% if form.location.value is not None %}
-        var availabilityAreaGeoValue = '{{ form.availability_area_geo.value }}';
-        var availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
-    {% else %}
-        var availabilityAreaGeoValue = null;
-        var availabilityAreaGeoJson = null;
-    {% endif %}
+// SETTING USELESS VARIABLES TO NULL for the 'js/ol_area_formfield.js' file
+    var availabilityAreaGeoValue = null;
+    var availabilityAreaGeoJson = null;
 </script>
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
 

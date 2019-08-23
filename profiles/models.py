@@ -57,7 +57,7 @@ class Profile(models.Model):
     #grades = models.ManyToManyField(Grade, blank=True, verbose_name=_('grades'))
     availability_area_geo = models.PolygonField(
         verbose_name=_('availability area'),
-        help_text=_("Click on the map to build the area where you are available for going out in the mountains."),
+        help_text=_("Click on the map to build the area where you are available for going out in the mountains. Tip: click on 'Shift' key while you draw to activate freehand drawing."),
         null=True,
         blank=True
     )
