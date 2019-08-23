@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import models
 from django.db import transaction
 # GeoDjango
-from django.contrib.gis.geos import Point
+from django.contrib.gis.forms.fields import PolygonField as FormPolygonField
+# from django.contrib.gis.geos import Point
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity
@@ -52,6 +53,9 @@ class ProfileCreationForm(CustomUserCreationForm):
         label=_('Availability area'),
         help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'"),
         required=True
+    )
+    availability_area_geo = FormPolygonField(
+        
     )
 
     def __init__(self, *args, **kwargs):

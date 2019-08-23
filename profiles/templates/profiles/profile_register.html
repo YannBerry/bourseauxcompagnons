@@ -2,6 +2,10 @@
 {% load i18n %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+{% endblock %}
+
 {% block title %}{% trans "Profile creation" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
@@ -15,7 +19,7 @@
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     <div class="row">
-                        <div class="col-md-6 mb-4">
+                        <div class="col-sm-6 mb-4">
                             {{ form.username.label_tag }}
                             {% if form.username.help_text %}
                                 <p class="helptext">{{ form.username.help_text|safe }}</p>
@@ -23,7 +27,7 @@
                             {{ form.username }}
                             {{ form.username.errors }}
                         </div>
-                        <div class="col-md-6 mb-4">
+                        <div class="col-sm-6 mb-4">
                             {{ form.email.label_tag }}
                             {% if form.email.help_text %}
                                 <p class="helptext">{{ form.email.help_text|safe }}</p>
@@ -47,7 +51,7 @@
                             {{ form.password2 }}
                             {{ form.password2.errors }}
                         </div>
-                        <div class="col-6 mb-4">
+                        <div class="col-sm-6 mb-4">
                             {{ form.activities.label_tag }}
                             {% if form.activities.help_text %}
                                 <p class="helptext">{{ form.activities.help_text|safe }}</p>
@@ -55,13 +59,22 @@
                             {{ form.activities }}
                             {{ form.activities.errors }}
                         </div>
-                        <div class="col-6 mb-4">
+                        <div class="col-sm-6 mb-4">
                             {{ form.availability_area.label_tag }}
                             {% if form.availability_area.help_text %}
                                 <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
                             {% endif %}
                             {{ form.availability_area }}
                             {{ form.availability_area.errors }}
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            {{ form.availability_area_geo.label_tag }}
+                            {% if form.availability_area_geo.help_text %}
+                                <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
+                            {% endif %}
+                            <div id="availabilityformmap" class="col-12" style="height: 350px;"></div>
+                            <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
+                            {{ form.availability_area_geo.errors }}
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">{% trans "Create" %}</button>
@@ -168,5 +181,16 @@
     document.getElementById("phNumZone").appendChild(phoneZoneElt); // ADD <div id="phNumZone"></div> in the HTML
     */
 </script>
-
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script>
+// CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES
+    {% if form.location.value is not None %}
+        var availabilityAreaGeoValue = '{{ form.availability_area_geo.value }}';
+        var availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
+    {% else %}
+        var availabilityAreaGeoValue = null;
+        var availabilityAreaGeoJson = null;
+    {% endif %}
+</script>
+<script src="{% static 'js/ol_area_formfield.js' %}"></script>
 {% endblock %}
