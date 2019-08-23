@@ -46,7 +46,7 @@
                     <p class="helptext">{{ form.birthdate.help_text|safe }}</p>
                 {% endif %}
             </div>
-            <div class="col-sm-6 mb-4">
+            <div class="col-12 mb-4">
                 {{ form.activities.label_tag }}
                 {{ form.activities }}
                 {{ form.activities.errors }}
@@ -55,16 +55,8 @@
                 {% endif %}
             </div>
             <div class="col-sm-6 mb-4">
-                {{ form.availability_area.label_tag }}
-                {{ form.availability_area }}
-                {{ form.availability_area.errors }}
-                {% if form.availability_area.help_text %}
-                    <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
-                {% endif %}
-            </div>
-            <div class="col-sm-6 mb-4">
                 {{ form.location.label_tag }}
-                <div id="locationformmap" class="col-12" style="height: 350px;"></div>
+                <div id="locationformmap" style="height: 350px;"></div>
                 <input id="locationcoordinates" name="location" value="" type="hidden"/>
                 {{ form.location.errors }}
                 {% if form.location.help_text %}
@@ -73,11 +65,19 @@
             </div>
             <div class="col-sm-6 mb-4">
                 {{ form.availability_area_geo.label_tag }}
-                <div id="availabilityformmap" class="col-12" style="height: 350px;"></div>
+                <div id="availabilityformmap" style="height: 350px;"></div>
                 <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
                 {{ form.availability_area_geo.errors }}
                 {% if form.availability_area_geo.help_text %}
                     <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="col-12 mb-4">
+                {{ form.availability_area.label_tag }}
+                {{ form.availability_area }}
+                {{ form.availability_area.errors }}
+                {% if form.availability_area.help_text %}
+                    <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
                 {% endif %}
             </div>
             <div class="col-12 mb-4">
@@ -154,7 +154,7 @@
 <script src="{% static 'js/ol_point_formfield.js' %}"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES
-    {% if form.location.value is not None %}
+    {% if form.availability_area_geo.value is not None %}
         var availabilityAreaGeoValue = '{{ form.availability_area_geo.value }}';
         var availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
     {% else %}

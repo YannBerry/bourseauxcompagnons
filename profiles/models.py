@@ -64,7 +64,9 @@ class Profile(models.Model):
     availability_area = models.CharField(
         verbose_name=_('availability area (further details)'),
         max_length=250,
-        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'.")
+        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'."),
+        null=True,
+        blank=True
     )
     birthdate = models.DateField(
         verbose_name=_('birthdate'),

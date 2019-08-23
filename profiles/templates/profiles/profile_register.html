@@ -51,7 +51,7 @@
                             {{ form.password2 }}
                             {{ form.password2.errors }}
                         </div>
-                        <div class="col-sm-6 mb-4">
+                        <div class="col-12 mb-4">
                             {{ form.activities.label_tag }}
                             {% if form.activities.help_text %}
                                 <p class="helptext">{{ form.activities.help_text|safe }}</p>
@@ -59,20 +59,12 @@
                             {{ form.activities }}
                             {{ form.activities.errors }}
                         </div>
-                        <div class="col-sm-6 mb-4">
-                            {{ form.availability_area.label_tag }}
-                            {% if form.availability_area.help_text %}
-                                <p class="helptext">{{ form.availability_area.help_text|safe }}</p>
-                            {% endif %}
-                            {{ form.availability_area }}
-                            {{ form.availability_area.errors }}
-                        </div>
-                        <div class="col-sm-6 mb-4">
+                        <div class="col-12 mb-4">
                             {{ form.availability_area_geo.label_tag }}
                             {% if form.availability_area_geo.help_text %}
                                 <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
                             {% endif %}
-                            <div id="availabilityformmap" class="col-12" style="height: 350px;"></div>
+                            <div id="availabilityformmap" style="height: 350px;"></div>
                             <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
                             {{ form.availability_area_geo.errors }}
                         </div>
@@ -88,40 +80,52 @@
 {% endblock %}
 
 {% block js %}
-
-<script src="{% static 'js/ajax.js' %}"></script>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
-    // Hide helptext of all elements of the form
-    let helptextElts = document.getElementsByClassName("helptext");
-    Array.from(helptextElts).forEach(function (e) {
-        e.style.display = "none";
-    });
+// CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES
+    {% if form.location.value is not None %}
+        var availabilityAreaGeoValue = '{{ form.availability_area_geo.value }}';
+        var availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
+    {% else %}
+        var availabilityAreaGeoValue = null;
+        var availabilityAreaGeoJson = null;
+    {% endif %}
+</script>
+<script src="{% static 'js/ol_area_formfield.js' %}"></script>
 
-    // Apply dynamic formatting on the form elements
-    let form = document.getElementById("profile_register_form");
-    let formElts = form.elements;
-    let formElt = "";
-    for (let i = 1; i < formElts.length; i++) {
-        formElt = form.elements[i];
-        formElt.addEventListener("focus", function () {
-            // Apply formatting on the focused case
-            //this.style.backgroundColor = "rgba(128,189,255,0.25)";
-            // Display the helptext only on the focused case
-            helptextElt = this.parentNode.getElementsByClassName("helptext");
-            if (helptextElt[0] !== undefined) {
-                helptextElt[0].style.display = "block";
-            }
-        });
-        formElt.addEventListener("blur", function () {
-            // Delete the formatting once the focused case is quited
-            //this.style.backgroundColor = "#fff";
-            // Delete the helptext once the focused case is quited
-            helptextElt = this.parentNode.getElementsByClassName("helptext");
-            if (helptextElt[0] !== undefined) {
-                helptextElt[0].style.display = "none";
-            }
-        });        
-    }
+<!-- <script src="{% static 'js/ajax.js' %}"></script> -->
+<script>
+    // // Hide helptext of all elements of the form
+    // let helptextElts = document.getElementsByClassName("helptext");
+    // Array.from(helptextElts).forEach(function (e) {
+    //     e.style.display = "none";
+    // });
+
+    // // Apply dynamic formatting on the form elements
+    // let form = document.getElementById("profile_register_form");
+    // let formElts = form.elements;
+    // let formElt = "";
+    // for (let i = 1; i < formElts.length; i++) {
+    //     formElt = form.elements[i];
+    //     formElt.addEventListener("focus", function () {
+    //         // Apply formatting on the focused case
+    //         //this.style.backgroundColor = "rgba(128,189,255,0.25)";
+    //         // Display the helptext only on the focused case
+    //         helptextElt = this.parentNode.getElementsByClassName("helptext");
+    //         if (helptextElt[0] !== undefined) {
+    //             helptextElt[0].style.display = "block";
+    //         }
+    //     });
+    //     formElt.addEventListener("blur", function () {
+    //         // Delete the formatting once the focused case is quited
+    //         //this.style.backgroundColor = "#fff";
+    //         // Delete the helptext once the focused case is quited
+    //         helptextElt = this.parentNode.getElementsByClassName("helptext");
+    //         if (helptextElt[0] !== undefined) {
+    //             helptextElt[0].style.display = "none";
+    //         }
+    //     });        
+    // }
 
     // Testing asynchonous HTTP request
     /*
@@ -181,16 +185,4 @@
     document.getElementById("phNumZone").appendChild(phoneZoneElt); // ADD <div id="phNumZone"></div> in the HTML
     */
 </script>
-<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-<script>
-// CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES
-    {% if form.location.value is not None %}
-        var availabilityAreaGeoValue = '{{ form.availability_area_geo.value }}';
-        var availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
-    {% else %}
-        var availabilityAreaGeoValue = null;
-        var availabilityAreaGeoJson = null;
-    {% endif %}
-</script>
-<script src="{% static 'js/ol_area_formfield.js' %}"></script>
 {% endblock %}

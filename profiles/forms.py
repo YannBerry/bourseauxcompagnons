@@ -49,20 +49,17 @@ class ProfileCreationForm(CustomUserCreationForm):
         queryset=Activity.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
-    availability_area = forms.CharField(
-        label=_('Availability area'),
-        help_text=_("Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the french Alpes'"),
-        required=True
-    )
+
     availability_area_geo = FormPolygonField(
-        
+        label=_('Availability area'),
+        help_text=_("Click on the map to build the area where you are available for going out in the mountains."),
     )
 
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
         if self.is_bound:
-            for field in filter(lambda item: item != 'activities', self.fields):
+            for field in [f for f in self.fields if f not in ('availability_area_geo', 'activities')]:
                 if self.has_error(field):
                     self.fields[field].widget.attrs.update({'class': 'form-control is-invalid'})
                 else:
@@ -72,13 +69,13 @@ class ProfileCreationForm(CustomUserCreationForm):
             else:
                 self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
         else:
-            for field in filter(lambda item: item != 'activities', self.fields):
+            for field in [f for f in self.fields if f not in ('availability_area_geo', 'activities')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
 
     # class Meta(CustomUserForm.Meta):
     #     '''Defining the ordering of fields'''
-    #     fields = ['username', 'email', 'password1', 'password2', 'activities', 'availability_area']
+    #     fields = ['username', 'email', 'password1', 'password2', 'activities', 'availability_area_geo']
 
     @transaction.atomic
     def save(self):
@@ -87,7 +84,7 @@ class ProfileCreationForm(CustomUserCreationForm):
         user.save()
         profile = Profile.objects.create(user=user)
         profile.activities.add(*self.cleaned_data.get('activities'))
-        profile.availability_area = self.cleaned_data.get('availability_area')
+        profile.availability_area_geo = self.cleaned_data.get('availability_area_geo')
         profile.save()
         return user
 
