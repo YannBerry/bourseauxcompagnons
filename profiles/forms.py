@@ -154,6 +154,7 @@ class ProfileForm(forms.ModelForm):
             for field in [f for f in self.fields if f not in ('public_profile', 'profile_picture', 'location', 'availability_area_geo', 'activities')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
             self.fields['public_profile'].widget.attrs.update({'class': 'custom-form-check-inline'})
+            self.fields['profile_picture'].widget.attrs.update({'class': 'custom-file-input'})
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
 
     class Meta:

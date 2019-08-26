@@ -1,6 +1,8 @@
+{% load i18n %}
+
 {% if widget.is_initial %}
     <div>
-        <img src="{{ widget.value.url }}" class="img-fluid mb-2" alt="Profile picture">
+        <img id="profile_picture_preview" src="{{ widget.value.url }}" class="img-fluid mb-2" alt="Profile picture">
     </div>
     {% if not widget.required %}
     <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
@@ -8,4 +10,65 @@
     {% endif %}<br>
     {{ widget.input_text }}:
 {% endif %}
-<input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+<div class="custom-file">
+    <input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+    <label class="custom-file-label" for="id_{{ widget.name }}">{% trans 'Choose file...' %}</label>
+    <div id="id_{{ widget.name }}_preview" class="preview">
+        <p>Aucun fichier sélectionné pour le moment</p>
+    </div>
+</div>
+
+
+<script>
+    let profilePictureElt = document.getElementById('id_{{ widget.name }}');
+    let profilePicturePreviewElt = document.getElementById('id_{{ widget.name }}_preview');
+    let profilePicturePreviewTestElt = document.getElementById('{{ widget.name }}_preview');
+
+    let fileTypes = [
+        profilePictureElt.getAttribute('accept'),
+    ]
+
+    function imageFileType(file) {
+        for(let i = 0; i < fileTypes.length; i++) {
+            if(file.type.split('/')[0] === fileTypes[i].split('/')[0]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function updateImageDisplay() {
+        // Empty the profilePicturePreviewElt container
+        while(profilePicturePreviewElt.firstChild) {
+            profilePicturePreviewElt.removeChild(profilePicturePreviewElt.firstChild);
+        }
+
+        let curFiles = profilePictureElt.files;
+        if(curFiles.length === 0) {
+            let paraNoFiles = document.createElement('p');
+            paraNoFiles.textContent = 'No files currently selected for upload';
+            profilePicturePreviewElt.appendChild(paraNoFiles);
+        } else {
+            let filesList = document.createElement('ol');
+            profilePicturePreviewElt.appendChild(filesList);
+            for(let i = 0; i < curFiles.length; i++) {
+                let filesListItem = document.createElement('li');
+                let paraFiles = document.createElement('p');
+                if(imageFileType(curFiles[i])) {
+                    paraFiles.textContent = curFiles[i].name;
+                    let profilePicture = document.createElement('img');
+                    profilePicture.src = window.URL.createObjectURL(curFiles[i]);
+                    filesListItem.appendChild(paraFiles);
+                    filesListItem.appendChild(profilePicture);
+                    profilePicturePreviewTestElt.setAttribute('src', profilePicture.src)
+                    } else {
+                        paraFiles.textContent = curFiles[i].name + ': Not a valid file type. Update your selection.';
+                        filesListItem.appendChild(paraFiles);
+                    }
+                filesList.appendChild(filesListItem);
+            }
+        }
+    }
+
+    profilePictureElt.addEventListener('change', updateImageDisplay);
+</script>

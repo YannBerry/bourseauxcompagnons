@@ -9,6 +9,19 @@ a.unstyled, a.unstyled:hover {
     text-decoration:none;
 }
 
+/* BOOTSTRAP CUSTOM */
+/* input file*/
+.custom-file-input ~ .custom-file-label:lang(en)::after {
+    content: "Browse";
+}
+
+.custom-file-input ~ .custom-file-label:lang(fr)::after {
+    content: "Choisir";
+}
+
+.custom-file-input ~ .custom-file-label:lang(es)::after {
+    content: "Elegir";
+}
 
 /* BUTTONS */
 /* Add profile and add outing*/
