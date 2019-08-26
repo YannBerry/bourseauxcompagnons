@@ -9,6 +9,7 @@ from django.contrib.gis.forms.fields import PolygonField as FormPolygonField
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity
+from core.widgets import ImageWidget
 
 
 # FORMS FOR THE BACK OFFICE (ADMIN SITE)
@@ -140,7 +141,7 @@ class ProfileForm(forms.ModelForm):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
         if self.is_bound:
-            for field in [f for f in self.fields if f not in ('public_profile', 'location', 'availability_area_geo', 'activities')]:
+            for field in [f for f in self.fields if f not in ('public_profile', 'profile_picture', 'location', 'availability_area_geo', 'activities')]:
                 if self.has_error(field):
                     self.fields[field].widget.attrs.update({'class': 'form-control is-invalid'})
                 else:
@@ -150,7 +151,7 @@ class ProfileForm(forms.ModelForm):
             else:
                 self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
         else:
-            for field in [f for f in self.fields if f not in ('public_profile', 'location', 'availability_area_geo', 'activities')]:
+            for field in [f for f in self.fields if f not in ('public_profile', 'profile_picture', 'location', 'availability_area_geo', 'activities')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
             self.fields['public_profile'].widget.attrs.update({'class': 'custom-form-check-inline'})
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
@@ -159,6 +160,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['public_profile', 'profile_picture', 'location', 'availability_area_geo', 'availability_area', 'activities', 'introduction', 'list_of_courses', 'birthdate']
         widgets = {
+            'profile_picture': ImageWidget(),
             'activities': forms.CheckboxSelectMultiple(),
         }
 
