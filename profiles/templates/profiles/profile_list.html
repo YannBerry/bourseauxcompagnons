@@ -58,10 +58,10 @@
                                     {% endif %}
                                 </div>
                                 <div class="col-9">
-                                    <h5><a href="{{ profile.get_absolute_url }}">{% include "profiles/snippets/username.html" %}</a></h5>
+                                    <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
                                     <p class="card-text">
-                                        <span class="font-weight-bold">{{ profile.availability_area }}</span><br>{{ profile.distance.km }}
-                                        {% if profile.age %}<br>{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
+                                        {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span>{% endif %}
+                                        <!-- <span >{{ profile.distance.km }}</span> -->
                                     </p>
                                 </div>
                             </div>

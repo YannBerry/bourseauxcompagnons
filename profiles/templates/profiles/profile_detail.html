@@ -41,14 +41,6 @@
                     </div>
                 </div>
             {% endif %}
-            {% if profile.list_of_courses %}
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <h1 class="h5">{% trans "List of main courses" %}</h1>
-                        <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
-                    </div>
-                </div>
-            {% endif %}
             {% if profile.location or profile.availability_area_geo %}
                 <div class="row mt-3">
                     <div class="col-12">
@@ -60,6 +52,14 @@
                         <h1 class="h5">{% trans "Availability area" %}</h1>
                         {% endif %}
                         <div id="location_map" class="col-12" style="height: 450px;"></div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if profile.list_of_courses %}
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h1 class="h5">{% trans "List of main courses" %}</h1>
+                        <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
                     </div>
                 </div>
             {% endif %}
