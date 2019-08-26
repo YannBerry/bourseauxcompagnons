@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
+from django.conf.urls.i18n import i18n_patterns
 # libraries for static
 from django.conf import settings
 from django.conf.urls.static import static
@@ -15,10 +16,12 @@ from profiles.views import (
     AccountDeleteView,
 )
 
-
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
+]
+
+urlpatterns += i18n_patterns(
     path('', HomepageView.as_view(), name='homepage'),
     path(_('accounts/'), include('django.contrib.auth.urls')),
     path(_('accounts/register/profile/'), ProfileRegisterView.as_view(), name='profile_register'),
@@ -32,7 +35,7 @@ urlpatterns = [
     path(_('features/'), include('features.urls')),
     path(_('admin/'), admin.site.urls),
     #path(_('concept/'), TemplateView.as_view(template_name='concept/index.html'), name='concept'),
-]
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
