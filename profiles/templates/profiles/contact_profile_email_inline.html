@@ -1,11 +1,12 @@
 {% load i18n %}
 
 <!doctype html>
+<!-- FOR 'INLINING' THE CSS OF THE EMAIL TEMPLATE: https://htmlemail.io/inline/ -->
 <html>
   <head>
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Simple Transactional Email</title>
+    <title>{% trans 'Somebody is getting in touch with you' %}</title>
     <style>
 @media only screen and (max-width: 620px) {
   table[class=body] h1 {
@@ -100,14 +101,6 @@ table[class=body] .article {
 </style>
   </head>
   <body class="" style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-  	<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 1em;">{% trans 'Bonjour' %} {{ profile_contacted }},</p>
-	<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Vous avez reçu un message depuis la Bourse aux compagnons {% if profile_making_contact %}de la part de <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profils/{{ profile_making_contact }}/" style="color: #3498db; text-decoration: underline;">{{ profile_making_contact }}</a> {% endif %}:)</p>
-	<div style="color:DodgerBlue; margin-bottom: 1em;">
-	{% autoescape off %}
-	{{ message }}
-	{% endautoescape %}
-	</div>
-	<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Sportivement,<br><a href="https://bourseauxcompagnons.fr" style="color: #3498db; text-decoration: underline;">Bourse aux compagnons</a></p>
     <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f6f6f6; width: 100%;" width="100%" bgcolor="#f6f6f6">
       <tr>
@@ -124,8 +117,31 @@ table[class=body] .article {
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Hi there,</p>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 1em;">{% trans 'Hi' %} {{ profile_contacted }},</p>
+                        {% if profile_making_contact %}
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktrans with language_code=language_code profile_making_contact=profile_making_contact %}
+                          You received a message from somebody through Bourse aux compagnons website:
+                        {% endblocktrans %}</p>
+                        {% else %}
+                        {# Translators: Think to translate the urls #}
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktrans with language_code=language_code profile_making_contact=profile_making_contact %}
+              You received a message from <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profils/{{ profile_making_contact }}/" style="color: #3498db; text-decoration: underline;">{{ profile_making_contact }}</a> through Bourse aux compagnons website:
+            {% endblocktrans %}</p>
+            {% endif %}
+                      <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"></p>
+            </td></tr></table></td></tr></table></div>
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%; font-style: italic; color: #FE9B0C;" width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">
+                                <div>
+                  {% autoescape off %}
+                  {{ message }}
+                  {% endautoescape %}
+                              </div></td>
+                            </tr>
+                          </tbody>
+                        </table>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
                           <tbody>
                             <tr>
@@ -141,16 +157,15 @@ table[class=body] .article {
                             </tr>
                           </tbody>
                         </table>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Good luck! Hope it works.</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% Sportively yours %}</p>
                       </td>
                     </tr>
                   </table>
-                </td>
-              </tr>
+                
+              
 
             <!-- END MAIN CONTENT AREA -->
-            </table>
+            
             <!-- END CENTERED WHITE CONTAINER -->
 
             <!-- START FOOTER -->
@@ -158,23 +173,17 @@ table[class=body] .article {
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                 <tr>
                   <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" valign="top" align="center">
-                    <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Company Inc, 3 Abbey Road, San Francisco CA 94102</span>
-                    <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" valign="top" align="center">
-                    Powered by <a href="http://htmlemail.io" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">HTMLemail</a>.
+                    <a href="https://bourseauxcompagnons.fr" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">Bourse aux compagnons</a> <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">{% trans 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>.
                   </td>
                 </tr>
               </table>
             </div>
             <!-- END FOOTER -->
 
-          </div>
-        </td>
-        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">&nbsp;</td>
-      </tr>
-    </table>
+          
+        
+        <td>&nbsp;</td>
+      
+    
   </body>
 </html>

@@ -1,11 +1,12 @@
 {% load i18n %}
 
 <!doctype html>
+<!-- FOR 'INLINING' THE CSS OF THE EMAIL TEMPLATE: https://htmlemail.io/inline/ -->
 <html>
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Simple Transactional Email</title>
+    <title>{% trans 'Somebody is getting in touch with you' %}</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -304,14 +305,6 @@
     </style>
   </head>
   <body class="">
-  	<p style="margin-bottom: 1em;">{% trans 'Bonjour' %} {{ profile_contacted }},</p>
-	<p>Vous avez reçu un message depuis la Bourse aux compagnons {% if profile_making_contact %}de la part de <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profils/{{ profile_making_contact }}/">{{ profile_making_contact }}</a> {% endif %}:)</p>
-	<div style="color:DodgerBlue; margin-bottom: 1em;">
-	{% autoescape off %}
-	{{ message }}
-	{% endautoescape %}
-	</div>
-	<p>Sportivement,<br><a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a></p>
     <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
@@ -328,8 +321,31 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Hi there,</p>
-                        <p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
+                        <p style="margin-bottom: 1em;">{% trans 'Hi' %} {{ profile_contacted }},</p>
+                        {% if profile_making_contact %}
+                        <p>{% blocktrans with language_code=language_code profile_making_contact=profile_making_contact %}
+                        	You received a message from somebody through Bourse aux compagnons website:
+                        {% endblocktrans %}</p>
+                        {% else %}
+                        {# Translators: Think to translate the urls #}
+                        <p>{% blocktrans with language_code=language_code profile_making_contact=profile_making_contact %}
+							You received a message from <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profils/{{ profile_making_contact }}/">{{ profile_making_contact }}</a> through Bourse aux compagnons website:
+						{% endblocktrans %}</p>
+						{% endif %}
+                    	</p>
+						</div>
+						<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="font-style: italic; color:#FE9B0C;">
+                          <tbody>
+                            <tr>
+                              <td align="left" >
+                                <div>
+									{% autoescape off %}
+									{{ message }}
+									{% endautoescape %}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
@@ -345,8 +361,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                        <p>Good luck! Hope it works.</p>
+                        <p>{% Sportively yours %}</p>
                       </td>
                     </tr>
                   </table>
@@ -362,13 +377,7 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-block">
-                    <span class="apple-link">Company Inc, 3 Abbey Road, San Francisco CA 94102</span>
-                    <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% trans 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>.
                   </td>
                 </tr>
               </table>
