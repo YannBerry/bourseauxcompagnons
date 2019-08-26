@@ -96,10 +96,9 @@
                                         {% endif %}
                                     </div>
                                     <div class="col-9">
-                                        <h5><a href="{{ profile.get_absolute_url }}">{% include "profiles/snippets/username.html" %}</a></h5>
+                                        <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
                                         <p class="card-text">
-                                            <span class="font-weight-bold">{{ profile.availability_area }}</span>
-                                            {% if profile.age %}<br>{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
+                                            {% if profile.age %}{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
                                         </p>
                                     </div>
                                 </div>
@@ -149,7 +148,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="stretched-link">{{ outing.title }}</a></h5>
+                                <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="stretched-link unstyled">{{ outing.title }}</a></h5>
                                 <p class="card-text">
                                     {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
                                     During the day<br>{{ start_date }}
