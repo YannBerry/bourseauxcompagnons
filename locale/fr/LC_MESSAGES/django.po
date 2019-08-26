@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 15:04+0200\n"
+"POT-Creation-Date: 2019-08-26 15:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -523,25 +523,26 @@ msgstr ""
 "Votre message a bien été envoyé à %(username)s. En espérant qu'il ou elle "
 "revienne rapidement vers vous !"
 
-#: profiles/templates/profiles/contact_profile_email.html:9
-#: profiles/templates/profiles/contact_profile_email_inline.html:9
+#: profiles/templates/profiles/contact_profile_email.html:10
+#: profiles/templates/profiles/contact_profile_email_inline.html:10
 msgid "Email sent from the contact form of Bourse aux compagnons"
 msgstr ""
-"Email envoyé depuis le formulaire de prise de contact de "
-"Bourse aux compagnons"
+"Email envoyé depuis le formulaire de prise de contact de Bourse aux "
+"compagnons"
 
-#: profiles/templates/profiles/contact_profile_email.html:308
-#: profiles/templates/profiles/contact_profile_email_inline.html:104
+#: profiles/templates/profiles/contact_profile_email.html:309
+#: profiles/templates/profiles/contact_profile_email_inline.html:105
 msgid "Somebody is getting in touch with you."
 msgstr "Un internaute a pris contact avec vous."
 
-#: profiles/templates/profiles/contact_profile_email.html:324
-#: profiles/templates/profiles/contact_profile_email_inline.html:120
+#: profiles/templates/profiles/contact_profile_email.html:325
+#: profiles/templates/profiles/contact_profile_email_inline.html:121
+#: profiles/templates/profiles/profile_register_email.html:325
 msgid "Hi"
 msgstr "Bonjour"
 
 #. Translators: Think to translate the urls
-#: profiles/templates/profiles/contact_profile_email.html:327
+#: profiles/templates/profiles/contact_profile_email.html:328
 #, python-format
 msgid ""
 "\n"
@@ -559,8 +560,8 @@ msgstr ""
 "compagnons :\n"
 "                                                "
 
-#: profiles/templates/profiles/contact_profile_email.html:331
-#: profiles/templates/profiles/contact_profile_email_inline.html:127
+#: profiles/templates/profiles/contact_profile_email.html:332
+#: profiles/templates/profiles/contact_profile_email_inline.html:128
 msgid ""
 "\n"
 "                                                You received a message from "
@@ -572,19 +573,21 @@ msgstr ""
 "internaute depuis le site de la Bourse aux compagnons :\n"
 "                                "
 
-#: profiles/templates/profiles/contact_profile_email.html:361
-#: profiles/templates/profiles/contact_profile_email_inline.html:157
+#: profiles/templates/profiles/contact_profile_email.html:362
+#: profiles/templates/profiles/contact_profile_email_inline.html:158
+#: profiles/templates/profiles/profile_register_email.html:352
 msgid "Sportively yours"
 msgstr "Sportivement"
 
-#: profiles/templates/profiles/contact_profile_email.html:377
-#: profiles/templates/profiles/contact_profile_email_inline.html:173
+#: profiles/templates/profiles/contact_profile_email.html:378
+#: profiles/templates/profiles/contact_profile_email_inline.html:174
+#: profiles/templates/profiles/profile_register_email.html:368
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
 msgstr "facilite la mise en relation des pratiquants de sports de montagne."
 
 #. Translators: Think to translate the urls
-#: profiles/templates/profiles/contact_profile_email_inline.html:123
+#: profiles/templates/profiles/contact_profile_email_inline.html:124
 #, python-format
 msgid ""
 "\n"
@@ -715,6 +718,40 @@ msgstr "Création du profil"
 msgid "Create your profile"
 msgstr "Créer mon profil"
 
+#: profiles/templates/profiles/profile_register_email.html:10
+msgid "Welcome on Bourse aux compagnons"
+msgstr "Bienvenue sur la Bourse aux compagnons"
+
+#: profiles/templates/profiles/profile_register_email.html:309
+msgid "You successfully created your Bourseauxcompagnons profile!"
+msgstr "Votre compte Bourseauxcompagnons a été créé!"
+
+#: profiles/templates/profiles/profile_register_email.html:326
+#, python-format
+msgid ""
+"Welcome on Bourse aux compagnons! Your profil is now added in the "
+"Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.<br>\n"
+"                                            Your id to sign in is your "
+"email: %(profile_email)s."
+msgstr ""
+"Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
+"sur la liste de la Bourseauxcompagnons : <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profils/%(profile_username)s/\">voir mon profil</a>.<br>\n"
+"                                            Votre identifiant de connexion est "
+"votre email : %(profile_email)s."
+
+#: profiles/templates/profiles/profile_register_email.html:344
+#, python-format
+msgid ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
+"profiles/%(profile_username)s/update/\" target=\"_blank\">Update my profile</"
+"a>"
+msgstr ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/comptes/"
+"profils/%(profile_username)s/mise-a-jour/\" target=\"_blank\">Mettre à jour mon profil</"
+"a>"
+
 #: profiles/urls.py:16
 msgid "<username>/contact/"
 msgstr "<username>/contact/"
@@ -723,15 +760,15 @@ msgstr "<username>/contact/"
 msgid "<username>/contact/done/"
 msgstr "<username>/contact/fait/"
 
-#: profiles/views.py:111
+#: profiles/views.py:110
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:112
+#: profiles/views.py:111
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:123
+#: profiles/views.py:122
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
