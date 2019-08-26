@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 11:20+0200\n"
+"POT-Creation-Date: 2019-08-26 15:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -467,8 +467,64 @@ msgid ""
 "will get back to you soon!"
 msgstr ""
 
-#: profiles/templates/profiles/contact_profile_email.html:3
-msgid "Bonjour"
+#: profiles/templates/profiles/contact_profile_email.html:9
+#: profiles/templates/profiles/contact_profile_email_inline.html:9
+msgid "Email sent from the contact form of Bourse aux compagnons"
+msgstr ""
+
+#: profiles/templates/profiles/contact_profile_email.html:308
+#: profiles/templates/profiles/contact_profile_email_inline.html:104
+msgid "Somebody is getting in touch with you."
+msgstr ""
+
+#: profiles/templates/profiles/contact_profile_email.html:324
+#: profiles/templates/profiles/contact_profile_email_inline.html:120
+msgid "Hi"
+msgstr ""
+
+#. Translators: Think to translate the urls
+#: profiles/templates/profiles/contact_profile_email.html:327
+#, python-format
+msgid ""
+"\n"
+"                                                You received a message from "
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profiles/"
+"%(profile_making_contact)s/\">%(profile_making_contact)s</a> through Bourse "
+"aux compagnons website:\n"
+"                                                "
+msgstr ""
+
+#: profiles/templates/profiles/contact_profile_email.html:331
+#: profiles/templates/profiles/contact_profile_email_inline.html:127
+msgid ""
+"\n"
+"                                                You received a message from "
+"somebody through Bourse aux compagnons website:\n"
+"                                                "
+msgstr ""
+
+#: profiles/templates/profiles/contact_profile_email.html:361
+#: profiles/templates/profiles/contact_profile_email_inline.html:157
+msgid "Sportively yours"
+msgstr ""
+
+#: profiles/templates/profiles/contact_profile_email.html:377
+#: profiles/templates/profiles/contact_profile_email_inline.html:173
+msgid ""
+"facilitates the bringing together of mountain sportsmen and sportswomen."
+msgstr ""
+
+#. Translators: Think to translate the urls
+#: profiles/templates/profiles/contact_profile_email_inline.html:123
+#, python-format
+msgid ""
+"\n"
+"                                                You received a message from "
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profiles/"
+"%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
+"underline;\">%(profile_making_contact)s</a> through Bourse aux compagnons "
+"website:\n"
+"                                                "
 msgstr ""
 
 #: profiles/templates/profiles/contact_profile_form.html:11

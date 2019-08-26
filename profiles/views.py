@@ -86,7 +86,6 @@ def ContactProfileView(request, **kwargs):
             html_message = render_to_string(
                 'profiles/contact_profile_email_inline.html',
                 {'profile_contacted': CustomUser.objects.get(username=kwargs['username']).username,
-                'language_code' : get_language(),
                 'profile_making_contact': request.user.username,
                 'message': contact_message
                 }
