@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-27 16:44+0200\n"
+"POT-Creation-Date: 2019-08-27 17:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -616,6 +616,15 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_detail.html:26
 msgid "Get in touch"
+msgstr ""
+
+#: profiles/templates/profiles/profile_detail.html:32
+#, python-format
+msgid "Age: %(age)s years old"
+msgstr ""
+
+#: profiles/templates/profiles/profile_detail.html:33
+msgid "Looking for partners for"
 msgstr ""
 
 #: profiles/templates/profiles/profile_detail.html:44

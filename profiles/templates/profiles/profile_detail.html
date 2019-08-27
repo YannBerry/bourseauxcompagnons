@@ -29,8 +29,8 @@
             <div class="col-12 col-md-7 order-md-2">
                 <h5>{% include "profiles/snippets/username.html" %}</h5>
                 <p>
-                    {% if profile.age %}Âge : {{ profile.age }} ans<br>{% endif %}
-                    Recherche des partenaires pour
+                    {% if profile.age %}{% blocktrans with age=profile.age %}Age: {{ age }} years old{% endblocktrans %}<br>{% endif %}
+                    {% trans 'Looking for partners for' %}
                     {% for activity in profile.activities.all %}
                         <span class="badge badge-pill badge-info">{{ activity.name }}</span>
                     {% endfor %}
