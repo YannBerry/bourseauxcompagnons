@@ -79,16 +79,20 @@
 </div>
 
 {% if profile.user.outing_set.all %}
-    <h1 class="h2">Ses propositions de sorties</h1>
+    <h1 class="h2">{% trans 'Its outing propositions' %}</h1>
     <div class="row">
         {% for outing in profile.user.outing_set.all %}
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a></h5>
+                    <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="stretched-link unstyled">{{ outing.title }}</a></h5>
                     <p class="card-text">
-                        {{ outing.duration }} jours<br>
-                        {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}<br>
+                        {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
+                        During the day<br>{{ start_date }}
+                        {% plural %}
+                        {{ duration }} days<br>{{ start_date }} - {{ end_date }}
+                        {% endblocktrans %}
+                        <br>
                         {% for activity in outing.activities.all %}
                             <span class="badge badge-pill badge-info">{{ activity.name }}</span>
                         {% endfor %}
