@@ -18,7 +18,7 @@
             <h2>{% trans 'My public profile' %}</h2>
         </div>
         <div class="col-auto">
-            <a href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" class="ml-2" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View' %}"></a>
+            <a href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" class="ml-2" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
         </div>
         <div class="col-12">
             <div class="row mb-2">
@@ -62,10 +62,10 @@
                                 <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit' %}"></a>
+                                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete' %}"></a>
+                                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
                             </div>
                         </div>
                     </div>

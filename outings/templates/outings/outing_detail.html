@@ -1,32 +1,45 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{{ outing.title }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-<div>
-    {% if messages %}
-        <ul class="messages list-unstyled">
-            {% for message in messages %}
-                <li {% if message.tags %}class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <h1>{{ outing.title }}</h1>
-    {% for activity in outing.activities.all %}
-    <span class="badge badge-pill badge-info">{{ activity.name }}</span>
-    {% endfor %}
-    <p>        
-        {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
-        During the {{ start_date }}.
-        {% plural %}
-        On {{ duration }} days. From the {{ start_date }} to the {{ end_date }}.
-        {% endblocktrans %}
-    </p>
-    {% if outing.topo_link %}
-    <p><a href="{{ outing.topo_link }}" target="_blank">{% trans 'Link to the outing topo!' %}</a></p>
-    {% endif %}
-    <p class="text-justify">{{ outing.description|linebreaksbr }}</p>
-    <p>Proposé par <a href="{{ outing.author.profile.get_absolute_url }}">{{ outing.author.username }}</a>.</p>
+<div class="card mb-4">
+    <div class="card-body">
+        {% if messages %}
+            <ul class="messages list-unstyled">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="row align-items-center">
+            <div class="col-auto mr-auto">
+                <h1>{{ outing.title }}</h1>
+            </div>
+            {% if user.is_authenticated and outing.author.username == user.username %}
+            <div class="col-auto">
+                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
+                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
+            </div>
+            {% endif %}
+        </div>
+        {% for activity in outing.activities.all %}
+        <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+        {% endfor %}
+        <p>        
+            {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
+            During the {{ start_date }}.
+            {% plural %}
+            On {{ duration }} days. From the {{ start_date }} to the {{ end_date }}.
+            {% endblocktrans %}
+        </p>
+        {% if outing.topo_link %}
+        <p><a href="{{ outing.topo_link }}" target="_blank">{% trans 'Link to the outing topo!' %}</a></p>
+        {% endif %}
+        <p class="text-justify">{{ outing.description|linebreaksbr }}</p>
+        <p>Proposé par <a href="{{ outing.author.profile.get_absolute_url }}">{{ outing.author.username }}</a>.</p>
+    </div>
 </div>
 {% endblock%}

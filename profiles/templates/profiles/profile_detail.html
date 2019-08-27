@@ -9,84 +9,88 @@
 {% block title %}{{ profile.user.username }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row align-items-start mb-3">
-                <div class="col-4 col-md-2 order-md-1">
-                    {% if profile.profile_picture %}
-                    <img src="{{ profile.profile_picture.url }}" class="img-fluid mb-2" alt="Profile picture">
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row align-items-start mb-3">
+            <div class="col-4 col-md-2 order-md-1">
+                {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" class="img-fluid mb-2" alt="Profile picture">
+                {% else %}
+                <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
+                {% endif %}
+            </div>
+            <div class="col-8 col-md-3 order-md-3">
+                {% if user.is_authenticated and profile.user.username == user.username %}
+                <a href="{% url 'update-profile' user.username %}"><img src="{% static 'img/icon_edit.png' %}" class="float-right ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit public profile' %}"></a>
+                {% else %}
+                <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-success float-right">{% trans 'Prendre contact' %}</a>
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-7 order-md-2">
+                <h5>{% include "profiles/snippets/username.html" %}</h5>
+                <p>
+                    {% trans "Availability area:" %} {{ profile.availability_area }}<br>
+                    {% if profile.age %}Âge : {{ profile.age }} ans<br>{% endif %}
+                    Recherche des partenaires pour
+                    {% for activity in profile.activities.all %}
+                        <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        {% if profile.introduction %}
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-justify card-text">{{ profile.introduction|linebreaksbr }}</p>
+                </div>
+            </div>
+        {% endif %}
+        {% if profile.location or profile.availability_area_geo %}
+            <div class="row mt-3">
+                <div class="col-12">
+                    {% if profile.location and profile.availability_area_geo %}
+                    <h1 class="h5">{% trans "Location & Availability area" %}</h1>
+                    {% elif profile.location and not profile.availability_area_geo %}
+                    <h1 class="h5">{% trans "Location" %}</h1>
                     {% else %}
-                    <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
+                    <h1 class="h5">{% trans "Availability area" %}</h1>
                     {% endif %}
+                    <div id="location_map" class="col-12" style="height: 450px;"></div>
                 </div>
-                <div class="col-8 col-md-3 order-md-3">
-                    <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-success float-right">Prendre contact</a>
+            </div>
+        {% endif %}
+        {% if profile.list_of_courses %}
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h1 class="h5">{% trans "List of main courses" %}</h1>
+                    <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
                 </div>
-                <div class="col-12 col-md-7 order-md-2">
-                    <h5>{% include "profiles/snippets/username.html" %}</h5>
-                    <p>
-                        {% trans "Availability area:" %} {{ profile.availability_area }}<br>
-                        {% if profile.age %}Âge : {{ profile.age }} ans<br>{% endif %}
-                        Recherche des partenaires pour
-                        {% for activity in profile.activities.all %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if profile.user.outing_set.all %}
+    <h1 class="h2">Ses propositions de sorties</h1>
+    <div class="row">
+        {% for outing in profile.user.outing_set.all %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a></h5>
+                    <p class="card-text">
+                        {{ outing.duration }} jours<br>
+                        {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}<br>
+                        {% for activity in outing.activities.all %}
                             <span class="badge badge-pill badge-info">{{ activity.name }}</span>
                         {% endfor %}
                     </p>
                 </div>
             </div>
-            {% if profile.introduction %}
-                <div class="row">
-                    <div class="col-12">
-                        <p class="text-justify card-text">{{ profile.introduction|linebreaksbr }}</p>
-                    </div>
-                </div>
-            {% endif %}
-            {% if profile.location or profile.availability_area_geo %}
-                <div class="row mt-3">
-                    <div class="col-12">
-                        {% if profile.location and profile.availability_area_geo %}
-                        <h1 class="h5">{% trans "Location & Availability area" %}</h1>
-                        {% elif profile.location and not profile.availability_area_geo %}
-                        <h1 class="h5">{% trans "Location" %}</h1>
-                        {% else %}
-                        <h1 class="h5">{% trans "Availability area" %}</h1>
-                        {% endif %}
-                        <div id="location_map" class="col-12" style="height: 450px;"></div>
-                    </div>
-                </div>
-            {% endif %}
-            {% if profile.list_of_courses %}
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <h1 class="h5">{% trans "List of main courses" %}</h1>
-                        <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
-                    </div>
-                </div>
-            {% endif %}
         </div>
+        {% endfor %}
     </div>
-
-    {% if profile.user.outing_set.all %}
-        <h1 class="h2">Ses propositions de sorties</h1>
-        <div class="row">
-            {% for outing in profile.user.outing_set.all %}
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a></h5>
-                        <p class="card-text">
-                            {{ outing.duration }} jours<br>
-                            {{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }}<br>
-                            {% for activity in outing.activities.all %}
-                                <span class="badge badge-pill badge-info">{{ activity.name }}</span>
-                            {% endfor %}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+{% endif %}
 {% endblock%}
 
 {% block js %}
