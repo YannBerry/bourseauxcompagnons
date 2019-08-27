@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 15:55+0200\n"
+"POT-Creation-Date: 2019-08-27 10:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,20 +82,20 @@ msgstr "fonctionnalites/"
 msgid "admin/"
 msgstr "admin/"
 
-#: contactpage/forms.py:8 profiles/forms.py:183
+#: contactpage/forms.py:8 profiles/forms.py:186
 msgid "Your e-mail address"
 msgstr "Votre adresse e-mail"
 
-#: contactpage/forms.py:9 profiles/forms.py:184
+#: contactpage/forms.py:9 profiles/forms.py:187
 msgid "Subject"
 msgstr "Sujet"
 
-#: contactpage/forms.py:10 profiles/forms.py:185
+#: contactpage/forms.py:10 profiles/forms.py:188
 msgid "Message"
 msgstr "Message"
 
-#: contactpage/forms.py:35 outings/forms.py:54 profiles/forms.py:98
-#: profiles/forms.py:131 profiles/forms.py:175 profiles/forms.py:210
+#: contactpage/forms.py:35 outings/forms.py:54 profiles/forms.py:99
+#: profiles/forms.py:132 profiles/forms.py:178 profiles/forms.py:213
 msgid "Please correct detected error / errors."
 msgstr "Veuillez corriger la ou les erreurs détectées."
 
@@ -128,6 +128,10 @@ msgstr ""
 #: contactpage/urls.py:10
 msgid "email-sent/"
 msgstr "email-envoye/"
+
+#: core/templates/forms/widgets/image.html:20
+msgid "Choose file..."
+msgstr "Choisir un fichier..."
 
 #: features/urls.py:7
 msgid "votes/"
@@ -392,21 +396,21 @@ msgstr "Autorisations"
 msgid "Important dates"
 msgstr "Dates importantes"
 
-#: profiles/forms.py:48
+#: profiles/forms.py:49
 msgid "Activities"
 msgstr "Activités"
 
-#: profiles/forms.py:54 profiles/templates/profiles/profile_detail.html:60
+#: profiles/forms.py:55 profiles/templates/profiles/profile_detail.html:52
 msgid "Availability area"
 msgstr "Zone de disponibilité"
 
-#: profiles/forms.py:55
+#: profiles/forms.py:56
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
 msgstr ""
 
-#: profiles/forms.py:183
+#: profiles/forms.py:186
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr "Vous recevrez la réponse du profil contacté sur cet e-mail."
 
@@ -651,17 +655,17 @@ msgstr "Connexion"
 msgid "Availability area:"
 msgstr "Zone de disponibilité :"
 
-#: profiles/templates/profiles/profile_detail.html:47
-msgid "List of main courses"
-msgstr "Liste des principales courses"
-
-#: profiles/templates/profiles/profile_detail.html:56
+#: profiles/templates/profiles/profile_detail.html:48
 msgid "Location & Availability area"
 msgstr "Emplacement et Zone de disponibilité"
 
-#: profiles/templates/profiles/profile_detail.html:58
+#: profiles/templates/profiles/profile_detail.html:50
 msgid "Location"
 msgstr "Emplacement"
+
+#: profiles/templates/profiles/profile_detail.html:61
+msgid "List of main courses"
+msgstr "Liste des principales courses"
 
 #: profiles/templates/profiles/profile_form.html:12
 msgid "Update my profile"
@@ -676,7 +680,7 @@ msgstr "Enregistrer"
 msgid "Profiles list"
 msgstr "Liste des profils"
 
-#: profiles/templates/profiles/profile_list.html:27 templates/index.html:124
+#: profiles/templates/profiles/profile_list.html:27 templates/index.html:123
 msgid "Add my profile"
 msgstr "Créer mon profil"
 
@@ -701,7 +705,7 @@ msgstr[1] ""
 "suivantes :\n"
 "                "
 
-#: profiles/templates/profiles/profile_list.html:64 templates/index.html:102
+#: profiles/templates/profiles/profile_list.html:63 templates/index.html:101
 #, python-format
 msgid "%(profile_age)s years"
 msgstr "%(profile_age)s ans"
@@ -736,10 +740,11 @@ msgid ""
 "email: %(profile_email)s."
 msgstr ""
 "Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
-"sur la liste de la Bourseauxcompagnons : <a href=\"https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/profils/%(profile_username)s/\">voir mon profil</a>.<br>\n"
-"                                            Votre identifiant de connexion est "
-"votre email : %(profile_email)s."
+"sur la liste de la Bourseauxcompagnons : <a href=\"https://www."
+"bourseauxcompagnons.fr/%(language_code)s/profils/%(profile_username)s/"
+"\">voir mon profil</a>.<br>\n"
+"                                            Votre identifiant de connexion "
+"est votre email : %(profile_email)s."
 
 #: profiles/templates/profiles/profile_register_email.html:344
 #, python-format
@@ -749,8 +754,8 @@ msgid ""
 "a>"
 msgstr ""
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/comptes/"
-"profils/%(profile_username)s/mise-a-jour/\" target=\"_blank\">Mettre à jour mon profil</"
-"a>"
+"profils/%(profile_username)s/mise-a-jour/\" target=\"_blank\">Mettre à jour "
+"mon profil</a>"
 
 #: profiles/urls.py:16
 msgid "<username>/contact/"
@@ -874,15 +879,15 @@ msgstr ""
 msgid "Last profiles created"
 msgstr "Derniers profils créés"
 
-#: templates/index.html:130
+#: templates/index.html:129
 msgid "Display all the profiles"
 msgstr "Afficher tous les profils"
 
-#: templates/index.html:146
+#: templates/index.html:145
 msgid "Last outings suggested"
 msgstr "Dernières sorties proposées"
 
-#: templates/index.html:154
+#: templates/index.html:153
 #, python-format
 msgid ""
 "\n"
@@ -903,15 +908,15 @@ msgstr[1] ""
 "%(end_date)s\n"
 "                                "
 
-#: templates/index.html:171
+#: templates/index.html:170
 msgid "Add my outing"
 msgstr "Ajouter ma sortie"
 
-#: templates/index.html:176
+#: templates/index.html:175
 msgid "Display all the outings"
 msgstr "Afficher toutes les sorties"
 
-#: templates/index.html:192
+#: templates/index.html:191
 msgid "Profiles map"
 msgstr "Carte des profils"
 
