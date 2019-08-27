@@ -7,7 +7,7 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>{% trans 'Email sent from the contact form of Bourse aux compagnons' %}</title>
+        <title>{% trans 'Welcome on Bourse aux compagnons' %}</title>
         <style>
 @media only screen and (max-width: 620px) {
   table[class=body] h1 {
@@ -102,7 +102,7 @@ table[class=body] .article {
 </style>
     </head>
     <body class="" style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-        <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">{% trans 'Somebody is getting in touch with you.' %}</span>
+        <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">{% trans 'You successfully created your Bourseauxcompagnons profile!' %}</span>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f6f6f6; width: 100%;" width="100%" bgcolor="#f6f6f6">
             <tr>
                 <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">&nbsp;</td>
@@ -118,25 +118,30 @@ table[class=body] .article {
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                                     <tr>
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">
-                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 1em;">{% trans 'Hi' %} {{ profile_contacted }},</p>
-                                            {% if profile_making_contact %}
-                                                {# Translators: Think to translate the urls #}
-                                                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktrans with language_code=LANGUAGE_CODE profile_making_contact=profile_making_contact %}
-                                                You received a message from <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_making_contact }}/" style="color: #3498db; text-decoration: underline;">{{ profile_making_contact }}</a> through Bourse aux compagnons website:
-                                                {% endblocktrans %}</p>
-                                            {% else %}
-                                                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktrans %}
-                                                You received a message from somebody through Bourse aux compagnons website:
-                                                {% endblocktrans %}</p>
-                                            {% endif %}
+                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 1em;">{% trans 'Hi' %} {{ customuser.username }},</p>
+                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/" style="color: #3498db; text-decoration: underline;">see my profile</a>.</p>
+                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Your id to sign in is your email address: {{ profile_email }}.{% endblocktrans %}</p>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%; font-style: italic; color: #FE9B0C;" width="100%">
                                                 <tbody>
                                                     <tr>
                                                         <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">
-                                                            {% autoescape off %}
-                                                            {{ message }}
-                                                            {% endautoescape %}
+                                                            
                                                         </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                    <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">
+                                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #3498db;" valign="top" align="center" bgcolor="#3498db"> {% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username %}<a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/" target="_blank" style="border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;">Update my profile</a>{% endblocktrans %} </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                     </tr>
                                                 </tbody>
                                             </table>

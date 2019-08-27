@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-27 12:00+0200\n"
+"POT-Creation-Date: 2019-08-27 16:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,7 +212,6 @@ msgstr ""
 "'%(outing_title)s' ?"
 
 #: outings/templates/outings/outing_confirm_delete.html:11
-#: profiles/templates/profiles/my_profile.html:68
 #: templates/registration/account_confirm_delete.html:11
 msgid "Delete"
 msgstr "Supprimer"
@@ -226,16 +225,38 @@ msgstr "Supprimer"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: outings/templates/outings/outing_detail.html:20
+#: outings/templates/outings/outing_detail.html:23
+#: profiles/templates/profiles/my_profile.html:65
+#: profiles/templates/profiles/profile_detail.html:24
+msgid "Edit icon"
+msgstr "Icone d'édition"
+
+#: outings/templates/outings/outing_detail.html:23
+#: profiles/templates/profiles/my_profile.html:65
+msgid "Edit outing"
+msgstr "Mettre à jour la sortie"
+
+#: outings/templates/outings/outing_detail.html:24
+#: profiles/templates/profiles/my_profile.html:68
+msgid "Delete icon"
+msgstr "Icone de suppression"
+
+#: outings/templates/outings/outing_detail.html:24
+#: profiles/templates/profiles/my_profile.html:68
+msgid "Delete outing "
+msgstr "Supprimer la sortie "
+
+#: outings/templates/outings/outing_detail.html:32
 #, python-format
 msgid ""
 "\n"
-"        During the %(start_date)s.\n"
-"        "
+"            During the %(start_date)s.\n"
+"            "
 msgid_plural ""
 "\n"
-"        On %(duration)s days. From the %(start_date)s to the %(end_date)s.\n"
-"        "
+"            On %(duration)s days. From the %(start_date)s to the "
+"%(end_date)s.\n"
+"            "
 msgstr[0] ""
 "\n"
 "        Pendant la journée du %(start_date)s.\n"
@@ -245,7 +266,7 @@ msgstr[1] ""
 "        Sur %(duration)s jours. Du %(start_date)s au %(end_date)s.\n"
 "        "
 
-#: outings/templates/outings/outing_detail.html:27
+#: outings/templates/outings/outing_detail.html:39
 msgid "Link to the outing topo!"
 msgstr "Lien vers le topo de la sortie"
 
@@ -399,7 +420,7 @@ msgstr "Dates importantes"
 msgid "Activities"
 msgstr "Activités"
 
-#: profiles/forms.py:55 profiles/templates/profiles/profile_detail.html:52
+#: profiles/forms.py:55 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
 msgstr "Zone de disponibilité"
 
@@ -408,8 +429,8 @@ msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
 msgstr ""
-"Cliquez sur la carte pour dessiner la zone où vous êtes disponible pour sortir "
-"en montagne"
+"Cliquez sur la carte pour dessiner la zone où vous êtes disponible pour "
+"sortir en montagne"
 
 #: profiles/forms.py:186
 msgid "You will receive the contacted profile's answer on this e-mail."
@@ -543,6 +564,7 @@ msgstr "Un internaute a pris contact avec vous."
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
 #: profiles/templates/profiles/profile_register_email.html:325
+#: profiles/templates/profiles/profile_register_email_inline.html:121
 msgid "Hi"
 msgstr "Bonjour"
 
@@ -578,15 +600,17 @@ msgstr ""
 "internaute depuis le site de la Bourse aux compagnons :\n"
 "                                "
 
-#: profiles/templates/profiles/contact_profile_email.html:362
-#: profiles/templates/profiles/contact_profile_email_inline.html:158
+#: profiles/templates/profiles/contact_profile_email.html:347
+#: profiles/templates/profiles/contact_profile_email_inline.html:143
 #: profiles/templates/profiles/profile_register_email.html:352
+#: profiles/templates/profiles/profile_register_email_inline.html:148
 msgid "Sportively yours"
 msgstr "Sportivement"
 
-#: profiles/templates/profiles/contact_profile_email.html:378
-#: profiles/templates/profiles/contact_profile_email_inline.html:174
+#: profiles/templates/profiles/contact_profile_email.html:363
+#: profiles/templates/profiles/contact_profile_email_inline.html:159
 #: profiles/templates/profiles/profile_register_email.html:368
+#: profiles/templates/profiles/profile_register_email_inline.html:164
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
 msgstr "facilite la mise en relation des pratiquants de sports de montagne."
@@ -629,8 +653,8 @@ msgid "View icon"
 msgstr "Icone d'affichage"
 
 #: profiles/templates/profiles/my_profile.html:21
-msgid "View"
-msgstr "Afficher"
+msgid "View public profile"
+msgstr "Voir mon profil public"
 
 #: profiles/templates/profiles/my_profile.html:26
 msgid "Update my public profile"
@@ -657,18 +681,6 @@ msgstr "Mes sorties"
 msgid "Add new"
 msgstr "Créer"
 
-#: profiles/templates/profiles/my_profile.html:65
-msgid "Edit icon"
-msgstr "Icone d'édition"
-
-#: profiles/templates/profiles/my_profile.html:65
-msgid "Edit"
-msgstr "Editer"
-
-#: profiles/templates/profiles/my_profile.html:68
-msgid "Delete icon"
-msgstr "Icone de suppression"
-
 #: profiles/templates/profiles/my_profile.html:80 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:11
 #: templates/registration/login.html:35
@@ -676,19 +688,31 @@ msgstr "Icone de suppression"
 msgid "Sign in"
 msgstr "Connexion"
 
-#: profiles/templates/profiles/profile_detail.html:28
-msgid "Availability area:"
-msgstr "Zone de disponibilité :"
+#: profiles/templates/profiles/profile_detail.html:24
+msgid "Edit public profile"
+msgstr "Mettre à jour mon profil public"
 
-#: profiles/templates/profiles/profile_detail.html:48
+#: profiles/templates/profiles/profile_detail.html:26
+msgid "Get in touch"
+msgstr "Prendre contact"
+
+#: profiles/templates/profiles/profile_detail.html:44
 msgid "Location & Availability area"
 msgstr "Emplacement et Zone de disponibilité"
 
-#: profiles/templates/profiles/profile_detail.html:50
+#: profiles/templates/profiles/profile_detail.html:46
 msgid "Location"
 msgstr "Emplacement"
 
-#: profiles/templates/profiles/profile_detail.html:61
+#: profiles/templates/profiles/profile_detail.html:57
+msgid "Availability area (further details):"
+msgstr "Zone de disponibilité (complément d'informations) :"
+
+#: profiles/templates/profiles/profile_detail.html:65
+msgid "Introduction"
+msgstr "Présentation"
+
+#: profiles/templates/profiles/profile_detail.html:73
 msgid "List of main courses"
 msgstr "Liste des principales courses"
 
@@ -748,10 +772,12 @@ msgid "Create your profile"
 msgstr "Créer mon profil"
 
 #: profiles/templates/profiles/profile_register_email.html:10
+#: profiles/templates/profiles/profile_register_email_inline.html:10
 msgid "Welcome on Bourse aux compagnons"
 msgstr "Bienvenue sur la Bourse aux compagnons"
 
 #: profiles/templates/profiles/profile_register_email.html:309
+#: profiles/templates/profiles/profile_register_email_inline.html:105
 msgid "You successfully created your Bourseauxcompagnons profile!"
 msgstr "Votre compte Bourseauxcompagnons a été créé!"
 
@@ -760,16 +786,16 @@ msgstr "Votre compte Bourseauxcompagnons a été créé!"
 msgid ""
 "Welcome on Bourse aux compagnons! Your profil is now added in the "
 "Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.<br>\n"
-"                                            Your id to sign in is your "
-"email: %(profile_email)s."
+"%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.</p>\n"
+"                                            <p>Your id to sign in is your "
+"email address: %(profile_email)s."
 msgstr ""
 "Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
 "sur la liste de la Bourseauxcompagnons : <a href=\"https://www."
 "bourseauxcompagnons.fr/%(language_code)s/profils/%(profile_username)s/"
-"\">voir mon profil</a>.<br>\n"
-"                                            Votre identifiant de connexion "
-"est votre email : %(profile_email)s."
+"\">voir mon profil</a>.</p>\n"
+"                                            <p>Votre identifiant de connexion "
+"est votre adresse email : %(profile_email)s."
 
 #: profiles/templates/profiles/profile_register_email.html:344
 #, python-format
@@ -781,6 +807,43 @@ msgstr ""
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/comptes/"
 "profils/%(profile_username)s/mise-a-jour/\" target=\"_blank\">Mettre à jour "
 "mon profil</a>"
+
+#: profiles/templates/profiles/profile_register_email_inline.html:122
+#, python-format
+msgid ""
+"Welcome on Bourse aux compagnons! Your profil is now added in the "
+"Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profiles/%(profile_username)s/\" style=\"color: #3498db; "
+"text-decoration: underline;\">see my profile</a>.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+"Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
+"sur la liste de la Bourseauxcompagnons : <a href=\"https://www."
+"bourseauxcompagnons.fr/%(language_code)s/profils/%(profile_username)s/"
+"\">voir mon profil</a>.</p>\n"
+"                                            <p>Votre identifiant de connexion "
+"est votre adresse email : %(profile_email)s."
+
+#: profiles/templates/profiles/profile_register_email_inline.html:140
+#, python-format
+msgid ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
+"profiles/%(profile_username)s/update/\" target=\"_blank\" style=\"border: "
+"solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: "
+"pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: "
+"0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; "
+"background-color: #3498db; border-color: #3498db; color: #ffffff;\">Update "
+"my profile</a>"
+msgstr ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/comptes/"
+"profils/%(profile_username)s/update/\" target=\"_blank\" style=\"border: "
+"solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: "
+"pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: "
+"0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; "
+"background-color: #3498db; border-color: #3498db; color: #ffffff;\">Mettre "
+"à jour mon profil</a>"
 
 #: profiles/urls.py:16
 msgid "<username>/contact/"
@@ -1010,6 +1073,3 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
-
-#~ msgid "Account settings"
-#~ msgstr "Paramètres du compte"

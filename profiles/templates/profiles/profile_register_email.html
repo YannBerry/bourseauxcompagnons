@@ -323,8 +323,8 @@
                                     <tr>
                                         <td>
                                             <p style="margin-bottom: 1em;">{% trans 'Hi' %} {{ customuser.username }},</p>
-                                            <p>{% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/">see my profile</a>.<br>
-                                            Your id to sign in is your email: {{ profile_email }}.{% endblocktrans %}</p>
+                                            <p>{% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/">see my profile</a>.</p>
+                                            <p>Your id to sign in is your email address: {{ profile_email }}.{% endblocktrans %}</p>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="font-style: italic; color:#FE9B0C;">
                                                 <tbody>
                                                     <tr>

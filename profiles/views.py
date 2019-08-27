@@ -138,7 +138,7 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
         subject="Profil créé"
         subject_prefixed = '[Compte] ' + subject 
         recipients = [self.object.email]
-        html_message = render_to_string('profiles/profile_register_email.html', {'customuser': self.object})
+        html_message = render_to_string('profiles/profile_register_email_inline.html', {'customuser': self.object})
         plain_message = strip_tags(html_message)
         send_mail(subject_prefixed, plain_message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", recipients, html_message=html_message)
         
