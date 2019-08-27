@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-27 10:46+0200\n"
+"POT-Creation-Date: 2019-08-27 12:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,7 +202,7 @@ msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
 msgstr ""
 
 #: outings/templates/outings/outing_confirm_delete.html:11
-#: profiles/templates/profiles/my_profile.html:47
+#: profiles/templates/profiles/my_profile.html:68
 #: templates/registration/account_confirm_delete.html:11
 msgid "Delete"
 msgstr ""
@@ -234,7 +234,6 @@ msgid "Link to the outing topo!"
 msgstr ""
 
 #: outings/templates/outings/outing_form.html:10
-#: profiles/templates/profiles/my_profile.html:59
 msgid "Create an outing"
 msgstr ""
 
@@ -544,31 +543,55 @@ msgid "My profile"
 msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:18
-msgid "Update my public profile"
+msgid "My public profile"
 msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:21
-msgid "Account settings"
+msgid "View icon"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:24
+#: profiles/templates/profiles/my_profile.html:21
+msgid "View"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:26
+msgid "Update my public profile"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:33
+msgid "My account"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:38
+msgid "Update my account settings"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:41
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:29
+#: profiles/templates/profiles/my_profile.html:48
 msgid "My outings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:31
+#: profiles/templates/profiles/my_profile.html:51
 msgid "Add new"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:44
+#: profiles/templates/profiles/my_profile.html:65
+msgid "Edit icon"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:65
 msgid "Edit"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:66 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:68
+msgid "Delete icon"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:80 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:11
 #: templates/registration/login.html:35
 #: templates/registration/password_reset_complete.html:9

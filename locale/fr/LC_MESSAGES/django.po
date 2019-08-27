@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-27 10:46+0200\n"
+"POT-Creation-Date: 2019-08-27 12:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,7 +212,7 @@ msgstr ""
 "'%(outing_title)s' ?"
 
 #: outings/templates/outings/outing_confirm_delete.html:11
-#: profiles/templates/profiles/my_profile.html:47
+#: profiles/templates/profiles/my_profile.html:68
 #: templates/registration/account_confirm_delete.html:11
 msgid "Delete"
 msgstr "Supprimer"
@@ -250,7 +250,6 @@ msgid "Link to the outing topo!"
 msgstr "Lien vers le topo de la sortie"
 
 #: outings/templates/outings/outing_form.html:10
-#: profiles/templates/profiles/my_profile.html:59
 msgid "Create an outing"
 msgstr "Ajouter une sortie"
 
@@ -409,6 +408,8 @@ msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
 msgstr ""
+"Cliquez sur la carte pour dessiner la zone où vous êtes disponible pour sortir "
+"en montagne"
 
 #: profiles/forms.py:186
 msgid "You will receive the contacted profile's answer on this e-mail."
@@ -620,31 +621,55 @@ msgid "My profile"
 msgstr "Mon profil"
 
 #: profiles/templates/profiles/my_profile.html:18
+msgid "My public profile"
+msgstr "Mon profil public"
+
+#: profiles/templates/profiles/my_profile.html:21
+msgid "View icon"
+msgstr "Icone d'affichage"
+
+#: profiles/templates/profiles/my_profile.html:21
+msgid "View"
+msgstr "Afficher"
+
+#: profiles/templates/profiles/my_profile.html:26
 msgid "Update my public profile"
 msgstr "Mettre à jour mon profil public"
 
-#: profiles/templates/profiles/my_profile.html:21
-msgid "Account settings"
-msgstr "Paramètres du compte"
+#: profiles/templates/profiles/my_profile.html:33
+msgid "My account"
+msgstr "Mon compte"
 
-#: profiles/templates/profiles/my_profile.html:24
+#: profiles/templates/profiles/my_profile.html:38
+msgid "Update my account settings"
+msgstr "Mettre mes paramètres de compte à jour"
+
+#: profiles/templates/profiles/my_profile.html:41
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
-#: profiles/templates/profiles/my_profile.html:29
+#: profiles/templates/profiles/my_profile.html:48
 msgid "My outings"
 msgstr "Mes sorties"
 
-#: profiles/templates/profiles/my_profile.html:31
+#: profiles/templates/profiles/my_profile.html:51
 msgid "Add new"
 msgstr "Créer"
 
-#: profiles/templates/profiles/my_profile.html:44
+#: profiles/templates/profiles/my_profile.html:65
+msgid "Edit icon"
+msgstr "Icone d'édition"
+
+#: profiles/templates/profiles/my_profile.html:65
 msgid "Edit"
 msgstr "Editer"
 
-#: profiles/templates/profiles/my_profile.html:66 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:68
+msgid "Delete icon"
+msgstr "Icone de suppression"
+
+#: profiles/templates/profiles/my_profile.html:80 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:11
 #: templates/registration/login.html:35
 #: templates/registration/password_reset_complete.html:9
@@ -985,3 +1010,6 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
+
+#~ msgid "Account settings"
+#~ msgstr "Paramètres du compte"
