@@ -5,11 +5,16 @@ from django.db import models
 from django.db import transaction
 # GeoDjango
 from django.contrib.gis.forms.fields import PolygonField as FormPolygonField
+from django.contrib.gis.forms import OpenLayersWidget
 # from django.contrib.gis.geos import Point
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity
 from core.widgets import ImageWidget
+
+# Setting the map_srid of the openlayers widget (the dafault widget for qeometric fields) to 4326 instead of 3857
+class OpenLayersWidgetSrid4326(OpenLayersWidget):
+    map_srid = 4326
 
 
 # FORMS FOR THE BACK OFFICE (ADMIN SITE)
@@ -54,6 +59,7 @@ class ProfileCreationForm(CustomUserCreationForm):
     availability_area_geo = FormPolygonField(
         label=_('Availability area'),
         help_text=_("Click on the map to build the area where you are available for going out in the mountains."),
+        widget=OpenLayersWidgetSrid4326(),
     )
 
     def __init__(self, *args, **kwargs):
@@ -85,6 +91,9 @@ class ProfileCreationForm(CustomUserCreationForm):
         user.save()
         profile = Profile.objects.create(user=user)
         profile.activities.add(*self.cleaned_data.get('activities'))
+        print(profile.activities)
+        test=self.cleaned_data.get('availability_area_geo')
+        print(test)
         profile.availability_area_geo = self.cleaned_data.get('availability_area_geo')
         profile.save()
         return user
@@ -92,6 +101,9 @@ class ProfileCreationForm(CustomUserCreationForm):
     def clean(self):
         cleaned_data = super().clean()
         
+        test=self.cleaned_data.get('availability_area_geo')
+        print(test)
+
         if self.errors:
             self.add_error(
                 None,
@@ -99,7 +111,6 @@ class ProfileCreationForm(CustomUserCreationForm):
                     _("Please correct detected error / errors.")
                 )
             )
-
 
 
 class AccountForm(forms.ModelForm):
@@ -161,6 +172,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['public_profile', 'profile_picture', 'location', 'availability_area_geo', 'availability_area', 'activities', 'introduction', 'list_of_courses', 'birthdate']
         widgets = {
+            'availability_area_geo': OpenLayersWidgetSrid4326(),
             'profile_picture': ImageWidget(),
             'activities': forms.CheckboxSelectMultiple(),
         }

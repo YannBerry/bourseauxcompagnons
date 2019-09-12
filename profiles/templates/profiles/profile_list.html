@@ -2,6 +2,11 @@
 {% load static %}
 {% load i18n %}
 
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+{% endblock %}
+
 {% block title %}{% trans 'Profiles list' %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
@@ -14,6 +19,16 @@
                     {% endfor %}
                 </select>
             </div>
+            <div class="form-group col-12 col-sm-10 col-xl-12">
+                <div id="availabilityformmap" style="height: 350px;"></div>
+                <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
+            </div>
+            {% if user.is_authenticated and user.profile.location %}
+            <div class="form-group col-12 col-sm-10 col-xl-12">
+                <label for="id_around_me">Around my profile location (50 km):</label>
+                <input class="custom-form-check-inline" type="checkbox" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
+            </div>
+            {% endif %}
             <div class="form-group col-12 col-sm-2 col-xl-12">
                 <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
             </div>
@@ -60,8 +75,8 @@
                                 <div class="col-9">
                                     <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
                                     <p class="card-text">
-                                        {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span>{% endif %}
-                                        <!-- <span >{{ profile.distance.km }}</span> -->
+                                        {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span><br>{% endif %}
+                                        {% if profile.distance %}<span>{{ profile.distance.km }}</span><br>{% endif %}
                                     </p>
                                 </div>
                             </div>
@@ -86,4 +101,19 @@
     {% if user.is_anonymous %}
         <a href="{% url 'profile_register' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>
     {% endif %}
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script>
+// CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES for 'js/ol_area_formfield.js'
+    {% if user.profile.availability_area_geo is not None %}
+        var availabilityAreaGeoValue = '{{ user.profile.availability_area_geo }}'; // srid: 4326
+        var availabilityAreaGeoJson = {{ user.profile.availability_area_geo.json|safe }};
+    {% else %}
+        var availabilityAreaGeoValue = null;
+        var availabilityAreaGeoJson = null;
+    {% endif %}
+</script>
+<script src="{% static 'js/ol_area_formfield.js' %}"></script>
 {% endblock %}

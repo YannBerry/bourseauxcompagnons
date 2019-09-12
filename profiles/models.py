@@ -46,7 +46,8 @@ class Profile(models.Model):
         verbose_name=_('location'),
         help_text=_("Click on the map to show where you live."),
         null=True,
-        blank=True)
+        blank=True
+    ) # default srid: 4326
     introduction = models.TextField(
         verbose_name=_('introduction'),
         help_text=_("Take your time to write a concise introduction that makes people want to know your better! The first 200 characters are displayed in the profiles list ;)"),
@@ -60,7 +61,7 @@ class Profile(models.Model):
         help_text=_("Click on the map to build the area where you are available for going out in the mountains. Tip: click on 'Shift' key while you draw to activate freehand drawing."),
         null=True,
         blank=True
-    )
+    ) # default srid: 4326
     availability_area = models.CharField(
         verbose_name=_('availability area (further details)'),
         max_length=250,

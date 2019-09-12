@@ -13,6 +13,8 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
 # GeoDjango
 from django.contrib.gis.db.models.functions import Distance
+from django.contrib.gis.geos import fromstr
+from django.contrib.gis.geos import GEOSGeometry
 # Sending Emails
 from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.core.mail import send_mail
@@ -27,6 +29,7 @@ from django.contrib.gis.geos import Point
 longitude = 8.191788
 latitude = 48.761681
 user_location = Point(longitude, latitude, srid=4326)
+
 
 # VIEWS FOR ANONYM WEB SURFERS
 
@@ -43,9 +46,16 @@ class ProfileListView(ListView):
         context['all_activities'] = Activity.objects.all()
         context['nb_of_results'] = self.nb_of_results
         context['selected_activities'] = self.request.GET.getlist('a') or None
+        context['around_me'] = self.request.GET.get('around_me')
+        # availability_area_geo_str_json = self.request.GET.get('availability_area_geo')
+        # if availability_area_geo_str_json:
+        #     availability_area_geo_json = fromstr(availability_area_geo_str_json) # default SRID for json: 4326
+        #     context['availability_area_geo'] = availability_area_geo_json or None
         return context
 
     def get_queryset(self):
+        around_me = self.request.GET.get('around_me')
+        availability_area_geo = self.request.GET.get('availability_area_geo')
         if self.request.GET.getlist('a'):
             activities_in_current_language = 'activities__name_{}'.format(get_language())
             selected_activities = self.request.GET.getlist('a')
@@ -54,9 +64,15 @@ class ProfileListView(ListView):
                 public_profile='True'
             ).distinct('last_update', 'user_id')
             self.nb_of_results = len(queryset)
+        elif around_me:
+            user_loc = self.request.user.profile.location
+            queryset = Profile.objects.filter(location__distance_lte=(user_loc, 50000)).exclude(user=self.request.user)
+        elif availability_area_geo:
+            queryset = Profile.objects.filter(availability_area_geo__intersects=availability_area_geo)
         else:
-            queryset = Profile.objects.annotate(distance=Distance('location', user_location)).order_by('distance').filter(public_profile='True')
-            #queryset = Profile.objects.filter(public_profile='True')
+            #queryset = Profile.objects.filter(availability_area_geo__contains=user_location)
+            #queryset = Profile.objects.annotate(distance=Distance('location', user_location)).order_by('distance').filter(public_profile='True')
+            queryset = Profile.objects.filter(public_profile='True').exclude(user=self.request.user)
         return queryset
 
 
@@ -72,6 +88,7 @@ class ProfileDetailView(DetailView):
 
     def get_object(self):
         return get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
+
 
 def ContactProfileView(request, **kwargs):
     '''A view for the web surfer to send an email to the profile through a contact form.'''
@@ -165,7 +182,6 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
         form.instance.location = Point(float(coordinates[0]),float(coordinates[1]))
         return super().form_valid(form)
     '''
-
 
 
 class AccountUpdateView(UserPassesTestMixin, UpdateView):

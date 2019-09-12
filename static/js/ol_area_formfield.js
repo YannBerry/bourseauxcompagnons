@@ -114,13 +114,13 @@ if (availabilityAreaGeoValue) {
 // DISPLAYING CURRENT AREA
     var geojsonObject = {
         "type": "Feature",
-        "geometry": availabilityAreaGeoJson,
+        "geometry": availabilityAreaGeoJson, // srid: 4326
         "properties": {}
     };
     const areaFeatures = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection()})).readFeatures(geojsonObject);
     areaSource.addFeatures(areaFeatures);
     // INITIALIZING THE AVAILABILITY_AREA_GEO FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
-    const areaGeojsonStr = (new ol.format.GeoJSON()).writeFeatures(areaFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
+    const areaGeojsonStr = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'})).writeFeatures(areaFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
     const areaGeojsonObj = JSON.parse(areaGeojsonStr);
     const areaGeojsonGeom = areaGeojsonObj.features[0].geometry;
     const areaGeojsonGeomStr = JSON.stringify(areaGeojsonGeom);
@@ -151,7 +151,7 @@ if (availabilityAreaGeoValue) {
         areaSource.clear();
     });
     area_draw.on("drawend",function(e){
-        var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326' 
+        var writer = new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'}); // by default dataProjection = 'EPSG:4326'
         // pass the feature as an array
         var geojsonStr = writer.writeFeatures([e.feature]);
         var geojsonObj = JSON.parse(geojsonStr);
