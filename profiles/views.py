@@ -66,13 +66,13 @@ class ProfileListView(ListView):
             self.nb_of_results = len(queryset)
         elif around_me:
             user_loc = self.request.user.profile.location
-            queryset = Profile.objects.filter(location__distance_lte=(user_loc, 50000)).exclude(user=self.request.user)
+            queryset = Profile.objects.filter(location__distance_lte=(user_loc, 50000)) #.exclude(user=self.request.user)
         elif availability_area_geo:
             queryset = Profile.objects.filter(availability_area_geo__intersects=availability_area_geo)
         else:
             #queryset = Profile.objects.filter(availability_area_geo__contains=user_location)
             #queryset = Profile.objects.annotate(distance=Distance('location', user_location)).order_by('distance').filter(public_profile='True')
-            queryset = Profile.objects.filter(public_profile='True').exclude(user=self.request.user)
+            queryset = Profile.objects.filter(public_profile='True')
         return queryset
 
 
