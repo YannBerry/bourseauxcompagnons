@@ -64,11 +64,16 @@ class ProfileListView(ListView):
         around_me = self.request.GET.get('around_me')
         availability_area_geo = self.request.GET.get('availability_area_geo')
         # Defining querysets of each criteria
-        if selected_activities:
+        if selected_activities and self.request.user.is_authenticated:
             selected_activities_q = main_q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
                 public_profile='True'
-            ) #.distinct('last_update', 'user_id')
+            ).distinct('distance', 'last_update', 'user_id')
+        elif selected_activities:
+            selected_activities_q = main_q.filter(
+                eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
+                public_profile='True'
+            ).distinct('last_update', 'user_id')
         if availability_area_geo:
             availability_area_geo_q = main_q.filter(availability_area_geo__intersects=availability_area_geo)
         if around_me:
