@@ -47,18 +47,6 @@
 
 {% block content %}
     {% if profile_list %}
-        {% if selected_activities is not None %}
-            <p>
-                {% blocktrans count counter=nb_of_results %}
-                One profile belongs to one of the following categories:
-                {% plural %}
-                {{ counter }} profiles belong to one of the following categories:
-                {% endblocktrans %}
-                {% for activity in selected_activities %}
-                    <span class="badge badge-pill badge-info">{{ activity }}</span>
-                {% endfor %}
-            </p>
-        {% endif %}
         <div class="row">
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
@@ -76,7 +64,7 @@
                                     <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
                                     <p class="card-text">
                                         {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span><br>{% endif %}
-                                        {% if profile.distance %}<span>{{ profile.distance.km }}</span><br>{% endif %}
+                                        {% if profile.distance %}<span>{{ profile.distance.km|floatformat }} km</span><br>{% endif %}
                                     </p>
                                 </div>
                             </div>

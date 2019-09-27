@@ -54,25 +54,45 @@ class ProfileListView(ListView):
         return context
 
     def get_queryset(self):
+        if self.request.user.is_authenticated:
+            user_loc = self.request.user.profile.location
+            main_q = Profile.objects.exclude(user=self.request.user).filter(public_profile='True').annotate(distance=Distance('location', user_loc)).order_by('distance')
+        else:
+            main_q = Profile.objects.filter(public_profile='True')
+        selected_activities = self.request.GET.getlist('a')
+        activities_in_current_language = 'activities__name_{}'.format(get_language())
         around_me = self.request.GET.get('around_me')
         availability_area_geo = self.request.GET.get('availability_area_geo')
-        if self.request.GET.getlist('a'):
-            activities_in_current_language = 'activities__name_{}'.format(get_language())
-            selected_activities = self.request.GET.getlist('a')
-            queryset = Profile.objects.filter(
+        # Defining querysets of each criteria
+        if selected_activities:
+            selected_activities_q = main_q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
                 public_profile='True'
-            ).distinct('last_update', 'user_id')
+            ) #.distinct('last_update', 'user_id')
+        if availability_area_geo:
+            availability_area_geo_q = main_q.filter(availability_area_geo__intersects=availability_area_geo)
+        if around_me:
+            around_me_q = main_q.filter(location__distance_lte=(user_loc, 50000))
+        # Defining the queryset according to the criteria selected by the internaut
+        if selected_activities and availability_area_geo and around_me:
+            queryset = selected_activities_q.intersection(availability_area_geo_q, around_me_q)
+        elif selected_activities and availability_area_geo:
+            queryset = selected_activities_q.intersection(availability_area_geo_q)
+        elif selected_activities and around_me:
+            queryset = selected_activities_q.intersection(around_me_q)
+        elif availability_area_geo and around_me:
+            queryset = availability_area_geo_q.intersection(around_me_q)
+        elif selected_activities:
+            queryset = selected_activities_q
+            self.nb_of_results = len(queryset)
+        elif availability_area_geo:
+            queryset = availability_area_geo_q
             self.nb_of_results = len(queryset)
         elif around_me:
-            user_loc = self.request.user.profile.location
-            queryset = Profile.objects.filter(location__distance_lte=(user_loc, 50000)) #.exclude(user=self.request.user)
-        elif availability_area_geo:
-            queryset = Profile.objects.filter(availability_area_geo__intersects=availability_area_geo)
+            queryset = around_me_q
+            self.nb_of_results = len(queryset)
         else:
-            #queryset = Profile.objects.filter(availability_area_geo__contains=user_location)
-            #queryset = Profile.objects.annotate(distance=Distance('location', user_location)).order_by('distance').filter(public_profile='True')
-            queryset = Profile.objects.filter(public_profile='True')
+            queryset = main_q
         return queryset
 
 
