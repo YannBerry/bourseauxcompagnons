@@ -20,6 +20,13 @@ from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternative
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+# Exporting Excel files
+from datetime import datetime
+from datetime import timedelta
+from openpyxl import Workbook
+from openpyxl.styles import NamedStyle, Font, Alignment, PatternFill, Border, Side
+from openpyxl.utils import get_column_letter
+#import string
 
 from profiles.models import Profile, CustomUser
 from activities.models import Activity
@@ -233,3 +240,140 @@ class AccountDeleteView(UserPassesTestMixin, DeleteView):
 
     def get_object(self):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
+
+# VIEWS FOR EXPORTING
+
+def export_profiles_to_xlsx(request):
+    '''A view to export all the profiles to an xlsx format'''
+    profiles_queryset = Profile.objects.all()
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename={date}_bac_profiles.xlsx'.format(date=datetime.now().strftime('%Y%m%d'))
+    workbook = Workbook()
+    ### STYLES ###
+    # Main title row
+    main_title = NamedStyle(name="main_title")
+    main_title.font = Font(name='Calibri', bold=True, color='FF000000', size='14')
+    main_title.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
+    main_title.border = Border(
+        left=Side(border_style='thin', color='FF00008F'),
+        right=Side(border_style='thin', color='FF00008F'),
+        top=Side(border_style='thin', color='FF00008F'),
+        bottom=Side(border_style='thin', color='FF00008F')
+    )
+    main_title.fill = PatternFill(fill_type='solid', fgColor='FF4080C6')
+    # Header row
+    header = NamedStyle(name="header")
+    header.font = Font(name='Calibri', bold=True, color='FFFFFFFF')
+    header.alignment = Alignment(wrap_text=True, vertical='center')
+    header.border = Border(
+        left=Side(border_style='thin', color='FF000000'),
+        right=Side(border_style='thin', color='FF000000'),
+        top=Side(border_style='thin', color='FF000000'),
+        bottom=Side(border_style='thin', color='FF000000')
+    )
+    header.fill = PatternFill(fill_type='solid', fgColor='FF6F6F6F')
+    # Values row
+    values_st = NamedStyle(name="values")
+    values_st.font = Font(name='Calibri', color='FF000000')
+    values_st.alignement = Alignment(wrap_text=True, vertical='top')
+    values_st.border = Border(
+        left=Side(border_style='thin', color='FF000000'),
+        right=Side(border_style='thin', color='FF000000')
+    )
+    # Date format
+    date_format = NamedStyle(name="date_format", number_format='YYYY-MM-DD')
+    date_format.font = Font(name='Calibri', color='FF000000')
+    date_format.alignement = Alignment(wrap_text=True, vertical='top')
+    date_format.border = Border(
+        left=Side(border_style='thin', color='FF000000'),
+        right=Side(border_style='thin', color='FF000000')
+    )
+    ### PROFILE WORKSHEET ###
+    # Creating the worksheet
+    profiles_worksheet = workbook.active
+    # Orientation
+    profiles_worksheet.page_setup.orientation = profiles_worksheet.ORIENTATION_LANDSCAPE
+    # Title
+    profiles_worksheet.title = 'Profiles'
+    # Defining the header
+    attributes = [
+        'username',
+        'first name',
+        'last name',
+        'public profile',
+        'introduction',
+        'list of courses',
+        'activities',
+        'birthdate',
+        #'profile_picture',
+    ]
+    # Introduction
+    profiles_worksheet['A1'] = 'TITRE LONG QUI PREND TOUTE LA LARGEUR DE LA PAGE. TITRE LONG QUI PREND TOUTE LA LARGEUR DE LA PAGE. TITRE LONG QUI PREND TOUTE LA LARGEUR DE LA PAGE.'
+    profiles_worksheet['A1'].style = main_title
+    profiles_worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(attributes))
+    # Table
+        # Initializing variables
+    first_row_of_table = 3
+    
+        # Creating the header
+    for col_num, col_title in enumerate(attributes,1):
+        cell = profiles_worksheet.cell(row=first_row_of_table, column=col_num, value=col_title.capitalize())
+        cell.style = header
+        column_dimensions = profiles_worksheet.column_dimensions[get_column_letter(col_num)]
+        if col_title == 'introduction':
+            column_dimensions.width = 45
+        elif col_title == 'list of courses':
+            column_dimensions.width = 45
+        elif col_title == 'activities':
+            column_dimensions.width = 35
+        else:
+            max_length = 0
+            try:
+                if len(str(cell.value)) > max_length:
+                    max_length = len(cell.value)
+            except:
+                pass
+            adjusted_width = (max_length + 2)*1.2
+            column_dimensions.width = adjusted_width
+    
+        # Freezing the header
+    profiles_worksheet.freeze_panes = profiles_worksheet['A4']
+    
+        # Adding the values
+    values_row = first_row_of_table
+    for profile in profiles_queryset:
+        values_row += 1
+        values = [
+            (profile.user.username, values_st),
+            (profile.user.first_name, values_st),
+            (profile.user.last_name, values_st),
+            (profile.public_profile, values_st),
+            (profile.introduction, values_st),
+            (profile.list_of_courses, values_st),
+            (', '.join([str(i) for i in profile.activities.all()]), values_st),
+            (profile.birthdate, date_format),
+            #profile.profile_picture,
+        ]
+        for col_num, col_value in enumerate(values, 1):
+            cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value[0])
+            cell.style = col_value[1]
+    
+        # Adding filtering
+    profiles_worksheet_dim = profiles_worksheet.dimensions
+    profiles_worksheet_dim_list = list(profiles_worksheet_dim)
+    profiles_worksheet_dim_list[1] = str(first_row_of_table)
+    profiles_worksheet_dim = "".join(profiles_worksheet_dim_list)
+    #number_to_letter = []
+    # for index, letter in enumerate(string.ascii_uppercase, 1):
+    #     number_to_letter.append((index, letter))
+    # print(number_to_letter)
+    profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
+
+    ### STAT WORKSHEET ###
+    # Creating the worksheet
+    stat_worksheet = workbook.create_sheet("Stat")
+
+    ### SAVING WORKBOOK ###
+    workbook.save(response)
+
+    return response
