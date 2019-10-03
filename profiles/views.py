@@ -22,11 +22,13 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 # Exporting Excel files
 from datetime import datetime
+from datetime import date
 from datetime import timedelta
 from openpyxl import Workbook
 from openpyxl.styles import NamedStyle, Font, Alignment, PatternFill, Border, Side
 from openpyxl.utils import get_column_letter
 #import string
+from openpyxl.drawing.image import Image
 
 from profiles.models import Profile, CustomUser
 from activities.models import Activity
@@ -249,10 +251,14 @@ def export_profiles_to_xlsx(request):
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename={date}_bac_profiles.xlsx'.format(date=datetime.now().strftime('%Y%m%d'))
     workbook = Workbook()
+    
     ### STYLES ###
+    # Bold
+    bold_st = NamedStyle(name="bold_st")
+    bold_st.font = Font(name='Calibri', bold=True, color='FF000000')
     # Main title row
     main_title = NamedStyle(name="main_title")
-    main_title.font = Font(name='Calibri', bold=True, color='FF000000', size='14')
+    main_title.font = Font(name='Calibri', bold=True, color='FF000000', size='16')
     main_title.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
     main_title.border = Border(
         left=Side(border_style='thin', color='FF00008F'),
@@ -261,17 +267,17 @@ def export_profiles_to_xlsx(request):
         bottom=Side(border_style='thin', color='FF00008F')
     )
     main_title.fill = PatternFill(fill_type='solid', fgColor='FF4080C6')
-    # Header row
-    header = NamedStyle(name="header")
-    header.font = Font(name='Calibri', bold=True, color='FFFFFFFF')
-    header.alignment = Alignment(wrap_text=True, vertical='center')
-    header.border = Border(
+    # First row
+    first_row = NamedStyle(name="first_row")
+    first_row.font = Font(name='Calibri', bold=True, color='FFFFFFFF')
+    first_row.alignment = Alignment(wrap_text=True, vertical='center')
+    first_row.border = Border(
         left=Side(border_style='thin', color='FF000000'),
         right=Side(border_style='thin', color='FF000000'),
         top=Side(border_style='thin', color='FF000000'),
         bottom=Side(border_style='thin', color='FF000000')
     )
-    header.fill = PatternFill(fill_type='solid', fgColor='FF6F6F6F')
+    first_row.fill = PatternFill(fill_type='solid', fgColor='FF6F6F6F')
     # Values row
     values_st = NamedStyle(name="values")
     values_st.font = Font(name='Calibri', color='FF000000')
@@ -281,21 +287,29 @@ def export_profiles_to_xlsx(request):
         right=Side(border_style='thin', color='FF000000')
     )
     # Date format
-    date_format = NamedStyle(name="date_format", number_format='YYYY-MM-DD')
+    date_format = NamedStyle(name="date_format")
     date_format.font = Font(name='Calibri', color='FF000000')
     date_format.alignement = Alignment(wrap_text=True, vertical='top')
     date_format.border = Border(
         left=Side(border_style='thin', color='FF000000'),
         right=Side(border_style='thin', color='FF000000')
     )
+    date_format.number_format='YYYY-MM-DD'
+    
     ### PROFILE WORKSHEET ###
     # Creating the worksheet
     profiles_worksheet = workbook.active
-    # Orientation
+    # Page setup (print settings)
     profiles_worksheet.page_setup.orientation = profiles_worksheet.ORIENTATION_LANDSCAPE
+    profiles_worksheet.page_setup.fitToPage = True
+    profiles_worksheet.page_setup.fitToHeight = False
+    #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
-    # Defining the header
+    # Header & Footer
+    profiles_worksheet.oddFooter.center.text = "bourseauxcompagnons.fr"
+    profiles_worksheet.oddFooter.center.size = 11
+    # Defining the first row
     attributes = [
         'username',
         'first name',
@@ -305,20 +319,37 @@ def export_profiles_to_xlsx(request):
         'list of courses',
         'activities',
         'birthdate',
-        #'profile_picture',
     ]
     # Introduction
-    profiles_worksheet['A1'] = 'TITRE LONG QUI PREND TOUTE LA LARGEUR DE LA PAGE. TITRE LONG QUI PREND TOUTE LA LARGEUR DE LA PAGE. TITRE LONG QUI PREND TOUTE LA LARGEUR DE LA PAGE.'
+    import os
+    dirname = os.path.dirname(os.path.dirname(__file__))
+    filename = os.path.join(dirname, 'collected_static/img/icon_group_map.png')
+    img = Image(filename)
+    anchor = 'A1'
+    profiles_worksheet.add_image(img, anchor)
+
+    profiles_worksheet['A1'] = "LISTE COMPLETE DES PROFILS INSCRITS SUR BOURSEAUXCOMPAGNONS.FR"
     profiles_worksheet['A1'].style = main_title
     profiles_worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(attributes))
+    profiles_worksheet.row_dimensions[1].height = 40
+
+    profiles_worksheet['A3'] = "Date d'export"
+    profiles_worksheet['A3'].style = bold_st
+    profiles_worksheet.merge_cells(start_row=3, start_column=1, end_row=3, end_column=2)
+    profiles_worksheet['C3'] = date.today()
+
+    profiles_worksheet['A4'] = "Nombre de profils"
+    profiles_worksheet['A4'].style = bold_st
+    profiles_worksheet.merge_cells(start_row=4, start_column=1, end_row=4, end_column=2)
+    profiles_worksheet['C4'] = len(profiles_queryset)
     # Table
         # Initializing variables
-    first_row_of_table = 3
+    first_row_of_table = 6
     
-        # Creating the header
+        # Creating the first row
     for col_num, col_title in enumerate(attributes,1):
-        cell = profiles_worksheet.cell(row=first_row_of_table, column=col_num, value=col_title.capitalize())
-        cell.style = header
+        cell = profiles_worksheet.cell(row=first_row_of_table, column=col_num, value=col_title.upper())
+        cell.style = first_row
         column_dimensions = profiles_worksheet.column_dimensions[get_column_letter(col_num)]
         if col_title == 'introduction':
             column_dimensions.width = 45
@@ -336,8 +367,9 @@ def export_profiles_to_xlsx(request):
             adjusted_width = (max_length + 2)*1.2
             column_dimensions.width = adjusted_width
     
-        # Freezing the header
-    profiles_worksheet.freeze_panes = profiles_worksheet['A4']
+        # Freezing the first row
+    freezing_cell = "A{}".format(first_row_of_table+1)
+    profiles_worksheet.freeze_panes = profiles_worksheet[freezing_cell]
     
         # Adding the values
     values_row = first_row_of_table
@@ -352,11 +384,10 @@ def export_profiles_to_xlsx(request):
             (profile.list_of_courses, values_st),
             (', '.join([str(i) for i in profile.activities.all()]), values_st),
             (profile.birthdate, date_format),
-            #profile.profile_picture,
         ]
-        for col_num, col_value in enumerate(values, 1):
-            cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value[0])
-            cell.style = col_value[1]
+        for col_num, (col_value, col_format) in enumerate(values, 1):
+            cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
+            cell.style = col_format
     
         # Adding filtering
     profiles_worksheet_dim = profiles_worksheet.dimensions
@@ -367,6 +398,7 @@ def export_profiles_to_xlsx(request):
     # for index, letter in enumerate(string.ascii_uppercase, 1):
     #     number_to_letter.append((index, letter))
     # print(number_to_letter)
+    # print(get_column_letter(1))
     profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
 
     ### STAT WORKSHEET ###
