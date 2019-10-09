@@ -6,9 +6,10 @@ from outings.models import Outing
 
 
 class Cal(LocaleHTMLCalendar):
-    def __init__(self, firstweekday=0, locale=None, year=None, month=None):
+    def __init__(self, firstweekday=0, locale=None, year=None, month=None, profile=None):
         self.year = year
         self.month = month
+        self.profile = profile
         # super().__init__(firstweekday=0, locale=None)
         LocaleHTMLCalendar.__init__(self, firstweekday, locale)
 
@@ -47,7 +48,7 @@ class CalOutings(Cal):
         # return response
 
     def formatmonth(self, withyear=True):
-        outings = Outing.objects.filter(start_date__year=self.year, start_date__month=self.month)
+        outings = Outing.objects.filter(author__username=self.profile, start_date__year=self.year, start_date__month=self.month)
 
         cal = f'<table border="0" cellpadding="0" cellspacing="0" class="cal-table">\n'
         cal += f'<tr><th><a class="previous-month unstyled text-info">&lt;&lt;</a></th>'
