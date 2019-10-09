@@ -148,13 +148,13 @@ class ProfileDetailView(DetailView):
             context['availability_area_geo_poly'] = [[i[0], i[1]] for i in poly_tuple] or None
         # Calendar Context
         d = get_date(self.request.GET.get('month', None))
-        locales={}
-        locales['fr']='fr_FR.utf-8'
-        locales['en']='en_EN.utf-8'
-        locales['es']='es_ES.utf-8'
-        locales['it']='it_IT.utf-8'
-        locales['de']='de_DE.utf-8'
-        cal = CalOutings(year=d.year, month=d.month, locale=locales.get(get_language()))
+        locales_dic={}
+        locales_dic['fr']='fr'
+        locales_dic['en']='english'
+        locales_dic['es']='es_ES.utf-8'
+        locales_dic['it']='it_IT.utf-8'
+        locales_dic['de']='de_DE.utf-8'
+        cal = CalOutings(year=d.year, month=d.month, locale=locales_dic.get(get_language()))
         html_cal = cal.formatmonth(withyear=True)
         context['cal_outings'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
