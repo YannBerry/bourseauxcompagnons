@@ -102,6 +102,15 @@
         </div>
         {% endfor %}
     </div>
+    <div id="cal-outings" class="row mb-4">
+        <div class="col-auto ml-auto mb-2">
+            <a class="btn btn-outline-info left" href="{% url 'profiles:detail' profile.user.username %}?{{ prev_month }}#cal-outings">{% trans "Previous Month" %}</a>
+            <a class="btn btn-outline-info right" href="{% url 'profiles:detail' profile.user.username %}?{{ next_month }}#cal-outings">{% trans "Next Month" %}</a>
+        </div>
+        <div class="col-12">
+            {{ cal_outings }}
+        </div>
+    </div>
 {% endif %}
 {% endblock%}
 
