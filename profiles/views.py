@@ -155,7 +155,7 @@ class ProfileDetailView(DetailView):
         locales['it']='it_IT.UTF-8'
         locales['de']='de_DE.UTF-8'
         # cal = CalOutings(year=d.year, month=d.month, locale=locales.get(get_language()))
-        cal = CalOutings(year=d.year, month=d.month, locale=None)
+        cal = CalOutings(year=d.year, month=d.month, locale='it_IT.utf-8')
         html_cal = cal.formatmonth(withyear=True)
         context['cal_outings'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)

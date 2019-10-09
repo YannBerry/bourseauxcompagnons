@@ -7,7 +7,8 @@ class Cal(LocaleHTMLCalendar):
     def __init__(self, firstweekday=0, locale=None, year=None, month=None):
         self.year = year
         self.month = month
-        super().__init__(firstweekday=0, locale=None)
+        # super().__init__(firstweekday=0, locale=None)
+        LocaleHTMLCalendar.__init__(self, firstweekday, locale)
 
 
 class CalOutings(Cal):
