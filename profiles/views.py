@@ -149,8 +149,8 @@ class ProfileDetailView(DetailView):
         # Calendar Context
         d = get_date(self.request.GET.get('month', None))
         locales_dic={}
-        locales_dic['fr']='fr'
-        locales_dic['en']='english'
+        locales_dic['fr']='fr_FR.utf-8'
+        locales_dic['en']='en_US.utf-8'
         locales_dic['es']='es_ES.utf-8'
         locales_dic['it']='it_IT.utf-8'
         locales_dic['de']='de_DE.utf-8'
