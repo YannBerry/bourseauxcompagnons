@@ -29,6 +29,7 @@ from openpyxl.styles import NamedStyle, Font, Alignment, PatternFill, Border, Si
 from openpyxl.utils import get_column_letter
 #import string
 from openpyxl.drawing.image import Image
+from openpyxl.chart import PieChart, Reference
 
 from profiles.models import Profile, CustomUser
 from activities.models import Activity
@@ -248,6 +249,8 @@ class AccountDeleteView(UserPassesTestMixin, DeleteView):
 def export_profiles_to_xlsx(request):
     '''A view to export all the profiles to an xlsx format'''
     profiles_queryset = Profile.objects.all()
+    activities = Activity.objects.all()
+
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename={date}_bac_profiles.xlsx'.format(date=datetime.now().strftime('%Y%m%d'))
     workbook = Workbook()
@@ -404,7 +407,25 @@ def export_profiles_to_xlsx(request):
     ### STAT WORKSHEET ###
     # Creating the worksheet
     stat_worksheet = workbook.create_sheet("Stat")
+    
+    # Distribution of profiles by activity
+    activities_distribution = [('Activity', 'Number of profiles')]
+    for activity in activities:
+        number_of_profiles = Profile.objects.filter(activities__name=activity).count()
+        activities_distribution.append((str(activity), number_of_profiles))
+    print(activities.count())
+    for row in activities_distribution:
+        stat_worksheet.append(row)
+    
+    piechart_profiles_by_activity = PieChart()
+    labels = Reference(stat_worksheet, min_col = 1, min_row = 2, max_row = activities.count() + 1)
+    data = Reference(stat_worksheet, min_col = 2, min_row = 1, max_row = activities.count() + 1)
+    piechart_profiles_by_activity.add_data(data, titles_from_data=True)
+    piechart_profiles_by_activity.set_categories(labels)
+    piechart_profiles_by_activity.title = "Profiles distribution by activities"
 
+    stat_worksheet.add_chart(piechart_profiles_by_activity, "D1")
+    
     ### SAVING WORKBOOK ###
     workbook.save(response)
 
