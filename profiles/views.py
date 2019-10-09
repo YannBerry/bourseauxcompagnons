@@ -410,10 +410,13 @@ def export_profiles_to_xlsx(request):
     
     # Distribution of profiles by activity
     activities_distribution = [('Activity', 'Number of profiles')]
+    activities_in_current_language = 'activities__name_{}'.format(get_language())
+    
     for activity in activities:
-        number_of_profiles = Profile.objects.filter(activities__name=activity).count()
+        activity_filter = {}
+        activity_filter[activities_in_current_language] = activity
+        number_of_profiles = Profile.objects.filter(**activity_filter).count()
         activities_distribution.append((str(activity), number_of_profiles))
-    print(activities.count())
     for row in activities_distribution:
         stat_worksheet.append(row)
     
