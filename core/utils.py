@@ -1,4 +1,6 @@
 from calendar import LocaleHTMLCalendar
+from calendar import different_locale
+from calendar import month_name
 
 from outings.models import Outing
 
@@ -31,13 +33,29 @@ class CalOutings(Cal):
             w += self.formatday(d, outings)
         return f'<tr> {w} </tr>'
 
+    def formatmonthname(self, theyear, themonth, withyear=True):
+        """
+        Return a month name as a table row.
+        """
+        with different_locale(self.locale):
+            s = month_name[themonth]
+            if withyear:
+                s = '%s %s' % (s, theyear)
+            return '<th colspan="5" class="month">%s</th>' % s
+        # response = super().formatmonthname(theyear, themonth, withyear)
+        # print(response)
+        # return response
+
     def formatmonth(self, withyear=True):
         outings = Outing.objects.filter(start_date__year=self.year, start_date__month=self.month)
 
         cal = f'<table border="0" cellpadding="0" cellspacing="0" class="cal-table">\n'
+        cal += f'<tr><th><a class="previous-month unstyled text-info">&lt;&lt;</a></th>'
         cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
+        cal += f'<th><a class="next-month unstyled text-info">&gt;&gt;</a></th></tr>'
         cal += f'{self.formatweekheader()}\n'
         for week in self.monthdays2calendar(self.year, self.month):
             cal += f'{self.formatweek(week, outings)}\n'
         cal += f'</table>'
+        print(cal)
         return cal
