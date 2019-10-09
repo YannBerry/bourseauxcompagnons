@@ -1,7 +1,7 @@
 from calendar import LocaleHTMLCalendar
-# from calendar import HTMLCalendar
 
 from outings.models import Outing
+
 
 class Cal(LocaleHTMLCalendar):
     def __init__(self, firstweekday=0, locale=None, year=None, month=None):
@@ -9,11 +9,6 @@ class Cal(LocaleHTMLCalendar):
         self.month = month
         super().__init__(firstweekday=0, locale=None)
 
-# class Cal(HTMLCalendar):
-#     def __init__(self, year=None, month=None):
-#         self.year = year
-#         self.month = month
-#         super(Cal, self).__init__()
 
 class CalOutings(Cal):
     def formatday(self, day, outings):
