@@ -30,6 +30,7 @@ from openpyxl.utils import get_column_letter
 #import string
 from openpyxl.drawing.image import Image
 from openpyxl.chart import PieChart, Reference
+#from openpyxl.worksheet.pagebreak import RowBreak, Break
 # Calendar
 from core.utils import CalOutings
 from django.utils.safestring import mark_safe
@@ -343,15 +344,24 @@ def export_profiles_to_xlsx(request):
     # Creating the worksheet
     profiles_worksheet = workbook.active
     # Page setup (print settings)
-    profiles_worksheet.page_setup.orientation = profiles_worksheet.ORIENTATION_LANDSCAPE
+    profiles_worksheet.page_setup.orientation = 'landscape' #profiles_worksheet.ORIENTATION_PORTRAIT
+    profiles_worksheet.page_setup.paperSize = profiles_worksheet.PAPERSIZE_A4
     profiles_worksheet.page_setup.fitToPage = True
     profiles_worksheet.page_setup.fitToHeight = False
+    profiles_worksheet.page_margins.top = 0.75 # inches (1,91 cm)
+    profiles_worksheet.page_margins.bottom = 0.75 # inches (1,91 cm)
+    profiles_worksheet.page_margins.left = 0.7 # inches (1,78 cm)
+    profiles_worksheet.page_margins.right = 0.7 # inches (1,78 cm)
+    profiles_worksheet.page_margins.header = 0.3 # inches (0,76 cm)
+    profiles_worksheet.page_margins.footer = 0.3 # inches (0,76 cm)
+    profiles_worksheet.print_options.horizontalCentered = True
     #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
     # Header & Footer
     profiles_worksheet.oddFooter.center.text = "bourseauxcompagnons.fr"
     profiles_worksheet.oddFooter.center.size = 11
+    # Cover page
     # Defining the first row
     attributes = [
         'username',
@@ -385,6 +395,9 @@ def export_profiles_to_xlsx(request):
     profiles_worksheet['A4'].style = bold_st
     profiles_worksheet.merge_cells(start_row=4, start_column=1, end_row=4, end_column=2)
     profiles_worksheet['C4'] = len(profiles_queryset)
+
+    #profiles_worksheet.row_breaks.append(RowBreak(brk=(Break(id=5),)))
+    
     # Table
         # Initializing variables
     first_row_of_table = 6
