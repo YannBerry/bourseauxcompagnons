@@ -30,7 +30,7 @@ from openpyxl.utils import get_column_letter
 #import string
 from openpyxl.drawing.image import Image
 from openpyxl.chart import PieChart, Reference
-#from openpyxl.worksheet.pagebreak import RowBreak, Break
+from openpyxl.worksheet.pagebreak import RowBreak, Break, ColBreak
 # Calendar
 from core.utils import CalOutings
 from django.utils.safestring import mark_safe
@@ -358,11 +358,7 @@ def export_profiles_to_xlsx(request):
     #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
-    # Header & Footer
-    profiles_worksheet.oddFooter.center.text = "bourseauxcompagnons.fr"
-    profiles_worksheet.oddFooter.center.size = 11
-    # Cover page
-    # Defining the first row
+    # First row of the table
     attributes = [
         'username',
         'first name',
@@ -373,7 +369,17 @@ def export_profiles_to_xlsx(request):
         'activities',
         'birthdate',
     ]
-    # Introduction
+
+    # HEADER & FOOTER
+    profiles_worksheet.oddFooter.center.text = "bourseauxcompagnons.fr"
+    profiles_worksheet.oddFooter.center.size = 11
+
+    # COVER PAGE
+    profiles_worksheet['A2'] = "LISTE COMPLETE DES PROFILS INSCRITS SUR BOURSEAUXCOMPAGNONS.FR"
+    profiles_worksheet['A2'].style = main_title
+    profiles_worksheet.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(attributes))
+    profiles_worksheet.row_dimensions[2].height = 80
+    # OVERVIEW
     import os
     dirname = os.path.dirname(os.path.dirname(__file__))
     filename = os.path.join(dirname, 'collected_static/img/icon_group_map.png')
@@ -381,26 +387,29 @@ def export_profiles_to_xlsx(request):
     anchor = 'A1'
     profiles_worksheet.add_image(img, anchor)
 
-    profiles_worksheet['A1'] = "LISTE COMPLETE DES PROFILS INSCRITS SUR BOURSEAUXCOMPAGNONS.FR"
-    profiles_worksheet['A1'].style = main_title
-    profiles_worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(attributes))
-    profiles_worksheet.row_dimensions[1].height = 40
+    profiles_worksheet['A4'] = "SYNTHESE"
+    profiles_worksheet['A4'].style = main_title
+    profiles_worksheet.merge_cells(start_row=4, start_column=1, end_row=4, end_column=len(attributes))
+    profiles_worksheet.row_dimensions[4].height = 40
 
-    profiles_worksheet['A3'] = "Date d'export"
-    profiles_worksheet['A3'].style = bold_st
-    profiles_worksheet.merge_cells(start_row=3, start_column=1, end_row=3, end_column=2)
-    profiles_worksheet['C3'] = date.today()
+    profiles_worksheet['A6'] = "Date d'export"
+    profiles_worksheet['A6'].style = bold_st
+    profiles_worksheet.merge_cells(start_row=6, start_column=1, end_row=6, end_column=2)
+    profiles_worksheet['C6'] = date.today()
 
-    profiles_worksheet['A4'] = "Nombre de profils"
-    profiles_worksheet['A4'].style = bold_st
-    profiles_worksheet.merge_cells(start_row=4, start_column=1, end_row=4, end_column=2)
-    profiles_worksheet['C4'] = len(profiles_queryset)
+    profiles_worksheet['A7'] = "Nombre de profils"
+    profiles_worksheet['A7'].style = bold_st
+    profiles_worksheet.merge_cells(start_row=7, start_column=1, end_row=7, end_column=2)
+    profiles_worksheet['C7'] = len(profiles_queryset)
 
-    #profiles_worksheet.row_breaks.append(RowBreak(brk=(Break(id=5),)))
+    row_breaks_list = []
+    row_breaks_list.append(Break(id=3))
+    row_breaks_list.append(Break(id=8))
+    profiles_worksheet.page_breaks = (RowBreak(brk=row_breaks_list), ColBreak())
     
     # Table
         # Initializing variables
-    first_row_of_table = 6
+    first_row_of_table = 9
     
         # Creating the first row
     for col_num, col_title in enumerate(attributes,1):
