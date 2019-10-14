@@ -358,7 +358,7 @@ def export_profiles_to_xlsx(request):
     profiles_worksheet.page_margins.header = 0.3 # inches (0,76 cm)
     profiles_worksheet.page_margins.footer = 0.3 # inches (0,76 cm)
     profiles_worksheet.print_options.horizontalCentered = True
-    profiles_worksheet.sheet_view.view = 'pageLayout'
+    profiles_worksheet.sheet_view.view = 'pageBreakPreview' # or 'normal' or 'pageLayout'
     #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
