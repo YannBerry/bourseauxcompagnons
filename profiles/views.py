@@ -31,6 +31,7 @@ from openpyxl.utils import get_column_letter
 from openpyxl.drawing.image import Image
 from openpyxl.chart import PieChart, Reference
 from openpyxl.worksheet.pagebreak import RowBreak, Break, ColBreak
+import os
 # Calendar
 from core.utils import CalOutings
 from django.utils.safestring import mark_safe
@@ -297,12 +298,14 @@ def export_profiles_to_xlsx(request):
     workbook = Workbook()
     
     ### STYLES ###
+    # Colors
+    dark_red = 'FFC00000'
     # Bold
     bold_st = NamedStyle(name="bold_st")
     bold_st.font = Font(name='Calibri', bold=True, color='FF000000')
     # Main title row
     main_title = NamedStyle(name="main_title")
-    main_title.font = Font(name='Calibri', bold=True, color='FF000000', size='16')
+    main_title.font = Font(name='Calibri', bold=True, color='FF000000', size='20')
     main_title.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
     main_title.border = Border(
         left=Side(border_style='thin', color='FF00008F'),
@@ -355,6 +358,7 @@ def export_profiles_to_xlsx(request):
     profiles_worksheet.page_margins.header = 0.3 # inches (0,76 cm)
     profiles_worksheet.page_margins.footer = 0.3 # inches (0,76 cm)
     profiles_worksheet.print_options.horizontalCentered = True
+    profiles_worksheet.sheet_view.view = 'pageLayout'
     #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
@@ -373,44 +377,75 @@ def export_profiles_to_xlsx(request):
     # HEADER & FOOTER
     profiles_worksheet.oddFooter.center.text = "bourseauxcompagnons.fr"
     profiles_worksheet.oddFooter.center.size = 11
+    
+    # Initializing variables
+    row_breaks_list = []
+    row = 1
 
     # COVER PAGE
-    profiles_worksheet['A2'] = "LISTE COMPLETE DES PROFILS INSCRITS SUR BOURSEAUXCOMPAGNONS.FR"
-    profiles_worksheet['A2'].style = main_title
-    profiles_worksheet.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(attributes))
-    profiles_worksheet.row_dimensions[2].height = 80
-    # OVERVIEW
-    import os
+        # Blank row
+    profiles_worksheet.row_dimensions[row].height = 80
+        # Logo
+    row += 1
     dirname = os.path.dirname(os.path.dirname(__file__))
     filename = os.path.join(dirname, 'collected_static/img/icon_group_map.png')
     img = Image(filename)
-    anchor = 'A1'
+    anchor = 'D2'
+        # Confidential
+    CP_confidential = profiles_worksheet.cell(column=len(attributes)-1, row=row)
+    CP_confidential.value = "CONFIDENTIEL"
+    CP_confidential.font = Font(name='Calibri', bold=True, color=dark_red)
+        # Title
+    row += 1
     profiles_worksheet.add_image(img, anchor)
-
-    profiles_worksheet['A4'] = "SYNTHESE"
-    profiles_worksheet['A4'].style = main_title
-    profiles_worksheet.merge_cells(start_row=4, start_column=1, end_row=4, end_column=len(attributes))
-    profiles_worksheet.row_dimensions[4].height = 40
-
-    profiles_worksheet['A6'] = "Date d'export"
-    profiles_worksheet['A6'].style = bold_st
-    profiles_worksheet.merge_cells(start_row=6, start_column=1, end_row=6, end_column=2)
-    profiles_worksheet['C6'] = date.today()
-
-    profiles_worksheet['A7'] = "Nombre de profils"
-    profiles_worksheet['A7'].style = bold_st
-    profiles_worksheet.merge_cells(start_row=7, start_column=1, end_row=7, end_column=2)
-    profiles_worksheet['C7'] = len(profiles_queryset)
-
-    row_breaks_list = []
-    row_breaks_list.append(Break(id=3))
-    row_breaks_list.append(Break(id=8))
-    profiles_worksheet.page_breaks = (RowBreak(brk=row_breaks_list), ColBreak())
+    CP_title = profiles_worksheet.cell(column=4, row=row)
+    CP_title.value = "LISTE COMPLETE DES PROFILS\n(sans les coordonnées personnelles)"
+    profiles_worksheet.merge_cells(start_row=row, start_column=4, end_row=row, end_column=len(attributes)-2)
+    profiles_worksheet.row_dimensions[row].height = 600
+    CP_title.font = Font(name='Calibri', bold=True, color='FF000000', size='20')
+    CP_title.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
+        # Date
+    row += 1
+    CP_date = profiles_worksheet.cell(column=len(attributes)-1, row=row)
+    CP_date.value = "Le {}".format(date.today())
+        # Blank row
+    row += 1
+        # Page break
+    row_breaks_list.append(Break(id=row))
     
-    # Table
-        # Initializing variables
-    first_row_of_table = 9
+    # OVERVIEW
+        # Title
+    row += 1
+    O_title = profiles_worksheet.cell(column=1, row=row)
+    O_title.value = "SYNTHESE"
+    O_title.style = main_title
+    profiles_worksheet.merge_cells(start_row=row, start_column=1, end_row=row, end_column=len(attributes))
+    profiles_worksheet.row_dimensions[row].height = 40
+        # Blank row
+    row += 1
+        # Content
+    row += 1
+    O_publication_date = profiles_worksheet.cell(column=1, row=row)
+    O_publication_date.value = "Date d'export"
+    O_publication_date.style = bold_st
+    profiles_worksheet.merge_cells(start_row=row, start_column=1, end_row=row, end_column=2)
+    O_publication_date_value = profiles_worksheet.cell(column=3, row=row)
+    O_publication_date_value.value = date.today()
+    row += 1
+    O_nb_of_profiles = profiles_worksheet.cell(column=1, row=row)
+    O_nb_of_profiles.value = "Nombre de profils"
+    O_nb_of_profiles.style = bold_st
+    profiles_worksheet.merge_cells(start_row=row, start_column=1, end_row=row, end_column=2)
+    O_nb_of_profiles_value = profiles_worksheet.cell(column=3, row=row)
+    O_nb_of_profiles_value.value = len(profiles_queryset)
+        # Blank row
+    row += 1
+        # Page break
+    row_breaks_list.append(Break(id=row))
     
+    # TABLE
+    row += 1
+    first_row_of_table = row
         # Creating the first row
     for col_num, col_title in enumerate(attributes,1):
         cell = profiles_worksheet.cell(row=first_row_of_table, column=col_num, value=col_title.upper())
@@ -433,8 +468,8 @@ def export_profiles_to_xlsx(request):
             column_dimensions.width = adjusted_width
     
         # Freezing the first row
-    freezing_cell = "A{}".format(first_row_of_table+1)
-    profiles_worksheet.freeze_panes = profiles_worksheet[freezing_cell]
+    # freezing_cell = "A{}".format(first_row_of_table+1)
+    # profiles_worksheet.freeze_panes = profiles_worksheet[freezing_cell]
     
         # Adding the values
     values_row = first_row_of_table
@@ -465,6 +500,9 @@ def export_profiles_to_xlsx(request):
     # print(number_to_letter)
     # print(get_column_letter(1))
     profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
+
+    # Adding the declared page breaks to the worksheet
+    profiles_worksheet.page_breaks = (RowBreak(brk=row_breaks_list), ColBreak())
 
     ### STAT WORKSHEET ###
     # Creating the worksheet
