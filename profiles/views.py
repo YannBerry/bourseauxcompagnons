@@ -332,7 +332,7 @@ def export_profiles_to_xlsx(request):
     # Values row
     values_st = NamedStyle(name="values_st")
     values_st.font = Font(name='Calibri', color='FF000000')
-    values_st.alignement = Alignment(wrap_text=True, vertical='top')
+    values_st.alignment = Alignment(wrap_text=True, vertical='top')
     values_st.border = Border(
         left=Side(border_style='thin', color='FF000000'),
         right=Side(border_style='thin', color='FF000000')
@@ -349,7 +349,7 @@ def export_profiles_to_xlsx(request):
     # Date format
     date_format = NamedStyle(name="date_format")
     date_format.font = Font(name='Calibri', color='FF000000')
-    date_format.alignement = Alignment(wrap_text=True, vertical='top')
+    date_format.alignment = Alignment(wrap_text=True, vertical='top')
     date_format.border = Border(
         left=Side(border_style='thin', color='FF000000'),
         right=Side(border_style='thin', color='FF000000')
@@ -411,6 +411,7 @@ def export_profiles_to_xlsx(request):
     filename = os.path.join(dirname, 'collected_static/img/icon_group_map.png')
     img = Image(filename)
     anchor = 'D2'
+    profiles_worksheet.add_image(img, anchor)
         # Confidential
     CP_confidential = profiles_worksheet.cell(column=len(attributes)-1, row=row)
     CP_confidential.value = "CONFIDENTIEL"
@@ -418,7 +419,6 @@ def export_profiles_to_xlsx(request):
     CP_confidential.alignment = Alignment(vertical='top', horizontal='right')
         # Title
     row += 1
-    profiles_worksheet.add_image(img, anchor)
     CP_title = profiles_worksheet.cell(column=4, row=row)
     CP_title.value = "LISTE COMPLETE DES PROFILS\n(sans les coordonnées personnelles)"
     profiles_worksheet.merge_cells(start_row=row, start_column=4, end_row=row, end_column=len(attributes)-2)
