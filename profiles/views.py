@@ -340,6 +340,7 @@ def export_profiles_to_xlsx(request):
     # Category title row
     cat_title_st = NamedStyle(name="cat_title_st")
     cat_title_st.font = Font(name='Calibri', color=dark_blue, size='16')
+    cat_title_st.alignment = Alignment(wrap_text=True, vertical='center', horizontal='left')
     cat_title_st.border = Border(
         left=Side(border_style='thin', color='FF000000'),
         right=Side(border_style='thin', color='FF000000')
@@ -372,6 +373,9 @@ def export_profiles_to_xlsx(request):
     profiles_worksheet.print_options.horizontalCentered = True
     profiles_worksheet.sheet_view.view = 'pageBreakPreview' # or 'normal' or 'pageLayout'
     profiles_worksheet.sheet_view.zoomScale = 75
+    profiles_worksheet.sheet_view.zoomScaleNormal = 75
+    profiles_worksheet.sheet_view.zoomScaleSheetLayoutView = 75
+    profiles_worksheet.sheet_view.zoomScalePageLayoutView = 75
     #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
@@ -545,9 +549,14 @@ def export_profiles_to_xlsx(request):
                 cell.style = col_format
 
     # Conditional formatting
-
+        # First name = "Yann"
+    first_name_range = '{col}{first_row}:{col}{last_row}'.format(
+        col=get_column_letter(attributes.index('first name')+1),
+        first_row = first_row_of_table+1,
+        last_row = values_row
+    )
     profiles_worksheet.conditional_formatting.add(
-       'B12:B41',
+       first_name_range,
        CellIsRule(operator='equal', formula=['"Yann"'], fill=PatternFill(bgColor="FFC7CE"))
     )
 
