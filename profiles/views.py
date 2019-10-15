@@ -32,6 +32,9 @@ from openpyxl.drawing.image import Image
 from openpyxl.chart import PieChart, Reference
 from openpyxl.worksheet.pagebreak import RowBreak, Break, ColBreak
 import os
+from itertools import groupby
+from operator import attrgetter
+from openpyxl.formatting.rule import CellIsRule
 # Calendar
 from core.utils import CalOutings
 from django.utils.safestring import mark_safe
@@ -300,6 +303,7 @@ def export_profiles_to_xlsx(request):
     ### STYLES ###
     # Colors
     dark_red = 'FFC00000'
+    dark_blue = 'FF002060'
     # Bold
     bold_st = NamedStyle(name="bold_st")
     bold_st.font = Font(name='Calibri', bold=True, color='FF000000')
@@ -326,13 +330,21 @@ def export_profiles_to_xlsx(request):
     )
     first_row.fill = PatternFill(fill_type='solid', fgColor='FF6F6F6F')
     # Values row
-    values_st = NamedStyle(name="values")
+    values_st = NamedStyle(name="values_st")
     values_st.font = Font(name='Calibri', color='FF000000')
     values_st.alignement = Alignment(wrap_text=True, vertical='top')
     values_st.border = Border(
         left=Side(border_style='thin', color='FF000000'),
         right=Side(border_style='thin', color='FF000000')
     )
+    # Category title row
+    cat_title_st = NamedStyle(name="cat_title_st")
+    cat_title_st.font = Font(name='Calibri', color=dark_blue, size='16')
+    cat_title_st.border = Border(
+        left=Side(border_style='thin', color='FF000000'),
+        right=Side(border_style='thin', color='FF000000')
+    )
+    cat_title_st.fill = PatternFill(fill_type='solid', fgColor='FFA8D18E')
     # Date format
     date_format = NamedStyle(name="date_format")
     date_format.font = Font(name='Calibri', color='FF000000')
@@ -359,6 +371,7 @@ def export_profiles_to_xlsx(request):
     profiles_worksheet.page_margins.footer = 0.3 # inches (0,76 cm)
     profiles_worksheet.print_options.horizontalCentered = True
     profiles_worksheet.sheet_view.view = 'pageBreakPreview' # or 'normal' or 'pageLayout'
+    profiles_worksheet.sheet_view.zoomScale = 75
     #profiles_worksheet.print_area = profiles_worksheet.dimensions
     # Title
     profiles_worksheet.title = 'Profiles'
@@ -372,6 +385,8 @@ def export_profiles_to_xlsx(request):
         'list of courses',
         'activities',
         'birthdate',
+        'last_update',
+        'updated more than 1 month ago',
     ]
 
     # HEADER & FOOTER
@@ -384,9 +399,10 @@ def export_profiles_to_xlsx(request):
 
     # COVER PAGE
         # Blank row
-    profiles_worksheet.row_dimensions[row].height = 80
+    profiles_worksheet.row_dimensions[row].height = 20*3
         # Logo
     row += 1
+    profiles_worksheet.row_dimensions[row].height = 90
     dirname = os.path.dirname(os.path.dirname(__file__))
     filename = os.path.join(dirname, 'collected_static/img/icon_group_map.png')
     img = Image(filename)
@@ -395,21 +411,24 @@ def export_profiles_to_xlsx(request):
     CP_confidential = profiles_worksheet.cell(column=len(attributes)-1, row=row)
     CP_confidential.value = "CONFIDENTIEL"
     CP_confidential.font = Font(name='Calibri', bold=True, color=dark_red)
+    CP_confidential.alignment = Alignment(vertical='top', horizontal='right')
         # Title
     row += 1
     profiles_worksheet.add_image(img, anchor)
     CP_title = profiles_worksheet.cell(column=4, row=row)
     CP_title.value = "LISTE COMPLETE DES PROFILS\n(sans les coordonnées personnelles)"
     profiles_worksheet.merge_cells(start_row=row, start_column=4, end_row=row, end_column=len(attributes)-2)
-    profiles_worksheet.row_dimensions[row].height = 600
+    profiles_worksheet.row_dimensions[row].height = 550
     CP_title.font = Font(name='Calibri', bold=True, color='FF000000', size='20')
     CP_title.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
         # Date
     row += 1
     CP_date = profiles_worksheet.cell(column=len(attributes)-1, row=row)
     CP_date.value = "Le {}".format(date.today())
+    CP_date.alignment = Alignment(vertical='top', horizontal='right')
         # Blank row
     row += 1
+    profiles_worksheet.row_dimensions[row].height = 20
         # Page break
     row_breaks_list.append(Break(id=row))
     
@@ -484,22 +503,53 @@ def export_profiles_to_xlsx(request):
             (profile.list_of_courses, values_st),
             (', '.join([str(i) for i in profile.activities.all()]), values_st),
             (profile.birthdate, date_format),
+            (profile.last_update, date_format),
+            (profile.updated_more_than_1_month_ago, values_st),
         ]
         for col_num, (col_value, col_format) in enumerate(values, 1):
             cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
             cell.style = col_format
     
         # Adding filtering
-    profiles_worksheet_dim = profiles_worksheet.dimensions
-    profiles_worksheet_dim_list = list(profiles_worksheet_dim)
-    profiles_worksheet_dim_list[1] = str(first_row_of_table)
-    profiles_worksheet_dim = "".join(profiles_worksheet_dim_list)
-    #number_to_letter = []
-    # for index, letter in enumerate(string.ascii_uppercase, 1):
-    #     number_to_letter.append((index, letter))
-    # print(number_to_letter)
-    # print(get_column_letter(1))
-    profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
+    # profiles_worksheet_dim = profiles_worksheet.dimensions
+    # profiles_worksheet_dim_list = list(profiles_worksheet_dim)
+    # profiles_worksheet_dim_list[1] = str(first_row_of_table)
+    # profiles_worksheet_dim = "".join(profiles_worksheet_dim_list)
+    # profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
+
+        # Adding the values by category (is the profile active for 1 month ago?)
+    q_list = [profile for profile in profiles_queryset]
+    q_list = sorted(q_list, key=attrgetter('updated_more_than_1_month_ago'), reverse=True)
+    for key, group in groupby(q_list, attrgetter('updated_more_than_1_month_ago')):
+        values_row += 1
+        O_title = profiles_worksheet.cell(row=values_row, column=1, value=key)
+        profiles_worksheet.merge_cells(start_row=values_row, start_column=1, end_row=values_row, end_column=len(attributes))
+        profiles_worksheet.row_dimensions[values_row].height = 30
+        O_title.style = cat_title_st
+        for profile in group:
+            values_row += 1
+            values = [
+                (profile.user.username, values_st),
+                (profile.user.first_name, values_st),
+                (profile.user.last_name, values_st),
+                (profile.public_profile, values_st),
+                (profile.introduction, values_st),
+                (profile.list_of_courses, values_st),
+                (', '.join([str(i) for i in profile.activities.all()]), values_st),
+                (profile.birthdate, date_format),
+                (profile.last_update, date_format),
+                (profile.updated_more_than_1_month_ago, values_st),
+            ]
+            for col_num, (col_value, col_format) in enumerate(values, 1):
+                cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
+                cell.style = col_format
+
+    # Conditional formatting
+
+    profiles_worksheet.conditional_formatting.add(
+       'B12:B41',
+       CellIsRule(operator='equal', formula=['"Yann"'], fill=PatternFill(bgColor="FFC7CE"))
+    )
 
     # Adding the declared page breaks to the worksheet
     profiles_worksheet.page_breaks = (RowBreak(brk=row_breaks_list), ColBreak())

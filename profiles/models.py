@@ -2,10 +2,9 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.gis.db import models #from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-# Library for the function user_directory_path_pict
 from django.utils import timezone
-# Library to calculate the age of profile from its birthdate
 from datetime import date
+from datetime import timedelta
 from django.contrib.auth.models import AbstractUser
 
 from activities.models import Activity, Grade
@@ -94,6 +93,10 @@ class Profile(models.Model):
         else:
             age = None
         return age
+
+    @property
+    def updated_more_than_1_month_ago(self):
+        return self.last_update < timezone.now() - timedelta(days=30)
 
     def get_absolute_url(self):
         return reverse('profiles:detail', kwargs={'username': self.user.username})
