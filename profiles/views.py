@@ -422,7 +422,7 @@ def export_profiles_to_xlsx(request):
     CP_title = profiles_worksheet.cell(column=4, row=row)
     CP_title.value = "LISTE COMPLETE DES PROFILS\n(sans les coordonnées personnelles)"
     profiles_worksheet.merge_cells(start_row=row, start_column=4, end_row=row, end_column=len(attributes)-2)
-    profiles_worksheet.row_dimensions[row].height = 550
+    profiles_worksheet.row_dimensions[row].height = 409 # 409 pt is the maximum row height in Microsoft Excel
     CP_title.font = Font(name='Calibri', bold=True, color='FF000000', size='20')
     CP_title.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
         # Date
