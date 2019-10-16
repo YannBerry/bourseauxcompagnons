@@ -36,6 +36,7 @@ from itertools import groupby
 from operator import attrgetter
 from openpyxl.formatting.rule import CellIsRule
 from openpyxl.chart.label import DataLabelList
+from openpyxl.worksheet.datavalidation import DataValidation
 # Calendar
 from core.utils import CalOutings
 from django.utils.safestring import mark_safe
@@ -392,6 +393,7 @@ def export_profiles_to_xlsx(request):
         'birthdate',
         'last_update',
         'updated more than 1 month ago',
+        'action'
     ]
 
     # HEADER & FOOTER
@@ -481,6 +483,8 @@ def export_profiles_to_xlsx(request):
             column_dimensions.width = 45
         elif col_title == 'activities':
             column_dimensions.width = 35
+        elif col_title == 'updated more than 1 month ago':
+            column_dimensions.width = 20
         else:
             max_length = 0
             try:
@@ -544,10 +548,23 @@ def export_profiles_to_xlsx(request):
                 (profile.birthdate, date_format),
                 (profile.last_update, date_format),
                 (profile.updated_more_than_1_month_ago, values_st),
+                ('A contacter', values_st)
             ]
             for col_num, (col_value, col_format) in enumerate(values, 1):
                 cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
                 cell.style = col_format
+
+    # Data validation (ex: dropdow list)
+    action_range = '{col}{first_row}:{col}{last_row}'.format(
+        col=get_column_letter(attributes.index('action')+1),
+        first_row = first_row_of_table+1,
+        last_row = values_row
+    )
+    actions_dic = {'A contacter':'FF00FF00', 'A contacter ++':'FF0000FF', 'A relancer':'FFFFFF00', 'Intéressé':'FFFF00FF', 'Validé':'FF00FFFF'}
+    actions_formula1 = '"' + ','.join(actions_dic.keys()) + '"'
+    data_val = DataValidation(type="list",formula1=actions_formula1, allow_blank=True)
+    profiles_worksheet.add_data_validation(data_val)
+    data_val.add(action_range)
 
     # Conditional formatting
         # First name = "Yann"
@@ -557,9 +574,17 @@ def export_profiles_to_xlsx(request):
         last_row = values_row
     )
     profiles_worksheet.conditional_formatting.add(
-       first_name_range,
-       CellIsRule(operator='equal', formula=['"Yann"'], fill=PatternFill(bgColor="FFC7CE"))
+        first_name_range,
+        CellIsRule(operator='equal', formula=['"Yann"'], fill=PatternFill(bgColor="FFC7CE"))
     )
+
+        # Actions
+    for action, color in actions_dic.items():
+        action_formula = '"' + action + '"'
+        profiles_worksheet.conditional_formatting.add(
+            action_range,
+            CellIsRule(operator='equal', formula=[action_formula], fill=PatternFill(bgColor=color))
+        )
 
     # Adding the declared page breaks to the worksheet
     profiles_worksheet.page_breaks = (RowBreak(brk=row_breaks_list), ColBreak())
