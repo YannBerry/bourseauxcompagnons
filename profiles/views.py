@@ -35,6 +35,7 @@ import os
 from itertools import groupby
 from operator import attrgetter
 from openpyxl.formatting.rule import CellIsRule
+from openpyxl.chart.label import DataLabelList
 # Calendar
 from core.utils import CalOutings
 from django.utils.safestring import mark_safe
@@ -585,6 +586,12 @@ def export_profiles_to_xlsx(request):
     piechart_profiles_by_activity.add_data(data, titles_from_data=True)
     piechart_profiles_by_activity.set_categories(labels)
     piechart_profiles_by_activity.title = "Profiles distribution by activities"
+    piechart_profiles_by_activity.width = 15 # cm
+    piechart_profiles_by_activity.height = 8 # cm
+    piechart_profiles_by_activity.legend.position = 'l'
+    
+    piechart_profiles_by_activity.dataLabels = DataLabelList()
+    piechart_profiles_by_activity.dataLabels.showPercent = True
 
     stat_worksheet.add_chart(piechart_profiles_by_activity, "D1")
     
