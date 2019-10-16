@@ -592,6 +592,9 @@ def export_profiles_to_xlsx(request):
     
     piechart_profiles_by_activity.dataLabels = DataLabelList()
     piechart_profiles_by_activity.dataLabels.showPercent = True
+    piechart_profiles_by_activity.dataLabels.showVal = False
+    piechart_profiles_by_activity.dataLabels.showCatName = False
+    piechart_profiles_by_activity.dataLabels.showLegendKey = False
 
     stat_worksheet.add_chart(piechart_profiles_by_activity, "D1")
     
