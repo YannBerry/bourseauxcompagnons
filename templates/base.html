@@ -57,7 +57,7 @@
                                     {% get_language_info_list for LANGUAGES as languages %}
                                     {% for language in languages %}
                                         <li>
-                                            <button lang="{{ language.code }}" class="dropdown-item" type="submit" name="language" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                            <button lang="{{ language.code }}" class="dropdown-item{% if language.code == LANGUAGE_CODE %} font-weight-bold{% endif %}" type="submit" name="language" value="{{ language.code }}">
                                                 {{ language.name_local|capfirst }} ({{ language.code|upper }})
                                             </button>
                                         </li>
