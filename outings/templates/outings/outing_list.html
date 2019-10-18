@@ -6,7 +6,7 @@
 {% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
-    <form type="GET" action="{% url 'outings:search' %}">
+    <form method="get" action="{% url 'outings:search' %}">
         <div class="form-row">
             <div class="form-group col-6 col-sm-4 col-xl-12">
                 <input class="form-control" type="search" placeholder="{% trans 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">

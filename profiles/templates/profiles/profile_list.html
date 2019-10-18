@@ -10,7 +10,7 @@
 {% block title %}{% trans 'Profiles list' %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
-    <form type="GET" action="{% url 'profiles:search' %}">
+    <form method="get" action="{% url 'profiles:search' %}">
         <div class="form-row">
             <div class="form-group col-12 col-sm-10 col-xl-12">
                 <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">

@@ -22,12 +22,12 @@
                     <div class="card" style="background-color: rgba(225,225,225,0.9);">
                         <div class="card-body text-center">
                             <h1 class="card-text h4 p-4">{% trans "Find partners for your outings in the mountain." %}</h1>
-                            <form type="GET" action="{% url 'profiles:search' %}">
+                            <form method="get" action="{% url 'profiles:search' %}">
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <ul id="id_activities" class="custom-form-check-inline">
                                             {% for activity in all_activities %}
-                                            <li><label for="id_activities_{{ activity }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity }}">{{ activity }}</label></li>
+                                            <li><label for="id_activities_{{ activity|cut:' ' }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity|cut:' ' }}">{{ activity }}</label></li>
                                             {% endfor %}
                                         </ul>
                                     </div>
