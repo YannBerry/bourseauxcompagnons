@@ -7,6 +7,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
 from django.utils.translation import get_language
 from django.contrib.postgres.search import (
@@ -121,11 +122,21 @@ class OutingCreateView(SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class OutingUpdateView(UpdateView):
+@method_decorator([login_required, profile_required], name='dispatch')
+class OutingUpdateView(UserPassesTestMixin, UpdateView):
     model = Outing
     form_class = OutingForm
 
+    def test_func(self):
+        outing_author = Outing.objects.get(slug=self.kwargs['slug']).author.username
+        return self.request.user.username == outing_author
 
-class OutingDeleteView(DeleteView):
+
+@method_decorator([login_required, profile_required], name='dispatch')
+class OutingDeleteView(UserPassesTestMixin, DeleteView):
     model = Outing
     success_url = reverse_lazy('my-profile')
+
+    def test_func(self):
+        outing_author = Outing.objects.get(slug=self.kwargs['slug']).author.username
+        return self.request.user.username == outing_author

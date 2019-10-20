@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -38,9 +39,8 @@ from openpyxl.formatting.rule import CellIsRule
 from openpyxl.chart.label import DataLabelList
 from openpyxl.worksheet.datavalidation import DataValidation
 # Calendar
-from core.utils import CalOutings
+from core.utils.calendar import CalEvents, get_date, prev_month, next_month, get_cal_locale
 from django.utils.safestring import mark_safe
-from calendar import monthrange
 
 from profiles.models import Profile, CustomUser
 from activities.models import Activity
@@ -50,27 +50,6 @@ from django.contrib.gis.geos import Point
 longitude = 8.191788
 latitude = 48.761681
 user_location = Point(longitude, latitude, srid=4326)
-
-
-# FUNCTIONS USED FOR THE CALENDAR
-def get_date(req_day):
-    if req_day:
-        year, month = (int(x) for x in req_day.split('-'))
-        return date(year, month, day=1)
-    return date.today()
-    
-def prev_month(d):
-    first = d.replace(day=1)
-    prev_month = first - timedelta(days=1)
-    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
-    return month
-
-def next_month(d):
-    days_in_month = monthrange(d.year, d.month)[1]
-    last = d.replace(day=days_in_month)
-    next_month = last + timedelta(days=1)
-    month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
-    return month
 
 
 # VIEWS FOR ANONYM WEB SURFERS
@@ -155,15 +134,9 @@ class ProfileDetailView(DetailView):
             context['availability_area_geo_poly'] = [[i[0], i[1]] for i in poly_tuple] or None
         # Calendar Context
         d = get_date(self.request.GET.get('month', None))
-        locales_dic={}
-        locales_dic['fr']='fr_FR.utf-8'
-        locales_dic['en']='en_US.utf-8'
-        locales_dic['es']='es_ES.utf-8'
-        locales_dic['it']='it_IT.utf-8'
-        locales_dic['de']='de_DE.utf-8'
-        cal = CalOutings(year=d.year, month=d.month, profile=self.kwargs['username'], locale=locales_dic.get(get_language()))
+        cal = CalEvents(year=d.year, month=d.month, profile=self.kwargs['username'], locale=get_cal_locale(get_language()))
         html_cal = cal.formatmonth(withyear=True)
-        context['cal_outings'] = mark_safe(html_cal)
+        context['cal_events'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         return context
@@ -247,6 +220,22 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
 
 
 # VIEWS FOR AUTHENTICATED PROFILES
+
+class ProfileHomepageView(TemplateView):
+    template_name = 'profiles/my_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Calendar Context
+        d = get_date(self.request.GET.get('month', None))
+        cal = CalEvents(year=d.year, month=d.month, profile=self.request.user.username, locale=get_cal_locale(get_language()))
+        html_cal = cal.formatmonth(withyear=True)
+        context['cal_events'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
+        return context
+
+
 
 class ProfileUpdateView(UserPassesTestMixin, UpdateView):
     '''A view for the authenticated profile to update its profile.'''

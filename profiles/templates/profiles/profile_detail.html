@@ -102,9 +102,9 @@
         </div>
         {% endfor %}
     </div>
-    <div id="cal-outings" class="row mb-4">
+    <div id="cal-events" class="row mb-4">
         <div class="col-12">
-            {{ cal_outings }}
+            {{ cal_events }}
         </div>
     </div>
 {% endif %}
@@ -112,14 +112,10 @@
 
 {% block js %}
 <script>
-    var previousMonthElt = document.getElementsByClassName('previous-month');
-    previousMonthUrl = "{% url 'profiles:detail' profile.user.username %}?{{ prev_month }}#cal-outings"
-    previousMonthElt[0].setAttribute('href', previousMonthUrl)
-    
-    var nextMonthElt = document.getElementsByClassName('next-month');
-    nextMonthUrl = "{% url 'profiles:detail' profile.user.username %}?{{ next_month }}#cal-outings"
-    nextMonthElt[0].setAttribute('href', nextMonthUrl)
+    var previousMonthUrl = "{% url 'profiles:detail' profile.user.username %}?{{ prev_month }}#cal-events"
+    var nextMonthUrl = "{% url 'profiles:detail' profile.user.username %}?{{ next_month }}#cal-events"
 </script>
+<script src="{% static 'js/calendar.js' %}"></script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 {% if profile.location or availability_area_geo_poly %}
 <script>

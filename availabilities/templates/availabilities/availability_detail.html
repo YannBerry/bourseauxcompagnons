@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ availability.start_date }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        {% if messages %}
+            <ul class="messages list-unstyled">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="row align-items-center">
+            <div class="col-auto mr-auto">
+                <h1>Availability</h1>
+            </div>
+            {% if user.is_authenticated and availability.author.username == user.username %}
+            <div class="col-auto">
+                <a href="{% url 'availabilities:update' availability.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit availability' %}"></a>
+                <a href="{% url 'availabilities:delete' availability.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete availability ' %}"></a>
+            </div>
+            {% endif %}
+        </div>
+        {% if availability.activities.all %}
+        {% for activity in availability.activities.all %}
+        <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+        {% endfor %}
+        {% endif %}
+        <p>        
+            {% blocktrans with start_date=availability.start_date|date:"SHORT_DATE_FORMAT" end_date=availability.end_date|date:"SHORT_DATE_FORMAT" count duration=availability.duration %}
+            During the {{ start_date }}.
+            {% plural %}
+            On {{ duration }} days. From the {{ start_date }} to the {{ end_date }}.
+            {% endblocktrans %}
+        </p>
+        <p class="text-justify">{{ availability.description|linebreaksbr }}</p>
+        <p>{% blocktrans with profile_url=availability.author.profile.get_absolute_url profile_username=availability.author.username %}Back to <a href="{{ profile_url }}">{{ profile_username }}</a>'s profile.{% endblocktrans %}</p>
+    </div>
+</div>
+{% endblock%}

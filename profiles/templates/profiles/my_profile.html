@@ -45,6 +45,19 @@
     </div>
     <div class="row mb-2">
         <div class="col-auto mr-auto">
+            <h2>{% trans 'My availabilities' %}</h2>
+        </div>
+        <div class="col-auto">
+            <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Add new' %}</a>
+        </div>
+    </div>
+    <div id="cal-events" class="row mb-4">
+        <div class="col-12">
+            {{ cal_events }}
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-auto mr-auto">
             <h2>{% trans 'My outings' %}</h2>
         </div>
         <div class="col-auto">
@@ -91,4 +104,12 @@
         </div>
     </div>
 {% endif %}
+{% endblock %}
+
+{% block js %}
+<script>
+    var previousMonthUrl = "{% url 'my-profile' %}?{{ prev_month }}#cal-events"
+    var nextMonthUrl = "{% url 'my-profile' %}?{{ next_month }}#cal-events"
+</script>
+<script src="{% static 'js/calendar.js' %}"></script>
 {% endblock %}

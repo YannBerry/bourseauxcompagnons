@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.db.models.signals import pre_save
 
 from activities.models import Activity
-from outings.utils import unique_slug_generator
+from core.utils.slug import unique_slug_generator
 
 
 class Outing(models.Model):
@@ -22,7 +22,7 @@ class Outing(models.Model):
     )
     start_date = models.DateField(verbose_name=_('start'))
     end_date = models.DateField(verbose_name=_('end'))
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('authors'))
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('author'))
     activities = models.ManyToManyField(Activity, blank=False, verbose_name=_('activities'))
     topo_link = models.URLField(
         verbose_name=_("URL link to the outing topo"),

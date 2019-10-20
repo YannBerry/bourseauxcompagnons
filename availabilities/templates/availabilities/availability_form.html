@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block title %}{% trans 'Create an availability' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            {{ form.start_date.label_tag }}
+            <input type="text" name="{{ form.start_date.name }}"{% if form.start_date.value != None %} value="{{ form.start_date.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.start_date.name }}">
+            {{ form.start_date.errors }}
+            {% if form.start_date.help_text %}
+                <p class="helptext">{{ form.start_date.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-3 mb-4">
+            {{ form.end_date.label_tag }}
+            <input type="text" name="{{ form.end_date.name }}"{% if form.end_date.value != None %} value="{{ form.end_date.value|stringformat:'s' }}"{% endif %} class="form-control" id="id_{{ form.end_date.name }}">
+            {{ form.end_date.errors }}
+            {% if form.end_date.help_text %}
+                <p class="helptext">{{ form.end_date.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-12 mb-4">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {{ form.description.errors }}
+            {% if form.description.help_text %}
+                <p class="helptext">{{ form.description.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        <div class="col-12 mb-4">
+            {{ form.activities.label_tag }}
+            {{ form.activities }}
+            {{ form.activities.errors }}
+            {% if form.activities.help_text %}
+                <p class="helptext">{{ form.activities.help_text|safe }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <input type="submit" value="{% trans 'Create' %}" class="btn btn-primary mb-4" />
+    {% if availability %}
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary mb-4" role="button">{% trans 'Cancel' %}</a>
+    {% endif %}
+</form>
+{% endblock%}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/it.js"></script>
+<script>
+    flatpickr("#id_start_date", {
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    });
+    flatpickr("#id_end_date", {
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    });
+</script>
+{% endblock %}

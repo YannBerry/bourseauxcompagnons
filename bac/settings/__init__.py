@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'contactpage.apps.ContactpageConfig',
     'features.apps.FeaturesConfig',
     'activities.apps.ActivitiesConfig',
+    'availabilities.apps.AvailabilitiesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
