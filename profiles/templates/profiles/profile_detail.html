@@ -32,7 +32,7 @@
                     {% if profile.age %}{% blocktrans with age=profile.age %}Age: {{ age }} years old{% endblocktrans %}<br>{% endif %}
                     {% trans 'Looking for partners for' %}
                     {% for activity in profile.activities.all %}
-                        <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+                        <span class="badge badge-pill badge-info">{{ activity.name }}{% for grade in profile.grades.all %}{% if grade.activity.name == activity.name %} - {{ grade.name }}{% endif %}{% endfor %}</span>
                     {% endfor %}
                 </p>
             </div>
@@ -102,6 +102,8 @@
         </div>
         {% endfor %}
     </div>
+{% endif %}
+{% if profile.user.outing_set.all or profile.user.availability_set.all %}
     <div id="cal-events" class="row mb-4">
         <div class="col-12">
             {{ cal_events }}

@@ -54,7 +54,7 @@ class Profile(models.Model):
     )
     list_of_courses = models.TextField(verbose_name=_('list of courses'), blank=True)
     activities = models.ManyToManyField(Activity, blank=False, verbose_name=_('activities'))
-    #grades = models.ManyToManyField(Grade, blank=True, verbose_name=_('grades'))
+    grades = models.ManyToManyField(Grade, blank=True, verbose_name=_('grades'))
     availability_area_geo = models.PolygonField(
         verbose_name=_('availability area'),
         help_text=_("Click on the map to build the area where you are available for going out in the mountains. Tip: click on 'Shift' key while you draw to activate freehand drawing."),

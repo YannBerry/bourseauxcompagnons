@@ -23,5 +23,4 @@ class Grade(models.Model):
         verbose_name_plural = _('grades')
 
     def __str__(self):
-        return f'{self.activity.name} : {self.name}'
-
+        return f'{self.activity.name}: {self.name}'

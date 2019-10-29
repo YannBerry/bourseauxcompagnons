@@ -41,9 +41,11 @@ from openpyxl.worksheet.datavalidation import DataValidation
 # Calendar
 from core.utils.calendar import CalEvents, get_date, prev_month, next_month, get_cal_locale
 from django.utils.safestring import mark_safe
+# AJAX request
+from django.views.decorators.csrf import csrf_exempt
 
 from profiles.models import Profile, CustomUser
-from activities.models import Activity
+from activities.models import Activity, Grade
 from profiles.forms import ProfileCreationForm, AccountForm, ProfileForm, ContactProfileForm
 
 from django.contrib.gis.geos import Point
@@ -246,13 +248,24 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
 
     def get_object(self):
         return get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
-    '''
-    def form_valid(self, form):
-        coordinates = form.cleaned_data['location'].split(',')
-        print(coordinates)
-        form.instance.location = Point(float(coordinates[0]),float(coordinates[1]))
-        return super().form_valid(form)
-    '''
+    
+    # def form_valid(self, form):
+    #     coordinates = form.cleaned_data['location'].split(',')
+    #     print(coordinates)
+    #     form.instance.location = Point(float(coordinates[0]),float(coordinates[1]))
+    #     return super().form_valid(form)
+
+
+@csrf_exempt
+def load_grades(request):
+    checked_activities = request.POST.getlist('a')
+    checked_grades = request.POST.getlist('g')
+    if checked_activities:
+        grades = Grade.objects.filter(eval(' | '.join(f'Q(activity="{ activity }")' for activity in checked_activities)))
+    else:
+        grades = Grade.objects.none()
+    checked_grades = list(map(int, checked_grades))
+    return render(request, 'profiles/grades_dropdown_list_options.html', {'grades': grades, 'checked_grades': checked_grades})
 
 
 class AccountUpdateView(UserPassesTestMixin, UpdateView):

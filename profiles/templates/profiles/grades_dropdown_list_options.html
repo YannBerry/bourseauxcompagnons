@@ -1,0 +1,8 @@
+{% for grade in grades %}
+<li>
+<label for="id_grades_{{ grade.pk }}">
+<input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade }}</label>
+</li>
+{% endfor %}
+
+<p></p>

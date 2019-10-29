@@ -53,6 +53,15 @@
                 {% if form.activities.help_text %}
                     <p class="helptext">{{ form.activities.help_text|safe }}</p>
                 {% endif %}
+                <p id="demo"></p>
+            </div>
+            <div class="col-12 mb-4">
+                {{ form.grades.label_tag }}
+                {{ form.grades }}
+                {{ form.grades.errors }}
+                {% if form.grades.help_text %}
+                    <p class="helptext">{{ form.grades.help_text|safe }}</p>
+                {% endif %}
             </div>
             <div class="col-sm-6 mb-4">
                 {{ form.location.label_tag }}
@@ -109,6 +118,57 @@
 {% endblock%}
 
 {% block js %}
+<script>
+let httpRequest;
+let activitiesElts = document.querySelectorAll("input[name=activities]");
+
+for (let i = 0; i < activitiesElts.length; i++) {
+    activitiesElts[i].addEventListener("change", makeRequest);
+}
+
+function makeRequest() {
+    let checkedActivities = "";
+    for (let i = 0; i < activitiesElts.length; i++) {
+        if (activitiesElts[i].checked){
+            if (checkedActivities != "") {
+                checkedActivities += "&a=" + activitiesElts[i].value;
+            } else {
+                checkedActivities += "a=" + activitiesElts[i].value;
+            }
+        }
+    }
+    let checkedGrades = "";
+    let checkedGradesElts = document.querySelectorAll("input[name=grades]:checked");
+    for (let i = 0; i < checkedGradesElts.length; i++) {
+        if (checkedGrades != "") {
+            checkedGrades += "&g=" + checkedGradesElts[i].value;
+        } else {
+            checkedGrades += "g=" + checkedGradesElts[i].value;
+        }
+    }
+    let params = ""
+    if (checkedGrades != "") {
+        params = checkedActivities + "&" + checkedGrades
+    } else {
+        params = checkedActivities
+    }
+    httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('POST', '{% url "profiles:ajax-load-grades" %}');
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send(params);
+}
+
+function alertContents() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+            document.getElementById("id_grades").innerHTML = httpRequest.responseText;
+        } else {
+            alert('Il y a eu un problème avec la requête.');
+        }
+    }
+}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
