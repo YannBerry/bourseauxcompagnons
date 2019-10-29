@@ -1,8 +1,11 @@
-{% for grade in grades %}
-<li>
-<label for="id_grades_{{ grade.pk }}">
-<input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade }}</label>
-</li>
+{% regroup grades by activity as activity_list %}
+{% for activity in activity_list %}
+    <li>{{ activity.grouper }}
+        <ul>
+            {% for grade in activity.list %}
+            <label for="id_grades_{{ grade.pk }}">
+            <input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
+            {% endfor %}
+        </ul>
+    </li>
 {% endfor %}
-
-<p></p>
