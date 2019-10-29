@@ -52,15 +52,16 @@ class Cal(LocaleHTMLCalendar):
 
 
 class CalEvents(Cal):
-    def formatday(self, day, outings, availabilities):
-        outings_per_day = outings.filter(start_date__day=day)
-        availabilities_per_day = availabilities.filter(start_date__day=day)
-        o = ''
-        a = ''
-        for outing in outings_per_day:
-            o += f"<li class='overflow-hidden'><p><a href='{ outing.get_absolute_url() }'><span class='badge badge-pill badge-info'>{ outing.title }</span></a></p</li>"
-        for availability in availabilities_per_day:
-            a += f"<a href='{ availability.get_absolute_url() }'><span class='badge badge-pill badge-success'>Available</span></a> "
+    def formatday(self, day, outings, availabilities, year, month):
+        if day != 0:
+            outings_per_day = outings.filter(start_date__lte=date(year, month, day), end_date__gte=date(year, month, day))
+            availabilities_per_day = availabilities.filter(start_date__lte=date(year, month, day), end_date__gte=date(year, month, day))
+            o = ''
+            a = ''
+            for outing in outings_per_day:
+                o += f"<li class='overflow-hidden'><p><a href='{ outing.get_absolute_url() }'><span class='badge badge-pill badge-info'>{ outing.title }</span></a></p</li>"
+            for availability in availabilities_per_day:
+                a += f"<a href='{ availability.get_absolute_url() }'><span class='badge badge-pill badge-success'>Available</span></a> "
 
         if day == 0:
             return '<td class="cal_noday">&nbsp;</td>'
@@ -73,10 +74,10 @@ class CalEvents(Cal):
         else:
             return f"<td><span class='cal-date'>{day}</span></td>"
 
-    def formatweek(self, theweek, outings, availabilities):
+    def formatweek(self, theweek, outings, availabilities, year, month):
         w = ''
         for d, weekday in theweek:
-            w += self.formatday(d, outings, availabilities)
+            w += self.formatday(d, outings, availabilities, year, month)
         return f'<tr> {w} </tr>'
 
     def formatmonthname(self, theyear, themonth, withyear=True):
@@ -94,7 +95,7 @@ class CalEvents(Cal):
 
     def formatmonth(self, withyear=True):
         outings = Outing.objects.filter(author__username=self.profile, start_date__year=self.year, start_date__month=self.month)
-        availabilities = Availability.objects.filter(author__username=self.profile, start_date__year=self.year, start_date__month=self.month)
+        availabilities = Availability.objects.filter(author__username=self.profile)
 
         cal = f'<table border="0" cellpadding="0" cellspacing="0" class="cal-table">\n'
         cal += f'<tr><th><a class="previous-month unstyled text-info">&lt;&lt;</a></th>'
@@ -102,7 +103,7 @@ class CalEvents(Cal):
         cal += f'<th><a class="next-month unstyled text-info">&gt;&gt;</a></th></tr>'
         cal += f'{self.formatweekheader()}\n'
         for week in self.monthdays2calendar(self.year, self.month):
-            cal += f'{self.formatweek(week, outings, availabilities)}\n'
+            cal += f'{self.formatweek(week, outings, availabilities, self.year, self.month)}\n'
         cal += f'</table>'
         print(cal)
         return cal
