@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with availability_start_date=availability.start_date %}Removal of availability starting the {{ availability_start_date }}{% endblocktrans %} | {{ block.super }}{% endblock %}
+{% block title %}{% blocktrans with availability_start_date=availability.start_date %}Remove availability starting the {{ availability_start_date }}{% endblocktrans %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>

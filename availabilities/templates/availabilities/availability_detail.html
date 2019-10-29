@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{{ availability.start_date }} | {{ block.super }}{% endblock %}
+{% block title %}{% blocktrans with availability_start_date=availability.start_date %}Availability starting the {{ availability_start_date }}{% endblocktrans %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="card mb-4">

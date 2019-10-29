@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans 'Contact' %} | {{ block.super }}{% endblock %}
+{% block title %}{% blocktrans with username=username %}Contact {{ username }}{% endblocktrans %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-27 18:05+0200\n"
+"POT-Creation-Date: 2019-10-29 15:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,8 @@ msgstr "nombre"
 msgid "activity"
 msgstr ""
 
-#: activities/models.py:10 outings/models.py:26 profiles/models.py:56
+#: activities/models.py:10 availabilities/models.py:18 outings/models.py:26
+#: profiles/models.py:56
 msgid "activities"
 msgstr ""
 
@@ -34,75 +35,203 @@ msgstr ""
 msgid "grade"
 msgstr ""
 
-#: activities/models.py:23
+#: activities/models.py:23 profiles/models.py:57
 msgid "grades"
 msgstr ""
 
-#: bac/urls.py:26
-msgid "accounts/"
+#: availabilities/forms.py:45 outings/forms.py:46
+msgid "Your end date is not equal or later than your start date."
 msgstr ""
 
-#: bac/urls.py:27
-msgid "accounts/register/profile/"
-msgstr ""
-
-#: bac/urls.py:28
-msgid "accounts/profiles/my-profile/"
-msgstr ""
-
-#: bac/urls.py:29
-msgid "accounts/<username>/update/"
-msgstr ""
-
-#: bac/urls.py:30
-msgid "accounts/profiles/<username>/update/"
-msgstr ""
-
-#: bac/urls.py:31
-msgid "accounts/<username>/delete/"
-msgstr ""
-
-#: bac/urls.py:32
-msgid "profiles/"
-msgstr ""
-
-#: bac/urls.py:33
-msgid "outings/"
-msgstr ""
-
-#: bac/urls.py:34
-msgid "contact/"
-msgstr ""
-
-#: bac/urls.py:35
-msgid "features/"
-msgstr ""
-
-#: bac/urls.py:36
-msgid "admin/"
-msgstr ""
-
-#: contactpage/forms.py:8 profiles/forms.py:186
-msgid "Your e-mail address"
-msgstr ""
-
-#: contactpage/forms.py:9 profiles/forms.py:187
-msgid "Subject"
-msgstr ""
-
-#: contactpage/forms.py:10 profiles/forms.py:188
-msgid "Message"
-msgstr ""
-
-#: contactpage/forms.py:35 outings/forms.py:54 profiles/forms.py:99
-#: profiles/forms.py:132 profiles/forms.py:178 profiles/forms.py:213
+#: availabilities/forms.py:53 contactpage/forms.py:35 outings/forms.py:54
+#: profiles/forms.py:107 profiles/forms.py:139 profiles/forms.py:202
+#: profiles/forms.py:237
 msgid "Please correct detected error / errors."
 msgstr ""
 
+#: availabilities/models.py:14 outings/models.py:20
+msgid "description"
+msgstr ""
+
+#: availabilities/models.py:15 outings/models.py:23
+msgid "start"
+msgstr ""
+
+#: availabilities/models.py:16 outings/models.py:24
+msgid "end"
+msgstr ""
+
+#: availabilities/models.py:17 outings/models.py:25
+msgid "author"
+msgstr ""
+
+#: availabilities/models.py:21
+msgid "availability"
+msgstr ""
+
+#: availabilities/models.py:22
+msgid "availabilities"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_confirm_delete.html:4
+#, python-format
+msgid "Remove availability starting the %(availability_start_date)s"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_confirm_delete.html:10
+#, python-format
+msgid ""
+"Are you sure you want to delete your availability starting the "
+"'%(availability_start_date)s'?"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_confirm_delete.html:11
+#: outings/templates/outings/outing_confirm_delete.html:11
+#: templates/registration/account_confirm_delete.html:11
+msgid "Delete"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_confirm_delete.html:12
+#: availabilities/templates/availabilities/availability_form.html:52
+#: outings/templates/outings/outing_confirm_delete.html:12
+#: outings/templates/outings/outing_form.html:68
+#: profiles/templates/profiles/profile_form.html:111
+#: profiles/templates/profiles/profile_register.html:73
+#: templates/registration/account_confirm_delete.html:12
+#: templates/registration/account_form.html:47
+msgid "Cancel"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_detail.html:5
+#, python-format
+msgid "Availability starting the %(availability_start_date)s"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_detail.html:23
+#: outings/templates/outings/outing_detail.html:23
+#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/profile_detail.html:24
+msgid "Edit icon"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_detail.html:23
+msgid "Edit availability"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_detail.html:24
+#: outings/templates/outings/outing_detail.html:24
+#: profiles/templates/profiles/my_profile.html:81
+msgid "Delete icon"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_detail.html:24
+msgid "Delete availability "
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_detail.html:34
+#: outings/templates/outings/outing_detail.html:32
+#, python-format
+msgid ""
+"\n"
+"            During the %(start_date)s.\n"
+"            "
+msgid_plural ""
+"\n"
+"            On %(duration)s days. From the %(start_date)s to the "
+"%(end_date)s.\n"
+"            "
+msgstr[0] ""
+msgstr[1] ""
+
+#: availabilities/templates/availabilities/availability_detail.html:41
+#, python-format
+msgid "Back to <a href=\"%(profile_url)s\">%(profile_username)s</a>'s profile."
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_form.html:10
+msgid "Create an availability"
+msgstr ""
+
+#: availabilities/templates/availabilities/availability_form.html:50
+#: outings/templates/outings/outing_form.html:66
+#: profiles/templates/profiles/profile_register.html:72
+msgid "Create"
+msgstr ""
+
+#: availabilities/urls.py:13 outings/urls.py:15
+msgid "create/"
+msgstr ""
+
+#: availabilities/urls.py:15 outings/urls.py:18
+msgid "<slug:slug>/edit/"
+msgstr ""
+
+#: availabilities/urls.py:16 outings/urls.py:19
+msgid "<slug:slug>/delete/"
+msgstr ""
+
+#: bac/urls.py:27
+msgid "accounts/"
+msgstr ""
+
+#: bac/urls.py:28
+msgid "accounts/register/profile/"
+msgstr ""
+
+#: bac/urls.py:29
+msgid "accounts/profiles/my-profile/"
+msgstr ""
+
+#: bac/urls.py:30
+msgid "accounts/<username>/update/"
+msgstr ""
+
+#: bac/urls.py:31
+msgid "accounts/profiles/<username>/update/"
+msgstr ""
+
+#: bac/urls.py:32
+msgid "accounts/<username>/delete/"
+msgstr ""
+
+#: bac/urls.py:33
+msgid "profiles/"
+msgstr ""
+
+#: bac/urls.py:34
+msgid "outings/"
+msgstr ""
+
+#: bac/urls.py:35
+msgid "availabilities/"
+msgstr ""
+
+#: bac/urls.py:36
+msgid "contact/"
+msgstr ""
+
+#: bac/urls.py:37
+msgid "features/"
+msgstr ""
+
+#: bac/urls.py:38
+msgid "admin/"
+msgstr ""
+
+#: contactpage/forms.py:8 profiles/forms.py:210
+msgid "Your e-mail address"
+msgstr ""
+
+#: contactpage/forms.py:9 profiles/forms.py:211
+msgid "Subject"
+msgstr ""
+
+#: contactpage/forms.py:10 profiles/forms.py:212
+msgid "Message"
+msgstr ""
+
 #: contactpage/templates/contactpage/contactpage.html:4
-#: profiles/templates/profiles/contact_profile_form.html:4
-#: templates/base.html:47
-msgid "Contact"
+msgid "Contact bourseauxcompagnons"
 msgstr ""
 
 #: contactpage/templates/contactpage/contactpage.html:11
@@ -136,10 +265,6 @@ msgstr ""
 msgid "votes/"
 msgstr ""
 
-#: outings/forms.py:46
-msgid "Your end date is not equal or later than your start date."
-msgstr ""
-
 #: outings/models.py:14
 msgid "title"
 msgstr ""
@@ -150,26 +275,10 @@ msgid ""
 "the Grand Pic'."
 msgstr ""
 
-#: outings/models.py:20
-msgid "description"
-msgstr ""
-
 #: outings/models.py:21
 msgid ""
 "Take the time to write concise description that makes people want to join "
 "you!"
-msgstr ""
-
-#: outings/models.py:23
-msgid "start"
-msgstr ""
-
-#: outings/models.py:24
-msgid "end"
-msgstr ""
-
-#: outings/models.py:25
-msgid "authors"
 msgstr ""
 
 #: outings/models.py:28
@@ -193,7 +302,7 @@ msgstr ""
 
 #: outings/templates/outings/outing_confirm_delete.html:4
 #, python-format
-msgid "Removal of %(outing_title)s"
+msgid "Remove %(outing_title)s"
 msgstr ""
 
 #: outings/templates/outings/outing_confirm_delete.html:10
@@ -201,54 +310,15 @@ msgstr ""
 msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
 msgstr ""
 
-#: outings/templates/outings/outing_confirm_delete.html:11
-#: templates/registration/account_confirm_delete.html:11
-msgid "Delete"
-msgstr ""
-
-#: outings/templates/outings/outing_confirm_delete.html:12
-#: outings/templates/outings/outing_form.html:68
-#: profiles/templates/profiles/profile_form.html:102
-#: profiles/templates/profiles/profile_register.html:73
-#: templates/registration/account_confirm_delete.html:12
-#: templates/registration/account_form.html:47
-msgid "Cancel"
-msgstr ""
-
 #: outings/templates/outings/outing_detail.html:23
-#: profiles/templates/profiles/my_profile.html:65
-#: profiles/templates/profiles/profile_detail.html:24
-msgid "Edit icon"
-msgstr ""
-
-#: outings/templates/outings/outing_detail.html:23
-#: profiles/templates/profiles/my_profile.html:65
+#: profiles/templates/profiles/my_profile.html:78
 msgid "Edit outing"
 msgstr ""
 
 #: outings/templates/outings/outing_detail.html:24
-#: profiles/templates/profiles/my_profile.html:68
-msgid "Delete icon"
-msgstr ""
-
-#: outings/templates/outings/outing_detail.html:24
-#: profiles/templates/profiles/my_profile.html:68
+#: profiles/templates/profiles/my_profile.html:81
 msgid "Delete outing "
 msgstr ""
-
-#: outings/templates/outings/outing_detail.html:32
-#, python-format
-msgid ""
-"\n"
-"            During the %(start_date)s.\n"
-"            "
-msgid_plural ""
-"\n"
-"            On %(duration)s days. From the %(start_date)s to the "
-"%(end_date)s.\n"
-"            "
-msgstr[0] ""
-msgstr[1] ""
 
 #: outings/templates/outings/outing_detail.html:39
 msgid "Link to the outing topo!"
@@ -256,11 +326,6 @@ msgstr ""
 
 #: outings/templates/outings/outing_form.html:10
 msgid "Create an outing"
-msgstr ""
-
-#: outings/templates/outings/outing_form.html:66
-#: profiles/templates/profiles/profile_register.html:72
-msgid "Create"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:6 templates/base.html:39
@@ -272,12 +337,12 @@ msgid "Keywords..."
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:15
-#: profiles/templates/profiles/profile_list.html:11
+#: profiles/templates/profiles/profile_list.html:16
 msgid "Filter by activities"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:22
-#: profiles/templates/profiles/profile_list.html:18
+#: profiles/templates/profiles/profile_list.html:33
 msgid "Filter"
 msgstr ""
 
@@ -342,20 +407,8 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: outings/templates/outings/outing_list.html:92
+#: outings/templates/outings/outing_list.html:91
 msgid "There is no outing fitting your search criteria."
-msgstr ""
-
-#: outings/urls.py:15
-msgid "create/"
-msgstr ""
-
-#: outings/urls.py:18
-msgid "<slug:slug>/edit/"
-msgstr ""
-
-#: outings/urls.py:19
-msgid "<slug:slug>/delete/"
 msgstr ""
 
 #: profiles/admin.py:17
@@ -370,53 +423,53 @@ msgstr ""
 msgid "Important dates"
 msgstr ""
 
-#: profiles/forms.py:49
+#: profiles/forms.py:56
 msgid "Activities"
 msgstr ""
 
-#: profiles/forms.py:55 profiles/templates/profiles/profile_detail.html:48
+#: profiles/forms.py:62 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
 msgstr ""
 
-#: profiles/forms.py:56
+#: profiles/forms.py:63
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
 msgstr ""
 
-#: profiles/forms.py:186
+#: profiles/forms.py:210
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
 
-#: profiles/models.py:21
+#: profiles/models.py:20
 msgid "e-mail address"
 msgstr ""
 
-#: profiles/models.py:22
+#: profiles/models.py:21
 msgid "profile status"
 msgstr ""
 
-#: profiles/models.py:28
+#: profiles/models.py:27
 msgid "base user"
 msgstr ""
 
-#: profiles/models.py:29
+#: profiles/models.py:28
 msgid "base users"
 msgstr ""
 
-#: profiles/models.py:44
+#: profiles/models.py:43
 msgid "public profile"
 msgstr ""
 
-#: profiles/models.py:44
+#: profiles/models.py:43
 msgid "When your profile is public, it is displayed in the profiles list."
 msgstr ""
 
-#: profiles/models.py:46
+#: profiles/models.py:45
 msgid "location"
 msgstr ""
 
-#: profiles/models.py:47
+#: profiles/models.py:46
 msgid "Click on the map to show where you live."
 msgstr ""
 
@@ -557,6 +610,11 @@ msgid ""
 "                                                "
 msgstr ""
 
+#: profiles/templates/profiles/contact_profile_form.html:4
+#, python-format
+msgid "Contact %(username)s"
+msgstr ""
+
 #: profiles/templates/profiles/contact_profile_form.html:11
 #, python-format
 msgid "Get in touch with %(username)s"
@@ -596,14 +654,27 @@ msgid "Delete my account"
 msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:48
-msgid "My outings"
+msgid "My availabilities"
 msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:51
+#: profiles/templates/profiles/my_profile.html:64
 msgid "Add new"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:80 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:61
+msgid "My outings"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:93
+msgid "Exports"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:96
+msgid "Export profiles to Excel format"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:103 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:11
 #: templates/registration/login.html:35
 #: templates/registration/password_reset_complete.html:9
@@ -668,44 +739,30 @@ msgstr[1] ""
 msgid "Update my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_form.html:100
+#: profiles/templates/profiles/profile_form.html:109
 #: templates/registration/account_form.html:45
 msgid "Save"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:5
+#: profiles/templates/profiles/profile_list.html:10
 msgid "Profiles list"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:27 templates/index.html:123
+#: profiles/templates/profiles/profile_list.html:42 templates/index.html:123
 msgid "Add my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:37
-#, python-format
-msgid ""
-"\n"
-"                One profile belongs to one of the following categories:\n"
-"                "
-msgid_plural ""
-"\n"
-"                %(counter)s profiles belong to one of the following "
-"categories:\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
-
-#: profiles/templates/profiles/profile_list.html:63 templates/index.html:101
+#: profiles/templates/profiles/profile_list.html:66 templates/index.html:101
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:84
+#: profiles/templates/profiles/profile_list.html:87
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
 #: profiles/templates/profiles/profile_register.html:9
-msgid "Profile creation"
+msgid "Create a profile"
 msgstr ""
 
 #: profiles/templates/profiles/profile_register.html:17
@@ -764,23 +821,31 @@ msgid ""
 "my profile</a>"
 msgstr ""
 
-#: profiles/urls.py:16
+#: profiles/urls.py:18
 msgid "<username>/contact/"
 msgstr ""
 
-#: profiles/urls.py:17
+#: profiles/urls.py:19
 msgid "<username>/contact/done/"
 msgstr ""
 
-#: profiles/views.py:110
+#: profiles/urls.py:20
+msgid "export/xlsx/"
+msgstr ""
+
+#: profiles/urls.py:21
+msgid "ajax/load-grades/"
+msgstr ""
+
+#: profiles/views.py:184
 msgid "Initial contact"
 msgstr ""
 
-#: profiles/views.py:111
+#: profiles/views.py:185
 msgid "Hi "
 msgstr ""
 
-#: profiles/views.py:122
+#: profiles/views.py:196
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -816,6 +881,10 @@ msgstr ""
 
 #: templates/base.html:42
 msgid "FEATURES"
+msgstr ""
+
+#: templates/base.html:47
+msgid "Contact"
 msgstr ""
 
 #: templates/base.html:83
