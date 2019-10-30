@@ -13,6 +13,24 @@
     <form method="get" action="{% url 'profiles:search' %}">
         <div class="form-row">
             <div class="form-group col-12 col-sm-10 col-xl-12">
+                <h6 class="mb-1 filter_title">{% trans 'Availabilities' %}</h6>
+                <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
+                <div class="input-group">
+                    <input type="text" name="start_date" class="form-control" id="id_start_date">
+                    <div id="id_start_date_clear_container" class="input-group-append">
+                        <button id="id_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                    </div>
+                </div>
+                <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
+                <div class="input-group">
+                    <input type="text" name="end_date" class="form-control" id="id_end_date">
+                    <div id="id_end_date_clear_container" class="input-group-append">
+                        <button id="id_end_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-12 col-sm-10 col-xl-12">
+                <h6 class="mb-1 filter_title">{% trans 'Activities' %}</h6>
                 <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
                     {% for activity in all_activities %}
                         <option>{{ activity.name }}</option>
@@ -20,12 +38,13 @@
                 </select>
             </div>
             <div class="form-group col-12 col-sm-10 col-xl-12">
+                <h6 class="mb-1 filter_title">{% trans 'Where' %}</h6>
                 <div id="availabilityformmap" style="height: 350px;"></div>
                 <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
             </div>
             {% if user.is_authenticated and user.profile.location %}
             <div class="form-group col-12 col-sm-10 col-xl-12">
-                <label for="id_around_me">Around my profile location (50 km):</label>
+                <label for="id_around_me">{% trans "Around my profile location (50 km)" %}</label>
                 <input class="custom-form-check-inline" type="checkbox" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
             </div>
             {% endif %}
@@ -92,6 +111,50 @@
 {% endblock %}
 
 {% block js %}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/it.js"></script>
+<script>
+    let startDateCalendar = flatpickr("#id_start_date", {
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    });
+    let endDateCalendar = flatpickr("#id_end_date", {
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    });
+
+    let startDateClearElt = document.getElementById('id_start_date_clear');
+    let endDateClearElt = document.getElementById('id_end_date_clear');
+    startDateClearElt.addEventListener("click", function() {
+        startDateCalendar.clear();
+    });
+    endDateClearElt.addEventListener("click", function() {
+        endDateCalendar.clear();
+    });
+
+    function isMobileDevice() {
+        return ;
+    };
+
+    // HIDE THE DELETE BUTTON IF THE WEBSITE IS DISPLAYED ON A SMARTPHONE
+    let isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|webOS|BlackBerry|IEMobile|Opera Mini)/i)
+    let startDateClearContainerElt = document.getElementById('id_start_date_clear_container');
+    if (isMobile) {
+        startDateClearContainerElt.style.display = "none";
+    }
+    let endDateClearContainerElt = document.getElementById('id_end_date_clear_container');
+    if (isMobile) {
+        endDateClearContainerElt.style.display = "none";
+    }
+</script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES for 'js/ol_area_formfield.js'

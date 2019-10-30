@@ -61,7 +61,7 @@ class CalEvents(Cal):
             for outing in outings_per_day:
                 o += f"<li class='overflow-hidden'><p><a href='{ outing.get_absolute_url() }'><span class='badge badge-pill badge-info'>{ outing.title }</span></a></p</li>"
             for availability in availabilities_per_day:
-                a += f"<a href='{ availability.get_absolute_url() }'><span class='badge badge-pill badge-success'>Available</span></a> "
+                a += f"<a href='{ availability.get_absolute_url() }'><span class='badge badge-pill badge-success'>Available</span></a>"
 
         if day == 0:
             return '<td class="cal_noday">&nbsp;</td>'
