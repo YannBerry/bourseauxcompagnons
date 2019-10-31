@@ -12,10 +12,10 @@
 {% block leftsidebar %}
     <form method="get" action="{% url 'profiles:search' %}">
         <div class="form-row">
-            <div class="form-group col-12 col-sm-10 col-xl-12">
-                <h6 class="mb-1 filter_title">{% trans 'Availabilities' %}</h6>
+            <div class="form-group col-12">
+                <h6 class="filter_title">{% trans 'Availabilities' %}</h6>
                 <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
-                <div class="input-group">
+                <div class="input-group mb-2">
                     <input type="text" name="start_date" class="form-control" id="id_start_date">
                     <div id="id_start_date_clear_container" class="input-group-append">
                         <button id="id_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
@@ -29,26 +29,26 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group col-12 col-sm-10 col-xl-12">
-                <h6 class="mb-1 filter_title">{% trans 'Activities' %}</h6>
+            <div class="form-group col-12">
+                <h6 class="filter_title">{% trans 'Activities' %}</h6>
                 <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
                     {% for activity in all_activities %}
                         <option>{{ activity.name }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="form-group col-12 col-sm-10 col-xl-12">
-                <h6 class="mb-1 filter_title">{% trans 'Where' %}</h6>
+            <div class="form-group col-12">
+                <h6 class="filter_title">{% trans 'Where' %} <small>(draw on the map)</small></h6>
                 <div id="availabilityformmap" style="height: 350px;"></div>
                 <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
             </div>
             {% if user.is_authenticated and user.profile.location %}
-            <div class="form-group col-12 col-sm-10 col-xl-12">
+            <div class="form-group col-12">
                 <label for="id_around_me">{% trans "Around my profile location (50 km)" %}</label>
                 <input class="custom-form-check-inline" type="checkbox" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
             </div>
             {% endif %}
-            <div class="form-group col-12 col-sm-2 col-xl-12">
+            <div class="form-group col-12">
                 <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
             </div>
         </div>

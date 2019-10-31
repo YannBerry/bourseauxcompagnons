@@ -68,8 +68,8 @@ class ProfileListView(ListView):
         context = super().get_context_data(*args, **kwargs)
         context['all_activities'] = Activity.objects.all()
         context['nb_of_results'] = self.nb_of_results
-        context['selected_activities'] = self.request.GET.getlist('a') or None
-        context['around_me'] = self.request.GET.get('around_me')
+        context['selected_activities'] = self.request.GET.getlist('a', None)
+        context['around_me'] = self.request.GET.get('around_me', None)
         # availability_area_geo_str_json = self.request.GET.get('availability_area_geo')
         # if availability_area_geo_str_json:
         #     availability_area_geo_json = fromstr(availability_area_geo_str_json) # default SRID for json: 4326
@@ -78,15 +78,33 @@ class ProfileListView(ListView):
         return context
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            user_loc = self.request.user.profile.location
-            main_q = Profile.objects.exclude(user=self.request.user).filter(public_profile='True').annotate(distance=Distance('location', user_loc)).order_by('distance')
-        else:
-            main_q = Profile.objects.filter(public_profile='True')
-        selected_activities = self.request.GET.getlist('a')
+        start_date = self.request.GET.get('start_date', None)
+        if start_date:
+            from_date = datetime.strptime(start_date, "%Y-%m-%d").date()
+        end_date = self.request.GET.get('end_date', None)
+        if end_date:
+            till_date = datetime.strptime(end_date, "%Y-%m-%d").date()
+        selected_activities = self.request.GET.getlist('a', None)
         activities_in_current_language = 'activities__name_{}'.format(get_language())
         around_me = self.request.GET.get('around_me')
         availability_area_geo = self.request.GET.get('availability_area_geo')
+
+        main_q = Profile.objects.filter(public_profile='True')
+        
+        if self.request.user.is_authenticated:
+            user_loc = self.request.user.profile.location
+            main_q = main_q.exclude(user=self.request.user).annotate(distance=Distance('location', user_loc)).order_by('distance')
+
+        if start_date and end_date:
+            main_q = main_q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=from_date)
+        elif start_date:
+            main_q = main_q.filter(user__availability__end_date__gte=from_date)
+        elif end_date:
+            main_q = main_q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=date.today())
+
+        if start_date or end_date:
+            main_q = main_q.distinct('last_update', 'user_id')
+
         # Defining querysets of each criteria
         if selected_activities and self.request.user.is_authenticated:
             selected_activities_q = main_q.filter(

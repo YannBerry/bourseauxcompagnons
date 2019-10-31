@@ -3,22 +3,45 @@
 {% load i18n %}
 {% load l10n %}
 
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
 {% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
     <form method="get" action="{% url 'outings:search' %}">
         <div class="form-row">
-            <div class="form-group col-6 col-sm-4 col-xl-12">
+            <div class="form-group col-12">
+                <h6 class="filter_title">{% trans 'Keywords' %}</h6>
                 <input class="form-control" type="search" placeholder="{% trans 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
             </div>
-            <div class="form-group col-6 col-sm-6 col-xl-12">
+            <div class="form-group col-12">
+                <h6 class="filter_title">{% trans 'Dates' %}</h6>
+                <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
+                <div class="input-group mb-2">
+                    <input type="text" name="outing_start_date" class="form-control" id="id_outing_start_date">
+                    <div id="id_outing_start_date_clear_container" class="input-group-append">
+                        <button id="id_outing_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                    </div>
+                </div>
+                <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
+                <div class="input-group">
+                    <input type="text" name="outing_end_date" class="form-control" id="id_outing_end_date">
+                    <div id="id_outing_end_date_clear_container" class="input-group-append">
+                        <button id="id_outing_end_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <h6 class="filter_title">{% trans 'Activities' %}</h6>
                 <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
                     {% for activity in all_activities %}
                         <option>{{ activity.name }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="form-group col-12 col-sm-2 col-xl-12">
+            <div class="form-group col-12">
                 <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
             </div>
         </div>
@@ -91,4 +114,51 @@
         <p>{% trans 'There is no outing fitting your search criteria.' %}</p>
     {% endif %}
     <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/it.js"></script>
+<script>
+    let outingStartDateCalendar = flatpickr("#id_outing_start_date", {
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    });
+    let outingEndDateCalendar = flatpickr("#id_outing_end_date", {
+        locale: "{{ LANGUAGE_CODE }}",
+        altInput: true,
+        altFormat: "j F Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    });
+
+    let outingStartDateClearElt = document.getElementById('id_outing_start_date_clear');
+    let outingEndDateClearElt = document.getElementById('id_outing_end_date_clear');
+    outingStartDateClearElt.addEventListener("click", function() {
+        outingStartDateCalendar.clear();
+    });
+    outingEndDateClearElt.addEventListener("click", function() {
+        outingEndDateCalendar.clear();
+    });
+
+    function isMobileDevice() {
+        return ;
+    };
+
+    // HIDE THE DELETE BUTTON IF THE WEBSITE IS DISPLAYED ON A SMARTPHONE
+    let isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|webOS|BlackBerry|IEMobile|Opera Mini)/i)
+    let outingStartDateClearContainerElt = document.getElementById('id_outing_start_date_clear_container');
+    if (isMobile) {
+        outingStartDateClearContainerElt.style.display = "none";
+    }
+    let outingEndDateClearContainerElt = document.getElementById('id_outing_end_date_clear_container');
+    if (isMobile) {
+        outingEndDateClearContainerElt.style.display = "none";
+    }
+</script>
 {% endblock %}

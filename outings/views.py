@@ -21,6 +21,7 @@ from django.db.models.functions import Greatest
 
 import functools
 import operator
+from datetime import datetime
 from datetime import date
 
 from outings.models import Outing
@@ -44,17 +45,33 @@ class OutingListView(ListView):
         context = super().get_context_data(*args, **kwargs)
         context['all_activities'] = Activity.objects.all()
         context['nb_of_results'] = self.nb_of_results
-        context['keywords'] = self.request.GET.get('k') or None
-        context['selected_activities'] = self.request.GET.getlist('a') or None
+        context['keywords'] = self.request.GET.get('k', None)
+        context['selected_activities'] = self.request.GET.getlist('a', None)
         return context
 
     def get_queryset(self):
-        main_queryset = Outing.objects.filter(Q(start_date__gte=date.today()) | Q(end_date__gte=date.today()))
-        keywords = self.request.GET.get('k')
+        keywords = self.request.GET.get('k', None)
         activities_in_current_language = 'activities__name_{}'.format(get_language())
-        selected_activities = self.request.GET.getlist('a')
+        selected_activities = self.request.GET.getlist('a', None)
+        start_date = self.request.GET.get('outing_start_date', None)
+        if start_date:
+            from_date = datetime.strptime(start_date, "%Y-%m-%d").date()
+        end_date = self.request.GET.get('outing_end_date', None)
+        if end_date:
+            till_date = datetime.strptime(end_date, "%Y-%m-%d").date()
         if keywords:
             keywords_list = keywords.split()
+        
+        main_q = Outing.objects.filter(start_date__gte=date.today())
+
+        if start_date and end_date:
+            main_q = main_q.filter(start_date__lte=till_date, end_date__gte=from_date)
+        elif start_date:
+            main_q = main_q.filter(end_date__gte=from_date)
+        elif end_date:
+            main_q = main_q.filter(start_date__lte=till_date)
+
+        if keywords:
             language = 'french_unaccent'
             '''
             __unaccent can't be used in SearchVector. Then we defined a "french_unaccent" config based on french and using the postgre unaccent extension
@@ -73,7 +90,7 @@ class OutingListView(ListView):
             )
             search_rank = SearchRank(search_vector, search_query)
             trigram_similarity = Greatest(TrigramSimilarity('title', keywords), TrigramSimilarity('description', keywords))
-            keywords_queryset = main_queryset.annotate(rank=search_rank+trigram_similarity).filter(rank__gte=0.05).order_by('-rank', 'start_date')
+            keywords_queryset = main_q.annotate(rank=search_rank+trigram_similarity).filter(rank__gte=0.05).order_by('-rank', 'start_date')
         
         if keywords and selected_activities:
             queryset = keywords_queryset.filter(
@@ -92,7 +109,7 @@ class OutingListView(ListView):
         #     )
         #     self.nb_of_results = len(queryset)
         elif selected_activities:
-            queryset = main_queryset.filter(
+            queryset = main_q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities))
             ).distinct('start_date', 'id')
             self.nb_of_results = len(queryset)
@@ -101,7 +118,7 @@ class OutingListView(ListView):
             #print(queryset.values_list('title', 'rank'))
             self.nb_of_results = len(queryset)
         else:
-            queryset = main_queryset
+            queryset = main_q
         return queryset
 
 
