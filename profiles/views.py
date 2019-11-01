@@ -46,6 +46,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from profiles.models import Profile, CustomUser
 from activities.models import Activity, Grade
+from outings.models import Outing
 from profiles.forms import ProfileCreationForm, AccountForm, ProfileForm, ContactProfileForm
 
 from django.contrib.gis.geos import Point
@@ -90,7 +91,7 @@ class ProfileListView(ListView):
         availability_area_geo = self.request.GET.get('availability_area_geo')
         user_authenticated = self.request.user.is_authenticated
 
-        main_q = Profile.objects.filter(public_profile='True')
+        main_q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
         
         if user_authenticated:
             user_loc = self.request.user.profile.location
@@ -151,17 +152,19 @@ class ProfileDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        profile = get_object_or_404(Profile, user__username=self.kwargs['username'])
+        profile = get_object_or_404(Profile.objects.prefetch_related('user__outing_set__activities', 'user__availability_set', 'grades__activity'), user__username=self.kwargs['username'])
+        context['profile'] = profile
         if profile.availability_area_geo is not None:
             poly_tuple = profile.availability_area_geo.coords[0]
             context['availability_area_geo_poly'] = [[i[0], i[1]] for i in poly_tuple] or None
         # Calendar Context
-        d = get_date(self.request.GET.get('month', None))
-        cal = CalEvents(year=d.year, month=d.month, profile=self.kwargs['username'], locale=get_cal_locale(get_language()))
-        html_cal = cal.formatmonth(withyear=True)
-        context['cal_events'] = mark_safe(html_cal)
-        context['prev_month'] = prev_month(d)
-        context['next_month'] = next_month(d)
+        if profile.user.outing_set.all() or profile.user.availability_set.all():
+            d = get_date(self.request.GET.get('month', None))
+            cal = CalEvents(year=d.year, month=d.month, profile=self.kwargs['username'], locale=get_cal_locale(get_language()))
+            html_cal = cal.formatmonth(withyear=True)
+            context['cal_events'] = mark_safe(html_cal)
+            context['prev_month'] = prev_month(d)
+            context['next_month'] = next_month(d)
         return context
 
     def get_object(self):
@@ -169,18 +172,29 @@ class ProfileDetailView(DetailView):
 
 
 def ContactProfileView(request, **kwargs):
-    '''A view for the web surfer to send an email to the profile through a contact form.'''
+    '''A view for the web surfer to send an email to the user through a contact form.'''
+    user_contacted_username = kwargs['username']
+    user_contacted = CustomUser.objects.get(username=user_contacted_username)
+    if user_contacted.first_name and user_contacted.last_name:
+        user_contacted_name = user_contacted.first_name + ' ' + user_contacted.last_name
+    elif user_contacted.first_name:
+        user_contacted_name = user_contacted.first_name
+    elif user_contacted.last_name:
+        user_contacted_name = user_contacted.last_name
+    else:
+        user_contacted_name = user_contacted.username
+
     if request.method == 'POST':
         form = ContactProfileForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             subject_prefixed = '[bourseauxcompagnons] ' + subject 
             from_email = form.cleaned_data['from_email']
-            recipients = [CustomUser.objects.get(username=kwargs['username']).email]
+            recipients = [user_contacted.email]
             contact_message = form.cleaned_data['message']
             html_message = render_to_string(
                 'profiles/contact_profile_email_inline.html',
-                {'profile_contacted': CustomUser.objects.get(username=kwargs['username']).username,
+                {'profile_contacted': user_contacted_name,
                 'profile_making_contact': request.user.username,
                 'message': contact_message
                 }
@@ -198,15 +212,14 @@ def ContactProfileView(request, **kwargs):
                 email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('profiles:contact-profile-done', username=kwargs['username'])
+            return redirect('profiles:contact-profile-done', username=user_contacted_username)
     else:
+        prepopulated_fields = {'subject': _('Initial contact'),
+                                'message': _('Hi ')+user_contacted_name+',\n'}
         if request.user.is_authenticated:
-            form = ContactProfileForm(initial={'from_email': request.user.email,
-                                                'subject': _('Initial contact'),
-                                                'message': _('Hi ')+kwargs['username']+',\n'})
-        else:
-            form = ContactProfileForm()
-    return render(request, "profiles/contact_profile_form.html", {'form': form, 'username': kwargs['username']})
+            prepopulated_fields.update({'from_email': request.user.email})
+        form = ContactProfileForm(initial=prepopulated_fields)
+    return render(request, "profiles/contact_profile_form.html", {'form': form, 'profile_contacted': user_contacted_name})
 
 
 class ProfileRegisterView(SuccessMessageMixin, CreateView):
@@ -249,6 +262,8 @@ class ProfileHomepageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        outings = Outing.objects.filter(author=self.request.user)
+        context['outings'] = outings
         # Calendar Context
         d = get_date(self.request.GET.get('month', None))
         cal = CalEvents(year=d.year, month=d.month, profile=self.request.user.username, locale=get_cal_locale(get_language()))

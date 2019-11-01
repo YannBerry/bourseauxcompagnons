@@ -64,9 +64,9 @@
             <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Add new' %}</a>
         </div>
     </div>
-    {% if user.outing_set.all %}
+    {% if outings %}
         <ul class="row no-gutters list-unstyled">
-        {% for outing in user.outing_set.all %}
+        {% for outing in outings %}
             <li class="col-12">
                 <div class="card">
                     <div class="card-body py-2">

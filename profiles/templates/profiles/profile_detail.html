@@ -117,7 +117,9 @@
     var previousMonthUrl = "{% url 'profiles:detail' profile.user.username %}?{{ prev_month }}#cal-events"
     var nextMonthUrl = "{% url 'profiles:detail' profile.user.username %}?{{ next_month }}#cal-events"
 </script>
+{% if profile.user.outing_set.all or profile.user.availability_set.all %}
 <script src="{% static 'js/calendar.js' %}"></script>
+{% endif %}
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 {% if profile.location or availability_area_geo_poly %}
 <script>

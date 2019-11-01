@@ -62,7 +62,7 @@ class OutingListView(ListView):
         if keywords:
             keywords_list = keywords.split()
         
-        main_q = Outing.objects.filter(start_date__gte=date.today())
+        main_q = Outing.objects.prefetch_related('activities').filter(start_date__gte=date.today())
 
         if start_date and end_date:
             main_q = main_q.filter(start_date__lte=till_date, end_date__gte=from_date)

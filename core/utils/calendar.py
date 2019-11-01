@@ -54,8 +54,9 @@ class Cal(LocaleHTMLCalendar):
 class CalEvents(Cal):
     def formatday(self, day, outings, availabilities, year, month):
         if day != 0:
-            outings_per_day = outings.filter(start_date__lte=date(year, month, day), end_date__gte=date(year, month, day))
-            availabilities_per_day = availabilities.filter(start_date__lte=date(year, month, day), end_date__gte=date(year, month, day))
+            this_day = date(year, month, day)
+            outings_per_day = outings.filter(start_date__lte=this_day, end_date__gte=this_day)
+            availabilities_per_day = availabilities.filter(start_date__lte=this_day, end_date__gte=this_day)
             o = ''
             a = ''
             for outing in outings_per_day:
@@ -94,7 +95,7 @@ class CalEvents(Cal):
         # return response
 
     def formatmonth(self, withyear=True):
-        outings = Outing.objects.filter(author__username=self.profile, start_date__year=self.year, start_date__month=self.month)
+        outings = Outing.objects.filter(author__username=self.profile)
         availabilities = Availability.objects.filter(author__username=self.profile)
 
         cal = f'<table border="0" cellpadding="0" cellspacing="0" class="cal-table">\n'
@@ -105,5 +106,4 @@ class CalEvents(Cal):
         for week in self.monthdays2calendar(self.year, self.month):
             cal += f'{self.formatweek(week, outings, availabilities, self.year, self.month)}\n'
         cal += f'</table>'
-        print(cal)
         return cal
