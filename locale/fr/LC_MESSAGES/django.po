@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 15:39+0100\n"
+"POT-Creation-Date: 2019-11-01 21:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,9 +78,7 @@ msgstr "disponibilités"
 #: availabilities/templates/availabilities/availability_confirm_delete.html:4
 #, python-format
 msgid "Remove availability starting the %(availability_start_date)s"
-msgstr ""
-"Supprimer la disponibilité commencant le "
-"'%(availability_start_date)s'"
+msgstr "Supprimer la disponibilité commencant le '%(availability_start_date)s'"
 
 #: availabilities/templates/availabilities/availability_confirm_delete.html:10
 #, python-format
@@ -349,95 +347,71 @@ msgstr "Lien vers le topo de la sortie"
 msgid "Create an outing"
 msgstr "Ajouter une sortie"
 
-#: outings/templates/outings/outing_list.html:6 templates/base.html:39
+#: outings/templates/outings/outing_list.html:10 templates/base.html:39
 msgid "Outings"
 msgstr "Sorties"
 
-#: outings/templates/outings/outing_list.html:12
+#: outings/templates/outings/outing_list.html:16
+msgid "Keywords"
+msgstr "Mots-clefs"
+
+#: outings/templates/outings/outing_list.html:17
 msgid "Keywords..."
 msgstr "Mots-clefs..."
 
-#: outings/templates/outings/outing_list.html:15
-#: profiles/templates/profiles/profile_list.html:16
+#: outings/templates/outings/outing_list.html:20
+msgid "Dates"
+msgstr "Dates"
+
+#: outings/templates/outings/outing_list.html:21
+#: profiles/templates/profiles/profile_list.html:17
+msgid "From"
+msgstr "Du"
+
+#: outings/templates/outings/outing_list.html:28
+#: profiles/templates/profiles/profile_list.html:24
+msgid "Till"
+msgstr "Au"
+
+#: outings/templates/outings/outing_list.html:37 profiles/forms.py:56
+#: profiles/templates/profiles/profile_list.html:33
+msgid "Activities"
+msgstr "Activités"
+
+#: outings/templates/outings/outing_list.html:38
+#: profiles/templates/profiles/profile_list.html:34
 msgid "Filter by activities"
 msgstr "Filtrer par activités"
 
-#: outings/templates/outings/outing_list.html:22
-#: profiles/templates/profiles/profile_list.html:33
+#: outings/templates/outings/outing_list.html:45
+#: profiles/templates/profiles/profile_list.html:52
 msgid "Filter"
 msgstr "Filtrer"
 
-#: outings/templates/outings/outing_list.html:30
+#: outings/templates/outings/outing_list.html:53
 msgid "Add an outing"
 msgstr "Ajouter une sortie"
 
-#: outings/templates/outings/outing_list.html:39
+#: outings/templates/outings/outing_list.html:61
 #, python-format
 msgid ""
 "\n"
-"                One outing contains '%(k)s' in its title or description and "
-"belongs to one of the following categories:\n"
-"                "
+"            %(counter)s outing\n"
+"            "
 msgid_plural ""
 "\n"
-"                %(counter)s outings contain '%(k)s' in there title or "
-"description and belong to one of the following categories:\n"
-"                "
+"            %(counter)s outings\n"
+"            "
 msgstr[0] ""
 "\n"
-"                Une sortie contient '%(k)s' dans son titre ou sa description "
-"et appartient à une des catégories suivantes :\n"
-"                "
+"            %(counter)s sortie\n"
+"            "
 msgstr[1] ""
 "\n"
-"                %(counter)s sorties contiennent '%(k)s' dans leur titre ou "
-"leur description et appartiennent à une des catégories suivantes :\n"
-"                "
+"            %(counter)s sorties\n"
+"            "
 
-#: outings/templates/outings/outing_list.html:50
-#, python-format
-msgid ""
-"\n"
-"                One outing contains '%(k)s' in its title or description\n"
-"                "
-msgid_plural ""
-"\n"
-"                %(counter)s outings contain '%(k)s' in there title or "
-"description\n"
-"                "
-msgstr[0] ""
-"\n"
-"                Une sortie contient '%(k)s' dans son titre ou sa "
-"description\n"
-"                "
-msgstr[1] ""
-"\n"
-"                %(counter)s sorties contiennent '%(k)s' dans leur titre ou "
-"leur description\n"
-"                "
-
-#: outings/templates/outings/outing_list.html:58
-#, python-format
-msgid ""
-"\n"
-"                One outing belongs to one of the following categories:\n"
-"                "
-msgid_plural ""
-"\n"
-"                %(counter)s outings belong to one of the following "
-"categories:\n"
-"                "
-msgstr[0] ""
-"\n"
-"                Une sortie appartient à une des catégories suivantes :\n"
-"                "
-msgstr[1] ""
-"\n"
-"                %(counter)s sorties appartiennent à une des catégories "
-"suivantes :\n"
-"                "
-
-#: outings/templates/outings/outing_list.html:75
+#: outings/templates/outings/outing_list.html:74
 #, python-format
 msgid ""
 "\n"
@@ -458,7 +432,7 @@ msgstr[1] ""
 "%(end_date)s\n"
 "                                "
 
-#: outings/templates/outings/outing_list.html:91
+#: outings/templates/outings/outing_list.html:90
 msgid "There is no outing fitting your search criteria."
 msgstr "Aucune sortie ne correspond à vos critères de recherche."
 
@@ -473,10 +447,6 @@ msgstr "Autorisations"
 #: profiles/admin.py:20
 msgid "Important dates"
 msgstr "Dates importantes"
-
-#: profiles/forms.py:56
-msgid "Activities"
-msgstr "Activités"
 
 #: profiles/forms.py:62 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
@@ -695,13 +665,13 @@ msgstr ""
 
 #: profiles/templates/profiles/contact_profile_form.html:4
 #, python-format
-msgid "Contact %(username)s"
-msgstr "Contactez %(username)s"
+msgid "Contact %(profile_contacted)s"
+msgstr "Contactez %(profile_contacted)s"
 
 #: profiles/templates/profiles/contact_profile_form.html:11
 #, python-format
-msgid "Get in touch with %(username)s"
-msgstr "Prenez contact avec %(username)s"
+msgid "Get in touch with %(profile_contacted)s"
+msgstr "Prenez contact avec %(profile_contacted)s"
 
 #: profiles/templates/profiles/my_profile.html:5 templates/base.html:81
 msgid "My profile"
@@ -837,16 +807,51 @@ msgstr "Enregistrer"
 msgid "Profiles list"
 msgstr "Liste des profils"
 
-#: profiles/templates/profiles/profile_list.html:42 templates/index.html:123
+#: profiles/templates/profiles/profile_list.html:16
+msgid "Availabilities"
+msgstr "Disponibilités"
+
+#: profiles/templates/profiles/profile_list.html:41
+msgid "Where"
+msgstr "Où"
+
+#: profiles/templates/profiles/profile_list.html:41
+msgid "(draw on the map)"
+msgstr "(dessiner sur la carte)"
+
+#: profiles/templates/profiles/profile_list.html:47
+msgid "Around my profile location (50 km)"
+msgstr "Autour de ma location de profil (50 km)"
+
+#: profiles/templates/profiles/profile_list.html:61 templates/index.html:123
 msgid "Add my profile"
 msgstr "Créer mon profil"
 
-#: profiles/templates/profiles/profile_list.html:66 templates/index.html:101
+#: profiles/templates/profiles/profile_list.html:70
+#, python-format
+msgid ""
+"\n"
+"            %(counter)s profile\n"
+"            "
+msgid_plural ""
+"\n"
+"            %(counter)s profiles\n"
+"            "
+msgstr[0] ""
+"\n"
+"            %(counter)s profil\n"
+"            "
+msgstr[1] ""
+"\n"
+"            %(counter)s profils\n"
+"            "
+
+#: profiles/templates/profiles/profile_list.html:92 templates/index.html:101
 #, python-format
 msgid "%(profile_age)s years"
 msgstr "%(profile_age)s ans"
 
-#: profiles/templates/profiles/profile_list.html:87
+#: profiles/templates/profiles/profile_list.html:113
 msgid "There is no profile matching your search criteria."
 msgstr "Aucun profil ne correspond à vos critères de recherche."
 
@@ -948,15 +953,15 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:184
+#: profiles/views.py:194
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:185
+#: profiles/views.py:195
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:196
+#: profiles/views.py:207
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1172,4 +1177,3 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
-
