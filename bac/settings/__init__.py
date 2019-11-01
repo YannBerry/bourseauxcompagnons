@@ -52,10 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres', # needed for the unaccent and trigram lookups (to install postgre extensions : CREATE EXTENSION unaccent; and pg_trgm;)
     'django.contrib.gis',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
     'django.middleware.common.BrokenLinkEmailsMiddleware', # Allow MANAGERS to receive a report by email for each 404 error in production.
+    'debug_toolbar.middleware.DebugToolbarMiddleware', # Debug toolbar
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -179,3 +181,11 @@ AUTH_USER_MODEL = 'profiles.CustomUser'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'homepage'
 LOGOUT_REDIRECT_URL = 'login'
+
+# Settings used by Django Debug Toolbar
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_COLLAPSED': True,
+}

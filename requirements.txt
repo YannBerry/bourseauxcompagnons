@@ -1,4 +1,5 @@
 Django==2.2.4
+django-debug-toolbar==2.0
 django-modeltranslation==0.13.3
 et-xmlfile==1.0.1
 jdcal==1.4.1
