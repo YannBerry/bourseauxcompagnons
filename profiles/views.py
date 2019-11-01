@@ -91,60 +91,39 @@ class ProfileListView(ListView):
         availability_area_geo = self.request.GET.get('availability_area_geo')
         user_authenticated = self.request.user.is_authenticated
 
-        main_q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
+        q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
         
         if user_authenticated:
             user_loc = self.request.user.profile.location
-            main_q = main_q.exclude(user=self.request.user).annotate(distance=Distance('location', user_loc)).order_by('distance')
+            q = q.exclude(user=self.request.user).annotate(distance=Distance('location', user_loc)).order_by('distance')
 
         if start_date and end_date:
-            main_q = main_q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=from_date)
+            q = q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=from_date)
         elif start_date:
-            main_q = main_q.filter(user__availability__end_date__gte=from_date)
+            q = q.filter(user__availability__end_date__gte=from_date)
         elif end_date:
-            main_q = main_q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=date.today())
+            q = q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=date.today())
 
-        if (start_date or end_date) and user_authenticated:
-            main_q = main_q.distinct('distance', 'last_update', 'user_id')
-        elif (start_date or end_date):
-            main_q = main_q.distinct('last_update', 'user_id')
 
-        # Defining querysets of each criteria
-        if selected_activities and user_authenticated:
-            selected_activities_q = main_q.filter(
+        if selected_activities:
+            q = q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
                 public_profile='True'
-            ).distinct('distance', 'last_update', 'user_id')
-        elif selected_activities:
-            selected_activities_q = main_q.filter(
-                eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
-                public_profile='True'
-            ).distinct('last_update', 'user_id')
+            )
         if availability_area_geo:
-            availability_area_geo_q = main_q.filter(availability_area_geo__intersects=availability_area_geo)
+            q = q.filter(availability_area_geo__intersects=availability_area_geo)
+        
         if around_me:
-            around_me_q = main_q.filter(location__distance_lte=(user_loc, 50000))
-        # Defining the queryset according to the criteria selected by the internaut
-        if selected_activities and availability_area_geo and around_me:
-            queryset = selected_activities_q.intersection(availability_area_geo_q, around_me_q)
-        elif selected_activities and availability_area_geo:
-            queryset = selected_activities_q.intersection(availability_area_geo_q)
-        elif selected_activities and around_me:
-            queryset = selected_activities_q.intersection(around_me_q)
-        elif availability_area_geo and around_me:
-            queryset = availability_area_geo_q.intersection(around_me_q)
-        elif selected_activities:
-            queryset = selected_activities_q
-            self.nb_of_results = len(queryset)
-        elif availability_area_geo:
-            queryset = availability_area_geo_q
-            self.nb_of_results = len(queryset)
-        elif around_me:
-            queryset = around_me_q
-            self.nb_of_results = len(queryset)
-        else:
-            queryset = main_q
-        return queryset
+            q = q.filter(location__distance_lte=(user_loc, 50000))
+
+        if (start_date or end_date or selected_activities) and user_authenticated:
+            q = q.distinct('distance', 'last_update', 'user_id')
+        elif start_date or end_date or selected_activities:
+            q = q.distinct('last_update', 'user_id')
+
+        self.nb_of_results = len(q)
+
+        return q
 
 
 class ProfileDetailView(DetailView):

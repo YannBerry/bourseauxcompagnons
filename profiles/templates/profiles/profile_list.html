@@ -66,6 +66,13 @@
 
 {% block content %}
     {% if profile_list %}
+        <p>
+            {% blocktrans count counter=nb_of_results %}
+            {{ counter }} profile
+            {% plural %}
+            {{ counter }} profiles
+            {% endblocktrans %}
+        </p>
         <div class="row">
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">

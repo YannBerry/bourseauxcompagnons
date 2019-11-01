@@ -61,17 +61,6 @@ class OutingListView(ListView):
             till_date = datetime.strptime(end_date, "%Y-%m-%d").date()
         if keywords:
             keywords_list = keywords.split()
-        
-        main_q = Outing.objects.prefetch_related('activities').filter(start_date__gte=date.today())
-
-        if start_date and end_date:
-            main_q = main_q.filter(start_date__lte=till_date, end_date__gte=from_date)
-        elif start_date:
-            main_q = main_q.filter(end_date__gte=from_date)
-        elif end_date:
-            main_q = main_q.filter(start_date__lte=till_date)
-
-        if keywords:
             language = 'french_unaccent'
             '''
             __unaccent can't be used in SearchVector. Then we defined a "french_unaccent" config based on french and using the postgre unaccent extension
@@ -90,36 +79,27 @@ class OutingListView(ListView):
             )
             search_rank = SearchRank(search_vector, search_query)
             trigram_similarity = Greatest(TrigramSimilarity('title', keywords), TrigramSimilarity('description', keywords))
-            keywords_queryset = main_q.annotate(rank=search_rank+trigram_similarity).filter(rank__gte=0.05).order_by('-rank', 'start_date')
         
-        if keywords and selected_activities:
-            queryset = keywords_queryset.filter(
+        q = Outing.objects.prefetch_related('activities').filter(start_date__gte=date.today())
+
+        if start_date and end_date:
+            q = q.filter(start_date__lte=till_date, end_date__gte=from_date)
+        elif start_date:
+            q = q.filter(end_date__gte=from_date)
+        elif end_date:
+            q = q.filter(start_date__lte=till_date)
+        
+        if keywords:
+            q = q.annotate(rank=search_rank+trigram_similarity).filter(rank__gte=0.05).order_by('-rank', 'start_date')
+        
+        if selected_activities:
+            q = q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities))
             )
-            self.nb_of_results = len(queryset)
-        # elif self.request.GET.get('k') and self.request.GET.getlist('a') and self.request.GET.get('d'):
-        #     min_date = self.request.GET.get('d')
-        #     max_date = self.request.GET.get('d')
-        #     keywords = self.request.GET.get('k')
-        #     selected_activities = self.request.GET.getlist('a')
-        #     queryset = Outing.objects.filter(
-        #         eval(' | '.join(f'Q(activities__name="{ selected_activity }")' for selected_activity in selected_activities)),
-        #         functools.reduce(operator.and_, [Q(title__icontains=k) for k in keywords_list]),
-        #         start_date__range=(min_date, max_date) # doc django : https://docs.djangoproject.com/fr/2.1/ref/models/querysets/#range
-        #     )
-        #     self.nb_of_results = len(queryset)
-        elif selected_activities:
-            queryset = main_q.filter(
-                eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities))
-            ).distinct('start_date', 'id')
-            self.nb_of_results = len(queryset)
-        elif keywords:
-            queryset = keywords_queryset
-            #print(queryset.values_list('title', 'rank'))
-            self.nb_of_results = len(queryset)
-        else:
-            queryset = main_q
-        return queryset
+        
+        self.nb_of_results = len(q)
+
+        return q
 
 
 class OutingDetailView(DetailView):
