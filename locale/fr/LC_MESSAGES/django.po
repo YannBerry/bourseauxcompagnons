@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-01 21:24+0100\n"
+"POT-Creation-Date: 2019-11-01 23:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,6 +110,10 @@ msgstr "Annuler"
 #, python-format
 msgid "Availability starting the %(availability_start_date)s"
 msgstr "Disponibilité commencant le %(availability_start_date)s"
+
+#: availabilities/templates/availabilities/availability_detail.html:19
+msgid "Availability"
+msgstr "Disponibilité"
 
 #: availabilities/templates/availabilities/availability_detail.html:23
 #: outings/templates/outings/outing_detail.html:23
@@ -215,7 +219,7 @@ msgstr "sorties/"
 
 #: bac/urls.py:35
 msgid "availabilities/"
-msgstr "disponibilités/"
+msgstr "disponibilites/"
 
 #: bac/urls.py:36
 msgid "contact/"
@@ -272,6 +276,14 @@ msgstr "email-envoye/"
 #: core/templates/forms/widgets/image.html:20
 msgid "Choose file..."
 msgstr "Choisir un fichier..."
+
+#: core/utils/calendar.py:68
+msgid "Available icon"
+msgstr "Icone de disponibilité"
+
+#: core/utils/calendar.py:69
+msgid "Available"
+msgstr "Disponible"
 
 #: features/urls.py:7
 msgid "votes/"
@@ -363,36 +375,36 @@ msgstr "Mots-clefs..."
 msgid "Dates"
 msgstr "Dates"
 
-#: outings/templates/outings/outing_list.html:21
+#: outings/templates/outings/outing_list.html:23
 #: profiles/templates/profiles/profile_list.html:17
 msgid "From"
 msgstr "Du"
 
-#: outings/templates/outings/outing_list.html:28
+#: outings/templates/outings/outing_list.html:32
 #: profiles/templates/profiles/profile_list.html:24
 msgid "Till"
 msgstr "Au"
 
-#: outings/templates/outings/outing_list.html:37 profiles/forms.py:56
+#: outings/templates/outings/outing_list.html:43 profiles/forms.py:56
 #: profiles/templates/profiles/profile_list.html:33
 msgid "Activities"
 msgstr "Activités"
 
-#: outings/templates/outings/outing_list.html:38
+#: outings/templates/outings/outing_list.html:44
 #: profiles/templates/profiles/profile_list.html:34
 msgid "Filter by activities"
 msgstr "Filtrer par activités"
 
-#: outings/templates/outings/outing_list.html:45
+#: outings/templates/outings/outing_list.html:51
 #: profiles/templates/profiles/profile_list.html:52
 msgid "Filter"
 msgstr "Filtrer"
 
-#: outings/templates/outings/outing_list.html:53
+#: outings/templates/outings/outing_list.html:59
 msgid "Add an outing"
 msgstr "Ajouter une sortie"
 
-#: outings/templates/outings/outing_list.html:61
+#: outings/templates/outings/outing_list.html:67
 #, python-format
 msgid ""
 "\n"
@@ -411,7 +423,7 @@ msgstr[1] ""
 "            %(counter)s sorties\n"
 "            "
 
-#: outings/templates/outings/outing_list.html:74
+#: outings/templates/outings/outing_list.html:80
 #, python-format
 msgid ""
 "\n"
@@ -432,7 +444,7 @@ msgstr[1] ""
 "%(end_date)s\n"
 "                                "
 
-#: outings/templates/outings/outing_list.html:90
+#: outings/templates/outings/outing_list.html:96
 msgid "There is no outing fitting your search criteria."
 msgstr "Aucune sortie ne correspond à vos critères de recherche."
 

@@ -16,7 +16,7 @@
         {% endif %}
         <div class="row align-items-center">
             <div class="col-auto mr-auto">
-                <h1>Availability</h1>
+                <h1>{% trans 'Availability' %}</h1>
             </div>
             {% if user.is_authenticated and availability.author.username == user.username %}
             <div class="col-auto">

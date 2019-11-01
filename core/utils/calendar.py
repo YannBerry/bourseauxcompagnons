@@ -4,6 +4,8 @@ from calendar import month_name
 from calendar import monthrange
 from datetime import date
 from datetime import timedelta
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.utils.translation import gettext_lazy as _
 
 from outings.models import Outing
 from availabilities.models import Availability
@@ -62,7 +64,10 @@ class CalEvents(Cal):
             for outing in outings_per_day:
                 o += f"<li class='overflow-hidden'><p><a href='{ outing.get_absolute_url() }'><span class='badge badge-pill badge-info'>{ outing.title }</span></a></p</li>"
             for availability in availabilities_per_day:
-                a += f"<a href='{ availability.get_absolute_url() }'><span class='badge badge-pill badge-success'>Available</span></a>"
+                icon_checked_url = static('img/icon_available.png')
+                icon_checked_alt = _('Available icon')
+                icon_checked_title = _('Available')
+                a += f"<a href='{ availability.get_absolute_url() }'><img src='{ icon_checked_url }' class='float-right ml-2' height='24' alt='{ icon_checked_alt }' title='{ icon_checked_title }'></a>"
 
         if day == 0:
             return '<td class="cal_noday">&nbsp;</td>'
