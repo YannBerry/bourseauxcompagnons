@@ -88,10 +88,11 @@ class ProfileListView(ListView):
         activities_in_current_language = 'activities__name_{}'.format(get_language())
         around_me = self.request.GET.get('around_me')
         availability_area_geo = self.request.GET.get('availability_area_geo')
+        user_authenticated = self.request.user.is_authenticated
 
         main_q = Profile.objects.filter(public_profile='True')
         
-        if self.request.user.is_authenticated:
+        if user_authenticated:
             user_loc = self.request.user.profile.location
             main_q = main_q.exclude(user=self.request.user).annotate(distance=Distance('location', user_loc)).order_by('distance')
 
@@ -102,11 +103,13 @@ class ProfileListView(ListView):
         elif end_date:
             main_q = main_q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=date.today())
 
-        if start_date or end_date:
+        if (start_date or end_date) and user_authenticated:
+            main_q = main_q.distinct('distance', 'last_update', 'user_id')
+        elif (start_date or end_date):
             main_q = main_q.distinct('last_update', 'user_id')
 
         # Defining querysets of each criteria
-        if selected_activities and self.request.user.is_authenticated:
+        if selected_activities and user_authenticated:
             selected_activities_q = main_q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities)),
                 public_profile='True'
@@ -148,7 +151,7 @@ class ProfileDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        profile = get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
+        profile = get_object_or_404(Profile, user__username=self.kwargs['username'])
         if profile.availability_area_geo is not None:
             poly_tuple = profile.availability_area_geo.coords[0]
             context['availability_area_geo_poly'] = [[i[0], i[1]] for i in poly_tuple] or None
@@ -162,7 +165,7 @@ class ProfileDetailView(DetailView):
         return context
 
     def get_object(self):
-        return get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
+        return get_object_or_404(Profile, user__username=self.kwargs['username'])
 
 
 def ContactProfileView(request, **kwargs):
@@ -265,7 +268,7 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
         return self.request.user.username == self.kwargs['username']
 
     def get_object(self):
-        return get_object_or_404(Profile, pk=CustomUser.objects.get(username=self.kwargs['username']).pk)
+        return get_object_or_404(Profile, user__username=self.kwargs['username'])
     
     # def form_valid(self, form):
     #     coordinates = form.cleaned_data['location'].split(',')
