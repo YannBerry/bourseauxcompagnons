@@ -96,6 +96,9 @@ class OutingListView(ListView):
             q = q.filter(
                 eval(' | '.join(f'Q({ activities_in_current_language }="{ selected_activity }")' for selected_activity in selected_activities))
             )
+
+        if selected_activities and not keywords:
+            q = q.distinct('start_date', 'id')
         
         self.nb_of_results = len(q)
 
