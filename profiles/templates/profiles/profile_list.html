@@ -13,19 +13,25 @@
     <form method="get" action="{% url 'profiles:search' %}">
         <div class="form-row">
             <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Availabilities' %}</h6>
-                <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
-                <div class="input-group mb-2">
-                    <input type="text" name="start_date" class="form-control" id="id_start_date">
-                    <div id="id_start_date_clear_container" class="input-group-append">
-                        <button id="id_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                <h6 class="filter_title">{% trans 'Dates' %}</h6>
+                <div class="form-row">
+                    <div class="form-group col-6 col-xl-12 mb-0">
+                        <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
+                        <div class="input-group mb-2">
+                            <input type="text" name="start_date" class="form-control" id="id_start_date">
+                            <div id="id_start_date_clear_container" class="input-group-append">
+                                <button id="id_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
-                <div class="input-group">
-                    <input type="text" name="end_date" class="form-control" id="id_end_date">
-                    <div id="id_end_date_clear_container" class="input-group-append">
-                        <button id="id_end_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                    <div class="form-group col-6 col-xl-12 mb-0">
+                        <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
+                        <div class="input-group">
+                            <input type="text" name="end_date" class="form-control" id="id_end_date">
+                            <div id="id_end_date_clear_container" class="input-group-append">
+                                <button id="id_end_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -106,10 +106,12 @@
                 {% endif %}
             </div>
         </div>
-        <input type="submit" value="{% trans 'Save' %}" class="btn btn-primary" />
-        {% if profile %}
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% trans 'Cancel' %}</a>
-        {% endif %}
+        <div class="form-end-buttons-side mb-4">
+            <input type="submit" value="{% trans 'Save' %}" class="btn btn-primary" />
+            {% if profile %}
+            <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% trans 'Cancel' %}</a>
+            {% endif %}
+        </div>
     </form>
     <!-- {% if uploaded_file_url %}
     <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
