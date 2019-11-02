@@ -212,6 +212,17 @@ ul#id_activities {
     padding: 5px;
 }*/
 
+.availability-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+.availability-flex .cal-date {
+    margin-right: auto;
+}
+
 /* FORMS */
 
 .helptext {

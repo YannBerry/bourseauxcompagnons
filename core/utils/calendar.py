@@ -67,16 +67,16 @@ class CalEvents(Cal):
                 icon_checked_url = static('img/icon_available.png')
                 icon_checked_alt = _('Available icon')
                 icon_checked_title = _('Available')
-                a += f"<a href='{ availability.get_absolute_url() }'><img src='{ icon_checked_url }' class='float-right ml-2' height='24' alt='{ icon_checked_alt }' title='{ icon_checked_title }'></a>"
+                a += f"<a class='flex-container' href='{ availability.get_absolute_url() }'><img src='{ icon_checked_url }' class='ml-1' height='24' alt='{ icon_checked_alt }' title='{ icon_checked_title }'></a>"
 
         if day == 0:
             return '<td class="cal_noday">&nbsp;</td>'
         elif day !=0 and outings_per_day and availabilities_per_day:
-            return f"<td class='cal-outing-day-bg'><span class='cal-date font-weight-bold'>{day}</span> {a}<ul class='cal-outing-list-bg'> {o} </ul></td>"
+            return f"<td class='cal-outing-day-bg'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
         elif day !=0 and outings_per_day:
             return f"<td class='cal-outing-day-bg'><span class='cal-date font-weight-bold'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
         elif day !=0 and availabilities_per_day:
-            return f"<td><span class='cal-date font-weight-bold'>{day}</span> {a}</td>"
+            return f"<td><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div></td>"
         else:
             return f"<td><span class='cal-date'>{day}</span></td>"
 
