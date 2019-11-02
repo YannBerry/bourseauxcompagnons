@@ -186,6 +186,7 @@ ul#id_activities {
 }
 
 #cal-events .cal-date {
+    font-size: 0.9rem;
 }
 
 #cal-events .cal-table ul {
@@ -212,14 +213,15 @@ ul#id_activities {
     padding: 5px;
 }*/
 
-.availability-flex {
+#cal-events .availability-flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
 }
-.availability-flex .cal-date {
+
+#cal-events .availability-flex .cal-date {
     margin-right: auto;
 }
 

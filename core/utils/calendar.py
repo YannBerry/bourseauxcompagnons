@@ -67,7 +67,7 @@ class CalEvents(Cal):
                 icon_checked_url = static('img/icon_available.png')
                 icon_checked_alt = _('Available icon')
                 icon_checked_title = _('Available')
-                a += f"<a class='flex-container' href='{ availability.get_absolute_url() }'><img src='{ icon_checked_url }' class='ml-1' height='24' alt='{ icon_checked_alt }' title='{ icon_checked_title }'></a>"
+                a += f"<a class='flex-container' href='{ availability.get_absolute_url() }'><img src='{ icon_checked_url }' class='ml-0' height='24' alt='{ icon_checked_alt }' title='{ icon_checked_title }'></a>"
 
         if day == 0:
             return '<td class="cal_noday">&nbsp;</td>'
