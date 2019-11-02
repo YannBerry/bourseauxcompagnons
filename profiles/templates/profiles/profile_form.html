@@ -214,15 +214,12 @@ function alertContents() {
     {% endif %}
 </script>
 <script src="{% static 'js/ol_point_formfield.js' %}"></script>
+<script src="{% static 'js/ol_area_formfield.js' %}"></script>
 <script>
-// CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES for 'js/ol_area_formfield.js'
-    {% if form.availability_area_geo.value is not None %}
-        var availabilityAreaGeoValue = '{{ form.availability_area_geo.value }}';
-        var availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
-    {% else %}
-        var availabilityAreaGeoValue = null;
-        var availabilityAreaGeoJson = null;
+// CONVERTING DJANGO VARIABLES IN JS VARIABLES for 'js/ol_area_formfield.js'
+    {% if form.availability_area_geo.value %}
+        let availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
+        drawMyArea(availabilityAreaGeoJson);
     {% endif %}
 </script>
-<script src="{% static 'js/ol_area_formfield.js' %}"></script>
 {% endblock %}

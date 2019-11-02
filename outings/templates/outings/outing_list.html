@@ -73,9 +73,9 @@
         <ul class="row list-unstyled">
             {% for outing in outing_list %}
                 <li class="col-sm-6 col-md-4 mb-4">
-                    <div class="card">
+                    <div class="card" onclick="document.location='{{ outing.get_absolute_url }}'" style="cursor: pointer;">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="stretched-link unstyled">{{ outing.title }}</a></h5>
+                            <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="unstyled">{{ outing.title }}</a></h5>
                             <p class="card-text">
                                 {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
                                 During the day<br>{{ start_date }}
@@ -95,7 +95,7 @@
     {% else %}
         <p>{% trans 'There is no outing fitting your search criteria.' %}</p>
     {% endif %}
-    <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none">+</a>
+    <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none"  style="z-index:9999">+</a>
 {% endblock %}
 
 {% block js %}

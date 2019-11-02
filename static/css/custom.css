@@ -65,8 +65,8 @@ ul#id_activities {
 /* OPENLAYERS */
 /* Buttons */
 .locate-button {
-  top: 5em;
-  left: .5em;
+    top: 5em;
+    left: .5em;
 }
 .delete-button {
     top: 7.5em;
@@ -118,6 +118,28 @@ ul#id_activities {
 .ol-popup-closer:after {
     content: "✖";
 }*/
+
+.ol-outside-button {
+    display: flex;
+    justify-content: center;
+}
+
+.ol-outside-button button {
+    width: 100%;
+    text-decoration:none;
+    border:none;
+    color: rgba(255,255,255,1);
+    background-color:rgba(0,60,136,.5);
+    border-radius:2px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 3px 6px;
+}
+
+.ol-outside-button button:hover{
+    background-color:rgba(0,60,136,.7);
+}
+
 
 /* CALENDAR */
 #cal-events .cal-table {

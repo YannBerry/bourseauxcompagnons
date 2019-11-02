@@ -1,8 +1,8 @@
 // BASE MAP
-    var aAttributionCustom = new ol.control.Attribution({
+    let aAttributionCustom = new ol.control.Attribution({
         collapsible: true
     });
-    var amap = new ol.Map({
+    let amap = new ol.Map({
         // TARGET
         target: 'availabilityformmap',
 
@@ -42,8 +42,8 @@
 
 // GEOLOCATION
     // Creating the geolocation source included in a specific layer linked with the map
-    var ageolocSource = new ol.source.Vector();
-    var ageolocLayer = new ol.layer.Vector({
+    let ageolocSource = new ol.source.Vector();
+    let ageolocLayer = new ol.layer.Vector({
         source: ageolocSource
     });
     amap.addLayer(ageolocLayer);
@@ -110,29 +110,55 @@
     });
     amap.addLayer(areaLayer);
 
-if (availabilityAreaGeoValue) {
-// DISPLAYING CURRENT AREA
-    var geojsonObject = {
-        "type": "Feature",
-        "geometry": availabilityAreaGeoJson, // srid: 4326
-        "properties": {}
-    };
-    const areaFeatures = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection()})).readFeatures(geojsonObject);
-    areaSource.addFeatures(areaFeatures);
-    // INITIALIZING THE AVAILABILITY_AREA_GEO FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
-    const areaGeojsonStr = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'})).writeFeatures(areaFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
-    const areaGeojsonObj = JSON.parse(areaGeojsonStr);
-    const areaGeojsonGeom = areaGeojsonObj.features[0].geometry;
-    const areaGeojsonGeomStr = JSON.stringify(areaGeojsonGeom);
-    document.getElementById('areacoordinates').value = areaGeojsonGeomStr;
-    // ZOOMING IN THE CURRENT LOCATION
-    if (!areaSource.isEmpty()) {
-        amap.getView().fit(areaSource.getExtent(), {
-            maxZoom: 10,
-            duration: 500
-        });
+
+// DISPLAYING CURRENT AREA (when drawMyArea function is called)
+    function drawMyArea(AreaGeoJson) {
+        let geojsonObject = {
+            "type": "Feature",
+            "geometry": AreaGeoJson, // srid: 4326
+            "properties": {}
+        };
+        const areaFeatures = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection()})).readFeatures(geojsonObject);
+        areaSource.addFeatures(areaFeatures);
+        // INITIALIZING THE AVAILABILITY_AREA_GEO FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
+        const areaGeojsonStr = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'})).writeFeatures(areaFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
+        const areaGeojsonObj = JSON.parse(areaGeojsonStr);
+        const areaGeojsonGeom = areaGeojsonObj.features[0].geometry;
+        const areaGeojsonGeomStr = JSON.stringify(areaGeojsonGeom);
+        document.getElementById('areacoordinates').value = areaGeojsonGeomStr;
+        // ZOOMING IN THE CURRENT LOCATION
+        if (!areaSource.isEmpty()) {
+            amap.getView().fit(areaSource.getExtent(), {
+                maxZoom: 10,
+                duration: 500
+            });
+        }
     }
-}
+
+
+// if (availabilityAreaGeoValue) {
+// // DISPLAYING CURRENT AREA
+//     var geojsonObject = {
+//         "type": "Feature",
+//         "geometry": availabilityAreaGeoJson, // srid: 4326
+//         "properties": {}
+//     };
+//     const areaFeatures = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection()})).readFeatures(geojsonObject);
+//     areaSource.addFeatures(areaFeatures);
+//     // INITIALIZING THE AVAILABILITY_AREA_GEO FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
+//     const areaGeojsonStr = (new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'})).writeFeatures(areaFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
+//     const areaGeojsonObj = JSON.parse(areaGeojsonStr);
+//     const areaGeojsonGeom = areaGeojsonObj.features[0].geometry;
+//     const areaGeojsonGeomStr = JSON.stringify(areaGeojsonGeom);
+//     document.getElementById('areacoordinates').value = areaGeojsonGeomStr;
+//     // ZOOMING IN THE CURRENT LOCATION
+//     if (!areaSource.isEmpty()) {
+//         amap.getView().fit(areaSource.getExtent(), {
+//             maxZoom: 10,
+//             duration: 500
+//         });
+//     }
+// }
 
 // // ADDING INTERACTION TO ALLOW THE USER TO ALTER THE CURRENT AREA
 //     amap.addInteraction(new ol.interaction.Modify({
@@ -140,7 +166,7 @@ if (availabilityAreaGeoValue) {
 //     }));
     
 // ADDING INTERACTION TO ALLOW THE USER TO CREATE AN AREA
-    var area_draw = new ol.interaction.Draw({
+    let area_draw = new ol.interaction.Draw({
         type: 'Polygon',
         source: areaSource
     });
@@ -151,12 +177,12 @@ if (availabilityAreaGeoValue) {
         areaSource.clear();
     });
     area_draw.on("drawend",function(e){
-        var writer = new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'}); // by default dataProjection = 'EPSG:4326'
+        let writer = new ol.format.GeoJSON({featureProjection: amap.getView().getProjection(), dataProjection: 'EPSG:4326'}); // by default dataProjection = 'EPSG:4326'
         // pass the feature as an array
-        var geojsonStr = writer.writeFeatures([e.feature]);
-        var geojsonObj = JSON.parse(geojsonStr);
-        var geojsonGeom = geojsonObj.features[0].geometry;
-        var geojsonGeomStr = JSON.stringify(geojsonGeom);
+        let geojsonStr = writer.writeFeatures([e.feature]);
+        let geojsonObj = JSON.parse(geojsonStr);
+        let geojsonGeom = geojsonObj.features[0].geometry;
+        let geojsonGeomStr = JSON.stringify(geojsonGeom);
         document.getElementById('areacoordinates').value = geojsonGeomStr;
     });
 
