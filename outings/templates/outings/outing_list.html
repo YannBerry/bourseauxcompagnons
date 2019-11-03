@@ -143,4 +143,51 @@
         outingEndDateClearContainerElt.style.display = "none";
     }
 </script>
+<script>
+// NOTIFY START DATE > END DATE TO THE INTERNAUT WHEN HE MAKE THE MISTAKE
+    const outingStartDateElt = document.getElementById('id_outing_start_date');
+    const outingEndDateElt = document.getElementById('id_outing_end_date');
+
+    let outingStartDate = null;
+    let outingEndDate = null;
+
+    function checkDatesCompatibility(startDate, endDate) {
+        if (startDate <= endDate || endDate === null) {
+            const errorListElt = document.getElementById("date_errors");
+            if (errorListElt) {
+                errorListElt.parentNode.removeChild(errorListElt);
+            }
+        } else {
+            const errorListElt = document.getElementById("date_errors");
+            if ( errorListElt === null ) {
+                datesFormElt = outingEndDateElt.parentNode.parentNode;
+                const errorListElt = document.createElement("ul");
+                errorListElt.id = "date_errors";
+                errorListElt.classList.add("errorlist");
+                datesFormElt.appendChild(errorListElt);
+                const errorItemElt = document.createElement("li");
+                errorItemElt.textContent = "Your end date is not equal or later than your start date.";
+                errorListElt.appendChild(errorItemElt);
+            }
+        }
+    }
+
+    outingStartDateElt.addEventListener('change', function() {
+        if (outingStartDateElt.value) {
+            outingStartDate = new Date(outingStartDateElt.value);
+        } else {
+            outingStartDate = null;
+        }
+        checkDatesCompatibility(outingStartDate, outingEndDate);
+    });
+
+    outingEndDateElt.addEventListener('change', function() {
+        if (outingEndDateElt.value) {
+            outingEndDate = new Date(outingEndDateElt.value);
+        } else {
+            outingEndDate = null;
+        }
+        checkDatesCompatibility(outingStartDate, outingEndDate);
+    });
+</script>
 {% endblock %}
