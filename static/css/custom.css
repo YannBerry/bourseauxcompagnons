@@ -133,13 +133,12 @@ ul#id_activities {
     border-radius:2px;
     font-size: 0.8rem;
     font-weight: bold;
-    padding: 3px 6px;
+    padding: 6px;
 }
 
 .ol-outside-button button:hover{
     background-color:rgba(0,60,136,.7);
 }
-
 
 /* CALENDAR */
 #cal-events .cal-table {

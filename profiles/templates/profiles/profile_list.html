@@ -171,6 +171,53 @@
         endDateClearContainerElt.style.display = "none";
     }
 </script>
+<script>
+// NOTIFY START DATE > END DATE TO THE INTERNAUT WHEN HE MAKE THE MISTAKE
+    const startDateElt = document.getElementById('id_start_date');
+    const endDateElt = document.getElementById('id_end_date');
+
+    let startDate = null;
+    let endDate = null;
+
+    function checkDatesCompatibility(startDate, endDate) {
+        if (startDate <= endDate || endDate === null) {
+            const errorListElt = document.getElementById("date_errors");
+            if (errorListElt) {
+                errorListElt.parentNode.removeChild(errorListElt);
+            }
+        } else {
+            const errorListElt = document.getElementById("date_errors");
+            if ( errorListElt === null ) {
+                datesFormElt = endDateElt.parentNode.parentNode;
+                const errorListElt = document.createElement("ul");
+                errorListElt.id = "date_errors";
+                errorListElt.classList.add("errorlist");
+                datesFormElt.appendChild(errorListElt);
+                const errorItemElt = document.createElement("li");
+                errorItemElt.textContent = "Your end date is not equal or later than your start date.";
+                errorListElt.appendChild(errorItemElt);
+            }
+        }
+    }
+
+    startDateElt.addEventListener('change', function() {
+        if (startDateElt.value) {
+            startDate = new Date(startDateElt.value);
+        } else {
+            startDate = null;
+        }
+        checkDatesCompatibility(startDate, endDate);
+    });
+
+    endDateElt.addEventListener('change', function() {
+        if (endDateElt.value) {
+            endDate = new Date(endDateElt.value);
+        } else {
+            endDate = null;
+        }
+        checkDatesCompatibility(startDate, endDate);
+    });
+</script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
 <script>

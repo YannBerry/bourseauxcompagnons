@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-01 23:53+0100\n"
+"POT-Creation-Date: 2019-11-03 15:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,13 +92,13 @@ msgid "Delete"
 msgstr ""
 
 #: availabilities/templates/availabilities/availability_confirm_delete.html:12
-#: availabilities/templates/availabilities/availability_form.html:52
+#: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
-#: outings/templates/outings/outing_form.html:68
-#: profiles/templates/profiles/profile_form.html:111
-#: profiles/templates/profiles/profile_register.html:73
+#: outings/templates/outings/outing_form.html:69
+#: profiles/templates/profiles/profile_form.html:112
+#: profiles/templates/profiles/profile_register.html:75
 #: templates/registration/account_confirm_delete.html:12
-#: templates/registration/account_form.html:47
+#: templates/registration/account_form.html:49
 msgid "Cancel"
 msgstr ""
 
@@ -156,10 +156,11 @@ msgstr ""
 msgid "Create an availability"
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_form.html:50
-#: outings/templates/outings/outing_form.html:66
-#: profiles/templates/profiles/profile_register.html:72
-msgid "Create"
+#: availabilities/templates/availabilities/availability_form.html:51
+#: outings/templates/outings/outing_form.html:67
+#: profiles/templates/profiles/profile_form.html:110
+#: templates/registration/account_form.html:47
+msgid "Save"
 msgstr ""
 
 #: availabilities/urls.py:13 outings/urls.py:15
@@ -353,31 +354,32 @@ msgid "Keywords..."
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:20
+#: profiles/templates/profiles/profile_list.html:16
 msgid "Dates"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:23
-#: profiles/templates/profiles/profile_list.html:17
+#: profiles/templates/profiles/profile_list.html:19
 msgid "From"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:32
-#: profiles/templates/profiles/profile_list.html:24
+#: profiles/templates/profiles/profile_list.html:28
 msgid "Till"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:43 profiles/forms.py:56
-#: profiles/templates/profiles/profile_list.html:33
+#: profiles/templates/profiles/profile_list.html:39
 msgid "Activities"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:44
-#: profiles/templates/profiles/profile_list.html:34
+#: profiles/templates/profiles/profile_list.html:40
 msgid "Filter by activities"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:51
-#: profiles/templates/profiles/profile_list.html:52
+#: profiles/templates/profiles/profile_list.html:61
 msgid "Filter"
 msgstr ""
 
@@ -667,15 +669,15 @@ msgstr ""
 msgid "My outings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:93
+#: profiles/templates/profiles/my_profile.html:92
 msgid "Exports"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:96
+#: profiles/templates/profiles/my_profile.html:95
 msgid "Export profiles to Excel format"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:103 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:101 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:11
 #: templates/registration/login.html:35
 #: templates/registration/password_reset_complete.html:9
@@ -740,36 +742,31 @@ msgstr[1] ""
 msgid "Update my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_form.html:109
-#: templates/registration/account_form.html:45
-msgid "Save"
-msgstr ""
-
 #: profiles/templates/profiles/profile_list.html:10
 msgid "Profiles list"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:16
-msgid "Availabilities"
-msgstr ""
-
-#: profiles/templates/profiles/profile_list.html:41
+#: profiles/templates/profiles/profile_list.html:47
 msgid "Where"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:41
+#: profiles/templates/profiles/profile_list.html:47
 msgid "(draw on the map)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:47
+#: profiles/templates/profiles/profile_list.html:51
+msgid "Automatically draw my area on the map"
+msgstr ""
+
+#: profiles/templates/profiles/profile_list.html:56
 msgid "Around my profile location (50 km)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:61 templates/index.html:123
+#: profiles/templates/profiles/profile_list.html:70 templates/index.html:123
 msgid "Add my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:70
+#: profiles/templates/profiles/profile_list.html:79
 #, python-format
 msgid ""
 "\n"
@@ -782,12 +779,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:92 templates/index.html:101
+#: profiles/templates/profiles/profile_list.html:101 templates/index.html:101
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:113
+#: profiles/templates/profiles/profile_list.html:122
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
@@ -797,6 +794,10 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_register.html:17
 msgid "Create your profile"
+msgstr ""
+
+#: profiles/templates/profiles/profile_register.html:74
+msgid "Create"
 msgstr ""
 
 #: profiles/templates/profiles/profile_register_email.html:10
@@ -1013,15 +1014,15 @@ msgstr ""
 msgid "Update my account"
 msgstr ""
 
-#: templates/registration/account_form.html:49
+#: templates/registration/account_form.html:53
 msgid "Update my password"
 msgstr ""
 
-#: templates/registration/login.html:38
+#: templates/registration/login.html:36
 msgid "Forgot password"
 msgstr ""
 
-#: templates/registration/login.html:41
+#: templates/registration/login.html:39
 msgid "No account? Create a profile!"
 msgstr ""
 

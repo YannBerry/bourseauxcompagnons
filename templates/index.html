@@ -411,7 +411,7 @@
                 // Popup reset (avoid the 'popupElt.innerHTML = "";' solution which is of bad performance)
                 while (popupElt.firstChild) {
                     popupElt.removeChild(popupElt.firstChild);
-                } 
+                }
                 // Popup content
                     // Title (username)
                 const titleElt = document.createElement("h4");
@@ -439,20 +439,18 @@
                 // Drawing availability area of the profile
                 availabilityAreaSource.clear();
                 const availabilityAreaGeoJson = feature.get("availability_area_geo_json");
-                console.log(availabilityAreaGeoJson);
                 const geojsonObject = {
                     "type": "Feature",
                     "geometry": availabilityAreaGeoJson, // srid: 4326
                     "properties": {}
                 };
-                console.log(geojsonObject);
                 const areaFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
-                console.log(areaFeatures);
                 availabilityAreaSource.addFeatures(areaFeatures);
-                console.log(availabilityAreaSource);
             } else {
                 // If a click is made outside of a marker then no popup is displayed
                 popup.setPosition(undefined);
+                // If a click is made outide of a marker then the availability area is hidden
+                availabilityAreaSource.clear();
             }
         });
 
