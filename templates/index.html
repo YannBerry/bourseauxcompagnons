@@ -73,6 +73,21 @@
 </div>
 
 <div class="container-fluid bg-white">
+    <div class="row px-md-5 px-xl-0">
+        <div class="col-xl-2 order-1">
+        </div>
+        <div class="col-xl-2 order-3">
+        </div>
+        <div class="col-xl-8 order-2">
+            <div class="row">
+                <div id="profilesmap" class="col-12" style="height: 550px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-light">
     <div class="row pt-5 pb-3 px-md-5 px-xl-0">
         <div class="col-xl-2 order-1">
         </div>
@@ -81,7 +96,10 @@
         <div class="col-xl-8 order-2">
             <div class="row">
                 <div class="col-12 pb-3">
-                    <h2>{% trans 'Last profiles created' %}</h2>
+                    <div class="d-flex flex-row align-items-baseline justify-content-between flex-wrap">
+                        <h2 class="mr-4">{% trans 'Last profiles created' %}</h2>
+                        <a class="text-info d-none d-sm-block" href="{% url 'profiles:list' %}">{% trans "Display all the profiles" %} ></a>
+                    </div>
                 </div>
                 {% for profile in 5_last_profiles %}
                     <div class="col-sm-6 col-lg-4 mb-4">
@@ -118,22 +136,19 @@
                 {% endfor %}
                 {% if user.is_anonymous %}
                     <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card bg-success" style="height: 100%;">
-                            <div class="card-body d-flex align-items-center justify-content-center">
-                                <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'profile_register' %}" class="stretched-link text-light" style="text-decoration: none;">{% trans "Add my profile" %}</a></p>
+                        <div class="card border-success" style="height: 100%;">
+                            <div class="card-body text-success d-flex align-items-center justify-content-center">
+                                <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'profile_register' %}" class="stretched-link unstyled">{% trans "Add my profile" %}</a></p>
                             </div>
                         </div>
                     </div>
                 {% endif %}
-                <div class="col-12">
-                    <a class="text-info" href="{% url 'profiles:list' %}">{% trans "Display all the profiles" %} ></a>
-                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container-fluid bg-light">
+<div class="container-fluid bg-white">
     <div class="row pt-5 pb-3 px-md-5 px-xl-0">
         <div class="col-xl-2 order-1">
         </div>
@@ -142,7 +157,10 @@
         <div class="col-xl-8 order-2">
             <div class="row">
                 <div class="col-12 pb-3">
-                    <h2>{% trans 'Last outings suggested' %}</h2>
+                    <div class="d-flex flex-row align-items-center justify-content-between flex-wrap">
+                        <h2 class="mr-4">{% trans 'Last outings suggested' %}</h2>
+                        <a class="text-info d-none d-sm-block" href="{% url 'outings:list' %}">{% trans "Display all the outings" %} ></a>
+                    </div>
                 </div>
                 {% for outing in 5_last_outings %}
                     <div class="col-sm-6 col-lg-4 mb-4">
@@ -165,32 +183,11 @@
                     </div>
                 {% endfor %}
                 <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="card bg-success" style="height: 100%;">
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'outings:create' %}" class="stretched-link text-light" style="text-decoration: none;">{% trans "Add my outing" %}</a></p>
+                    <div class="card border-success" style="height: 100%;">
+                        <div class="card-body text-success d-flex align-items-center justify-content-center">
+                            <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'outings:create' %}" class="stretched-link unstyled">{% trans "Add my outing" %}</a></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <a class="text-info" href="{% url 'outings:list' %}">{% trans "Display all the outings" %} ></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid bg-white">
-    <div class="row pt-5 pb-3 px-md-5 px-xl-0">
-        <div class="col-xl-2 order-1">
-        </div>
-        <div class="col-xl-2 order-3">
-        </div>
-        <div class="col-xl-8 order-2">
-            <div class="row">
-                <div class="col-12 pb-3">
-                    <h2>{% trans 'Profiles map' %}</h2>
-                </div>
-                <div id="profilesmap" class="col-12" style="height: 550px;">
                 </div>
             </div>
         </div>
@@ -249,8 +246,8 @@
 
             // VIEW (default projection is Spherical Mercator (EPSG:3857), with meters as map units)
             view: new ol.View({
-                center: ol.proj.fromLonLat([7.41, 48.82]),
-                zoom: 4,
+                center: ol.proj.fromLonLat([9.41, 45]),
+                zoom: 5,
                 minZoom:2,
                 maxZoom: 18
             })
