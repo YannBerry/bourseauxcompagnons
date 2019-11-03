@@ -178,7 +178,7 @@
     {% if user.profile.availability_area_geo %}
         let availabilityAreaGeoJson = {{ user.profile.availability_area_geo.json|safe }};
         
-        let drawMyAreaElt = document.getElementById('draw_my_area');
+        const drawMyAreaElt = document.getElementById('draw_my_area');
         drawMyAreaElt.addEventListener("click", function() {
             areaSource.clear();
             drawMyArea(availabilityAreaGeoJson);

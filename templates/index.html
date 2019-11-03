@@ -212,10 +212,10 @@
     */
 
     // BASE MAP
-        var attributionCustom = new ol.control.Attribution({
+        const attributionCustom = new ol.control.Attribution({
             collapsible: true
         });
-        var map = new ol.Map({
+        const map = new ol.Map({
             // TARGET
             target: 'profilesmap',
 
@@ -280,6 +280,15 @@
                     new ol.Feature(accuracy.transform('EPSG:4326', map.getView().getProjection())),
                     new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
                 ]);
+                // Zoom on the geolocation
+                if (!geolocSource.isEmpty()) {
+                    map.getView().fit(geolocSource.getExtent(), {
+                        maxZoom: 10,
+                        duration: 500
+                    });
+                } else {
+                    alert("Issue in assigning geoloc features to geoloc source in openlayers.")
+                }
             };
             function error(err) {
                 switch(err.code) {
@@ -308,13 +317,6 @@
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
-            // Zoom on the geolocation
-            if (!geolocSource.isEmpty()) {
-                map.getView().fit(geolocSource.getExtent(), {
-                    maxZoom: 10,
-                    duration: 500
-                });
-            }
         });
         map.addControl(new ol.control.Control({
             element: locate
@@ -322,16 +324,22 @@
 
     // MARKERS & POPUPS
         // Creating MARKERS
-        // Creating the markers source included in a specific layer linked with the map
+        // Creating the markers source included in a specific layer
         const markersSource = new ol.source.Vector();
         const markersLayer = new ol.layer.Vector({
             source: markersSource
         });
         map.addLayer(markersLayer);
+        // Creating the availability area source included in a specific layer
+        const availabilityAreaSource = new ol.source.Vector();
+        const availabilityAreaLayer = new ol.layer.Vector({
+            source: availabilityAreaSource
+        });
+        map.addLayer(availabilityAreaLayer);
         // Initializing markers list
         const markersFeatures = [];
         // Defining icon style
-        var profileLocIconStyle = new ol.style.Style({
+        const profileLocIconStyle = new ol.style.Style({
             image: new ol.style.Icon({
                 anchor: [0.5, 1],
                 anchorXUnits: 'fraction',
@@ -344,20 +352,27 @@
         // Filling markers list
         {% for p in profiles %}
         {% if p.location %}
-            var feature = new ol.Feature({
+        {
+            const feature = new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([{{ p.location.x|unlocalize }}, {{ p.location.y|unlocalize }}]))
             });
-            var profileActivities = [];
+            const profileActivities = [];
             {% for activity in p.activities.all %}
                 profileActivities.push('{{ activity.name }}');
             {% endfor %}
+            let availabilityAreaGeoJson = null;
+            {% if p.availability_area_geo.json %}
+                availabilityAreaGeoJson = {{ p.availability_area_geo.json|safe }};
+            {% endif %}
             feature.setProperties({
                 profile_username: '{{ p.user.username }}',
                 profile_url: '{{ p.get_absolute_url }}',
-                profile_activities: profileActivities
+                profile_activities: profileActivities,
+                availability_area_geo_json: availabilityAreaGeoJson
             });
             feature.setStyle(profileLocIconStyle);
             markersFeatures.push(feature);
+        }
         {% endif %}
         {% endfor %}
         // Updating markers list
@@ -366,12 +381,12 @@
 
         // Creating POPUPS linked with there markers
         // Creating the overlay
-        var popupElt = document.createElement("div");
+        const popupElt = document.createElement("div");
         popupElt.id = "popup";
         popupElt.classList.add("ol-popup");
-        profilesmapElt = document.getElementById('profilesmap');
+        const profilesmapElt = document.getElementById('profilesmap');
         profilesmapElt.appendChild(popupElt);        
-        var popup = new ol.Overlay({
+        const popup = new ol.Overlay({
             element: popupElt,
             offset: [0, -30]
         });
@@ -379,7 +394,7 @@
         // Display a popup when a marker is clicked
         map.on('click', function(evt) {
             // Detect the click on a marker
-            var feature = map.forEachFeatureAtPixel(
+            const feature = map.forEachFeatureAtPixel(
                 evt.pixel,
                 function(feature) {
                     return feature;
@@ -391,7 +406,7 @@
             // Display profile info if the marker is clicked
             if (feature) {
                 // Popup positioning
-                var coordinates = feature.getGeometry().getCoordinates();
+                const coordinates = feature.getGeometry().getCoordinates();
                 popup.setPosition(coordinates);
                 // Popup reset (avoid the 'popupElt.innerHTML = "";' solution which is of bad performance)
                 while (popupElt.firstChild) {
@@ -399,28 +414,42 @@
                 } 
                 // Popup content
                     // Title (username)
-                var titleElt = document.createElement("h4");
+                const titleElt = document.createElement("h4");
                 titleElt.classList.add("ol-popup-title");
                 titleElt.textContent = feature.get("profile_username");
                 popupElt.appendChild(titleElt);
                     // Activities
-                var activitiesElt = document.createElement("p");
+                const activitiesElt = document.createElement("p");
                 activitiesElt.classList.add("card-text");
-                for(var i = 0; i < feature.get("profile_activities").length; i++){
-                    var activityElt = document.createElement("span");
+                for(let i = 0; i < feature.get("profile_activities").length; i++){
+                    const activityElt = document.createElement("span");
                     activityElt.classList.add("badge", "badge-pill", "badge-info");
                     activitiesElt.appendChild(activityElt);
                     activityElt.textContent = feature.get("profile_activities")[i];
                 }
                 popupElt.appendChild(activitiesElt);
                 // Clickable popup and redirection to the profile's page
-                var profileUrlOnClick = "document.location='" + feature.get('profile_url') + "'";
+                let profileUrlOnClick = "document.location='" + feature.get('profile_url') + "'";
                 popupElt.setAttribute("onclick", profileUrlOnClick);
                     // Other solution that doesn't work:
                         // function linkToProfilePage() {
                         //     document.location = feature.get("profile_url");
                         // };
                         // popupElt.addEventListener("click", linkToProfilePage());
+                // Drawing availability area of the profile
+                availabilityAreaSource.clear();
+                const availabilityAreaGeoJson = feature.get("availability_area_geo_json");
+                console.log(availabilityAreaGeoJson);
+                const geojsonObject = {
+                    "type": "Feature",
+                    "geometry": availabilityAreaGeoJson, // srid: 4326
+                    "properties": {}
+                };
+                console.log(geojsonObject);
+                const areaFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
+                console.log(areaFeatures);
+                availabilityAreaSource.addFeatures(areaFeatures);
+                console.log(availabilityAreaSource);
             } else {
                 // If a click is made outside of a marker then no popup is displayed
                 popup.setPosition(undefined);
@@ -429,8 +458,8 @@
 
     // CHANGE MOUSE CURSOR when over a marker
         map.on('pointermove', function(e) {
-            var pixel = map.getEventPixel(e.originalEvent);
-            var hit = map.hasFeatureAtPixel(
+            const pixel = map.getEventPixel(e.originalEvent);
+            const hit = map.hasFeatureAtPixel(
                 pixel,
                 {layerFilter: function(layer) {
                     return layer === markersLayer;

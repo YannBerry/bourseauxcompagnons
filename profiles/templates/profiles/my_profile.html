@@ -87,7 +87,6 @@
         {% endfor %}
         </ul>
     {% endif %}
-    {% if user.email == "yannberry.fr@gmail.com" %}
     <div class="row mb-2">
         <div class="col-12">
             <h2>{% trans 'Exports' %}</h2>
@@ -96,7 +95,6 @@
             <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export profiles to Excel format' %}</a>
         </div>
     </div>
-    {% endif %}
 {% else %}
     <div class="row mb-4">
         <div class="col-12">

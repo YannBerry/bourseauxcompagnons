@@ -435,7 +435,7 @@ def export_profiles_to_xlsx(request):
     profiles_worksheet.add_image(img, anchor)
         # Confidential
     CP_confidential = profiles_worksheet.cell(column=len(attributes)-1, row=row)
-    CP_confidential.value = "CONFIDENTIEL"
+    CP_confidential.value = "NON CONFIDENTIEL"
     CP_confidential.font = Font(name='Calibri', bold=True, color=dark_red)
     CP_confidential.alignment = Alignment(vertical='top', horizontal='right')
         # Title
@@ -532,45 +532,48 @@ def export_profiles_to_xlsx(request):
             (profile.birthdate, date_format),
             (profile.last_update, date_format),
             (profile.updated_more_than_1_month_ago, values_st),
+            ('A contacter', values_st)
         ]
         for col_num, (col_value, col_format) in enumerate(values, 1):
             cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
             cell.style = col_format
     
         # Adding filtering
-    # profiles_worksheet_dim = profiles_worksheet.dimensions
-    # profiles_worksheet_dim_list = list(profiles_worksheet_dim)
-    # profiles_worksheet_dim_list[1] = str(first_row_of_table)
-    # profiles_worksheet_dim = "".join(profiles_worksheet_dim_list)
-    # profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
+    profiles_worksheet_dim = profiles_worksheet.dimensions
+    profiles_worksheet_dim_list = list(profiles_worksheet_dim)
+    profiles_worksheet_dim_list[1] = str(first_row_of_table)
+    profiles_worksheet_dim = "".join(profiles_worksheet_dim_list)
+    profiles_worksheet.auto_filter.ref = profiles_worksheet_dim
 
-        # Adding the values by category (is the profile active for 1 month ago?)
-    q_list = [profile for profile in profiles_queryset]
-    q_list = sorted(q_list, key=attrgetter('updated_more_than_1_month_ago'), reverse=True)
-    for key, group in groupby(q_list, attrgetter('updated_more_than_1_month_ago')):
-        values_row += 1
-        O_title = profiles_worksheet.cell(row=values_row, column=1, value=key)
-        profiles_worksheet.merge_cells(start_row=values_row, start_column=1, end_row=values_row, end_column=len(attributes))
-        profiles_worksheet.row_dimensions[values_row].height = 30
-        O_title.style = cat_title_st
-        for profile in group:
-            values_row += 1
-            values = [
-                (profile.user.username, values_st),
-                (profile.user.first_name, values_st),
-                (profile.user.last_name, values_st),
-                (profile.public_profile, values_st),
-                (profile.introduction, values_st),
-                (profile.list_of_courses, values_st),
-                (', '.join([str(i) for i in profile.activities.all()]), values_st),
-                (profile.birthdate, date_format),
-                (profile.last_update, date_format),
-                (profile.updated_more_than_1_month_ago, values_st),
-                ('A contacter', values_st)
-            ]
-            for col_num, (col_value, col_format) in enumerate(values, 1):
-                cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
-                cell.style = col_format
+    #     # Adding the values by category (is the profile active for 1 month ago?)
+    # q_list = [profile for profile in profiles_queryset]
+    # q_list = sorted(q_list, key=attrgetter('updated_more_than_1_month_ago'), reverse=True)
+    # cat_dict = {"False": "Updated less than 1 month ago", "True": "Updated more than 1 month ago"}
+    # for key, group in groupby(q_list, attrgetter('updated_more_than_1_month_ago')):
+    #     values_row += 1
+    #     print(key)
+    #     O_title = profiles_worksheet.cell(row=values_row, column=1, value=cat_dict[str(key)])
+    #     profiles_worksheet.merge_cells(start_row=values_row, start_column=1, end_row=values_row, end_column=len(attributes))
+    #     profiles_worksheet.row_dimensions[values_row].height = 30
+    #     O_title.style = cat_title_st
+    #     for profile in group:
+    #         values_row += 1
+    #         values = [
+    #             (profile.user.username, values_st),
+    #             (profile.user.first_name, values_st),
+    #             (profile.user.last_name, values_st),
+    #             (profile.public_profile, values_st),
+    #             (profile.introduction, values_st),
+    #             (profile.list_of_courses, values_st),
+    #             (', '.join([str(i) for i in profile.activities.all()]), values_st),
+    #             (profile.birthdate, date_format),
+    #             (profile.last_update, date_format),
+    #             (profile.updated_more_than_1_month_ago, values_st),
+    #             ('A contacter', values_st)
+    #         ]
+    #         for col_num, (col_value, col_format) in enumerate(values, 1):
+    #             cell = profiles_worksheet.cell(row=values_row, column=col_num, value=col_value)
+    #             cell.style = col_format
 
     # Data validation (ex: dropdow list)
     action_range = '{col}{first_row}:{col}{last_row}'.format(
@@ -578,7 +581,7 @@ def export_profiles_to_xlsx(request):
         first_row = first_row_of_table+1,
         last_row = values_row
     )
-    actions_dic = {'A contacter':'FF00FF00', 'A contacter ++':'FF0000FF', 'A relancer':'FFFFFF00', 'Intéressé':'FFFF00FF', 'Validé':'FF00FFFF'}
+    actions_dic = {'A contacter':'FF00FF00', 'A relancer':'FFFFFF00', 'Sélectionné':'FFFF00FF', 'Ecarté':'FF00FFFF'}
     actions_formula1 = '"' + ','.join(actions_dic.keys()) + '"'
     data_val = DataValidation(type="list",formula1=actions_formula1, allow_blank=True)
     profiles_worksheet.add_data_validation(data_val)
