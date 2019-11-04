@@ -15,15 +15,17 @@
             </ul>
         {% endif %}
         <div class="row align-items-center">
-            <div class="col-auto mr-auto">
-                <h1>{{ outing.title }}</h1>
+            <div class="col-12">
+                <div class="d-flex flex-row align-items-baseline justify-content-left flex-wrap">
+                    <h1 class="mr-auto">{{ outing.title }}</h1>
+                    {% if user.is_authenticated and outing.author.username == user.username %}
+                    <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
+                    <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
+                    {% else %}
+                    <a href="{% url 'profiles:contact-profile' outing.author.username %}" class="btn btn-success">{% trans 'Get in touch' %}</a>
+                    {% endif %}
+                </div>
             </div>
-            {% if user.is_authenticated and outing.author.username == user.username %}
-            <div class="col-auto">
-                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
-                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
-            </div>
-            {% endif %}
         </div>
         {% for activity in outing.activities.all %}
         <span class="badge badge-pill badge-info">{{ activity.name }}</span>
@@ -39,7 +41,11 @@
         <p><a href="{{ outing.topo_link }}" target="_blank">{% trans 'Link to the outing topo!' %}</a></p>
         {% endif %}
         <p class="text-justify">{{ outing.description|linebreaksbr }}</p>
-        <p>Proposé par <a href="{{ outing.author.profile.get_absolute_url }}">{{ outing.author.username }}</a>.</p>
+        <p>
+            {% blocktrans with author_profile=outing.author.profile.get_absolute_url author=outing.author.username %}
+                Posted by <a href="{{ author_profile }}">{{ author }}</a>
+            {% endblocktrans %}
+        </p>
     </div>
 </div>
 {% endblock%}
