@@ -47,6 +47,8 @@ class OutingListView(ListView):
         context['nb_of_results'] = self.nb_of_results
         context['keywords'] = self.request.GET.get('k', None)
         context['selected_activities'] = self.request.GET.getlist('a', None)
+        context['outing_start_date'] = self.request.GET.get('outing_start_date', None)
+        context['outing_end_date'] = self.request.GET.get('outing_end_date', None)
         return context
 
     def get_queryset(self):

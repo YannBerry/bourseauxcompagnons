@@ -182,6 +182,9 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'homepage'
 LOGOUT_REDIRECT_URL = 'login'
 
+# # Sessions settings
+# SESSION_COOKIE_AGE = 1209600 # seconds -> 2 weeks (default value)
+
 # Settings used by Django Debug Toolbar
 INTERNAL_IPS = [
     '127.0.0.1',

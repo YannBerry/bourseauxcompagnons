@@ -18,7 +18,7 @@
                     <div class="form-group col-6 col-xl-12 mb-0">
                         <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
                         <div class="input-group mb-2">
-                            <input type="text" name="start_date" class="form-control" id="id_start_date">
+                            <input type="text" name="start_date" class="form-control" id="id_start_date"{% if start_date %} value={{ start_date }}{% endif %}>
                             <div id="id_start_date_clear_container" class="input-group-append">
                                 <button id="id_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
                             </div>
@@ -27,7 +27,7 @@
                     <div class="form-group col-6 col-xl-12 mb-0">
                         <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
                         <div class="input-group">
-                            <input type="text" name="end_date" class="form-control" id="id_end_date">
+                            <input type="text" name="end_date" class="form-control" id="id_end_date"{% if end_date %} value={{ end_date }}{% endif %}>
                             <div id="id_end_date_clear_container" class="input-group-append">
                                 <button id="id_end_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
                             </div>
@@ -39,7 +39,7 @@
                 <h6 class="filter_title">{% trans 'Activities' %}</h6>
                 <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
                     {% for activity in all_activities %}
-                        <option>{{ activity.name }}</option>
+                        <option aria-selected='true'>{{ activity.name }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -176,11 +176,11 @@
     const startDateElt = document.getElementById('id_start_date');
     const endDateElt = document.getElementById('id_end_date');
 
-    let startDate = null;
-    let endDate = null;
+    let startDate = startDateElt.value;
+    let endDate = endDateElt.value;
 
     function checkDatesCompatibility(startDate, endDate) {
-        if (startDate <= endDate || endDate === null) {
+        if (startDate <= endDate || endDate === "") {
             const errorListElt = document.getElementById("date_errors");
             if (errorListElt) {
                 errorListElt.parentNode.removeChild(errorListElt);
@@ -204,7 +204,7 @@
         if (startDateElt.value) {
             startDate = new Date(startDateElt.value);
         } else {
-            startDate = null;
+            startDate = "";
         }
         checkDatesCompatibility(startDate, endDate);
     });
@@ -213,7 +213,7 @@
         if (endDateElt.value) {
             endDate = new Date(endDateElt.value);
         } else {
-            endDate = null;
+            endDate = "";
         }
         checkDatesCompatibility(startDate, endDate);
     });
@@ -223,13 +223,17 @@
 <script>
 // CONVERTING DJANGO VARIABLES IN JS VARIABLES for 'js/ol_area_formfield.js'
     {% if user.profile.availability_area_geo %}
-        let availabilityAreaGeoJson = {{ user.profile.availability_area_geo.json|safe }};
-        
+        let myAvailabilityAreaGeoJson = {{ user.profile.availability_area_geo.json|safe }};
+
         const drawMyAreaElt = document.getElementById('draw_my_area');
         drawMyAreaElt.addEventListener("click", function() {
             areaSource.clear();
-            drawMyArea(availabilityAreaGeoJson);
+            drawMyArea(myAvailabilityAreaGeoJson);
         });
+    {% endif %}
+    {% if availability_area_geo %}
+        let availabilityAreaGeoJson = {{ availability_area_geo|safe }};
+        drawMyArea(availabilityAreaGeoJson);
     {% endif %}
 </script>
 {% endblock %}

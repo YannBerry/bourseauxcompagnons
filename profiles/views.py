@@ -71,11 +71,9 @@ class ProfileListView(ListView):
         context['nb_of_results'] = self.nb_of_results
         context['selected_activities'] = self.request.GET.getlist('a', None)
         context['around_me'] = self.request.GET.get('around_me', None)
-        # availability_area_geo_str_json = self.request.GET.get('availability_area_geo')
-        # if availability_area_geo_str_json:
-        #     availability_area_geo_json = fromstr(availability_area_geo_str_json) # default SRID for json: 4326
-        #     context['availability_area_geo'] = availability_area_geo_json or None
-                # use today's date for the calendar
+        context['start_date'] = self.request.GET.get('start_date', None)
+        context['end_date'] = self.request.GET.get('end_date', None)
+        context['availability_area_geo'] = self.request.GET.get('availability_area_geo', None)
         return context
 
     def get_queryset(self):
@@ -88,7 +86,7 @@ class ProfileListView(ListView):
         selected_activities = self.request.GET.getlist('a', None)
         activities_in_current_language = 'activities__name_{}'.format(get_language())
         around_me = self.request.GET.get('around_me')
-        availability_area_geo = self.request.GET.get('availability_area_geo')
+        availability_area_geo = self.request.GET.get('availability_area_geo',None)
         user_authenticated = self.request.user.is_authenticated
 
         q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
@@ -252,7 +250,6 @@ class ProfileHomepageView(UserPassesTestMixin, TemplateView):
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         return context
-
 
 
 class ProfileUpdateView(UserPassesTestMixin, UpdateView):
