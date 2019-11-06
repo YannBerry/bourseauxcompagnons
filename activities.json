@@ -1,0 +1,170 @@
+[
+{
+    "model": "activities.activity",
+    "pk": 1,
+    "fields": {
+        "name": "Ski touring",
+        "name_en": "Ski touring",
+        "name_fr": "Ski de randonn\u00e9e",
+        "name_es": "eski en naturaleza",
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 2,
+    "fields": {
+        "name": "Rock climbing",
+        "name_en": "Rock climbing",
+        "name_fr": "Escalade",
+        "name_es": "escalada",
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 3,
+    "fields": {
+        "name": "Snow, ice and mixte",
+        "name_en": "Snow, ice and mixte",
+        "name_fr": "Neige, glace et mixte",
+        "name_es": null,
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 4,
+    "fields": {
+        "name": "Hiking",
+        "name_en": "Hiking",
+        "name_fr": "Randonn\u00e9e",
+        "name_es": null,
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 5,
+    "fields": {
+        "name": "Snowshoeing",
+        "name_en": "Snowshoeing",
+        "name_fr": "Raquettes",
+        "name_es": null,
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 6,
+    "fields": {
+        "name": "Mountain climbing",
+        "name_en": "Mountain climbing",
+        "name_fr": "Rocher haute montagne",
+        "name_es": null,
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 7,
+    "fields": {
+        "name": "Paragliding",
+        "name_en": "Paragliding",
+        "name_fr": "Parapente",
+        "name_es": null,
+        "name_it": null
+    }
+},
+{
+    "model": "activities.activity",
+    "pk": 8,
+    "fields": {
+        "name": "Ice climbing",
+        "name_en": "Ice climbing",
+        "name_fr": "Cascade de glace",
+        "name_es": null,
+        "name_it": null
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 1,
+    "fields": {
+        "activity": 7,
+        "name": "Niveau 1"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 2,
+    "fields": {
+        "activity": 7,
+        "name": "Niveau 2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 3,
+    "fields": {
+        "activity": 7,
+        "name": "Niveau 3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 4,
+    "fields": {
+        "activity": 4,
+        "name": "dou\u00e9"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 5,
+    "fields": {
+        "activity": 2,
+        "name": "6a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 6,
+    "fields": {
+        "activity": 2,
+        "name": "6b"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 7,
+    "fields": {
+        "activity": 2,
+        "name": "6c"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 8,
+    "fields": {
+        "activity": 1,
+        "name": "4.1"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 9,
+    "fields": {
+        "activity": 1,
+        "name": "4.2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 10,
+    "fields": {
+        "activity": 1,
+        "name": "4.3"
+    }
+}
+]
