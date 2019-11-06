@@ -38,7 +38,18 @@
             {% endblocktrans %}
         </p>
         <p class="text-justify">{{ availability.description|linebreaksbr }}</p>
-        <p>{% blocktrans with profile_url=availability.author.profile.get_absolute_url profile_username=availability.author.username %}Back to <a href="{{ profile_url }}">{{ profile_username }}</a>'s profile.{% endblocktrans %}</p>
+        <p>
+            {% if user.is_authenticated and availability.author == user %}
+            {% url 'my-profile' as my_profile_url %}
+            {% blocktrans %}
+            Back to <a href="{{ my_profile_url }}#cal-events">my profile</a>.
+            {% endblocktrans %}
+            {% else %}
+            {% blocktrans with author_url=availability.author.profile.get_absolute_url author=availability.author.username %}
+            Back to <a href="{{ author_url }}">{{ author }}</a>'s profile.
+            {% endblocktrans %}
+            {% endif %}
+        </p>
     </div>
 </div>
 {% endblock%}

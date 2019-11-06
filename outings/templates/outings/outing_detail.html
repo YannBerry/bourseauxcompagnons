@@ -42,9 +42,16 @@
         {% endif %}
         <p class="text-justify">{{ outing.description|linebreaksbr }}</p>
         <p>
+            {% if user.is_authenticated and outing.author == user %}
+            {% url 'my-profile' as my_profile_url %}
+            {% blocktrans %}
+            Back to <a href="{{ my_profile_url }}">my profile</a>.
+            {% endblocktrans %}
+            {% else %}
             {% blocktrans with author_profile=outing.author.profile.get_absolute_url author=outing.author.username %}
                 Posted by <a href="{{ author_profile }}">{{ author }}</a>
             {% endblocktrans %}
+            {% endif %}
         </p>
     </div>
 </div>

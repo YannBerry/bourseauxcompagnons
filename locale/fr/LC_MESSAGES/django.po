@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 01:10+0100\n"
+"POT-Creation-Date: 2019-11-06 11:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,11 +157,29 @@ msgstr[1] ""
 "        Sur %(duration)s jours. Du %(start_date)s au %(end_date)s.\n"
 "        "
 
-#: availabilities/templates/availabilities/availability_detail.html:41
+#: availabilities/templates/availabilities/availability_detail.html:44
+#: outings/templates/outings/outing_detail.html:47
 #, python-format
-msgid "Back to <a href=\"%(profile_url)s\">%(profile_username)s</a>'s profile."
+msgid ""
+"\n"
+"            Back to <a href=\"%(my_profile_url)s\">my profile</a>.\n"
+"            "
 msgstr ""
-"Retour sur le profil de <a href=\"%(profile_url)s\">%(profile_username)s</a>."
+"\n"
+"                Retour sur <a href=\"%(my_profile_url)s\">mon profil</a>.\n"
+"            "
+
+#: availabilities/templates/availabilities/availability_detail.html:48
+#, python-format
+msgid ""
+"\n"
+"            Back to <a href=\"%(author_url)s\">%(author)s</a>'s profile.\n"
+"            "
+msgstr ""
+"\n"
+"                Retour sur le profil de <a href=\"%(author_url)s\">"
+"%(author)s</a>\n"
+"            "
 
 #: availabilities/templates/availabilities/availability_form.html:10
 msgid "Create an availability"
@@ -361,7 +379,7 @@ msgstr "Prendre contact"
 msgid "Link to the outing topo!"
 msgstr "Lien vers le topo de la sortie"
 
-#: outings/templates/outings/outing_detail.html:45
+#: outings/templates/outings/outing_detail.html:51
 #, python-format
 msgid ""
 "\n"
@@ -737,15 +755,18 @@ msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
 #: profiles/templates/profiles/my_profile.html:48
-msgid "My availabilities"
-msgstr "Mes disponibilités"
+msgid "My calendar"
+msgstr "Mon calendrier"
 
 #: profiles/templates/profiles/my_profile.html:51
-#: profiles/templates/profiles/my_profile.html:64
-msgid "Add new"
-msgstr "Créer"
+msgid "Add new availability"
+msgstr "Ajouter une disponibilité"
 
-#: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:52
+msgid "Add new outing"
+msgstr "Ajouter une sortie"
+
+#: profiles/templates/profiles/my_profile.html:64
 msgid "My outings"
 msgstr "Mes sorties"
 
@@ -797,11 +818,15 @@ msgstr "Présentation"
 msgid "List of main courses"
 msgstr "Liste des principales courses"
 
-#: profiles/templates/profiles/profile_detail.html:82
-msgid "Its outing propositions"
-msgstr "Ses propositions de sortie"
+#: profiles/templates/profiles/profile_detail.html:84
+msgid "Its calendar"
+msgstr "Son calendrier"
 
-#: profiles/templates/profiles/profile_detail.html:90
+#: profiles/templates/profiles/profile_detail.html:91
+msgid "Details of its outing propositions"
+msgstr "Détail de ses propositions de sortie"
+
+#: profiles/templates/profiles/profile_detail.html:99
 #, python-format
 msgid ""
 "\n"
@@ -978,15 +1003,15 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:194
+#: profiles/views.py:192
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:195
+#: profiles/views.py:193
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:207
+#: profiles/views.py:205
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1198,4 +1223,3 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
-

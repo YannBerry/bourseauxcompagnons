@@ -78,8 +78,17 @@
     </div>
 </div>
 
+{% if profile.user.outing_set.all or profile.user.availability_set.all %}
+    <div id="cal-events" class="row mb-4">
+        <div class="col-12">
+            <h1 class="h2">{% trans 'Its calendar' %}</h1>
+            {{ cal_events }}
+        </div>
+    </div>
+{% endif %}
+
 {% if profile.user.outing_set.all %}
-    <h1 class="h2">{% trans 'Its outing propositions' %}</h1>
+    <h1 class="h2">{% trans 'Details of its outing propositions' %}</h1>
     <div class="row">
         {% for outing in profile.user.outing_set.all %}
         <div class="col-md-6 mb-4">
@@ -103,13 +112,7 @@
         {% endfor %}
     </div>
 {% endif %}
-{% if profile.user.outing_set.all or profile.user.availability_set.all %}
-    <div id="cal-events" class="row mb-4">
-        <div class="col-12">
-            {{ cal_events }}
-        </div>
-    </div>
-{% endif %}
+
 {% endblock%}
 
 {% block js %}
