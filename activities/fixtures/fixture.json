@@ -125,7 +125,7 @@
     "pk": 1,
     "fields": {
         "activity": 7,
-        "name": "Niveau 1"
+        "name": "D\u00e9butant"
     }
 },
 {
@@ -133,7 +133,7 @@
     "pk": 2,
     "fields": {
         "activity": 7,
-        "name": "Niveau 2"
+        "name": "Interm\u00e9diaire"
     }
 },
 {
@@ -141,7 +141,7 @@
     "pk": 3,
     "fields": {
         "activity": 7,
-        "name": "Niveau 3"
+        "name": "Confirm\u00e9"
     }
 },
 {
@@ -149,7 +149,7 @@
     "pk": 4,
     "fields": {
         "activity": 4,
-        "name": "dou\u00e9"
+        "name": "T1"
     }
 },
 {
@@ -157,7 +157,7 @@
     "pk": 5,
     "fields": {
         "activity": 2,
-        "name": "6a"
+        "name": "3"
     }
 },
 {
@@ -165,7 +165,7 @@
     "pk": 6,
     "fields": {
         "activity": 2,
-        "name": "6b"
+        "name": "4a"
     }
 },
 {
@@ -173,7 +173,7 @@
     "pk": 7,
     "fields": {
         "activity": 2,
-        "name": "6c"
+        "name": "4b"
     }
 },
 {
@@ -181,7 +181,7 @@
     "pk": 8,
     "fields": {
         "activity": 1,
-        "name": "4.1"
+        "name": "1"
     }
 },
 {
@@ -189,7 +189,7 @@
     "pk": 9,
     "fields": {
         "activity": 1,
-        "name": "4.2"
+        "name": "2.1"
     }
 },
 {
@@ -197,7 +197,631 @@
     "pk": 10,
     "fields": {
         "activity": 1,
+        "name": "2.2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 11,
+    "fields": {
+        "activity": 4,
+        "name": "T2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 12,
+    "fields": {
+        "activity": 4,
+        "name": "T3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 13,
+    "fields": {
+        "activity": 4,
+        "name": "T4"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 14,
+    "fields": {
+        "activity": 4,
+        "name": "T5"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 15,
+    "fields": {
+        "activity": 8,
+        "name": "2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 16,
+    "fields": {
+        "activity": 8,
+        "name": "3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 17,
+    "fields": {
+        "activity": 8,
+        "name": "3+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 18,
+    "fields": {
+        "activity": 8,
+        "name": "4"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 19,
+    "fields": {
+        "activity": 8,
+        "name": "4+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 20,
+    "fields": {
+        "activity": 8,
+        "name": "5"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 21,
+    "fields": {
+        "activity": 8,
+        "name": "5+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 22,
+    "fields": {
+        "activity": 8,
+        "name": "6"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 23,
+    "fields": {
+        "activity": 8,
+        "name": "6+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 24,
+    "fields": {
+        "activity": 8,
+        "name": "7"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 25,
+    "fields": {
+        "activity": 8,
+        "name": "7+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 26,
+    "fields": {
+        "activity": 2,
+        "name": "4c"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 27,
+    "fields": {
+        "activity": 2,
+        "name": "5a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 28,
+    "fields": {
+        "activity": 2,
+        "name": "5b"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 29,
+    "fields": {
+        "activity": 2,
+        "name": "5c"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 30,
+    "fields": {
+        "activity": 2,
+        "name": "6a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 31,
+    "fields": {
+        "activity": 2,
+        "name": "6b"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 32,
+    "fields": {
+        "activity": 2,
+        "name": "6c"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 33,
+    "fields": {
+        "activity": 2,
+        "name": "7a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 34,
+    "fields": {
+        "activity": 2,
+        "name": "7b"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 35,
+    "fields": {
+        "activity": 2,
+        "name": "7c"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 36,
+    "fields": {
+        "activity": 2,
+        "name": "8a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 37,
+    "fields": {
+        "activity": 2,
+        "name": "8b"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 38,
+    "fields": {
+        "activity": 2,
+        "name": "8c"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 39,
+    "fields": {
+        "activity": 2,
+        "name": "9a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 40,
+    "fields": {
+        "activity": 2,
+        "name": "> 9a"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 41,
+    "fields": {
+        "activity": 3,
+        "name": "F"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 42,
+    "fields": {
+        "activity": 3,
+        "name": "PD-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 43,
+    "fields": {
+        "activity": 3,
+        "name": "PD"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 44,
+    "fields": {
+        "activity": 3,
+        "name": "PD+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 45,
+    "fields": {
+        "activity": 3,
+        "name": "AD-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 46,
+    "fields": {
+        "activity": 3,
+        "name": "AD"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 47,
+    "fields": {
+        "activity": 3,
+        "name": "AD+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 48,
+    "fields": {
+        "activity": 3,
+        "name": "D-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 49,
+    "fields": {
+        "activity": 3,
+        "name": "D"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 50,
+    "fields": {
+        "activity": 3,
+        "name": "D+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 51,
+    "fields": {
+        "activity": 3,
+        "name": "TD-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 52,
+    "fields": {
+        "activity": 3,
+        "name": "TD"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 53,
+    "fields": {
+        "activity": 3,
+        "name": "TD+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 54,
+    "fields": {
+        "activity": 3,
+        "name": "ED-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 55,
+    "fields": {
+        "activity": 3,
+        "name": "ED"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 56,
+    "fields": {
+        "activity": 3,
+        "name": "ED+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 57,
+    "fields": {
+        "activity": 3,
+        "name": "> ED+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 58,
+    "fields": {
+        "activity": 5,
+        "name": "R1"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 59,
+    "fields": {
+        "activity": 5,
+        "name": "R2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 60,
+    "fields": {
+        "activity": 5,
+        "name": "R3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 61,
+    "fields": {
+        "activity": 5,
+        "name": "R4"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 62,
+    "fields": {
+        "activity": 5,
+        "name": "R5"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 63,
+    "fields": {
+        "activity": 6,
+        "name": "F"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 64,
+    "fields": {
+        "activity": 6,
+        "name": "PD-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 65,
+    "fields": {
+        "activity": 6,
+        "name": "PD"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 66,
+    "fields": {
+        "activity": 6,
+        "name": "PD+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 67,
+    "fields": {
+        "activity": 6,
+        "name": "D-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 68,
+    "fields": {
+        "activity": 6,
+        "name": "D"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 69,
+    "fields": {
+        "activity": 6,
+        "name": "D+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 70,
+    "fields": {
+        "activity": 6,
+        "name": "TD-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 71,
+    "fields": {
+        "activity": 6,
+        "name": "TD"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 72,
+    "fields": {
+        "activity": 6,
+        "name": "TD+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 73,
+    "fields": {
+        "activity": 6,
+        "name": "ED-"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 74,
+    "fields": {
+        "activity": 6,
+        "name": "ED"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 75,
+    "fields": {
+        "activity": 6,
+        "name": "ED+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 76,
+    "fields": {
+        "activity": 6,
+        "name": "> ED+"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 77,
+    "fields": {
+        "activity": 1,
+        "name": "2.3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 78,
+    "fields": {
+        "activity": 1,
+        "name": "3.1"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 79,
+    "fields": {
+        "activity": 1,
+        "name": "3.2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 80,
+    "fields": {
+        "activity": 1,
+        "name": "3.3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 81,
+    "fields": {
+        "activity": 1,
+        "name": "4.1"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 82,
+    "fields": {
+        "activity": 1,
+        "name": "4.2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 83,
+    "fields": {
+        "activity": 1,
         "name": "4.3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 84,
+    "fields": {
+        "activity": 1,
+        "name": "5.1"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 85,
+    "fields": {
+        "activity": 1,
+        "name": "5.2"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 86,
+    "fields": {
+        "activity": 1,
+        "name": "5.3"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 87,
+    "fields": {
+        "activity": 1,
+        "name": "5.4"
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 88,
+    "fields": {
+        "activity": 1,
+        "name": "> 5.4"
     }
 }
 ]
