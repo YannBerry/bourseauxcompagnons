@@ -45,7 +45,7 @@
             {% if user.is_authenticated and outing.author == user %}
             {% url 'my-profile' as my_profile_url %}
             {% blocktrans %}
-            Back to <a href="{{ my_profile_url }}">my profile</a>.
+            Back to <a href="{{ my_profile_url }}#cal-events">my profile</a>.
             {% endblocktrans %}
             {% else %}
             {% blocktrans with author_profile=outing.author.profile.get_absolute_url author=outing.author.username %}

@@ -179,7 +179,7 @@ MESSAGE_TAGS = {
 # Custom Django Authentification settings
 AUTH_USER_MODEL = 'profiles.CustomUser'
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'homepage'
+# LOGIN_REDIRECT_URL = 'homepage' # if 'next' is defined in the request then it is used to redirect (https://docs.djangoproject.com/fr/2.2/topics/auth/default/#django.contrib.auth.views.LoginView)
 LOGOUT_REDIRECT_URL = 'login'
 
 # # Sessions settings

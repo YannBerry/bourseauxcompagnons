@@ -85,7 +85,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="{% url 'login' %}">{% trans "Sign in" %}</a>
+                        <a class="btn btn-outline-light" href="{% url 'login' %}?next={{ request.path|urlencode }}">{% trans "Sign in" %}</a>
                     </li>
                     {% endif %}
                 </ul>

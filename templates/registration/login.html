@@ -31,6 +31,8 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    
                     <div class="form-end-buttons-centered mb-2">
                         <button class="btn btn-primary mr-2" type="submit">{% trans 'Sign in' %}</button>
                         <a class="btn btn-danger" href="{% url 'password_reset' %}">{% trans 'Forgot password' %}</a>
