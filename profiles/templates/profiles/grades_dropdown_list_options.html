@@ -1,11 +1,27 @@
 {% regroup grades by activity as activity_list %}
 {% for activity in activity_list %}
     <li>{{ activity.grouper }}
-        <ul>
+        <div>
+            <!-- <div id="{{ activity.grouper|slugify }}_slider"></div> -->
+
             {% for grade in activity.list %}
-            <label for="id_grades_{{ grade.pk }}">
-            <input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
+            <label for="id_grades_{{ grade.pk }}" style="margin-right: 0.8rem;">
+            <input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" style="margin-right: 0.3rem;" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
             {% endfor %}
-        </ul>
+
+            <!-- <span id="{{ activity.grouper|slugify }}_grade"></span>
+            <input type="range" name="grades" list="{{ activity.grouper|slugify }}" max="{{ activity.list|length }}" min="1" step="1" mousemove="displaySelectedValue(this.value)" onChange="displaySelectedValue(this.value)" style="-moz-appearance: none; -webkit-appearance: none; width: 100%; height: 1rem; border-radius: 0.5rem; background-color: rgba(0,0,200,0.5);">
+            <datalist id="{{ activity.grouper|slugify }}">
+                {% for grade in activity.list %}
+                <option value="{{ grade.pk }}" label="{{ grade.name }}">{{ grade.name }}</option>
+                {% endfor %}
+            </datalist>
+            <script>
+                function displaySelectedValue(value) {
+                    let valueTestElt = document.getElementById('randonnee_grade');
+                    valueTestElt.innerHTML = value;
+                }
+            </script> -->
+        </div>
     </li>
 {% endfor %}

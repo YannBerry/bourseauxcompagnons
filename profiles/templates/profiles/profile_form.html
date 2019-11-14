@@ -7,6 +7,7 @@
 {% block css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+<!-- <link rel="stylesheet" href="{% static 'css/20191113nouislider/nouislider.min.css' %}"> -->
 {% endblock %}
 
 {% block title %}{% trans 'Update my profile' %} | {{ block.super }}{% endblock %}
@@ -66,7 +67,7 @@
             <div class="col-sm-6 mb-4">
                 {{ form.location.label_tag }}
                 <div id="locationformmap" style="height: 350px;"></div>
-                <input id="locationcoordinates" name="location" value="" type="hidden"/>
+                <input id="locationcoordinates" name="{{ form.location.name }}" value="" type="hidden"/>
                 {{ form.location.errors }}
                 {% if form.location.help_text %}
                     <p class="helptext">{{ form.location.help_text|safe }}</p>
@@ -75,7 +76,7 @@
             <div class="col-sm-6 mb-4">
                 {{ form.availability_area_geo.label_tag }}
                 <div id="availabilityformmap" style="height: 350px;"></div>
-                <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
+                <input id="areacoordinates" name="{{ form.availability_area_geo.name }}" value="" type="hidden"/>
                 {{ form.availability_area_geo.errors }}
                 {% if form.availability_area_geo.help_text %}
                     <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
@@ -120,6 +121,18 @@
 {% endblock%}
 
 {% block js %}
+<!-- <script src="{% static 'js/20191113nouislider/nouislider.min.js' %}"></script>
+<script>
+    let slider = document.getElementById('randonnee_slider');
+
+    noUiSlider.create(slider, {
+        start: [4000, 8000],
+        range: {
+            'min': [2000],
+            'max': [10000]
+        }
+    });
+</script> -->
 <script>
 let httpRequest;
 let activitiesElts = document.querySelectorAll("input[name=activities]");
@@ -148,11 +161,11 @@ function makeRequest() {
             checkedGrades += "g=" + checkedGradesElts[i].value;
         }
     }
-    let params = ""
+    let params = "";
     if (checkedGrades != "") {
-        params = checkedActivities + "&" + checkedGrades
+        params = checkedActivities + "&" + checkedGrades;
     } else {
-        params = checkedActivities
+        params = checkedActivities;
     }
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = alertContents;
@@ -217,9 +230,11 @@ function alertContents() {
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS VARIABLES for 'js/ol_area_formfield.js'
-    {% if form.availability_area_geo.value %}
+    if ("{{ form.availability_area_geo.value.json }}" != "None") {
+    // {% if form.availability_area_geo.value %}
         let availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
         drawMyArea(availabilityAreaGeoJson);
-    {% endif %}
+    // {% endif %}
+    }
 </script>
 {% endblock %}

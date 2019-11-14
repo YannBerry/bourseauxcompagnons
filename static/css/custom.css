@@ -44,7 +44,7 @@ a.unstyled, a.unstyled:hover {
 }
 
 /* CHECKBOX MULTIPLE WIDGET */
-ul#id_activities {
+ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
     list-style-type: none;
     margin: 0;
     padding: 0;

@@ -12,7 +12,8 @@ from django.contrib.gis.forms import OpenLayersWidget
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
-from core.widgets import ImageWidget
+from core.forms import GroupedModelMultipleChoiceField
+from core.widgets import ImageWidget, GradesWidget
 
 # Setting the map_srid of the openlayers widget (the dafault widget for qeometric fields) to 4326 instead of 3857
 class OpenLayersWidgetSrid4326(OpenLayersWidget):
@@ -144,6 +145,13 @@ class AccountForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     required_css_class = 'required'
 
+    grades = GroupedModelMultipleChoiceField(
+        queryset=Grade.objects.all(),
+        choices_groupby='activity',
+        widget= GradesWidget(), #forms.CheckboxSelectMultiple(),
+        required=False,
+    )
+
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
@@ -170,14 +178,14 @@ class ProfileForm(forms.ModelForm):
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
             self.fields['grades'].widget.attrs.update({'class': 'custom-form-check-inline'})
         # Dependent lists: grades displaying according to selected activities
-        self.fields['grades'].queryset = Grade.objects.none()
+        # self.fields['grades'].queryset = Grade.objects.none()
         if self.instance.pk:
             activities = self.instance.activities.all()
             # q = Grade.objects.none()
             # for a in self.instance.activities.all():
             #     q |= a.grade_set.all()
             # print(q)
-            self.fields['grades'].queryset = Grade.objects.filter(eval(' | '.join(f'Q(activity="{ activity.pk }")' for activity in activities)))
+            self.fields['grades'].queryset = Grade.objects.filter(eval(' | '.join(f'Q(activity="{ activity.pk }")' for activity in activities))).select_related('activity')
 
     class Meta:
         model = Profile
@@ -185,8 +193,7 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'availability_area_geo': OpenLayersWidgetSrid4326(),
             'profile_picture': ImageWidget(),
-            'activities': forms.CheckboxSelectMultiple(),
-            'grades': forms.CheckboxSelectMultiple(),
+            'activities': forms.CheckboxSelectMultiple()
         }
 
     def clean(self):

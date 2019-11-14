@@ -1,0 +1,25 @@
+<!-- 
+Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   default: SelectMultiple -> select.html
+                                            or we can choose: CheckboxSelectMultiple -> checkbox_select.html
+-->
+
+{% with id=widget.attrs.id %}
+<ul{% if id %} id="{{ id }}"{% endif %}>
+    {% for group, options, index in widget.optgroups %}
+        {% if group %}
+            <li>{{ group }}
+                <div{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+        {% endif %}
+        {% for option in options %}
+                {% with widget=option %}
+                {% if widget.wrap_label %}
+                    <label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} style="margin-right: 0.8rem;">{% endif %}<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} style="margin-right: 0.3rem;" value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}{{ widget.label }}</label>
+                {% endif %}
+                {% endwith%}
+        {% endfor %}
+        {% if group %}
+            </div></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endwith %}
