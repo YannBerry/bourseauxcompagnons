@@ -27,33 +27,13 @@ class GroupedModelChoiceIterator(ModelChoiceIterator):
             yield (group, [self.choice(obj) for obj in objs])
 
 
-# class GroupedModelChoiceField(ModelChoiceField):
-#     '''
-#     Redefining ModelChoiceField to add the possibility to group the choices by a choosen attribute of the model.
-#     This allow to feed the optgroups defined in the optgroups context attribute defined in django/forms/widgets.py.
-
-#     -> Add the 'choices_groupby' attribute to ModelChoiceField.
-#     '''
-#     def __init__(self, *args, choices_groupby, **kwargs):
-#         if isinstance(choices_groupby, str):
-#             choices_groupby = attrgetter(choices_groupby)
-#         elif not callable(choices_groupby):
-#             raise TypeError('choices_groupby must either be a str or a callable accepting a single argument')
-#         self.iterator = partial(GroupedModelChoiceIterator, groupby=choices_groupby)
-#         super().__init__(*args, **kwargs)
-
-
-class GroupedModelMultipleChoiceField(ModelMultipleChoiceField):
+class GroupedModelChoiceField(ModelChoiceField):
     '''
     Redefining ModelChoiceField to add the possibility to group the choices by a choosen attribute of the model.
     This allow to feed the optgroups defined in the optgroups context attribute defined in django/forms/widgets.py.
 
-    -> Just pass the choices_groupby argument to GroupedModelChoiceField
+    -> Add the 'choices_groupby' attribute to ModelChoiceField.
     '''
-    # def __init__(self, *args, choices_groupby, **kwargs):
-    #     self.choices_groupby = choices_groupby
-    #     super().__init__(*args, choices_groupby= choices_groupby, empty_label=None, **kwargs)
-    # pass
     def __init__(self, *args, choices_groupby, **kwargs):
         if isinstance(choices_groupby, str):
             choices_groupby = attrgetter(choices_groupby)
@@ -61,3 +41,25 @@ class GroupedModelMultipleChoiceField(ModelMultipleChoiceField):
             raise TypeError('choices_groupby must either be a str or a callable accepting a single argument')
         self.iterator = partial(GroupedModelChoiceIterator, groupby=choices_groupby)
         super().__init__(*args, **kwargs)
+
+
+class GroupedModelMultipleChoiceField(ModelMultipleChoiceField, GroupedModelChoiceField):
+    '''
+    Redefining ModelChoiceField to add the possibility to group the choices by a choosen attribute of the model.
+    This allow to feed the optgroups defined in the optgroups context attribute defined in django/forms/widgets.py.
+
+    -> Just pass the choices_groupby argument to GroupedModelChoiceField
+    '''
+    pass
+
+    # def __init__(self, *args, choices_groupby, **kwargs):
+    #     self.choices_groupby = choices_groupby
+    #     super().__init__(*args, choices_groupby= choices_groupby, **kwargs)
+
+    # def __init__(self, *args, choices_groupby, **kwargs):
+    #     if isinstance(choices_groupby, str):
+    #         choices_groupby = attrgetter(choices_groupby)
+    #     elif not callable(choices_groupby):
+    #         raise TypeError('choices_groupby must either be a str or a callable accepting a single argument')
+    #     self.iterator = partial(GroupedModelChoiceIterator, groupby=choices_groupby)
+    #     super().__init__(*args, **kwargs)

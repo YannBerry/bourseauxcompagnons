@@ -150,6 +150,7 @@ class ProfileForm(forms.ModelForm):
         choices_groupby='activity',
         widget= GradesWidget(), #forms.CheckboxSelectMultiple(),
         required=False,
+        help_text=_("Select your comfortable grade for each of the activities you have chosen.")
     )
 
     def __init__(self, *args, **kwargs):
