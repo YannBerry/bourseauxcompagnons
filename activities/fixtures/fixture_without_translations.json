@@ -125,11 +125,7 @@
     "pk": 1,
     "fields": {
         "activity": 7,
-        "name": "Beginner",
-        "name_en": "Beginner",
-        "name_fr": "D\u00e9butant",
-        "name_es": null,
-        "name_it": null,
+        "name": "D\u00e9butant",
         "ordering": 1
     }
 },
@@ -138,11 +134,7 @@
     "pk": 2,
     "fields": {
         "activity": 7,
-        "name": "Intermediate",
-        "name_en": "Intermediate",
-        "name_fr": "Interm\u00e9diaire",
-        "name_es": null,
-        "name_it": null,
+        "name": "Interm\u00e9diaire",
         "ordering": 2
     }
 },
@@ -151,11 +143,7 @@
     "pk": 3,
     "fields": {
         "activity": 7,
-        "name": "Expert",
-        "name_en": "Expert",
-        "name_fr": "Expert",
-        "name_es": null,
-        "name_it": null,
+        "name": "Confirm\u00e9",
         "ordering": 3
     }
 },
@@ -164,11 +152,7 @@
     "pk": 4,
     "fields": {
         "activity": 4,
-        "name": "R1",
-        "name_en": "R1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "T1",
         "ordering": 1
     }
 },
@@ -178,10 +162,6 @@
     "fields": {
         "activity": 2,
         "name": "3",
-        "name_en": "3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 1
     }
 },
@@ -191,10 +171,6 @@
     "fields": {
         "activity": 2,
         "name": "4a",
-        "name_en": "4a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 2
     }
 },
@@ -204,10 +180,6 @@
     "fields": {
         "activity": 2,
         "name": "4b",
-        "name_en": "4b",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 3
     }
 },
@@ -217,10 +189,6 @@
     "fields": {
         "activity": 1,
         "name": "1",
-        "name_en": "1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 1
     }
 },
@@ -230,10 +198,6 @@
     "fields": {
         "activity": 1,
         "name": "2.1",
-        "name_en": "2.1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 2
     }
 },
@@ -243,10 +207,6 @@
     "fields": {
         "activity": 1,
         "name": "2.2",
-        "name_en": "2.2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 3
     }
 },
@@ -255,11 +215,7 @@
     "pk": 11,
     "fields": {
         "activity": 4,
-        "name": "R2",
-        "name_en": "R2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "T2",
         "ordering": 2
     }
 },
@@ -268,11 +224,7 @@
     "pk": 12,
     "fields": {
         "activity": 4,
-        "name": "R3",
-        "name_en": "R3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "T3",
         "ordering": 3
     }
 },
@@ -281,11 +233,7 @@
     "pk": 13,
     "fields": {
         "activity": 4,
-        "name": "R4",
-        "name_en": "R4",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "T4",
         "ordering": 4
     }
 },
@@ -294,11 +242,7 @@
     "pk": 14,
     "fields": {
         "activity": 4,
-        "name": "R5",
-        "name_en": "R5",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "T5",
         "ordering": 5
     }
 },
@@ -308,10 +252,6 @@
     "fields": {
         "activity": 8,
         "name": "2",
-        "name_en": "2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 1
     }
 },
@@ -321,10 +261,6 @@
     "fields": {
         "activity": 8,
         "name": "3",
-        "name_en": "3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 2
     }
 },
@@ -334,10 +270,6 @@
     "fields": {
         "activity": 8,
         "name": "3+",
-        "name_en": "3+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 3
     }
 },
@@ -347,10 +279,6 @@
     "fields": {
         "activity": 8,
         "name": "4",
-        "name_en": "4",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 4
     }
 },
@@ -360,10 +288,6 @@
     "fields": {
         "activity": 8,
         "name": "4+",
-        "name_en": "4+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 5
     }
 },
@@ -373,10 +297,6 @@
     "fields": {
         "activity": 8,
         "name": "5",
-        "name_en": "5",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 6
     }
 },
@@ -386,10 +306,6 @@
     "fields": {
         "activity": 8,
         "name": "5+",
-        "name_en": "5+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 7
     }
 },
@@ -399,10 +315,6 @@
     "fields": {
         "activity": 8,
         "name": "6",
-        "name_en": "6",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 8
     }
 },
@@ -412,10 +324,6 @@
     "fields": {
         "activity": 8,
         "name": "6+",
-        "name_en": "6+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 9
     }
 },
@@ -425,10 +333,6 @@
     "fields": {
         "activity": 8,
         "name": "7",
-        "name_en": "7",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 10
     }
 },
@@ -438,10 +342,6 @@
     "fields": {
         "activity": 8,
         "name": "7+",
-        "name_en": "7+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 11
     }
 },
@@ -451,10 +351,6 @@
     "fields": {
         "activity": 2,
         "name": "4c",
-        "name_en": "4c",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 4
     }
 },
@@ -464,10 +360,6 @@
     "fields": {
         "activity": 2,
         "name": "5a",
-        "name_en": "5a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 5
     }
 },
@@ -477,10 +369,6 @@
     "fields": {
         "activity": 2,
         "name": "5b",
-        "name_en": "5b",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 6
     }
 },
@@ -490,10 +378,6 @@
     "fields": {
         "activity": 2,
         "name": "5c",
-        "name_en": "5c",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 7
     }
 },
@@ -503,10 +387,6 @@
     "fields": {
         "activity": 2,
         "name": "6a",
-        "name_en": "6a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 8
     }
 },
@@ -516,10 +396,6 @@
     "fields": {
         "activity": 2,
         "name": "6b",
-        "name_en": "6b",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 9
     }
 },
@@ -529,10 +405,6 @@
     "fields": {
         "activity": 2,
         "name": "6c",
-        "name_en": "6c",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 10
     }
 },
@@ -542,10 +414,6 @@
     "fields": {
         "activity": 2,
         "name": "7a",
-        "name_en": "7a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 11
     }
 },
@@ -555,10 +423,6 @@
     "fields": {
         "activity": 2,
         "name": "7b",
-        "name_en": "7b",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 12
     }
 },
@@ -568,10 +432,6 @@
     "fields": {
         "activity": 2,
         "name": "7c",
-        "name_en": "7c",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 13
     }
 },
@@ -581,10 +441,6 @@
     "fields": {
         "activity": 2,
         "name": "8a",
-        "name_en": "8a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 14
     }
 },
@@ -594,10 +450,6 @@
     "fields": {
         "activity": 2,
         "name": "8b",
-        "name_en": "8b",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 15
     }
 },
@@ -607,10 +459,6 @@
     "fields": {
         "activity": 2,
         "name": "8c",
-        "name_en": "8c",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 16
     }
 },
@@ -620,10 +468,6 @@
     "fields": {
         "activity": 2,
         "name": "9a",
-        "name_en": "9a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 17
     }
 },
@@ -633,10 +477,6 @@
     "fields": {
         "activity": 2,
         "name": "> 9a",
-        "name_en": "> 9a",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 18
     }
 },
@@ -646,10 +486,6 @@
     "fields": {
         "activity": 3,
         "name": "F",
-        "name_en": "F",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 1
     }
 },
@@ -659,10 +495,6 @@
     "fields": {
         "activity": 3,
         "name": "PD-",
-        "name_en": "PD-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 2
     }
 },
@@ -672,10 +504,6 @@
     "fields": {
         "activity": 3,
         "name": "PD",
-        "name_en": "PD",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 3
     }
 },
@@ -685,10 +513,6 @@
     "fields": {
         "activity": 3,
         "name": "PD+",
-        "name_en": "PD+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 4
     }
 },
@@ -698,10 +522,6 @@
     "fields": {
         "activity": 3,
         "name": "AD-",
-        "name_en": "AD-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 5
     }
 },
@@ -711,10 +531,6 @@
     "fields": {
         "activity": 3,
         "name": "AD",
-        "name_en": "AD",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 6
     }
 },
@@ -724,10 +540,6 @@
     "fields": {
         "activity": 3,
         "name": "AD+",
-        "name_en": "AD+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 7
     }
 },
@@ -737,10 +549,6 @@
     "fields": {
         "activity": 3,
         "name": "D-",
-        "name_en": "D-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 8
     }
 },
@@ -750,10 +558,6 @@
     "fields": {
         "activity": 3,
         "name": "D",
-        "name_en": "D",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 9
     }
 },
@@ -763,10 +567,6 @@
     "fields": {
         "activity": 3,
         "name": "D+",
-        "name_en": "D+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 10
     }
 },
@@ -776,10 +576,6 @@
     "fields": {
         "activity": 3,
         "name": "TD-",
-        "name_en": "TD-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 11
     }
 },
@@ -789,10 +585,6 @@
     "fields": {
         "activity": 3,
         "name": "TD",
-        "name_en": "TD",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 12
     }
 },
@@ -802,10 +594,6 @@
     "fields": {
         "activity": 3,
         "name": "TD+",
-        "name_en": "TD+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 13
     }
 },
@@ -815,10 +603,6 @@
     "fields": {
         "activity": 3,
         "name": "ED-",
-        "name_en": "ED-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 14
     }
 },
@@ -828,10 +612,6 @@
     "fields": {
         "activity": 3,
         "name": "ED",
-        "name_en": "ED",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 15
     }
 },
@@ -841,10 +621,6 @@
     "fields": {
         "activity": 3,
         "name": "ED+",
-        "name_en": "ED+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 16
     }
 },
@@ -854,10 +630,6 @@
     "fields": {
         "activity": 3,
         "name": "> ED+",
-        "name_en": "> ED+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 17
     }
 },
@@ -867,10 +639,6 @@
     "fields": {
         "activity": 5,
         "name": "R1",
-        "name_en": "R1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 1
     }
 },
@@ -880,10 +648,6 @@
     "fields": {
         "activity": 5,
         "name": "R2",
-        "name_en": "R2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 2
     }
 },
@@ -893,10 +657,6 @@
     "fields": {
         "activity": 5,
         "name": "R3",
-        "name_en": "R3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 3
     }
 },
@@ -906,10 +666,6 @@
     "fields": {
         "activity": 5,
         "name": "R4",
-        "name_en": "R4",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 4
     }
 },
@@ -919,10 +675,6 @@
     "fields": {
         "activity": 5,
         "name": "R5",
-        "name_en": "R5",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 5
     }
 },
@@ -932,10 +684,6 @@
     "fields": {
         "activity": 6,
         "name": "F",
-        "name_en": "F",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 1
     }
 },
@@ -945,10 +693,6 @@
     "fields": {
         "activity": 6,
         "name": "PD-",
-        "name_en": "PD-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 2
     }
 },
@@ -958,10 +702,6 @@
     "fields": {
         "activity": 6,
         "name": "PD",
-        "name_en": "PD",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 3
     }
 },
@@ -971,10 +711,6 @@
     "fields": {
         "activity": 6,
         "name": "PD+",
-        "name_en": "PD+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 4
     }
 },
@@ -983,11 +719,7 @@
     "pk": 67,
     "fields": {
         "activity": 6,
-        "name": "AD-",
-        "name_en": "AD-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "D-",
         "ordering": 5
     }
 },
@@ -996,11 +728,7 @@
     "pk": 68,
     "fields": {
         "activity": 6,
-        "name": "AD",
-        "name_en": "AD",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "D",
         "ordering": 6
     }
 },
@@ -1009,11 +737,7 @@
     "pk": 69,
     "fields": {
         "activity": 6,
-        "name": "AD+",
-        "name_en": "AD+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "D+",
         "ordering": 7
     }
 },
@@ -1022,11 +746,7 @@
     "pk": 70,
     "fields": {
         "activity": 6,
-        "name": "D-",
-        "name_en": "D-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "TD-",
         "ordering": 8
     }
 },
@@ -1035,11 +755,7 @@
     "pk": 71,
     "fields": {
         "activity": 6,
-        "name": "D",
-        "name_en": "D",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "TD",
         "ordering": 9
     }
 },
@@ -1048,11 +764,7 @@
     "pk": 72,
     "fields": {
         "activity": 6,
-        "name": "D+",
-        "name_en": "D+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "TD+",
         "ordering": 10
     }
 },
@@ -1061,11 +773,7 @@
     "pk": 73,
     "fields": {
         "activity": 6,
-        "name": "TD-",
-        "name_en": "TD-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "ED-",
         "ordering": 11
     }
 },
@@ -1074,11 +782,7 @@
     "pk": 74,
     "fields": {
         "activity": 6,
-        "name": "TD",
-        "name_en": "TD",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "ED",
         "ordering": 12
     }
 },
@@ -1087,11 +791,7 @@
     "pk": 75,
     "fields": {
         "activity": 6,
-        "name": "TD+",
-        "name_en": "TD+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "ED+",
         "ordering": 13
     }
 },
@@ -1100,11 +800,7 @@
     "pk": 76,
     "fields": {
         "activity": 6,
-        "name": "ED-",
-        "name_en": "ED-",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
+        "name": "> ED+",
         "ordering": 14
     }
 },
@@ -1114,10 +810,6 @@
     "fields": {
         "activity": 1,
         "name": "2.3",
-        "name_en": "2.3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 4
     }
 },
@@ -1127,10 +819,6 @@
     "fields": {
         "activity": 1,
         "name": "3.1",
-        "name_en": "3.1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 5
     }
 },
@@ -1140,10 +828,6 @@
     "fields": {
         "activity": 1,
         "name": "3.2",
-        "name_en": "3.2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 6
     }
 },
@@ -1153,10 +837,6 @@
     "fields": {
         "activity": 1,
         "name": "3.3",
-        "name_en": "3.3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 7
     }
 },
@@ -1166,10 +846,6 @@
     "fields": {
         "activity": 1,
         "name": "4.1",
-        "name_en": "4.1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 8
     }
 },
@@ -1179,10 +855,6 @@
     "fields": {
         "activity": 1,
         "name": "4.2",
-        "name_en": "4.2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 9
     }
 },
@@ -1192,10 +864,6 @@
     "fields": {
         "activity": 1,
         "name": "4.3",
-        "name_en": "4.3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 10
     }
 },
@@ -1205,10 +873,6 @@
     "fields": {
         "activity": 1,
         "name": "5.1",
-        "name_en": "5.1",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 11
     }
 },
@@ -1218,10 +882,6 @@
     "fields": {
         "activity": 1,
         "name": "5.2",
-        "name_en": "5.2",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 12
     }
 },
@@ -1231,10 +891,6 @@
     "fields": {
         "activity": 1,
         "name": "5.3",
-        "name_en": "5.3",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 13
     }
 },
@@ -1244,10 +900,6 @@
     "fields": {
         "activity": 1,
         "name": "5.4",
-        "name_en": "5.4",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 14
     }
 },
@@ -1257,50 +909,7 @@
     "fields": {
         "activity": 1,
         "name": "> 5.4",
-        "name_en": "> 5.4",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
         "ordering": 15
-    }
-},
-{
-    "model": "activities.grade",
-    "pk": 89,
-    "fields": {
-        "activity": 6,
-        "name": "ED",
-        "name_en": "ED",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
-        "ordering": 15
-    }
-},
-{
-    "model": "activities.grade",
-    "pk": 90,
-    "fields": {
-        "activity": 6,
-        "name": "ED+",
-        "name_en": "ED+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
-        "ordering": 16
-    }
-},
-{
-    "model": "activities.grade",
-    "pk": 91,
-    "fields": {
-        "activity": 6,
-        "name": "> ED+",
-        "name_en": "> ED+",
-        "name_fr": null,
-        "name_es": null,
-        "name_it": null,
-        "ordering": 17
     }
 }
 ]
