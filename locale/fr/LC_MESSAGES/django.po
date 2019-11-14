@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-06 11:51+0100\n"
+"POT-Creation-Date: 2019-11-14 22:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,15 +27,19 @@ msgid "activity"
 msgstr "activité"
 
 #: activities/models.py:10 availabilities/models.py:18 outings/models.py:26
-#: profiles/models.py:56
+#: profiles/models.py:58
 msgid "activities"
 msgstr "activités"
 
-#: activities/models.py:22
+#: activities/models.py:20
+msgid "ordering"
+msgstr "ordre"
+
+#: activities/models.py:23
 msgid "grade"
 msgstr "cotation"
 
-#: activities/models.py:23 profiles/models.py:57
+#: activities/models.py:24 profiles/models.py:64
 msgid "grades"
 msgstr "cotations"
 
@@ -46,8 +50,8 @@ msgstr ""
 "début."
 
 #: availabilities/forms.py:53 contactpage/forms.py:35 outings/forms.py:54
-#: profiles/forms.py:107 profiles/forms.py:139 profiles/forms.py:202
-#: profiles/forms.py:237
+#: profiles/forms.py:108 profiles/forms.py:140 profiles/forms.py:211
+#: profiles/forms.py:246
 msgid "Please correct detected error / errors."
 msgstr "Veuillez corriger la ou les erreurs détectées."
 
@@ -99,7 +103,7 @@ msgstr "Supprimer"
 #: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
-#: profiles/templates/profiles/profile_form.html:112
+#: profiles/templates/profiles/profile_form.html:113
 #: profiles/templates/profiles/profile_register.html:75
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
@@ -162,11 +166,13 @@ msgstr[1] ""
 #, python-format
 msgid ""
 "\n"
-"            Back to <a href=\"%(my_profile_url)s\">my profile</a>.\n"
+"            Back to <a href=\"%(my_profile_url)s#cal-events\">my profile</"
+"a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Retour sur <a href=\"%(my_profile_url)s\">mon profil</a>.\n"
+"                Retour sur <a href=\"%(my_profile_url)s#cal-events\">mon "
+"profil</a>.\n"
 "            "
 
 #: availabilities/templates/availabilities/availability_detail.html:48
@@ -187,7 +193,7 @@ msgstr "Créer une disponibilité"
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
-#: profiles/templates/profiles/profile_form.html:110
+#: profiles/templates/profiles/profile_form.html:111
 #: templates/registration/account_form.html:47
 msgid "Save"
 msgstr "Enregistrer"
@@ -252,15 +258,15 @@ msgstr "fonctionnalites/"
 msgid "admin/"
 msgstr "admin/"
 
-#: contactpage/forms.py:8 profiles/forms.py:210
+#: contactpage/forms.py:8 profiles/forms.py:219
 msgid "Your e-mail address"
 msgstr "Votre adresse e-mail"
 
-#: contactpage/forms.py:9 profiles/forms.py:211
+#: contactpage/forms.py:9 profiles/forms.py:220
 msgid "Subject"
 msgstr "Sujet"
 
-#: contactpage/forms.py:10 profiles/forms.py:212
+#: contactpage/forms.py:10 profiles/forms.py:221
 msgid "Message"
 msgstr "Message"
 
@@ -421,7 +427,7 @@ msgstr "Du"
 msgid "Till"
 msgstr "Au"
 
-#: outings/templates/outings/outing_list.html:43 profiles/forms.py:56
+#: outings/templates/outings/outing_list.html:43 profiles/forms.py:57
 #: profiles/templates/profiles/profile_list.html:39
 msgid "Activities"
 msgstr "Activités"
@@ -496,11 +502,11 @@ msgstr "Autorisations"
 msgid "Important dates"
 msgstr "Dates importantes"
 
-#: profiles/forms.py:62 profiles/templates/profiles/profile_detail.html:48
+#: profiles/forms.py:63 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
 msgstr "Zone de disponibilité"
 
-#: profiles/forms.py:63
+#: profiles/forms.py:64
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
@@ -508,7 +514,17 @@ msgstr ""
 "Cliquez sur la carte pour dessiner la zone où vous êtes disponible pour "
 "sortir en montagne"
 
-#: profiles/forms.py:210
+#: profiles/forms.py:150
+msgid "Grades"
+msgstr "Cotations"
+
+#: profiles/forms.py:154 profiles/models.py:65
+msgid ""
+"Select your comfortable grade for each of the activities you have chosen."
+msgstr ""
+"Sélectionnez votre niveau confort pour chaque activité que vous avez choisi."
+
+#: profiles/forms.py:219
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr "Vous recevrez la réponse du profil contacté sur cet e-mail."
 
@@ -563,10 +579,16 @@ msgid "list of courses"
 msgstr "liste de courses"
 
 #: profiles/models.py:59
+msgid ""
+"Select at least one activity that you practice and for which you are "
+"searching for partners."
+msgstr ""
+
+#: profiles/models.py:69
 msgid "availability area"
 msgstr "zone de disponibilité"
 
-#: profiles/models.py:60
+#: profiles/models.py:70
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains. Tip: click on 'Shift' key while you draw to activate freehand "
@@ -576,11 +598,11 @@ msgstr ""
 "sortir en montagne. Astuce : cliquez sur la touche 'Shift' pendant que vous "
 "dessinez pour activer le dessin à main levée."
 
-#: profiles/models.py:65
+#: profiles/models.py:75
 msgid "availability area (further details)"
 msgstr "zone de disponibilité (complément d'informations)"
 
-#: profiles/models.py:67
+#: profiles/models.py:77
 msgid ""
 "Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the "
 "french Alpes'."
@@ -588,27 +610,27 @@ msgstr ""
 "Exemples : 'Rhône-Alpes' ou 'Autour de Grenoble, Chambéry, Lyon' ou 'Toutes "
 "les Alpes françaises'"
 
-#: profiles/models.py:72
+#: profiles/models.py:82
 msgid "birthdate"
 msgstr "date de naissance"
 
-#: profiles/models.py:73
+#: profiles/models.py:83
 msgid "Used to display your age on your public profile."
 msgstr "Utilisée pour indiquer votre âge sur votre profil publique."
 
-#: profiles/models.py:77
+#: profiles/models.py:87
 msgid "profile picture"
 msgstr "photo de profil"
 
-#: profiles/models.py:78
+#: profiles/models.py:88
 msgid "last update"
 msgstr "dernière mise à jour"
 
-#: profiles/models.py:81
+#: profiles/models.py:91
 msgid "profile"
 msgstr "profil"
 
-#: profiles/models.py:82
+#: profiles/models.py:92
 msgid "profiles"
 msgstr "profils"
 
@@ -778,9 +800,17 @@ msgstr "Exportations"
 msgid "Export profiles to Excel format"
 msgstr "Exporter les profils au format Excel"
 
-#: profiles/templates/profiles/my_profile.html:101 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:101
+msgid "Imports / Exports for superadmins"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:104
+msgid "Export outings"
+msgstr "Exporter les sorties"
+
+#: profiles/templates/profiles/my_profile.html:111 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:11
-#: templates/registration/login.html:35
+#: templates/registration/login.html:37
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
 msgstr "Connexion"
@@ -845,7 +875,7 @@ msgstr[1] ""
 "                        %(duration)s jours<br>%(start_date)s - %(end_date)s\n"
 "                                "
 
-#: profiles/templates/profiles/profile_form.html:12
+#: profiles/templates/profiles/profile_form.html:13
 msgid "Update my profile"
 msgstr "Mettre à jour mon profil"
 
@@ -1171,11 +1201,11 @@ msgstr "Mettre mon compte à jour"
 msgid "Update my password"
 msgstr "Changer mon mot de passe"
 
-#: templates/registration/login.html:36
+#: templates/registration/login.html:38
 msgid "Forgot password"
 msgstr "Mot de passe oublié"
 
-#: templates/registration/login.html:39
+#: templates/registration/login.html:41
 msgid "No account? Create a profile!"
 msgstr "Pas de compte ? Créez un profil !"
 

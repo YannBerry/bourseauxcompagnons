@@ -147,6 +147,7 @@ class ProfileForm(forms.ModelForm):
 
     grades = GroupedModelMultipleChoiceField(
         queryset=Grade.objects.all(),
+        label=_('Grades'),
         choices_groupby='activity',
         widget= GradesWidget(), #forms.CheckboxSelectMultiple(),
         required=False,
