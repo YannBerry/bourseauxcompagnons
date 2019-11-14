@@ -17,10 +17,12 @@ class Activity(models.Model):
 class Grade(models.Model):
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, verbose_name=_('activity'))
     name = models.CharField(_('name'), max_length=50)
+    # ordering = models.PositiveIntegerField(_('ordering'))
     
     class Meta:
         verbose_name = _('grade')
         verbose_name_plural = _('grades')
+        ordering = ['activity__name']
 
     def __str__(self):
         return self.name

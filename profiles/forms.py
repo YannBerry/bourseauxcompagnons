@@ -186,7 +186,7 @@ class ProfileForm(forms.ModelForm):
             # for a in self.instance.activities.all():
             #     q |= a.grade_set.all()
             # print(q)
-            self.fields['grades'].queryset = Grade.objects.filter(eval(' | '.join(f'Q(activity="{ activity.pk }")' for activity in activities))).select_related('activity')
+            self.fields['grades'].queryset = Grade.objects.select_related('activity').filter(eval(' | '.join(f'Q(activity="{ activity.pk }")' for activity in activities)))
 
     class Meta:
         model = Profile
