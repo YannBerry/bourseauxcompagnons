@@ -42,6 +42,10 @@ a.unstyled, a.unstyled:hover {
 .btn-add-new {
     border-radius: 50px;
 }
+/* Clear date button */
+.btn-clear-date {
+    z-index: auto !important;
+}
 
 /* CHECKBOX MULTIPLE WIDGET */
 ul#id_activities, ul#id_grades, ul#id_grades>li>ul {

@@ -4,7 +4,10 @@
 {% load l10n %}
 
 {% block css %}
+<!-- flatpickr -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Choices -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 {% endblock %}
 
 {% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
@@ -24,7 +27,7 @@
                         <div class="input-group mb-2">
                             <input type="text" name="outing_start_date" class="form-control" id="id_outing_start_date"{% if outing_start_date %} value={{ outing_start_date }}{% endif %}>
                             <div id="id_outing_start_date_clear_container" class="input-group-append">
-                                <button id="id_outing_start_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                                <button id="id_outing_start_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
                             </div>
                         </div>
                     </div>
@@ -33,7 +36,7 @@
                         <div class="input-group">
                             <input type="text" name="outing_end_date" class="form-control" id="id_outing_end_date"{% if outing_end_date %} value={{ outing_end_date }}{% endif %}>
                             <div id="id_outing_end_date_clear_container" class="input-group-append">
-                                <button id="id_outing_end_date_clear" type="button" class="btn btn-danger" title="Clear">X</button>
+                                <button id="id_outing_end_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
                             </div>
                         </div>
                     </div>
@@ -41,9 +44,10 @@
             </div>
             <div class="form-group col-12">
                 <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                <select multiple class="selectpicker form-control" title="{% trans 'Filter by activities' %}" data-style="btn-info" data-selected-text-format="count > 3" name="a">
+                <select multiple class="form-control" name="a" id="activities_filter">
+                    <option value="">{% trans 'Click to select activities' %}</option>
                     {% for activity in all_activities %}
-                        <option>{{ activity.name }}</option>
+                        <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -99,6 +103,15 @@
 {% endblock %}
 
 {% block js %}
+<!-- Choices -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script>
+    let activitiesChoicesElt = document.getElementById('activities_filter');
+    const activitiesChoices = new Choices(activitiesChoicesElt, {
+        removeItemButton: true,
+    });
+</script>
+<!-- flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
@@ -143,6 +156,7 @@
         outingEndDateClearContainerElt.style.display = "none";
     }
 </script>
+<!-- Dates form validation -->
 <script>
 // NOTIFY START DATE > END DATE TO THE INTERNAUT WHEN HE MAKE THE MISTAKE
     const outingStartDateElt = document.getElementById('id_outing_start_date');
