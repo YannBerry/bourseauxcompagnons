@@ -31,7 +31,11 @@
                         </div>
                     </div>
 
+                    {% if next == "" or next == request.path|urlencode %}
+                    <input type="hidden" name="next" value="{% url 'my-profile' %}">
+                    {% else %}
                     <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
                     
                     <div class="form-end-buttons-centered mb-2">
                         <button class="btn btn-primary mr-2" type="submit">{% trans 'Sign in' %}</button>

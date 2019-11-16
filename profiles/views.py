@@ -49,10 +49,10 @@ from activities.models import Activity, Grade
 from outings.models import Outing
 from profiles.forms import ProfileCreationForm, AccountForm, ProfileForm, ContactProfileForm
 
-from django.contrib.gis.geos import Point
-longitude = 8.191788
-latitude = 48.761681
-user_location = Point(longitude, latitude, srid=4326)
+# from django.contrib.gis.geos import Point
+# longitude = 8.191788
+# latitude = 48.761681
+# user_location = Point(longitude, latitude, srid=4326)
 
 
 # VIEWS FOR ANONYM WEB SURFERS
@@ -91,7 +91,7 @@ class ProfileListView(ListView):
 
         q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
         
-        if user_authenticated:
+        if user_authenticated and self.request.user.profile.location:
             user_loc = self.request.user.profile.location
             q = q.exclude(user=self.request.user).annotate(distance=Distance('location', user_loc)).order_by('distance')
             if around_me:
@@ -112,7 +112,7 @@ class ProfileListView(ListView):
         if availability_area_geo:
             q = q.filter(availability_area_geo__intersects=availability_area_geo)
 
-        if (start_date or end_date or selected_activities) and user_authenticated:
+        if (start_date or end_date or selected_activities) and user_authenticated and self.request.user.profile.location:
             q = q.distinct('distance', 'last_update', 'user_id')
         elif start_date or end_date or selected_activities:
             q = q.distinct('last_update', 'user_id')
