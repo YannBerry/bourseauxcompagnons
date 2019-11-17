@@ -114,25 +114,24 @@
             {% endif %}
         </div>
     </form>
-    <!-- {% if uploaded_file_url %}
-    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-    {% endif %} -->
 </div>
 {% endblock%}
 
 {% block js %}
+<!-- sliders -->
 <!-- <script src="{% static 'js/20191113nouislider/nouislider.min.js' %}"></script>
 <script>
     let slider = document.getElementById('randonnee_slider');
 
     noUiSlider.create(slider, {
-        start: [4000, 8000],
+        start: 1,
         range: {
-            'min': [2000],
-            'max': [10000]
+            'min': 1,
+            'max': 5
         }
     });
 </script> -->
+<!-- Display only grades corresponding to the selected activities -->
 <script>
 let httpRequest;
 let activitiesElts = document.querySelectorAll("input[name=activities]");
@@ -184,6 +183,7 @@ function alertContents() {
     }
 }
 </script>
+<!-- flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
@@ -214,6 +214,7 @@ function alertContents() {
         birthdateClearContainerElt.style.display = "none";
     }
 </script>
+<!-- openlayers -->
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES for 'js/ol_point_formfield.js'

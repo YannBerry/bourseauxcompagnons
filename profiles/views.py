@@ -87,13 +87,17 @@ class ProfileListView(ListView):
         activities_in_current_language = 'activities__name_{}'.format(get_language())
         around_me = self.request.GET.get('around_me')
         availability_area_geo = self.request.GET.get('availability_area_geo',None)
+        availability_area_geo_obj = GEOSGeometry(availability_area_geo)
         user_authenticated = self.request.user.is_authenticated
 
         q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
         
+        if user_authenticated:
+            q = q.exclude(user=self.request.user)
+
         if user_authenticated and self.request.user.profile.location:
             user_loc = self.request.user.profile.location
-            q = q.exclude(user=self.request.user).annotate(distance=Distance('location', user_loc)).order_by('distance')
+            q = q.annotate(distance=Distance('location', user_loc)).order_by('distance')
             if around_me:
                 q = q.filter(location__distance_lte=(user_loc, 50000))
 
@@ -110,7 +114,7 @@ class ProfileListView(ListView):
                 public_profile='True'
             )
         if availability_area_geo:
-            q = q.filter(availability_area_geo__intersects=availability_area_geo)
+            q = q.filter(availability_area_geo__intersects=availability_area_geo_obj)
 
         if (start_date or end_date or selected_activities) and user_authenticated and self.request.user.profile.location:
             q = q.distinct('distance', 'last_update', 'user_id')
