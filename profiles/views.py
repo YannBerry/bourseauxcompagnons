@@ -87,7 +87,8 @@ class ProfileListView(ListView):
         activities_in_current_language = 'activities__name_{}'.format(get_language())
         around_me = self.request.GET.get('around_me')
         availability_area_geo = self.request.GET.get('availability_area_geo',None)
-        availability_area_geo_obj = GEOSGeometry(availability_area_geo)
+        if availability_area_geo:
+            availability_area_geo_obj = GEOSGeometry(availability_area_geo)
         user_authenticated = self.request.user.is_authenticated
 
         q = Profile.objects.select_related('user').prefetch_related('activities').filter(public_profile='True')
