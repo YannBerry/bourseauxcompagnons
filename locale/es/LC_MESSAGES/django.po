@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 12:11+0100\n"
+"POT-Creation-Date: 2019-11-17 15:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,63 +24,63 @@ msgstr "nombre"
 
 #: activities/models.py:9 activities/models.py:18
 msgid "activity"
-msgstr ""
+msgstr "actividad"
 
 #: activities/models.py:10 availabilities/models.py:18 outings/models.py:26
 #: profiles/models.py:58
 msgid "activities"
-msgstr ""
+msgstr "actividades"
 
 #: activities/models.py:20
 msgid "ordering"
-msgstr ""
+msgstr "orden"
 
 #: activities/models.py:23
 msgid "grade"
-msgstr ""
+msgstr "nivel"
 
 #: activities/models.py:24 profiles/models.py:64
 msgid "grades"
-msgstr ""
+msgstr "niveles"
 
 #: availabilities/forms.py:45 outings/forms.py:46
 msgid "Your end date is not equal or later than your start date."
-msgstr ""
+msgstr "La fecha de fin debe ser superior o igual a la fecha de inicio."
 
 #: availabilities/forms.py:53 contactpage/forms.py:35 outings/forms.py:54
 #: profiles/forms.py:108 profiles/forms.py:140 profiles/forms.py:211
 #: profiles/forms.py:246
 msgid "Please correct detected error / errors."
-msgstr ""
+msgstr "Por favor corrige el o los errores."
 
 #: availabilities/models.py:14 outings/models.py:20
 msgid "description"
-msgstr ""
+msgstr "descripción"
 
 #: availabilities/models.py:15 outings/models.py:23
 msgid "start"
-msgstr ""
+msgstr "inicio"
 
 #: availabilities/models.py:16 outings/models.py:24
 msgid "end"
-msgstr ""
+msgstr "fin"
 
 #: availabilities/models.py:17 outings/models.py:25
 msgid "author"
-msgstr ""
+msgstr "autor"
 
 #: availabilities/models.py:21
 msgid "availability"
-msgstr ""
+msgstr "disponibilidad"
 
 #: availabilities/models.py:22
 msgid "availabilities"
-msgstr ""
+msgstr "disponibilidades"
 
 #: availabilities/templates/availabilities/availability_confirm_delete.html:4
 #, python-format
 msgid "Remove availability starting the %(availability_start_date)s"
-msgstr ""
+msgstr "Borrar la disponibilidad que empieza el %(availability_start_date)s"
 
 #: availabilities/templates/availabilities/availability_confirm_delete.html:10
 #, python-format
@@ -88,12 +88,14 @@ msgid ""
 "Are you sure you want to delete your availability starting the "
 "'%(availability_start_date)s'?"
 msgstr ""
+"Estás seguro de querer borrar la disponibilidad que empieza el "
+"'%(availability_start_date)s'?"
 
 #: availabilities/templates/availabilities/availability_confirm_delete.html:11
 #: outings/templates/outings/outing_confirm_delete.html:11
 #: templates/registration/account_confirm_delete.html:11
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: availabilities/templates/availabilities/availability_confirm_delete.html:12
 #: availabilities/templates/availabilities/availability_form.html:53
@@ -104,37 +106,37 @@ msgstr ""
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
 msgid "Cancel"
-msgstr ""
+msgstr "Anular"
 
 #: availabilities/templates/availabilities/availability_detail.html:5
 #, python-format
 msgid "Availability starting the %(availability_start_date)s"
-msgstr ""
+msgstr "Disponibilidad que empieza el %(availability_start_date)s"
 
 #: availabilities/templates/availabilities/availability_detail.html:19
 msgid "Availability"
-msgstr ""
+msgstr "Disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:23
 #: outings/templates/outings/outing_detail.html:22
 #: profiles/templates/profiles/my_profile.html:78
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
-msgstr ""
+msgstr "Icono de edición"
 
 #: availabilities/templates/availabilities/availability_detail.html:23
 msgid "Edit availability"
-msgstr ""
+msgstr "Editar la disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:24
 #: outings/templates/outings/outing_detail.html:23
 #: profiles/templates/profiles/my_profile.html:81
 msgid "Delete icon"
-msgstr ""
+msgstr "Icono de borrado"
 
 #: availabilities/templates/availabilities/availability_detail.html:24
 msgid "Delete availability "
-msgstr ""
+msgstr "Borrar la disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:34
 #: outings/templates/outings/outing_detail.html:34
@@ -149,7 +151,13 @@ msgid_plural ""
 "%(end_date)s.\n"
 "            "
 msgstr[0] ""
+"\n"
+"            Durante el %(start_date)s.\n"
+"            "
 msgstr[1] ""
+"\n"
+"            Durante %(duration)s días. Del %(start_date)s al %(end_date)s.\n"
+"            "
 
 #: availabilities/templates/availabilities/availability_detail.html:44
 #: outings/templates/outings/outing_detail.html:47
@@ -160,6 +168,10 @@ msgid ""
 "a>.\n"
 "            "
 msgstr ""
+"\n"
+"            Volver a <a href=\"%(my_profile_url)s#cal-events\">mi perfil</"
+"a>.\n"
+"            "
 
 #: availabilities/templates/availabilities/availability_detail.html:48
 #, python-format
@@ -168,152 +180,160 @@ msgid ""
 "            Back to <a href=\"%(author_url)s\">%(author)s</a>'s profile.\n"
 "            "
 msgstr ""
+"\n"
+"            Volver al perfil de <a href=\"%(author_url)s\">%(author)s</a>.\n"
+"            "
 
 #: availabilities/templates/availabilities/availability_form.html:10
 msgid "Create an availability"
-msgstr ""
+msgstr "Crear una disponibilidad"
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
 #: profiles/templates/profiles/profile_form.html:111
 #: templates/registration/account_form.html:47
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: availabilities/urls.py:13 outings/urls.py:15
 msgid "create/"
-msgstr ""
+msgstr "crear/"
 
 #: availabilities/urls.py:15 outings/urls.py:18
 msgid "<slug:slug>/edit/"
-msgstr ""
+msgstr "<slug:slug>/editar/"
 
 #: availabilities/urls.py:16 outings/urls.py:19
 msgid "<slug:slug>/delete/"
-msgstr ""
+msgstr "<slug:slug>/borrar/"
 
 #: bac/urls.py:27
 msgid "accounts/"
-msgstr ""
+msgstr "cuentas/"
 
 #: bac/urls.py:28
 msgid "accounts/register/profile/"
-msgstr ""
+msgstr "cuentas/registrar/perfil/"
 
 #: bac/urls.py:29
 msgid "accounts/profiles/my-profile/"
-msgstr ""
+msgstr "cuentas/perfiles/mi-perfil/"
 
 #: bac/urls.py:30
 msgid "accounts/<username>/update/"
-msgstr ""
+msgstr "cuentas/<username>/actualizar/"
 
 #: bac/urls.py:31
 msgid "accounts/profiles/<username>/update/"
-msgstr ""
+msgstr "cuentas/perfiles/<username>/actualizar/"
 
 #: bac/urls.py:32
 msgid "accounts/<username>/delete/"
-msgstr ""
+msgstr "cuentas/<username>/borrar/"
 
 #: bac/urls.py:33
 msgid "profiles/"
-msgstr ""
+msgstr "perfiles/"
 
 #: bac/urls.py:34
 msgid "outings/"
-msgstr ""
+msgstr "salidas/"
 
 #: bac/urls.py:35
 msgid "availabilities/"
-msgstr ""
+msgstr "disponibilidades/"
 
 #: bac/urls.py:36
 msgid "contact/"
-msgstr ""
+msgstr "contacto/"
 
 #: bac/urls.py:37
 msgid "features/"
-msgstr ""
+msgstr "funciones/"
 
 #: bac/urls.py:38
 msgid "admin/"
-msgstr ""
+msgstr "admin/"
 
 #: contactpage/forms.py:8 profiles/forms.py:219
 msgid "Your e-mail address"
-msgstr ""
+msgstr "Dirección de corre electrónico"
 
 #: contactpage/forms.py:9 profiles/forms.py:220
 msgid "Subject"
-msgstr ""
+msgstr "Título"
 
 #: contactpage/forms.py:10 profiles/forms.py:221
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #: contactpage/templates/contactpage/contactpage.html:4
 msgid "Contact bourseauxcompagnons"
-msgstr ""
+msgstr "Contactar bourseauxcompagnons"
 
 #: contactpage/templates/contactpage/contactpage.html:11
 msgid "Contact us"
-msgstr ""
+msgstr "Contáctanos"
 
 #: contactpage/templates/contactpage/contactpage.html:15
 #: profiles/templates/profiles/contact_profile_form.html:41
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: contactpage/templates/contactpage/contactpage_done.html:4
 msgid "Contact made successfully"
-msgstr ""
+msgstr "Contacto realizado correctamente"
 
 #: contactpage/templates/contactpage/contactpage_done.html:8
 msgid ""
 "Your message as been sent successfully. We will get back to you as soon as "
 "possible!"
 msgstr ""
+"El mensaje se ha enviado correctamente. Te contactaremos lo antes possible."
 
 #: contactpage/urls.py:10
 msgid "email-sent/"
-msgstr ""
+msgstr "mensaje-enviado/"
 
 #: core/templates/forms/widgets/image.html:20
 msgid "Choose file..."
-msgstr ""
+msgstr "Elegir un documento..."
 
 #: core/utils/calendar.py:68
 msgid "Available icon"
-msgstr ""
+msgstr "Icono de disponibilidad"
 
 #: core/utils/calendar.py:69
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #: features/urls.py:7
 msgid "votes/"
-msgstr ""
+msgstr "votos/"
 
 #: outings/models.py:14
 msgid "title"
-msgstr ""
+msgstr "título"
 
 #: outings/models.py:16
 msgid ""
 "70 characters max.<br>Exemple: 'Meije Crossing - Normal route - Bivouac at "
 "the Grand Pic'."
 msgstr ""
+"70 carácteres max.<br>Ejemplo: 'Travesía de la Meije - Vía normal - Bivouac "
+"del Gran Pico'."
 
 #: outings/models.py:21
 msgid ""
 "Take the time to write concise description that makes people want to join "
 "you!"
 msgstr ""
+"Toma unos minutos para describirte de manera concisa para que la gente tenga "
+"ganas de juntarse con tigo."
 
 #: outings/models.py:28
 msgid "URL link to the outing topo"
-msgstr ""
+msgstr "Enlace URL hacía el topo de la salida"
 
 #: outings/models.py:30
 msgid ""
@@ -321,43 +341,46 @@ msgid ""
 "href='https://www.summitpost.org/' target='_blank'>SummitPost</a> are a high "
 "quality source of topos."
 msgstr ""
+"<a href='https://www.camptocamp.org/' target='_blank'>Camptocamp</a> y <a "
+"href='https://www.summitpost.org/' target='_blank'>SummitPost</a> son muy "
+"buenas fuentes de topos."
 
 #: outings/models.py:35
 msgid "outing"
-msgstr ""
+msgstr "salida"
 
 #: outings/models.py:36
 msgid "outings"
-msgstr ""
+msgstr "salidas"
 
 #: outings/templates/outings/outing_confirm_delete.html:4
 #, python-format
 msgid "Remove %(outing_title)s"
-msgstr ""
+msgstr "Borrar %(outing_title)s"
 
 #: outings/templates/outings/outing_confirm_delete.html:10
 #, python-format
 msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
-msgstr ""
+msgstr "Estás seguro de querer borrar tu salida '%(outing_title)s'?"
 
 #: outings/templates/outings/outing_detail.html:22
 #: profiles/templates/profiles/my_profile.html:78
 msgid "Edit outing"
-msgstr ""
+msgstr "Editar la salida"
 
 #: outings/templates/outings/outing_detail.html:23
 #: profiles/templates/profiles/my_profile.html:81
 msgid "Delete outing "
-msgstr ""
+msgstr "Borrar la salida"
 
 #: outings/templates/outings/outing_detail.html:25
 #: profiles/templates/profiles/profile_detail.html:26
 msgid "Get in touch"
-msgstr ""
+msgstr "Contactar"
 
 #: outings/templates/outings/outing_detail.html:41
 msgid "Link to the outing topo!"
-msgstr ""
+msgstr "Enlace hacía el topo de la salida!"
 
 #: outings/templates/outings/outing_detail.html:51
 #, python-format
@@ -366,56 +389,59 @@ msgid ""
 "                Posted by <a href=\"%(author_profile)s\">%(author)s</a>\n"
 "            "
 msgstr ""
+"\n"
+"                Publicado por <a href=\"%(author_profile)s\">%(author)s</a>\n"
+"            "
 
 #: outings/templates/outings/outing_form.html:10
 msgid "Create an outing"
-msgstr ""
+msgstr "Crear una salida"
 
 #: outings/templates/outings/outing_list.html:13 templates/base.html:39
 msgid "Outings"
-msgstr ""
+msgstr "Salidas"
 
 #: outings/templates/outings/outing_list.html:19
 msgid "Keywords"
-msgstr ""
+msgstr "Palabras clave"
 
 #: outings/templates/outings/outing_list.html:20
 msgid "Keywords..."
-msgstr ""
+msgstr "Palabras clave..."
 
 #: outings/templates/outings/outing_list.html:23
 #: profiles/templates/profiles/profile_list.html:20
 msgid "Dates"
-msgstr ""
+msgstr "Fechas"
 
 #: outings/templates/outings/outing_list.html:26
 #: profiles/templates/profiles/profile_list.html:23
 msgid "From"
-msgstr ""
+msgstr "De"
 
 #: outings/templates/outings/outing_list.html:35
 #: profiles/templates/profiles/profile_list.html:32
 msgid "Till"
-msgstr ""
+msgstr "Al"
 
 #: outings/templates/outings/outing_list.html:46 profiles/forms.py:57
 #: profiles/templates/profiles/profile_list.html:43
 msgid "Activities"
-msgstr ""
+msgstr "Actividades"
 
 #: outings/templates/outings/outing_list.html:48
 #: profiles/templates/profiles/profile_list.html:45
 msgid "Click to select activities"
-msgstr ""
+msgstr "Pulsa para seleccionar actividades"
 
 #: outings/templates/outings/outing_list.html:55
 #: profiles/templates/profiles/profile_list.html:66
 msgid "Filter"
-msgstr ""
+msgstr "Filtrar"
 
 #: outings/templates/outings/outing_list.html:63
 msgid "Add an outing"
-msgstr ""
+msgstr "Añadir una salida"
 
 #: outings/templates/outings/outing_list.html:71
 #, python-format
@@ -428,7 +454,13 @@ msgid_plural ""
 "            %(counter)s outings\n"
 "            "
 msgstr[0] ""
+"\n"
+"            %(counter)s salida\n"
+"            "
 msgstr[1] ""
+"\n"
+"            %(counter)s salidas\n"
+"            "
 
 #: outings/templates/outings/outing_list.html:84
 #, python-format
@@ -442,82 +474,94 @@ msgid_plural ""
 "%(end_date)s\n"
 "                                "
 msgstr[0] ""
+"\n"
+"                                Durante el día<br>%(start_date)s\n"
+"                                "
 msgstr[1] ""
+"\n"
+"                                %(duration)s días<br>%(start_date)s - "
+"%(end_date)s\n"
+"                                "
 
 #: outings/templates/outings/outing_list.html:100
 msgid "There is no outing fitting your search criteria."
-msgstr ""
+msgstr "No hay ninguna salida que corresponda a tus criterios de búsqueda"
 
 #: profiles/admin.py:17
 msgid "Personal info"
-msgstr ""
+msgstr "Información personal"
 
 #: profiles/admin.py:18
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: profiles/admin.py:20
 msgid "Important dates"
-msgstr ""
+msgstr "Fechas importantes"
 
 #: profiles/forms.py:63 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
-msgstr ""
+msgstr "Areá de disponibilidad"
 
 #: profiles/forms.py:64
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
 msgstr ""
+"Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
+"salir a la montaña."
 
 #: profiles/forms.py:150
 msgid "Grades"
-msgstr ""
+msgstr "Niveles"
 
 #: profiles/forms.py:154 profiles/models.py:65
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
+"Selecciona tu nivel (en el que te sientas cómodo) para cada actividad que "
+"has elegido."
 
 #: profiles/forms.py:219
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
+"Recibiras la respuesta del perfil contactado sobre este correo electrónico."
 
 #: profiles/models.py:20
 msgid "e-mail address"
-msgstr ""
+msgstr "dirección de correo electrónico"
 
 #: profiles/models.py:21
 msgid "profile status"
-msgstr ""
+msgstr "estatus del perfil"
 
 #: profiles/models.py:27
 msgid "base user"
-msgstr ""
+msgstr "usuario básico"
 
 #: profiles/models.py:28
 msgid "base users"
-msgstr ""
+msgstr "usuarios básicos"
 
 #: profiles/models.py:43
 msgid "public profile"
-msgstr ""
+msgstr "perfil público"
 
 #: profiles/models.py:43
 msgid "When your profile is public, it is displayed in the profiles list."
-msgstr ""
+msgstr "Cuando tu perfil es publico, se muestra en la lista de perfiles."
 
 #: profiles/models.py:45
 msgid "location"
-msgstr ""
+msgstr "localización"
 
 #: profiles/models.py:46
 msgid "Click on the map to show where you live."
-msgstr ""
+msgstr "Pulsa sobre el mapa para mostrat donde vives."
 
 #: profiles/models.py:51
 msgid "introduction"
-msgstr ""
+msgstr "presentación"
 
 #: profiles/models.py:52
 msgid ""
@@ -525,20 +569,25 @@ msgid ""
 "know your better! The first 200 characters are displayed in the profiles "
 "list ;)"
 msgstr ""
+"Toma unos minutos para escribir una presentación concisa para que la gente "
+"tenga ganas de conocerte! Los primeros 200 caracteres son mostrados en la "
+"lista de perfiles ;)"
 
 #: profiles/models.py:55
 msgid "list of courses"
-msgstr ""
+msgstr "lista de salidas"
 
 #: profiles/models.py:59
 msgid ""
 "Select at least one activity that you practice and for which you are "
 "searching for partners."
 msgstr ""
+"Selectiona al menos una actividad que practicas y para la cual buscas "
+"compañeros."
 
 #: profiles/models.py:69
 msgid "availability area"
-msgstr ""
+msgstr "areá de disponibilidad"
 
 #: profiles/models.py:70
 msgid ""
@@ -546,10 +595,13 @@ msgid ""
 "the mountains. Tip: click on 'Shift' key while you draw to activate freehand "
 "drawing."
 msgstr ""
+"Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
+"salir a la montaña. Astucia: pulsa sobre la tecla 'Shift' mientras dibujas "
+"para activar el dibujo a mano alzada."
 
 #: profiles/models.py:75
 msgid "availability area (further details)"
-msgstr ""
+msgstr "areá de disponibilidad (más detalles)"
 
 #: profiles/models.py:77
 msgid ""
