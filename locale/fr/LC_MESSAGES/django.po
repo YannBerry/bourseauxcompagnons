@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-16 16:47+0100\n"
+"POT-Creation-Date: 2019-11-17 12:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1033,15 +1033,15 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:192
+#: profiles/views.py:197
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:193
+#: profiles/views.py:198
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:205
+#: profiles/views.py:210
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
