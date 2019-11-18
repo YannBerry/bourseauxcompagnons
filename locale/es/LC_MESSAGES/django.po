@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 18:53+0100\n"
+"POT-Creation-Date: 2019-11-18 20:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -742,7 +742,7 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:33
 msgid "My account"
-msgstr ""
+msgstr "Mi cuenta"
 
 #: profiles/templates/profiles/my_profile.html:38
 msgid "Update my account settings"
@@ -755,7 +755,7 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:48
 msgid "My calendar"
-msgstr ""
+msgstr "Mi calendario"
 
 #: profiles/templates/profiles/my_profile.html:51
 msgid "Add new availability"
@@ -767,7 +767,7 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:64
 msgid "My outings"
-msgstr "Mi salidas"
+msgstr "Mis salidas"
 
 #: profiles/templates/profiles/my_profile.html:92
 msgid "Exports"
