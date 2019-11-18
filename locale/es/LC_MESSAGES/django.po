@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 15:37+0100\n"
+"POT-Creation-Date: 2019-11-18 18:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,11 +299,11 @@ msgstr "mensaje-enviado/"
 msgid "Choose file..."
 msgstr "Elegir un documento..."
 
-#: core/utils/calendar.py:68
+#: core/utils/calendar.py:69
 msgid "Available icon"
 msgstr "Icono de disponibilidad"
 
-#: core/utils/calendar.py:69
+#: core/utils/calendar.py:70
 msgid "Available"
 msgstr "Disponible"
 
@@ -549,7 +549,7 @@ msgstr "perfil público"
 
 #: profiles/models.py:43
 msgid "When your profile is public, it is displayed in the profiles list."
-msgstr "Cuando tu perfil es publico, se muestra en la lista de perfiles."
+msgstr "Cuando tu perfil es público, se muestra en la lista de perfiles."
 
 #: profiles/models.py:45
 msgid "location"
@@ -607,11 +607,11 @@ msgstr "areá de disponibilidad (más detalles)"
 msgid ""
 "Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the "
 "french Alpes'."
-msgstr ""
+msgstr "Ejemplos: 'Pirineos' o 'Around Huesca y Pamplona'"
 
 #: profiles/models.py:82
 msgid "birthdate"
-msgstr ""
+msgstr "fecha de nacimiento"
 
 #: profiles/models.py:83
 msgid "Used to display your age on your public profile."
@@ -619,7 +619,7 @@ msgstr ""
 
 #: profiles/models.py:87
 msgid "profile picture"
-msgstr ""
+msgstr "foto de perfil"
 
 #: profiles/models.py:88
 msgid "last update"
@@ -631,7 +631,7 @@ msgstr ""
 
 #: profiles/models.py:92
 msgid "profiles"
-msgstr ""
+msgstr "perfiles"
 
 #: profiles/templates/profiles/contact_profile_done.html:4
 msgid "Contact made"
@@ -722,11 +722,11 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:5 templates/base.html:81
 msgid "My profile"
-msgstr ""
+msgstr "Mi perfil"
 
 #: profiles/templates/profiles/my_profile.html:18
 msgid "My public profile"
-msgstr ""
+msgstr "Mi perfil público"
 
 #: profiles/templates/profiles/my_profile.html:21
 msgid "View icon"
@@ -767,7 +767,7 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:64
 msgid "My outings"
-msgstr ""
+msgstr "Mi salidas"
 
 #: profiles/templates/profiles/my_profile.html:92
 msgid "Exports"
@@ -819,7 +819,7 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_detail.html:65
 msgid "Introduction"
-msgstr ""
+msgstr "Presentación"
 
 #: profiles/templates/profiles/profile_detail.html:73
 msgid "List of main courses"
@@ -827,7 +827,7 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_detail.html:84
 msgid "Its calendar"
-msgstr ""
+msgstr "Su calendario"
 
 #: profiles/templates/profiles/profile_detail.html:91
 msgid "Details of its outing propositions"
@@ -844,7 +844,13 @@ msgid_plural ""
 "                        %(duration)s days<br>%(start_date)s - %(end_date)s\n"
 "                        "
 msgstr[0] ""
+"\n"
+"                        Durante el día<br>%(start_date)s\n"
+"                        "
 msgstr[1] ""
+"\n"
+"                        %(duration)s días<br>%(start_date)s - %(end_date)s\n"
+"                        "
 
 #: profiles/templates/profiles/profile_form.html:13
 msgid "Update my profile"
@@ -852,11 +858,11 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_list.html:14
 msgid "Profiles list"
-msgstr ""
+msgstr "Lista de perfiles"
 
 #: profiles/templates/profiles/profile_list.html:52
 msgid "Where"
-msgstr ""
+msgstr "Dónde"
 
 #: profiles/templates/profiles/profile_list.html:52
 msgid "(draw on the map)"
@@ -872,7 +878,7 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_list.html:75 templates/index.html:141
 msgid "Add my profile"
-msgstr ""
+msgstr "Añadir mi perfil"
 
 #: profiles/templates/profiles/profile_list.html:84
 #, python-format
@@ -906,7 +912,7 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_register.html:74
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #: profiles/templates/profiles/profile_register_email.html:10
 #: profiles/templates/profiles/profile_register_email_inline.html:10
@@ -1016,11 +1022,11 @@ msgstr ""
 
 #: templates/base.html:36
 msgid "Profiles"
-msgstr ""
+msgstr "Perfiles"
 
 #: templates/base.html:42
 msgid "FEATURES"
-msgstr ""
+msgstr "FUNCIONES"
 
 #: templates/base.html:47
 msgid "Contact"
@@ -1107,7 +1113,7 @@ msgstr[1] ""
 
 #: templates/index.html:188
 msgid "Add my outing"
-msgstr ""
+msgstr "Añadir mi salida"
 
 #: templates/registration/account_confirm_delete.html:10
 #, python-format

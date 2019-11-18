@@ -55,6 +55,7 @@ class Cal(LocaleHTMLCalendar):
 
 class CalEvents(Cal):
     def formatday(self, day, outings, availabilities, year, month):
+        today = date.today()
         if day != 0:
             this_day = date(year, month, day)
             outings_per_day = outings.filter(start_date__lte=this_day, end_date__gte=this_day)
@@ -72,13 +73,33 @@ class CalEvents(Cal):
         if day == 0:
             return '<td class="cal-noday">&nbsp;</td>'
         elif day !=0 and outings_per_day and availabilities_per_day:
-            return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
+            if this_day > today:
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
+            elif this_day == today:
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold today'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
+            else:
+                return f"<td class='cal-event-day past-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
         elif day !=0 and outings_per_day:
-            return f"<td class='cal-event-day'><span class='cal-date font-weight-bold'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
+            if this_day > today:
+                return f"<td class='cal-event-day'><span class='cal-date font-weight-bold'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
+            elif this_day == today:
+                return f"<td class='cal-event-day'><span class='cal-date font-weight-bold today'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
+            else:
+                return f"<td class='cal-event-day past-day'><span class='cal-date font-weight-bold'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
         elif day !=0 and availabilities_per_day:
-            return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div></td>"
+            if this_day > today:
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div></td>"
+            elif this_day == today:
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold today'>{day}</span> {a}</div></td>"
+            else:
+                return f"<td class='cal-event-day past-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div></td>"
         else:
-            return f"<td><span class='cal-date'>{day}</span></td>"
+            if this_day > today:
+                return f"<td><span class='cal-date'>{day}</span></td>"
+            elif this_day == today:
+                return f"<td><span class='cal-date today'>{day}</span></td>"
+            else:
+                return f"<td class='past-day'><span class='cal-date'>{day}</span></td>"
 
     def formatweek(self, theweek, outings, availabilities, year, month):
         w = ''

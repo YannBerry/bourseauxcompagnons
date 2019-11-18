@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 15:37+0100\n"
+"POT-Creation-Date: 2019-11-18 18:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -302,11 +302,11 @@ msgstr "email-envoye/"
 msgid "Choose file..."
 msgstr "Choisir un fichier..."
 
-#: core/utils/calendar.py:68
+#: core/utils/calendar.py:69
 msgid "Available icon"
 msgstr "Icone de disponibilité"
 
-#: core/utils/calendar.py:69
+#: core/utils/calendar.py:70
 msgid "Available"
 msgstr "Disponible"
 

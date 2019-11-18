@@ -226,14 +226,6 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
     margin-bottom: 0.4rem;
 }
 
-/*#cal-events .cal-date-bg {
-    background: #ffc0c0;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    padding: 5px;
-}*/
-
 #cal-events tr td {
     background-color: rgba(230,230,230,1);
 }
@@ -256,6 +248,19 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
 
 #cal-events .availability-flex .cal-date {
     margin-right: auto;
+}
+
+#cal-events .past-day {
+    background-color: rgba(230,230,230,1);
+    color: grey;
+}
+
+#cal-events .today {
+    background: rgba(66,139,202,1);
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px;
 }
 
 /* FORMS */
