@@ -124,7 +124,7 @@
                                     <div class="col-12">
                                         <p class="card-text">
                                             {% for activity in profile.activities.all %}
-                                                <span class="badge badge-pill badge-info mb-1">{{ activity.name }}</span>
+                                                <span class="badge badge-pill badge-info mb-1">{{ activity.name }}{% for grade in profile.grades.all %}{% if grade.activity.name == activity.name %} - {{ grade.name }}{% endif %}{% endfor %}</span>
                                             {% endfor %}<br>
                                             {{ profile.introduction|truncatechars:200 }}
                                         </p>
