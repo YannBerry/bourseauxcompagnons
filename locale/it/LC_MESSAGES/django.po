@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 20:11+0100\n"
+"POT-Creation-Date: 2019-11-18 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -384,27 +384,26 @@ msgid "Keywords..."
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:23
-#: profiles/templates/profiles/profile_list.html:20
 msgid "Dates"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:26
-#: profiles/templates/profiles/profile_list.html:23
+#: profiles/templates/profiles/profile_list.html:46
 msgid "From"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:35
-#: profiles/templates/profiles/profile_list.html:32
+#: profiles/templates/profiles/profile_list.html:55
 msgid "Till"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:46 profiles/forms.py:57
-#: profiles/templates/profiles/profile_list.html:43
+#: profiles/templates/profiles/profile_list.html:20
 msgid "Activities"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:48
-#: profiles/templates/profiles/profile_list.html:45
+#: profiles/templates/profiles/profile_list.html:22
 msgid "Click to select activities"
 msgstr ""
 
@@ -802,20 +801,24 @@ msgstr ""
 msgid "Profiles list"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:52
+#: profiles/templates/profiles/profile_list.html:29
 msgid "Where"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:52
+#: profiles/templates/profiles/profile_list.html:29
 msgid "(draw on the map)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:56
+#: profiles/templates/profiles/profile_list.html:33
 msgid "Automatically draw my area on the map"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:61
+#: profiles/templates/profiles/profile_list.html:38
 msgid "Around my profile location (50 km)"
+msgstr ""
+
+#: profiles/templates/profiles/profile_list.html:43
+msgid "Dates of availability"
 msgstr ""
 
 #: profiles/templates/profiles/profile_list.html:75 templates/index.html:141
