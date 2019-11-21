@@ -14,59 +14,67 @@
 {% block title %}{% trans 'Profiles list' %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
-    <form method="get" action="{% url 'profiles:search' %}">
-        <div class="form-row">
-            <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                <select multiple class="form-control" name="a" id="activities_filter">
-                    <option value="">{% trans 'Click to select activities' %}</option>
-                    {% for activity in all_activities %}
-                        <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Where' %} <small>{% trans '(draw on the map)' %}</small></h6>
-                <div id="availabilityformmap" style="height: 350px;"></div>
-                <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
-                {% if user.is_authenticated and user.profile.availability_area_geo %}
-                <div class="ol-outside-button mt-1"><button type="button" id="draw_my_area">{% trans 'Automatically draw my area on the map' %}</button></div>
-                {% endif %}
-            </div>
-            {% if user.is_authenticated and user.profile.location %}
-            <div class="form-group col-12">
-                <label for="id_around_me">{% trans "Around my profile location (50 km)" %}</label>
-                <input class="custom-form-check-inline" type="checkbox" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
-            </div>
-            {% endif %}
-            <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Dates of availability' %}</h6>
-                <div class="form-row">
-                    <div class="form-group col-6 col-xl-12 mb-0">
-                        <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
-                        <div class="input-group mb-2">
-                            <input type="text" name="start_date" class="form-control" id="id_start_date"{% if start_date %} value={{ start_date }}{% endif %}>
-                            <div id="id_start_date_clear_container" class="input-group-append">
-                                <button id="id_start_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
+    <div class="wrap-collabsible mb-4">
+        <input id="collapsible" class="toggle" type="checkbox" checked>
+        <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
+        <div class="collapsible-content">
+            <div class="content-inner">
+                <form id="profile-filter" method="get" action="{% url 'profiles:search' %}">
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <h6 class="filter_title">{% trans 'Activities' %}</h6>
+                            <select multiple class="form-control" name="a" id="activities_filter">
+                                <option value="">{% trans 'Click to select activities' %}</option>
+                                {% for activity in all_activities %}
+                                    <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-12">
+                            <h6 class="filter_title">{% trans 'Where' %} <small>{% trans '(draw on the map)' %}</small></h6>
+                            <div id="availabilityformmap" style="height: 350px;"></div>
+                            <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
+                            {% if user.is_authenticated and user.profile.availability_area_geo %}
+                            <div class="ol-outside-button mt-1"><button type="button" id="draw_my_area">{% trans 'Automatically draw my area on the map' %}</button></div>
+                            {% endif %}
+                        </div>
+                        {% if user.is_authenticated and user.profile.location %}
+                        <div class="form-group col-12">
+                            <label for="id_around_me">{% trans "Around my profile location (50 km)" %}</label>
+                            <input class="custom-form-check-inline" type="checkbox" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
+                        </div>
+                        {% endif %}
+                        <div class="form-group col-12">
+                            <h6 class="filter_title">{% trans 'Dates of availability' %}</h6>
+                            <div class="form-row">
+                                <div class="form-group col-6 col-xl-12 mb-0">
+                                    <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
+                                    <div class="input-group mb-2">
+                                        <input type="text" name="start_date" class="form-control" id="id_start_date"{% if start_date %} value={{ start_date }}{% endif %}>
+                                        <div id="id_start_date_clear_container" class="input-group-append">
+                                            <button id="id_start_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 col-xl-12 mb-0">
+                                    <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
+                                    <div class="input-group">
+                                        <input type="text" name="end_date" class="form-control" id="id_end_date"{% if end_date %} value={{ end_date }}{% endif %}>
+                                        <div id="id_end_date_clear_container" class="input-group-append">
+                                            <button id="id_end_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group col-6 col-xl-12 mb-0">
-                        <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
-                        <div class="input-group">
-                            <input type="text" name="end_date" class="form-control" id="id_end_date"{% if end_date %} value={{ end_date }}{% endif %}>
-                            <div id="id_end_date_clear_container" class="input-group-append">
-                                <button id="id_end_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
-                            </div>
+                        <div class="form-group col-12">
+                            <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group col-12">
-                <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 {% endblock %}
 
 {% block rightsidebar %}
