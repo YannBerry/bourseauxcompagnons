@@ -13,49 +13,57 @@
 {% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
-    <form method="get" action="{% url 'outings:search' %}">
-        <div class="form-row">
-            <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Keywords' %}</h6>
-                <input class="form-control" type="search" placeholder="{% trans 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
-            </div>
-            <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Dates' %}</h6>
-                <div class="form-row">
-                    <div class="form-group col-6 col-xl-12 mb-0">
-                        <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
-                        <div class="input-group mb-2">
-                            <input type="text" name="outing_start_date" class="form-control" id="id_outing_start_date"{% if outing_start_date %} value={{ outing_start_date }}{% endif %}>
-                            <div id="id_outing_start_date_clear_container" class="input-group-append">
-                                <button id="id_outing_start_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
+    <div class="wrap-collabsible mb-4">
+        <input id="collapsible" class="toggle" type="checkbox">
+        <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
+        <div class="collapsible-content">
+            <div class="content-inner">
+                <form method="get" action="{% url 'outings:search' %}">
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <h6 class="filter_title">{% trans 'Keywords' %}</h6>
+                            <input class="form-control" type="search" placeholder="{% trans 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
+                        </div>
+                        <div class="form-group col-12">
+                            <h6 class="filter_title">{% trans 'Dates' %}</h6>
+                            <div class="form-row">
+                                <div class="form-group col-6 col-xl-12 mb-0">
+                                    <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
+                                    <div class="input-group mb-2">
+                                        <input type="text" name="outing_start_date" class="form-control" id="id_outing_start_date"{% if outing_start_date %} value={{ outing_start_date }}{% endif %}>
+                                        <div id="id_outing_start_date_clear_container" class="input-group-append">
+                                            <button id="id_outing_start_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 col-xl-12 mb-0">
+                                    <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
+                                    <div class="input-group">
+                                        <input type="text" name="outing_end_date" class="form-control" id="id_outing_end_date"{% if outing_end_date %} value={{ outing_end_date }}{% endif %}>
+                                        <div id="id_outing_end_date_clear_container" class="input-group-append">
+                                            <button id="id_outing_end_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group col-6 col-xl-12 mb-0">
-                        <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
-                        <div class="input-group">
-                            <input type="text" name="outing_end_date" class="form-control" id="id_outing_end_date"{% if outing_end_date %} value={{ outing_end_date }}{% endif %}>
-                            <div id="id_outing_end_date_clear_container" class="input-group-append">
-                                <button id="id_outing_end_date_clear" type="button" class="btn btn-danger btn-clear-date" title="Clear">X</button>
-                            </div>
+                        <div class="form-group col-12">
+                            <h6 class="filter_title">{% trans 'Activities' %}</h6>
+                            <select multiple class="form-control" name="a" id="activities_filter">
+                                <option value="">{% trans 'Click to select activities' %}</option>
+                                {% for activity in all_activities %}
+                                    <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-12">
+                            <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group col-12">
-                <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                <select multiple class="form-control" name="a" id="activities_filter">
-                    <option value="">{% trans 'Click to select activities' %}</option>
-                    {% for activity in all_activities %}
-                        <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col-12">
-                <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 {% endblock %}
 
 {% block rightsidebar %}

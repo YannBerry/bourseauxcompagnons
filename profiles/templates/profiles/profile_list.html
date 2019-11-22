@@ -15,7 +15,7 @@
 
 {% block leftsidebar %}
     <div class="wrap-collabsible mb-4">
-        <input id="collapsible" class="toggle" type="checkbox" checked>
+        <input id="collapsible" class="toggle" type="checkbox">
         <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
         <div class="collapsible-content">
             <div class="content-inner">
@@ -40,8 +40,10 @@
                         </div>
                         {% if user.is_authenticated and user.profile.location %}
                         <div class="form-group col-12">
-                            <label for="id_around_me">{% trans "Around my profile location (50 km)" %}</label>
-                            <input class="custom-form-check-inline" type="checkbox" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
+                            <div class="toggle-switch-box">
+                                <input type="checkbox" class="toggle-switch-1" name="around_me" id="id_around_me" {% if around_me %}checked{% endif %}>
+                                <label for="id_around_me">{% trans "Around my profile location (50 km)" %}</label>
+                            </div>
                         </div>
                         {% endif %}
                         <div class="form-group col-12">
