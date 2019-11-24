@@ -1,40 +1,16 @@
-{% load i18n %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <!-- Required for Bootstrap -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load l10n %}
+{% load i18n %}
 
-        <title>{% trans "Mountain Partners" %}</title>
-        <meta name="description" content="Trouver des partenaires pour vos sorties en montagne. Un compagnon de cordée pour l'alpinisme, une partenaire de grimpe, des joyeux lurons pour le ski de randonnée ...">
-        <meta name="author" content="Yann Berry">
-        <link rel="icon" href="{% static 'favicon.ico' %}">
+{% block title %}{% trans "This page doesn't exist" %} | {{ block.super }}{% endblock %}
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    </head>
-
-    <body>
-        <div class="container">
-            <main>
-                <div class="row justify-content-center text-center mt-4">
-                  <div class="col-md-10 col-sm-12">
-                    <h1 class="display-2">{% trans "Mountain Partners" %}</h1>
-                    <h4 class="display-4 mb-4">{% trans "This page does not exist (error 404)" %}</br>¯\_(ツ)_/¯</h4>
-                    <p class="lead"><a href="{% url 'homepage' %}" class="btn btn-primary btn-lg">{% trans "Go to Homepage" %}</a></p>
-                  </div>
-                </div>
-            </main>
-        </div>
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    </body>
-</html>
+{% block content %}
+<div class="row justify-content-center text-center mt-4">
+    <div class="col-md-10 col-sm-12">
+        <h1 class="display-2">{% trans "Mountain Partners" %}</h1>
+        <h4 class="display-4 mb-4">{% trans "This page does not exist (error 404)" %}</br>¯\_(ツ)_/¯</h4>
+        <p class="lead"><a href="{% url 'homepage' %}" class="btn btn-primary btn-lg">{% trans "Go to Homepage" %}</a></p>
+    </div>
+</div>
+{% endblock %}
