@@ -419,58 +419,13 @@ label.required {
     justify-content: flex-end;
 }
 
-.toggle-switch-container {
-    position: relative;
-    display: block;
-    width: 60px;
-    height: 30px;
-}
-
-.toggle-switch-container input {
-    display: none;
-}
-
-.toggle-switch {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(190,190,190,1);
-    border-radius: 15px;
-}
-
-.toggle-switch::after {
-    position: absolute;
-    content: "";
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: rgba(50,50,50,1);
-    top: 1px;
-    left: 1px;
-}
-
-input:checked + .toggle-switch {
-    background-color: rgba(0,200,81,1);
-}
-
-input:checked + .toggle-switch::after {
-    transform: translateX(30px);
-}
-
-.toggle-switch-container label {
-    margin-left: 65px;
-}
-
-
 .toggle-switch-box{
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
 }
 
-input[type="checkbox"].toggle-switch-1{
+.toggle-switch-box input[type="checkbox"].toggle-switch{
     font-size: 30px;
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -486,11 +441,11 @@ input[type="checkbox"].toggle-switch-1{
             transition: all .2s ease-in-out;
 }
   
-input[type="checkbox"].toggle-switch-1:checked{
+.toggle-switch-box input[type="checkbox"].toggle-switch:checked{
     background: rgba(91,192,222,1);
 }
   
-input[type="checkbox"].toggle-switch-1:after{
+.toggle-switch-box input[type="checkbox"].toggle-switch:after{
     position: absolute;
     content: "";
     width: 1em;
@@ -504,15 +459,20 @@ input[type="checkbox"].toggle-switch-1:after{
     transition: all .2s ease-in-out;
 }
 
-input[type="checkbox"].toggle-switch-1:checked:after{
+.toggle-switch-box input[type="checkbox"].toggle-switch:checked:after{
     left: calc(100% - 1em);
 }
 
-input[type="checkbox"].toggle-switch-1 + label {
+.toggle-switch-box label {
     margin-bottom: 0;
-    margin-left: .5rem;
+    margin-right: .5rem;
+    flex-shrink: 2;
 }
 
+/*label + input[type="checkbox"].toggle-switch {
+    margin-bottom: 0;
+    margin-left: .5rem;
+}*/
 
 
 /* Placeholder color of the title of the bootstrap-select tag */

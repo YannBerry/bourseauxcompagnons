@@ -1,0 +1,4 @@
+<div class="toggle-switch-box">
+    {% if widget.label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>{{ widget.label }}</label>{% endif %}
+    <input class="toggle-switch" type="{{ widget.type }}" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
+</div>

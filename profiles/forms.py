@@ -13,7 +13,7 @@ from django.contrib.gis.forms import OpenLayersWidget
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
 from core.forms import GroupedModelMultipleChoiceField
-from core.widgets import ImageWidget, GradesWidget
+from core.widgets import ImageWidget, GradesWidget, ToggleSwitchWidget
 
 # Setting the map_srid of the openlayers widget (the dafault widget for qeometric fields) to 4326 instead of 3857
 class OpenLayersWidgetSrid4326(OpenLayersWidget):
@@ -175,10 +175,10 @@ class ProfileForm(forms.ModelForm):
         else:
             for field in [f for f in self.fields if f not in ('public_profile', 'profile_picture', 'location', 'availability_area_geo', 'activities', 'grades')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
-            self.fields['public_profile'].widget.attrs.update({'class': 'custom-form-check-inline'})
             self.fields['profile_picture'].widget.attrs.update({'class': 'custom-file-input'})
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
             self.fields['grades'].widget.attrs.update({'class': 'custom-form-check-inline'})
+        self.fields['public_profile'].widget.label = self.fields['public_profile'].label
         # Dependent lists: grades displaying according to selected activities
         # self.fields['grades'].queryset = Grade.objects.none()
         if self.instance.pk:
@@ -193,6 +193,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['public_profile', 'profile_picture', 'location', 'availability_area_geo', 'availability_area', 'activities', 'grades', 'introduction', 'list_of_courses', 'birthdate']
         widgets = {
+            'public_profile': ToggleSwitchWidget(),
             'availability_area_geo': OpenLayersWidgetSrid4326(),
             'profile_picture': ImageWidget(),
             'activities': forms.CheckboxSelectMultiple()
