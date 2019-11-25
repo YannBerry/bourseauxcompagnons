@@ -22,7 +22,7 @@
                     <div class="card" style="background-color: rgba(225,225,225,0.9);">
                         <div class="card-body text-center">
                             <h1 class="card-text h4 p-4">{% trans "Find partners for your outings in the mountain." %}</h1>
-                            <form method="get" action="{% url 'profiles:search' %}">
+                            <form id="profile_outing_form" method="get" action="">
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <ul id="id_activities" class="custom-form-check-inline">
@@ -32,7 +32,10 @@
                                         </ul>
                                     </div>
                                     <div class="form-group col-12">
-                                        <button class="btn btn-outline-success btn-block text-uppercase" type="submit">{% trans "Search Profile" %}</button>
+                                        <button id="search-profile" class="btn btn-outline-success btn-block text-uppercase" type="submit">{% trans "Search Profile" %}</button>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <button id="search-outing" class="btn btn-outline-success btn-block text-uppercase" type="submit">{% trans "Search Outing" %}</button>
                                     </div>
                                 </div>
                             </form>
@@ -196,6 +199,22 @@
 {% endblock %}
 
 {% block js %}
+<!-- search profile and outing -->
+<script>
+    // Set the "action" attribute of the "form" html tag
+    const searchProfileOutingForm = document.getElementById('profile_outing_form');
+    const searchProfileBtn = document.getElementById('search-profile');
+    const searchOutingBtn = document.getElementById('search-outing');
+
+    searchProfileBtn.addEventListener('click', function() {
+        searchProfileOutingForm.setAttribute('action', '{{ profiles_search_url }}');
+    });
+
+    searchOutingBtn.addEventListener('click', function() {
+        searchProfileOutingForm.setAttribute('action', '{{ outings_search_url }}');
+    });
+</script>
+<!-- openlayers -->
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
     /*
