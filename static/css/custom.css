@@ -326,6 +326,14 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
     color: grey;
 }
 
+#cal-events .cal-date {
+    font-weight: bold;
+}
+
+#cal-events .past-day .cal-date {
+    font-weight: normal;
+}
+
 #cal-events .today {
     background: rgba(66,139,202,1);
     border-radius: 50%;

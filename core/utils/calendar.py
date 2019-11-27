@@ -74,25 +74,25 @@ class CalEvents(Cal):
             return '<td class="cal-noday">&nbsp;</td>'
         elif day !=0 and outings_per_day and availabilities_per_day:
             if this_day > today:
-                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
             elif this_day == today:
-                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold today'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date today'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
             else:
-                return f"<td class='cal-event-day past-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
+                return f"<td class='cal-event-day past-day'><div class='availability-flex'><span class='cal-date'>{day}</span> {a}</div><ul class='cal-outing-list-bg'> {o} </ul></td>"
         elif day !=0 and outings_per_day:
             if this_day > today:
-                return f"<td class='cal-event-day'><span class='cal-date font-weight-bold'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
+                return f"<td class='cal-event-day'><span class='cal-date'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
             elif this_day == today:
-                return f"<td class='cal-event-day'><span class='cal-date font-weight-bold today'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
+                return f"<td class='cal-event-day'><span class='cal-date today'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
             else:
-                return f"<td class='cal-event-day past-day'><span class='cal-date font-weight-bold'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
+                return f"<td class='cal-event-day past-day'><span class='cal-date'>{day}</span><ul class='cal-outing-list-bg'> {o} </ul></td>"
         elif day !=0 and availabilities_per_day:
             if this_day > today:
-                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div></td>"
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date'>{day}</span> {a}</div></td>"
             elif this_day == today:
-                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date font-weight-bold today'>{day}</span> {a}</div></td>"
+                return f"<td class='cal-event-day'><div class='availability-flex'><span class='cal-date today'>{day}</span> {a}</div></td>"
             else:
-                return f"<td class='cal-event-day past-day'><div class='availability-flex'><span class='cal-date font-weight-bold'>{day}</span> {a}</div></td>"
+                return f"<td class='cal-event-day past-day'><div class='availability-flex'><span class='cal-date'>{day}</span> {a}</div></td>"
         else:
             if this_day > today:
                 return f"<td><span class='cal-date'>{day}</span></td>"
