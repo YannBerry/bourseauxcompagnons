@@ -8,7 +8,6 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-body">
-                <h1>{% trans 'Sign in' %}</h1>
                 <form method="post" novalidate>
                     {% csrf_token %}
                     {{ form.non_field_errors }}
@@ -37,16 +36,32 @@
                     <input type="hidden" name="next" value="{{ request.GET.next }}">
                     {% endif %}
                     
-                    <div class="form-end-buttons-centered mb-2">
-                        <button class="btn btn-primary mr-2" type="submit">{% trans 'Sign in' %}</button>
-                        <a class="btn btn-danger" href="{% url 'password_reset' %}">{% trans 'Forgot password' %}</a>
+                    <div class="form-end-buttons-centered mb-4">
+                        <button class="btn btn-primary px-5" type="submit">{% trans 'Sign in' %}</button>
                     </div>
                     <div class="form-end-buttons-centered">
-                        <a class="btn btn-success" href="{% url 'profile_register' %}">{% trans 'No account? Create a profile!' %}</a>
+                        <a href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a>
+                    </div>
+                    <div class="form-end-buttons-centered">
+                        {% trans "Don't have a profile?" %}<a href="{% url 'profile_register' %}" class="ml-2">{% trans "Register" %}</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let emailInputElt = document.getElementById('id_username');
+    let pwdInputElt = document.getElementById('id_password');
+    let emailLabelElt = emailInputElt.parentNode.childNodes[1];
+    let pwdLabelElt = pwdInputElt.previousSibling.previousSibling;
+
+    emailInputElt.classList.add('form-control');
+    pwdInputElt.classList.add('form-control');
+    emailLabelElt.classList.add('required');
+    pwdLabelElt.classList.add('required');
+</script>
 {% endblock %}

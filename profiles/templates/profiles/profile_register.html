@@ -20,20 +20,20 @@
                     {{ form.non_field_errors }}
                     <div class="row">
                         <div class="col-sm-6 mb-4">
-                            {{ form.username.label_tag }}
-                            {% if form.username.help_text %}
-                                <p class="helptext">{{ form.username.help_text|safe }}</p>
-                            {% endif %}
-                            {{ form.username }}
-                            {{ form.username.errors }}
-                        </div>
-                        <div class="col-sm-6 mb-4">
                             {{ form.email.label_tag }}
                             {% if form.email.help_text %}
                                 <p class="helptext">{{ form.email.help_text|safe }}</p>
                             {% endif %}
                             {{ form.email }}
                             {{ form.email.errors }}
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            {{ form.username.label_tag }}
+                            {% if form.username.help_text %}
+                                <p class="helptext">{{ form.username.help_text|safe }}</p>
+                            {% endif %}
+                            {{ form.username }}
+                            {{ form.username.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.password1.label_tag }}
@@ -83,6 +83,13 @@
 {% endblock %}
 
 {% block js %}
+<script>
+    let usernameInputElt = document.getElementById('id_username');
+    let emailInputElt = document.getElementById('id_email');
+
+    usernameInputElt.setAttribute('autocomplete','off');
+    emailInputElt.setAttribute('autocomplete','email');
+</script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
 
