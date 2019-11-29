@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-22 10:16+0100\n"
+"POT-Creation-Date: 2019-11-29 22:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,8 +48,8 @@ msgid "Your end date is not equal or later than your start date."
 msgstr ""
 
 #: availabilities/forms.py:53 contactpage/forms.py:35 outings/forms.py:54
-#: profiles/forms.py:108 profiles/forms.py:140 profiles/forms.py:211
-#: profiles/forms.py:246
+#: profiles/forms.py:108 profiles/forms.py:140 profiles/forms.py:212
+#: profiles/forms.py:247
 msgid "Please correct detected error / errors."
 msgstr ""
 
@@ -99,7 +99,7 @@ msgstr ""
 #: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
-#: profiles/templates/profiles/profile_form.html:113
+#: profiles/templates/profiles/profile_form.html:112
 #: profiles/templates/profiles/profile_register.html:75
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
@@ -111,33 +111,33 @@ msgstr ""
 msgid "Availability starting the %(availability_start_date)s"
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:19
+#: availabilities/templates/availabilities/availability_detail.html:12
 msgid "Availability"
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:23
-#: outings/templates/outings/outing_detail.html:22
-#: profiles/templates/profiles/my_profile.html:78
+#: availabilities/templates/availabilities/availability_detail.html:16
+#: outings/templates/outings/outing_detail.html:15
+#: profiles/templates/profiles/my_profile.html:93
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:23
+#: availabilities/templates/availabilities/availability_detail.html:16
 msgid "Edit availability"
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:24
-#: outings/templates/outings/outing_detail.html:23
-#: profiles/templates/profiles/my_profile.html:81
+#: availabilities/templates/availabilities/availability_detail.html:17
+#: outings/templates/outings/outing_detail.html:16
+#: profiles/templates/profiles/my_profile.html:96
 msgid "Delete icon"
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:24
+#: availabilities/templates/availabilities/availability_detail.html:17
 msgid "Delete availability "
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:34
-#: outings/templates/outings/outing_detail.html:34
+#: availabilities/templates/availabilities/availability_detail.html:27
+#: outings/templates/outings/outing_detail.html:27
 #, python-format
 msgid ""
 "\n"
@@ -151,8 +151,8 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: availabilities/templates/availabilities/availability_detail.html:44
-#: outings/templates/outings/outing_detail.html:47
+#: availabilities/templates/availabilities/availability_detail.html:37
+#: outings/templates/outings/outing_detail.html:40
 #, python-format
 msgid ""
 "\n"
@@ -161,7 +161,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: availabilities/templates/availabilities/availability_detail.html:48
+#: availabilities/templates/availabilities/availability_detail.html:41
 #, python-format
 msgid ""
 "\n"
@@ -175,7 +175,7 @@ msgstr ""
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
-#: profiles/templates/profiles/profile_form.html:111
+#: profiles/templates/profiles/profile_form.html:110
 #: templates/registration/account_form.html:47
 msgid "Save"
 msgstr ""
@@ -240,15 +240,15 @@ msgstr ""
 msgid "admin/"
 msgstr ""
 
-#: contactpage/forms.py:8 profiles/forms.py:219
+#: contactpage/forms.py:8 profiles/forms.py:220
 msgid "Your e-mail address"
 msgstr ""
 
-#: contactpage/forms.py:9 profiles/forms.py:220
+#: contactpage/forms.py:9 profiles/forms.py:221
 msgid "Subject"
 msgstr ""
 
-#: contactpage/forms.py:10 profiles/forms.py:221
+#: contactpage/forms.py:10 profiles/forms.py:222
 msgid "Message"
 msgstr ""
 
@@ -340,26 +340,26 @@ msgstr ""
 msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
 msgstr ""
 
-#: outings/templates/outings/outing_detail.html:22
-#: profiles/templates/profiles/my_profile.html:78
+#: outings/templates/outings/outing_detail.html:15
+#: profiles/templates/profiles/my_profile.html:93
 msgid "Edit outing"
 msgstr ""
 
-#: outings/templates/outings/outing_detail.html:23
-#: profiles/templates/profiles/my_profile.html:81
+#: outings/templates/outings/outing_detail.html:16
+#: profiles/templates/profiles/my_profile.html:96
 msgid "Delete outing "
 msgstr ""
 
-#: outings/templates/outings/outing_detail.html:25
+#: outings/templates/outings/outing_detail.html:18
 #: profiles/templates/profiles/profile_detail.html:26
 msgid "Get in touch"
 msgstr ""
 
-#: outings/templates/outings/outing_detail.html:41
+#: outings/templates/outings/outing_detail.html:34
 msgid "Link to the outing topo!"
 msgstr ""
 
-#: outings/templates/outings/outing_detail.html:51
+#: outings/templates/outings/outing_detail.html:44
 #, python-format
 msgid ""
 "\n"
@@ -393,12 +393,12 @@ msgid "Dates"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:31
-#: profiles/templates/profiles/profile_list.html:51
+#: profiles/templates/profiles/profile_list.html:53
 msgid "From"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:40
-#: profiles/templates/profiles/profile_list.html:60
+#: profiles/templates/profiles/profile_list.html:62
 msgid "Till"
 msgstr ""
 
@@ -413,15 +413,31 @@ msgid "Click to select activities"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:60
-#: profiles/templates/profiles/profile_list.html:71
+#: profiles/templates/profiles/profile_list.html:73
 msgid "Filter"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:71
+#: profiles/templates/profiles/my_profile.html:51
 msgid "Add an outing"
 msgstr ""
 
-#: outings/templates/outings/outing_list.html:79
+#: outings/templates/outings/outing_list.html:78
+msgid "You didn't find any outing that fits your availabilities?"
+msgstr ""
+
+#: outings/templates/outings/outing_list.html:78
+msgid "Check the profiles' page"
+msgstr ""
+
+#: outings/templates/outings/outing_list.html:78
+msgid ""
+": Maybe some profiles have filled out their availabilities in their "
+"calendar. Meaning they intend to go out but don't know what to do exactly "
+"and are opened to suggestions."
+msgstr ""
+
+#: outings/templates/outings/outing_list.html:82
 #, python-format
 msgid ""
 "\n"
@@ -434,7 +450,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: outings/templates/outings/outing_list.html:92
+#: outings/templates/outings/outing_list.html:95
 #, python-format
 msgid ""
 "\n"
@@ -448,8 +464,16 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: outings/templates/outings/outing_list.html:108
+#: outings/templates/outings/outing_list.html:111
 msgid "There is no outing fitting your search criteria."
+msgstr ""
+
+#: outings/views.py:123
+msgid "Your outing is now published!"
+msgstr ""
+
+#: outings/views.py:134
+msgid "Your outing is now updated!"
 msgstr ""
 
 #: profiles/admin.py:17
@@ -483,7 +507,7 @@ msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
 
-#: profiles/forms.py:219
+#: profiles/forms.py:220
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
 
@@ -676,70 +700,99 @@ msgstr ""
 msgid "My profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:18
+#: profiles/templates/profiles/my_profile.html:13
 msgid "My public profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:21
+#: profiles/templates/profiles/my_profile.html:16
 msgid "View icon"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:21
+#: profiles/templates/profiles/my_profile.html:16
 msgid "View public profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:26
+#: profiles/templates/profiles/my_profile.html:21
 msgid "Update my public profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:33
+#: profiles/templates/profiles/my_profile.html:28
 msgid "My account"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:38
+#: profiles/templates/profiles/my_profile.html:33
 msgid "Update my account settings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:41
+#: profiles/templates/profiles/my_profile.html:36
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:48
+#: profiles/templates/profiles/my_profile.html:47
 msgid "My calendar"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:51
-msgid "Add new availability"
+#: profiles/templates/profiles/my_profile.html:50
+msgid "Add an availability"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:52
-msgid "Add new outing"
+#: profiles/templates/profiles/my_profile.html:56
+msgid ""
+"<strong>You have not created any availability yet.</strong> Create one by "
+"clicking on the <span class='badge badge-pill badge-success'>+ Add an "
+"availability</span> button above or by clicking"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:64
+#: profiles/templates/profiles/my_profile.html:56
+#: profiles/templates/profiles/my_profile.html:61
+msgid "here."
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:56
+msgid ""
+"Frequently filling out and updating your availabilities in your calendar is "
+"highly advisable: potential patners can find you in the 'profiles page' when "
+"they filter by availability dates. This way you show that you intend to go "
+"out but don't know what to do exactly and are opened to suggestions."
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:61
+msgid ""
+"<strong>You have not created any outing yet.</strong> Create one by clicking "
+"on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
+"button above or by clicking"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:61
+msgid ""
+"By filling out an outing, potential partners can find your proposal in the "
+"'outings page', get in touch with you and, if you want, join you on that "
+"outing."
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:79
 msgid "My outings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:92
+#: profiles/templates/profiles/my_profile.html:111
 msgid "Exports"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:95
+#: profiles/templates/profiles/my_profile.html:114
 msgid "Export profiles to Excel format"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:101
+#: profiles/templates/profiles/my_profile.html:120
 msgid "Imports / Exports for superadmins"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:104
+#: profiles/templates/profiles/my_profile.html:123
 msgid "Export outings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:111 templates/base.html:88
-#: templates/registration/login.html:4 templates/registration/login.html:11
-#: templates/registration/login.html:41
+#: profiles/templates/profiles/my_profile.html:132 templates/base.html:88
+#: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
 msgstr ""
@@ -818,19 +871,19 @@ msgstr ""
 msgid "Automatically draw my area on the map"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:43
+#: profiles/templates/profiles/profile_list.html:44
 msgid "Around my profile location (50 km)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:48
+#: profiles/templates/profiles/profile_list.html:50
 msgid "Dates of availability"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:83 templates/index.html:141
+#: profiles/templates/profiles/profile_list.html:85 templates/index.html:144
 msgid "Add my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:92
+#: profiles/templates/profiles/profile_list.html:94
 #, python-format
 msgid ""
 "\n"
@@ -843,12 +896,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:114 templates/index.html:119
+#: profiles/templates/profiles/profile_list.html:116 templates/index.html:122
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:135
+#: profiles/templates/profiles/profile_list.html:137
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
@@ -932,31 +985,59 @@ msgstr ""
 msgid "ajax/load-grades/"
 msgstr ""
 
-#: profiles/views.py:197
+#: profiles/views.py:203
 msgid "Initial contact"
 msgstr ""
 
-#: profiles/views.py:198
+#: profiles/views.py:204
 msgid "Hi "
 msgstr ""
 
-#: profiles/views.py:210
+#: profiles/views.py:216
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
 "'Update my profile' to complete it or make it private."
 msgstr ""
 
-#: templates/404.html:10 templates/404.html:26 templates/base.html:13
-msgid "Mountain Partners"
+#: profiles/views.py:232
+msgid "Profile registered"
 msgstr ""
 
-#: templates/404.html:27
+#: profiles/views.py:233
+msgid "[Account] "
+msgstr ""
+
+#: profiles/views.py:326 profiles/views.py:328
+msgid "Hi {}! You are logged in :)"
+msgstr ""
+
+#: profiles/views.py:330
+msgid "You are logged in :)"
+msgstr ""
+
+#: profiles/views.py:337 profiles/views.py:339
+msgid "You have securely logged out. Thank you for visiting {}."
+msgstr ""
+
+#: profiles/views.py:341
+msgid "You have securely logged out. Thank you for visiting."
+msgstr ""
+
+#: templates/404.html:6
+msgid "This page doesn't exist"
+msgstr ""
+
+#: templates/404.html:11
 msgid "This page does not exist (error 404)"
 msgstr ""
 
-#: templates/404.html:28
+#: templates/404.html:13
 msgid "Go to Homepage"
+msgstr ""
+
+#: templates/base.html:13
+msgid "Mountain Partners"
 msgstr ""
 
 #: templates/base.html:14
@@ -998,56 +1079,60 @@ msgstr ""
 msgid "Search Profile"
 msgstr ""
 
-#: templates/index.html:56
+#: templates/index.html:38
+msgid "Search Outing"
+msgstr ""
+
+#: templates/index.html:59
 msgid "For whom?"
 msgstr ""
 
-#: templates/index.html:57
+#: templates/index.html:60
 msgid ""
 "Sportsmen and sportswomen struggling to find partners to explore the "
 "outdoors. Especially the mountains."
 msgstr ""
 
-#: templates/index.html:60
+#: templates/index.html:63
 msgid "What for?"
 msgstr ""
 
-#: templates/index.html:61
+#: templates/index.html:64
 msgid ""
 "Find partners that match your activities, your level and your aspirations."
 msgstr ""
 
-#: templates/index.html:64
+#: templates/index.html:67
 msgid "How it works?"
 msgstr ""
 
-#: templates/index.html:66
+#: templates/index.html:69
 msgid ""
 "Watch profiles and outings. Contact directly the ones fitting your interest."
 msgstr ""
 
-#: templates/index.html:67
+#: templates/index.html:70
 msgid ""
 "Publish your own profile or outings to be contacted by potential partners."
 msgstr ""
 
-#: templates/index.html:100
+#: templates/index.html:103
 msgid "Last profiles created"
 msgstr ""
 
-#: templates/index.html:101
+#: templates/index.html:104
 msgid "Display all the profiles"
 msgstr ""
 
-#: templates/index.html:161
+#: templates/index.html:164
 msgid "Last outings suggested"
 msgstr ""
 
-#: templates/index.html:162
+#: templates/index.html:165
 msgid "Display all the outings"
 msgstr ""
 
-#: templates/index.html:171
+#: templates/index.html:174
 #, python-format
 msgid ""
 "\n"
@@ -1061,7 +1146,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/index.html:188
+#: templates/index.html:191
 msgid "Add my outing"
 msgstr ""
 
@@ -1078,12 +1163,16 @@ msgstr ""
 msgid "Update my password"
 msgstr ""
 
-#: templates/registration/login.html:42
-msgid "Forgot password"
+#: templates/registration/login.html:43
+msgid "Forgot password?"
 msgstr ""
 
-#: templates/registration/login.html:45
-msgid "No account? Create a profile!"
+#: templates/registration/login.html:46
+msgid "Don't have a profile?"
+msgstr ""
+
+#: templates/registration/login.html:46
+msgid "Register"
 msgstr ""
 
 #: templates/registration/password_change_done.html:12

@@ -6,105 +6,126 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    {% if messages %}
-        <ul class="messages list-unstyled">
-            {% for message in messages %}
-                <li{% if message.tags %} class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <div class="row mb-2">
-        <div class="col-auto mr-auto">
-            <h2>{% trans 'My public profile' %}</h2>
-        </div>
-        <div class="col-auto">
-            <a href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" class="ml-2" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
-        </div>
-        <div class="col-12">
-            <div class="row mb-2">
-                <div class="col-12 col-sm-auto">
-                    <a href="{% url 'update-profile' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my public profile' %}</a>
-                </div>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-auto mr-auto">
+                <h2>{% trans 'My public profile' %}</h2>
             </div>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-12">
-            <h2>{% trans 'My account' %}</h2>
-        </div>
-        <div class="col-12">
-            <div class="row align-items-center mb-2">
-                <div class="col-12 col-sm-auto mb-2 mr-sm-auto">
-                    <a href="{% url 'update-account' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my account settings' %}</a>
-                </div>
-                <div class="col-12 col-sm-auto mb-2">
-                    <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
-                </div>
+            <div class="col-auto">
+                <a href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" class="ml-2" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
             </div>
-        </div>
-    </div>
-    <div id="cal-events" class="row">
-        <div class="col-auto mr-auto">
-            <h2>{% trans 'My calendar' %}</h2>
-        </div>
-        <div class="col-auto">
-            <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new px-4 mb-2" role="button">+ {% trans 'Add new availability' %}</a>
-            <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new px-4 mb-2" role="button">+ {% trans 'Add new outing' %}</a>
-        </div>
-        <div class="col-12">
-            <div id="cal-events" class="row mb-4">
-                <div class="col-12">
-                    {{ cal_events }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-auto mr-auto">
-            <h2>{% trans 'My outings' %}</h2>
-        </div>
-    </div>
-    {% if outings %}
-    <ul class="row no-gutters list-unstyled">
-    {% for outing in outings %}
-        <li class="col-12">
-            <div class="card">
-                <div class="card-body py-2">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-lg-auto mr-auto">
-                            <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
-                        </div>
-                        <div class="col-auto col-lg-auto">
-                            <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
-                        </div>
-                        <div class="col-auto col-lg-auto">
-                            <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
-                        </div>
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-12 col-sm-auto">
+                        <a href="{% url 'update-profile' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my public profile' %}</a>
                     </div>
                 </div>
             </div>
-        </li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-    <div class="row mb-2">
-        <div class="col-12">
-            <h2>{% trans 'Exports' %}</h2>
         </div>
-        <div class="col-12">
-            <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export profiles to Excel format' %}</a>
-        </div>
-    </div>
-    {% if user.is_superuser %}
-    <div class="row mb-2">
-        <div class="col-12">
-            <h2>{% trans 'Imports / Exports for superadmins' %}</h2>
-        </div>
-        <div class="col-12">
-            <a href="#" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export outings' %}</a>
+        <div class="row">
+            <div class="col-12">
+                <h2>{% trans 'My account' %}</h2>
+            </div>
+            <div class="col-12">
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-auto mb-2 mr-sm-auto">
+                        <a href="{% url 'update-account' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my account settings' %}</a>
+                    </div>
+                    <div class="col-12 col-sm-auto mb-2">
+                        <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    {% endif %}
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <div id="cal-events" class="row">
+            <div class="col-auto mr-auto">
+                <h2>{% trans 'My calendar' %}</h2>
+            </div>
+            <div class="col-auto">
+                <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new px-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an availability' %}</span></a>
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new px-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an outing' %}</span></a>
+            </div>
+            <div class="col-12">
+                {% if not availabilities %}
+                <div class="alert alert-warning" role="alert">
+                    {% trans "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-success'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% trans "here." %}</a> {% trans "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential patners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
+                </div>
+                {% endif %}
+                {% if not outings %}
+                <div class="alert alert-info" role="alert">
+                    {% trans "<strong>You have not created any outing yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-success'>+ Add an outing</span> button above or by clicking" %} <a href="{% url 'outings:create' %}">{% trans "here." %}</a> {% trans "By filling out an outing, potential partners can find your proposal in the 'outings page', get in touch with you and, if you want, join you on that outing." %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12">
+                <div id="cal-events" class="row">
+                    <div class="col-12">
+                        {{ cal_events }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-auto mr-auto">
+                <h2>{% trans 'My outings' %}</h2>
+            </div>
+        </div>
+        {% if outings %}
+        <ul class="row no-gutters list-unstyled">
+        {% for outing in outings %}
+            <li class="col-12">
+                <div class="card mb-2">
+                    <div class="card-body py-2">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-auto mr-auto">
+                                <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
+                            </div>
+                            <div class="col-auto col-lg-auto">
+                                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
+                            </div>
+                            <div class="col-auto col-lg-auto">
+                                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-12">
+                <h2>{% trans 'Exports' %}</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export profiles to Excel format' %}</a>
+            </div>
+        </div>
+        {% if user.is_superuser %}
+        <div class="row mb-2">
+            <div class="col-12">
+                <h2>{% trans 'Imports / Exports for superadmins' %}</h2>
+            </div>
+            <div class="col-12">
+                <a href="#" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export outings' %}</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% else %}
     <div class="row mb-4">
         <div class="col-12">

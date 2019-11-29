@@ -207,11 +207,11 @@
     const searchOutingBtn = document.getElementById('search-outing');
 
     searchProfileBtn.addEventListener('click', function() {
-        searchProfileOutingForm.setAttribute('action', '{% url "profiles:search" %}');
+        searchProfileOutingForm.setAttribute('action', '{% url "profiles:list" %}');
     });
 
     searchOutingBtn.addEventListener('click', function() {
-        searchProfileOutingForm.setAttribute('action', '{% url "outings:search" %}');
+        searchProfileOutingForm.setAttribute('action', '{% url "outings:list" %}');
     });
 </script>
 <!-- openlayers -->

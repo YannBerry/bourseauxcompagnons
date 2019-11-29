@@ -18,7 +18,7 @@
         <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
         <div class="collapsible-content">
             <div class="content-inner">
-                <form method="get" action="{% url 'outings:search' %}">
+                <form method="get" action="{% url 'outings:list' %}">
                     <div class="form-row">
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Keywords' %}</h6>
@@ -74,6 +74,9 @@
 
 
 {% block content %}
+    <div class="alert alert-info" role="alert">
+        <strong>{% trans "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}">{% trans "Check the profiles' page" %}</a>{% trans ": Maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
+    </div>
     {% if outing_list %}
         <p>
             {% blocktrans count counter=nb_of_results %}
@@ -107,7 +110,7 @@
     {% else %}
         <p>{% trans 'There is no outing fitting your search criteria.' %}</p>
     {% endif %}
-    <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none"  style="z-index:9999">+</a>
+    <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none"  style="z-index:9999"></a>
 {% endblock %}
 
 {% block js %}

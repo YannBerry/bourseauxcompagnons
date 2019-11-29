@@ -102,6 +102,17 @@
                     {% block rightsidebar %}{% endblock %}
                 </div>
                 <main class="col-xl-8 order-xl-2">
+                    {% if messages %}
+                            {% for message in messages %}
+                                <div{% if message.tags %} class="alert {{ message.tags }} alert-dismissible"{% endif %} role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     {% block content %}{% endblock %}
                 </main>
             </div>

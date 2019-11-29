@@ -9,7 +9,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+# Translation
+from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
+# Keywords queryset
 from django.contrib.postgres.search import (
     SearchVector,
     SearchQuery,
@@ -117,7 +120,7 @@ class OutingDetailView(DetailView):
 class OutingCreateView(SuccessMessageMixin, CreateView):
     form_class = OutingForm
     template_name = 'outings/outing_form.html'
-    success_message = "Votre sortie est désormais publiée !"
+    success_message = _("Your outing is now published!")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -125,9 +128,10 @@ class OutingCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
-class OutingUpdateView(UserPassesTestMixin, UpdateView):
+class OutingUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = Outing
     form_class = OutingForm
+    success_message = _("Your outing is now updated!")
 
     def test_func(self):
         outing_author = Outing.objects.get(slug=self.kwargs['slug']).author.username

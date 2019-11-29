@@ -5,10 +5,15 @@ from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+# Messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
+# Display message when user log in/out
+from django.contrib.auth.signals import user_logged_out, user_logged_in
+from django.dispatch import receiver
 # Translation
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
@@ -47,6 +52,7 @@ from django.views.decorators.csrf import csrf_exempt
 from profiles.models import Profile, CustomUser
 from activities.models import Activity, Grade
 from outings.models import Outing
+from availabilities.models import Availability
 from profiles.forms import ProfileCreationForm, AccountForm, ProfileForm, ContactProfileForm
 
 # from django.contrib.gis.geos import Point
@@ -223,8 +229,8 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
         '''
         response = super().form_valid(form)
 
-        subject="Profil créé"
-        subject_prefixed = '[Compte] ' + subject 
+        subject=_("Profile registered")
+        subject_prefixed = _("[Account] ") + subject 
         recipients = [self.object.email]
         html_message = render_to_string('profiles/profile_register_email_inline.html', {'customuser': self.object})
         plain_message = strip_tags(html_message)
@@ -246,7 +252,9 @@ class ProfileHomepageView(UserPassesTestMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         outings = Outing.objects.filter(author=self.request.user)
+        availabilities = Availability.objects.filter(author=self.request.user).exists()
         context['outings'] = outings
+        context['availabilities'] = availabilities
         # Calendar Context
         d = get_date(self.request.GET.get('month', None))
         cal = CalEvents(year=d.year, month=d.month, profile=self.request.user.username, locale=get_cal_locale(get_language()))
@@ -310,6 +318,28 @@ class AccountDeleteView(UserPassesTestMixin, DeleteView):
 
     def get_object(self):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
+
+
+@receiver(user_logged_in)
+def when_user_logged_in(sender, request, user, **kwargs):
+    if user.first_name:
+        msg = _('Hi {}! You are logged in :)').format(user.first_name)
+    elif user.username:
+        msg = _('Hi {}! You are logged in :)').format(user.username)
+    else:
+        msg = _('You are logged in :)')
+    messages.add_message(request, messages.SUCCESS, msg)
+
+
+@receiver(user_logged_out)
+def when_user_logged_out(sender, request, user, **kwargs):
+    if user.first_name:
+        msg = _('You have securely logged out. Thank you for visiting {}.').format(user.first_name)
+    elif user.username:
+        msg = _('You have securely logged out. Thank you for visiting {}.').format(user.username)
+    else:
+        msg = _('You have securely logged out. Thank you for visiting.')
+    messages.add_message(request, messages.SUCCESS, msg)
 
 # VIEWS FOR EXPORTING
 

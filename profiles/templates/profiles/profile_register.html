@@ -83,18 +83,20 @@
 {% endblock %}
 
 {% block js %}
+<!-- Adding attributes to form inputs -->
 <script>
     let usernameInputElt = document.getElementById('id_username');
     let emailInputElt = document.getElementById('id_email');
 
     usernameInputElt.setAttribute('autocomplete','off');
-    emailInputElt.setAttribute('autocomplete','email');
+    emailInputElt.setAttribute('autocomplete','username');
 </script>
+<!-- openlayers -->
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
-
-<!-- <script src="{% static 'js/ajax.js' %}"></script> -->
-<script>
+<!-- TESTS -->
+<!-- <script src="{% static 'js/ajax.js' %}"></script>-->
+<!-- <script>
     // // Hide helptext of all elements of the form
     // let helptextElts = document.getElementsByClassName("helptext");
     // Array.from(helptextElts).forEach(function (e) {
@@ -184,5 +186,5 @@
     phoneZoneElt.appendChild(phoneNumberZoneElt);
     document.getElementById("phNumZone").appendChild(phoneZoneElt); // ADD <div id="phNumZone"></div> in the HTML
     */
-</script>
+</script> -->
 {% endblock %}

@@ -7,13 +7,6 @@
 {% block content %}
 <div class="card mb-4">
     <div class="card-body">
-        {% if messages %}
-            <ul class="messages list-unstyled">
-                {% for message in messages %}
-                    <li {% if message.tags %}class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
         <div class="row align-items-center">
             <div class="col-12">
                 <div class="d-flex flex-row align-items-baseline justify-content-left flex-wrap">
