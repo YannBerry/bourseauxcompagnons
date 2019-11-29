@@ -75,7 +75,7 @@
 
 {% block content %}
     <div class="alert alert-info" role="alert">
-        <strong>{% trans "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}">{% trans "Check the profiles' page" %}</a>{% trans ": Maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
+        <strong>{% trans "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}">{% trans "Check the profiles page" %}</a>{% trans ": maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
     </div>
     {% if outing_list %}
         <p>

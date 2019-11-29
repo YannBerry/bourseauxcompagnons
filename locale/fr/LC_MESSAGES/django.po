@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-29 22:24+0100\n"
+"POT-Creation-Date: 2019-11-29 22:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -454,17 +454,22 @@ msgstr "Ajouter une sortie"
 #: outings/templates/outings/outing_list.html:78
 msgid "You didn't find any outing that fits your availabilities?"
 msgstr ""
+"Vous n'avez pas trouvé de sortie qui correspond à vos dates de "
+"disponibilité ?"
 
 #: outings/templates/outings/outing_list.html:78
-msgid "Check the profiles' page"
+msgid "Check the profiles page"
 msgstr "Cherchez dans la page des profiles"
 
 #: outings/templates/outings/outing_list.html:78
 msgid ""
-": Maybe some profiles have filled out their availabilities in their "
+": maybe some profiles have filled out their availabilities in their "
 "calendar. Meaning they intend to go out but don't know what to do exactly "
 "and are opened to suggestions."
 msgstr ""
+" : peut-être que des profils ont renseigné leurs disponibilités dans leur "
+"calendrier. Indiquant par là leur intention de sortir sans savoir exactement "
+"quoi faire mais ouverts à des propositions."
 
 #: outings/templates/outings/outing_list.html:82
 #, python-format

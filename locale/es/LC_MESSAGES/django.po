@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-29 22:24+0100\n"
+"POT-Creation-Date: 2019-11-29 22:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -455,12 +455,12 @@ msgid "You didn't find any outing that fits your availabilities?"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:78
-msgid "Check the profiles' page"
+msgid "Check the profiles page"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:78
 msgid ""
-": Maybe some profiles have filled out their availabilities in their "
+": maybe some profiles have filled out their availabilities in their "
 "calendar. Meaning they intend to go out but don't know what to do exactly "
 "and are opened to suggestions."
 msgstr ""
