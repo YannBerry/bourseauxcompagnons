@@ -10,6 +10,16 @@
 {% block title %}{% trans "Partners for your mountain outings" %} | {{ block.super }}{% endblock %}
 
 {% block index %}
+{% if messages %}
+    {% for message in messages %}
+        <div{% if message.tags %} class="alert {{ message.tags }} alert-dismissible mb-0"{% endif %} role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 <div class="d-flex align-items-center" style="min-height: calc(100% - 60px); min-width: 100%; background: url('/static/img/bg_1.JPG') no-repeat; background-size: cover; z-index: 10; background-attachment: fixed;">
     <div class="container-fluid">
         <div class="row">
