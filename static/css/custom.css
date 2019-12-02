@@ -100,7 +100,7 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
     overflow: hidden;
 }
 .wrap-collabsible .toggle:checked + .label-toggle + .collapsible-content {
-    max-height: 1000px;
+    max-height: 2000px;
 }
 .wrap-collabsible .toggle:checked + .label-toggle::after {
     transform: rotate(90deg);
@@ -120,7 +120,7 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
         display: none;
     }
     .wrap-collabsible .collapsible-content {
-        max-height: 1000px;
+        max-height: 2000px;
     }
     .wrap-collabsible .label-toggle {
         border-bottom-right-radius: 0;
@@ -484,6 +484,35 @@ label.required {
     margin-bottom: 0;
     margin-left: .5rem;
 }*/
+
+.selectable-items-list>li input {
+    display: none;
+}
+
+.selectable-items-list>li {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 0;
+    margin-right: 0;
+}
+
+.selectable-items-list>li label {
+    color: rgba(90,90,90,1);
+    background-color: rgba(231,231,231,.5);
+    border: 1px solid rgba(190,190,190,1);
+    border-radius: .75rem;
+}
+
+.selectable-items-list>li input:checked + label {
+    color: rgba(255,255,255,1);
+    background-color: rgba(91,192,222,1);
+    border: 1px solid rgba(91,192,222,1);
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+}
 
 
 /* Placeholder color of the title of the bootstrap-select tag */

@@ -19,16 +19,15 @@
         <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
         <div class="collapsible-content">
             <div class="content-inner">
-                <form id="profile-filter" method="get" action="{% url 'profiles:list' %}">
+                <form id="profile-form" method="get" action="{% url 'profiles:list' %}">
                     <div class="form-row">
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                            <select multiple class="form-control" name="a" id="activities_filter">
-                                <option value="">{% trans 'Click to select activities' %}</option>
+                            <ul id="id_activities" class="selectable-items-list">
                                 {% for activity in all_activities %}
-                                    <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
+                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1"><small>{{ activity.name }}</small></label></li>
                                 {% endfor %}
-                            </select>
+                            </ul>
                         </div>
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Where' %} <small>{% trans '(draw on the map)' %}</small></h6>
@@ -142,17 +141,6 @@
 {% endblock %}
 
 {% block js %}
-<!-- Choices -->
-<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-<script>
-    let activitiesChoicesElt = document.getElementById('activities_filter');
-    const activitiesChoices = new Choices(activitiesChoicesElt, {
-        removeItemButton: true,
-        itemSelectText: '',
-        noChoicesText: '',
-        position: 'bottom',
-    });
-</script>
 <!-- flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>

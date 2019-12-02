@@ -22,12 +22,12 @@
                     <div class="card" style="background-color: rgba(225,225,225,0.9);">
                         <div class="card-body text-center">
                             <h1 class="card-text h4 p-4">{% trans "Find partners for your outings in the mountain." %}</h1>
-                            <form id="profile_outing_form" method="get" action="">
+                            <form id="profile-outing-form" method="get" action="">
                                 <div class="form-row">
                                     <div class="form-group col-12">
-                                        <ul id="id_activities" class="custom-form-check-inline">
+                                        <ul id="id_activities" class="selectable-items-list">
                                             {% for activity in all_activities %}
-                                            <li><label for="id_activities_{{ activity|cut:' ' }}"><input type="checkbox" name="a" value="{{ activity }}" class="custom-form-check-inline" id="id_activities_{{ activity|cut:' ' }}">{{ activity }}</label></li>
+                                            <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}"><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
                                             {% endfor %}
                                         </ul>
                                     </div>
@@ -202,7 +202,7 @@
 <!-- search profile and outing -->
 <script>
     // Set the "action" attribute of the "form" html tag
-    const searchProfileOutingForm = document.getElementById('profile_outing_form');
+    const searchProfileOutingForm = document.getElementById('profile-outing-form');
     const searchProfileBtn = document.getElementById('search-profile');
     const searchOutingBtn = document.getElementById('search-outing');
 

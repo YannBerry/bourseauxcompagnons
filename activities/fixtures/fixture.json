@@ -121,42 +121,25 @@
     }
 },
 {
-    "model": "activities.grade",
-    "pk": 1,
+    "model": "activities.activity",
+    "pk": 13,
     "fields": {
-        "activity": 7,
-        "name": "Beginner",
-        "name_en": "Beginner",
-        "name_fr": "D\u00e9butant",
-        "name_es": null,
-        "name_it": null,
-        "ordering": 1
+        "name": "Canyoning",
+        "name_en": "Canyoning",
+        "name_fr": "Canyoning",
+        "name_es": "Barranquismo",
+        "name_it": "Canyoning"
     }
 },
 {
-    "model": "activities.grade",
-    "pk": 2,
+    "model": "activities.activity",
+    "pk": 14,
     "fields": {
-        "activity": 7,
-        "name": "Intermediate",
-        "name_en": "Intermediate",
-        "name_fr": "Interm\u00e9diaire",
-        "name_es": null,
-        "name_it": null,
-        "ordering": 2
-    }
-},
-{
-    "model": "activities.grade",
-    "pk": 3,
-    "fields": {
-        "activity": 7,
-        "name": "Expert",
-        "name_en": "Expert",
-        "name_fr": "Expert",
-        "name_es": null,
-        "name_it": null,
-        "ordering": 3
+        "name": "Base jumping",
+        "name_en": "Base jumping",
+        "name_fr": "Base jump",
+        "name_es": "Salto base",
+        "name_it": "Base jumping"
     }
 },
 {
@@ -1301,6 +1284,84 @@
         "name_es": null,
         "name_it": null,
         "ordering": 17
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 92,
+    "fields": {
+        "activity": 7,
+        "name": "Hike & Fly",
+        "name_en": "Hike & Fly",
+        "name_fr": "Vol Rando",
+        "name_es": null,
+        "name_it": null,
+        "ordering": 1
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 93,
+    "fields": {
+        "activity": 7,
+        "name": "Cross-country",
+        "name_en": "Cross-country",
+        "name_fr": "Cross",
+        "name_es": null,
+        "name_it": null,
+        "ordering": 2
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 94,
+    "fields": {
+        "activity": 7,
+        "name": "Aerobatic",
+        "name_en": "Aerobatic",
+        "name_fr": "Accrobatique",
+        "name_es": null,
+        "name_it": null,
+        "ordering": 3
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 95,
+    "fields": {
+        "activity": 7,
+        "name": "Thermal flying",
+        "name_en": "Thermal flying",
+        "name_fr": "Thermiques",
+        "name_es": null,
+        "name_it": null,
+        "ordering": 4
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 96,
+    "fields": {
+        "activity": 7,
+        "name": "Short flying",
+        "name_en": "Short flying",
+        "name_fr": "Plouf",
+        "name_es": null,
+        "name_it": null,
+        "ordering": 5
+    }
+},
+{
+    "model": "activities.grade",
+    "pk": 97,
+    "fields": {
+        "activity": 7,
+        "name": "Inflation",
+        "name_en": "Inflation",
+        "name_fr": "Gonflage",
+        "name_es": null,
+        "name_it": null,
+        "ordering": 6
     }
 }
 ]

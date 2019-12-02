@@ -18,7 +18,7 @@
         <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
         <div class="collapsible-content">
             <div class="content-inner">
-                <form method="get" action="{% url 'outings:list' %}">
+                <form id="outing-form" method="get" action="{% url 'outings:list' %}">
                     <div class="form-row">
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Keywords' %}</h6>
@@ -49,12 +49,17 @@
                         </div>
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                            <select multiple class="form-control" name="a" id="activities_filter">
+                            <ul id="id_activities" class="selectable-items-list">
+                                {% for activity in all_activities %}
+                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1"><small>{{ activity.name }}</small></label></li>
+                                {% endfor %}
+                            </ul>
+<!--                             <select multiple class="form-control" name="a" id="activities_filter">
                                 <option value="">{% trans 'Click to select activities' %}</option>
                                 {% for activity in all_activities %}
                                     <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
                                 {% endfor %}
-                            </select>
+                            </select> -->
                         </div>
                         <div class="form-group col-12">
                             <button class="btn btn-outline-success btn-block" type="submit">{% trans "Filter" %}</button>
@@ -75,7 +80,7 @@
 
 {% block content %}
     <div class="alert alert-info" role="alert">
-        <strong>{% trans "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}">{% trans "Check the profiles page" %}</a>{% trans ": maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
+        <strong>{% trans "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}{% if selected_activities %}{% for a in selected_activities %}&a={{ a }}{% endfor %}{% endif %}">{% trans "Check the profiles page" %}</a>{% trans ": maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
     </div>
     {% if outing_list %}
         <p>
