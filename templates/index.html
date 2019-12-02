@@ -209,6 +209,8 @@
 {% endblock %}
 
 {% block js %}
+<!-- Add a css class to selectable-items-list to avoid :hover on mobiles -->
+<script src="{% static 'js/detect-no-touch.js' %}"></script>
 <!-- search profile and outing -->
 <script>
     // Set the "action" attribute of the "form" html tag

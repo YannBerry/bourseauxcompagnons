@@ -504,9 +504,10 @@ label.required {
     background-color: rgba(231,231,231,.5);
     border: 1px solid rgba(190,190,190,1);
     border-radius: .75rem;
+    cursor: pointer;
 }
 
-.selectable-items-list>li input:checked + label {
+.selectable-items-list>li input:checked + label,.selectable-items-list.no-touch>li input:checked + label {
     color: rgba(255,255,255,1);
     background-color: rgba(91,192,222,1);
     border: 1px solid rgba(91,192,222,1);
@@ -514,6 +515,14 @@ label.required {
             transition: all .2s ease-in-out;
 }
 
+.selectable-items-list.no-touch>li label:hover {
+    cursor: pointer;
+    color: rgba(255,255,255,1);
+    background-color: rgba(91,192,222,.4);
+    border: 1px solid rgba(91,192,222,.4);
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+}
 
 /* Placeholder color of the title of the bootstrap-select tag */
 
