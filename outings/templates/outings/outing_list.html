@@ -7,7 +7,7 @@
 <!-- flatpickr -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- Choices -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"> -->
 {% endblock %}
 
 {% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
@@ -120,6 +120,7 @@
 
 {% block js %}
 <!-- Choices -->
+<!--
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 <script>
     let activitiesChoicesElt = document.getElementById('activities_filter');
@@ -128,7 +129,7 @@
         itemSelectText: '',
         noChoicesText: '',
     });
-</script>
+</script> -->
 <!-- flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
