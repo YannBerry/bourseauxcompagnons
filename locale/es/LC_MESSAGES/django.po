@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-29 22:40+0100\n"
+"POT-Creation-Date: 2019-12-03 00:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -402,7 +402,7 @@ msgid "Outings"
 msgstr "Salidas"
 
 #: outings/templates/outings/outing_list.html:18
-#: profiles/templates/profiles/profile_list.html:19
+#: profiles/templates/profiles/profile_list.html:17
 #, fuzzy
 #| msgid "Filter"
 msgid "Filters"
@@ -421,51 +421,50 @@ msgid "Dates"
 msgstr "Fechas"
 
 #: outings/templates/outings/outing_list.html:31
-#: profiles/templates/profiles/profile_list.html:53
+#: profiles/templates/profiles/profile_list.html:50
 msgid "From"
 msgstr "De"
 
 #: outings/templates/outings/outing_list.html:40
-#: profiles/templates/profiles/profile_list.html:62
+#: profiles/templates/profiles/profile_list.html:59
 msgid "Till"
 msgstr "Al"
 
 #: outings/templates/outings/outing_list.html:51 profiles/forms.py:57
-#: profiles/templates/profiles/profile_list.html:25
+#: profiles/templates/profiles/profile_list.html:23
 msgid "Activities"
 msgstr "Actividades"
 
-#: outings/templates/outings/outing_list.html:53
-#: profiles/templates/profiles/profile_list.html:27
+#: outings/templates/outings/outing_list.html:58
 msgid "Click to select activities"
 msgstr "Pulsa para seleccionar actividades"
 
-#: outings/templates/outings/outing_list.html:60
-#: profiles/templates/profiles/profile_list.html:73
+#: outings/templates/outings/outing_list.html:65
+#: profiles/templates/profiles/profile_list.html:70
 msgid "Filter"
 msgstr "Filtrar"
 
-#: outings/templates/outings/outing_list.html:71
+#: outings/templates/outings/outing_list.html:76
 #: profiles/templates/profiles/my_profile.html:51
 msgid "Add an outing"
 msgstr "Añadir una salida"
 
-#: outings/templates/outings/outing_list.html:78
+#: outings/templates/outings/outing_list.html:83
 msgid "You didn't find any outing that fits your availabilities?"
 msgstr ""
 
-#: outings/templates/outings/outing_list.html:78
+#: outings/templates/outings/outing_list.html:83
 msgid "Check the profiles page"
 msgstr ""
 
-#: outings/templates/outings/outing_list.html:78
+#: outings/templates/outings/outing_list.html:83
 msgid ""
 ": maybe some profiles have filled out their availabilities in their "
 "calendar. Meaning they intend to go out but don't know what to do exactly "
 "and are opened to suggestions."
 msgstr ""
 
-#: outings/templates/outings/outing_list.html:82
+#: outings/templates/outings/outing_list.html:87
 #, python-format
 msgid ""
 "\n"
@@ -484,7 +483,7 @@ msgstr[1] ""
 "            %(counter)s salidas\n"
 "            "
 
-#: outings/templates/outings/outing_list.html:95
+#: outings/templates/outings/outing_list.html:100
 #, python-format
 msgid ""
 "\n"
@@ -505,7 +504,7 @@ msgstr[1] ""
 "%(end_date)s\n"
 "                                "
 
-#: outings/templates/outings/outing_list.html:111
+#: outings/templates/outings/outing_list.html:116
 msgid "There is no outing fitting your search criteria."
 msgstr "No hay ninguna salida que corresponda a tus criterios de búsqueda"
 
@@ -919,37 +918,37 @@ msgstr[1] ""
 msgid "Update my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:14
+#: profiles/templates/profiles/profile_list.html:12
 msgid "Profiles list"
 msgstr "Lista de perfiles"
 
-#: profiles/templates/profiles/profile_list.html:34
+#: profiles/templates/profiles/profile_list.html:31
 msgid "Where"
 msgstr "Dónde"
 
-#: profiles/templates/profiles/profile_list.html:34
+#: profiles/templates/profiles/profile_list.html:31
 msgid "(draw on the map)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:38
+#: profiles/templates/profiles/profile_list.html:35
 msgid "Automatically draw my area on the map"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:44
+#: profiles/templates/profiles/profile_list.html:41
 msgid "Around my profile location (50 km)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:50
+#: profiles/templates/profiles/profile_list.html:47
 #, fuzzy
 #| msgid "Create an availability"
 msgid "Dates of availability"
 msgstr "Crear una disponibilidad"
 
-#: profiles/templates/profiles/profile_list.html:85 templates/index.html:144
+#: profiles/templates/profiles/profile_list.html:82 templates/index.html:154
 msgid "Add my profile"
 msgstr "Añadir mi perfil"
 
-#: profiles/templates/profiles/profile_list.html:94
+#: profiles/templates/profiles/profile_list.html:91
 #, python-format
 msgid ""
 "\n"
@@ -962,12 +961,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:116 templates/index.html:122
+#: profiles/templates/profiles/profile_list.html:113 templates/index.html:132
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:137
+#: profiles/templates/profiles/profile_list.html:134
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
@@ -1141,70 +1140,70 @@ msgstr ""
 msgid "Partners for your mountain outings"
 msgstr ""
 
-#: templates/index.html:24
+#: templates/index.html:34
 msgid "Find partners for your outings in the mountain."
 msgstr ""
 
-#: templates/index.html:35
+#: templates/index.html:45
 msgid "Search Profile"
 msgstr ""
 
-#: templates/index.html:38
+#: templates/index.html:48
 #, fuzzy
 #| msgid "Outings"
 msgid "Search Outing"
 msgstr "Salidas"
 
-#: templates/index.html:59
+#: templates/index.html:69
 msgid "For whom?"
 msgstr ""
 
-#: templates/index.html:60
+#: templates/index.html:70
 msgid ""
 "Sportsmen and sportswomen struggling to find partners to explore the "
 "outdoors. Especially the mountains."
 msgstr ""
 
-#: templates/index.html:63
+#: templates/index.html:73
 msgid "What for?"
 msgstr ""
 
-#: templates/index.html:64
+#: templates/index.html:74
 msgid ""
 "Find partners that match your activities, your level and your aspirations."
 msgstr ""
 
-#: templates/index.html:67
+#: templates/index.html:77
 msgid "How it works?"
 msgstr ""
 
-#: templates/index.html:69
+#: templates/index.html:79
 msgid ""
 "Watch profiles and outings. Contact directly the ones fitting your interest."
 msgstr ""
 
-#: templates/index.html:70
+#: templates/index.html:80
 msgid ""
 "Publish your own profile or outings to be contacted by potential partners."
 msgstr ""
 
-#: templates/index.html:103
+#: templates/index.html:113
 msgid "Last profiles created"
 msgstr ""
 
-#: templates/index.html:104
+#: templates/index.html:114
 msgid "Display all the profiles"
 msgstr ""
 
-#: templates/index.html:164
+#: templates/index.html:174
 msgid "Last outings suggested"
 msgstr ""
 
-#: templates/index.html:165
+#: templates/index.html:175
 msgid "Display all the outings"
 msgstr ""
 
-#: templates/index.html:174
+#: templates/index.html:184
 #, python-format
 msgid ""
 "\n"
@@ -1218,7 +1217,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/index.html:191
+#: templates/index.html:201
 msgid "Add my outing"
 msgstr "Añadir mi salida"
 

@@ -1,5 +1,5 @@
 # Objectif de bourseauxcampagnons.fr
-Trouver des partenaires pour les sorties en montagne (alpinisme, cascade de glace, escalade, ski de randonnée, parapente (vol-bivouac, vol-rando, officiel, pente école), randonnée (trekking, bivouac, à la journée), trail, canyoning, base jump.
+Trouver des partenaires pour les sorties en montagne (alpinisme, cascade de glace, escalade, ski de randonnée, parapente, randonnée, trail, canyoning, base jump).
 
 # Technical specifications
 - Framework for backend and frontend : Django
