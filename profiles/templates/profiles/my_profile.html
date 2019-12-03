@@ -47,8 +47,8 @@
                 <h2>{% trans 'My calendar' %}</h2>
             </div>
             <div class="col-auto">
-                <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new px-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an availability' %}</span></a>
-                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new px-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an outing' %}</span></a>
+                <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
             </div>
             <div class="col-12">
                 {% if not availabilities %}
