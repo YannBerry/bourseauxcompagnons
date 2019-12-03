@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 00:47+0100\n"
+"POT-Creation-Date: 2019-12-03 20:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1004,22 +1004,22 @@ msgid "Profile registered"
 msgstr ""
 
 #: profiles/views.py:233
-msgid "[Account] "
+msgid "[Account] {}"
 msgstr ""
 
-#: profiles/views.py:326 profiles/views.py:328
+#: profiles/views.py:327 profiles/views.py:329
 msgid "Hi {}! You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:330
+#: profiles/views.py:331
 msgid "You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:337 profiles/views.py:339
+#: profiles/views.py:338 profiles/views.py:340
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr ""
 
-#: profiles/views.py:341
+#: profiles/views.py:342
 msgid "You have securely logged out. Thank you for visiting."
 msgstr ""
 

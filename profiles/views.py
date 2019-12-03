@@ -230,7 +230,8 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
         response = super().form_valid(form)
 
         subject=_("Profile registered")
-        subject_prefixed = _("[Account] ") + subject 
+        subject_prefixed = _("[Account] {}").format(subject)
+        print(subject_prefixed)
         recipients = [self.object.email]
         html_message = render_to_string('profiles/profile_register_email_inline.html', {'customuser': self.object})
         plain_message = strip_tags(html_message)
