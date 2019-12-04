@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 22:44+0100\n"
+"POT-Creation-Date: 2019-12-04 14:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -274,11 +274,24 @@ msgstr "Message"
 msgid "Contact bourseauxcompagnons"
 msgstr "Contacter la Bourse aux compagnons"
 
-#: contactpage/templates/contactpage/contactpage.html:11
+#: contactpage/templates/contactpage/contactpage.html:10
+msgid ""
+"<strong>This website is still under construction, therefore please let us "
+"know if:</strong><ul><li>you experience any unpleasant behaviour</li><li>you "
+"have suggestions to improve this website</li></ul>Of course you can also "
+"contact us for any other reason. We'll be glad to answer you."
+msgstr ""
+"<strong>Ce site est encore en construction, ainsi n'hésitez pas à nous "
+"contacter si :</strong><ul><li>vous expérimentez des comportements "
+"informatiques désagréables</li><li>vous avez des suggestions pour améliorer "
+"ce site</li></ul>Bien sûr, vous pouvez nous contacter pour tout autre "
+"raison. Nous aurons plaisir à vous répondre."
+
+#: contactpage/templates/contactpage/contactpage.html:16
 msgid "Contact us"
 msgstr "Contactez nous"
 
-#: contactpage/templates/contactpage/contactpage.html:15
+#: contactpage/templates/contactpage/contactpage.html:20
 #: profiles/templates/profiles/contact_profile_form.html:41
 msgid "Send"
 msgstr "Envoyer"
@@ -533,6 +546,18 @@ msgstr "Autorisations"
 #: profiles/admin.py:20
 msgid "Important dates"
 msgstr "Dates importantes"
+
+#: profiles/admin.py:35
+msgid "Delete selected profiles cleanly (user.is_profile=False)"
+msgstr "Supprimer proprement les profils sélectionnés (user.is_profile=False)"
+
+#: profiles/admin.py:48
+msgid "Email"
+msgstr "Email"
+
+#: profiles/admin.py:53
+msgid "First name"
+msgstr "Prénom"
 
 #: profiles/forms.py:63 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
@@ -1112,15 +1137,15 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:203
+#: profiles/views.py:204
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:204
+#: profiles/views.py:205
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:216
+#: profiles/views.py:217
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1130,27 +1155,27 @@ msgstr ""
 "dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur "
 "'Mettre à jour mon profil' pour le compléter ou le privatiser."
 
-#: profiles/views.py:232
+#: profiles/views.py:233
 msgid "Profile registered"
 msgstr "Profil créé"
 
-#: profiles/views.py:233
+#: profiles/views.py:234
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/views.py:327 profiles/views.py:329
+#: profiles/views.py:328 profiles/views.py:330
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:331
+#: profiles/views.py:332
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:338 profiles/views.py:340
+#: profiles/views.py:339 profiles/views.py:341
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:342
+#: profiles/views.py:343
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 

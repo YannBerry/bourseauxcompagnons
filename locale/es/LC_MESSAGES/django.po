@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 22:44+0100\n"
+"POT-Creation-Date: 2019-12-04 14:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,11 +271,19 @@ msgstr "Mensaje"
 msgid "Contact bourseauxcompagnons"
 msgstr "Contactar bourseauxcompagnons"
 
-#: contactpage/templates/contactpage/contactpage.html:11
+#: contactpage/templates/contactpage/contactpage.html:10
+msgid ""
+"<strong>This website is still under construction, therefore please let us "
+"know if:</strong><ul><li>you experience any unpleasant behaviour</li><li>you "
+"have suggestions to improve this website</li></ul>Of course you can also "
+"contact us for any other reason. We'll be glad to answer you."
+msgstr ""
+
+#: contactpage/templates/contactpage/contactpage.html:16
 msgid "Contact us"
 msgstr "Contáctanos"
 
-#: contactpage/templates/contactpage/contactpage.html:15
+#: contactpage/templates/contactpage/contactpage.html:20
 #: profiles/templates/profiles/contact_profile_form.html:41
 msgid "Send"
 msgstr "Enviar"
@@ -527,6 +535,18 @@ msgstr "Permisos"
 #: profiles/admin.py:20
 msgid "Important dates"
 msgstr "Fechas importantes"
+
+#: profiles/admin.py:35
+msgid "Delete selected profiles cleanly (user.is_profile=False)"
+msgstr ""
+
+#: profiles/admin.py:48
+msgid "Email"
+msgstr ""
+
+#: profiles/admin.py:53
+msgid "First name"
+msgstr ""
 
 #: profiles/forms.py:63 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
@@ -1050,46 +1070,46 @@ msgstr ""
 msgid "ajax/load-grades/"
 msgstr ""
 
-#: profiles/views.py:203
+#: profiles/views.py:204
 msgid "Initial contact"
 msgstr ""
 
-#: profiles/views.py:204
+#: profiles/views.py:205
 msgid "Hi "
 msgstr ""
 
-#: profiles/views.py:216
+#: profiles/views.py:217
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
 "'Update my profile' to complete it or make it private."
 msgstr ""
 
-#: profiles/views.py:232
+#: profiles/views.py:233
 #, fuzzy
 #| msgid "Profiles list"
 msgid "Profile registered"
 msgstr "Lista de perfiles"
 
-#: profiles/views.py:233
+#: profiles/views.py:234
 #, fuzzy
 #| msgid "accounts/"
 msgid "[Account] {}"
 msgstr "cuentas/"
 
-#: profiles/views.py:327 profiles/views.py:329
+#: profiles/views.py:328 profiles/views.py:330
 msgid "Hi {}! You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:331
+#: profiles/views.py:332
 msgid "You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:338 profiles/views.py:340
+#: profiles/views.py:339 profiles/views.py:341
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr ""
 
-#: profiles/views.py:342
+#: profiles/views.py:343
 msgid "You have securely logged out. Thank you for visiting."
 msgstr ""
 

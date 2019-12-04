@@ -102,11 +102,12 @@ class ProfileListView(ListView):
         if user_authenticated:
             q = q.exclude(user=self.request.user)
 
-        if user_authenticated and self.request.user.profile.location:
-            user_loc = self.request.user.profile.location
-            q = q.annotate(distance=Distance('location', user_loc)).order_by('distance')
-            if around_me:
-                q = q.filter(location__distance_lte=(user_loc, 50000))
+        if user_authenticated and self.request.user.is_profile:
+            if self.request.user.profile.location:
+                user_loc = self.request.user.profile.location
+                q = q.annotate(distance=Distance('location', user_loc)).order_by('distance')
+                if around_me:
+                    q = q.filter(location__distance_lte=(user_loc, 50000))
 
         if start_date and end_date:
             q = q.filter(user__availability__start_date__lte=till_date, user__availability__end_date__gte=from_date)
@@ -123,8 +124,11 @@ class ProfileListView(ListView):
         if availability_area_geo:
             q = q.filter(availability_area_geo__intersects=availability_area_geo_obj)
 
-        if (start_date or end_date or selected_activities) and user_authenticated and self.request.user.profile.location:
-            q = q.distinct('distance', 'last_update', 'user_id')
+        if (start_date or end_date or selected_activities) and user_authenticated and self.request.user.is_profile:
+            if self.request.user.profile.location:
+                q = q.distinct('distance', 'last_update', 'user_id')
+            else:
+                q = q.distinct('last_update', 'user_id')
         elif start_date or end_date or selected_activities:
             q = q.distinct('last_update', 'user_id')
 
