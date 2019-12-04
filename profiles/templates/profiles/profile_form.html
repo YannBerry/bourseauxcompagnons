@@ -68,7 +68,7 @@
                 {% if form.location.help_text %}
                     <p class="helptext">{{ form.location.help_text|safe }}</p>
                 {% endif %}
-                <div id="locationformmap" style="height: 350px;"></div>
+                <div id="locationformmap" style="height: 350px;"{% if form.location.errors %} class="p-1 rounded is-invalid"{% endif %}></div>
                 <input id="locationcoordinates" name="{{ form.location.name }}" value="" type="hidden"/>
                 {{ form.location.errors }}
             </div>
@@ -230,11 +230,15 @@ function alertContents() {
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS VARIABLES for 'js/ol_area_formfield.js'
-    if ("{{ form.availability_area_geo.value.json }}" != "None") {
-    // {% if form.availability_area_geo.value %}
+    {% if form.availability_area_geo.value.json %}
+        // get and draw the initial value saved in the database
         let availabilityAreaGeoJson = {{ form.availability_area_geo.value.json|safe }};
         drawMyArea(availabilityAreaGeoJson);
-    // {% endif %}
-    }
+    {% elif form.availability_area_geo.value %}
+        // get and draw the value that is drawn during the profile update (it can be the unmodified database value or a new drawing from the user).
+        // this case is useful when the form validation raised an error or more and display back the profile form with the values from the database for the unmodified fields and the values modified fields.
+        let availabilityAreaGeoJson = {{ form.availability_area_geo.value|safe }};
+        drawMyArea(availabilityAreaGeoJson);
+    {% endif %}
 </script>
 {% endblock %}
