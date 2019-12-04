@@ -13,7 +13,7 @@ from django.contrib.gis.forms import OpenLayersWidget
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
 from core.forms import GroupedModelMultipleChoiceField
-from core.widgets import ImageWidget, GradesWidget, ToggleSwitchWidget
+from core.widgets import ImageWidget, GradesWidget, SelectableItemsWidget, ToggleSwitchWidget
 
 # Setting the map_srid of the openlayers widget (the dafault widget for qeometric fields) to 4326 instead of 3857
 class OpenLayersWidgetSrid4326(OpenLayersWidget):
@@ -56,7 +56,7 @@ class ProfileCreationForm(CustomUserCreationForm):
     activities = forms.ModelMultipleChoiceField(
         label=_('Activities'),
         queryset=Activity.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        widget=SelectableItemsWidget(),
     )
 
     availability_area_geo = FormPolygonField(
@@ -75,17 +75,19 @@ class ProfileCreationForm(CustomUserCreationForm):
                 else:
                     self.fields[field].widget.attrs.update({'class': 'form-control is-valid'})
             if self.has_error('activities'):
-                self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-invalid'})
+                self.fields['activities'].widget.attrs.update({'class': 'p-1 rounded is-invalid'})
             else:
-                self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
+                self.fields['activities'].widget.attrs.update({'class': 'p-1 rounded is-valid'})
         else:
             for field in [f for f in self.fields if f not in ('availability_area_geo', 'activities')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
-            self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
 
     # class Meta(CustomUserForm.Meta):
-    #     '''Defining the ordering of fields'''
-    #     fields = ['username', 'email', 'password1', 'password2', 'activities', 'availability_area_geo']
+        # '''Defining the ordering of fields'''
+        # fields = ['email', 'username', 'password1', 'password2', 'activities', 'availability_area_geo']
+        # widgets = {
+        #     'activities': SelectableItemsWidget(),
+        # }
 
     @transaction.atomic
     def save(self):
@@ -196,7 +198,7 @@ class ProfileForm(forms.ModelForm):
             'public_profile': ToggleSwitchWidget(),
             'availability_area_geo': OpenLayersWidgetSrid4326(),
             'profile_picture': ImageWidget(),
-            'activities': forms.CheckboxSelectMultiple()
+            'activities': SelectableItemsWidget(),
         }
 
     def clean(self):

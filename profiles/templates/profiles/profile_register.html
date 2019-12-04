@@ -15,6 +15,9 @@
         <div class="card">
             <div class="card-body">
                 <h1>{% trans "Create your profile" %}</h1>
+                <div class="alert alert-info" role="alert">
+                    {% trans "All fields are mandatory." %}
+                </div>
                 <form method="post" novalidate class="mt-4" id="profile_register_form">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
@@ -64,7 +67,7 @@
                             {% if form.availability_area_geo.help_text %}
                                 <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
                             {% endif %}
-                            <div id="availabilityformmap" style="height: 350px;"></div>
+                            <div id="availabilityformmap" style="height: 350px;"{% if form.availability_area_geo.errors %} class="p-1 rounded is-invalid"{% elif form.availability_area_geo.value %}class="p-1 rounded is-valid"{% endif %}></div>
                             <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
                             {{ form.availability_area_geo.errors }}
                         </div>
@@ -94,6 +97,13 @@
 <!-- openlayers -->
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
+<script>
+// CONVERTING DJANGO VARIABLES IN JS VARIABLES for 'js/ol_area_formfield.js'
+    {% if form.availability_area_geo.value %}
+        let availabilityAreaGeoJson = {{ form.availability_area_geo.value|safe }};
+        drawMyArea(availabilityAreaGeoJson);
+    {% endif %}
+</script>
 <!-- TESTS -->
 <!-- <script src="{% static 'js/ajax.js' %}"></script>-->
 <!-- <script>

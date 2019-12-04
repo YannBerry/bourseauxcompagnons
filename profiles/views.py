@@ -221,7 +221,7 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
                         "in the profile list available on bourseauxcompagnons. Click on "
                         "'Update my profile' to complete it or make it private."
                         )
-
+    
     def form_valid(self, form):
         '''
         1. Save the valid form (useless because already saved through ProfileCreationForm but it provides me with self.object which is the customuser)
@@ -235,7 +235,6 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
 
         subject=_("Profile registered")
         subject_prefixed = _("[Account] {}").format(subject)
-        print(subject_prefixed)
         recipients = [self.object.email]
         html_message = render_to_string('profiles/profile_register_email_inline.html', {'customuser': self.object})
         plain_message = strip_tags(html_message)
@@ -281,10 +280,10 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
         return get_object_or_404(Profile, user__username=self.kwargs['username'])
     
     # def form_valid(self, form):
-    #     coordinates = form.cleaned_data['location'].split(',')
-    #     print(coordinates)
-    #     form.instance.location = Point(float(coordinates[0]),float(coordinates[1]))
-    #     return super().form_valid(form)
+        # coordinates = form.cleaned_data['location'].split(',')
+        # print(coordinates)
+        # form.instance.location = Point(float(coordinates[0]),float(coordinates[1]))
+        # return super().form_valid(form)
 
 
 @csrf_exempt

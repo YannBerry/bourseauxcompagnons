@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-04 14:06+0100\n"
+"POT-Creation-Date: 2019-12-04 15:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,7 +104,7 @@ msgstr "Supprimer"
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
 #: profiles/templates/profiles/profile_form.html:112
-#: profiles/templates/profiles/profile_register.html:75
+#: profiles/templates/profiles/profile_register.html:78
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
 msgid "Cancel"
@@ -1043,7 +1043,11 @@ msgstr "Créer un profil"
 msgid "Create your profile"
 msgstr "Créer mon profil"
 
-#: profiles/templates/profiles/profile_register.html:74
+#: profiles/templates/profiles/profile_register.html:19
+msgid "All fields are mandatory."
+msgstr "Tous les champs sont obligatoires."
+
+#: profiles/templates/profiles/profile_register.html:77
 msgid "Create"
 msgstr "Créer"
 
@@ -1137,15 +1141,15 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:204
+#: profiles/views.py:207
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:205
+#: profiles/views.py:208
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:217
+#: profiles/views.py:220
 msgid ""
 "WARNING : your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1155,27 +1159,27 @@ msgstr ""
 "dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur "
 "'Mettre à jour mon profil' pour le compléter ou le privatiser."
 
-#: profiles/views.py:233
+#: profiles/views.py:236
 msgid "Profile registered"
 msgstr "Profil créé"
 
-#: profiles/views.py:234
+#: profiles/views.py:237
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/views.py:328 profiles/views.py:330
+#: profiles/views.py:331 profiles/views.py:333
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:332
+#: profiles/views.py:335
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:339 profiles/views.py:341
+#: profiles/views.py:342 profiles/views.py:344
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:343
+#: profiles/views.py:346
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 

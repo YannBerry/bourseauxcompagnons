@@ -72,6 +72,7 @@
         </div>
     </div>
 </div>
+{% if outings %}
 <div class="card mb-4">
     <div class="card-body">
         <div class="row">
@@ -79,7 +80,6 @@
                 <h2>{% trans 'My outings' %}</h2>
             </div>
         </div>
-        {% if outings %}
         <ul class="row no-gutters list-unstyled">
         {% for outing in outings %}
             <li class="col-12">
@@ -101,9 +101,9 @@
             </li>
         {% endfor %}
         </ul>
-        {% endif %}
     </div>
 </div>
+{% endif %}
 <div class="card mb-4">
     <div class="card-body">
         <div class="row mb-2">

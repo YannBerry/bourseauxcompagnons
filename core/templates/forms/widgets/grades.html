@@ -11,14 +11,13 @@ Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   defa
                 <div{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
         {% endif %}
         {% for option in options %}
-                {% with widget=option %}
-                {% if widget.wrap_label %}
-                    <label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} style="margin-right: 0.8rem;">{% endif %}<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} style="margin-right: 0.3rem;" value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}{{ widget.label }}</label>
-                {% endif %}
-                {% endwith%}
+            {% with widget=option %}
+                {% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} style="margin-right: 0.8rem;">{% endif %}<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} style="margin-right: 0.3rem;" value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %}
+            {% endwith%}
         {% endfor %}
         {% if group %}
-            </div></li>
+                </div>
+            </li>
         {% endif %}
     {% endfor %}
 </ul>

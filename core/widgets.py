@@ -9,8 +9,12 @@ class GradesWidget(CheckboxSelectMultiple):
     template_name = 'forms/widgets/grades.html'
 
 
+class SelectableItemsWidget(CheckboxSelectMultiple):
+    template_name = 'forms/widgets/selectable_items.html'
+
+
 class ToggleSwitchWidget(CheckboxInput):
-    template_name = 'forms/widgets/toggle-switch.html'
+    template_name = 'forms/widgets/toggle_switch.html'
     label = None
 
     def get_context(self, name, value, attrs):
