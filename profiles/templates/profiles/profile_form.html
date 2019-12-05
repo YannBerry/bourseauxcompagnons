@@ -162,6 +162,7 @@ function makeRequest() {
     let params = "";
     if (checkedGrades != "") {
         params = checkedActivities + "&" + checkedGrades;
+
     } else {
         params = checkedActivities;
     }
@@ -217,16 +218,22 @@ function alertContents() {
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES for 'js/ol_point_formfield.js'
-    var iconMale = '{% static "img/icon_male_map.png" %}';
-    {% if form.location.value is not None %}
-        var locationValue = '{{ form.location.value }}';
-        var locationJson = {{ form.location.value.json|safe }};
-    {% else %}
-        var locationValue = null;
-        var locationJson = null;
-    {% endif %}
+    let iconMale = '{% static "img/icon_male_map.png" %}';
 </script>
 <script src="{% static 'js/ol_point_formfield.js' %}"></script>
+<script>
+    // CONVERTING DJANGO VARIABLES IN JS GLOBAL VARIABLES for 'js/ol_point_formfield.js'
+    {% if form.location.value.json %}
+        // get and draw the initial value saved in the database
+        let locationJson = {{ form.location.value.json|safe }};
+        drawMyLocation(locationJson);
+    {% elif form.location.value %}
+        // get and draw the value that is drawn during the profile update (it can be the unmodified database value or a new drawing from the user).
+        // this case is useful when the form validation raised an error or more and display back the profile form with the values from the database for the unmodified fields and the values modified fields.
+        let locationJson = {{ form.location.value|safe }};
+        drawMyLocation(locationJson);
+    {% endif %}
+</script>
 <script src="{% static 'js/ol_area_formfield.js' %}"></script>
 <script>
 // CONVERTING DJANGO VARIABLES IN JS VARIABLES for 'js/ol_area_formfield.js'

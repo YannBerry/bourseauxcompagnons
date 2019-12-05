@@ -1,4 +1,10 @@
+from django.contrib.gis.forms import OpenLayersWidget
 from django.forms.widgets import ClearableFileInput, CheckboxSelectMultiple, CheckboxInput
+
+
+# Setting the map_srid of the openlayers widget (the default widget for geometric fields) to 4326 instead of 3857
+class OpenLayersWidgetSrid4326(OpenLayersWidget):
+    map_srid = 4326
 
 
 class ImageWidget(ClearableFileInput):

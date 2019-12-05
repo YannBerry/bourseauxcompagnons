@@ -58,9 +58,18 @@
             const accuracy = ol.geom.Polygon.circular(coords, pos.coords.accuracy);
             geolocSource.clear(true);
             geolocSource.addFeatures([
-                new ol.Feature(accuracy.transform('EPSG:4326', map.getView().getProjection())),
-                new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords)))
+                new ol.Feature(accuracy.transform('EPSG:4326', map.getView().getProjection())), // projection: EPSG:3857
+                new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coords))) // projection: EPSG:3857
             ]);
+            // Zoom on the geolocation
+            if (!geolocSource.isEmpty()) {
+                map.getView().fit(geolocSource.getExtent(), {
+                    maxZoom: 10,
+                    duration: 500
+                });
+            } else {
+                alert("Issue in assigning geoloc features to geoloc source in openlayers.")
+            }
         };
         function error(err) {
             switch(err.code) {
@@ -89,15 +98,6 @@
         } else {
             alert("Geolocation is not supported by this browser.");
         }
-        // Zoom on the geolocation
-        if (!geolocSource.isEmpty()) {
-            map.getView().fit(geolocSource.getExtent(), {
-                maxZoom: 10,
-                duration: 500
-            });
-        } else {
-            return false;
-        }
     });
     map.addControl(new ol.control.Control({
         element: locate
@@ -121,34 +121,35 @@
     });
     map.addLayer(layer);
 
-if (locationValue) {
-// DISPLAYING CURRENT LOCATION
-    // ADDING THE LOCATION TO THE MAP
-    const currentLocation = locationJson;
-    var geojsonObject = {
-        "type":"FeatureCollection",
-        "features":[{
-            "type": "Feature",
-            "geometry": currentLocation,
-            "properties": null
-        }]
-    };
-    const locationFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
-    source.addFeatures(locationFeatures);
-    // INITIALIZING THE LOCATION FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
-    const locationGeojsonStr = (new ol.format.GeoJSON()).writeFeatures(locationFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
-    const locationGeojsonObj = JSON.parse(locationGeojsonStr);
-    const locationGeojsonGeom = locationGeojsonObj.features[0].geometry;
-    const locationGeojsonGeomStr = JSON.stringify(locationGeojsonGeom);
-    document.getElementById('locationcoordinates').value = locationGeojsonGeomStr;
-    // ZOOMING IN THE CURRENT LOCATION
-    if (!source.isEmpty()) {
-        map.getView().fit(source.getExtent(), {
-            maxZoom: 10,
-            duration: 500
-        });
+// DISPLAYING CURRENT LOCATION (when drawMyArea function is called)
+    function drawMyLocation(LocationJson) {
+        // ADDING THE LOCATION TO THE MAP
+        var geojsonObject = {
+            "type":"FeatureCollection",
+            "features":[{
+                "type": "Feature",
+                "geometry": LocationJson,
+                "properties": null
+            }]
+        };
+        const locationFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
+        source.addFeatures(locationFeatures);
+        // INITIALIZING THE LOCATION FORM FIELD TO ITS INITIAL VALUE IF NOT NONE
+        const locationGeojsonStr = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection(), dataProjection: 'EPSG:4326'})).writeFeatures(locationFeatures); // by default dataProjection = 'EPSG:4326' in GeoJSON
+        const locationGeojsonObj = JSON.parse(locationGeojsonStr);
+        const locationGeojsonGeom = locationGeojsonObj.features[0].geometry;
+        const locationGeojsonGeomStr = JSON.stringify(locationGeojsonGeom);
+        document.getElementById('locationcoordinates').value = locationGeojsonGeomStr;
+        // ZOOMING IN THE CURRENT LOCATION
+        if (!source.isEmpty()) {
+            map.getView().fit(source.getExtent(), {
+                maxZoom: 10,
+                duration: 500
+            });
+        } else {
+            alert("Issue in assigning geoloc features to geoloc source in openlayers.")
+        }
     }
-}
 
 // ADDING INTERACTION TO ALLOW THE USER TO MOVE THE CURRENT LOCATION
     // location_update = new ol.interaction.Modify({
@@ -170,7 +171,7 @@ if (locationValue) {
         source.clear();
     });
     location_draw.on("drawend",function(e){
-        var writer = new ol.format.GeoJSON(); // by default dataProjection = 'EPSG:4326'
+        var writer = new ol.format.GeoJSON({featureProjection: map.getView().getProjection(), dataProjection: 'EPSG:4326'}); // by default dataProjection = 'EPSG:4326'
         var geojsonStr = writer.writeFeatures([e.feature]);
         var geojsonObj = JSON.parse(geojsonStr);
         var geojsonGeom = geojsonObj.features[0].geometry;

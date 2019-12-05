@@ -7,17 +7,13 @@ from django.db import transaction
 from django.db.models import Q
 # GeoDjango
 from django.contrib.gis.forms.fields import PolygonField as FormPolygonField
-from django.contrib.gis.forms import OpenLayersWidget
+from core.widgets import OpenLayersWidgetSrid4326
 # from django.contrib.gis.geos import Point
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
 from core.forms import GroupedModelMultipleChoiceField
 from core.widgets import ImageWidget, GradesWidget, SelectableItemsWidget, ToggleSwitchWidget
-
-# Setting the map_srid of the openlayers widget (the dafault widget for qeometric fields) to 4326 instead of 3857
-class OpenLayersWidgetSrid4326(OpenLayersWidget):
-    map_srid = 4326
 
 
 # FORMS FOR THE BACK OFFICE (ADMIN SITE)
@@ -196,6 +192,7 @@ class ProfileForm(forms.ModelForm):
         fields = ['public_profile', 'profile_picture', 'location', 'availability_area_geo', 'availability_area', 'activities', 'grades', 'introduction', 'list_of_courses', 'birthdate']
         widgets = {
             'public_profile': ToggleSwitchWidget(),
+            'location': OpenLayersWidgetSrid4326(),
             'availability_area_geo': OpenLayersWidgetSrid4326(),
             'profile_picture': ImageWidget(),
             'activities': SelectableItemsWidget(),

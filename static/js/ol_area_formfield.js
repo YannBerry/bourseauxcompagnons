@@ -113,6 +113,7 @@
 
 // DISPLAYING CURRENT AREA (when drawMyArea function is called)
     function drawMyArea(AreaGeoJson) {
+        // ADDING THE AVAILABILITY AREA TO THE MAP
         const geojsonObject = {
             "type": "Feature",
             "geometry": AreaGeoJson, // srid: 4326

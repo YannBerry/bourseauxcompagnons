@@ -212,7 +212,7 @@
         //         opacity: 1
         //     })
         // });
-        const locationFeatures = (new ol.format.GeoJSON({featureProjection: lmap.getView().getProjection()})).readFeatures(geojsonObject);
+        const locationFeatures = (new ol.format.GeoJSON({featureProjection: lmap.getView().getProjection(), dataProjection: 'EPSG:4326'})).readFeatures(geojsonObject);
         // locationFeatures[0].setStyle(profileLocIconStyle);
         source.addFeatures(locationFeatures);
 
