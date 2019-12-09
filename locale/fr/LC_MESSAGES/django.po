@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 20:34+0100\n"
+"POT-Creation-Date: 2019-12-09 21:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -326,6 +326,10 @@ msgstr "Icone de disponibilité"
 #: core/utils/calendar.py:88
 msgid "Available"
 msgstr "Disponible"
+
+#: core/utils/calendar.py:98
+msgid "No activity was associated."
+msgstr "Aucune activité n'a été associée."
 
 #: features/urls.py:7
 msgid "votes/"

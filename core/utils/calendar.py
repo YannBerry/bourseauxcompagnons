@@ -64,7 +64,7 @@ class CalEvents(Cal):
             o = ''
             a = ''
             for outing in outings_per_day:
-                o += f'<li class="overflow-hidden"><p style="cursor: pointer;" data-toggle="modal" data-target="#outingModal_{ outing.id }"><span class="badge badge-pill badge-info">{ outing.title }</span></p</li>'
+                o += f'<li class="overflow-hidden"><a style="cursor: pointer;" data-toggle="modal" data-target="#outingModal_{ outing.id }"><span class="badge badge-pill badge-info">{ outing.title }</span></a></li>'
                 o += f'<div class="modal fade" id="outingModal_{ outing.id }" tabindex="-1" role="dialog" aria-labelledby="outingModal_{ outing.id }Label" aria-hidden="true">'
                 o +=    f'<div class="modal-dialog" role="document">'
                 o +=        f'<div class="modal-content">'
@@ -86,7 +86,23 @@ class CalEvents(Cal):
                 icon_checked_url = static('img/icon_available.png')
                 icon_checked_alt = _('Available icon')
                 icon_checked_title = _('Available')
-                a += f"<a class='flex-container' href='{ availability.get_absolute_url() }'><img src='{ icon_checked_url }' class='ml-0' height='24' alt='{ icon_checked_alt }' title='{ icon_checked_title }'></a>"
+                a += f'<a class="flex-container" data-toggle="modal" data-target="#availabilityModal_{ availability.id }"><img src="{ icon_checked_url }" class="ml-0" height="24" alt="{ icon_checked_alt }" title="{ icon_checked_title }"></a>'
+                a += f'<div class="modal fade" id="availabilityModal_{ availability.id }" tabindex="-1" role="dialog" aria-labelledby="availabilityModal_{ availability.id }Label" aria-hidden="true">'
+                a +=    f'<div class="modal-dialog" role="document">'
+                a +=        f'<div class="modal-content">'
+                a +=            f'<div class="modal-body">'
+                if availability.activities.all():
+                    for activity in availability.activities.all():
+                        a += f'<span class="badge badge-pill badge-info mr-1">{ activity.name }</span>'
+                else:
+                    a += '<p>{}</p>'.format(_('No activity was associated.'))
+                a +=            f'</div>'
+                a +=            f'<div class="modal-footer">'
+                a +=                f'<a href="{ availability.get_absolute_url() }" class="btn btn-primary">{ see_more_title }</a>'
+                a +=            f'</div>'
+                a +=        f'</div>'
+                a +=    f'</div>'
+                a += f'</div>'
 
         if day == 0:
             return '<td class="cal-noday">&nbsp;</td>'
