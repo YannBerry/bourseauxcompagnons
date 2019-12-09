@@ -101,7 +101,7 @@ class CalEvents(Cal):
                     a += '<p>{}</p>'.format(_('No activity was associated.'))
                 a +=            f'</div>'
                 a +=            f'<div class="modal-footer">'
-                a +=                f'<a href="{ availability.get_absolute_url() }" class="btn btn-primary">{ see_more_title }</a>'
+                a +=                '<a href="{}" class="btn btn-primary">{}</a>'.format(availability.get_absolute_url(), _('See more'))
                 a +=            f'</div>'
                 a +=        f'</div>'
                 a +=    f'</div>'
