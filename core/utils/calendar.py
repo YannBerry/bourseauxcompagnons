@@ -60,10 +60,28 @@ class CalEvents(Cal):
             this_day = date(year, month, day)
             outings_per_day = outings.filter(start_date__lte=this_day, end_date__gte=this_day)
             availabilities_per_day = availabilities.filter(start_date__lte=this_day, end_date__gte=this_day)
+            see_more_title = _('See more')
             o = ''
             a = ''
             for outing in outings_per_day:
-                o += f"<li class='overflow-hidden'><p><a href='{ outing.get_absolute_url() }'><span class='badge badge-pill badge-info'>{ outing.title }</span></a></p</li>"
+                o += f'<li class="overflow-hidden"><p style="cursor: pointer;" data-toggle="modal" data-target="#outingModal_{ outing.id }"><span class="badge badge-pill badge-info">{ outing.title }</span></p</li>'
+                o += f'<div class="modal fade" id="outingModal_{ outing.id }" tabindex="-1" role="dialog" aria-labelledby="outingModal_{ outing.id }Label" aria-hidden="true">'
+                o +=    f'<div class="modal-dialog" role="document">'
+                o +=        f'<div class="modal-content">'
+                o +=            f'<div class="modal-header">'
+                o +=                f'<h5 class="modal-title" id="outingModal_{ outing.id }Label">{ outing.title }</h5>'
+                o +=                    f'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                o +=            f'</div>'
+                o +=            f'<div class="modal-body">'
+                for activity in outing.activities.all():
+                    o += f'<span class="badge badge-pill badge-info mr-1">{ activity.name }</span>'
+                o +=            f'</div>'
+                o +=            f'<div class="modal-footer">'
+                o +=                f'<a href="{ outing.get_absolute_url() }" class="btn btn-primary">{ see_more_title }</a>'
+                o +=            f'</div>'
+                o +=        f'</div>'
+                o +=    f'</div>'
+                o += f'</div>'
             for availability in availabilities_per_day:
                 icon_checked_url = static('img/icon_available.png')
                 icon_checked_alt = _('Available icon')

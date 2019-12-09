@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-04 15:56+0100\n"
+"POT-Creation-Date: 2019-12-09 20:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,8 +48,8 @@ msgid "Your end date is not equal or later than your start date."
 msgstr "La fecha de fin debe ser superior o igual a la fecha de inicio."
 
 #: availabilities/forms.py:53 contactpage/forms.py:35 outings/forms.py:54
-#: profiles/forms.py:108 profiles/forms.py:140 profiles/forms.py:212
-#: profiles/forms.py:247
+#: profiles/forms.py:106 profiles/forms.py:138 profiles/forms.py:211
+#: profiles/forms.py:246
 msgid "Please correct detected error / errors."
 msgstr "Por favor corrige el o los errores."
 
@@ -255,15 +255,15 @@ msgstr "funciones/"
 msgid "admin/"
 msgstr "admin/"
 
-#: contactpage/forms.py:8 profiles/forms.py:220
+#: contactpage/forms.py:8 profiles/forms.py:219
 msgid "Your e-mail address"
 msgstr "Dirección de corre electrónico"
 
-#: contactpage/forms.py:9 profiles/forms.py:221
+#: contactpage/forms.py:9 profiles/forms.py:220
 msgid "Subject"
 msgstr "Título"
 
-#: contactpage/forms.py:10 profiles/forms.py:222
+#: contactpage/forms.py:10 profiles/forms.py:221
 msgid "Message"
 msgstr "Mensaje"
 
@@ -307,11 +307,15 @@ msgstr "mensaje-enviado/"
 msgid "Choose file..."
 msgstr "Elegir un documento..."
 
-#: core/utils/calendar.py:69
+#: core/utils/calendar.py:63
+msgid "See more"
+msgstr ""
+
+#: core/utils/calendar.py:87
 msgid "Available icon"
 msgstr "Icono de disponibilidad"
 
-#: core/utils/calendar.py:70
+#: core/utils/calendar.py:88
 msgid "Available"
 msgstr "Disponible"
 
@@ -438,7 +442,7 @@ msgstr "De"
 msgid "Till"
 msgstr "Al"
 
-#: outings/templates/outings/outing_list.html:51 profiles/forms.py:57
+#: outings/templates/outings/outing_list.html:51 profiles/forms.py:53
 #: profiles/templates/profiles/profile_list.html:23
 msgid "Activities"
 msgstr "Actividades"
@@ -548,11 +552,11 @@ msgstr ""
 msgid "First name"
 msgstr ""
 
-#: profiles/forms.py:63 profiles/templates/profiles/profile_detail.html:48
+#: profiles/forms.py:59 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
 msgstr "Areá de disponibilidad"
 
-#: profiles/forms.py:64
+#: profiles/forms.py:60
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
@@ -560,18 +564,18 @@ msgstr ""
 "Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
 "salir a la montaña."
 
-#: profiles/forms.py:150
+#: profiles/forms.py:148
 msgid "Grades"
 msgstr "Niveles"
 
-#: profiles/forms.py:154 profiles/models.py:65
+#: profiles/forms.py:152 profiles/models.py:65
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
 "Selecciona tu nivel (en el que te sientas cómodo) para cada actividad que "
 "has elegido."
 
-#: profiles/forms.py:220
+#: profiles/forms.py:219
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
 "Recibiras la respuesta del perfil contactado sobre este correo electrónico."
@@ -848,7 +852,7 @@ msgid ""
 "outing."
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:79
+#: profiles/templates/profiles/my_profile.html:80
 msgid "My outings"
 msgstr "Mis salidas"
 
@@ -1101,19 +1105,19 @@ msgstr "Lista de perfiles"
 msgid "[Account] {}"
 msgstr "cuentas/"
 
-#: profiles/views.py:331 profiles/views.py:333
+#: profiles/views.py:330 profiles/views.py:332
 msgid "Hi {}! You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:335
+#: profiles/views.py:334
 msgid "You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:342 profiles/views.py:344
+#: profiles/views.py:341 profiles/views.py:343
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr ""
 
-#: profiles/views.py:346
+#: profiles/views.py:345
 msgid "You have securely logged out. Thank you for visiting."
 msgstr ""
 
