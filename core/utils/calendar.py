@@ -68,7 +68,7 @@ class CalEvents(Cal):
                 o +=    f'<div class="modal-dialog" role="document">'
                 o +=        f'<div class="modal-content">'
                 o +=            f'<div class="modal-header">'
-                o +=                '<h5 class="modal-title" id="outingModal_{}Label">{} {}</h5>'.format(outing.id, _('Outing:'), outing.id)
+                o +=                '<h5 class="modal-title" id="outingModal_{}Label">{} {}</h5>'.format(outing.id, _('Outing:'), outing.title)
                 o +=                f'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
                 o +=            f'</div>'
                 o +=            f'<div class="modal-body">'
