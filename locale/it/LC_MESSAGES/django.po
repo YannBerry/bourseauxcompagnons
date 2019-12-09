@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 21:09+0100\n"
+"POT-Creation-Date: 2019-12-09 21:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,6 +112,7 @@ msgid "Availability starting the %(availability_start_date)s"
 msgstr ""
 
 #: availabilities/templates/availabilities/availability_detail.html:12
+#: core/utils/calendar.py:93
 msgid "Availability"
 msgstr ""
 
@@ -291,19 +292,23 @@ msgstr ""
 msgid "Choose file..."
 msgstr ""
 
-#: core/utils/calendar.py:63
+#: core/utils/calendar.py:71
+msgid "Outing:"
+msgstr ""
+
+#: core/utils/calendar.py:79
 msgid "See more"
 msgstr ""
 
-#: core/utils/calendar.py:87
+#: core/utils/calendar.py:86
 msgid "Available icon"
 msgstr ""
 
-#: core/utils/calendar.py:88
+#: core/utils/calendar.py:87
 msgid "Available"
 msgstr ""
 
-#: core/utils/calendar.py:98
+#: core/utils/calendar.py:101
 msgid "No activity was associated."
 msgstr ""
 

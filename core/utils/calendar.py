@@ -60,7 +60,6 @@ class CalEvents(Cal):
             this_day = date(year, month, day)
             outings_per_day = outings.filter(start_date__lte=this_day, end_date__gte=this_day)
             availabilities_per_day = availabilities.filter(start_date__lte=this_day, end_date__gte=this_day)
-            see_more_title = _('See more')
             o = ''
             a = ''
             for outing in outings_per_day:
@@ -69,15 +68,15 @@ class CalEvents(Cal):
                 o +=    f'<div class="modal-dialog" role="document">'
                 o +=        f'<div class="modal-content">'
                 o +=            f'<div class="modal-header">'
-                o +=                f'<h5 class="modal-title" id="outingModal_{ outing.id }Label">{ outing.title }</h5>'
-                o +=                    f'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                o +=                '<h5 class="modal-title" id="outingModal_{}Label">{} {}</h5>'.format(outing.id, _('Outing:'), outing.id)
+                o +=                f'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
                 o +=            f'</div>'
                 o +=            f'<div class="modal-body">'
                 for activity in outing.activities.all():
                     o += f'<span class="badge badge-pill badge-info mr-1">{ activity.name }</span>'
                 o +=            f'</div>'
                 o +=            f'<div class="modal-footer">'
-                o +=                f'<a href="{ outing.get_absolute_url() }" class="btn btn-primary">{ see_more_title }</a>'
+                o +=                '<a href="{}" class="btn btn-primary">{}</a>'.format(outing.get_absolute_url(), _('See more'))
                 o +=            f'</div>'
                 o +=        f'</div>'
                 o +=    f'</div>'
@@ -90,6 +89,10 @@ class CalEvents(Cal):
                 a += f'<div class="modal fade" id="availabilityModal_{ availability.id }" tabindex="-1" role="dialog" aria-labelledby="availabilityModal_{ availability.id }Label" aria-hidden="true">'
                 a +=    f'<div class="modal-dialog" role="document">'
                 a +=        f'<div class="modal-content">'
+                a +=            f'<div class="modal-header">'
+                a +=                '<h5 class="modal-title" id="outingModal_{}Label">{}</h5>'.format(availability.id, _('Availability'))
+                a +=                f'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                a +=            f'</div>'
                 a +=            f'<div class="modal-body">'
                 if availability.activities.all():
                     for activity in availability.activities.all():
