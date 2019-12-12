@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 14:22+0100\n"
+"POT-Creation-Date: 2019-12-12 16:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,7 +103,7 @@ msgstr "Supprimer"
 #: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
-#: profiles/templates/profiles/profile_form.html:112
+#: profiles/templates/profiles/profile_form.html:114
 #: profiles/templates/profiles/profile_register.html:81
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
@@ -122,7 +122,7 @@ msgstr "Disponibilité"
 
 #: availabilities/templates/availabilities/availability_detail.html:16
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:93
+#: profiles/templates/profiles/my_profile.html:98
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
 msgstr "Icone d'édition"
@@ -133,7 +133,7 @@ msgstr "Editer la disponibilité"
 
 #: availabilities/templates/availabilities/availability_detail.html:17
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:96
+#: profiles/templates/profiles/my_profile.html:101
 msgid "Delete icon"
 msgstr "Icone de suppression"
 
@@ -194,7 +194,7 @@ msgstr "Créer une disponibilité"
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
-#: profiles/templates/profiles/profile_form.html:110
+#: profiles/templates/profiles/profile_form.html:112
 #: templates/registration/account_form.html:47
 msgid "Save"
 msgstr "Enregistrer"
@@ -313,6 +313,7 @@ msgid "email-sent/"
 msgstr "email-envoye/"
 
 #: core/templates/core/modals/help_draw_area.html:8
+#: profiles/templates/profiles/profile_form.html:76
 #: profiles/templates/profiles/profile_list.html:31
 #: profiles/templates/profiles/profile_register.html:67
 msgid "How to draw an area?"
@@ -457,12 +458,12 @@ msgstr ""
 "'%(outing_title)s' ?"
 
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:93
+#: profiles/templates/profiles/my_profile.html:98
 msgid "Edit outing"
 msgstr "Mettre à jour la sortie"
 
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:96
+#: profiles/templates/profiles/my_profile.html:101
 msgid "Delete outing "
 msgstr "Supprimer la sortie "
 
@@ -536,7 +537,7 @@ msgid "Filter"
 msgstr "Filtrer"
 
 #: outings/templates/outings/outing_list.html:76
-#: profiles/templates/profiles/my_profile.html:51
+#: profiles/templates/profiles/my_profile.html:56
 msgid "Add an outing"
 msgstr "Ajouter une sortie"
 
@@ -895,32 +896,36 @@ msgstr "Icone d'affichage"
 msgid "View public profile"
 msgstr "Voir mon profil public"
 
-#: profiles/templates/profiles/my_profile.html:21
+#: profiles/templates/profiles/my_profile.html:20
+msgid "Completion:"
+msgstr "Complétude :"
+
+#: profiles/templates/profiles/my_profile.html:26
 msgid "Update my public profile"
 msgstr "Mettre à jour mon profil public"
 
-#: profiles/templates/profiles/my_profile.html:28
+#: profiles/templates/profiles/my_profile.html:33
 msgid "My account"
 msgstr "Mon compte"
 
-#: profiles/templates/profiles/my_profile.html:33
+#: profiles/templates/profiles/my_profile.html:38
 msgid "Update my account settings"
 msgstr "Mettre mes paramètres de compte à jour"
 
-#: profiles/templates/profiles/my_profile.html:36
+#: profiles/templates/profiles/my_profile.html:41
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
-#: profiles/templates/profiles/my_profile.html:47
+#: profiles/templates/profiles/my_profile.html:52
 msgid "My calendar"
 msgstr "Mon calendrier"
 
-#: profiles/templates/profiles/my_profile.html:50
+#: profiles/templates/profiles/my_profile.html:55
 msgid "Add an availability"
 msgstr "Ajouter une disponibilité"
 
-#: profiles/templates/profiles/my_profile.html:56
+#: profiles/templates/profiles/my_profile.html:61
 msgid ""
 "<strong>You have not created any availability yet.</strong> Create one by "
 "clicking on the <span class='badge badge-pill badge-success'>+ Add an "
@@ -930,12 +935,12 @@ msgstr ""
 "en cliquant sur le bouton <span class='badge badge-pill badge-success'>+ "
 "Ajouter une disponibilité</span> ci-dessus ou en cliquant"
 
-#: profiles/templates/profiles/my_profile.html:56
 #: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:66
 msgid "here."
 msgstr "ici."
 
-#: profiles/templates/profiles/my_profile.html:56
+#: profiles/templates/profiles/my_profile.html:61
 msgid ""
 "Frequently filling out and updating your availabilities in your calendar is "
 "highly advisable: potential patners can find you in the 'profiles page' when "
@@ -948,7 +953,7 @@ msgstr ""
 "Vous indiquez ainsi que vous êtes motivé pour sortir sans savoir exactement "
 "quoi faire et que vous êtes ouvert aux propositions."
 
-#: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:66
 msgid ""
 "<strong>You have not created any outing yet.</strong> Create one by clicking "
 "on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
@@ -958,7 +963,7 @@ msgstr ""
 "cliquant sur le bouton <span class='badge badge-pill badge-success'>+ "
 "Ajouter une sortie</span> ci-dessus ou en cliquant"
 
-#: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:66
 msgid ""
 "By filling out an outing, potential partners can find your proposal in the "
 "'outings page', get in touch with you and, if you want, join you on that "
@@ -968,27 +973,27 @@ msgstr ""
 "proposition dans la 'page des sorties', vous contacter et, si vous le "
 "souhaitez, se joindre à votre sortie."
 
-#: profiles/templates/profiles/my_profile.html:80
+#: profiles/templates/profiles/my_profile.html:85
 msgid "My outings"
 msgstr "Mes sorties"
 
-#: profiles/templates/profiles/my_profile.html:111
+#: profiles/templates/profiles/my_profile.html:116
 msgid "Exports"
 msgstr "Exportations"
 
-#: profiles/templates/profiles/my_profile.html:114
+#: profiles/templates/profiles/my_profile.html:119
 msgid "Export profiles to Excel format"
 msgstr "Exporter les profils au format Excel"
 
-#: profiles/templates/profiles/my_profile.html:120
+#: profiles/templates/profiles/my_profile.html:125
 msgid "Imports / Exports for superadmins"
 msgstr "Imports / Exports pour les superadministateurs"
 
-#: profiles/templates/profiles/my_profile.html:123
+#: profiles/templates/profiles/my_profile.html:128
 msgid "Export outings"
 msgstr "Exporter les sorties"
 
-#: profiles/templates/profiles/my_profile.html:132 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:137 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
@@ -1246,19 +1251,19 @@ msgstr "Profil créé"
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/views.py:330 profiles/views.py:332
+#: profiles/views.py:342 profiles/views.py:344
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:334
+#: profiles/views.py:346
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:341 profiles/views.py:343
+#: profiles/views.py:353 profiles/views.py:355
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:345
+#: profiles/views.py:357
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 
