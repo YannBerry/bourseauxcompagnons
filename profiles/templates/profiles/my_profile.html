@@ -6,39 +6,51 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="card mb-4">
-    <div class="card-body">
-        <div class="row mb-2">
-            <div class="col-auto mr-auto">
-                <h2>{% trans 'My public profile' %}</h2>
-            </div>
-            <div class="col-auto">
-                <a href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" class="ml-2" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
-            </div>
-            <div class="col-12">
-                <div class="progress mb-2">
-                    <div class="progress-bar progress-bar-striped {% if completion < 40 %}bg-danger{% elif completion < 70 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ completion }}%">{% trans 'Completion:' %} {{ completion }} &#37;</div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="row mb-2">
-                    <div class="col-12 col-sm-auto">
-                        <a href="{% url 'update-profile' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my public profile' %}</a>
+<div class="row">
+    <div class="col-12 col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex flex-row justify-content-between">
+                            <h2 class="mb-1">{% trans 'My public profile' %}</h2>
+                            <a class="ml-2" href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
+                        </div>
+                        <p class="helptext mb-3">{% trans 'Data displayed on the profiles page' %}</p>
+                    </div>
+                    <div class="col-12">
+                        <div class="progress mb-2" style="height: 2.4rem;">
+                            <div class="progress-bar progress-bar-striped {% if completion < 40 %}bg-danger{% elif completion < 70 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ completion }}%">{% trans 'Completion:' %} {{ completion }} &#37;</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <a href="{% url 'update-profile' user.username %}" class="btn btn-success btn-block" role="button">{% trans 'Update my public profile' %}</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h2>{% trans 'My account' %}</h2>
-            </div>
-            <div class="col-12">
-                <div class="row align-items-center">
-                    <div class="col-12 col-sm-auto mb-2 mr-sm-auto">
-                        <a href="{% url 'update-account' user.username %}" class="btn btn-primary btn-block" role="button">{% trans 'Update my account settings' %}</a>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="mb-1">{% trans 'My account' %}</h2>
+                        <p class="helptext mb-3">{% trans 'Account data: email address, password, username, first name, last name' %}</p>
                     </div>
-                    <div class="col-12 col-sm-auto mb-2">
-                        <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 mb-2">
+                                <a href="{% url 'update-account' user.username %}" class="btn btn-success btn-block" role="button">{% trans 'Update my account settings' %}</a>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,8 +64,8 @@
                 <h2>{% trans 'My calendar' %}</h2>
             </div>
             <div class="col-auto">
-                <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
-                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
+                <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
+                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
             </div>
             <div class="col-12">
                 {% if not availabilities %}
@@ -116,7 +128,7 @@
                 <h2>{% trans 'Exports' %}</h2>
             </div>
             <div class="col-12">
-                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export profiles to Excel format' %}</a>
+                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export profiles to Excel format' %}</span></a>
             </div>
         </div>
         {% if user.is_superuser %}
@@ -125,7 +137,7 @@
                 <h2>{% trans 'Imports / Exports for superadmins' %}</h2>
             </div>
             <div class="col-12">
-                <a href="#" class="btn btn-success btn-add-new px-4" role="button">+ {% trans 'Export outings' %}</a>
+                <a href="#" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export outings' %}</span></a>
             </div>
         </div>
         {% endif %}

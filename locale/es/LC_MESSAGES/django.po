@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 16:53+0100\n"
+"POT-Creation-Date: 2019-12-12 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr "Disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:16
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:98
+#: profiles/templates/profiles/my_profile.html:110
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
 msgstr "Icono de edición"
@@ -131,7 +131,7 @@ msgstr "Editar la disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:17
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:101
+#: profiles/templates/profiles/my_profile.html:113
 msgid "Delete icon"
 msgstr "Icono de borrado"
 
@@ -452,12 +452,12 @@ msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
 msgstr "Estás seguro de querer borrar tu salida '%(outing_title)s'?"
 
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:98
+#: profiles/templates/profiles/my_profile.html:110
 msgid "Edit outing"
 msgstr "Editar la salida"
 
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:101
+#: profiles/templates/profiles/my_profile.html:113
 msgid "Delete outing "
 msgstr "Borrar la salida"
 
@@ -533,7 +533,7 @@ msgid "Filter"
 msgstr "Filtrar"
 
 #: outings/templates/outings/outing_list.html:76
-#: profiles/templates/profiles/my_profile.html:56
+#: profiles/templates/profiles/my_profile.html:68
 msgid "Add an outing"
 msgstr "Añadir una salida"
 
@@ -853,64 +853,72 @@ msgstr ""
 msgid "My profile"
 msgstr "Mi perfil"
 
-#: profiles/templates/profiles/my_profile.html:13
+#: profiles/templates/profiles/my_profile.html:16
 msgid "My public profile"
 msgstr "Mi perfil público"
 
-#: profiles/templates/profiles/my_profile.html:16
+#: profiles/templates/profiles/my_profile.html:17
 msgid "View icon"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:16
+#: profiles/templates/profiles/my_profile.html:17
 msgid "View public profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:20
+#: profiles/templates/profiles/my_profile.html:19
+msgid "Data displayed on the profiles page"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:23
 msgid "Completion:"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:26
+#: profiles/templates/profiles/my_profile.html:29
 msgid "Update my public profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:33
+#: profiles/templates/profiles/my_profile.html:42
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: profiles/templates/profiles/my_profile.html:38
+#: profiles/templates/profiles/my_profile.html:43
+msgid "Account data: email address, password, username, first name, last name"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:48
 msgid "Update my account settings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:41
+#: profiles/templates/profiles/my_profile.html:51
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:52
+#: profiles/templates/profiles/my_profile.html:64
 msgid "My calendar"
 msgstr "Mi calendario"
 
-#: profiles/templates/profiles/my_profile.html:55
+#: profiles/templates/profiles/my_profile.html:67
 #, fuzzy
 #| msgid "Create an availability"
 msgid "Add an availability"
 msgstr "Crear una disponibilidad"
 
-#: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:73
 msgid ""
 "<strong>You have not created any availability yet.</strong> Create one by "
 "clicking on the <span class='badge badge-pill badge-success'>+ Add an "
 "availability</span> button above or by clicking"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:61
-#: profiles/templates/profiles/my_profile.html:66
+#: profiles/templates/profiles/my_profile.html:73
+#: profiles/templates/profiles/my_profile.html:78
 #, fuzzy
 #| msgid "Where"
 msgid "here."
 msgstr "Dónde"
 
-#: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:73
 msgid ""
 "Frequently filling out and updating your availabilities in your calendar is "
 "highly advisable: potential patners can find you in the 'profiles page' when "
@@ -918,41 +926,41 @@ msgid ""
 "out but don't know what to do exactly and are opened to suggestions."
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:66
+#: profiles/templates/profiles/my_profile.html:78
 msgid ""
 "<strong>You have not created any outing yet.</strong> Create one by clicking "
 "on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
 "button above or by clicking"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:66
+#: profiles/templates/profiles/my_profile.html:78
 msgid ""
 "By filling out an outing, potential partners can find your proposal in the "
 "'outings page', get in touch with you and, if you want, join you on that "
 "outing."
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:85
+#: profiles/templates/profiles/my_profile.html:97
 msgid "My outings"
 msgstr "Mis salidas"
 
-#: profiles/templates/profiles/my_profile.html:116
+#: profiles/templates/profiles/my_profile.html:128
 msgid "Exports"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:119
+#: profiles/templates/profiles/my_profile.html:131
 msgid "Export profiles to Excel format"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:125
+#: profiles/templates/profiles/my_profile.html:137
 msgid "Imports / Exports for superadmins"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:128
+#: profiles/templates/profiles/my_profile.html:140
 msgid "Export outings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:137 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:149 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
