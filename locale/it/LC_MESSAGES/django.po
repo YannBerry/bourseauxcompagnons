@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 21:26+0100\n"
+"POT-Creation-Date: 2019-12-12 10:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgstr ""
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
 #: profiles/templates/profiles/profile_form.html:112
-#: profiles/templates/profiles/profile_register.html:78
+#: profiles/templates/profiles/profile_register.html:81
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
 msgid "Cancel"
@@ -288,6 +288,12 @@ msgstr ""
 msgid "email-sent/"
 msgstr ""
 
+#: core/templates/core/modals/help_draw_area.html:8
+#: profiles/templates/profiles/profile_list.html:31
+#: profiles/templates/profiles/profile_register.html:67
+msgid "How to draw an area?"
+msgstr ""
+
 #: core/templates/forms/widgets/image.html:20
 msgid "Choose file..."
 msgstr ""
@@ -296,7 +302,7 @@ msgstr ""
 msgid "Outing:"
 msgstr ""
 
-#: core/utils/calendar.py:79
+#: core/utils/calendar.py:79 core/utils/calendar.py:104
 msgid "See more"
 msgstr ""
 
@@ -414,12 +420,12 @@ msgid "Dates"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:31
-#: profiles/templates/profiles/profile_list.html:50
+#: profiles/templates/profiles/profile_list.html:52
 msgid "From"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:40
-#: profiles/templates/profiles/profile_list.html:59
+#: profiles/templates/profiles/profile_list.html:61
 msgid "Till"
 msgstr ""
 
@@ -433,7 +439,7 @@ msgid "Click to select activities"
 msgstr ""
 
 #: outings/templates/outings/outing_list.html:65
-#: profiles/templates/profiles/profile_list.html:70
+#: profiles/templates/profiles/profile_list.html:72
 msgid "Filter"
 msgstr ""
 
@@ -899,23 +905,23 @@ msgstr ""
 msgid "(draw on the map)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:35
+#: profiles/templates/profiles/profile_list.html:37
 msgid "Automatically draw my area on the map"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:41
+#: profiles/templates/profiles/profile_list.html:43
 msgid "Around my profile location (50 km)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:47
+#: profiles/templates/profiles/profile_list.html:49
 msgid "Dates of availability"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:82 templates/index.html:154
+#: profiles/templates/profiles/profile_list.html:84 templates/index.html:154
 msgid "Add my profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:91
+#: profiles/templates/profiles/profile_list.html:93
 #, python-format
 msgid ""
 "\n"
@@ -928,12 +934,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:113 templates/index.html:132
+#: profiles/templates/profiles/profile_list.html:115 templates/index.html:132
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:134
+#: profiles/templates/profiles/profile_list.html:136
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
@@ -949,7 +955,7 @@ msgstr ""
 msgid "All fields are mandatory."
 msgstr ""
 
-#: profiles/templates/profiles/profile_register.html:77
+#: profiles/templates/profiles/profile_register.html:80
 msgid "Create"
 msgstr ""
 

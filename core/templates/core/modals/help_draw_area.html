@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal fade" id="helpAreaModal" tabindex="-1" role="dialog" aria-labelledby="helpAreaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpAreaModalLabel">{% trans 'How to draw an area?' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{% static 'img/help_draw_area.gif' %}" class="img-fluid" alt="Help draw area">
+            </div>
+        </div>
+    </div>
+</div>

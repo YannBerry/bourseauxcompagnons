@@ -63,7 +63,7 @@ class CalEvents(Cal):
             o = ''
             a = ''
             for outing in outings_per_day:
-                o += f'<li class="overflow-hidden"><a style="cursor: pointer;" data-toggle="modal" data-target="#outingModal_{ outing.id }"><span class="badge badge-pill badge-info">{ outing.title }</span></a></li>'
+                o += f'<li class="overflow-hidden"><a class="cursor-pointer" data-toggle="modal" data-target="#outingModal_{ outing.id }"><span class="badge badge-pill badge-info">{ outing.title }</span></a></li>'
                 o += f'<div class="modal fade" id="outingModal_{ outing.id }" tabindex="-1" role="dialog" aria-labelledby="outingModal_{ outing.id }Label" aria-hidden="true">'
                 o +=    f'<div class="modal-dialog" role="document">'
                 o +=        f'<div class="modal-content">'

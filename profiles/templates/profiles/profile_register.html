@@ -64,6 +64,9 @@
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.availability_area_geo.label_tag }}
+                            <span title="{% trans 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span>
+                            <!-- Modal: help draw area -->
+                            {% include "core/modals/help_draw_area.html" %}
                             {% if form.availability_area_geo.help_text %}
                                 <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
                             {% endif %}
