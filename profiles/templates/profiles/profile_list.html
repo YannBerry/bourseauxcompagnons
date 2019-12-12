@@ -95,9 +95,11 @@
             {% plural %}
             {{ counter }} profiles
             {% endblocktrans %}
-            <span class="px-2 py-1 badge-pill border bg-green-superlight">{% trans 'well completed profile (= MOTIVATED PROFILE)' %}</span>
-            <span class="px-2 py-1 badge-pill border bg-orange-superlight">{% trans 'fairly completed profile' %}</span>
-            <span class="px-2 py-1 badge-pill border bg-red-superlight">{% trans 'poorly completed profile' %}</span>
+            <small>
+                <span class="px-2 badge-pill border bg-green-superlight">{% trans 'well completed profile (= MOTIVATED PROFILE)' %}</span>
+                <span class="px-2 badge-pill border bg-orange-superlight">{% trans 'fairly completed profile' %}</span>
+                <span class="px-2 badge-pill border bg-red-superlight">{% trans 'poorly completed profile' %}</span>
+            </small>
         </p>
         <div class="row">
             {% for profile in profile_list %}
