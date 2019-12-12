@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 19:39+0100\n"
+"POT-Creation-Date: 2019-12-12 21:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1073,12 +1073,24 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:115 templates/index.html:132
+#: profiles/templates/profiles/profile_list.html:98
+msgid "well completed profile (= MOTIVATED PROFILE)"
+msgstr ""
+
+#: profiles/templates/profiles/profile_list.html:99
+msgid "fairly completed profile"
+msgstr ""
+
+#: profiles/templates/profiles/profile_list.html:100
+msgid "poorly completed profile"
+msgstr ""
+
+#: profiles/templates/profiles/profile_list.html:118 templates/index.html:132
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:136
+#: profiles/templates/profiles/profile_list.html:139
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
@@ -1193,19 +1205,19 @@ msgstr "Lista de perfiles"
 msgid "[Account] {}"
 msgstr "cuentas/"
 
-#: profiles/views.py:342 profiles/views.py:344
+#: profiles/views.py:330 profiles/views.py:332
 msgid "Hi {}! You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:346
+#: profiles/views.py:334
 msgid "You are logged in :)"
 msgstr ""
 
-#: profiles/views.py:353 profiles/views.py:355
+#: profiles/views.py:341 profiles/views.py:343
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr ""
 
-#: profiles/views.py:357
+#: profiles/views.py:345
 msgid "You have securely logged out. Thank you for visiting."
 msgstr ""
 

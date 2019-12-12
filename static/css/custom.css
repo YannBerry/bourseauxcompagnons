@@ -9,6 +9,17 @@ a.unstyled, a.unstyled:hover {
     text-decoration:none;
 }
 
+/* COLORS */
+.bg-red-superlight {
+    background-color:rgba(255,0,0,0.1);
+}
+.bg-orange-superlight {
+    background-color:rgba(255,150,0,0.1);
+}
+.bg-green-superlight {
+    background-color:rgba(0,255,0,0.1);
+}
+
 /* CURSORS */
 .cursor-pointer {
     cursor: pointer;

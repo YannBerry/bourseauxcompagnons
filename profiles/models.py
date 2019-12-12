@@ -108,5 +108,41 @@ class Profile(models.Model):
     def updated_more_than_1_month_ago(self):
         return self.last_update < timezone.now() - timedelta(days=30)
 
+    @property    
+    def completion(self):
+        weight = {
+            'profile_picture': 15,
+            'birthdate': 15,
+            'introduction': 20,
+            'location': 30,
+            'availability_area_geo': 30,
+            'availability_area': 5,
+            'activities': 10,
+            'grades': 20,
+            'list_of_courses': 20
+        }
+        total_weight = sum(weight.values())
+        completion_weight = 0
+        if self.profile_picture:
+            completion_weight += weight.get('profile_picture', 0)
+        if self.birthdate:
+            completion_weight += weight.get('birthdate', 0)
+        if self.introduction:
+            completion_weight += weight.get('introduction', 0)
+        if self.location:
+            completion_weight += weight.get('location', 0)
+        if self.availability_area_geo:
+            completion_weight += weight.get('availability_area_geo', 0)
+        if self.availability_area:
+            completion_weight += weight.get('availability_area', 0)
+        if self.activities:
+            completion_weight += weight.get('activities', 0)
+        if self.grades:
+            completion_weight += weight.get('grades', 0)
+        if self.list_of_courses:
+            completion_weight += weight.get('list_of_courses', 0)
+        completion_percentage = round((completion_weight/total_weight)*100)
+        return completion_percentage
+
     def get_absolute_url(self):
         return reverse('profiles:detail', kwargs={'username': self.user.username})

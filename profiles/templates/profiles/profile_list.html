@@ -95,11 +95,14 @@
             {% plural %}
             {{ counter }} profiles
             {% endblocktrans %}
+            <span class="px-2 py-1 badge-pill border bg-green-superlight">{% trans 'well completed profile (= MOTIVATED PROFILE)' %}</span>
+            <span class="px-2 py-1 badge-pill border bg-orange-superlight">{% trans 'fairly completed profile' %}</span>
+            <span class="px-2 py-1 badge-pill border bg-red-superlight">{% trans 'poorly completed profile' %}</span>
         </p>
         <div class="row">
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
-                    <div class="card" onclick="document.location='{{ profile.get_absolute_url }}'" style="cursor: pointer;">
+                    <div class="card cursor-pointer {% if profile.completion <= 50 %}bg-red-superlight{% elif profile.completion <= 80 %}bg-orange-superlight{% else %}bg-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
                         <div class="card-body">
                             <div class="row align-items-start">
                                 <div class="col-3 mb-2">

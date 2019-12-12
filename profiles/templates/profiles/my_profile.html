@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-12">
                         <div class="progress mb-2" style="height: 2.4rem;">
-                            <div class="progress-bar progress-bar-striped {% if completion < 40 %}bg-danger{% elif completion < 70 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ completion }}%">{% trans 'Completion:' %} {{ completion }} &#37;</div>
+                            <div class="progress-bar progress-bar-striped {% if user.profile.completion <= 50 %}bg-danger{% elif user.profile.completion <= 80 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ user.profile.completion }}%">{% trans 'Completion:' %} {{ user.profile.completion }} &#37;</div>
                         </div>
                     </div>
                     <div class="col-12">

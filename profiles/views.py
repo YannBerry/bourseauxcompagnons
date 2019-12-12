@@ -266,18 +266,6 @@ class ProfileHomepageView(UserPassesTestMixin, TemplateView):
         context['cal_events'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
-        # Profile filling progression
-        profile_items = Profile.objects.filter(user=self.request.user).values()[0]
-        profile_items.pop('user_id', None)
-        profile_items.pop('last_update', None)
-        profile_items.pop('public_profile', None)
-        cleaned_profile_items = {k: v for k, v in profile_items.items() if v}
-        cleaned_profile_items_length = len(cleaned_profile_items)
-        if self.request.user.profile.activities.all():
-            cleaned_profile_items_length += 1
-        if self.request.user.profile.grades.all():
-            cleaned_profile_items_length += 1
-        context['completion'] = round((cleaned_profile_items_length/9)*100)
         return context
 
 
