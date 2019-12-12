@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 19:34+0100\n"
+"POT-Creation-Date: 2019-12-12 19:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -898,7 +898,7 @@ msgstr "Voir mon profil public"
 
 #: profiles/templates/profiles/my_profile.html:19
 msgid "Data displayed on the profiles page"
-msgstr "Données affichées sur la page des profiles"
+msgstr "Données affichées sur la page des profils"
 
 #: profiles/templates/profiles/my_profile.html:23
 msgid "Completion:"
@@ -915,8 +915,8 @@ msgstr "Mon compte"
 #: profiles/templates/profiles/my_profile.html:43
 msgid "Account data: email address, password, username, first name, last name"
 msgstr ""
-"Données du compte : adresse email, mot de passe, nom d'utilisateur, "
-"prénom, nom"
+"Données du compte : adresse email, mot de passe, nom d'utilisateur, prénom, "
+"nom"
 
 #: profiles/templates/profiles/my_profile.html:48
 msgid "Update my account settings"
