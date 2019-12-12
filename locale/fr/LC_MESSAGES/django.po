@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 10:57+0100\n"
+"POT-Creation-Date: 2019-12-12 14:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -317,6 +317,65 @@ msgstr "email-envoye/"
 #: profiles/templates/profiles/profile_register.html:67
 msgid "How to draw an area?"
 msgstr "Comment dessiner une zone ?"
+
+#: core/templates/core/modals/help_draw_area.html:17
+msgid ""
+"Zoom on the zone where you will draw by using your mouse wheel or touchpad "
+"or fingers or the zoom-in / zoom-out buttons on the map"
+msgstr ""
+"Zoomez sur la zone où vous souhaitez dessiner en utilisant la molette de "
+"votre souris, le touchpad, vos doigts ou les boutons de zoom et dezoom de la "
+"carte"
+
+#: core/templates/core/modals/help_draw_area.html:18
+msgid "Then draw the border of the area by clicking on the map"
+msgstr "Ensuite dessinez la bordure de la zone en cliquant sur la carte"
+
+#: core/templates/core/modals/help_draw_area.html:20
+msgid "first click will initiate the border by building a first point"
+msgstr "le premier clic va initier la bordure en créant un premier point"
+
+#: core/templates/core/modals/help_draw_area.html:21
+msgid "second click will draw a the first side of the border"
+msgstr "le second clic va dessiner le premier côté de la bordure"
+
+#: core/templates/core/modals/help_draw_area.html:22
+msgid "third click will draw a the second side of the border"
+msgstr "le troisième clic va dessiner le second côté de la bordure"
+
+#: core/templates/core/modals/help_draw_area.html:23
+msgid "and so on ..."
+msgstr "et ainsi de suite"
+
+#: core/templates/core/modals/help_draw_area.html:24
+msgid ""
+"close the border by clicking back on the first point or by double clicking "
+"when you draw the last side."
+msgstr ""
+" fermez la bordure en cliquant à nouveau sur le premier point ou en double "
+"cliquant quand vous dessinez le dernier côté"
+
+#: core/templates/core/modals/help_draw_area.html:27
+msgid "If you want to draw again your area:"
+msgstr "Si vous voulez redessiner votre zone :"
+
+#: core/templates/core/modals/help_draw_area.html:29
+msgid ""
+"close it by double clicking on the last point (or by clicking on the first "
+"point)"
+msgstr ""
+"fermez la en double cliquant sur le dernier point (ou en cliquant sur le "
+"premier point)"
+
+#: core/templates/core/modals/help_draw_area.html:30
+msgid "click on the delete button on the map"
+msgstr "cliquez sur le bouton de suppression sur la carte"
+
+#: core/templates/core/modals/help_draw_area.html:34
+msgid "Tip: click on 'Shift' key while you draw to activate freehand drawing."
+msgstr ""
+"Astuce : cliquez sur la touche 'Shift' pendant que vous dessinez pour "
+"activer le dessin à main levée."
 
 #: core/templates/forms/widgets/image.html:20
 msgid "Choose file..."
@@ -659,8 +718,8 @@ msgid ""
 "Select at least one activity that you practice and for which you are "
 "searching for partners."
 msgstr ""
-"Sélectionnez au moins une activité que vous pratiquez et pour laquelle "
-"vous cherchez des partenaires."
+"Sélectionnez au moins une activité que vous pratiquez et pour laquelle vous "
+"cherchez des partenaires."
 
 #: profiles/models.py:69
 msgid "availability area"

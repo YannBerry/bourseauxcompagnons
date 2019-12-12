@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 10:57+0100\n"
+"POT-Creation-Date: 2019-12-12 14:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -309,6 +309,64 @@ msgstr "mensaje-enviado/"
 #: profiles/templates/profiles/profile_register.html:67
 msgid "How to draw an area?"
 msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:17
+msgid ""
+"Zoom on the zone where you will draw by using your mouse wheel or touchpad "
+"or fingers or the zoom-in / zoom-out buttons on the map"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:18
+msgid "Then draw the border of the area by clicking on the map"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:20
+msgid "first click will initiate the border by building a first point"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:21
+msgid "second click will draw a the first side of the border"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:22
+msgid "third click will draw a the second side of the border"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:23
+msgid "and so on ..."
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:24
+msgid ""
+"close the border by clicking back on the first point or by double clicking "
+"when you draw the last side."
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:27
+msgid "If you want to draw again your area:"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:29
+msgid ""
+"close it by double clicking on the last point (or by clicking on the first "
+"point)"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:30
+msgid "click on the delete button on the map"
+msgstr ""
+
+#: core/templates/core/modals/help_draw_area.html:34
+#, fuzzy
+#| msgid ""
+#| "Click on the map to build the area where you are available for going out "
+#| "in the mountains. Tip: click on 'Shift' key while you draw to activate "
+#| "freehand drawing."
+msgid "Tip: click on 'Shift' key while you draw to activate freehand drawing."
+msgstr ""
+"Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
+"salir a la montaña. Astucia: pulsa sobre la tecla 'Shift' mientras dibujas "
+"para activar el dibujo a mano alzada."
 
 #: core/templates/forms/widgets/image.html:20
 msgid "Choose file..."

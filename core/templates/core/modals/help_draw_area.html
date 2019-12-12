@@ -12,6 +12,27 @@
             </div>
             <div class="modal-body">
                 <img src="{% static 'img/help_draw_area.gif' %}" class="img-fluid" alt="Help draw area">
+                <small>
+                <ol class="mt-3">
+                    <li>{% trans "Zoom on the zone where you will draw by using your mouse wheel or touchpad or fingers or the zoom-in / zoom-out buttons on the map" %}</li>
+                    <li>{% trans "Then draw the border of the area by clicking on the map" %}
+                        <ul>
+                            <li>{% trans "first click will initiate the border by building a first point" %}</li>
+                            <li>{% trans "second click will draw a the first side of the border" %}</li>
+                            <li>{% trans "third click will draw a the second side of the border" %}</li>
+                            <li>{% trans "and so on ..." %}</li>
+                            <li>{% trans "close the border by clicking back on the first point or by double clicking when you draw the last side." %}
+                        </ul>
+                    </li>
+                    <li>{% trans "If you want to draw again your area:" %}
+                        <ul>
+                            <li>{% trans "close it by double clicking on the last point (or by clicking on the first point)" %}</li>
+                            <li>{% trans "click on the delete button on the map" %}</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>{% trans "Tip: click on 'Shift' key while you draw to activate freehand drawing." %}</p>
+                </small>
             </div>
         </div>
     </div>
