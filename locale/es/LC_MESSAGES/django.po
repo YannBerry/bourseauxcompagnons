@@ -910,17 +910,15 @@ msgstr ""
 #: profiles/templates/profiles/my_profile.html:61
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
-msgstr ""
+msgstr "Borrar mi cuenta"
 
 #: profiles/templates/profiles/my_profile.html:74
 msgid "My calendar"
 msgstr "Mi calendario"
 
 #: profiles/templates/profiles/my_profile.html:77
-#, fuzzy
-#| msgid "Create an availability"
 msgid "Add an availability"
-msgstr "Crear una disponibilidad"
+msgstr "Agregar una disponibilidad"
 
 #: profiles/templates/profiles/my_profile.html:83
 msgid ""
@@ -931,10 +929,8 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:83
 #: profiles/templates/profiles/my_profile.html:88
-#, fuzzy
-#| msgid "Where"
 msgid "here."
-msgstr "Dónde"
+msgstr "aquí."
 
 #: profiles/templates/profiles/my_profile.html:83
 msgid ""
