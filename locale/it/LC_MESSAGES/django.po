@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 18:02+0100\n"
+"POT-Creation-Date: 2019-12-17 18:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -490,7 +490,7 @@ msgstr ""
 
 #: outings/templates/outings/outing_form.html:10
 msgid "Create an outing"
-msgstr "Aggiungi un escursione"
+msgstr "Aggiungi escursione"
 
 #: outings/templates/outings/outing_list.html:13 templates/base.html:39
 msgid "Outings"
@@ -540,7 +540,7 @@ msgstr "Filtri"
 #: outings/templates/outings/outing_list.html:76
 #: profiles/templates/profiles/my_profile.html:78
 msgid "Add an outing"
-msgstr "Aggiungere un escursione"
+msgstr "Aggiungi escursione"
 
 #: outings/templates/outings/outing_list.html:83
 msgid "You didn't find any outing that fits your availabilities?"
@@ -960,7 +960,7 @@ msgid ""
 msgstr ""
 "<strong>Non hai ancora creato una disponibilità.</strong> Crearne una "
 "cliccando sul pulsante <span class='badge badge-pill badge-success'>+ "
-"Aggiungere disponibilità</span> qui sopra o cliccando"
+"Aggiungi disponibilità</span> qui sopra o cliccando"
 
 #: profiles/templates/profiles/my_profile.html:83
 #: profiles/templates/profiles/my_profile.html:88
@@ -987,7 +987,7 @@ msgid ""
 "button above or by clicking"
 msgstr ""
 "<strong>Non hai ancora creato un escursione.</strong> Creane una cliccando "
-"sul pulsante <span class='badge badge-pill badge-success'>+ Aggiungi un "
+"sul pulsante <span class='badge badge-pill badge-success'>+ Aggiungi "
 "escursione</span> qui sopra o cliccando"
 
 #: profiles/templates/profiles/my_profile.html:88
@@ -1198,8 +1198,8 @@ msgstr ""
 "lista di Compagni di Montagna: <a href=\"https://www.bourseauxcompagnons.fr/"
 "%(language_code)s/profili/%(profile_username)s/\">vedere il mio profilo</a>."
 "</p>\n"
-"                                            <p>Il tuo nome utente ("
-"login) è il tuo indirizzo e-mail: %(profile_email)s."
+"                                            <p>Il tuo nome utente (login) è "
+"il tuo indirizzo e-mail: %(profile_email)s."
 
 #: profiles/templates/profiles/profile_register_email.html:344
 #, python-format
@@ -1243,11 +1243,11 @@ msgid ""
 "my profile</a>"
 msgstr ""
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
-"profili/%(profile_username)s/aggiornamento/\" target=\"_blank\" style=\"border: "
-"solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: "
-"pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: "
-"0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; "
-"background-color: #3498db; border-color: #3498db; color: #ffffff;"
+"profili/%(profile_username)s/aggiornamento/\" target=\"_blank\" style="
+"\"border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; "
+"cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; "
+"margin: 0; padding: 12px 25px; text-decoration: none; text-transform: "
+"capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;"
 "\">Aggiornare il mio profilo</a>"
 
 #: profiles/urls.py:18
@@ -1264,7 +1264,7 @@ msgstr "esporta/xlsx/"
 
 #: profiles/urls.py:21
 msgid "ajax/load-grades/"
-msgstr ""
+msgstr "ajax/caricare-gradi"
 
 #: profiles/views.py:207
 msgid "Initial contact"
@@ -1365,11 +1365,11 @@ msgstr "Trova compagni per le tue escursioni in montagna."
 
 #: templates/index.html:45
 msgid "Search Profile"
-msgstr "Ceracere un compagno"
+msgstr "Cerca un compagno"
 
 #: templates/index.html:48
 msgid "Search Outing"
-msgstr "Ceracre un escursione"
+msgstr "Cerca un escursione"
 
 #: templates/index.html:69
 msgid "For whom?"
@@ -1481,7 +1481,8 @@ msgstr "Registrarsi"
 msgid ""
 "The next time you will sign in you will be able to use your new password!"
 msgstr ""
-"La prossima volta che effettui il login potrai inserire la tua nuova password!"
+"La prossima volta che effettui il login potrai inserire la tua nuova "
+"password!"
 
 #: templates/registration/password_change_form.html:15
 #: templates/registration/password_reset_confirm.html:16
