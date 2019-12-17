@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 21:07+0100\n"
+"POT-Creation-Date: 2019-12-17 16:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr "Disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:16
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:110
+#: profiles/templates/profiles/my_profile.html:120
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
 msgstr "Icono de edición"
@@ -131,7 +131,7 @@ msgstr "Editar la disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:17
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:113
+#: profiles/templates/profiles/my_profile.html:123
 msgid "Delete icon"
 msgstr "Icono de borrado"
 
@@ -452,12 +452,12 @@ msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
 msgstr "Estás seguro de querer borrar tu salida '%(outing_title)s'?"
 
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:110
+#: profiles/templates/profiles/my_profile.html:120
 msgid "Edit outing"
 msgstr "Editar la salida"
 
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:113
+#: profiles/templates/profiles/my_profile.html:123
 msgid "Delete outing "
 msgstr "Borrar la salida"
 
@@ -533,7 +533,7 @@ msgid "Filter"
 msgstr "Filtrar"
 
 #: outings/templates/outings/outing_list.html:76
-#: profiles/templates/profiles/my_profile.html:68
+#: profiles/templates/profiles/my_profile.html:78
 msgid "Add an outing"
 msgstr "Añadir una salida"
 
@@ -873,52 +873,70 @@ msgstr ""
 msgid "Completion:"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:29
+#: profiles/templates/profiles/my_profile.html:28
+msgid ""
+"Low chance to be contacted. Public profile displayed as \"poorly completed "
+"profile\" (red background)"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:30
+msgid ""
+"Fair chance to be contacted. Public profile displayed as \"fairly completed "
+"profile\" (orange background)"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:32
+msgid ""
+"High chance to be contacted. Public profile displayed as \"well completed "
+"profile (= MOTIVATED PROFILE)\" (green background)"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:39
 msgid "Update my public profile"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:42
+#: profiles/templates/profiles/my_profile.html:52
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: profiles/templates/profiles/my_profile.html:43
+#: profiles/templates/profiles/my_profile.html:53
 msgid "Account data: email address, password, username, first name, last name"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:48
+#: profiles/templates/profiles/my_profile.html:58
 msgid "Update my account settings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:51
+#: profiles/templates/profiles/my_profile.html:61
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:64
+#: profiles/templates/profiles/my_profile.html:74
 msgid "My calendar"
 msgstr "Mi calendario"
 
-#: profiles/templates/profiles/my_profile.html:67
+#: profiles/templates/profiles/my_profile.html:77
 #, fuzzy
 #| msgid "Create an availability"
 msgid "Add an availability"
 msgstr "Crear una disponibilidad"
 
-#: profiles/templates/profiles/my_profile.html:73
+#: profiles/templates/profiles/my_profile.html:83
 msgid ""
 "<strong>You have not created any availability yet.</strong> Create one by "
 "clicking on the <span class='badge badge-pill badge-success'>+ Add an "
 "availability</span> button above or by clicking"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:73
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:83
+#: profiles/templates/profiles/my_profile.html:88
 #, fuzzy
 #| msgid "Where"
 msgid "here."
 msgstr "Dónde"
 
-#: profiles/templates/profiles/my_profile.html:73
+#: profiles/templates/profiles/my_profile.html:83
 msgid ""
 "Frequently filling out and updating your availabilities in your calendar is "
 "highly advisable: potential patners can find you in the 'profiles page' when "
@@ -926,41 +944,41 @@ msgid ""
 "out but don't know what to do exactly and are opened to suggestions."
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:88
 msgid ""
 "<strong>You have not created any outing yet.</strong> Create one by clicking "
 "on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
 "button above or by clicking"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:88
 msgid ""
 "By filling out an outing, potential partners can find your proposal in the "
 "'outings page', get in touch with you and, if you want, join you on that "
 "outing."
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:97
+#: profiles/templates/profiles/my_profile.html:107
 msgid "My outings"
 msgstr "Mis salidas"
 
-#: profiles/templates/profiles/my_profile.html:128
+#: profiles/templates/profiles/my_profile.html:138
 msgid "Exports"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:131
+#: profiles/templates/profiles/my_profile.html:141
 msgid "Export profiles to Excel format"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:137
+#: profiles/templates/profiles/my_profile.html:147
 msgid "Imports / Exports for superadmins"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:140
+#: profiles/templates/profiles/my_profile.html:150
 msgid "Export outings"
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:149 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:159 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
@@ -1073,24 +1091,24 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: profiles/templates/profiles/profile_list.html:98
+#: profiles/templates/profiles/profile_list.html:99
 msgid "well completed profile (= MOTIVATED PROFILE)"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:99
+#: profiles/templates/profiles/profile_list.html:100
 msgid "fairly completed profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:100
+#: profiles/templates/profiles/profile_list.html:101
 msgid "poorly completed profile"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:118 templates/index.html:132
+#: profiles/templates/profiles/profile_list.html:120 templates/index.html:132
 #, python-format
 msgid "%(profile_age)s years"
 msgstr ""
 
-#: profiles/templates/profiles/profile_list.html:139
+#: profiles/templates/profiles/profile_list.html:141
 msgid "There is no profile matching your search criteria."
 msgstr ""
 
@@ -1407,3 +1425,63 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Message"
+#~ msgid "Messages"
+#~ msgstr "Mensaje"
+
+#, fuzzy
+#~| msgid "location"
+#~ msgid "Syndication"
+#~ msgstr "localización"
+
+#, fuzzy
+#~| msgid "Your e-mail address"
+#~ msgid "Enter a valid email address."
+#~ msgstr "Dirección de corre electrónico"
+
+#, fuzzy
+#~| msgid "end"
+#~ msgid "and"
+#~ msgstr "fin"
+
+#, fuzzy
+#~| msgid "location"
+#~ msgid "Duration"
+#~ msgstr "localización"
+
+#, fuzzy
+#~| msgid "e-mail address"
+#~ msgid "Email address"
+#~ msgstr "dirección de correo electrónico"
+
+#, fuzzy
+#~| msgid "e-mail address"
+#~ msgid "IPv4 address"
+#~ msgstr "dirección de correo electrónico"
+
+#, fuzzy
+#~| msgid "e-mail address"
+#~ msgid "IP address"
+#~ msgstr "dirección de correo electrónico"
+
+#, fuzzy
+#~| msgid "ordering"
+#~ msgid "Order"
+#~ msgstr "orden"
+
+#, fuzzy
+#~| msgid "Please correct detected error / errors."
+#~ msgid "Please correct the duplicate data for %(field)s."
+#~ msgstr "Por favor corrige el o los errores."
+
+#, fuzzy
+#~| msgid "Please correct detected error / errors."
+#~ msgid "Please correct the duplicate values below."
+#~ msgstr "Por favor corrige el o los errores."
+
+#, fuzzy
+#~| msgid "end"
+#~ msgid "Wed"
+#~ msgstr "fin"

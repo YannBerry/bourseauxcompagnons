@@ -64,7 +64,7 @@ class CalEvents(Cal):
             a = ''
             for outing in outings_per_day:
                 o += f'<li class="overflow-hidden"><a class="cursor-pointer" data-toggle="modal" data-target="#outingModal_{ outing.id }"><span class="badge badge-pill badge-info">{ outing.title }</span></a></li>'
-                o += f'<div class="modal fade" id="outingModal_{ outing.id }" tabindex="-1" role="dialog" aria-labelledby="outingModal_{ outing.id }Label" aria-hidden="true">'
+                o += f'<div class="modal fade font-size-normal" id="outingModal_{ outing.id }" tabindex="-1" role="dialog" aria-labelledby="outingModal_{ outing.id }Label" aria-hidden="true">'
                 o +=    f'<div class="modal-dialog" role="document">'
                 o +=        f'<div class="modal-content">'
                 o +=            f'<div class="modal-header">'
@@ -85,7 +85,7 @@ class CalEvents(Cal):
                 icon_checked_url = static('img/icon_available.png')
                 icon_checked_alt = _('Available icon')
                 icon_checked_title = _('Available')
-                a += f'<a class="flex-container" data-toggle="modal" data-target="#availabilityModal_{ availability.id }"><img src="{ icon_checked_url }" class="ml-0" height="24" alt="{ icon_checked_alt }" title="{ icon_checked_title }"></a>'
+                a += f'<a class="flex-container cursor-pointer" data-toggle="modal" data-target="#availabilityModal_{ availability.id }"><img src="{ icon_checked_url }" class="ml-0" height="24" alt="{ icon_checked_alt }" title="{ icon_checked_title }"></a>'
                 a += f'<div class="modal fade" id="availabilityModal_{ availability.id }" tabindex="-1" role="dialog" aria-labelledby="availabilityModal_{ availability.id }Label" aria-hidden="true">'
                 a +=    f'<div class="modal-dialog" role="document">'
                 a +=        f'<div class="modal-content">'

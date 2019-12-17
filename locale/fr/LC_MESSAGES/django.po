@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 21:07+0100\n"
+"POT-Creation-Date: 2019-12-17 16:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "Disponibilité"
 
 #: availabilities/templates/availabilities/availability_detail.html:16
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:110
+#: profiles/templates/profiles/my_profile.html:120
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
 msgstr "Icone d'édition"
@@ -133,7 +133,7 @@ msgstr "Editer la disponibilité"
 
 #: availabilities/templates/availabilities/availability_detail.html:17
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:113
+#: profiles/templates/profiles/my_profile.html:123
 msgid "Delete icon"
 msgstr "Icone de suppression"
 
@@ -458,12 +458,12 @@ msgstr ""
 "'%(outing_title)s' ?"
 
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:110
+#: profiles/templates/profiles/my_profile.html:120
 msgid "Edit outing"
 msgstr "Mettre à jour la sortie"
 
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:113
+#: profiles/templates/profiles/my_profile.html:123
 msgid "Delete outing "
 msgstr "Supprimer la sortie "
 
@@ -537,7 +537,7 @@ msgid "Filter"
 msgstr "Filtrer"
 
 #: outings/templates/outings/outing_list.html:76
-#: profiles/templates/profiles/my_profile.html:68
+#: profiles/templates/profiles/my_profile.html:78
 msgid "Add an outing"
 msgstr "Ajouter une sortie"
 
@@ -904,38 +904,62 @@ msgstr "Données affichées sur la page des profils"
 msgid "Completion:"
 msgstr "Complétude :"
 
-#: profiles/templates/profiles/my_profile.html:29
+#: profiles/templates/profiles/my_profile.html:28
+msgid ""
+"Low chance to be contacted. Public profile displayed as \"poorly completed "
+"profile\" (red background)"
+msgstr ""
+"Faibles chances d'être contacté. Profil public affiché comme \"profil peu "
+"renseigné\" (fond rouge)"
+
+#: profiles/templates/profiles/my_profile.html:30
+msgid ""
+"Fair chance to be contacted. Public profile displayed as \"fairly completed "
+"profile\" (orange background)"
+msgstr ""
+"Chances raisonnables d'être contacté. Profil public affiché comme \"profil "
+"raisonnablement renseigné\" (fond orange)"
+
+#: profiles/templates/profiles/my_profile.html:32
+msgid ""
+"High chance to be contacted. Public profile displayed as \"well completed "
+"profile (= MOTIVATED PROFILE)\" (green background)"
+msgstr ""
+"Fortes chances d'être contacté. Profil public affiché comme \"profile bien "
+"renseigné (=PROFIL MOTIVE)\" (fond vert)"
+
+#: profiles/templates/profiles/my_profile.html:39
 msgid "Update my public profile"
 msgstr "Mettre à jour mon profil public"
 
-#: profiles/templates/profiles/my_profile.html:42
+#: profiles/templates/profiles/my_profile.html:52
 msgid "My account"
 msgstr "Mon compte"
 
-#: profiles/templates/profiles/my_profile.html:43
+#: profiles/templates/profiles/my_profile.html:53
 msgid "Account data: email address, password, username, first name, last name"
 msgstr ""
 "Données du compte : adresse email, mot de passe, nom d'utilisateur, prénom, "
 "nom"
 
-#: profiles/templates/profiles/my_profile.html:48
+#: profiles/templates/profiles/my_profile.html:58
 msgid "Update my account settings"
 msgstr "Mettre mes paramètres de compte à jour"
 
-#: profiles/templates/profiles/my_profile.html:51
+#: profiles/templates/profiles/my_profile.html:61
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
-#: profiles/templates/profiles/my_profile.html:64
+#: profiles/templates/profiles/my_profile.html:74
 msgid "My calendar"
 msgstr "Mon calendrier"
 
-#: profiles/templates/profiles/my_profile.html:67
+#: profiles/templates/profiles/my_profile.html:77
 msgid "Add an availability"
 msgstr "Ajouter une disponibilité"
 
-#: profiles/templates/profiles/my_profile.html:73
+#: profiles/templates/profiles/my_profile.html:83
 msgid ""
 "<strong>You have not created any availability yet.</strong> Create one by "
 "clicking on the <span class='badge badge-pill badge-success'>+ Add an "
@@ -945,12 +969,12 @@ msgstr ""
 "en cliquant sur le bouton <span class='badge badge-pill badge-success'>+ "
 "Ajouter une disponibilité</span> ci-dessus ou en cliquant"
 
-#: profiles/templates/profiles/my_profile.html:73
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:83
+#: profiles/templates/profiles/my_profile.html:88
 msgid "here."
 msgstr "ici."
 
-#: profiles/templates/profiles/my_profile.html:73
+#: profiles/templates/profiles/my_profile.html:83
 msgid ""
 "Frequently filling out and updating your availabilities in your calendar is "
 "highly advisable: potential patners can find you in the 'profiles page' when "
@@ -963,7 +987,7 @@ msgstr ""
 "Vous indiquez ainsi que vous êtes motivé pour sortir sans savoir exactement "
 "quoi faire et que vous êtes ouvert aux propositions."
 
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:88
 msgid ""
 "<strong>You have not created any outing yet.</strong> Create one by clicking "
 "on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
@@ -973,7 +997,7 @@ msgstr ""
 "cliquant sur le bouton <span class='badge badge-pill badge-success'>+ "
 "Ajouter une sortie</span> ci-dessus ou en cliquant"
 
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:88
 msgid ""
 "By filling out an outing, potential partners can find your proposal in the "
 "'outings page', get in touch with you and, if you want, join you on that "
@@ -983,27 +1007,27 @@ msgstr ""
 "proposition dans la 'page des sorties', vous contacter et, si vous le "
 "souhaitez, se joindre à votre sortie."
 
-#: profiles/templates/profiles/my_profile.html:97
+#: profiles/templates/profiles/my_profile.html:107
 msgid "My outings"
 msgstr "Mes sorties"
 
-#: profiles/templates/profiles/my_profile.html:128
+#: profiles/templates/profiles/my_profile.html:138
 msgid "Exports"
 msgstr "Exportations"
 
-#: profiles/templates/profiles/my_profile.html:131
+#: profiles/templates/profiles/my_profile.html:141
 msgid "Export profiles to Excel format"
 msgstr "Exporter les profils au format Excel"
 
-#: profiles/templates/profiles/my_profile.html:137
+#: profiles/templates/profiles/my_profile.html:147
 msgid "Imports / Exports for superadmins"
 msgstr "Imports / Exports pour les superadministateurs"
 
-#: profiles/templates/profiles/my_profile.html:140
+#: profiles/templates/profiles/my_profile.html:150
 msgid "Export outings"
 msgstr "Exporter les sorties"
 
-#: profiles/templates/profiles/my_profile.html:149 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:159 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
@@ -1091,7 +1115,7 @@ msgstr "Dessiner automatiquement ma zone de disponibilité sur la carte"
 
 #: profiles/templates/profiles/profile_list.html:43
 msgid "Around my profile location (50 km)"
-msgstr "Autour de ma location de profil (50 km)"
+msgstr "Autour de mon emplacement de profil (50 km)"
 
 #: profiles/templates/profiles/profile_list.html:49
 msgid "Dates of availability"
@@ -1120,24 +1144,24 @@ msgstr[1] ""
 "            %(counter)s profils\n"
 "            "
 
-#: profiles/templates/profiles/profile_list.html:98
+#: profiles/templates/profiles/profile_list.html:99
 msgid "well completed profile (= MOTIVATED PROFILE)"
 msgstr "profil bien renseigné (= PROFIL MOTIVE)"
 
-#: profiles/templates/profiles/profile_list.html:99
+#: profiles/templates/profiles/profile_list.html:100
 msgid "fairly completed profile"
 msgstr "profil raisonnablement renseigné"
 
-#: profiles/templates/profiles/profile_list.html:100
+#: profiles/templates/profiles/profile_list.html:101
 msgid "poorly completed profile"
 msgstr "profil peu renseigné"
 
-#: profiles/templates/profiles/profile_list.html:118 templates/index.html:132
+#: profiles/templates/profiles/profile_list.html:120 templates/index.html:132
 #, python-format
 msgid "%(profile_age)s years"
 msgstr "%(profile_age)s ans"
 
-#: profiles/templates/profiles/profile_list.html:139
+#: profiles/templates/profiles/profile_list.html:141
 msgid "There is no profile matching your search criteria."
 msgstr "Aucun profil ne correspond à vos critères de recherche."
 

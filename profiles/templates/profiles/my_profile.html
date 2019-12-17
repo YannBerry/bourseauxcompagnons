@@ -18,10 +18,20 @@
                         </div>
                         <p class="helptext mb-3">{% trans 'Data displayed on the profiles page' %}</p>
                     </div>
-                    <div class="col-12">
-                        <div class="progress mb-2" style="height: 2.4rem;">
+                    <div class="col-12 mb-2">
+                        <div class="progress" style="height: 1.8rem;">
                             <div class="progress-bar progress-bar-striped {% if user.profile.completion <= 50 %}bg-danger{% elif user.profile.completion <= 80 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ user.profile.completion }}%">{% trans 'Completion:' %} {{ user.profile.completion }} &#37;</div>
                         </div>
+
+                        <p class="helptext"><small>
+                        {% if user.profile.completion <= 50 %}
+                            {% trans 'Low chance to be contacted. Public profile displayed as "poorly completed profile" (red background)' %}
+                        {% elif user.profile.completion <= 80 %}
+                            {% trans 'Fair chance to be contacted. Public profile displayed as "fairly completed profile" (orange background)' %}
+                        {% else %}
+                            {% trans 'High chance to be contacted. Public profile displayed as "well completed profile (= MOTIVATED PROFILE)" (green background)' %}
+                        {% endif %}
+                        </small></p>
                     </div>
                     <div class="col-12">
                         <div class="row mb-2">
