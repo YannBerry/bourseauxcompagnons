@@ -916,7 +916,7 @@ msgstr "Mi calendario"
 
 #: profiles/templates/profiles/my_profile.html:77
 msgid "Add an availability"
-msgstr "Agregar una disponibilidad"
+msgstr "Añadir una disponibilidad"
 
 #: profiles/templates/profiles/my_profile.html:83
 msgid ""
