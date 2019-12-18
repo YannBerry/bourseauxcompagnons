@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 18:50+0100\n"
+"POT-Creation-Date: 2019-12-18 11:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,7 +232,7 @@ msgid "accounts/profiles/<username>/update/"
 msgstr "comptes/profils/<username>/mise-a-jour/"
 
 #: bac/urls.py:32
-msgid "accounts/<username>/delete/"
+msgid "accounts/<username>/deletion/"
 msgstr "comptes/<username>/suppression/"
 
 #: bac/urls.py:33

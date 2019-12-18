@@ -29,7 +29,7 @@ urlpatterns += i18n_patterns(
     path(_('accounts/profiles/my-profile/'), ProfileHomepageView.as_view(), name='my-profile'),
     path(_('accounts/<username>/update/'), AccountUpdateView.as_view(), name='update-account'),
     path(_('accounts/profiles/<username>/update/'), ProfileUpdateView.as_view(), name='update-profile'),
-    path(_('accounts/<username>/delete/'), AccountDeleteView.as_view(), name='delete-account'),
+    path(_('accounts/<username>/deletion/'), AccountDeleteView.as_view(), name='delete-account'),
     path(_('profiles/'), include('profiles.urls')),
     path(_('outings/'), include('outings.urls')),
     path(_('availabilities/'), include('availabilities.urls')),

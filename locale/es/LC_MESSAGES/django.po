@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 18:50+0100\n"
+"POT-Creation-Date: 2019-12-18 11:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -222,15 +222,15 @@ msgstr "cuentas/perfiles/mi-perfil/"
 
 #: bac/urls.py:30
 msgid "accounts/<username>/update/"
-msgstr "cuentas/<username>/actualizar/"
+msgstr "cuentas/<username>/actualizacion/"
 
 #: bac/urls.py:31
 msgid "accounts/profiles/<username>/update/"
-msgstr "cuentas/perfiles/<username>/actualizar/"
+msgstr "cuentas/perfiles/<username>/actualizacion/"
 
 #: bac/urls.py:32
-msgid "accounts/<username>/delete/"
-msgstr "cuentas/<username>/borrar/"
+msgid "accounts/<username>/deletion/"
+msgstr "cuentas/<username>/eliminacion/"
 
 #: bac/urls.py:33
 msgid "profiles/"
@@ -491,10 +491,8 @@ msgstr "Salidas"
 
 #: outings/templates/outings/outing_list.html:18
 #: profiles/templates/profiles/profile_list.html:17
-#, fuzzy
-#| msgid "Filter"
 msgid "Filters"
-msgstr "Filtrar"
+msgstr "Filtros"
 
 #: outings/templates/outings/outing_list.html:24
 msgid "Keywords"
@@ -598,11 +596,11 @@ msgstr "No hay ninguna salida que corresponda a tus criterios de búsqueda"
 
 #: outings/views.py:123
 msgid "Your outing is now published!"
-msgstr ""
+msgstr "Tu salida es ahora publicada!"
 
 #: outings/views.py:134
 msgid "Your outing is now updated!"
-msgstr ""
+msgstr "Tu salida es ahora actualizada!"
 
 #: profiles/admin.py:17
 msgid "Personal info"
@@ -842,12 +840,12 @@ msgstr ""
 #: profiles/templates/profiles/contact_profile_form.html:4
 #, python-format
 msgid "Contact %(profile_contacted)s"
-msgstr ""
+msgstr "Contacta con %(profile_contacted)s"
 
 #: profiles/templates/profiles/contact_profile_form.html:11
 #, python-format
 msgid "Get in touch with %(profile_contacted)s"
-msgstr ""
+msgstr "Contactar con %(profile_contacted)s"
 
 #: profiles/templates/profiles/my_profile.html:5 templates/base.html:81
 msgid "My profile"
@@ -871,7 +869,7 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:23
 msgid "Completion:"
-msgstr ""
+msgstr "Completitud:"
 
 #: profiles/templates/profiles/my_profile.html:28
 msgid ""
