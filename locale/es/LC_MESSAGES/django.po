@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 11:40+0100\n"
+"POT-Creation-Date: 2019-12-20 21:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,11 +37,11 @@ msgstr "orden"
 
 #: activities/models.py:23
 msgid "grade"
-msgstr "nivel"
+msgstr "graduación"
 
 #: activities/models.py:24 profiles/models.py:64
 msgid "grades"
-msgstr "niveles"
+msgstr "graduaciones"
 
 #: availabilities/forms.py:45 outings/forms.py:46
 msgid "Your end date is not equal or later than your start date."
@@ -279,6 +279,11 @@ msgid ""
 "have suggestions to improve this website</li></ul>Of course you can also "
 "contact us for any other reason. We'll be glad to answer you."
 msgstr ""
+"<strong>Este sitio web todavía está en construcción, así no duda en "
+"contactarnos si: </strong><ul><li>experimentas algún desagradable "
+"funcionamiento</li><li>tienes algunas sugerencias para mejorar este sitio</"
+"li></ul>Por supuesto, puedes también contactarnos por cualquiera otra razón."
+"Estaremos encantados de contestarte."
 
 #: contactpage/templates/contactpage/contactpage.html:16
 msgid "Contact us"
@@ -309,79 +314,77 @@ msgstr "mensaje-enviado/"
 #: profiles/templates/profiles/profile_list.html:31
 #: profiles/templates/profiles/profile_register.html:67
 msgid "How to draw an area?"
-msgstr ""
+msgstr "Cómo dibujar una área?"
 
 #: core/templates/core/modals/help_draw_area.html:17
 msgid ""
 "Zoom on the zone where you will draw by using your mouse wheel or touchpad "
 "or fingers or the zoom-in / zoom-out buttons on the map"
 msgstr ""
+"Haz zoom sobre la área donde vayas a dibujar utilizando la rueda del ratón o "
+"el touchpad o tus dedos o el botón de zoom sobre el mapa"
 
 #: core/templates/core/modals/help_draw_area.html:18
 msgid "Then draw the border of the area by clicking on the map"
-msgstr ""
+msgstr "Y después dibujas el borde de la área pulsando sobre el mapa"
 
 #: core/templates/core/modals/help_draw_area.html:20
 msgid "first click will initiate the border by building a first point"
-msgstr ""
+msgstr "el primer clic empezará el borde formando un primer punto"
 
 #: core/templates/core/modals/help_draw_area.html:21
 msgid "second click will draw a the first side of the border"
-msgstr ""
+msgstr "el sedundo clic dibujará el primer lado del borde"
 
 #: core/templates/core/modals/help_draw_area.html:22
 msgid "third click will draw a the second side of the border"
-msgstr ""
+msgstr "el tercer clic dibujará el secundo lado del borde"
 
 #: core/templates/core/modals/help_draw_area.html:23
 msgid "and so on ..."
-msgstr ""
+msgstr "y así sucesivamente ..."
 
 #: core/templates/core/modals/help_draw_area.html:24
 msgid ""
 "close the border by clicking back on the first point or by double clicking "
 "when you draw the last side."
 msgstr ""
+"Cierra el borde pulsando de nuevo sobre el primer punto o con un doble clic "
+"cuando dibujas el último lado."
 
 #: core/templates/core/modals/help_draw_area.html:27
 msgid "If you want to draw again your area:"
-msgstr ""
+msgstr "Si quieres dibujar de nuevo tu área:"
 
 #: core/templates/core/modals/help_draw_area.html:29
 msgid ""
 "close it by double clicking on the last point (or by clicking on the first "
 "point)"
 msgstr ""
+"haz un doble clic sobre el último punto para cerrarla (o pulsando sobre el "
+"primer punto"
 
 #: core/templates/core/modals/help_draw_area.html:30
 msgid "click on the delete button on the map"
-msgstr ""
+msgstr "pulsa sobre el botón de eliminación sobre el mapa"
 
 #: core/templates/core/modals/help_draw_area.html:34
-#, fuzzy
-#| msgid ""
-#| "Click on the map to build the area where you are available for going out "
-#| "in the mountains. Tip: click on 'Shift' key while you draw to activate "
-#| "freehand drawing."
 msgid "Tip: click on 'Shift' key while you draw to activate freehand drawing."
 msgstr ""
-"Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
-"salir a la montaña. Astucia: pulsa sobre la tecla 'Shift' mientras dibujas "
-"para activar el dibujo a mano alzada."
+"Astucia: pulsa sobre la tecla 'Shift' mientras dibujas para activar el "
+"dibujo a mano alzada."
 
 #: core/templates/forms/widgets/image.html:20
 msgid "Choose file..."
 msgstr "Elegir un documento..."
 
 #: core/utils/calendar.py:71
-#, fuzzy
-#| msgid "Outings"
 msgid "Outing:"
-msgstr "Salidas"
+msgstr "Salida:"
 
 #: core/utils/calendar.py:79 core/utils/calendar.py:104
 msgid "See more"
-msgstr ""
+msgstr "Ver más"
 
 #: core/utils/calendar.py:86
 msgid "Available icon"
@@ -537,11 +540,11 @@ msgstr "Añadir una salida"
 
 #: outings/templates/outings/outing_list.html:83
 msgid "You didn't find any outing that fits your availabilities?"
-msgstr ""
+msgstr "No encontraste ninguna salida que corresponda a tus disponibilidades?"
 
 #: outings/templates/outings/outing_list.html:83
 msgid "Check the profiles page"
-msgstr ""
+msgstr "Busca en la página de perfiles"
 
 #: outings/templates/outings/outing_list.html:83
 msgid ""
@@ -549,6 +552,9 @@ msgid ""
 "calendar. Meaning they intend to go out but don't know what to do exactly "
 "and are opened to suggestions."
 msgstr ""
+": talvez algunos perfiles habrán completado sus disponibilidades en su "
+"calendario. Así muestran que quieren salir a la montaña sin saber donde y "
+"están abiertos a sugerencias."
 
 #: outings/templates/outings/outing_list.html:87
 #, python-format
@@ -617,37 +623,38 @@ msgstr "Fechas importantes"
 #: profiles/admin.py:35
 msgid "Delete selected profiles cleanly (user.is_profile=False)"
 msgstr ""
+"Borrar correctamente los perfiles seleccionados (user.is_profile=False)"
 
 #: profiles/admin.py:48
 msgid "Email"
-msgstr ""
+msgstr "Dirección de correo electrónico"
 
 #: profiles/admin.py:53
 msgid "First name"
-msgstr ""
+msgstr "Nombre"
 
 #: profiles/forms.py:59 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
-msgstr "Areá de disponibilidad"
+msgstr "Área de disponibilidad"
 
 #: profiles/forms.py:60
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
 msgstr ""
-"Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
+"Pulsa sobre el mapa para dibujar el área en el que estás disponible para "
 "salir a la montaña."
 
 #: profiles/forms.py:148
 msgid "Grades"
-msgstr "Niveles"
+msgstr "Graduaciones"
 
 #: profiles/forms.py:152 profiles/models.py:65
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
-"Selecciona tu nivel (en el que te sientas cómodo) para cada actividad que "
-"has elegido."
+"Selecciona tu graduación (en el que te sientas cómodo) para cada actividad "
+"que has elegido."
 
 #: profiles/forms.py:219
 msgid "You will receive the contacted profile's answer on this e-mail."
@@ -714,7 +721,7 @@ msgstr ""
 
 #: profiles/models.py:69
 msgid "availability area"
-msgstr "areá de disponibilidad"
+msgstr "área de disponibilidad"
 
 #: profiles/models.py:70
 msgid ""
@@ -722,13 +729,13 @@ msgid ""
 "the mountains. Tip: click on 'Shift' key while you draw to activate freehand "
 "drawing."
 msgstr ""
-"Pulsa sobre el mapa para dibujar el areá en el que estás disponible para "
+"Pulsa sobre el mapa para dibujar el área en el que estás disponible para "
 "salir a la montaña. Astucia: pulsa sobre la tecla 'Shift' mientras dibujas "
 "para activar el dibujo a mano alzada."
 
 #: profiles/models.py:75
 msgid "availability area (further details)"
-msgstr "areá de disponibilidad (más detalles)"
+msgstr "área de disponibilidad (más detalles)"
 
 #: profiles/models.py:77
 msgid ""
@@ -933,10 +940,14 @@ msgstr "aquí."
 #: profiles/templates/profiles/my_profile.html:83
 msgid ""
 "Frequently filling out and updating your availabilities in your calendar is "
-"highly advisable: potential patners can find you in the 'profiles page' when "
-"they filter by availability dates. This way you show that you intend to go "
-"out but don't know what to do exactly and are opened to suggestions."
+"highly advisable: potential partners can find you in the 'profiles page' "
+"when they filter by availability dates. This way you show that you intend to "
+"go out but don't know what to do exactly and are opened to suggestions."
 msgstr ""
+"Está muy recomendado completar y actualizar tus disponibilidades en tu "
+"calendario: los potenciales compañeros te pueden encontrar en la 'página  de "
+"perfiles' cuando filtran por fechas de disponibilidad. Así muestras que "
+"quieres salir a la montaña sin saber donde y estás abierto a sugerencias."
 
 #: profiles/templates/profiles/my_profile.html:88
 msgid ""
@@ -993,11 +1004,11 @@ msgstr ""
 
 #: profiles/templates/profiles/profile_detail.html:44
 msgid "Location & Availability area"
-msgstr ""
+msgstr "Localización & área de disponibilidad"
 
 #: profiles/templates/profiles/profile_detail.html:46
 msgid "Location"
-msgstr ""
+msgstr "Localización"
 
 #: profiles/templates/profiles/profile_detail.html:57
 msgid "Availability area (further details):"
@@ -1052,21 +1063,19 @@ msgstr "Dónde"
 
 #: profiles/templates/profiles/profile_list.html:31
 msgid "(draw on the map)"
-msgstr ""
+msgstr "(dibuja sobre el mapa)"
 
 #: profiles/templates/profiles/profile_list.html:37
 msgid "Automatically draw my area on the map"
-msgstr ""
+msgstr "Dibujar automáticamente mi área sobre el mapa"
 
 #: profiles/templates/profiles/profile_list.html:43
 msgid "Around my profile location (50 km)"
-msgstr ""
+msgstr "Alrededor de la localización de mi perfil (50km)"
 
 #: profiles/templates/profiles/profile_list.html:49
-#, fuzzy
-#| msgid "Create an availability"
 msgid "Dates of availability"
-msgstr "Crear una disponibilidad"
+msgstr "Fechas de disponibilidad"
 
 #: profiles/templates/profiles/profile_list.html:84 templates/index.html:154
 msgid "Add my profile"
@@ -1176,11 +1185,11 @@ msgstr ""
 
 #: profiles/urls.py:18
 msgid "<username>/contact/"
-msgstr ""
+msgstr "<username>/contacto/"
 
 #: profiles/urls.py:19
 msgid "<username>/contact/done/"
-msgstr ""
+msgstr "<username>/contacto/realizado/"
 
 #: profiles/urls.py:20
 msgid "export/xlsx/"
@@ -1188,15 +1197,15 @@ msgstr ""
 
 #: profiles/urls.py:21
 msgid "ajax/load-grades/"
-msgstr ""
+msgstr "ajax/descargar-graduaciones"
 
 #: profiles/views.py:207
 msgid "Initial contact"
-msgstr ""
+msgstr "Contacto initial"
 
 #: profiles/views.py:208
 msgid "Hi "
-msgstr ""
+msgstr "Hola "
 
 #: profiles/views.py:220
 msgid ""
@@ -1206,24 +1215,20 @@ msgid ""
 msgstr ""
 
 #: profiles/views.py:236
-#, fuzzy
-#| msgid "Profiles list"
 msgid "Profile registered"
-msgstr "Lista de perfiles"
+msgstr "Perfil registrado"
 
 #: profiles/views.py:237
-#, fuzzy
-#| msgid "accounts/"
 msgid "[Account] {}"
-msgstr "cuentas/"
+msgstr "[Cuenta] {}"
 
 #: profiles/views.py:330 profiles/views.py:332
 msgid "Hi {}! You are logged in :)"
-msgstr ""
+msgstr "Hola {}! Estás conectado :)"
 
 #: profiles/views.py:334
 msgid "You are logged in :)"
-msgstr ""
+msgstr "Estás conectado :)"
 
 #: profiles/views.py:341 profiles/views.py:343
 msgid "You have securely logged out. Thank you for visiting {}."
@@ -1380,11 +1385,11 @@ msgstr ""
 
 #: templates/registration/login.html:46
 msgid "Don't have a profile?"
-msgstr ""
+msgstr "Aún no registraste un perfil?"
 
 #: templates/registration/login.html:46
 msgid "Register"
-msgstr ""
+msgstr "Registrar"
 
 #: templates/registration/password_change_done.html:12
 msgid ""
@@ -1409,16 +1414,24 @@ msgid ""
 "\"%(url_password_reset)s\">new password reset</a>.\n"
 "                        "
 msgstr ""
+"\n"
+"                        El enlace de reinicio de la contraseña no está más "
+"válido porque ya ha sido usado. Por favor pides el <a href="
+"\"%(url_password_reset)s\">reinicio de tu contraseña</a>.\n"
+"                        "
 
 #: templates/registration/password_reset_done.html:8
 msgid ""
 "If you don't receive any e-mail, please check that you have filled the form "
 "out with the e-mail address you used to register and check your spam."
 msgstr ""
+"Si no recibes ningún correo electrónico, por favor comprueba si habes "
+"completado el formulario con la dirección de correo electrónico que "
+"utilizaste para registrar y compruebas que no ha sido detectado como spam."
 
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
-msgstr ""
+msgstr "Validar y recibir el correo electrónico de confirmación"
 
 #, fuzzy
 #~| msgid "Message"

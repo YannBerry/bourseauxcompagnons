@@ -80,7 +80,7 @@
             <div class="col-12">
                 {% if not availabilities %}
                 <div class="alert alert-warning" role="alert">
-                    {% trans "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-success'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% trans "here." %}</a> {% trans "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential patners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
+                    {% trans "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-success'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% trans "here." %}</a> {% trans "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential partners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
                 </div>
                 {% endif %}
                 {% if not outings %}
