@@ -217,7 +217,7 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
     form_class = ProfileCreationForm
     template_name = 'profiles/profile_register.html'
     success_url = reverse_lazy('my-profile')
-    success_message = _("WARNING : your profile is public by default. That is to say that it will be displayed "
+    success_message = _("WARNING: your profile is public by default. That is to say that it will be displayed "
                         "in the profile list available on bourseauxcompagnons. Click on "
                         "'Update my profile' to complete it or make it private."
                         )

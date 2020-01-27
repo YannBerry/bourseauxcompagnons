@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-20 21:02+0100\n"
+"POT-Creation-Date: 2020-01-27 17:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -396,7 +396,7 @@ msgstr "Disponible"
 
 #: core/utils/calendar.py:101
 msgid "No activity was associated."
-msgstr ""
+msgstr "Ninguna actividad fue asociado."
 
 #: features/urls.py:7
 msgid "votes/"
@@ -420,7 +420,7 @@ msgid ""
 "you!"
 msgstr ""
 "Toma unos minutos para describirte de manera concisa para que la gente tenga "
-"ganas de juntarse con tigo."
+"ganas de unirse a tú."
 
 #: outings/models.py:28
 msgid "URL link to the outing topo"
@@ -544,7 +544,7 @@ msgstr "No encontraste ninguna salida que corresponda a tus disponibilidades?"
 
 #: outings/templates/outings/outing_list.html:83
 msgid "Check the profiles page"
-msgstr "Busca en la página de perfiles"
+msgstr "Buscar en la página de perfiles"
 
 #: outings/templates/outings/outing_list.html:83
 msgid ""
@@ -749,7 +749,7 @@ msgstr "fecha de nacimiento"
 
 #: profiles/models.py:83
 msgid "Used to display your age on your public profile."
-msgstr ""
+msgstr "Utilizado para mostrar tu edad en tu perfil público."
 
 #: profiles/models.py:87
 msgid "profile picture"
@@ -757,11 +757,11 @@ msgstr "foto de perfil"
 
 #: profiles/models.py:88
 msgid "last update"
-msgstr ""
+msgstr "última actualización"
 
 #: profiles/models.py:91
 msgid "profile"
-msgstr ""
+msgstr "perfil"
 
 #: profiles/models.py:92
 msgid "profiles"
@@ -769,7 +769,7 @@ msgstr "perfiles"
 
 #: profiles/templates/profiles/contact_profile_done.html:4
 msgid "Contact made"
-msgstr ""
+msgstr "Contacto establecido"
 
 #: profiles/templates/profiles/contact_profile_done.html:8
 #, python-format
@@ -777,11 +777,14 @@ msgid ""
 "Your message has been sent by email to %(username)s. Hopefully, he or she "
 "will get back to you soon!"
 msgstr ""
+"Tu mensaje ha sido enviado por correo electrónico a %(username)s. Con "
+"suerte, te contactará con presteza!"
 
 #: profiles/templates/profiles/contact_profile_email.html:10
 #: profiles/templates/profiles/contact_profile_email_inline.html:10
 msgid "Email sent from the contact form of Bourse aux compagnons"
 msgstr ""
+"Mensaje enviado desde el formulario de contacto de la Bourse aux compagnons"
 
 #: profiles/templates/profiles/contact_profile_email.html:309
 #: profiles/templates/profiles/contact_profile_email_inline.html:105
@@ -793,7 +796,7 @@ msgstr ""
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
 msgid "Hi"
-msgstr ""
+msgstr "Hola"
 
 #. Translators: Think to translate the urls
 #: profiles/templates/profiles/contact_profile_email.html:328
@@ -864,15 +867,15 @@ msgstr "Mi perfil público"
 
 #: profiles/templates/profiles/my_profile.html:17
 msgid "View icon"
-msgstr ""
+msgstr "Icono de visualización"
 
 #: profiles/templates/profiles/my_profile.html:17
 msgid "View public profile"
-msgstr ""
+msgstr "Ver mi perfil público"
 
 #: profiles/templates/profiles/my_profile.html:19
 msgid "Data displayed on the profiles page"
-msgstr ""
+msgstr "Datos mostrados en la página de perfiles"
 
 #: profiles/templates/profiles/my_profile.html:23
 msgid "Completion:"
@@ -883,22 +886,28 @@ msgid ""
 "Low chance to be contacted. Public profile displayed as \"poorly completed "
 "profile\" (red background)"
 msgstr ""
+"Baja probabilidad de ser contactado. Perfil público aparecerá como \"perfil "
+"poco completado\" (fondo rojo)"
 
 #: profiles/templates/profiles/my_profile.html:30
 msgid ""
 "Fair chance to be contacted. Public profile displayed as \"fairly completed "
 "profile\" (orange background)"
 msgstr ""
+"Razonable probabilidad de ser contactado. Perfil público aparecerá como "
+"\"perfil bastante completado\" (fondo naranja)"
 
 #: profiles/templates/profiles/my_profile.html:32
 msgid ""
 "High chance to be contacted. Public profile displayed as \"well completed "
 "profile (= MOTIVATED PROFILE)\" (green background)"
 msgstr ""
+"Alta probabilidad de ser contactado. Perfil público aparecerá como \"perfil "
+"bien completado (= PERFIL MOTIVADO)\" (fondo verde)"
 
 #: profiles/templates/profiles/my_profile.html:39
 msgid "Update my public profile"
-msgstr ""
+msgstr "Actualizar mi perfil público"
 
 #: profiles/templates/profiles/my_profile.html:52
 msgid "My account"
@@ -907,10 +916,12 @@ msgstr "Mi cuenta"
 #: profiles/templates/profiles/my_profile.html:53
 msgid "Account data: email address, password, username, first name, last name"
 msgstr ""
+"Datos del cuenta: dirección de correo electrónico, contraseña, nombre de "
+"usuario, nombre, apellido"
 
 #: profiles/templates/profiles/my_profile.html:58
 msgid "Update my account settings"
-msgstr ""
+msgstr "Actualizar mi configuración de la cuenta"
 
 #: profiles/templates/profiles/my_profile.html:61
 #: templates/registration/account_confirm_delete.html:4
@@ -931,6 +942,9 @@ msgid ""
 "clicking on the <span class='badge badge-pill badge-success'>+ Add an "
 "availability</span> button above or by clicking"
 msgstr ""
+"<strong>Ahora, no has creado ningún salida.</strong> Crea una pulsando sobre "
+"el botón <span class='badge badge-pill badge-success'>+ Añadir una "
+"disponibilidad</span> más arriba o pulsando"
 
 #: profiles/templates/profiles/my_profile.html:83
 #: profiles/templates/profiles/my_profile.html:88
@@ -945,7 +959,7 @@ msgid ""
 "go out but don't know what to do exactly and are opened to suggestions."
 msgstr ""
 "Está muy recomendado completar y actualizar tus disponibilidades en tu "
-"calendario: los potenciales compañeros te pueden encontrar en la 'página  de "
+"calendario: los potenciales compañeros te pueden encontrar en la 'página de "
 "perfiles' cuando filtran por fechas de disponibilidad. Así muestras que "
 "quieres salir a la montaña sin saber donde y estás abierto a sugerencias."
 
@@ -955,6 +969,9 @@ msgid ""
 "on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
 "button above or by clicking"
 msgstr ""
+"<strong>Ahora, no has creado ningún salida.</strong> Crea una pulsando sobre "
+"el botón <span class='badge badge-pill badge-success'>+ Añadir una salida</"
+"span> más arriba o pulsando"
 
 #: profiles/templates/profiles/my_profile.html:88
 msgid ""
@@ -962,6 +979,9 @@ msgid ""
 "'outings page', get in touch with you and, if you want, join you on that "
 "outing."
 msgstr ""
+"Completando una salida, potenciales compañeros pueden encontrar tu propuesta "
+"en la 'página de salidas', contactar contigo y, si quieres, unirse a tú en "
+"este salida"
 
 #: profiles/templates/profiles/my_profile.html:107
 msgid "My outings"
@@ -969,38 +989,38 @@ msgstr "Mis salidas"
 
 #: profiles/templates/profiles/my_profile.html:138
 msgid "Exports"
-msgstr ""
+msgstr "Exportaciones"
 
 #: profiles/templates/profiles/my_profile.html:141
 msgid "Export profiles to Excel format"
-msgstr ""
+msgstr "Exporta perfiles en formato Excel"
 
 #: profiles/templates/profiles/my_profile.html:147
 msgid "Imports / Exports for superadmins"
-msgstr ""
+msgstr "Importación / Exportación para superadministradores"
 
 #: profiles/templates/profiles/my_profile.html:150
 msgid "Export outings"
-msgstr ""
+msgstr "Exporta salidas"
 
 #: profiles/templates/profiles/my_profile.html:159 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit public profile"
-msgstr ""
+msgstr "Editar mi perfil público"
 
 #: profiles/templates/profiles/profile_detail.html:32
 #, python-format
 msgid "Age: %(age)s years old"
-msgstr ""
+msgstr "Edad: %(age)s años"
 
 #: profiles/templates/profiles/profile_detail.html:33
 msgid "Looking for partners for"
-msgstr ""
+msgstr "Busca compañeros para"
 
 #: profiles/templates/profiles/profile_detail.html:44
 msgid "Location & Availability area"
@@ -1012,7 +1032,7 @@ msgstr "Localización"
 
 #: profiles/templates/profiles/profile_detail.html:57
 msgid "Availability area (further details):"
-msgstr ""
+msgstr "Área de disponibilidad (con más detalles)"
 
 #: profiles/templates/profiles/profile_detail.html:65
 msgid "Introduction"
@@ -1020,7 +1040,7 @@ msgstr "Presentación"
 
 #: profiles/templates/profiles/profile_detail.html:73
 msgid "List of main courses"
-msgstr ""
+msgstr "Lista de principales salidas"
 
 #: profiles/templates/profiles/profile_detail.html:84
 msgid "Its calendar"
@@ -1028,7 +1048,7 @@ msgstr "Su calendario"
 
 #: profiles/templates/profiles/profile_detail.html:91
 msgid "Details of its outing propositions"
-msgstr ""
+msgstr "Detalles de sus propuestas de salida"
 
 #: profiles/templates/profiles/profile_detail.html:99
 #, python-format
@@ -1051,7 +1071,7 @@ msgstr[1] ""
 
 #: profiles/templates/profiles/profile_form.html:13
 msgid "Update my profile"
-msgstr ""
+msgstr "Actualizar mi perfil"
 
 #: profiles/templates/profiles/profile_list.html:12
 msgid "Profiles list"
@@ -1092,40 +1112,46 @@ msgid_plural ""
 "            %(counter)s profiles\n"
 "            "
 msgstr[0] ""
+"\n"
+"            %(counter)s perfil\n"
+"            "
 msgstr[1] ""
+"\n"
+"            %(counter)s perfiles\n"
+"            "
 
 #: profiles/templates/profiles/profile_list.html:99
 msgid "well completed profile (= MOTIVATED PROFILE)"
-msgstr ""
+msgstr "perfil bien completado (= PERFIL MOTIVADO)"
 
 #: profiles/templates/profiles/profile_list.html:100
 msgid "fairly completed profile"
-msgstr ""
+msgstr "perfil bastante completado"
 
 #: profiles/templates/profiles/profile_list.html:101
 msgid "poorly completed profile"
-msgstr ""
+msgstr "perfil poco completado"
 
 #: profiles/templates/profiles/profile_list.html:120 templates/index.html:132
 #, python-format
 msgid "%(profile_age)s years"
-msgstr ""
+msgstr "%(profile_age)s años"
 
 #: profiles/templates/profiles/profile_list.html:141
 msgid "There is no profile matching your search criteria."
-msgstr ""
+msgstr "No hay ningún perfil que corresponde a tus criterios de búsqueda."
 
 #: profiles/templates/profiles/profile_register.html:9
 msgid "Create a profile"
-msgstr ""
+msgstr "Crear un perfil"
 
 #: profiles/templates/profiles/profile_register.html:17
 msgid "Create your profile"
-msgstr ""
+msgstr "Crear tu perfil"
 
 #: profiles/templates/profiles/profile_register.html:19
 msgid "All fields are mandatory."
-msgstr ""
+msgstr "Todos los campos son obligatorios."
 
 #: profiles/templates/profiles/profile_register.html:80
 msgid "Create"
@@ -1134,12 +1160,12 @@ msgstr "Crear"
 #: profiles/templates/profiles/profile_register_email.html:10
 #: profiles/templates/profiles/profile_register_email_inline.html:10
 msgid "Welcome on Bourse aux compagnons"
-msgstr ""
+msgstr "Bienvenido a Bourse aux compagnons"
 
 #: profiles/templates/profiles/profile_register_email.html:309
 #: profiles/templates/profiles/profile_register_email_inline.html:105
 msgid "You successfully created your Bourseauxcompagnons profile!"
-msgstr ""
+msgstr "Has creado tu perfil de Bourseauxcompagnons con éxito!"
 
 #: profiles/templates/profiles/profile_register_email.html:326
 #, python-format
@@ -1150,6 +1176,11 @@ msgid ""
 "                                            <p>Your id to sign in is your "
 "email address: %(profile_email)s."
 msgstr ""
+"Bienvenido a Bourse aux compagnons! Ahora tu perfil está añadido en la "
+"listade Bourseauxcompagnons: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/perfiles/%(profile_username)s/\">ver mi perfil</a>.</p>\n"
+"                                            <p>Tu ID para iniciar tu sesión "
+"es tu dirección de correo electrónico: %(profile_email)s."
 
 #: profiles/templates/profiles/profile_register_email.html:344
 #, python-format
@@ -1158,6 +1189,9 @@ msgid ""
 "profiles/%(profile_username)s/update/\" target=\"_blank\">Update my profile</"
 "a>"
 msgstr ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/cuentas/"
+"perfiles/%(profile_username)s/actualizacion/\" target=\"_blank\">Actualizar "
+"mi perfil</a>"
 
 #: profiles/templates/profiles/profile_register_email_inline.html:122
 #, python-format
@@ -1170,6 +1204,14 @@ msgid ""
 "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
 "\">Your id to sign in is your email address: %(profile_email)s."
 msgstr ""
+"Bienvenido a Bourse aux compagnons! Ahora tu perfil está añadido en la "
+"listade Bourseauxcompagnons: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/perfiles/%(profile_username)s/\" style=\"color: #3498db; "
+"text-decoration: underline;\">ver mi perfil</a>.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Tu ID para iniciar tu sesión es tu dirección de correo electrónico: "
+"%(profile_email)s."
 
 #: profiles/templates/profiles/profile_register_email_inline.html:140
 #, python-format
@@ -1182,6 +1224,13 @@ msgid ""
 "background-color: #3498db; border-color: #3498db; color: #ffffff;\">Update "
 "my profile</a>"
 msgstr ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/cuentas/"
+"perfiles/%(profile_username)s/actualizacion/\" target=\"_blank\" style="
+"\"border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; "
+"cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; "
+"margin: 0; padding: 12px 25px; text-decoration: none; text-transform: "
+"capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;"
+"\">Actualizar mi perfil</a>"
 
 #: profiles/urls.py:18
 msgid "<username>/contact/"
@@ -1193,7 +1242,7 @@ msgstr "<username>/contacto/realizado/"
 
 #: profiles/urls.py:20
 msgid "export/xlsx/"
-msgstr ""
+msgstr "exportacion/xlsx/"
 
 #: profiles/urls.py:21
 msgid "ajax/load-grades/"
@@ -1209,10 +1258,13 @@ msgstr "Hola "
 
 #: profiles/views.py:220
 msgid ""
-"WARNING : your profile is public by default. That is to say that it will be "
+"WARNING: your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
 "'Update my profile' to complete it or make it private."
 msgstr ""
+"AVISO: por defecto, tu perfil es público. Es decir que aparecerá en la lista "
+"de perfiles de bourseauxcompagnons. Pulsa sobre 'Actualizar mi perfil' para "
+"completarlo o privatizarlo."
 
 #: profiles/views.py:236
 msgid "Profile registered"
@@ -1232,27 +1284,27 @@ msgstr "Estás conectado :)"
 
 #: profiles/views.py:341 profiles/views.py:343
 msgid "You have securely logged out. Thank you for visiting {}."
-msgstr ""
+msgstr "Has cerrado bien tu sesión. Gracias por tu visita {}."
 
 #: profiles/views.py:345
 msgid "You have securely logged out. Thank you for visiting."
-msgstr ""
+msgstr "Has cerrado bien tu sesión. Gracias por tu visita."
 
 #: templates/404.html:6
 msgid "This page doesn't exist"
-msgstr ""
+msgstr "Esta página no existe"
 
 #: templates/404.html:11
 msgid "This page does not exist (error 404)"
-msgstr ""
+msgstr "Esta página no existe (error 404) "
 
 #: templates/404.html:13
 msgid "Go to Homepage"
-msgstr ""
+msgstr "Ve a la página de inicio"
 
 #: templates/base.html:13
 msgid "Mountain Partners"
-msgstr ""
+msgstr "Compañeros de montaña"
 
 #: templates/base.html:14
 msgid ""
@@ -1260,10 +1312,14 @@ msgid ""
 "the profiles and outings. Sort by activity, level, experience, location, "
 "etc. Made by a mountaineer who struggled for finding mountain partners."
 msgstr ""
+"Encontra compañeros para tus salidas en la montaña. Visita y contacta "
+"gratuitamente los perfiles y salidas. Elige de acuerdo con tus actividades, "
+"tu nivel, tu experiencia, tu localización, etc. Sitio web realizado por un "
+"montañero quien luchaba para encontrar compañeros de montaña."
 
 #: templates/base.html:29
 msgid "MOUNTAIN PARTNERS"
-msgstr ""
+msgstr "COMPAÑEROS DE MONTAÑA"
 
 #: templates/base.html:36
 msgid "Profiles"
@@ -1275,78 +1331,83 @@ msgstr "FUNCIONES"
 
 #: templates/base.html:47
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #: templates/base.html:83
 msgid "Sign out"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: templates/index.html:10
 msgid "Partners for your mountain outings"
-msgstr ""
+msgstr "Compañeros para tus salidas en la montaña"
 
 #: templates/index.html:34
 msgid "Find partners for your outings in the mountain."
-msgstr ""
+msgstr "Encontra compañeros para tus salidas en la montaña"
 
 #: templates/index.html:45
 msgid "Search Profile"
-msgstr ""
+msgstr "Encontra perfiles"
 
 #: templates/index.html:48
-#, fuzzy
-#| msgid "Outings"
 msgid "Search Outing"
-msgstr "Salidas"
+msgstr "Encontra salidas"
 
 #: templates/index.html:69
 msgid "For whom?"
-msgstr ""
+msgstr "Para quién?"
 
 #: templates/index.html:70
 msgid ""
 "Sportsmen and sportswomen struggling to find partners to explore the "
 "outdoors. Especially the mountains."
 msgstr ""
+"Deportistas que tienen dificultad para encontrar compañeros para salir por "
+"la montaña."
 
 #: templates/index.html:73
 msgid "What for?"
-msgstr ""
+msgstr "Para qué?"
 
 #: templates/index.html:74
 msgid ""
 "Find partners that match your activities, your level and your aspirations."
 msgstr ""
+"Encontra compañeros que comparten tus actividades, tu nivel y tus "
+"aspiraciones."
 
 #: templates/index.html:77
 msgid "How it works?"
-msgstr ""
+msgstr "Cómo funciona?"
 
 #: templates/index.html:79
 msgid ""
 "Watch profiles and outings. Contact directly the ones fitting your interest."
 msgstr ""
+"Fijate en perfiles y salidas. Contacta directamente los que te interesan."
 
 #: templates/index.html:80
 msgid ""
 "Publish your own profile or outings to be contacted by potential partners."
 msgstr ""
+"Publica tu propio perfil o salida para ser contactado por compañeros "
+"potenciales."
 
 #: templates/index.html:113
 msgid "Last profiles created"
-msgstr ""
+msgstr "Últimos perfiles propuestos"
 
 #: templates/index.html:114
 msgid "Display all the profiles"
-msgstr ""
+msgstr "Mostrar todos los perfiles"
 
 #: templates/index.html:174
 msgid "Last outings suggested"
-msgstr ""
+msgstr "Últimas salidas propuestas"
 
 #: templates/index.html:175
 msgid "Display all the outings"
-msgstr ""
+msgstr "Mostrar todas las salidas"
 
 #: templates/index.html:184
 #, python-format
@@ -1360,7 +1421,14 @@ msgid_plural ""
 "%(end_date)s\n"
 "                                    "
 msgstr[0] ""
+"\n"
+"                                    Durante el día<br>%(start_date)s\n"
+"                                    "
 msgstr[1] ""
+"\n"
+"                                    %(duration)s días<br>%(start_date)s - "
+"%(end_date)s\n"
+"                                    "
 
 #: templates/index.html:201
 msgid "Add my outing"
@@ -1369,19 +1437,19 @@ msgstr "Añadir mi salida"
 #: templates/registration/account_confirm_delete.html:10
 #, python-format
 msgid "%(user_username)s are you sure you want to delete your account?"
-msgstr ""
+msgstr "%(user_username)s estás seguro de querer borrar tu cuenta?"
 
 #: templates/registration/account_form.html:4
 msgid "Update my account"
-msgstr ""
+msgstr "Actualizar mi cuenta"
 
 #: templates/registration/account_form.html:53
 msgid "Update my password"
-msgstr ""
+msgstr "Cambiar mi contraseña"
 
 #: templates/registration/login.html:43
 msgid "Forgot password?"
-msgstr ""
+msgstr "Olvidaste la contraseña?"
 
 #: templates/registration/login.html:46
 msgid "Don't have a profile?"
@@ -1395,15 +1463,18 @@ msgstr "Registrar"
 msgid ""
 "The next time you will sign in you will be able to use your new password!"
 msgstr ""
+"La próxima vez que iniciarás tu sesión, podrás utilizar tu nueva contraseña!"
 
 #: templates/registration/password_change_form.html:15
 #: templates/registration/password_reset_confirm.html:16
 msgid "Update password"
-msgstr ""
+msgstr "Cambiar la contraseña"
 
 #: templates/registration/password_reset_complete.html:8
 msgid "Your new password has been activated. You just have to sign in."
 msgstr ""
+"Tu nueva contraseña se ha activada. Puedes iniciar de nuevo tu sesión cuando "
+"quieres."
 
 #: templates/registration/password_reset_confirm.html:21
 #, python-format
@@ -1432,63 +1503,3 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Validar y recibir el correo electrónico de confirmación"
-
-#, fuzzy
-#~| msgid "Message"
-#~ msgid "Messages"
-#~ msgstr "Mensaje"
-
-#, fuzzy
-#~| msgid "location"
-#~ msgid "Syndication"
-#~ msgstr "localización"
-
-#, fuzzy
-#~| msgid "Your e-mail address"
-#~ msgid "Enter a valid email address."
-#~ msgstr "Dirección de corre electrónico"
-
-#, fuzzy
-#~| msgid "end"
-#~ msgid "and"
-#~ msgstr "fin"
-
-#, fuzzy
-#~| msgid "location"
-#~ msgid "Duration"
-#~ msgstr "localización"
-
-#, fuzzy
-#~| msgid "e-mail address"
-#~ msgid "Email address"
-#~ msgstr "dirección de correo electrónico"
-
-#, fuzzy
-#~| msgid "e-mail address"
-#~ msgid "IPv4 address"
-#~ msgstr "dirección de correo electrónico"
-
-#, fuzzy
-#~| msgid "e-mail address"
-#~ msgid "IP address"
-#~ msgstr "dirección de correo electrónico"
-
-#, fuzzy
-#~| msgid "ordering"
-#~ msgid "Order"
-#~ msgstr "orden"
-
-#, fuzzy
-#~| msgid "Please correct detected error / errors."
-#~ msgid "Please correct the duplicate data for %(field)s."
-#~ msgstr "Por favor corrige el o los errores."
-
-#, fuzzy
-#~| msgid "Please correct detected error / errors."
-#~ msgid "Please correct the duplicate values below."
-#~ msgstr "Por favor corrige el o los errores."
-
-#, fuzzy
-#~| msgid "end"
-#~ msgid "Wed"
-#~ msgstr "fin"
