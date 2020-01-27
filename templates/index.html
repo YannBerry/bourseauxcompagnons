@@ -377,6 +377,17 @@
                 opacity: 1
             })
         });
+        const profileLocClickedIconStyle = new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '{% static "img/icon_male_map.png" %}',
+                scale: 1,
+                color: [40,167,69,1],
+                opacity: 1
+            })
+        });
         // Filling markers list
         {% for p in profiles %}
         {% if p.location %}
@@ -433,6 +444,12 @@
             );
             // Display profile info if the marker is clicked
             if (feature) {
+                // Reset all marker icons to their initial style
+                for(let i = 0; i < markersFeatures.length; i++){
+                    markersFeatures[i].setStyle(profileLocIconStyle);
+                }
+                // Set clicked icon to a different style
+                feature.setStyle(profileLocClickedIconStyle);
                 // Popup positioning
                 const coordinates = feature.getGeometry().getCoordinates();
                 popup.setPosition(coordinates);
@@ -475,6 +492,10 @@
                 const areaFeatures = (new ol.format.GeoJSON({featureProjection: map.getView().getProjection()})).readFeatures(geojsonObject);
                 availabilityAreaSource.addFeatures(areaFeatures);
             } else {
+                // If a click is made outside of a marker then the icon comes back to its initial appearance
+                for(let i = 0; i < markersFeatures.length; i++){
+                    markersFeatures[i].setStyle(profileLocIconStyle);
+                }
                 // If a click is made outside of a marker then no popup is displayed
                 popup.setPosition(undefined);
                 // If a click is made outide of a marker then the availability area is hidden
