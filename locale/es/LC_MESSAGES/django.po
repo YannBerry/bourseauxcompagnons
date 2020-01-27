@@ -789,7 +789,7 @@ msgstr ""
 #: profiles/templates/profiles/contact_profile_email.html:309
 #: profiles/templates/profiles/contact_profile_email_inline.html:105
 msgid "Somebody is getting in touch with you."
-msgstr ""
+msgstr "Alguien está tratando de contactar contigo."
 
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
@@ -809,6 +809,12 @@ msgid ""
 "aux compagnons website:\n"
 "                                                "
 msgstr ""
+"\n"
+"                                                Has recibido un mensaje de "
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/perfiles/"
+"%(profile_making_contact)s/\">%(profile_making_contact)s</a> desde el sitio web "
+"Bourse aux compagnons:\n"
+"                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:332
 #: profiles/templates/profiles/contact_profile_email_inline.html:128
@@ -818,13 +824,17 @@ msgid ""
 "somebody through Bourse aux compagnons website:\n"
 "                                                "
 msgstr ""
+"\n"
+"                                                Has recibido un mensaje de "
+"alguien desde el sitio web Bourse aux compagnons:\n"
+"                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:347
 #: profiles/templates/profiles/contact_profile_email_inline.html:143
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
 msgid "Sportively yours"
-msgstr ""
+msgstr "Saludos deportivos"
 
 #: profiles/templates/profiles/contact_profile_email.html:363
 #: profiles/templates/profiles/contact_profile_email_inline.html:159
@@ -832,7 +842,7 @@ msgstr ""
 #: profiles/templates/profiles/profile_register_email_inline.html:164
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
-msgstr ""
+msgstr "facilitarle el trabajo a deportistas de ponerse en contacto."
 
 #. Translators: Think to translate the urls
 #: profiles/templates/profiles/contact_profile_email_inline.html:124
@@ -846,6 +856,13 @@ msgid ""
 "website:\n"
 "                                                "
 msgstr ""
+"\n"
+"                                                Has recibido un mensaje de "
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/perfiles/"
+"%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
+"underline;\">%(profile_making_contact)s</a> desde el sitio web "
+"Bourse aux compagnons:\n"
+"                                                "
 
 #: profiles/templates/profiles/contact_profile_form.html:4
 #, python-format
@@ -993,7 +1010,7 @@ msgstr "Exportaciones"
 
 #: profiles/templates/profiles/my_profile.html:141
 msgid "Export profiles to Excel format"
-msgstr "Exporta perfiles en formato Excel"
+msgstr "Exportar perfiles en formato Excel"
 
 #: profiles/templates/profiles/my_profile.html:147
 msgid "Imports / Exports for superadmins"
@@ -1001,7 +1018,7 @@ msgstr "Importación / Exportación para superadministradores"
 
 #: profiles/templates/profiles/my_profile.html:150
 msgid "Export outings"
-msgstr "Exporta salidas"
+msgstr "Exportar salidas"
 
 #: profiles/templates/profiles/my_profile.html:159 templates/base.html:88
 #: templates/registration/login.html:4 templates/registration/login.html:40
