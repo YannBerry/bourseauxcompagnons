@@ -10,40 +10,81 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="robots" content="noindex, nofollow">
 
-        <title>{% block title %}{% trans "Mountain Partners" %}{% endblock %}</title>
-        <meta name="description" content="{% trans 'Find partners for your outings in the mountain. Visit and contact for free the profiles and outings. Sort by activity, level, experience, location, etc. Made by a mountaineer who struggled for finding mountain partners.' %}">
-        <meta name="author" content="Yann Berry">
+        <title>{% block title %}Hoortus{% endblock %}</title>
+        <meta name="description" content="{% trans 'Description qui s affiche sur le resultat de google' %}">
+        <meta name="author" content="Hoortus">
         <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         {% block css %}{% endblock %}
         <!-- Custom CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,600,600i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <style>
+            body {
+                font-family: 'Titillium Web', sans-serif;
+                font-size: 1rem;
+                font-style: normal;
+                font-weight: normal;
+                color: #4D4C4C;
+            }
+            a.unstyled, a.unstyled:hover {
+                color:inherit;
+                text-decoration:none;
+            }
+            h1, h2, h3, h4 {
+                text-transform: uppercase;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            h2 {
+                font-size: 2.25rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            h4 {
+                font-size: 1.125rem;
+            }
+            .text-size-footer {
+                font-size: 1.7rem;
+            }
+            .text-light-grey {
+                color: #7E7F7F;
+            }
+            .text-green {
+                color: #5C9833;
+            }
+            .bg-grey {
+                background-color: #4D4C4C;
+            }
+            .bg-light-grey {
+                background-color: #7E7F7F;
+            }
+            .bg-green {
+                background-color: #5C9833;
+            }
+            .bg-light-green {
+                background-color: #91C472;
+            }
+        </style>
     </head>
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="min-height: 60px;">
-            <a class="navbar-brand" href="{% url 'homepage' %}" style="font-size:1.2rem">{% trans "MOUNTAIN PARTNERS" %}</a>
+            <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'img/icon_male_map.png' %}" height=40 width=40 alt="Hoortus icon"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><div><img src="{% static 'img/icon_profile.png' %}" class="ml-2" height="25" alt="Profile icon"></div></a>
+                    <li>
+                        BARRE DE RECHERCHE
                     </li>
-                    <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" height="25" alt="Outing icon"></a>
-                    </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="{% url 'features:votes' %}">{% trans "FEATURES" %}</a>
-                    </li>-->
                 </ul>
                 <ul class="navbar-nav mr-2">
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="{% url 'contactpage:contact-page' %}">{% trans "Contact" %}</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ LANGUAGE_CODE|upper }}
@@ -63,6 +104,9 @@
                                 </ul>
                             </form>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="#">{% trans "Panier" %}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav text-uppercase">
