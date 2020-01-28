@@ -48,6 +48,13 @@
             h4 {
                 font-size: 1.125rem;
             }
+            .reinsurance .title {
+                text-transform: none;
+            }
+            .reinsurance .subtitle {
+                text-transform: none;
+                color: #7E7F7F;
+            }
             .text-size-footer {
                 font-size: 1.7rem;
             }
@@ -63,6 +70,9 @@
             .bg-light-grey {
                 background-color: #7E7F7F;
             }
+            .bg-super-light-grey {
+                background-color: #F6F6F6;
+            }
             .bg-green {
                 background-color: #5C9833;
             }
@@ -73,15 +83,20 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="min-height: 60px;">
-            <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'img/icon_male_map.png' %}" height=40 width=40 alt="Hoortus icon"></a>
+        <nav class="navbar navbar-expand-lg navbar-white bg-white" style="min-height: 154px;">
+            <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'img/icon_male_map.png' %}" height=60 width=60 alt="Hoortus icon"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li>
-                        BARRE DE RECHERCHE
+                        <div class="input-group">
+                            <input class="form-control font-italic" type="search" placeholder="{% trans 'Rechercher un abri, un portail...' %}" aria-label="Search" name="k"aria-describedby="search-icon">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="search-icon"><img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></span>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-2">
@@ -159,6 +174,51 @@
             </div>
         </div>
         {% endblock %}
+        
+        <footer>
+            <div class="container-fluid bg-grey text-white py-5 px-4">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-xl-3 mb-5">
+                        <h2 class="mb-4">Besoin d'aide ?</h2>
+                        <ul class="list-unstyled text-size-footer">
+                            <li><a href="#" class="unstyled">Nous contacter</a></li>
+                            <li><a href="#" class="unstyled">FAQ</a></li>
+                            <li><a href="#" class="unstyled">Suivi de commande</a></li>
+                            <li><a href="#" class="unstyled">Guide d'achats</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-3  mb-5">
+                        <h2 class="mb-4">à propos d'Hoortus</h2>
+                        <ul class="list-unstyled text-size-footer">
+                            <li><a href="#" class="unstyled">Qui sommes-nous ?</a></li>
+                            <li><a href="#" class="unstyled">Nos engagements</a></li>
+                            <li><a href="#" class="unstyled">Livraisons</a></li>
+                            <li><a href="#" class="unstyled">Recrutement</a></li>
+                            <li><a href="#" class="unstyled">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-3  mb-5">
+                        <h2 class="mb-4">Internationale</h2>
+                        <ul class="list-unstyled text-size-footer">
+                            <li>France, Allemagne, Italie, Espagne, Belgique, Pologne</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-3  mb-5">
+                        <h2 class="mb-4">Réseaux sociaux</h2>
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=56 width=56 alt="Pinterest icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=56 width=56 alt="Youtube icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=56 width=56 alt="Instagram icon"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <p class="text-center text-size-footer mb-0">© 2019 - Hoortus / CGV / Plan du site / Mentions légales</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
