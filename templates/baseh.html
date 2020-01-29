@@ -53,6 +53,18 @@
                 font-size: 1.375rem;
                 color: #5C9833;
             }
+            .main-categories a {
+                padding: 0.5rem;
+                font-weight: 300;
+                font-size: 1rem;
+                text-align: center;
+                text-transform: uppercase;
+                color:inherit;
+                text-decoration:none;
+            }
+            .main-categories a:hover {
+                border-bottom: 2px solid #979797;
+            }
             .card, .card img {
                 border-radius: 0px;
             }
@@ -120,18 +132,19 @@
             }
             @media(min-width:992px) {
                 .navbar-expand-lg .input-group-search {
-                    width: 80% !important; 
+                    width: 60% !important; 
                 }
             }
             @media(min-width:1200px) {
                 .navbar-expand-xl .input-group-search {
-                    width: 70% !important; 
+                    width: 50% !important; 
                 }
             }
             nav .navbar-brand img, nav form input {
                 height: 60px !important;
             }
             nav form input {
+                box-sizing: border-box !important;
                 border: 2px solid #7E7F7F !important;
                 border-top-left-radius: 4px !important;
                 border-bottom-left-radius: 4px !important;
@@ -143,6 +156,7 @@
                 max-height: 40px !important;
             }
             nav .search-button {
+                box-sizing: border-box !important;
                 border: 2px solid #7E7F7F;
                 border-top-right-radius: 4px;
                 border-bottom-right-radius: 4px;
@@ -161,11 +175,21 @@
             nav .search-button:hover, nav .search-button:focus {
                 background: #7E7F7F;
             }
+            .border-solid-light-grey {
+                box-sizing: border-box;
+                border: 1px solid #C2C2C2;
+                border-top-style: none;
+            }
+            .vertical-separator {
+                width: 1px;
+                background-color: #979797;
+                margin: 0.5rem;
+            }
         </style>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white" style="min-height: 154px;">
+        <nav class="navbar navbar-expand-lg navbar-light border-solid-light-grey bg-white" style="min-height: 154px;">
             <a class="navbar-brand" href="#"><img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
