@@ -94,21 +94,92 @@
             .bg-light-green {
                 background-color: #91C472;
             }
+            .nav-link {
+                color: #4D4C4C !important;
+            }
+            .navbar-form {
+                -webkit-flex-basis: 100%;
+                -moz-flex-basis: 100%;
+                -ms-flex-basis: 100%;
+                -o-flex-basis: 100%;
+                flex-basis: -moz-available;
+                flex-basis: 100%; 
+            }
+            .input-group-search {
+                width: 100% !important;
+            }
+            @media(min-width:576px) {
+                .navbar-expand-sm .input-group-search {
+                    width: 100% !important; 
+                }
+            }
+            @media(min-width:768px) {
+                .navbar-expand-md .input-group-search {
+                    width: 90% !important; 
+                }
+            }
+            @media(min-width:992px) {
+                .navbar-expand-lg .input-group-search {
+                    width: 80% !important; 
+                }
+            }
+            @media(min-width:1200px) {
+                .navbar-expand-xl .input-group-search {
+                    width: 70% !important; 
+                }
+            }
+            nav .navbar-brand img, nav form input {
+                height: 60px !important;
+            }
+            nav form input {
+                border: 2px solid #7E7F7F !important;
+                border-top-left-radius: 4px !important;
+                border-bottom-left-radius: 4px !important;
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+                border-right-style: none !important;
+            }
+            nav .navbar-brand img, nav button img {
+                max-height: 40px !important;
+            }
+            nav .search-button {
+                border: 2px solid #7E7F7F;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+                border-left-style: none;
+                padding: 5px 15px;
+                margin: 0;
+                background-color: inherit;
+                color: inherit;
+                font: inherit;
+                cursor: pointer;
+                transition: background 250ms ease-in-out, 
+                            transform 150ms ease;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+            nav .search-button:hover, nav .search-button:focus {
+                background: #7E7F7F;
+            }
         </style>
     </head>
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-white" style="min-height: 154px;">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/icon_male_map.png' %}" height=60 width=60 alt="Hoortus icon"></a>
+            <a class="navbar-brand" href="#"><img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <form class="form-inline my-2 my-lg-0 navbar-form">
+                <div class="input-group input-group-search mx-auto">
+                   <input type="search" class="form-control font-italic" placeholder="{% trans 'Rechercher un abri, un portail...' %}" aria-label="Search" aria-describedby="search-button-addon" name="k">
+                   <div class="input-group-append">
+                      <button class="search-button" type="submit" id="search-button-addon"><img class="img-fluid" src="{% static 'img/icon_male_map.png' %}" alt="Icone de recherche"></button>
+                   </div>
+                </div>
+            </form>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="form-inline">
-                    <input class="form-control font-italic" type="search" placeholder="{% trans 'Rechercher un abri, un portail...' %}" aria-label="Search" name="k">
-                    <button class="btn btn-outline-success" type="submit"><img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></button>
-                </form>
-                <ul class="navbar-nav mr-2">
+                <ul class="navbar-nav mr-2 text-uppercase">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ LANGUAGE_CODE|upper }}
@@ -130,7 +201,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="#">{% trans "Panier" %}</a>
+                        <a class="nav-link" href="#">{% trans "Panier" %}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav text-uppercase">
@@ -146,12 +217,12 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'my-profile' %}">{% trans "My profile" %}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% trans "Sign out" %}</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% trans "Déconnexion" %}</a>
                         </div>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Sign in" %}</a>
+                        <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Connexion" %}</a>
                     </li>
                     {% endif %}
                 </ul>
