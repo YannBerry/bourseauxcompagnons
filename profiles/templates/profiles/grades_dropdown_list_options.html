@@ -2,14 +2,25 @@
 {% for activity in activity_list %}
     <li>{{ activity.grouper }}
         <div>
-            <!-- <div id="{{ activity.grouper|slugify }}_slider"></div> -->
+            <div id="{{ activity.grouper|slugify }}_slider"></div>
+<!--             <script>
+                let slider = document.getElementById('{{ activity.grouper|slugify }}_slider');
 
-            {% for grade in activity.list %}
+                noUiSlider.create(slider, {
+                    start: 1,
+                    range: {
+                        'min': 1,
+                        'max': {{ activity.list|length }}
+                    }
+                });
+            </script> -->
+
+            <!-- {% for grade in activity.list %}
             <label for="id_grades_{{ grade.pk }}" style="margin-right: 0.8rem;">
             <input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" style="margin-right: 0.3rem;" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
-            {% endfor %}
+            {% endfor %} -->
 
-<!--             <style>
+            <!-- <style>
             .grades-slider {
                 -moz-appearance: none;
                 -webkit-appearance: none;
@@ -26,7 +37,7 @@
                 background: rgba(255,255,255,1) !important;
             }
             </style>
-            <span id="{{ activity.grouper|slugify }}_grade"></span>
+            <span id="{{ activity.grouper|slugify }}_grade">{% for grade in activity.list %}{% if grade.pk in checked_grades %}{{ grade.pk }}{% endif %}{% endfor %}</span>
             <span class="mr-2">{{ activity.list|first }}</span>
             <input type="range" name="grades" list="{{ activity.grouper|slugify }}" max="{{ activity.list|length }}" min="1" step="1" mousemove="displaySelectedValue(this.value)" onChange="displaySelectedValue(this.value)" class="grades-slider bg-info">
             <datalist id="{{ activity.grouper|slugify }}">
@@ -37,7 +48,7 @@
             <span class="ml-2">{{ activity.list|last }}</span>
             <script>
                 function displaySelectedValue(value) {
-                    let valueTestElt = document.getElementById('randonnee_grade');
+                    let valueTestElt = document.getElementById('{{ activity.grouper|slugify }}_grade');
                     valueTestElt.innerHTML = value;
                 }
             </script> -->
