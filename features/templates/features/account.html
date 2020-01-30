@@ -1,0 +1,186 @@
+{% extends 'baseh.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Mon compte" %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="account-menu container-fluid bg-white border-solid-light-grey">
+    <div class="py-3 d-flex justify-content-center flex-wrap">
+        <a href="#" class="flex-grow-1"><img src="{% static 'img/icon_male_map.png' %}" class="mr-2" height=30 width=30 alt="Icone flèche">Retour au site</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1">Mon tableau de bord</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1">Mes informations personnelles</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1">Mes adresses</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1">Mes commandes</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1">Ma communication avec Hoortus</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1">Mes avantages Hoortus</a>
+        <div class="vertical-separator"></div>
+        <a href="#" class="flex-grow-1"><img src="{% static 'img/icon_male_map.png' %}" class="mr-2" height=30 width=30 alt="Icone fermer">Me déconnecter</a>
+    </div>
+</div>
+<div class="container-fluid bg-super-light-grey py-5">
+    <div class="row">
+        <div class="col-12 col-xl-4 mb-5 mb-xl-3 px-2">
+            <div class="account-card">
+                <div class="d-flex justify-content-between">
+                    <h2 class="flex-grow-1">Mes informations personnelles</h2>
+                    <a href="#" class="unstyled ml-2"><img src="{% static 'img/icon_male_map.png' %}" height=30 width=30 alt="Instagram icon"></a>
+                </div>
+                <div class="content">
+                    <hr>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex justify-content-between">
+                            <p>Nom</p><p>Persephone</p>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <p>Prénom</p><p>Proserpine</p>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <p>Date de naissance</p><p>Proserpine</p>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <p>Téléphone</p><p>Proserpine</p>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <p>Adresse mail</p><p>Proserpine</p>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <p>Mot de passe</p><p>Proserpine</p>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <p>Données financières</p><p>Proserpine</p>
+                        </li>
+                        <li>
+                            <a href="#" class="delete-account">Supprimer mon compte</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-4 mb-5 mb-xl-3 px-2">
+            <div class="account-card">
+                <div class="d-flex justify-content-between">
+                    <h2 class="flex-grow-1">Mes adresses</h2>
+                    <a href="#" class="unstyled ml-2"><img src="{% static 'img/icon_male_map.png' %}" height=30 width=30 alt="Instagram icon"></a>
+                </div>
+                <div class="content">
+                    <hr>
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-5 mb-md-0 text-uppercase text-center">
+                            <p>Adresse de facturation</p>
+                            <p class="address mb-0">14 rue du pont 69006 Lyon France</p>
+                        </div>
+                        <div class="col-12 col-md-4 mb-5 mb-md-0 text-uppercase text-center">
+                            <p>Adresse de livraison</p>
+                            <p class="address mb-0">14 rue du pont 69006 Lyon France</p>
+                        </div>
+                        <div class="col-12 col-md-4 text-uppercase text-center">
+                            <p>Adresse par défaut</p>
+                            <p class="address mb-0">14 rue du pont 69006 Lyon France</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-4 mb-5 mb-xl-3 px-2">
+            <div class="account-card">
+                <div class="d-flex justify-content-between">
+                    <h2 class="flex-grow-1">Mes commandes</h2>
+                    <a href="#" class="unstyled ml-2"><img src="{% static 'img/icon_male_map.png' %}" height=30 width=30 alt="Instagram icon"></a>
+                </div>
+                <div class="content">
+                    <hr>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <p><a href="#" class="unstyled">En cours / suivi et annulation</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Livrées : facture / remboursement</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Non finalisées</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Annulées</a></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><a href="#" class="unstyled">SAV en cours / soldés</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-6 mb-5 mb-xl-0 px-2">
+            <div class="account-card">
+                <div class="d-flex justify-content-between">
+                    <h2 class="flex-grow-1">Ma communication avec Hoortus</h2>
+                    <a href="#" class="unstyled ml-2"><img src="{% static 'img/icon_male_map.png' %}" height=30 width=30 alt="Instagram icon"></a>
+                </div>
+                <div class="content">
+                    <hr>
+                    <ul class="list-unstyled text-center mb-0">
+                        <li>
+                            <p><a href="#" class="unstyled">FAQ</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Question / Réponse produit</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">SC (devis) / SAV (litige, annulation)</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Avis produit</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Photos produit</a></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><a href="#" class="unstyled">Emailing</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-6 mb-5 mb-xl-0 px-2">
+            <div class="account-card">
+                <div class="d-flex justify-content-between">
+                    <h2 class="flex-grow-1">Mes avantages Hoortus</h2>
+                    <a href="#" class="unstyled ml-2"><img src="{% static 'img/icon_male_map.png' %}" height=30 width=30 alt="Instagram icon"></a>
+                </div>
+                <div class="content">
+                    <hr>
+                    <ul class="list-unstyled text-center mb-0">
+                        <li>
+                            <p><a href="#" class="unstyled">Coupon</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Code avantage</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Bon parrainage</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#" class="unstyled">Bon pour photo</a></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><a href="#" class="unstyled">Chèque cadeau</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}

@@ -13,7 +13,11 @@ class ImageWidget(ClearableFileInput):
 
 class GradesWidget(CheckboxSelectMultiple):
     template_name = 'forms/widgets/grades.html'
-
+    # class Media:
+    #     css = {
+    #         'all': ('css/20191113nouislider/nouislider.min.css',),
+    #     }
+    #     js = ('js/20191113nouislider/nouislider.min.js',)
 
 class SelectableItemsWidget(CheckboxSelectMultiple):
     template_name = 'forms/widgets/selectable_items.html'

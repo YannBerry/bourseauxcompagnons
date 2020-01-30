@@ -2,12 +2,17 @@
 Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   default: SelectMultiple -> select.html
                                             or we can choose: CheckboxSelectMultiple -> checkbox_select.html
 -->
+{% load static %}
+
+<!-- <link rel="stylesheet" href="{% static 'css/20191113nouislider/nouislider.min.css' %}">
+<script src="{% static 'js/20191113nouislider/nouislider.min.js' %}"></script> -->
 
 {% with id=widget.attrs.id %}
 <ul{% if id %} id="{{ id }}"{% endif %}>
     {% for group, options, index in widget.optgroups %}
         {% if group %}
             <li>{{ group }}
+                <!-- <div id="{{ group|slugify }}_slider"> -->
                 <div{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
         {% endif %}
         {% for option in options %}
@@ -22,3 +27,45 @@ Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   defa
     {% endfor %}
 </ul>
 {% endwith %}
+
+<!-- {% with id=widget.attrs.id %}
+<ul{% if id %} id="{{ id }}"{% endif %}>
+    {% for group, options, index in widget.optgroups %}
+        {% if group %}
+            <li>{{ group }}
+                <div id="{{ group|slugify }}_slider">
+        {% endif %}
+        {% if group %}
+                </div>
+            </li>
+        {% endif %}
+        {% for option in options %}
+            {% with widget=option %}
+                <input style="display: none;" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% if widget.attrs.checked is True %} checked{% endif %}>
+            {% endwith%}
+        {% endfor %}
+        <script>
+            var slider = document.getElementById('{{ group|slugify }}_slider');
+            var pipFormats = {'0':'abc', '1':'pqr', '2':'xyz'};
+            noUiSlider.create(slider, {
+                start: 1,
+                step: 1,
+                tooltips: [true],
+                connect: 'lower',
+                range: {
+                    'min': 1,
+                    'max': {{ options|length }}
+                },
+                pips: {
+                    mode: 'range',
+                    format: {
+                        to: function(a){
+                            return pipFormats[a];
+                        }
+                    }
+                }
+            });
+        </script>
+    {% endfor %}
+</ul>
+{% endwith %} -->

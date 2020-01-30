@@ -30,8 +30,8 @@
                 color: #4D4C4C;
             }
             a.unstyled, a.unstyled:hover {
-                color:inherit;
-                text-decoration:none;
+                color: inherit;
+                text-decoration: none;
             }
             h1, h2, h3, h4 {
                 text-transform: uppercase;
@@ -53,7 +53,10 @@
                 font-size: 1.375rem;
                 color: #5C9833;
             }
-            .main-categories a {
+            .address {
+                font-weight: 300;
+            }
+            .main-categories a, .account-menu a {
                 padding: 0.5rem;
                 font-weight: 300;
                 font-size: 1rem;
@@ -62,8 +65,8 @@
                 color:inherit;
                 text-decoration:none;
             }
-            .main-categories a:hover {
-                border-bottom: 2px solid #979797;
+            .main-categories a:hover, .account-menu a:hover {
+                border-bottom: 2px solid #5C9833;
             }
             .card, .card img {
                 border-radius: 0px;
@@ -120,26 +123,6 @@
             .input-group-search {
                 width: 100% !important;
             }
-            @media(min-width:576px) {
-                .navbar-expand-sm .input-group-search {
-                    width: 100% !important; 
-                }
-            }
-            @media(min-width:768px) {
-                .navbar-expand-md .input-group-search {
-                    width: 90% !important; 
-                }
-            }
-            @media(min-width:992px) {
-                .navbar-expand-lg .input-group-search {
-                    width: 60% !important; 
-                }
-            }
-            @media(min-width:1200px) {
-                .navbar-expand-xl .input-group-search {
-                    width: 50% !important; 
-                }
-            }
             nav .navbar-brand img, nav form input {
                 height: 60px !important;
             }
@@ -175,6 +158,11 @@
             nav .search-button:hover, nav .search-button:focus {
                 background: #7E7F7F;
             }
+            @media(min-width:992px) {
+                .navbar-expand-lg .input-group-search {
+                    width: 60% !important; 
+                }
+            }
             .border-solid-light-grey {
                 box-sizing: border-box;
                 border: 1px solid #C2C2C2;
@@ -184,6 +172,29 @@
                 width: 1px;
                 background-color: #979797;
                 margin: 0.5rem;
+            }
+            .account-card {
+                background-color: white;
+                padding: 1.6rem 1.5rem;
+                height:100%;
+            }
+            .account-card h2 {
+                font-size: 1.625rem;
+                text-align: center;
+            }
+            .account-card hr {
+                width: 100%;
+                height: 1px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #D8D8D8;
+                border: 0 none;
+                margin-top: 0.2rem;
+                margin-bottom: 0.5rem;
+            }
+            .delete-account, .delete-account:hover {
+                color: #DA5A5A;
+                text-decoration: none;
             }
         </style>
     </head>
@@ -253,31 +264,9 @@
             </div>
         </nav>
 
-        {% block index %}
-        <div class="container-fluid bg-light">
-            <div class="row pt-4 pt-xl-5">
-                <div class="col-xl-2 order-xl-1">
-                    {% block leftsidebar %}{% endblock %}
-                </div>
-                <div class="col-xl-2 order-xl-3">
-                    {% block rightsidebar %}{% endblock %}
-                </div>
-                <main class="col-xl-8 order-xl-2">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div{% if message.tags %} class="alert {{ message.tags }} alert-dismissible"{% endif %} role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    {% block content %}{% endblock %}
-                </main>
-            </div>
-        </div>
-        {% endblock %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
 
         <footer>
             <div class="container-fluid bg-grey text-white py-5 px-4">

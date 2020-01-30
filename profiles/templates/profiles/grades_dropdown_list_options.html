@@ -2,7 +2,7 @@
 {% for activity in activity_list %}
     <li>{{ activity.grouper }}
         <div>
-            <div id="{{ activity.grouper|slugify }}_slider"></div>
+            <!-- <div id="{{ activity.grouper|slugify }}_slider"></div> -->
 <!--             <script>
                 let slider = document.getElementById('{{ activity.grouper|slugify }}_slider');
 
@@ -15,10 +15,10 @@
                 });
             </script> -->
 
-            <!-- {% for grade in activity.list %}
+            {% for grade in activity.list %}
             <label for="id_grades_{{ grade.pk }}" style="margin-right: 0.8rem;">
             <input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" style="margin-right: 0.3rem;" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
-            {% endfor %} -->
+            {% endfor %}
 
             <!-- <style>
             .grades-slider {
