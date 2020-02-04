@@ -7,29 +7,29 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="row">
-    <div class="col-12 col-md-6">
-        <div class="card mb-4">
+    <div class="col-12 col-md-6 mb-4">
+        <div class="card h-100">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="card-title col-12">
                         <div class="d-flex flex-row justify-content-between">
                             <h2 class="mb-1">{% trans 'My public profile' %}</h2>
                             <a class="ml-2" href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
                         </div>
-                        <p class="helptext mb-3">{% trans 'Data displayed on the profiles page' %}</p>
+                        <p class="helptext">{% trans 'Data displayed on the profiles page' %}</p>
                     </div>
                     <div class="col-12 mb-2">
-                        <div class="progress" style="height: 1.8rem;">
-                            <div class="progress-bar progress-bar-striped {% if user.profile.completion <= 50 %}bg-danger{% elif user.profile.completion <= 80 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ user.profile.completion }}%">{% trans 'Completion:' %} {{ user.profile.completion }} &#37;</div>
+                        <div class="progress" style="height: 2.5rem;">
+                            <div class="progress-bar progress-bar-striped {% if user.profile.completion <= 50 %}bg-danger{% elif user.profile.completion <= 80 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ user.profile.completion }}%;">{% trans 'Completion:' %} {{ user.profile.completion }} &#37;</div>
                         </div>
 
                         <p class="helptext"><small>
                         {% if user.profile.completion <= 50 %}
-                            {% trans 'Low chance to be contacted. Public profile displayed as "poorly completed profile" (red background)' %}
+                            {% trans 'Low chance to be contacted. Public profile displayed as "poorly completed profile"' %}
                         {% elif user.profile.completion <= 80 %}
-                            {% trans 'Fair chance to be contacted. Public profile displayed as "fairly completed profile" (orange background)' %}
+                            {% trans 'Fair chance to be contacted. Public profile displayed as "fairly completed profile"' %}
                         {% else %}
-                            {% trans 'High chance to be contacted. Public profile displayed as "well completed profile (= MOTIVATED PROFILE)" (green background)' %}
+                            {% trans 'High chance to be contacted. Public profile displayed as "well completed profile"' %}
                         {% endif %}
                         </small></p>
                     </div>
@@ -44,13 +44,32 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-md-6">
-        <div class="card mb-4">
+    <div class="col-12 col-md-6 mb-4">
+        <div class="card h-100">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="card-title col-12">
                         <h2 class="mb-1">{% trans 'My account' %}</h2>
-                        <p class="helptext mb-3">{% trans 'Account data: email address, password, username, first name, last name' %}</p>
+                        <p class="helptext">{% trans 'email address, password, username, first name, last name' %}</p>
+                    </div>
+                    <div class="col-12">
+                        <ul class="list-unstyled account-settings-list text-secondary mb-2">
+                            <li class="d-flex justify-content-between">
+                                <p>{% trans 'Email address' %}</p><p>{{ user.email }}</p>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <p>{% trans 'Password' %}</p><p>********</p>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <p>{% trans 'Username' %}</p><p>{{ user.username }}</p>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <p>{% trans 'First name' %}</p><p>{{ user.first_name }}</p>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <p>{% trans 'Last name' %}</p><p>{{ user.last_name }}</p>
+                            </li>
+                        </ul>
                     </div>
                     <div class="col-12">
                         <div class="row">
@@ -70,12 +89,16 @@
 <div class="card mb-4">
     <div class="card-body">
         <div id="cal-events" class="row">
-            <div class="col-auto mr-auto">
-                <h2>{% trans 'My calendar' %}</h2>
-            </div>
-            <div class="col-auto">
-                <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
-                <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
+            <div class="card-title col-12">
+                <div class="row">
+                    <div class="col-auto mr-auto">
+                        <h2>{% trans 'My calendar' %}</h2>
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
+                        <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
+                    </div>
+                </div>
             </div>
             <div class="col-12">
                 {% if not availabilities %}
@@ -103,7 +126,7 @@
 <div class="card mb-4">
     <div class="card-body">
         <div class="row">
-            <div class="col-auto mr-auto">
+            <div class="card-title col-12">
                 <h2>{% trans 'My outings' %}</h2>
             </div>
         </div>
@@ -134,7 +157,7 @@
 <div class="card mb-4">
     <div class="card-body">
         <div class="row mb-2">
-            <div class="col-12">
+            <div class="card-title col-12">
                 <h2>{% trans 'Exports' %}</h2>
             </div>
             <div class="col-12">
@@ -143,7 +166,7 @@
         </div>
         {% if user.is_superuser %}
         <div class="row mb-2">
-            <div class="col-12">
+            <div class="card-title col-12">
                 <h2>{% trans 'Imports / Exports for superadmins' %}</h2>
             </div>
             <div class="col-12">

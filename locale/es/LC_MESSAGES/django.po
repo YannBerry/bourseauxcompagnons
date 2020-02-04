@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-27 17:51+0100\n"
+"POT-Creation-Date: 2020-02-02 20:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,7 +101,7 @@ msgstr "Borrar"
 #: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
-#: profiles/templates/profiles/profile_form.html:114
+#: profiles/templates/profiles/profile_form.html:115
 #: profiles/templates/profiles/profile_register.html:81
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:49
@@ -120,7 +120,7 @@ msgstr "Disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:16
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:120
+#: profiles/templates/profiles/my_profile.html:143
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit icon"
 msgstr "Icono de edición"
@@ -131,7 +131,7 @@ msgstr "Editar la disponibilidad"
 
 #: availabilities/templates/availabilities/availability_detail.html:17
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:123
+#: profiles/templates/profiles/my_profile.html:146
 msgid "Delete icon"
 msgstr "Icono de borrado"
 
@@ -191,7 +191,7 @@ msgstr "Crear una disponibilidad"
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
-#: profiles/templates/profiles/profile_form.html:112
+#: profiles/templates/profiles/profile_form.html:113
 #: templates/registration/account_form.html:47
 msgid "Save"
 msgstr "Guardar"
@@ -310,7 +310,7 @@ msgid "email-sent/"
 msgstr "mensaje-enviado/"
 
 #: core/templates/core/modals/help_draw_area.html:8
-#: profiles/templates/profiles/profile_form.html:76
+#: profiles/templates/profiles/profile_form.html:77
 #: profiles/templates/profiles/profile_list.html:31
 #: profiles/templates/profiles/profile_register.html:67
 msgid "How to draw an area?"
@@ -398,9 +398,33 @@ msgstr "Disponible"
 msgid "No activity was associated."
 msgstr "Ninguna actividad fue asociado."
 
+#: features/templates/features/account.html:5
+msgid "Mon compte"
+msgstr ""
+
+#: features/templates/features/hoortus.html:5
+msgid "Votre jardin au prix juste"
+msgstr ""
+
+#: features/templates/features/product.html:5
+msgid "Product detail"
+msgstr ""
+
 #: features/urls.py:7
 msgid "votes/"
 msgstr "votos/"
+
+#: features/urls.py:8
+msgid "hoortus/"
+msgstr ""
+
+#: features/urls.py:9
+msgid "hoortus/account"
+msgstr ""
+
+#: features/urls.py:10
+msgid "hoortus/product"
+msgstr ""
 
 #: outings/models.py:14
 msgid "title"
@@ -455,12 +479,12 @@ msgid "Are you sure you want to delete your outing '%(outing_title)s'?"
 msgstr "Estás seguro de querer borrar tu salida '%(outing_title)s'?"
 
 #: outings/templates/outings/outing_detail.html:15
-#: profiles/templates/profiles/my_profile.html:120
+#: profiles/templates/profiles/my_profile.html:143
 msgid "Edit outing"
 msgstr "Editar la salida"
 
 #: outings/templates/outings/outing_detail.html:16
-#: profiles/templates/profiles/my_profile.html:123
+#: profiles/templates/profiles/my_profile.html:146
 msgid "Delete outing "
 msgstr "Borrar la salida"
 
@@ -488,7 +512,7 @@ msgstr ""
 msgid "Create an outing"
 msgstr "Crear una salida"
 
-#: outings/templates/outings/outing_list.html:13 templates/base.html:39
+#: outings/templates/outings/outing_list.html:13 templates/base.html:37
 msgid "Outings"
 msgstr "Salidas"
 
@@ -534,7 +558,7 @@ msgid "Filter"
 msgstr "Filtrar"
 
 #: outings/templates/outings/outing_list.html:76
-#: profiles/templates/profiles/my_profile.html:78
+#: profiles/templates/profiles/my_profile.html:99
 msgid "Add an outing"
 msgstr "Añadir una salida"
 
@@ -629,7 +653,7 @@ msgstr ""
 msgid "Email"
 msgstr "Dirección de correo electrónico"
 
-#: profiles/admin.py:53
+#: profiles/admin.py:53 profiles/templates/profiles/my_profile.html:67
 msgid "First name"
 msgstr "Nombre"
 
@@ -812,8 +836,8 @@ msgstr ""
 "\n"
 "                                                Has recibido un mensaje de "
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/perfiles/"
-"%(profile_making_contact)s/\">%(profile_making_contact)s</a> desde el sitio web "
-"Bourse aux compagnons:\n"
+"%(profile_making_contact)s/\">%(profile_making_contact)s</a> desde el sitio "
+"web Bourse aux compagnons:\n"
 "                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:332
@@ -860,8 +884,8 @@ msgstr ""
 "                                                Has recibido un mensaje de "
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/perfiles/"
 "%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
-"underline;\">%(profile_making_contact)s</a> desde el sitio web "
-"Bourse aux compagnons:\n"
+"underline;\">%(profile_making_contact)s</a> desde el sitio web Bourse aux "
+"compagnons:\n"
 "                                                "
 
 #: profiles/templates/profiles/contact_profile_form.html:4
@@ -874,7 +898,8 @@ msgstr "Contacta con %(profile_contacted)s"
 msgid "Get in touch with %(profile_contacted)s"
 msgstr "Contactar con %(profile_contacted)s"
 
-#: profiles/templates/profiles/my_profile.html:5 templates/base.html:81
+#: profiles/templates/profiles/my_profile.html:5 templates/base.html:79
+#: templates/baseh.html:263
 msgid "My profile"
 msgstr "Mi perfil"
 
@@ -899,25 +924,37 @@ msgid "Completion:"
 msgstr "Completitud:"
 
 #: profiles/templates/profiles/my_profile.html:28
+#, fuzzy
+#| msgid ""
+#| "Low chance to be contacted. Public profile displayed as \"poorly "
+#| "completed profile\" (red background)"
 msgid ""
 "Low chance to be contacted. Public profile displayed as \"poorly completed "
-"profile\" (red background)"
+"profile\""
 msgstr ""
 "Baja probabilidad de ser contactado. Perfil público aparecerá como \"perfil "
 "poco completado\" (fondo rojo)"
 
 #: profiles/templates/profiles/my_profile.html:30
+#, fuzzy
+#| msgid ""
+#| "Fair chance to be contacted. Public profile displayed as \"fairly "
+#| "completed profile\" (orange background)"
 msgid ""
 "Fair chance to be contacted. Public profile displayed as \"fairly completed "
-"profile\" (orange background)"
+"profile\""
 msgstr ""
 "Razonable probabilidad de ser contactado. Perfil público aparecerá como "
 "\"perfil bastante completado\" (fondo naranja)"
 
 #: profiles/templates/profiles/my_profile.html:32
+#, fuzzy
+#| msgid ""
+#| "High chance to be contacted. Public profile displayed as \"well completed "
+#| "profile (= MOTIVATED PROFILE)\" (green background)"
 msgid ""
 "High chance to be contacted. Public profile displayed as \"well completed "
-"profile (= MOTIVATED PROFILE)\" (green background)"
+"profile (= MOTIVATED PROFILE)\""
 msgstr ""
 "Alta probabilidad de ser contactado. Perfil público aparecerá como \"perfil "
 "bien completado (= PERFIL MOTIVADO)\" (fondo verde)"
@@ -937,23 +974,39 @@ msgstr ""
 "usuario, nombre, apellido"
 
 #: profiles/templates/profiles/my_profile.html:58
+msgid "Email address"
+msgstr "Dirección de correo electrónico"
+
+#: profiles/templates/profiles/my_profile.html:61
+msgid "Password"
+msgstr "Contraseña"
+
+#: profiles/templates/profiles/my_profile.html:64
+msgid "Username"
+msgstr "Nombre usuario"
+
+#: profiles/templates/profiles/my_profile.html:70
+msgid "Last name"
+msgstr "Apellido"
+
+#: profiles/templates/profiles/my_profile.html:77
 msgid "Update my account settings"
 msgstr "Actualizar mi configuración de la cuenta"
 
-#: profiles/templates/profiles/my_profile.html:61
+#: profiles/templates/profiles/my_profile.html:80
 #: templates/registration/account_confirm_delete.html:4
 msgid "Delete my account"
 msgstr "Borrar mi cuenta"
 
-#: profiles/templates/profiles/my_profile.html:74
+#: profiles/templates/profiles/my_profile.html:95
 msgid "My calendar"
 msgstr "Mi calendario"
 
-#: profiles/templates/profiles/my_profile.html:77
+#: profiles/templates/profiles/my_profile.html:98
 msgid "Add an availability"
 msgstr "Añadir una disponibilidad"
 
-#: profiles/templates/profiles/my_profile.html:83
+#: profiles/templates/profiles/my_profile.html:106
 msgid ""
 "<strong>You have not created any availability yet.</strong> Create one by "
 "clicking on the <span class='badge badge-pill badge-success'>+ Add an "
@@ -963,12 +1016,12 @@ msgstr ""
 "el botón <span class='badge badge-pill badge-success'>+ Añadir una "
 "disponibilidad</span> más arriba o pulsando"
 
-#: profiles/templates/profiles/my_profile.html:83
-#: profiles/templates/profiles/my_profile.html:88
+#: profiles/templates/profiles/my_profile.html:106
+#: profiles/templates/profiles/my_profile.html:111
 msgid "here."
 msgstr "aquí."
 
-#: profiles/templates/profiles/my_profile.html:83
+#: profiles/templates/profiles/my_profile.html:106
 msgid ""
 "Frequently filling out and updating your availabilities in your calendar is "
 "highly advisable: potential partners can find you in the 'profiles page' "
@@ -980,7 +1033,7 @@ msgstr ""
 "perfiles' cuando filtran por fechas de disponibilidad. Así muestras que "
 "quieres salir a la montaña sin saber donde y estás abierto a sugerencias."
 
-#: profiles/templates/profiles/my_profile.html:88
+#: profiles/templates/profiles/my_profile.html:111
 msgid ""
 "<strong>You have not created any outing yet.</strong> Create one by clicking "
 "on the <span class='badge badge-pill badge-success'>+ Add an outing</span> "
@@ -990,7 +1043,7 @@ msgstr ""
 "el botón <span class='badge badge-pill badge-success'>+ Añadir una salida</"
 "span> más arriba o pulsando"
 
-#: profiles/templates/profiles/my_profile.html:88
+#: profiles/templates/profiles/my_profile.html:111
 msgid ""
 "By filling out an outing, potential partners can find your proposal in the "
 "'outings page', get in touch with you and, if you want, join you on that "
@@ -1000,27 +1053,27 @@ msgstr ""
 "en la 'página de salidas', contactar contigo y, si quieres, unirse a tú en "
 "este salida"
 
-#: profiles/templates/profiles/my_profile.html:107
+#: profiles/templates/profiles/my_profile.html:130
 msgid "My outings"
 msgstr "Mis salidas"
 
-#: profiles/templates/profiles/my_profile.html:138
+#: profiles/templates/profiles/my_profile.html:161
 msgid "Exports"
 msgstr "Exportaciones"
 
-#: profiles/templates/profiles/my_profile.html:141
+#: profiles/templates/profiles/my_profile.html:164
 msgid "Export profiles to Excel format"
 msgstr "Exportar perfiles en formato Excel"
 
-#: profiles/templates/profiles/my_profile.html:147
+#: profiles/templates/profiles/my_profile.html:170
 msgid "Imports / Exports for superadmins"
 msgstr "Importación / Exportación para superadministradores"
 
-#: profiles/templates/profiles/my_profile.html:150
+#: profiles/templates/profiles/my_profile.html:173
 msgid "Export outings"
 msgstr "Exportar salidas"
 
-#: profiles/templates/profiles/my_profile.html:159 templates/base.html:88
+#: profiles/templates/profiles/my_profile.html:182 templates/base.html:86
 #: templates/registration/login.html:4 templates/registration/login.html:40
 #: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
@@ -1334,25 +1387,53 @@ msgstr ""
 "tu nivel, tu experiencia, tu localización, etc. Sitio web realizado por un "
 "montañero quien luchaba para encontrar compañeros de montaña."
 
-#: templates/base.html:29
+#: templates/base.html:27
 msgid "MOUNTAIN PARTNERS"
 msgstr "COMPAÑEROS DE MONTAÑA"
 
-#: templates/base.html:36
+#: templates/base.html:34
 msgid "Profiles"
 msgstr "Perfiles"
 
-#: templates/base.html:42
+#: templates/base.html:40
 msgid "FEATURES"
 msgstr "FUNCIONES"
 
-#: templates/base.html:47
+#: templates/base.html:45
 msgid "Contact"
 msgstr "Contacto"
 
-#: templates/base.html:83
+#: templates/base.html:81
 msgid "Sign out"
 msgstr "Cerrar sesión"
+
+#: templates/baseh.html:14
+msgid "Description qui s affiche sur le resultat de google"
+msgstr ""
+
+#: templates/baseh.html:220 templates/baseh.html:326
+msgid "Rechercher un abri, un portail..."
+msgstr ""
+
+#: templates/baseh.html:249
+msgid "Panier"
+msgstr ""
+
+#: templates/baseh.html:265
+msgid "Déconnexion"
+msgstr ""
+
+#: templates/baseh.html:270
+msgid "Connexion"
+msgstr ""
+
+#: templates/baseh.html:370
+msgid "Votre email"
+msgstr ""
+
+#: templates/baseh.html:376
+msgid "Envoyer"
+msgstr ""
 
 #: templates/index.html:10
 msgid "Partners for your mountain outings"

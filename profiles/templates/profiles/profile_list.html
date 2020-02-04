@@ -96,15 +96,16 @@
             {{ counter }} profiles
             {% endblocktrans %}
             <small>
-                <span class="px-2 badge-pill border bg-green-superlight">{% trans 'well completed profile (= MOTIVATED PROFILE)' %}</span>
-                <span class="px-2 badge-pill border bg-orange-superlight">{% trans 'fairly completed profile' %}</span>
-                <span class="px-2 badge-pill border bg-red-superlight">{% trans 'poorly completed profile' %}</span>
+                <span class="px-2 badge-pill border bg-success">{% trans 'well completed profile' %}</span>
+                <span class="px-2 badge-pill border bg-warning">{% trans 'fairly completed profile' %}</span>
+                <span class="px-2 badge-pill border bg-danger">{% trans 'poorly completed profile' %}</span>
             </small>
         </p>
         <div class="row">
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
-                    <div class="card cursor-pointer {% if profile.completion <= 50 %}bg-red-superlight{% elif profile.completion <= 80 %}bg-orange-superlight{% else %}bg-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
+                    <div class="card h-100 cursor-pointer {% if profile.completion <= 50 %}border-red-superlight{% elif profile.completion <= 80 %}border-orange-superlight{% else %}border-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
+                        <div style="display : inline-block; position: absolute; top: 0px; right: 0rem; height : 0; width : 0; border-top : 1.3rem solid {% if profile.completion <= 50 %}red{% elif profile.completion <= 80 %}orange{% else %}green{% endif %}; border-left : 1.3rem solid transparent;"></div>
                         <div class="card-body">
                             <div class="row align-items-start">
                                 <div class="col-3 mb-2">

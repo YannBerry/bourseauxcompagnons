@@ -48,6 +48,9 @@
             h4 {
                 font-size: 1.125rem;
             }
+            @media (max-width: 575.98px) {
+
+            }
             .price {
                 font-weight: 300;
                 font-size: 1.375rem;
@@ -70,6 +73,62 @@
             }
             .main-categories a:hover, .account-menu a:hover {
                 border-bottom: 2px solid #5C9833;
+            }
+            .main-btn {
+                display: inline-flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                font-size: 2.25rem;
+                text-decoration: none;
+                border-radius: 4px;
+                border: none;
+                color: white;
+                text-transform: uppercase;
+                background-color: #5C9833;
+                padding: 0.5rem 1.125rem;
+                line-height: 2.625rem;
+                outline: none;
+            }
+            .main-btn:hover {
+                background-color: #91C472;
+                color: white;
+                text-decoration: none;
+                border: none;
+                outline: none;
+            }
+            .main-btn img {
+                max-height: 3rem;
+                padding-right: 1.125rem;
+            }
+            .small-btn {
+                display: inline-flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                font-size: 1.3rem;
+                text-decoration: none;
+                border-radius: 4px;
+                border: none;
+                color: white;
+                text-transform: uppercase;
+                background-color: #5C9833;
+                padding: 0.125rem 0.625rem;
+                line-height: 2.125rem;
+                outline: none;
+            }
+            .small-btn:hover {
+                background-color: #91C472;
+                color: white;
+                text-decoration: none;
+                border: none;
+                outline: none;
+            }
+            .small-btn img {
+                max-height: 2.2rem;
+                padding-right: 0.625rem;
             }
             .card, .card img {
                 border-radius: 0px;
@@ -373,7 +432,7 @@
                                     </label>
                                 </div>
                                 <div class="form-group col-12">
-                                    <button class="btn btn-success" type="submit">{% trans "Envoyer" %}</button>
+                                    <button class="main-btn" type="submit"><img src="{% static 'img/icon_male_map.png' %}" alt="Icone de validation">{% trans "Envoyer" %}</button>
                                 </div>
                             </div>
                         </form>
@@ -383,22 +442,22 @@
 
             <div class="reinsurance container-fluid bg-white">
                 <div class="row text-center">
-                    <div class="col-12 col-md-6 col-xl-3 px-5 mb-5">
+                    <div class="col-6 col-xl-3 px-5 mb-5">
                         <img class="my-5" src="{% static 'img/icon_male_map.png' %}" height=60 width=60 alt="Icone de livraison">
                         <h1 class="title">Livraison sous 5 jours</h1>
                         <h3 class="subtitle">(voir conditions)</h3>
                     </div>
-                    <div class="col-12 col-md-6 col-xl-3 px-5 mb-5">
+                    <div class="col-6 col-xl-3 px-5 mb-5">
                         <img class="my-5" src="{% static 'img/icon_male_map.png' %}" height=60 width=60 alt="Icone de garantie">
                         <h1 class="title">Tous nos produits sont garantis</h1>
                         <h3 class="subtitle">(voir conditions)</h3>
                     </div>
-                    <div class="col-12 col-md-6 col-xl-3 px-5 mb-5">
+                    <div class="col-6 col-xl-3 px-5 mb-5">
                         <img class="my-5" src="{% static 'img/icon_male_map.png' %}" height=60 width=60 alt="Icone de paiement">
                         <h1 class="title">Paiements sécurisés</h1>
                         <h3 class="subtitle">(3x et 4x sans frais)</h3>
                     </div>
-                    <div class="col-12 col-md-6 col-xl-3 px-5 mb-5">
+                    <div class="col-6 col-xl-3 px-5 mb-5">
                         <img class="my-5" src="{% static 'img/icon_male_map.png' %}" height=60 width=60 alt="Icone de sécurité">
                         <h1 class="title">Une plateforme sécurisée</h1>
                         <h3 class="subtitle">(voir conditions)</h3>
@@ -411,16 +470,44 @@
                     <div class="row text-center">
                         <div class="col-12">
                             <h2 style="text-transform: none;">Paiement sécurisé</h2>
-                            <div class="d-flex justify-content-center align-items-center flex-wrap pt-3">
-                                <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="CB icon"></a>
-                                <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Visa icon"></a>
-                                <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Mastercard icon"></a>
-                                <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Paypal icon"></a>
-                                <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="American Express icon"></a>
-                                <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="SEPA icon"></a>
+                        </div>
+                    </div>
+                    <div class="d-sm-none">
+                        <div class="row text-center pt-3">
+                            <div class="col-4">
+                                <a href="#" class="unstyled"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="CB icon"></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="unstyled"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Visa icon"></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="unstyled"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Mastercard icon"></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="unstyled"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Paypal icon"></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="unstyled"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="American Express icon"></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="unstyled"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="SEPA icon"></a>
+                            </div>
+                            <div class="col-12">
                                 <p style="font-weight: bold; font-size: 1.3rem;">en 3x ou 4x</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="d-none d-sm-block">
+                        <div class="d-flex justify-content-center align-items-center flex-wrap pt-3">
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="CB icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Visa icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Mastercard icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="Paypal icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="American Express icon"></a>
+                            <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=104 width=104 alt="SEPA icon"></a>
+                            <p style="font-weight: bold; font-size: 1.3rem;">en 3x ou 4x</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <div class="container-fluid bg-light-green text-white py-4 px-5">
