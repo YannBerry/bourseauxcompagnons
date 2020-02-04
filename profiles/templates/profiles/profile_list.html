@@ -105,7 +105,7 @@
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 cursor-pointer {% if profile.completion <= 50 %}border-red-superlight{% elif profile.completion <= 80 %}border-orange-superlight{% else %}border-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
-                        <div style="display : inline-block; position: absolute; top: 0px; right: 0rem; height : 0; width : 0; border-top : 1.3rem solid {% if profile.completion <= 50 %}red{% elif profile.completion <= 80 %}orange{% else %}green{% endif %}; border-left : 1.3rem solid transparent;"></div>
+                        <div style="display : inline-block; position: absolute; top: 0px; right: 0rem; height : 0; width : 0; border-top : 1.3rem solid {% if profile.completion <= 50 %}rgba(220,53,69,1){% elif profile.completion <= 80 %}rgba(255,193,7,1){% else %}rgba(40,167,69,1){% endif %}; border-left : 1.3rem solid transparent;"></div>
                         <div class="card-body">
                             <div class="row align-items-start">
                                 <div class="col-3 mb-2">
