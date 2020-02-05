@@ -22,9 +22,9 @@
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,600,600i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <style>
-            body {
+            html, body {
                 font-family: 'Titillium Web', sans-serif;
-                font-size: 1rem;
+                font-size: 100%;
                 font-style: normal;
                 font-weight: normal;
                 color: #4D4C4C;
@@ -62,17 +62,81 @@
             .address {
                 font-weight: 300;
             }
+            .main-categories .cat-dropdown {
+                position: relative;
+                text-align: center;
+                padding: 1.5rem;
+            }
             .main-categories a, .account-menu a {
-                padding: 0.5rem;
                 font-weight: 300;
                 font-size: 1rem;
-                text-align: center;
                 text-transform: uppercase;
                 color:inherit;
                 text-decoration:none;
             }
             .main-categories a:hover, .account-menu a:hover {
                 border-bottom: 2px solid #5C9833;
+            }
+            .main-categories .cat-dropdown-content {
+                display: none;
+            }
+            .main-categories .cat-dropdown:hover .cat-dropdown-content {
+                display: block;
+                position: absolute;
+                top: 4.5rem;/*line-height (1.5rem) + padding(2x1.5rem)*/
+                border-top: 1px solid #C2C2C2;
+                background-color: white;
+                min-width: 50vw;
+                z-index: 999;
+                text-align: right;
+            }
+            .main-categories .cat-dropdown-content .categories {
+                padding: 1.5rem 1rem 1.5rem;
+            }
+            .main-categories .cat-dropdown-content .categories li {
+                padding: 1rem 0rem;
+            }
+            .main-categories .cat-dropdown-content .categories a {
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-transform: none; 
+            }
+            .main-categories .cat-dropdown-content .top-article {
+                border-left: 2px solid #D8D8D8;
+                padding: 0;
+            }
+            .main-categories .cat-dropdown-content a {
+                border-bottom: 0;
+            }
+            .main-categories .cat-dropdown-content .top-article .title {
+                display: block;
+                width: 100%;
+                background-color: #E2E2E2;
+                font-size: 1.5rem;
+                color: #7E7F7F;
+                padding: 1.25rem;
+                text-align: center;
+            }
+            .main-categories .cat-dropdown-content .top-article .all-articles {
+                display: block;
+                width: 100%;
+                background-color: #4D4C4C;
+                font-size: 1.75rem;
+                color: white;
+                text-transform: uppercase;
+                padding: 1.25rem;
+                text-align: center;
+            }
+            .main-categories .cat-dropdown-content .categories .all-categories {
+                display: block;
+                width: 100%;
+                background-color: #5C9833;
+                font-size: 1.75rem;
+                font-weight: normal;
+                color: white;
+                text-transform: uppercase;
+                padding: 1.25rem;
+                text-align: center;
             }
             .main-btn {
                 display: inline-flex;
@@ -233,7 +297,7 @@
             .vertical-separator {
                 width: 1px;
                 background-color: #979797;
-                margin: 0.5rem;
+                margin: 1rem;
             }
             .account-card {
                 background-color: white;
@@ -420,7 +484,7 @@
                     <div class="col-12 col-md-6 pl-0">
                         <img src="{% static 'img/bg_1.JPG' %}" class="img-fluid" alt="Image de la Newsletter">
                     </div>
-                    <div class="col-12 col-md-6 mt-4">
+                    <div class="col-12 col-md-6 mt-4 mx-auto">
                         <h1>Bonjour !</h1>
                         <p class="my-4">Inscrivez-vous à la newsletter pour avoir des conseils et les derniers bon plans !</p>
                         <form id="newsletter-form" method="get" action="" class="mx-auto px-5">
