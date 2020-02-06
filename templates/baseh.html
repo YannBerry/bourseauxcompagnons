@@ -347,6 +347,51 @@
             .product-description .description .content {
                 padding-left: 5rem;
             }
+            /* COLLAPSIBLE */
+            .wrap-collapse .toggle {
+                display: none;
+            }
+            .wrap-collapse .label-toggle {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0;
+                cursor: pointer;
+            }
+            .wrap-collapse .label-toggle::after {
+                content: ' +';
+                line-height: 4rem;
+                font-size: 4rem;
+                font-weight: 300;
+                display: inline-box;
+                vertical-align: middle;
+                margin: 0rem 0rem 0rem .7rem;
+            }
+            .wrap-collapse .collapsed-content .content-inner {
+                padding-top: 0rem;
+            }
+            .wrap-collapse .collapsed-content {
+                max-height: 0px;
+                overflow: hidden;
+            }
+            .wrap-collapse .toggle:checked + .label-toggle + .collapsed-content {
+                max-height: 2000px;
+            }
+            .wrap-collapse .toggle:checked + .label-toggle::after {
+                transform: rotate(45deg);
+            }
+            @media(min-width:992px) {
+                .wrap-collapse .label-toggle {
+                    cursor: auto;
+                }
+                .wrap-collapse .label-toggle::after {
+                    display: none;
+                }
+                .wrap-collapse .collapsed-content {
+                    max-height: 2000px;
+                }
+            }
         </style>
     </head>
 
@@ -604,13 +649,18 @@
             </div>
             <div class="categories container-fluid bg-light-grey text-white py-4 px-5">
                 <div class="row">
-                    <div class="col-12">
-                        <h1>Catégories</h1>
-                        <ul class="list-unstyled text-size-p">
-                            {% for cat in "123456789" %}
-                            <li><a href="#" class="unstyled" style="text-transform: uppercase;">{{ cat }}</a></li>
-                            {% endfor %}
-                        </ul>
+                    <div class="col-12 wrap-collapse">
+                        <input id="categories-collapse" class="toggle" type="checkbox">
+                        <label for="categories-collapse" class="label-toggle"><h1>Catégories</h1></label>
+                        <div class="collapsed-content">
+                            <div class="content-inner pt-4">
+                                <ul class="list-unstyled text-size-p">
+                                    {% for cat in "123456789" %}
+                                    <li><a href="#" class="unstyled" style="text-transform: uppercase;">{{ cat }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -618,33 +668,48 @@
             {% block footer2 %}
             <div class="container-fluid bg-grey text-white py-5 px-4">
                 <div class="row">
+                    <div class="col-12 col-md-6 col-xl-3 mb-5 wrap-collapse">
+                        <input id="need-help-collapse" class="toggle" type="checkbox">
+                        <label for="need-help-collapse" class="label-toggle"><h2 class="mb-4">Besoin d'aide ?</h2></label>
+                        <div class="collapsed-content">
+                            <div class="content-inner">
+                                <ul class="list-unstyled text-size-footer">
+                                    <li><a href="#" class="unstyled">Nous contacter</a></li>
+                                    <li><a href="#" class="unstyled">FAQ</a></li>
+                                    <li><a href="#" class="unstyled">Suivi de commande</a></li>
+                                    <li><a href="#" class="unstyled">Guide d'achats</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-3 mb-5 wrap-collapse">
+                        <input id="need-help-collapse" class="toggle" type="checkbox">
+                        <label for="need-help-collapse" class="label-toggle"><h2 class="mb-4">à propos d'Hoortus</h2></label>
+                        <div class="collapsed-content">
+                            <div class="content-inner">
+                                <ul class="list-unstyled text-size-footer">
+                                    <li><a href="#" class="unstyled">Qui sommes-nous ?</a></li>
+                                    <li><a href="#" class="unstyled">Nos engagements</a></li>
+                                    <li><a href="#" class="unstyled">Livraisons</a></li>
+                                    <li><a href="#" class="unstyled">Recrutement</a></li>
+                                    <li><a href="#" class="unstyled">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-3 mb-5 wrap-collapse">
+                        <input id="need-help-collapse" class="toggle" type="checkbox">
+                        <label for="need-help-collapse" class="label-toggle"><h2 class="mb-4">Internationale</h2></label>
+                        <div class="collapsed-content">
+                            <div class="content-inner">
+                                <ul class="list-unstyled text-size-footer">
+                                    <li>France, Allemagne, Italie, Espagne, Belgique, Pologne</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-6 col-xl-3 mb-5">
-                        <h2 class="mb-4">Besoin d'aide ?</h2>
-                        <ul class="list-unstyled text-size-footer">
-                            <li><a href="#" class="unstyled">Nous contacter</a></li>
-                            <li><a href="#" class="unstyled">FAQ</a></li>
-                            <li><a href="#" class="unstyled">Suivi de commande</a></li>
-                            <li><a href="#" class="unstyled">Guide d'achats</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-md-6 col-xl-3  mb-5">
-                        <h2 class="mb-4">à propos d'Hoortus</h2>
-                        <ul class="list-unstyled text-size-footer">
-                            <li><a href="#" class="unstyled">Qui sommes-nous ?</a></li>
-                            <li><a href="#" class="unstyled">Nos engagements</a></li>
-                            <li><a href="#" class="unstyled">Livraisons</a></li>
-                            <li><a href="#" class="unstyled">Recrutement</a></li>
-                            <li><a href="#" class="unstyled">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-md-6 col-xl-3  mb-5">
-                        <h2 class="mb-4">Internationale</h2>
-                        <ul class="list-unstyled text-size-footer">
-                            <li>France, Allemagne, Italie, Espagne, Belgique, Pologne</li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-md-6 col-xl-3  mb-5">
-                        <h2 class="mb-4">Réseaux sociaux</h2>
+                        <h2 class="mb-4 d-none d-lg-inline-block">Réseaux sociaux</h2>
                         <div class="d-flex justify-content-center flex-wrap">
                             <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=56 width=56 alt="Pinterest icon"></a>
                             <a href="#" class="unstyled mx-3"><img src="{% static 'img/icon_male_map.png' %}" height=56 width=56 alt="Youtube icon"></a>
