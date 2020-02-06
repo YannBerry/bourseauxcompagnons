@@ -66,6 +66,7 @@
                 position: relative;
                 text-align: center;
                 padding: 1.5rem;
+                border-bottom: 2px solid white;
             }
             .main-categories a, .account-menu a {
                 font-weight: 300;
@@ -74,7 +75,7 @@
                 color:inherit;
                 text-decoration:none;
             }
-            .main-categories a:hover, .account-menu a:hover {
+            .main-categories .cat-dropdown:hover, .account-menu a:hover {
                 border-bottom: 2px solid #5C9833;
             }
             .main-categories .cat-dropdown-content {
@@ -86,12 +87,19 @@
                 top: 4.5rem;/*line-height (1.5rem) + padding(2x1.5rem)*/
                 border-top: 1px solid #C2C2C2;
                 background-color: white;
+                margin-top: 2px;
                 min-width: 50vw;
                 z-index: 999;
-                text-align: right;
+            }
+            .main-categories .cat-dropdown:hover .cat-dropdown-content.left-align {
+                left: 0;
+            }
+            .main-categories .cat-dropdown:hover .cat-dropdown-content.right-align {
+                right: 0;
             }
             .main-categories .cat-dropdown-content .categories {
                 padding: 1.5rem 1rem 1.5rem;
+                text-align: right;
             }
             .main-categories .cat-dropdown-content .categories li {
                 padding: 1rem 0rem;
