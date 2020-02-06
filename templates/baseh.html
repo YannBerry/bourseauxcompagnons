@@ -63,10 +63,13 @@
                 font-weight: 300;
             }
             .main-categories .cat-dropdown {
+                display: flex;
                 position: relative;
+                align-items: center;
                 text-align: center;
-                padding: 1.5rem;
+                padding: 0rem 1.5rem;
                 border-bottom: 2px solid white;
+                height: 4.5rem;
             }
             .main-categories a, .account-menu a {
                 font-weight: 300;
@@ -84,10 +87,9 @@
             .main-categories .cat-dropdown:hover .cat-dropdown-content {
                 display: block;
                 position: absolute;
-                top: 4.5rem;/*line-height (1.5rem) + padding(2x1.5rem)*/
-                border-top: 1px solid #C2C2C2;
+                top: 4.5rem;
+                margin-top: 1px;
                 background-color: white;
-                margin-top: 2px;
                 min-width: 50vw;
                 z-index: 999;
             }
