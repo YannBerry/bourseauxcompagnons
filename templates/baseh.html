@@ -51,6 +51,18 @@
             @media (max-width: 575.98px) {
 
             }
+            .navbar-text {
+                display: block;
+                font-weight: 300;
+                font-size: 1.875rem;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .navbar-text.user-features {
+                background-color: #E2E2E2;
+            }
             .price {
                 font-weight: 300;
                 font-size: 1.375rem;
@@ -396,12 +408,58 @@
     </head>
 
     <body>
+        <!-- NAVBAR -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-light border-solid-light-grey bg-white" style="min-height: 154px;">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Toggler -->
+            <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <form class="form-inline my-2 my-lg-0 navbar-form">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#"><img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></a>
+            <!-- Fixed user features -->
+            <div class="ml-auto d-flex justify-content-between align-items-center text-uppercase order-lg-2">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ LANGUAGE_CODE|upper }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <ul class="nav navbar-nav navbar-right">
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <li>
+                                        <button lang="{{ language.code }}" class="dropdown-item{% if language.code == LANGUAGE_CODE %} font-weight-bold{% endif %}" type="submit" name="language" value="{{ language.code }}">
+                                            {{ language.name_local|capfirst }} ({{ language.code|upper }})
+                                        </button>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <a class="nav-link" href="#">{% trans "Panier" %}</a>
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% if user.profile.profile_picture %}
+                            <img src="{{ user.profile.profile_picture.url }}" height=35 width=35 alt="User icon">
+                        {% else %}
+                            <img src="{% static 'img/icon_user.png' %}" height=35 width=35 alt="User icon">
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'my-profile' %}">{% trans "My profile" %}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% trans "Déconnexion" %}</a>
+                    </div>
+                </div>
+                {% else %}
+                <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Connexion" %}</a>
+                {% endif %}
+            </div>
+            <!-- Searchbar -->
+            <form class="form-inline my-2 my-lg-0 navbar-form order-lg-1">
                 <div class="input-group input-group-search mx-auto">
                    <input type="search" class="form-control font-italic" placeholder="{% trans 'Rechercher un abri, un portail...' %}" aria-label="Search" aria-describedby="search-button-addon" name="k">
                    <div class="input-group-append">
@@ -409,53 +467,43 @@
                    </div>
                 </div>
             </form>
+            <!-- Collapsing navbar -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-2 text-uppercase">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ LANGUAGE_CODE|upper }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}">
-                                <ul class="nav navbar-nav navbar-right">
-                                    {% get_language_info_list for LANGUAGES as languages %}
-                                    {% for language in languages %}
-                                        <li>
-                                            <button lang="{{ language.code }}" class="dropdown-item{% if language.code == LANGUAGE_CODE %} font-weight-bold{% endif %}" type="submit" name="language" value="{{ language.code }}">
-                                                {{ language.name_local|capfirst }} ({{ language.code|upper }})
-                                            </button>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </form>
-                        </div>
+                <!-- Activities -->
+                <ul class="navbar-nav text-uppercase d-lg-none navbar-text">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Portail" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{% trans "Panier" %}</a>
+                        <a class="nav-link" href="#">{% trans "Arroseurs" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Abris" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Abris super beaux en bois naturel de chine, de taiwan ou du Myanmar" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Abris" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Abris" %}</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav text-uppercase">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {% if user.profile.profile_picture %}
-                                <img src="{{ user.profile.profile_picture.url }}" height=35 width=35 alt="User icon">
-                            {% else %}
-                                <img src="{% static 'img/icon_user.png' %}" height=35 width=35 alt="User icon">
-                            {% endif %}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'my-profile' %}">{% trans "My profile" %}</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% trans "Déconnexion" %}</a>
-                        </div>
-                    </li>
-                    {% else %}
+                <!-- User features -->
+                <ul class="navbar-nav text-uppercase d-lg-none navbar-text user-features">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Connexion" %}</a>
+                        <a class="nav-link d-flex justify-content-between align-items-center" href="#">
+                            {% trans "Panier" %}
+                            <img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></a>
+                        </a>
                     </li>
-                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link d-flex justify-content-between align-items-center" href="#">
+                            {% trans "Compte" %}
+                            <img src="{% static 'img/icon_male_map.png' %}" alt="Hoortus icon"></a>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
