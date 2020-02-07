@@ -419,7 +419,7 @@
             <!-- Fixed user features -->
             <div class="ml-auto d-flex justify-content-between align-items-center text-uppercase order-lg-2">
                 <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link px-1 px-lg-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ LANGUAGE_CODE|upper }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -438,10 +438,10 @@
                         </form>
                     </div>
                 </div>
-                <a class="nav-link" href="#">{% trans "Panier" %}</a>
+                <a class="nav-link px-1 px-lg-3" href="#">{% trans "Panier" %}</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
-                    <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link px-1 px-lg-3 dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {% if user.profile.profile_picture %}
                             <img src="{{ user.profile.profile_picture.url }}" height=35 width=35 alt="User icon">
                         {% else %}
@@ -455,7 +455,7 @@
                     </div>
                 </div>
                 {% else %}
-                <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Connexion" %}</a>
+                <a class="nav-link px-1 px-lg-3" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Connexion" %}</a>
                 {% endif %}
             </div>
             <!-- Searchbar -->
