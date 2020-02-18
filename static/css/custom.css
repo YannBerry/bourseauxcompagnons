@@ -1,6 +1,7 @@
 /* FULL SCREEN HOME BACKGROUND & MAP */
 body, html {
     height: 100%;
+    color: rgb(34,34,34);
 }
 
 /* GLOBAL STYLING */
@@ -12,7 +13,42 @@ a.unstyled, a.unstyled:hover {
     font-size: 1rem;
 }
 
+/* BOOTSTRAP CUSTOM */
+/* navbar */
+.navbar .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+.navbar .navbar-nav .nav-link:hover {
+    color: rgba(255,255,255,1);
+}
+.navbar .navbar-brand {
+    font-size: 1.1rem;
+}
+@media (min-width: 576px) {
+    .navbar .navbar-brand {
+        font-size: 1.25rem;
+    }
+}
+/* input file*/
+.custom-file-input ~ .custom-file-label:lang(en)::after {
+    content: "Browse";
+}
+
+.custom-file-input ~ .custom-file-label:lang(fr)::after {
+    content: "Choisir";
+}
+
+.custom-file-input ~ .custom-file-label:lang(es)::after {
+    content: "Elegir";
+}
+
 /* COLORS */
+.bg-grey-dark {
+    background-color: rgb(34,34,34);
+}
+.bg-grey {
+    background-color: rgb(72,72,72);
+}
 .border-red-superlight {
     border-right: 8px solid rgba(220,53,69,1);
 }
@@ -46,18 +82,12 @@ a.unstyled, a.unstyled:hover {
     content: "?";
 }
 
-/* BOOTSTRAP CUSTOM */
-/* input file*/
-.custom-file-input ~ .custom-file-label:lang(en)::after {
-    content: "Browse";
-}
-
-.custom-file-input ~ .custom-file-label:lang(fr)::after {
-    content: "Choisir";
-}
-
-.custom-file-input ~ .custom-file-label:lang(es)::after {
-    content: "Elegir";
+/* NAVBAR */
+.navbar .navbar-collapse hr {
+    height: 0px;
+    border: none;
+    border-top: 1px solid rgb(112, 112, 112);
+    margin: 0.5rem 0;
 }
 
 /* BUTTONS */
@@ -116,7 +146,7 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    color: rgba(90,90,90,1);
+    color: rgba(72,72,72,1);
     background: rgba(211,211,211,1);
     border-radius: 5px;
     cursor: pointer;
@@ -159,7 +189,7 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
         cursor: auto;
     }
     .wrap-collabsible .label-toggle:hover {
-        color: rgba(90,90,90,1);
+        color: rgba(72,72,72,1);
     }
     .wrap-collabsible .label-toggle::after {
         display: none;
@@ -498,7 +528,7 @@ label.required {
 }
   
 .toggle-switch-box input[type="checkbox"].toggle-switch:checked{
-    background: rgba(91,192,222,1);
+    background: rgba(23,162,184,1);
 }
   
 .toggle-switch-box input[type="checkbox"].toggle-switch:after{
@@ -545,7 +575,7 @@ label.required {
 }
 
 .selectable-items-list>li label {
-    color: rgba(90,90,90,1);
+    color: rgba(72,72,72,1);
     background-color: rgba(231,231,231,.5);
     border: 1px solid rgba(190,190,190,1);
     border-radius: .75rem;
@@ -554,8 +584,8 @@ label.required {
 
 .selectable-items-list>li input:checked + label,.selectable-items-list.no-touch>li input:checked + label {
     color: rgba(255,255,255,1);
-    background-color: rgba(91,192,222,1);
-    border: 1px solid rgba(91,192,222,1);
+    background-color: rgba(23,162,184,1);
+    border: 1px solid rgba(23,162,184,1);
     -webkit-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
 }
@@ -563,39 +593,26 @@ label.required {
 .selectable-items-list.no-touch>li label:hover {
     cursor: pointer;
     color: rgba(255,255,255,1);
-    background-color: rgba(91,192,222,.4);
-    border: 1px solid rgba(91,192,222,.4);
+    background-color: rgba(23,162,184,.5);
+    border: 1px solid rgba(23,162,184,.5);
     -webkit-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
 }
 
-/* Placeholder color of the title of the bootstrap-select tag */
+/*
+@media (min-width: 576px) {
+    
+}
 
-.bootstrap-select>.dropdown-toggle.bs-placeholder,
-.bootstrap-select>.dropdown-toggle.bs-placeholder:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder:hover{color:#999}
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-danger:hover,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-dark:hover,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-info:hover,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-primary:hover,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-secondary:hover,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success:active,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success:focus,
-.bootstrap-select>.dropdown-toggle.bs-placeholder.btn-success:hover{color:rgba(255,255,255,1)}
+@media (min-width: 768px) {
+    
+}
+
+@media (min-width: 992px) {
+    
+}
+
+@media (min-width: 1200px) {
+    
+}
+*/
