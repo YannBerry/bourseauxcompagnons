@@ -23,7 +23,7 @@
                             <h6 class="filter_title">{% trans 'Activities' %}</h6>
                             <ul id="id_activities" class="selectable-items-list">
                                 {% for activity in all_activities %}
-                                <li><input type="checkbox" name="a" value="{{ activity }}" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1"><small>{{ activity.name }}</small></label></li>
+                                <li><input type="checkbox" name="a" value="{{ activity }}" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
                                 {% endfor %}
                             </ul>
                         </div>
