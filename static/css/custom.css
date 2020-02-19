@@ -47,6 +47,19 @@ a.unstyled, a.unstyled:hover {
 .custom-file-input ~ .custom-file-label:lang(es)::after {
     content: "Elegir";
 }
+/* buttons & alerts */
+.btn-secondary {
+    background-color: rgb(112,112,112);
+}
+.btn-secondary:hover {
+    background-color: rgb(72,72,72);
+}
+.alert-info {
+    background-color: rgba(123, 154, 166, 0.5);
+    border-color: rgba(113, 144, 156,0.5); 
+    color: rgb(39, 75, 89);
+}
+
 
 /* COLORS */
 .bg-grey-dark {
@@ -174,13 +187,13 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    color: rgba(72,72,72,1);
-    background: rgba(211,211,211,1);
+    color: rgb(255,255,255);
+    background: rgb(39, 75, 89);
     border-radius: 5px;
     cursor: pointer;
 }
 .wrap-collabsible .label-toggle:hover {
-    color: rgba(20,20,20,1);
+    color: rgb(255,255,255);
 }
 .wrap-collabsible .label-toggle::after {
     content: ' ';
@@ -217,7 +230,7 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
         cursor: auto;
     }
     .wrap-collabsible .label-toggle:hover {
-        color: rgba(72,72,72,1);
+        color: rgb(255,255,255);
     }
     .wrap-collabsible .label-toggle::after {
         display: none;
@@ -246,6 +259,9 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
 /* OPENLAYERS */
 /* Buttons */
 .ol-control button {
+    background-color: rgb(112,112,112);
+}
+.ol-control button:hover {
     background-color: rgb(72,72,72);
 }
 .ol-control button img {
