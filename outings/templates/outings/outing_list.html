@@ -51,7 +51,7 @@
                             <h6 class="filter_title">{% trans 'Activities' %}</h6>
                             <ul id="id_activities" class="selectable-items-list">
                                 {% for activity in all_activities %}
-                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1"><small>{{ activity.name }}</small></label></li>
+                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
                                 {% endfor %}
                             </ul>
 <!--                             <select multiple class="form-control" name="a" id="activities_filter">
@@ -73,7 +73,7 @@
 
 {% block rightsidebar %}
     <div class="text-center d-none d-xl-block">
-        <a href="{% url 'outings:create' %}" class="btn btn-success">{% trans "Add an outing" %}</a>
+        <a href="{% url 'outings:create' %}" class="btn btn-main">{% trans "Add an outing" %}</a>
     </div>
 {% endblock %}
 
@@ -115,7 +115,7 @@
     {% else %}
         <p>{% trans 'There is no outing fitting your search criteria.' %}</p>
     {% endif %}
-    <a href="{% url 'outings:create' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none"  style="z-index:9999"></a>
+    <a href="{% url 'outings:create' %}" class="btn btn-main btn-circle btn-add d-block d-xl-none"  style="z-index:9999"></a>
 {% endblock %}
 
 {% block js %}

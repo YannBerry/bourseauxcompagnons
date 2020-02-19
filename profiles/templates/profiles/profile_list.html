@@ -81,7 +81,7 @@
 {% block rightsidebar %}
     {% if user.is_anonymous %}
         <div class="text-center d-none d-xl-block">
-            <a href="{% url 'profile_register' %}" class="btn btn-success">{% trans "Add my profile" %}</a>
+            <a href="{% url 'profile_register' %}" class="btn btn-main">{% trans "Add my profile" %}</a>
         </div>
     {% endif %}
 {% endblock %}
@@ -142,7 +142,7 @@
         <p>{% trans 'There is no profile matching your search criteria.' %}</p>
     {% endif %}
     {% if user.is_anonymous %}
-        <a href="{% url 'profile_register' %}" class="btn btn-success btn-circle btn-add d-block d-xl-none"></a>
+        <a href="{% url 'profile_register' %}" class="btn btn-main btn-circle btn-add d-block d-xl-none"></a>
     {% endif %}
 {% endblock %}
 

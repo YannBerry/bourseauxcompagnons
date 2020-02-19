@@ -15,7 +15,7 @@
                     <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
                     <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
                     {% else %}
-                    <a href="{% url 'profiles:contact-profile' outing.author.username %}" class="btn btn-success">{% trans 'Get in touch' %}</a>
+                    <a href="{% url 'profiles:contact-profile' outing.author.username %}" class="btn btn-outline-main">{% trans 'Get in touch' %}</a>
                     {% endif %}
                 </div>
             </div>

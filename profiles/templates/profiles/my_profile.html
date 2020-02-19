@@ -36,7 +36,7 @@
                     <div class="col-12">
                         <div class="row mb-2">
                             <div class="col-12">
-                                <a href="{% url 'update-profile' user.username %}" class="btn btn-success btn-block" role="button">{% trans 'Update my public profile' %}</a>
+                                <a href="{% url 'update-profile' user.username %}" class="btn btn-outline-main btn-block" role="button">{% trans 'Update my public profile' %}</a>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 mb-2">
-                                <a href="{% url 'update-account' user.username %}" class="btn btn-success btn-block" role="button">{% trans 'Update my account settings' %}</a>
+                                <a href="{% url 'update-account' user.username %}" class="btn btn-outline-main btn-block" role="button">{% trans 'Update my account settings' %}</a>
                             </div>
                             <div class="col-12 mb-2">
                                 <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
@@ -95,20 +95,20 @@
                         <h2>{% trans 'My calendar' %}</h2>
                     </div>
                     <div class="col-auto">
-                        <a href="{% url 'availabilities:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
-                        <a href="{% url 'outings:create' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
+                        <a href="{% url 'availabilities:create' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
+                        <a href="{% url 'outings:create' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 {% if not availabilities %}
                 <div class="alert alert-warning" role="alert">
-                    {% trans "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-success'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% trans "here." %}</a> {% trans "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential partners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
+                    {% trans "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-main'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% trans "here." %}</a> {% trans "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential partners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
                 </div>
                 {% endif %}
                 {% if not outings %}
                 <div class="alert alert-info" role="alert">
-                    {% trans "<strong>You have not created any outing yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-success'>+ Add an outing</span> button above or by clicking" %} <a href="{% url 'outings:create' %}">{% trans "here." %}</a> {% trans "By filling out an outing, potential partners can find your proposal in the 'outings page', get in touch with you and, if you want, join you on that outing." %}
+                    {% trans "<strong>You have not created any outing yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-main'>+ Add an outing</span> button above or by clicking" %} <a href="{% url 'outings:create' %}">{% trans "here." %}</a> {% trans "By filling out an outing, potential partners can find your proposal in the 'outings page', get in touch with you and, if you want, join you on that outing." %}
                 </div>
                 {% endif %}
             </div>
@@ -161,7 +161,7 @@
                 <h2>{% trans 'Exports' %}</h2>
             </div>
             <div class="col-12">
-                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export profiles to Excel format' %}</span></a>
+                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export profiles to Excel format' %}</span></a>
             </div>
         </div>
         {% if user.is_superuser %}
@@ -170,7 +170,7 @@
                 <h2>{% trans 'Imports / Exports for superadmins' %}</h2>
             </div>
             <div class="col-12">
-                <a href="#" class="btn btn-success btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export outings' %}</span></a>
+                <a href="#" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export outings' %}</span></a>
             </div>
         </div>
         {% endif %}
@@ -179,7 +179,7 @@
 {% else %}
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{% url 'login' %}" class="btn btn-success btn-block" role="button">{% trans 'Sign in' %}</a>
+            <a href="{% url 'login' %}" class="btn btn-main btn-block" role="button">{% trans 'Sign in' %}</a>
         </div>
     </div>
 {% endif %}

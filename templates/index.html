@@ -27,28 +27,30 @@
             </div>
             <div class="col-xl-2 order-3">
             </div>
-            <div class="col-xl-8 order-2">
-                <div class="col-md-6 col-xl-6">
-                    <div class="card" style="background-color: rgba(225,225,225,0.9);">
-                        <div class="card-body text-center">
-                            <h1 class="card-text h4 mb-4 mt-xl-4 mb-xl-5">{% trans "Find partners for your outings in the mountain." %}</h1>
-                            <form id="profile-outing-form" method="get" action="">
-                                <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <ul id="id_activities" class="selectable-items-list">
-                                            {% for activity in all_activities %}
-                                            <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}"><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
-                                            {% endfor %}
-                                        </ul>
+            <div class="col-xl-8 px-0 px-md-3 order-2">
+                <div class="row">
+                    <div class="col-sm-10 col-md-6 mx-auto mx-md-0">
+                        <div class="card" style="background-color: rgba(225,225,225,0.9);">
+                            <div class="card-body text-center">
+                                <h1 class="card-text h4 mb-4 mt-xl-4 mb-xl-5">{% trans "Find partners for your outings in the mountain." %}</h1>
+                                <form id="profile-outing-form" method="get" action="">
+                                    <div class="form-row">
+                                        <div class="form-group col-12">
+                                            <ul id="id_activities" class="selectable-items-list">
+                                                {% for activity in all_activities %}
+                                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}"><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <button id="search-profile" class="btn btn-outline-main btn-block" type="submit">{% trans "Search Profile" %}</button>
+                                        </div>
+                                        <div class="form-group col-12 mb-0 mb-xl-3">
+                                            <button id="search-outing" class="btn btn-outline-main btn-block" type="submit">{% trans "Search Outing" %}</button>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-12">
-                                        <button id="search-profile" class="btn btn-outline-success btn-block text-uppercase" type="submit">{% trans "Search Profile" %}</button>
-                                    </div>
-                                    <div class="form-group col-12 mb-0 mb-xl-3">
-                                        <button id="search-outing" class="btn btn-outline-success btn-block text-uppercase" type="submit">{% trans "Search Outing" %}</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +113,7 @@
                 <div class="col-12 pb-3">
                     <div class="d-flex flex-row align-items-baseline justify-content-between flex-wrap">
                         <h2 class="mr-4">{% trans 'Last profiles created' %}</h2>
-                        <a class="text-info d-none d-sm-block" href="{% url 'profiles:list' %}">{% trans "Display all the profiles" %} ></a>
+                        <a class="d-none d-sm-block" href="{% url 'profiles:list' %}">{% trans "Display all the profiles" %} ></a>
                     </div>
                 </div>
                 {% for profile in 5_last_profiles %}
@@ -149,11 +151,7 @@
                 {% endfor %}
                 {% if user.is_anonymous %}
                     <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card border-success" style="height: 100%;">
-                            <div class="card-body text-success d-flex align-items-center justify-content-center">
-                                <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'profile_register' %}" class="stretched-link unstyled">{% trans "Add my profile" %}</a></p>
-                            </div>
-                        </div>
+                        <button class="btn btn-outline-main btn-block" style="height: 100%;"><a href="{% url 'profile_register' %}" class="h4">{% trans "Add my profile" %}</a></button>
                     </div>
                 {% endif %}
             </div>
@@ -172,7 +170,7 @@
                 <div class="col-12 pb-3">
                     <div class="d-flex flex-row align-items-center justify-content-between flex-wrap">
                         <h2 class="mr-4">{% trans 'Last outings suggested' %}</h2>
-                        <a class="text-info d-none d-sm-block" href="{% url 'outings:list' %}">{% trans "Display all the outings" %} ></a>
+                        <a class="d-none d-sm-block" href="{% url 'outings:list' %}">{% trans "Display all the outings" %} ></a>
                     </div>
                 </div>
                 {% for outing in 5_last_outings %}
@@ -196,11 +194,7 @@
                     </div>
                 {% endfor %}
                 <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="card border-success" style="height: 100%;">
-                        <div class="card-body text-success d-flex align-items-center justify-content-center">
-                            <p class="card-title text-uppercase align-middle mb-0 h4 text-center"><a href="{% url 'outings:create' %}" class="stretched-link unstyled">{% trans "Add my outing" %}</a></p>
-                        </div>
-                    </div>
+                    <button class="btn btn-outline-main btn-block" style="height: 100%;"><a href="{% url 'outings:create' %}" class="h4">{% trans "Add my outing" %}</a></button>
                 </div>
             </div>
         </div>
@@ -297,7 +291,7 @@
         // Create a button to allow the user to center the map on its geolocation
         const locate = document.createElement('div');
         locate.className = 'ol-control ol-unselectable locate-button';
-        locate.innerHTML = '<button title="Locate me">◎</button>';
+        locate.innerHTML = '<button title="Locate me"><img src="{% static "img/icon_geoloc.svg" %}"></button>';
         locate.addEventListener('click', function() {
             // Defining success and error functions and the options object
             function success(pos) {

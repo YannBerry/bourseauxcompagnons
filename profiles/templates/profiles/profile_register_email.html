@@ -165,10 +165,10 @@
             text-decoration: none;
             text-transform: capitalize; 
             }
-            .btn-primary table td {
+            .btn-main table td {
             background-color: #3498db; 
             }
-            .btn-primary a {
+            .btn-main a {
             background-color: #3498db;
             border-color: #3498db;
             color: #ffffff; 
@@ -295,10 +295,10 @@
             font-weight: inherit;
             line-height: inherit;
             }
-            .btn-primary table td:hover {
+            .btn-main table td:hover {
             background-color: #34495e !important; 
             }
-            .btn-primary a:hover {
+            .btn-main a:hover {
             background-color: #34495e !important;
             border-color: #34495e !important; 
             } 
@@ -325,7 +325,7 @@
                                             <p style="margin-bottom: 1em;">{% trans 'Hi' %} {{ customuser.username }},</p>
                                             <p>{% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/">see my profile</a>.</p>
                                             <p>Your id to sign in is your email address: {{ profile_email }}.{% endblocktrans %}</p>
-                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="font-style: italic; color:#FE9B0C;">
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="font-style: italic; color:#FE9B0C;">
                                                 <tbody>
                                                     <tr>
                                                         <td align="left" >
@@ -334,7 +334,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main">
                                                 <tbody>
                                                     <tr>
                                                     <td align="left">

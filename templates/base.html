@@ -28,21 +28,21 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse py-2" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse py-2 py-lg-0" id="navbarSupportedContent">
                 <hr class="d-lg-none separator"></hr>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><div><img src="{% static 'img/icon_profile.png' %}" class="ml-2" height="25" alt="Profile icon"></div></a>
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><div><img src="{% static 'img/icon_profile.png' %}" class="ml-2" alt="Profile icon"></div></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" height="25" alt="Outing icon"></a>
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" alt="Outing icon"></a>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="{% url 'features:votes' %}">{% trans "FEATURES" %}</a>
                     </li>-->
                 </ul>
                 <hr class="d-lg-none separator"></hr>
-                <ul class="navbar-nav text-uppercase mr-2">
+                <ul class="navbar-nav text-uppercase mr-2 align-items-lg-center">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contactpage:contact-page' %}">{% trans "Contact" %}</a>
                     </li>
@@ -66,14 +66,14 @@
                             </form>
                         </div>
                     </li>
-                    <hr class="d-lg-none separator"></hr>
+                    <hr class="separator"></hr>
                     {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="account nav-item dropdown">
+                        <a class="nav-link dropdown-toggle py-lg-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% if user.profile.profile_picture %}
-                                <img src="{{ user.profile.profile_picture.url }}" height=35 width=35 alt="User icon">
+                                <img src="{{ user.profile.profile_picture.url }}" alt="User icon">
                             {% else %}
-                                <img src="{% static 'img/icon_user.png' %}" height=35 width=35 alt="User icon">
+                                <img src="{% static 'img/icon_user.png' %}" alt="User icon">
                             {% endif %}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

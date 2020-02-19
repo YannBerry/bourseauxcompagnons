@@ -90,11 +90,11 @@ table[class=body] .article {
     line-height: inherit;
   }
 
-  .btn-primary table td:hover {
+  .btn-main table td:hover {
     background-color: #34495e !important;
   }
 
-  .btn-primary a:hover {
+  .btn-main a:hover {
     background-color: #34495e !important;
     border-color: #34495e !important;
   }
@@ -121,7 +121,7 @@ table[class=body] .article {
                                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 1em;">{% trans 'Hi' %} {{ customuser.username }},</p>
                                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/" style="color: #3498db; text-decoration: underline;">see my profile</a>.</p>
                                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Your id to sign in is your email address: {{ profile_email }}.{% endblocktrans %}</p>
-                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%; font-style: italic; color: #FE9B0C;" width="100%">
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%; font-style: italic; color: #FE9B0C;" width="100%">
                                                 <tbody>
                                                     <tr>
                                                         <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">
@@ -130,7 +130,7 @@ table[class=body] .article {
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
                                                 <tbody>
                                                     <tr>
                                                     <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">

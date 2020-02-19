@@ -5,6 +5,12 @@ body, html {
 }
 
 /* GLOBAL STYLING */
+a, a:hover {
+    color: rgb(217, 93, 48);
+}
+a:hover {
+    text-decoration: underline;
+}
 a.unstyled, a.unstyled:hover {
     color:inherit;
     text-decoration:none;
@@ -86,11 +92,33 @@ a.unstyled, a.unstyled:hover {
 .navbar .navbar-collapse hr {
     height: 0px;
     border: none;
-    border-top: 1px solid rgb(112, 112, 112);
+    border-top: 1px solid rgb(112,112,112);
     margin: 0.5rem 0;
 }
+.navbar img {
+    height: 1.5rem;
+}
+.navbar .account img {
+    height: 2.5rem;/*1.5 + 0.5*2*/
+}
 
-/* BUTTONS */
+/* BUTTONS AND BADGES */
+/* Main button and badge*/
+.btn-main, .btn-main:hover, .badge-main {
+    color: rgb(255,255,255);
+    background-color: rgb(217, 93, 48);
+}
+.btn-outline-main, .btn-outline-main:hover,
+.btn-outline-main a, .btn-outline-main:hover a {
+    color: rgb(217, 93, 48);
+    font-weight: bold;
+    text-decoration:none;
+}
+.btn-outline-main, .btn-outline-main:hover {
+    background-color: transparent;
+    border-color: rgb(217, 93, 48);
+    border-width: 2px;
+}
 /* Add profile and add outing*/
 .btn-circle {
     width: 60px;
@@ -217,6 +245,12 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
 
 /* OPENLAYERS */
 /* Buttons */
+.ol-control button {
+    background-color: rgb(72,72,72);
+}
+.ol-control button img {
+    height: 1em;
+}
 .locate-button {
     top: 5em;
     left: .5em;

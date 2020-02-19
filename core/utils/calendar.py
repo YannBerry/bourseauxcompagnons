@@ -76,7 +76,7 @@ class CalEvents(Cal):
                     o += f'<span class="badge badge-pill badge-info mr-1">{ activity.name }</span>'
                 o +=            f'</div>'
                 o +=            f'<div class="modal-footer">'
-                o +=                '<a href="{}" class="btn btn-primary">{}</a>'.format(outing.get_absolute_url(), _('See more'))
+                o +=                '<a href="{}" class="btn btn-main">{}</a>'.format(outing.get_absolute_url(), _('See more'))
                 o +=            f'</div>'
                 o +=        f'</div>'
                 o +=    f'</div>'
@@ -101,7 +101,7 @@ class CalEvents(Cal):
                     a += '<p>{}</p>'.format(_('No activity was associated.'))
                 a +=            f'</div>'
                 a +=            f'<div class="modal-footer">'
-                a +=                '<a href="{}" class="btn btn-primary">{}</a>'.format(availability.get_absolute_url(), _('See more'))
+                a +=                '<a href="{}" class="btn btn-main">{}</a>'.format(availability.get_absolute_url(), _('See more'))
                 a +=            f'</div>'
                 a +=        f'</div>'
                 a +=    f'</div>'
