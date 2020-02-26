@@ -1,0 +1,16 @@
+{% load static i18n %}
+
+<div class="card-body">
+    <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="stretched-link unstyled">{{ outing.title }}</a></h5>
+    <p class="card-text">
+        {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
+        During the day<br>{{ start_date }}
+        {% plural %}
+        {{ duration }} days<br>{{ start_date }} - {{ end_date }}
+        {% endblocktrans %}
+        <br>
+        {% for activity in outing.activities.all %}
+            <span class="badge badge-pill badge-info">{{ activity.name }}</span>
+        {% endfor %}
+    </p>
+</div>

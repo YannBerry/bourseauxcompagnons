@@ -105,35 +105,8 @@
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 cursor-pointer {% if profile.completion <= 50 %}border-red-superlight{% elif profile.completion <= 80 %}border-orange-superlight{% else %}border-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
-                        <div style="display : inline-block; position: absolute; top: 0px; right: 0rem; height : 0; width : 0; border-top : 1.3rem solid {% if profile.completion <= 50 %}rgba(220,53,69,1){% elif profile.completion <= 80 %}rgba(255,193,7,1){% else %}rgba(40,167,69,1){% endif %}; border-left : 1.3rem solid transparent;"></div>
-                        <div class="card-body">
-                            <div class="row align-items-start">
-                                <div class="col-3 mb-2">
-                                    {% if profile.profile_picture %}
-                                    <img src="{{ profile.profile_picture.url }}" class="img-fluid" alt="Profile picture">
-                                    {% else %}
-                                    <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
-                                    {% endif %}
-                                </div>
-                                <div class="col-9">
-                                    <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
-                                    <p class="card-text">
-                                        {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span><br>{% endif %}
-                                        {% if profile.distance %}<span>{{ profile.distance.km|floatformat }} km</span><br>{% endif %}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <p class="card-text">
-                                        {% for activity in profile.activities.all %}
-                                            <span class="badge badge-pill badge-info mb-1">{{ activity.name }}{% for grade in profile.grades.all %}{% if grade.activity.name == activity.name %} - {{ grade.name }}{% endif %}{% endfor %}</span>
-                                        {% endfor %}<br>
-                                        {{ profile.introduction|truncatechars:200 }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <div style="display: inline-block; position: absolute; top: 0px; right: 0rem; height : 0; width : 0; border-top : 1.3rem solid {% if profile.completion <= 50 %}rgb(220,53,69){% elif profile.completion <= 80 %}rgb(255,193,7){% else %}rgb(40,167,69){% endif %}; border-left : 1.3rem solid transparent;"></div>
+                        {% include "core/cards/profile.html" %}
                     </div>
                 </div>
             {% endfor %}

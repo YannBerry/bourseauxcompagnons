@@ -118,34 +118,8 @@
                 </div>
                 {% for profile in 5_last_profiles %}
                     <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card" onclick="document.location='{{ profile.get_absolute_url }}'" style="cursor: pointer;">
-                            <div class="card-body">
-                                <div class="row align-items-start">
-                                    <div class="col-3 mb-2">
-                                        {% if profile.profile_picture %}
-                                        <img src="{{ profile.profile_picture.url }}" class="img-fluid" alt="Profile picture">
-                                        {% else %}
-                                        <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-9">
-                                        <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
-                                        <p class="card-text">
-                                            {% if profile.age %}{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}{% endif %}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="card-text">
-                                            {% for activity in profile.activities.all %}
-                                                <span class="badge badge-pill badge-info mb-1">{{ activity.name }}{% for grade in profile.grades.all %}{% if grade.activity.name == activity.name %} - {{ grade.name }}{% endif %}{% endfor %}</span>
-                                            {% endfor %}<br>
-                                            {{ profile.introduction|truncatechars:200 }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card h-100 cursor-pointer" onclick="document.location='{{ profile.get_absolute_url }}'">
+                            {% include "core/cards/profile.html" %}
                         </div>
                     </div>
                 {% endfor %}
@@ -176,20 +150,7 @@
                 {% for outing in 5_last_outings %}
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="{{ outing.get_absolute_url }}" class="stretched-link unstyled">{{ outing.title }}</a></h5>
-                                <p class="card-text">
-                                    {% blocktrans with start_date=outing.start_date|date:"SHORT_DATE_FORMAT" end_date=outing.end_date|date:"SHORT_DATE_FORMAT" count duration=outing.duration %}
-                                    During the day<br>{{ start_date }}
-                                    {% plural %}
-                                    {{ duration }} days<br>{{ start_date }} - {{ end_date }}
-                                    {% endblocktrans %}
-                                    <br>
-                                    {% for activity in outing.activities.all %}
-                                        <span class="badge badge-pill badge-info">{{ activity.name }}</span>
-                                    {% endfor %}
-                                </p>
-                            </div>
+                            {% include "core/cards/outing.html" %}
                         </div>
                     </div>
                 {% endfor %}

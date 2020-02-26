@@ -1,0 +1,30 @@
+{% load static i18n %}
+
+<div class="card-body">
+    <div class="row align-items-start">
+        <div class="col-3 mb-2">
+            {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture.url }}" class="img-fluid" alt="Profile picture">
+            {% else %}
+            <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
+            {% endif %}
+        </div>
+        <div class="col-9">
+            <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
+            <p class="card-text">
+                {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span><br>{% endif %}
+                {% if profile.distance %}<span>{{ profile.distance.km|floatformat }} km</span><br>{% endif %}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p class="card-text">
+                {% for activity in profile.activities.all %}
+                    <span class="badge badge-pill badge-info mb-1">{{ activity.name }}{% for grade in profile.grades.all %}{% if grade.activity.name == activity.name %} - {{ grade.name }}{% endif %}{% endfor %}</span>
+                {% endfor %}<br>
+                {{ profile.introduction|truncatechars:200 }}
+            </p>
+        </div>
+    </div>
+</div>

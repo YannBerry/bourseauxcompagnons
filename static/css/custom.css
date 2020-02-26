@@ -21,6 +21,12 @@ a.unstyled, a.unstyled:hover {
 
 /* BOOTSTRAP CUSTOM */
 /* navbar */
+.navbar {
+    min-height: 60px;
+}
+.navbar.discrete {
+    min-height: 50px;
+}
 .navbar .navbar-nav .nav-link {
     color: rgba(255,255,255,1);
 }
@@ -259,10 +265,10 @@ ul#id_activities, ul#id_grades, ul#id_grades>li>ul {
 /* OPENLAYERS */
 /* Buttons */
 .ol-control button {
-    background-color: rgb(112,112,112);
+    background-color: rgba(112,112,112,0.8);
 }
 .ol-control button:hover {
-    background-color: rgb(72,72,72);
+    background-color: rgba(72,72,72,0.8);
 }
 .ol-control button img {
     height: 1em;
