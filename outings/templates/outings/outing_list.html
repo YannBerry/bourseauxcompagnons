@@ -49,17 +49,7 @@
                         </div>
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                            <ul id="id_activities" class="selectable-items-list">
-                                {% for activity in all_activities %}
-                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
-                                {% endfor %}
-                            </ul>
-<!--                             <select multiple class="form-control" name="a" id="activities_filter">
-                                <option value="">{% trans 'Click to select activities' %}</option>
-                                {% for activity in all_activities %}
-                                    <option {% if activity.name in selected_activities %}selected{% endif %}>{{ activity.name }}</option>
-                                {% endfor %}
-                            </select> -->
+                            {% include "forms/activities.html" %}
                         </div>
                         <div class="form-group col-12">
                             <button class="btn btn-outline-main btn-block" type="submit">{% trans "Filter" %}</button>

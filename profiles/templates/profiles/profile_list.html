@@ -21,11 +21,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Activities' %}</h6>
-                            <ul id="id_activities" class="selectable-items-list">
-                                {% for activity in all_activities %}
-                                <li><input type="checkbox" name="a" value="{{ activity }}" id="id_activities_{{ activity|cut:' ' }}" {% if activity.name in selected_activities %}checked{% endif %}><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
-                                {% endfor %}
-                            </ul>
+                            {% include "forms/activities.html" %}
                         </div>
                         <div class="form-group col-12">
                             <h6 class="filter_title">{% trans 'Where' %} <small>{% trans '(draw on the map)' %}</small><span title="{% trans 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span></h6>
