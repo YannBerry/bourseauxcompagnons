@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 15:02+0100\n"
+"POT-Creation-Date: 2020-03-02 18:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,8 +101,8 @@ msgstr "Borrar"
 #: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
-#: profiles/templates/profiles/profile_form.html:115
-#: profiles/templates/profiles/profile_register.html:81
+#: profiles/templates/profiles/profile_form.html:114
+#: profiles/templates/profiles/profile_register.html:80
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:57
 msgid "Cancel"
@@ -191,7 +191,7 @@ msgstr "Crear una disponibilidad"
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
-#: profiles/templates/profiles/profile_form.html:113
+#: profiles/templates/profiles/profile_form.html:112
 #: templates/registration/account_form.html:55
 msgid "Save"
 msgstr "Guardar"
@@ -567,12 +567,12 @@ msgid "Dates"
 msgstr "Fechas"
 
 #: outings/templates/outings/outing_list.html:31
-#: profiles/templates/profiles/profile_list.html:48
+#: profiles/templates/profiles/profile_list.html:47
 msgid "From"
 msgstr "De"
 
 #: outings/templates/outings/outing_list.html:40
-#: profiles/templates/profiles/profile_list.html:57
+#: profiles/templates/profiles/profile_list.html:56
 msgid "Till"
 msgstr "Al"
 
@@ -582,7 +582,7 @@ msgid "Activities"
 msgstr "Actividades"
 
 #: outings/templates/outings/outing_list.html:55
-#: profiles/templates/profiles/profile_list.html:68
+#: profiles/templates/profiles/profile_list.html:67
 msgid "Filter"
 msgstr "Filtrar"
 
@@ -1210,23 +1210,23 @@ msgstr "Dónde"
 msgid "(draw on the map)"
 msgstr "(dibuja sobre el mapa)"
 
-#: profiles/templates/profiles/profile_list.html:33
+#: profiles/templates/profiles/profile_list.html:32
 msgid "Automatically draw my area on the map"
 msgstr "Dibujar automáticamente mi área sobre el mapa"
 
-#: profiles/templates/profiles/profile_list.html:39
+#: profiles/templates/profiles/profile_list.html:38
 msgid "Around my profile location (50 km)"
 msgstr "Alrededor de la localización de mi perfil (50km)"
 
-#: profiles/templates/profiles/profile_list.html:45
+#: profiles/templates/profiles/profile_list.html:44
 msgid "Dates of availability"
 msgstr "Fechas de disponibilidad"
 
-#: profiles/templates/profiles/profile_list.html:80 templates/index.html:128
+#: profiles/templates/profiles/profile_list.html:79 templates/index.html:128
 msgid "Add my profile"
 msgstr "Añadir mi perfil"
 
-#: profiles/templates/profiles/profile_list.html:89
+#: profiles/templates/profiles/profile_list.html:88
 #, python-format
 msgid ""
 "\n"
@@ -1245,18 +1245,22 @@ msgstr[1] ""
 "            %(counter)s perfiles\n"
 "            "
 
-#: profiles/templates/profiles/profile_list.html:95
+#: profiles/templates/profiles/profile_list.html:96
 #, fuzzy
 #| msgid "fairly completed profile"
-msgid "well completed profile"
-msgstr "perfil bastante completado"
-
-#: profiles/templates/profiles/profile_list.html:96
-msgid "fairly completed profile"
+msgid "well completed"
 msgstr "perfil bastante completado"
 
 #: profiles/templates/profiles/profile_list.html:97
-msgid "poorly completed profile"
+#, fuzzy
+#| msgid "fairly completed profile"
+msgid "fairly completed"
+msgstr "perfil bastante completado"
+
+#: profiles/templates/profiles/profile_list.html:98
+#, fuzzy
+#| msgid "poorly completed profile"
+msgid "poorly completed"
 msgstr "perfil poco completado"
 
 #: profiles/templates/profiles/profile_list.html:111
@@ -1275,7 +1279,7 @@ msgstr "Crear tu perfil"
 msgid "All fields are mandatory."
 msgstr "Todos los campos son obligatorios."
 
-#: profiles/templates/profiles/profile_register.html:80
+#: profiles/templates/profiles/profile_register.html:79
 msgid "Create"
 msgstr "Crear"
 

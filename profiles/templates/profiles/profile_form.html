@@ -80,8 +80,7 @@
                 {% if form.availability_area_geo.help_text %}
                     <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
                 {% endif %}
-                <div id="availabilityformmap" style="height: 350px;"{% if form.availability_area_geo.errors %} class="p-1 rounded is-invalid"{% endif %}></div>
-                <input id="areacoordinates" name="{{ form.availability_area_geo.name }}" value="" type="hidden"/>
+                {% include "forms/availability_area_input.html" %}
                 {{ form.availability_area_geo.errors }}
             </div>
             <div class="col-12 mb-4">

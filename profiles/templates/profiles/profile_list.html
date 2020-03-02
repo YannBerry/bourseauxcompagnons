@@ -27,8 +27,7 @@
                             <h6 class="filter_title">{% trans 'Where' %} <small>{% trans '(draw on the map)' %}</small><span title="{% trans 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span></h6>
                             <!-- Modal: help draw area -->
                             {% include "core/modals/help_draw_area.html" %}
-                            <div id="availabilityformmap" style="height: 350px;"></div>
-                            <input id="areacoordinates" name="availability_area_geo" value="" type="hidden"/>
+                            {% include "forms/availability_area_input.html" %}
                             {% if user.is_authenticated and user.profile.availability_area_geo %}
                             <div class="ol-outside-button mt-1"><button type="button" id="draw_my_area">{% trans 'Automatically draw my area on the map' %}</button></div>
                             {% endif %}
@@ -85,24 +84,25 @@
 
 {% block content %}
     {% if profile_list %}
-        <p>
+        <p class="mb-0">
             {% blocktrans count counter=nb_of_results %}
             {{ counter }} profile
             {% plural %}
             {{ counter }} profiles
             {% endblocktrans %}
+        </p>
+        <p>
             <small>
-                <span class="px-2 badge-pill border bg-success">{% trans 'well completed profile' %}</span>
-                <span class="px-2 badge-pill border bg-warning">{% trans 'fairly completed profile' %}</span>
-                <span class="px-2 badge-pill border bg-danger">{% trans 'poorly completed profile' %}</span>
+                <span class="px-2 badge-pill border bg-success">{% trans "well completed" %}</span>
+                <span class="px-2 badge-pill border bg-warning">{% trans "fairly completed" %}</span>
+                <span class="px-2 badge-pill border bg-danger">{% trans "poorly completed" %}</span>
             </small>
         </p>
         <div class="row">
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 cursor-pointer {% if profile.completion <= 50 %}border-red-superlight{% elif profile.completion <= 80 %}border-orange-superlight{% else %}border-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
-                        <div style="display: inline-block; position: absolute; top: 0px; right: 0rem; height : 0; width : 0; border-top : 1.3rem solid {% if profile.completion <= 50 %}rgb(220,53,69){% elif profile.completion <= 80 %}rgb(255,193,7){% else %}rgb(40,167,69){% endif %}; border-left : 1.3rem solid transparent;"></div>
-                        {% include "core/cards/profile.html" %}
+                    {% include "core/cards/profile.html" %}
                     </div>
                 </div>
             {% endfor %}

@@ -97,13 +97,13 @@ a.unstyled, a.unstyled:hover {
     background-color: rgb(72,72,72);
 }
 .border-red-superlight {
-    border-right: 8px solid rgba(220,53,69,1);
+    border-right: 8px solid rgb(220,53,69);
 }
 .border-orange-superlight {
-    border-right: 8px solid rgba(255,193,7,1);
+    border-right: 8px solid rgb(255,193,7);
 }
 .border-green-superlight {
-    border-right: 8px solid rgba(40,167,69,1);
+    border-right: 8px solid rgb(40,167,69);
 }
 
 /* CURSORS */

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 15:02+0100\n"
+"POT-Creation-Date: 2020-03-02 18:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,8 +103,8 @@ msgstr "Cancellare"
 #: availabilities/templates/availabilities/availability_form.html:53
 #: outings/templates/outings/outing_confirm_delete.html:12
 #: outings/templates/outings/outing_form.html:69
-#: profiles/templates/profiles/profile_form.html:115
-#: profiles/templates/profiles/profile_register.html:81
+#: profiles/templates/profiles/profile_form.html:114
+#: profiles/templates/profiles/profile_register.html:80
 #: templates/registration/account_confirm_delete.html:12
 #: templates/registration/account_form.html:57
 msgid "Cancel"
@@ -193,7 +193,7 @@ msgstr "Creare una disponibilità"
 
 #: availabilities/templates/availabilities/availability_form.html:51
 #: outings/templates/outings/outing_form.html:67
-#: profiles/templates/profiles/profile_form.html:113
+#: profiles/templates/profiles/profile_form.html:112
 #: templates/registration/account_form.html:55
 msgid "Save"
 msgstr "Salvare"
@@ -571,12 +571,12 @@ msgid "Dates"
 msgstr "Date"
 
 #: outings/templates/outings/outing_list.html:31
-#: profiles/templates/profiles/profile_list.html:48
+#: profiles/templates/profiles/profile_list.html:47
 msgid "From"
 msgstr "Dal"
 
 #: outings/templates/outings/outing_list.html:40
-#: profiles/templates/profiles/profile_list.html:57
+#: profiles/templates/profiles/profile_list.html:56
 msgid "Till"
 msgstr "Al"
 
@@ -586,7 +586,7 @@ msgid "Activities"
 msgstr "Attività"
 
 #: outings/templates/outings/outing_list.html:55
-#: profiles/templates/profiles/profile_list.html:68
+#: profiles/templates/profiles/profile_list.html:67
 msgid "Filter"
 msgstr "Filtri"
 
@@ -1210,23 +1210,23 @@ msgstr "Dove"
 msgid "(draw on the map)"
 msgstr "(disegna sulla mappa)"
 
-#: profiles/templates/profiles/profile_list.html:33
+#: profiles/templates/profiles/profile_list.html:32
 msgid "Automatically draw my area on the map"
 msgstr "Disegnare automaticamente la mia area di disponibilità sulla mappa"
 
-#: profiles/templates/profiles/profile_list.html:39
+#: profiles/templates/profiles/profile_list.html:38
 msgid "Around my profile location (50 km)"
 msgstr "Intorno alla posizione del mio profilo (50 km)"
 
-#: profiles/templates/profiles/profile_list.html:45
+#: profiles/templates/profiles/profile_list.html:44
 msgid "Dates of availability"
 msgstr "Date di disponibilità"
 
-#: profiles/templates/profiles/profile_list.html:80 templates/index.html:128
+#: profiles/templates/profiles/profile_list.html:79 templates/index.html:128
 msgid "Add my profile"
 msgstr "Creare il mio profilo"
 
-#: profiles/templates/profiles/profile_list.html:89
+#: profiles/templates/profiles/profile_list.html:88
 #, python-format
 msgid ""
 "\n"
@@ -1245,18 +1245,22 @@ msgstr[1] ""
 "            %(counter)s profili\n"
 "            "
 
-#: profiles/templates/profiles/profile_list.html:95
+#: profiles/templates/profiles/profile_list.html:96
 #, fuzzy
 #| msgid "fairly completed profile"
-msgid "well completed profile"
-msgstr "profilo abbastanza completo"
-
-#: profiles/templates/profiles/profile_list.html:96
-msgid "fairly completed profile"
+msgid "well completed"
 msgstr "profilo abbastanza completo"
 
 #: profiles/templates/profiles/profile_list.html:97
-msgid "poorly completed profile"
+#, fuzzy
+#| msgid "fairly completed profile"
+msgid "fairly completed"
+msgstr "profilo abbastanza completo"
+
+#: profiles/templates/profiles/profile_list.html:98
+#, fuzzy
+#| msgid "poorly completed profile"
+msgid "poorly completed"
 msgstr "profilo poco completo"
 
 #: profiles/templates/profiles/profile_list.html:111
@@ -1275,7 +1279,7 @@ msgstr "Creare il mio profilo"
 msgid "All fields are mandatory."
 msgstr "Tutti i campi sono obbligatori"
 
-#: profiles/templates/profiles/profile_register.html:80
+#: profiles/templates/profiles/profile_register.html:79
 msgid "Create"
 msgstr "Creare"
 
