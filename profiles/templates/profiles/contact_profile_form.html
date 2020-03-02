@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block title %}{% blocktrans with profile_contacted=profile_contacted %}Contact {{ profile_contacted }}{% endblocktrans %} | {{ block.super }}{% endblock %}
 
@@ -9,6 +9,18 @@
         <div class="card">
             <div class="card-body">
                 <h1>{% blocktrans %}Get in touch with {{ profile_contacted }}{% endblocktrans %}</h1>
+                <a href="#" id="phone-number" class="btn btn-outline-main my-3 w-100 {% if not profile_phone_number %}disabled{% endif %}"><img src="{% if not profile_phone_number %}{% static 'img/icon_call_disabled.svg' %}{% else %}{% static 'img/icon_call.svg' %}{% endif %}" alt="{% trans 'Call icon' %}">
+                    {% if profile_phone_number %}
+                    {% blocktrans with profile_contacted=profile_contacted %}
+                    Contact {{ profile_contacted }} directly by phone. SMS is prefered.
+                    {% endblocktrans %}
+                    {% else %}
+                    {% blocktrans with profile_contacted=profile_contacted %}
+                    You can't access {{ profile_contacted }}'s phone number. He/She prefers to be contacted by e-mail.
+                    {% endblocktrans %}
+                    {% endif %}
+                </a>
+                <p class="text-center">-------------</p>
                 <form method="post" novalidate>
                     {% csrf_token %}
                     {{ form.non_field_errors }}
@@ -44,4 +56,16 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let phoneNumber = document.getElementById("phone-number");
+
+    phoneNumber.addEventListener('click', function() {
+        phoneNumber.classList.add('clicked');
+        phoneNumber.href = 'tel:{{ profile_phone_number }}';
+        phoneNumber.innerHTML = '{{ profile_phone_number }}';
+    });
+</script>
 {% endblock %}

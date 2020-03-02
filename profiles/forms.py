@@ -5,10 +5,15 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import models
 from django.db import transaction
 from django.db.models import Q
-# GeoDjango
+
+# GEODJANGO
 from django.contrib.gis.forms.fields import PolygonField as FormPolygonField
 from core.widgets import OpenLayersWidgetSrid4326
 # from django.contrib.gis.geos import Point
+
+# DJANGO-PHONENUMBER-FIELD
+from phonenumber_field.formfields import PhoneNumberField
+#from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
@@ -111,6 +116,12 @@ class ProfileCreationForm(CustomUserCreationForm):
 class AccountForm(forms.ModelForm):
     required_css_class = 'required'
 
+    # phone_number = PhoneNumberField(
+    #     label=_('Phone number'),
+    #     widget= PhoneNumberPrefixWidget(),
+    #     required=False
+    # )
+
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
@@ -126,7 +137,7 @@ class AccountForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['email', 'username', 'first_name', 'last_name']
+        fields = ['email', 'username', 'first_name', 'last_name', 'phone_number']
 
     def clean(self):
         cleaned_data = super().clean()

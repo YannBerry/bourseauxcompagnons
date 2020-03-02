@@ -173,6 +173,7 @@ def ContactProfileView(request, **kwargs):
         user_contacted_name = user_contacted.last_name
     else:
         user_contacted_name = user_contacted.username
+    user_contacted_phone_number = CustomUser.objects.get(username=user_contacted_username).phone_number
 
     if request.method == 'POST':
         form = ContactProfileForm(request.POST)
@@ -209,7 +210,7 @@ def ContactProfileView(request, **kwargs):
         if request.user.is_authenticated:
             prepopulated_fields.update({'from_email': request.user.email})
         form = ContactProfileForm(initial=prepopulated_fields)
-    return render(request, "profiles/contact_profile_form.html", {'form': form, 'profile_contacted': user_contacted_name})
+    return render(request, "profiles/contact_profile_form.html", {'form': form, 'profile_contacted': user_contacted_name, 'profile_phone_number': user_contacted_phone_number})
 
 
 class ProfileRegisterView(SuccessMessageMixin, CreateView):

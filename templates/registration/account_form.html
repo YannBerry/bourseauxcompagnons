@@ -41,6 +41,14 @@
                     <p class="helptext">{{ form.last_name.help_text|safe }}</p>
                 {% endif %}
             </div>
+            <div class="col-sm-6 mb-4">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+                {{ form.phone_number.errors }}
+                {% if form.phone_number.help_text %}
+                    <p class="helptext">{{ form.phone_number.help_text|safe }}</p>
+                {% endif %}
+            </div>
         </div>
 
         <div class="form-end-buttons-side mb-2">

@@ -19,14 +19,14 @@
                 <img src="{% static 'img/icon_user.png' %}" class="img-fluid img-thumbnail" alt="Default profile picture">
                 {% endif %}
             </div>
-            <div class="col-8 col-md-3 order-md-3">
+            <div class="col-8 col-md-3 order-md-3 ">
                 {% if user.is_authenticated and profile.user.username == user.username %}
                 <a href="{% url 'update-profile' user.username %}"><img src="{% static 'img/icon_edit.png' %}" class="float-right ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit public profile' %}"></a>
                 {% else %}
-                <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-outline-main float-right">{% trans 'Get in touch' %}</a>
+                <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-outline-main float-right">{% trans 'Get in touch' %}<br><img src="{% static 'img/icon_email.svg' %}" alt="{% trans 'Email icon' %}"><img src="{% if not profile.user.phone_number %}{% static 'img/icon_call_disabled.svg' %}{% else %}{% static 'img/icon_call.svg' %}{% endif %}" class="ml-2" alt="{% trans 'Call icon' %}"></a>
                 {% endif %}
             </div>
-            <div class="col-12 col-md-7 order-md-2">
+            <div class="col-12 col-md-7 order-md-2 mt-3 mt-md-0">
                 <h5>{% include "profiles/snippets/username.html" %}</h5>
                 <p>
                     {% if profile.age %}{% blocktrans with age=profile.age %}Age: {{ age }} years old{% endblocktrans %}<br>{% endif %}

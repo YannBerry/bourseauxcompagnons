@@ -30,13 +30,31 @@ a.unstyled, a.unstyled:hover {
 .navbar .navbar-nav .nav-link:hover {
     color: rgba(255,255,255,1);
 }
-.navbar .navbar-brand {
-    font-size: 1.1rem;
+.navbar .navbar-toggler, .navbar .navbar-brand {
+    font-size: 1rem;
+}
+.navbar .navbar-toggler {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+@media (min-width: 321px) {
+    .navbar .navbar-toggler, .navbar .navbar-brand {
+        font-size: 1.1rem;
+    }
 }
 @media (min-width: 576px) {
-    .navbar .navbar-brand {
+    .navbar .navbar-toggler, .navbar .navbar-brand {
         font-size: 1.25rem;
     }
+    .navbar .navbar-toggler {
+        padding-left: .75rem;
+        padding-right: .75rem;
+    }
+}
+/* buttons */
+.btn img {
+    height: 1.4rem;
+    padding-right: .5rem;
 }
 /* input file*/
 .custom-file-input ~ .custom-file-label:lang(en)::after {
@@ -63,6 +81,13 @@ a.unstyled, a.unstyled:hover {
     color: rgb(39, 75, 89);
 }
 
+/* DJANGO-PHONENUMBER-FIELD CUSTOM */
+#id_phone_number_0 {
+    width: 20%;
+}
+#id_phone_number_1 {
+    width: 80%;
+}
 
 /* COLORS */
 .bg-grey-dark {
@@ -135,6 +160,10 @@ a.unstyled, a.unstyled:hover {
     border-color: rgb(217, 93, 48);
     border-width: 2px;
 }
+.btn-outline-main.disabled {
+    opacity: .5;
+}
+
 /* Add profile and add outing*/
 .btn-circle {
     width: 60px;
