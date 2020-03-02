@@ -22,7 +22,7 @@ class CustomUser(AbstractUser):
     is_profile = models.BooleanField(verbose_name=_('profile status'), default=False)
     phone_number = PhoneNumberField(
         verbose_name=_('phone number'),
-        help_text=_("Enter your phone number with your calling country code (Fr +33 | It +39 | Es +34 | En +44). Ex: write +33600000000 instead of 0600000000."),
+        help_text=_("Enter your phone number with your calling country code (Fr +33 | It +39 | Sp +34 | UK +44). Ex: write +33600000000 instead of 0600000000."),
         null=True,
         blank=True
     )
