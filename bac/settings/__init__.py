@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres', # needed for the unaccent and trigram lookups (to install postgre extensions : CREATE EXTENSION unaccent; and pg_trgm;)
     'django.contrib.gis',
     'phonenumber_field',
+    'classytags',
     'debug_toolbar',
 ]
 

@@ -129,6 +129,23 @@ a.unstyled, a.unstyled:hover {
     content: "?";
 }
 
+/* COOKIES CONSENT BANNER */
+#cookielaw-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(211,211,211);
+}
+#cookielaw-banner .cookielaw-close {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
 /* NAVBAR */
 .navbar .navbar-collapse hr {
     height: 0px;

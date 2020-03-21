@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<div id="cookielaw-banner" class="container-fluid p-3">
+    <!-- <div class="cookielaw-close">X</div> -->
+    <h4 class="text-uppercase">{% trans "Cookie consent" %}</h4>
+    <div class="row">
+        <div class="col-12 col-lg-9">
+            <p class="mb-0">{% trans "This website uses few fonctionnal and mandatory cookies: protection against attacks, session id, language. Your personal profile data is stored in a secured server located in France. No pub. No data sold." %}</p>
+        </div>
+        <div class="col-12 col-lg-3 mt-2 mt-lg-0 text-lg-right">
+            <a href="javascript:cookielaw.createCookielawCookie();" class="btn btn-main" role="button">{% trans "Accept" %}</a>
+            <!-- <a href="#" class="btn btn-main ml-2" role="button">{% trans "Plus d'info" %}</a> -->
+        </div>
+    </div>
+</div>
