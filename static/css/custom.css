@@ -131,6 +131,7 @@ a.unstyled, a.unstyled:hover {
 
 /* COOKIES CONSENT BANNER */
 #cookielaw-banner {
+    z-index: 1100;
     position: fixed;
     bottom: 0;
     left: 0;
