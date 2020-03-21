@@ -96,7 +96,7 @@ a.unstyled, a.unstyled:hover {
 .bg-grey {
     background-color: rgb(72,72,72);
 }
-.border-red-superlight {
+/*.border-red-superlight {
     border-right: 8px solid rgb(220,53,69);
 }
 .border-orange-superlight {
@@ -104,7 +104,7 @@ a.unstyled, a.unstyled:hover {
 }
 .border-green-superlight {
     border-right: 8px solid rgb(40,167,69);
-}
+}*/
 
 /* CURSORS */
 .cursor-pointer {

@@ -84,24 +84,24 @@
 
 {% block content %}
     {% if profile_list %}
-        <p class="mb-0">
+        <p>
             {% blocktrans count counter=nb_of_results %}
             {{ counter }} profile
             {% plural %}
             {{ counter }} profiles
             {% endblocktrans %}
         </p>
-        <p>
+<!--         <p>
             <small>
                 <span class="px-2 badge-pill border bg-success">{% trans "well completed" %}</span>
                 <span class="px-2 badge-pill border bg-warning">{% trans "fairly completed" %}</span>
                 <span class="px-2 badge-pill border bg-danger">{% trans "poorly completed" %}</span>
             </small>
-        </p>
+        </p> -->
         <div class="row">
             {% for profile in profile_list %}
                 <div class="col-md-6 mb-4">
-                    <div class="card h-100 cursor-pointer {% if profile.completion <= 50 %}border-red-superlight{% elif profile.completion <= 80 %}border-orange-superlight{% else %}border-green-superlight{% endif %}" onclick="document.location='{{ profile.get_absolute_url }}'">
+                    <div class="card h-100 cursor-pointer" onclick="document.location='{{ profile.get_absolute_url }}'">
                     {% include "core/cards/profile.html" %}
                     </div>
                 </div>
