@@ -125,7 +125,7 @@
                 {% endfor %}
                 {% if user.is_anonymous %}
                     <div class="col-sm-6 col-lg-4 mb-4">
-                        <button class="btn btn-outline-main btn-block" style="height: 100%;"><a href="{% url 'profile_register' %}" class="h4">{% trans "Add my profile" %}</a></button>
+                        <a href="{% url 'profile_register' %}" class="btn btn-outline-main d-flex justify-content-center align-items-center" style="height: 100%;"><span class="h4 font-weight-bold mb-0">{% trans "Add my profile" %}</span></a>
                     </div>
                 {% endif %}
             </div>
@@ -155,7 +155,7 @@
                     </div>
                 {% endfor %}
                 <div class="col-sm-6 col-lg-4 mb-4">
-                    <button class="btn btn-outline-main btn-block" style="height: 100%;"><a href="{% url 'outings:create' %}" class="h4">{% trans "Add my outing" %}</a></button>
+                    <a href="{% url 'outings:create' %}" class="btn btn-outline-main d-flex justify-content-center align-items-center" style="height: 100%;"><span class="h4 font-weight-bold mb-0">{% trans "Add my outing" %}</span></a>
                 </div>
             </div>
         </div>

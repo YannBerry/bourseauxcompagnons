@@ -167,8 +167,7 @@ a.unstyled, a.unstyled:hover {
     color: rgb(255,255,255);
     background-color: rgb(217, 93, 48);
 }
-.btn-outline-main, .btn-outline-main:hover,
-.btn-outline-main a, .btn-outline-main:hover a {
+.btn-outline-main, .btn-outline-main:hover {
     color: rgb(217, 93, 48);
     font-weight: bold;
     text-decoration:none;
