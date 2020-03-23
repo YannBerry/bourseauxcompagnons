@@ -9,8 +9,8 @@
             <img src="{% static 'img/icon_user.png' %}" class="img-fluid" alt="Default profile picture">
             {% endif %}
         </div>
-        <div class="col-9 d-flex align-items-stretch pl-2">
-            <div class="mr-2">
+        <div class="col-9 d-flex align-items-stretch pl-2 w-100">
+            <div class="flex-grow-1 mr-2">
                 <h5><a href="{{ profile.get_absolute_url }}" class="unstyled">{% include "profiles/snippets/username.html" %}</a></h5>
                 <p class="card-text">
                     {% if profile.age %}<span class="font-weight-bold">{% blocktrans with profile_age=profile.age %}{{ profile_age }} years{% endblocktrans %}</span><br>{% endif %}
