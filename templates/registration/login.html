@@ -13,7 +13,7 @@
                     {{ form.non_field_errors }}
                     <div class="row">
                         <div class="col-12 mb-4">
-                            {{ form.username.label_tag }}
+                            <label for="{{ form.username.id_for_label }}" class="required">{% trans "E-mail address" %}</label>
                             {{ form.username }}
                             {{ form.username.errors }}
                             {% if form.username.help_text %}
@@ -21,7 +21,7 @@
                             {% endif %}
                         </div>
                         <div class="col-12 mb-4">
-                            {{ form.password.label_tag }}
+                            <label for="{{ form.password.id_for_label }}" class="required">{% trans "Password" %}</label>
                             {{ form.password }}
                             {{ form.password.errors }}
                             {% if form.password.help_text %}

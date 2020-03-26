@@ -3,8 +3,9 @@ from django import forms
 
 from outings.models import Outing
 from activities.models import Activity
+from core.forms import NoColonModelForm
 
-class OutingForm(forms.ModelForm):
+class OutingForm(NoColonModelForm):
     #error_css_class = 'contains_errors_as_ul_p'
     required_css_class = 'required'
 

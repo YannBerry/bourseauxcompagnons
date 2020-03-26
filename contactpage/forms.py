@@ -1,8 +1,10 @@
 from django.utils.translation import gettext_lazy as _
 from django import forms
 
+from core.forms import NoColonForm
 
-class ContactForm(forms.Form):
+
+class ContactForm(NoColonForm):
     required_css_class = 'required'
 
     from_email = forms.EmailField(label=_('Your e-mail address'), required=True)

@@ -2,8 +2,9 @@ from django.utils.translation import gettext_lazy as _
 from django import forms
 
 from availabilities.models import Availability
+from core.forms import NoColonModelForm
 
-class AvailabilityForm(forms.ModelForm):
+class AvailabilityForm(NoColonModelForm):
     #error_css_class = 'contains_errors_as_ul_p'
     required_css_class = 'required'
 

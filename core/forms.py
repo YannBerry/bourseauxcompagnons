@@ -5,29 +5,29 @@ from operator import attrgetter
 from django import forms
 from django.forms.models import ModelChoiceIterator, ModelChoiceField, ModelMultipleChoiceField
 
-class CustomForm(forms.Form):
-    # def __init__(self, *args, **kwargs):
-    #     kwargs.setdefault('label_suffix', '')  
-    #     super(CustomForm, self).__init__(*args, **kwargs)
+class NoColonForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')  
+        super(NoColonForm, self).__init__(*args, **kwargs)
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(BaseAdmin, self).get_form(request, obj, **kwargs)
-        for field in form.base_fields:
-            if form.base_fields.get(field).required:
-                form.base_fields.get(field).label_suffix = " *"
-        return form
+    # def get_form(self, request, obj=None, **kwargs):
+    #     form = super(BaseAdmin, self).get_form(request, obj, **kwargs)
+    #     for field in form.base_fields:
+    #         if form.base_fields.get(field).required:
+    #             form.base_fields.get(field).label_suffix = " *"
+    #     return form
 
-class CustomModelForm(forms.ModelForm):
-    # def __init__(self, *args, **kwargs):
-    #     kwargs.setdefault('label_suffix', '')  
-    #     super(CustomForm, self).__init__(*args, **kwargs)
+class NoColonModelForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')  
+        super(NoColonModelForm, self).__init__(*args, **kwargs)
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(BaseAdmin, self).get_form(request, obj, **kwargs)
-        for field in form.base_fields:
-            if form.base_fields.get(field).required:
-                form.base_fields.get(field).label_suffix = " *"
-        return form
+    # def get_form(self, request, obj=None, **kwargs):
+    #     form = super(BaseAdmin, self).get_form(request, obj, **kwargs)
+    #     for field in form.base_fields:
+    #         if form.base_fields.get(field).required:
+    #             form.base_fields.get(field).label_suffix = " *"
+    #     return form
 
 class GroupedModelChoiceIterator(ModelChoiceIterator):
     '''

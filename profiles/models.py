@@ -38,7 +38,8 @@ def user_directory_path_pict(instance, filename):
     ''' Return the path where to save a picture uploaded by a profile.'''
     username = instance.user.username
     date_added = f"{timezone.now().year}{timezone.now().month}{timezone.now().day}"
-    return f"profiles/{username}/pictures/{date_added}-{filename}"
+    time_added = f"{timezone.now().hour}{timezone.now().minute}{timezone.now().second}"
+    return f"profiles/{username}/pictures/{date_added}_{time_added}-{username}-{filename}"
 
 class Profile(models.Model):
     """

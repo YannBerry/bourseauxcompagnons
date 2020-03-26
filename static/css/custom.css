@@ -537,6 +537,10 @@ label.required {
     font-weight: bold;
 }
 
+label.required::after {
+    content: ' *';
+}
+
 .is-invalid,
 .contains_errors_as_ul_p>input,
 .contains_errors_as_ul_p>textarea {

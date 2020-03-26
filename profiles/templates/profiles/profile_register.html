@@ -23,54 +23,54 @@
                     <div class="row">
                         <div class="col-sm-6 mb-4">
                             {{ form.email.label_tag }}
+                            {{ form.email }}
+                            {{ form.email.errors }}
                             {% if form.email.help_text %}
                                 <p class="helptext">{{ form.email.help_text|safe }}</p>
                             {% endif %}
-                            {{ form.email }}
-                            {{ form.email.errors }}
                         </div>
                         <div class="col-sm-6 mb-4">
                             {{ form.username.label_tag }}
+                            {{ form.username }}
+                            {{ form.username.errors }}
                             {% if form.username.help_text %}
                                 <p class="helptext">{{ form.username.help_text|safe }}</p>
                             {% endif %}
-                            {{ form.username }}
-                            {{ form.username.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.password1.label_tag }}
+                            {{ form.password1 }}
+                            {{ form.password1.errors }}
                             {% if form.password1.help_text %}
                                 <div class="helptext">{{ form.password1.help_text|safe }}</div>
                             {% endif %}
-                            {{ form.password1 }}
-                            {{ form.password1.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.password2.label_tag }}
+                            {{ form.password2 }}
+                            {{ form.password2.errors }}
                             {% if form.password2.help_text %}
                                 <p class="helptext">{{ form.password2.help_text|safe }}</p>
                             {% endif %}
-                            {{ form.password2 }}
-                            {{ form.password2.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.activities.label_tag }}
+                            {{ form.activities }}
+                            {{ form.activities.errors }}
                             {% if form.activities.help_text %}
                                 <p class="helptext">{{ form.activities.help_text|safe }}</p>
                             {% endif %}
-                            {{ form.activities }}
-                            {{ form.activities.errors }}
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.availability_area_geo.label_tag }}
                             <span title="{% trans 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span>
                             <!-- Modal: help draw area -->
                             {% include "core/modals/help_draw_area.html" %}
+                            {% include "forms/availability_area_input.html" %}
+                            {{ form.availability_area_geo.errors }}
                             {% if form.availability_area_geo.help_text %}
                                 <p class="helptext">{{ form.availability_area_geo.help_text|safe }}</p>
                             {% endif %}
-                            {% include "forms/availability_area_input.html" %}
-                            {{ form.availability_area_geo.errors }}
                         </div>
                     </div>
 

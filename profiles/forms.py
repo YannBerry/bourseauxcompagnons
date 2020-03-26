@@ -17,7 +17,7 @@ from phonenumber_field.formfields import PhoneNumberField
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
-from core.forms import GroupedModelMultipleChoiceField
+from core.forms import NoColonForm, NoColonModelForm, GroupedModelMultipleChoiceField
 from core.widgets import ImageWidget, GradesWidget, SelectableItemsWidget, ToggleSwitchWidget
 
 
@@ -43,7 +43,7 @@ class CustomUserForm(UserChangeForm):
 
 # FORMS FOR THE FRONT OFFICE
 
-class ProfileCreationForm(CustomUserCreationForm):
+class ProfileCreationForm(NoColonForm, CustomUserCreationForm):
     '''
     A form that creates a profile (= CustomUser model with is_profile=True),
     with no privileges, from the given email, username and password.
@@ -113,7 +113,7 @@ class ProfileCreationForm(CustomUserCreationForm):
             )
 
 
-class AccountForm(forms.ModelForm):
+class AccountForm(NoColonModelForm):
     required_css_class = 'required'
 
     # phone_number = PhoneNumberField(
@@ -151,7 +151,7 @@ class AccountForm(forms.ModelForm):
             )
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(NoColonModelForm):
     required_css_class = 'required'
 
     grades = GroupedModelMultipleChoiceField(
@@ -224,7 +224,7 @@ class ProfileForm(forms.ModelForm):
             )
 
 
-class ContactProfileForm(forms.Form):
+class ContactProfileForm(NoColonForm):
     required_css_class = 'required'
 
     from_email = forms.EmailField(label=_('Your e-mail address'), help_text=_("You will receive the contacted profile's answer on this e-mail."), required=True)
