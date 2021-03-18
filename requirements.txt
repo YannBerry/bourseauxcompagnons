@@ -1,5 +1,5 @@
 Babel==2.8.0
-Django==2.2.6
+Django==2.2.18
 django-classy-tags==1.0.0
 django-debug-toolbar==2.0
 django-modeltranslation==0.13.4
