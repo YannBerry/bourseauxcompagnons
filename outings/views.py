@@ -131,11 +131,14 @@ class OutingCreateView(SuccessMessageMixin, CreateView):
 class OutingUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = Outing
     form_class = OutingForm
-    success_message = _("Your outing is now updated!")
+    success_message = _("Your outing is now updated! <a href='{}#cal-events'>Go back to my profile</a>")
 
     def test_func(self):
         outing_author = Outing.objects.get(slug=self.kwargs['slug']).author.username
         return self.request.user.username == outing_author
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message.format(reverse_lazy('my-profile'))
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
