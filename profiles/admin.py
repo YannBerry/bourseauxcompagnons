@@ -37,7 +37,6 @@ delete_profile_cleanly.short_description = _("Delete selected profiles cleanly (
 class ProfileAdmin(OSMGeoAdmin):
     list_display = ('email', 'first_name', 'birthdate')
     readonly_fields = ['age']
-    # actions = [delete_profile_cleanly]
     actions = OSMGeoAdmin.actions + [delete_profile_cleanly]
 
     class Meta:
