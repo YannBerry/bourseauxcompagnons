@@ -1,5 +1,5 @@
 from django.utils.translation import gettext_lazy as _
-from django.urls import path, re_path
+from django.urls import path
 
 from availabilities.views import (
     AvailabilityCreateView,

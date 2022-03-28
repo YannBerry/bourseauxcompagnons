@@ -4,7 +4,7 @@ from calendar import month_name
 from calendar import monthrange
 from datetime import date
 from datetime import timedelta
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.utils.translation import gettext_lazy as _
 
 from outings.models import Outing
