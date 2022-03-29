@@ -34,6 +34,9 @@ class Outing(models.Model):
     class Meta:
         verbose_name = _('outing')
         verbose_name_plural = _('outings')
+        '''Warning on ordering: if a groupby query (such as .annotate().values()) 
+        is done on the model's META.ordering then this ordering will be ignored.
+        In this case add a group_by() to the query to have the desired ordering.'''
         ordering = ['start_date']
 
     def __str__(self):

@@ -105,7 +105,7 @@ class ProfileListView(ListView):
         if user_authenticated and self.request.user.is_profile:
             if self.request.user.profile.location:
                 user_loc = self.request.user.profile.location
-                q = q.annotate(distance=Distance('location', user_loc)).order_by('distance')
+                q = q.annotate(distance=Distance('location', user_loc)).order_by('distance', '-last_update')
                 if around_me:
                     q = q.filter(location__distance_lte=(user_loc, 50000))
 
