@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 {% endblock %}
 
-{% block title %}{% trans "Partners for your mountain outings" %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate "Partners for your mountain outings" %} | {{ block.super }}{% endblock %}
 
 {% block index %}
 {% if messages %}
@@ -32,7 +32,7 @@
                     <div class="col-sm-10 col-md-6 mx-auto mx-md-0 px-0">
                         <div class="card" style="background-color: rgba(225,225,225,0.9);">
                             <div class="card-body text-center">
-                                <h1 class="card-text h4 mb-4 mt-xl-4 mb-xl-5">{% trans "Find partners for your outings in the mountain." %}</h1>
+                                <h1 class="card-text h4 mb-4 mt-xl-4 mb-xl-5">{% translate "Find partners for your outings in the mountain." %}</h1>
                                 <form id="profile-outing-form" method="get" action="">
                                     <div class="form-row">
                                         <div class="form-group col-12">
@@ -43,10 +43,10 @@
                                             </ul>
                                         </div>
                                         <div class="form-group col-12">
-                                            <button id="search-profile" class="btn btn-outline-main btn-block" type="submit">{% trans "Search Profile" %}</button>
+                                            <button id="search-profile" class="btn btn-outline-main btn-block" type="submit">{% translate "Search Profile" %}</button>
                                         </div>
                                         <div class="form-group col-12 mb-0 mb-xl-3">
-                                            <button id="search-outing" class="btn btn-outline-main btn-block" type="submit">{% trans "Search Outing" %}</button>
+                                            <button id="search-outing" class="btn btn-outline-main btn-block" type="submit">{% translate "Search Outing" %}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -68,18 +68,18 @@
         <div class="col-xl-8 order-2">
             <div class="row">
                 <div class="col-12 col-md-6 col-xl-4">
-                    <h3>{% trans 'For whom?' %}</h3>
-                    <p>{% trans 'Sportsmen and sportswomen struggling to find partners to explore the outdoors. Especially the mountains.' %}</p>
+                    <h3>{% translate 'For whom?' %}</h3>
+                    <p>{% translate 'Sportsmen and sportswomen struggling to find partners to explore the outdoors. Especially the mountains.' %}</p>
                 </div>
                 <div class="col-12 col-md-6 col-xl-4">
-                    <h3>{% trans 'What for?' %}</h3>
-                    <p>{% trans 'Find partners that match your activities, your level and your aspirations.' %}</p>
+                    <h3>{% translate 'What for?' %}</h3>
+                    <p>{% translate 'Find partners that match your activities, your level and your aspirations.' %}</p>
                 </div>
                 <div class="col-12 col-md-12 col-xl-4">
-                    <h3>{% trans 'How it works?' %}</h3>
+                    <h3>{% translate 'How it works?' %}</h3>
                     <ul class="list-unstyled">
-                        <li class="mb-2">{% trans 'Watch profiles and outings. Contact directly the ones fitting your interest.' %}</li>
-                        <li>{% trans 'Publish your own profile or outings to be contacted by potential partners.' %}</li>
+                        <li class="mb-2">{% translate 'Watch profiles and outings. Contact directly the ones fitting your interest.' %}</li>
+                        <li>{% translate 'Publish your own profile or outings to be contacted by potential partners.' %}</li>
                     </ul>
                 </div>
             </div>
@@ -112,8 +112,8 @@
             <div class="row">
                 <div class="col-12 pb-3">
                     <div class="d-flex flex-row align-items-baseline justify-content-between flex-wrap">
-                        <h2 class="mr-4">{% trans 'Last profiles created' %}</h2>
-                        <a class="d-none d-sm-block" href="{% url 'profiles:list' %}">{% trans "Display all the profiles" %} ></a>
+                        <h2 class="mr-4">{% translate 'Last profiles created' %}</h2>
+                        <a class="d-none d-sm-block" href="{% url 'profiles:list' %}">{% translate "Display all the profiles" %} ></a>
                     </div>
                 </div>
                 {% for profile in 5_last_profiles %}
@@ -125,7 +125,7 @@
                 {% endfor %}
                 {% if user.is_anonymous %}
                     <div class="col-sm-6 col-lg-4 mb-4">
-                        <a href="{% url 'profile_register' %}" class="btn btn-outline-main d-flex justify-content-center align-items-center" style="height: 100%;"><span class="h4 font-weight-bold mb-0">{% trans "Add my profile" %}</span></a>
+                        <a href="{% url 'profile_register' %}" class="btn btn-outline-main d-flex justify-content-center align-items-center" style="height: 100%;"><span class="h4 font-weight-bold mb-0">{% translate "Add my profile" %}</span></a>
                     </div>
                 {% endif %}
             </div>
@@ -143,8 +143,8 @@
             <div class="row">
                 <div class="col-12 pb-3">
                     <div class="d-flex flex-row align-items-center justify-content-between flex-wrap">
-                        <h2 class="mr-4">{% trans 'Last outings suggested' %}</h2>
-                        <a class="d-none d-sm-block" href="{% url 'outings:list' %}">{% trans "Display all the outings" %} ></a>
+                        <h2 class="mr-4">{% translate 'Last outings suggested' %}</h2>
+                        <a class="d-none d-sm-block" href="{% url 'outings:list' %}">{% translate "Display all the outings" %} ></a>
                     </div>
                 </div>
                 {% for outing in 5_last_outings %}
@@ -155,7 +155,7 @@
                     </div>
                 {% endfor %}
                 <div class="col-sm-6 col-lg-4 mb-4">
-                    <a href="{% url 'outings:create' %}" class="btn btn-outline-main d-flex justify-content-center align-items-center" style="height: 100%;"><span class="h4 font-weight-bold mb-0">{% trans "Add my outing" %}</span></a>
+                    <a href="{% url 'outings:create' %}" class="btn btn-outline-main d-flex justify-content-center align-items-center" style="height: 100%;"><span class="h4 font-weight-bold mb-0">{% translate "Add my outing" %}</span></a>
                 </div>
             </div>
         </div>
@@ -348,6 +348,7 @@
         {% if p.location %}
         {
             const feature = new ol.Feature({
+                // Warning on unlocalize filter: it may not work on the future versions of Django because it ignores DECIMAL_SEPARATOR which is . by default
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([{{ p.location.x|unlocalize }}, {{ p.location.y|unlocalize }}]))
             });
             const profileActivities = [];

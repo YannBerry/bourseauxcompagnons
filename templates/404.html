@@ -3,14 +3,14 @@
 {% load l10n %}
 {% load i18n %}
 
-{% block title %}{% trans "This page doesn't exist" %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate "This page doesn't exist" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center text-center">
     <div class="col-md-10 col-sm-12">
-        <h1 class="mb-5">{% trans "This page does not exist (error 404)" %}</h1>
+        <h1 class="mb-5">{% translate "This page does not exist (error 404)" %}</h1>
         <p class="display-4 mb-5">¯\_(ツ)_/¯</p>
-        <p><a href="{% url 'homepage' %}" class="btn btn-main btn-lg">{% trans "Go to Homepage" %}</a></p>
+        <p><a href="{% url 'homepage' %}" class="btn btn-main btn-lg">{% translate "Go to Homepage" %}</a></p>
     </div>
 </div>
 {% endblock %}

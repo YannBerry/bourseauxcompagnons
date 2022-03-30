@@ -10,7 +10,7 @@
 <!-- <link rel="stylesheet" href="{% static 'css/20191113nouislider/nouislider.min.css' %}"> -->
 {% endblock %}
 
-{% block title %}{% trans 'Update my profile' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'Update my profile' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
@@ -74,7 +74,7 @@
                 {% endif %}
             </div>
             <div class="col-sm-6 mb-4">
-                {{ form.availability_area_geo.label_tag }}<span title="{% trans 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span>
+                {{ form.availability_area_geo.label_tag }}<span title="{% translate 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span>
                 <!-- Modal: help draw area -->
                 {% include "core/modals/help_draw_area.html" %}
                 {% include "forms/availability_area_input.html" %}
@@ -109,9 +109,9 @@
             </div>
         </div>
         <div class="form-end-buttons-side mb-4">
-            <input type="submit" value="{% trans 'Save' %}" class="btn btn-main" />
+            <input type="submit" value="{% translate 'Save' %}" class="btn btn-main" />
             {% if profile %}
-            <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% trans 'Cancel' %}</a>
+            <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% translate 'Cancel' %}</a>
             {% endif %}
         </div>
     </form>

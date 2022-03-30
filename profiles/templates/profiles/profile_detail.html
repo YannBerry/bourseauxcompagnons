@@ -21,16 +21,16 @@
             </div>
             <div class="col-8 col-md-3 order-md-3 ">
                 {% if user.is_authenticated and profile.user.username == user.username %}
-                <a href="{% url 'update-profile' user.username %}"><img src="{% static 'img/icon_edit.png' %}" class="float-right ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit public profile' %}"></a>
+                <a href="{% url 'update-profile' user.username %}"><img src="{% static 'img/icon_edit.png' %}" class="float-right ml-2" height="30" alt="{% translate 'Edit icon' %}" title="{% translate 'Edit public profile' %}"></a>
                 {% else %}
-                <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-outline-main float-right">{% trans 'Get in touch' %}<br><img src="{% static 'img/icon_email.svg' %}" alt="{% trans 'Email icon' %}"><img src="{% if not profile.user.phone_number %}{% static 'img/icon_call_disabled.svg' %}{% else %}{% static 'img/icon_call.svg' %}{% endif %}" class="ml-2" alt="{% trans 'Call icon' %}"></a>
+                <a href="{% url 'profiles:contact-profile' profile.user.username %}" class="btn btn-outline-main float-right">{% translate 'Get in touch' %}<br><img src="{% static 'img/icon_email.svg' %}" alt="{% translate 'Email icon' %}"><img src="{% if not profile.user.phone_number %}{% static 'img/icon_call_disabled.svg' %}{% else %}{% static 'img/icon_call.svg' %}{% endif %}" class="ml-2" alt="{% translate 'Call icon' %}"></a>
                 {% endif %}
             </div>
             <div class="col-12 col-md-7 order-md-2 mt-3 mt-md-0">
                 <h5>{% include "profiles/snippets/username.html" %}</h5>
                 <p>
-                    {% if profile.age %}{% blocktrans with age=profile.age %}Age: {{ age }} years old{% endblocktrans %}<br>{% endif %}
-                    {% trans 'Looking for partners for' %}
+                    {% if profile.age %}{% blocktranslate with age=profile.age %}Age: {{ age }} years old{% endblocktranslate %}<br>{% endif %}
+                    {% translate 'Looking for partners for' %}
                     {% for activity in profile.activities.all %}
                         <span class="badge badge-pill badge-info">{{ activity.name }}{% for grade in profile.grades.all %}{% if grade.activity.name == activity.name %} - {{ grade.name }}{% endif %}{% endfor %}</span>
                     {% endfor %}
@@ -41,11 +41,11 @@
             <div class="row mb-3">
                 <div class="col-12">
                     {% if profile.location and profile.availability_area_geo %}
-                    <h1 class="h5">{% trans "Location & Availability area" %}</h1>
+                    <h1 class="h5">{% translate "Location & Availability area" %}</h1>
                     {% elif profile.location and not profile.availability_area_geo %}
-                    <h1 class="h5">{% trans "Location" %}</h1>
+                    <h1 class="h5">{% translate "Location" %}</h1>
                     {% else %}
-                    <h1 class="h5">{% trans "Availability area" %}</h1>
+                    <h1 class="h5">{% translate "Availability area" %}</h1>
                     {% endif %}
                     <div id="location_map" style="height: 450px;"></div>
                 </div>
@@ -54,7 +54,7 @@
         {% if profile.availability_area %}
             <div class="row mb-3">
                 <div class="col-12">
-                    <h1 class="h5">{% trans "Availability area (further details):" %}</h1>
+                    <h1 class="h5">{% translate "Availability area (further details):" %}</h1>
                     <p class="text-justify card-text">{{ profile.availability_area }}</p>
                 </div>
             </div>
@@ -62,7 +62,7 @@
         {% if profile.introduction %}
             <div class="row mb-3">
                 <div class="col-12">
-                    <h1 class="h5">{% trans "Introduction" %}</h1>
+                    <h1 class="h5">{% translate "Introduction" %}</h1>
                     <p class="text-justify card-text">{{ profile.introduction|linebreaksbr }}</p>
                 </div>
             </div>
@@ -70,7 +70,7 @@
         {% if profile.list_of_courses %}
             <div class="row mb-3">
                 <div class="col-12">
-                    <h1 class="h5">{% trans "List of main courses" %}</h1>
+                    <h1 class="h5">{% translate "List of main courses" %}</h1>
                     <p class="text-justify card-text">{{ profile.list_of_courses|linebreaksbr }}</p>
                 </div>
             </div>
@@ -81,14 +81,14 @@
 {% if profile.user.outing_set.all or profile.user.availability_set.all %}
     <div id="cal-events" class="row mb-4">
         <div class="col-12">
-            <h1 class="h2">{% trans 'Its calendar' %}</h1>
+            <h1 class="h2">{% translate 'Its calendar' %}</h1>
             {{ cal_events }}
         </div>
     </div>
 {% endif %}
 
 {% if profile.user.outing_set.all %}
-    <h1 class="h2">{% trans 'Details of its outing propositions' %}</h1>
+    <h1 class="h2">{% translate 'Details of its outing propositions' %}</h1>
     <div class="row">
         {% for outing in profile.user.outing_set.all %}
         <div class="col-md-6 mb-4">

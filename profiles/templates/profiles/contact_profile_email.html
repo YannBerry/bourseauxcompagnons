@@ -7,7 +7,7 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>{% trans 'Email sent from the contact form of Bourse aux compagnons' %}</title>
+        <title>{% translate 'Email sent from the contact form of Bourse aux compagnons' %}</title>
         <style>
             /* -------------------------------------
               GLOBAL RESETS
@@ -306,7 +306,7 @@
         </style>
     </head>
     <body class="">
-        <span class="preheader">{% trans 'Somebody is getting in touch with you.' %}</span>
+        <span class="preheader">{% translate 'Somebody is getting in touch with you.' %}</span>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
             <tr>
                 <td>&nbsp;</td>
@@ -322,16 +322,16 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>
-                                            <p style="margin-bottom: 1em;">{% trans 'Hi' %} {{ profile_contacted }},</p>
+                                            <p style="margin-bottom: 1em;">{% translate 'Hi' %} {{ profile_contacted }},</p>
                                             {% if profile_making_contact %}
                                                 {# Translators: Think to translate the urls #}
-                                                <p>{% blocktrans with language_code=LANGUAGE_CODE profile_making_contact=profile_making_contact %}
+                                                <p>{% blocktranslate with language_code=LANGUAGE_CODE profile_making_contact=profile_making_contact %}
                                                 You received a message from <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_making_contact }}/">{{ profile_making_contact }}</a> through Bourse aux compagnons website:
-                                                {% endblocktrans %}</p>
+                                                {% endblocktranslate %}</p>
                                             {% else %}
-                                                <p>{% blocktrans %}
+                                                <p>{% blocktranslate %}
                                                 You received a message from somebody through Bourse aux compagnons website:
-                                                {% endblocktrans %}</p>
+                                                {% endblocktranslate %}</p>
                                             {% endif %}
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="font-style: italic; color:#FE9B0C;">
                                                 <tbody>
@@ -344,7 +344,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <p>{% trans 'Sportively yours' %}</p>
+                                            <p>{% translate 'Sportively yours' %}</p>
                                         </td>
                                     </tr>
                                 </table>
@@ -360,7 +360,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% trans 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
+                                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
                                 </td>
                             </tr>
                         </table>

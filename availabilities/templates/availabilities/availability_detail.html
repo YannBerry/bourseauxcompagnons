@@ -2,19 +2,19 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with availability_start_date=availability.start_date %}Availability starting the {{ availability_start_date }}{% endblocktrans %} | {{ block.super }}{% endblock %}
+{% block title %}{% blocktranslate with availability_start_date=availability.start_date %}Availability starting the {{ availability_start_date }}{% endblocktranslate %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="card mb-4">
     <div class="card-body">
         <div class="row align-items-center">
             <div class="col-auto mr-auto">
-                <h1>{% trans 'Availability' %}</h1>
+                <h1>{% translate 'Availability' %}</h1>
             </div>
             {% if user.is_authenticated and availability.author.username == user.username %}
             <div class="col-auto">
-                <a href="{% url 'availabilities:update' availability.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit availability' %}"></a>
-                <a href="{% url 'availabilities:delete' availability.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete availability ' %}"></a>
+                <a href="{% url 'availabilities:update' availability.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="30" alt="{% translate 'Edit icon' %}" title="{% translate 'Edit availability' %}"></a>
+                <a href="{% url 'availabilities:delete' availability.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="30" alt="{% translate 'Delete icon' %}" title="{% translate 'Delete availability ' %}"></a>
             </div>
             {% endif %}
         </div>
@@ -24,23 +24,23 @@
         {% endfor %}
         {% endif %}
         <p>        
-            {% blocktrans with start_date=availability.start_date|date:"SHORT_DATE_FORMAT" end_date=availability.end_date|date:"SHORT_DATE_FORMAT" count duration=availability.duration %}
+            {% blocktranslate with start_date=availability.start_date|date:"SHORT_DATE_FORMAT" end_date=availability.end_date|date:"SHORT_DATE_FORMAT" count duration=availability.duration %}
             During the {{ start_date }}.
             {% plural %}
             On {{ duration }} days. From the {{ start_date }} to the {{ end_date }}.
-            {% endblocktrans %}
+            {% endblocktranslate %}
         </p>
         <p class="text-justify">{{ availability.description|linebreaksbr }}</p>
         <p>
             {% if user.is_authenticated and availability.author == user %}
             {% url 'my-profile' as my_profile_url %}
-            {% blocktrans %}
+            {% blocktranslate %}
             Back to <a href="{{ my_profile_url }}#cal-events">my profile</a>.
-            {% endblocktrans %}
+            {% endblocktranslate %}
             {% else %}
-            {% blocktrans with author_url=availability.author.profile.get_absolute_url author=availability.author.username %}
+            {% blocktranslate with author_url=availability.author.profile.get_absolute_url author=availability.author.username %}
             Back to <a href="{{ author_url }}">{{ author }}</a>'s profile.
-            {% endblocktrans %}
+            {% endblocktranslate %}
             {% endif %}
         </p>
     </div>

@@ -17,7 +17,7 @@
 {% endif %}
 <div id="id_{{ widget.name }}_input_container" class="custom-file">
     <input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
-    <label id="id_{{ widget.name }}_label" class="custom-file-label" for="id_{{ widget.name }}">{% trans 'Choose file...' %}</label>
+    <label id="id_{{ widget.name }}_label" class="custom-file-label" for="id_{{ widget.name }}">{% translate 'Choose file...' %}</label>
 </div>
 
 

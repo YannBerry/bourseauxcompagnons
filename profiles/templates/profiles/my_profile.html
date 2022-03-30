@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load static %}
 
-{% block title %}{% trans 'My profile' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'My profile' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -13,30 +13,30 @@
                 <div class="row">
                     <div class="card-title col-12">
                         <div class="d-flex flex-row justify-content-between">
-                            <h2 class="mb-1">{% trans 'My public profile' %}</h2>
-                            <a class="ml-2" href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" height="30" alt="{% trans 'View icon' %}" title="{% trans 'View public profile' %}"></a>
+                            <h2 class="mb-1">{% translate 'My public profile' %}</h2>
+                            <a class="ml-2" href="{% url 'profiles:detail' user.username %}"><img src="{% static 'img/icon_view.png' %}" height="30" alt="{% translate 'View icon' %}" title="{% translate 'View public profile' %}"></a>
                         </div>
-                        <p class="helptext">{% trans 'Data displayed on the profiles page' %}</p>
+                        <p class="helptext">{% translate 'Data displayed on the profiles page' %}</p>
                     </div>
                     <div class="col-12 mb-2">
                         <div class="progress" style="height: 2.5rem;">
-                            <div class="progress-bar progress-bar-striped {% if user.profile.completion <= 50 %}bg-danger{% elif user.profile.completion <= 80 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ user.profile.completion }}%;">{% trans 'Completion:' %} {{ user.profile.completion }} &#37;</div>
+                            <div class="progress-bar progress-bar-striped {% if user.profile.completion <= 50 %}bg-danger{% elif user.profile.completion <= 80 %}bg-warning{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ user.profile.completion }}%;">{% translate 'Completion:' %} {{ user.profile.completion }} &#37;</div>
                         </div>
 
                         <p class="helptext"><small>
                         {% if user.profile.completion <= 50 %}
-                            {% trans 'Low chance to be contacted. Public profile displayed as "poorly completed profile"' %}
+                            {% translate 'Low chance to be contacted. Public profile displayed as "poorly completed profile"' %}
                         {% elif user.profile.completion <= 80 %}
-                            {% trans 'Fair chance to be contacted. Public profile displayed as "fairly completed profile"' %}
+                            {% translate 'Fair chance to be contacted. Public profile displayed as "fairly completed profile"' %}
                         {% else %}
-                            {% trans 'High chance to be contacted. Public profile displayed as "well completed profile"' %}
+                            {% translate 'High chance to be contacted. Public profile displayed as "well completed profile"' %}
                         {% endif %}
                         </small></p>
                     </div>
                     <div class="col-12">
                         <div class="row mb-2">
                             <div class="col-12">
-                                <a href="{% url 'update-profile' user.username %}" class="btn btn-outline-main btn-block" role="button">{% trans 'Update my public profile' %}</a>
+                                <a href="{% url 'update-profile' user.username %}" class="btn btn-outline-main btn-block" role="button">{% translate 'Update my public profile' %}</a>
                             </div>
                         </div>
                     </div>
@@ -49,35 +49,35 @@
             <div class="card-body">
                 <div class="row">
                     <div class="card-title col-12">
-                        <h2 class="mb-1">{% trans 'My account' %}</h2>
-                        <p class="helptext">{% trans 'email address, password, username, first name, last name' %}</p>
+                        <h2 class="mb-1">{% translate 'My account' %}</h2>
+                        <p class="helptext">{% translate 'email address, password, username, first name, last name' %}</p>
                     </div>
                     <!-- <div class="col-12">
                         <ul class="list-unstyled account-settings-list text-secondary mb-2">
                             <li class="d-flex justify-content-between">
-                                <p>{% trans 'Email address' %}</p><p>{{ user.email }}</p>
+                                <p>{% translate 'Email address' %}</p><p>{{ user.email }}</p>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <p>{% trans 'Password' %}</p><p>********</p>
+                                <p>{% translate 'Password' %}</p><p>********</p>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <p>{% trans 'Username' %}</p><p>{{ user.username }}</p>
+                                <p>{% translate 'Username' %}</p><p>{{ user.username }}</p>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <p>{% trans 'First name' %}</p><p>{{ user.first_name }}</p>
+                                <p>{% translate 'First name' %}</p><p>{{ user.first_name }}</p>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <p>{% trans 'Last name' %}</p><p>{{ user.last_name }}</p>
+                                <p>{% translate 'Last name' %}</p><p>{{ user.last_name }}</p>
                             </li>
                         </ul>
                     </div> -->
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 mb-2">
-                                <a href="{% url 'update-account' user.username %}" class="btn btn-outline-main btn-block" role="button">{% trans 'Update my account settings' %}</a>
+                                <a href="{% url 'update-account' user.username %}" class="btn btn-outline-main btn-block" role="button">{% translate 'Update my account settings' %}</a>
                             </div>
                             <div class="col-12 mb-2">
-                                <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% trans 'Delete my account' %}</a>
+                                <a href="{% url 'delete-account' user.username %}" class="btn btn-danger btn-block" role="button">{% translate 'Delete my account' %}</a>
                             </div>
                         </div>
                     </div>
@@ -92,23 +92,23 @@
             <div class="card-title col-12">
                 <div class="row">
                     <div class="col-auto mr-auto">
-                        <h2>{% trans 'My calendar' %}</h2>
+                        <h2>{% translate 'My calendar' %}</h2>
                     </div>
                     <div class="col-auto">
-                        <a href="{% url 'availabilities:create' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% trans 'Add an availability' %}"></a>
-                        <a href="{% url 'outings:create' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% trans 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% trans 'Add an outing' %}"></a>
+                        <a href="{% url 'availabilities:create' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% translate 'Add an availability' %}</span><img src="{% static 'img/icon_availability.png' %}" class="ml-2" height="25" alt="{% translate 'Add an availability' %}"></a>
+                        <a href="{% url 'outings:create' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="d-none d-xl-inline-block align-middle ml-2">{% translate 'Add an outing' %}</span><img src="{% static 'img/icon_outing.png' %}" class="ml-2" height="25" alt="{% translate 'Add an outing' %}"></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 {% if not availabilities %}
                 <div class="alert alert-warning" role="alert">
-                    {% trans "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-main'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% trans "here." %}</a> {% trans "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential partners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
+                    {% translate "<strong>You have not created any availability yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-main'>+ Add an availability</span> button above or by clicking" %} <a href="{% url 'availabilities:create' %}">{% translate "here." %}</a> {% translate "Frequently filling out and updating your availabilities in your calendar is highly advisable: potential partners can find you in the 'profiles page' when they filter by availability dates. This way you show that you intend to go out but don't know what to do exactly and are opened to suggestions." %}
                 </div>
                 {% endif %}
                 {% if not outings %}
                 <div class="alert alert-info" role="alert">
-                    {% trans "<strong>You have not created any outing yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-main'>+ Add an outing</span> button above or by clicking" %} <a href="{% url 'outings:create' %}">{% trans "here." %}</a> {% trans "By filling out an outing, potential partners can find your proposal in the 'outings page', get in touch with you and, if you want, join you on that outing." %}
+                    {% translate "<strong>You have not created any outing yet.</strong> Create one by clicking on the <span class='badge badge-pill badge-main'>+ Add an outing</span> button above or by clicking" %} <a href="{% url 'outings:create' %}">{% translate "here." %}</a> {% translate "By filling out an outing, potential partners can find your proposal in the 'outings page', get in touch with you and, if you want, join you on that outing." %}
                 </div>
                 {% endif %}
             </div>
@@ -127,7 +127,7 @@
     <div class="card-body">
         <div class="row">
             <div class="card-title col-12">
-                <h2>{% trans 'My outings' %}</h2>
+                <h2>{% translate 'My outings' %}</h2>
             </div>
         </div>
         <ul class="row no-gutters list-unstyled">
@@ -140,10 +140,10 @@
                                 <a href="{{ outing.get_absolute_url }}">{{ outing.title }}</a> ({{ outing.start_date|date:"SHORT_DATE_FORMAT" }} - {{ outing.end_date|date:"SHORT_DATE_FORMAT" }})
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Edit icon' %}" title="{% trans 'Edit outing' %}"></a>
+                                <a href="{% url 'outings:update' outing.slug %}"><img src="{% static 'img/icon_edit.png' %}" class="float-left ml-2" height="24" alt="{% translate 'Edit icon' %}" title="{% translate 'Edit outing' %}"></a>
                             </div>
                             <div class="col-auto col-lg-auto">
-                                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="{% trans 'Delete icon' %}" title="{% trans 'Delete outing ' %}"></a>
+                                <a href="{% url 'outings:delete' outing.slug %}"><img src="{% static 'img/icon_delete.png' %}" class="float-left ml-2" height="24" alt="{% translate 'Delete icon' %}" title="{% translate 'Delete outing ' %}"></a>
                             </div>
                         </div>
                     </div>
@@ -158,19 +158,19 @@
     <div class="card-body">
         <div class="row mb-2">
             <div class="card-title col-12">
-                <h2>{% trans 'Exports' %}</h2>
+                <h2>{% translate 'Exports' %}</h2>
             </div>
             <div class="col-12">
-                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export profiles to Excel format' %}</span></a>
+                <a href="{% url 'profiles:export-profiles-to-xlsx' %}" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% translate 'Export profiles to Excel format' %}</span></a>
             </div>
         </div>
         {% if user.is_superuser %}
         <div class="row mb-2">
             <div class="card-title col-12">
-                <h2>{% trans 'Imports / Exports for superadmins' %}</h2>
+                <h2>{% translate 'Imports / Exports for superadmins' %}</h2>
             </div>
             <div class="col-12">
-                <a href="#" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% trans 'Export outings' %}</span></a>
+                <a href="#" class="btn btn-main btn-add-new pl-3 pr-4 mb-2 py-1" role="button"><span class="align-middle h3">+</span><span class="align-middle ml-2">{% translate 'Export outings' %}</span></a>
             </div>
         </div>
         {% endif %}
@@ -179,7 +179,7 @@
 {% else %}
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{% url 'login' %}" class="btn btn-main btn-block" role="button">{% trans 'Sign in' %}</a>
+            <a href="{% url 'login' %}" class="btn btn-main btn-block" role="button">{% translate 'Sign in' %}</a>
         </div>
     </div>
 {% endif %}

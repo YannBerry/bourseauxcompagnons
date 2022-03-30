@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans 'Sign in' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'Sign in' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center mb-4">
@@ -13,7 +13,7 @@
                     {{ form.non_field_errors }}
                     <div class="row">
                         <div class="col-12 mb-4">
-                            <label for="{{ form.username.id_for_label }}" class="required">{% trans "E-mail address" %}</label>
+                            <label for="{{ form.username.id_for_label }}" class="required">{% translate "E-mail address" %}</label>
                             {{ form.username }}
                             {{ form.username.errors }}
                             {% if form.username.help_text %}
@@ -21,7 +21,7 @@
                             {% endif %}
                         </div>
                         <div class="col-12 mb-4">
-                            <label for="{{ form.password.id_for_label }}" class="required">{% trans "Password" %}</label>
+                            <label for="{{ form.password.id_for_label }}" class="required">{% translate "Password" %}</label>
                             {{ form.password }}
                             {{ form.password.errors }}
                             {% if form.password.help_text %}
@@ -37,13 +37,13 @@
                     {% endif %}
                     
                     <div class="form-end-buttons-centered mb-4">
-                        <button class="btn btn-main px-5" type="submit">{% trans 'Sign in' %}</button>
+                        <button class="btn btn-main px-5" type="submit">{% translate 'Sign in' %}</button>
                     </div>
                     <div class="form-end-buttons-centered">
-                        <a href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a>
+                        <a href="{% url 'password_reset' %}">{% translate "Forgot password?" %}</a>
                     </div>
                     <div class="form-end-buttons-centered">
-                        {% trans "Don't have a profile?" %}<a href="{% url 'profile_register' %}" class="ml-2">{% trans "Register" %}</a>
+                        {% translate "Don't have a profile?" %}<a href="{% url 'profile_register' %}" class="ml-2">{% translate "Register" %}</a>
                     </div>
                 </form>
             </div>

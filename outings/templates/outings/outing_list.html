@@ -10,25 +10,25 @@
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"> -->
 {% endblock %}
 
-{% block title %}{% trans "Outings" %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate "Outings" %} | {{ block.super }}{% endblock %}
 
 {% block leftsidebar %}
     <div class="wrap-collabsible mb-4">
         <input id="collapsible" class="toggle" type="checkbox">
-        <label for="collapsible" class="label-toggle">{% trans 'Filters' %}</label>
+        <label for="collapsible" class="label-toggle">{% translate 'Filters' %}</label>
         <div class="collapsible-content">
             <div class="content-inner">
                 <form id="outing-form" method="get" action="{% url 'outings:list' %}">
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <h6 class="filter_title">{% trans 'Keywords' %}</h6>
-                            <input class="form-control" type="search" placeholder="{% trans 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
+                            <h6 class="filter_title">{% translate 'Keywords' %}</h6>
+                            <input class="form-control" type="search" placeholder="{% translate 'Keywords...' %}" aria-label="Search" value="{% if keywords %}{{ keywords }}{% endif %}" name="k">
                         </div>
                         <div class="form-group col-12">
-                            <h6 class="filter_title">{% trans 'Dates' %}</h6>
+                            <h6 class="filter_title">{% translate 'Dates' %}</h6>
                             <div class="form-row">
                                 <div class="form-group col-6 col-xl-12 mb-0">
-                                    <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'From' %}</h6>
+                                    <h6 class="mb-1 text-secondary filter_subtitle">{% translate 'From' %}</h6>
                                     <div class="input-group mb-2">
                                         <input type="text" name="outing_start_date" class="form-control" id="id_outing_start_date"{% if outing_start_date %} value={{ outing_start_date }}{% endif %}>
                                         <div id="id_outing_start_date_clear_container" class="input-group-append">
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-6 col-xl-12 mb-0">
-                                    <h6 class="mb-1 text-secondary filter_subtitle">{% trans 'Till' %}</h6>
+                                    <h6 class="mb-1 text-secondary filter_subtitle">{% translate 'Till' %}</h6>
                                     <div class="input-group">
                                         <input type="text" name="outing_end_date" class="form-control" id="id_outing_end_date"{% if outing_end_date %} value={{ outing_end_date }}{% endif %}>
                                         <div id="id_outing_end_date_clear_container" class="input-group-append">
@@ -48,11 +48,11 @@
                             </div>
                         </div>
                         <div class="form-group col-12">
-                            <h6 class="filter_title">{% trans 'Activities' %}</h6>
+                            <h6 class="filter_title">{% translate 'Activities' %}</h6>
                             {% include "forms/activities.html" %}
                         </div>
                         <div class="form-group col-12">
-                            <button class="btn btn-outline-main btn-block" type="submit">{% trans "Filter" %}</button>
+                            <button class="btn btn-outline-main btn-block" type="submit">{% translate "Filter" %}</button>
                         </div>
                     </div>
                 </form>
@@ -63,22 +63,22 @@
 
 {% block rightsidebar %}
     <div class="text-center d-none d-xl-block">
-        <a href="{% url 'outings:create' %}" class="btn btn-main">{% trans "Add an outing" %}</a>
+        <a href="{% url 'outings:create' %}" class="btn btn-main">{% translate "Add an outing" %}</a>
     </div>
 {% endblock %}
 
 
 {% block content %}
     <div class="alert alert-info" role="alert">
-        <strong>{% trans "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}{% if selected_activities %}{% for a in selected_activities %}&a={{ a }}{% endfor %}{% endif %}">{% trans "Check the profiles page" %}</a>{% trans ": maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
+        <strong>{% translate "You didn't find any outing that fits your availabilities?" %}</strong> <a href="{% url 'profiles:list' %}?start_date={% if outing_start_date %}{{ outing_start_date }}{% endif %}&end_date={% if outing_end_date %}{{ outing_end_date }}{% endif %}{% if selected_activities %}{% for a in selected_activities %}&a={{ a }}{% endfor %}{% endif %}">{% translate "Check the profiles page" %}</a>{% translate ": maybe some profiles have filled out their availabilities in their calendar. Meaning they intend to go out but don't know what to do exactly and are opened to suggestions." %}
     </div>
     {% if outing_list %}
         <p>
-            {% blocktrans count counter=nb_of_results %}
+            {% blocktranslate count counter=nb_of_results %}
             {{ counter }} outing
             {% plural %}
             {{ counter }} outings
-            {% endblocktrans %}
+            {% endblocktranslate %}
         </p>
         <ul class="row list-unstyled">
             {% for outing in outing_list %}
@@ -90,7 +90,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>{% trans 'There is no outing fitting your search criteria.' %}</p>
+        <p>{% translate 'There is no outing fitting your search criteria.' %}</p>
     {% endif %}
     <a href="{% url 'outings:create' %}" class="btn btn-main btn-circle btn-add d-block d-xl-none" style="z-index:1021"></a>
 {% endblock %}

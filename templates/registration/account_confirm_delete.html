@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans 'Delete my account' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'Delete my account' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
     <form method="POST">
         {% csrf_token %}
-        <p>{% blocktrans with user_username=user.username %}{{ user_username }} are you sure you want to delete your account?{% endblocktrans %}</p>
-        <input type=submit value="{% trans 'Delete' %}" class="btn btn-danger" />
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% trans 'Cancel' %}</a>
+        <p>{% blocktranslate with user_username=user.username %}{{ user_username }} are you sure you want to delete your account?{% endblocktranslate %}</p>
+        <input type=submit value="{% translate 'Delete' %}" class="btn btn-danger" />
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% translate 'Cancel' %}</a>
     </form>
 </div>
 {% endblock%}

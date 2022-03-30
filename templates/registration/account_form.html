@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans 'Update my account' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'Update my account' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
@@ -52,13 +52,13 @@
         </div>
 
         <div class="form-end-buttons-side mb-2">
-            <input type="submit" value="{% trans 'Save' %}" class="btn btn-main" />
+            <input type="submit" value="{% translate 'Save' %}" class="btn btn-main" />
             {% if customuser %}
-            <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% trans 'Cancel' %}</a>
+            <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% translate 'Cancel' %}</a>
             {% endif %}
         </div>
         <div class="form-end-buttons-side mb-4">
-            <a href="{% url 'password_change' %}" class="btn btn-info" role="button">{% trans 'Update my password' %}</a>
+            <a href="{% url 'password_change' %}" class="btn btn-info" role="button">{% translate 'Update my password' %}</a>
         </div>
     </form>
 </div>

@@ -7,7 +7,7 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>{% trans 'Welcome on Bourse aux compagnons' %}</title>
+        <title>{% translate 'Welcome on Bourse aux compagnons' %}</title>
         <style>
             /* -------------------------------------
               GLOBAL RESETS
@@ -306,7 +306,7 @@
         </style>
     </head>
     <body class="">
-        <span class="preheader">{% trans 'You successfully created your Bourseauxcompagnons profile!' %}</span>
+        <span class="preheader">{% translate 'You successfully created your Bourseauxcompagnons profile!' %}</span>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
             <tr>
                 <td>&nbsp;</td>
@@ -322,9 +322,9 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>
-                                            <p style="margin-bottom: 1em;">{% trans 'Hi' %} {{ customuser.username }},</p>
-                                            <p>{% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/">see my profile</a>.</p>
-                                            <p>Your id to sign in is your email address: {{ profile_email }}.{% endblocktrans %}</p>
+                                            <p style="margin-bottom: 1em;">{% translate 'Hi' %} {{ customuser.username }},</p>
+                                            <p>{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/">see my profile</a>.</p>
+                                            <p>Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}</p>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="font-style: italic; color:#FE9B0C;">
                                                 <tbody>
                                                     <tr>
@@ -341,7 +341,7 @@
                                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td> {% blocktrans with language_code=LANGUAGE_CODE profile_username=customuser.username %}<a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/" target="_blank">Update my profile</a>{% endblocktrans %} </td>
+                                                                    <td> {% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username %}<a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/" target="_blank">Update my profile</a>{% endblocktranslate %} </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -349,7 +349,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <p>{% trans 'Sportively yours' %}</p>
+                                            <p>{% translate 'Sportively yours' %}</p>
                                         </td>
                                     </tr>
                                 </table>
@@ -365,7 +365,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% trans 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
+                                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
                                 </td>
                             </tr>
                         </table>

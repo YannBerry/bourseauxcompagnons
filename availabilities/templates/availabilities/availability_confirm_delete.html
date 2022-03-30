@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with availability_start_date=availability.start_date %}Remove availability starting the {{ availability_start_date }}{% endblocktrans %} | {{ block.super }}{% endblock %}
+{% block title %}{% blocktranslate with availability_start_date=availability.start_date %}Remove availability starting the {{ availability_start_date }}{% endblocktranslate %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
     <form method="POST">
         {% csrf_token %}
-        <p>{% blocktrans with availability_start_date=availability.start_date %}Are you sure you want to delete your availability starting the '{{ availability_start_date }}'?{% endblocktrans %}</p>
-        <input type=submit value="{% trans 'Delete' %}" class="btn btn-danger">
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% trans "Cancel" %}</a>
+        <p>{% blocktranslate with availability_start_date=availability.start_date %}Are you sure you want to delete your availability starting the '{{ availability_start_date }}'?{% endblocktranslate %}</p>
+        <input type=submit value="{% translate 'Delete' %}" class="btn btn-danger">
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary" role="button">{% translate "Cancel" %}</a>
     </form>
 </div>
 {% endblock%}

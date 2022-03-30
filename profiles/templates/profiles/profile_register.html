@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 {% endblock %}
 
-{% block title %}{% trans "Create a profile" %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate "Create a profile" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 
@@ -13,9 +13,9 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-body">
-                <h1>{% trans "Create your profile" %}</h1>
+                <h1>{% translate "Create your profile" %}</h1>
                 <div class="alert alert-info" role="alert">
-                    {% trans "All fields are mandatory." %}
+                    {% translate "All fields are mandatory." %}
                 </div>
                 <form method="post" novalidate class="mt-4" id="profile_register_form">
                     {% csrf_token %}
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-12 mb-4">
                             {{ form.availability_area_geo.label_tag }}
-                            <span title="{% trans 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span>
+                            <span title="{% translate 'How to draw an area?' %}" class="ml-2 help-icon cursor-pointer" data-toggle="modal" data-target="#helpAreaModal"></span>
                             <!-- Modal: help draw area -->
                             {% include "core/modals/help_draw_area.html" %}
                             {% include "forms/availability_area_input.html" %}
@@ -75,8 +75,8 @@
                     </div>
 
                     <div class="form-end-buttons-side">
-                        <button class="btn btn-main" type="submit">{% trans "Create" %}</button>
-                        <a href="{% url 'profile_register' %}" class="btn btn-secondary ml-2" role="button">{% trans "Cancel" %}</a>
+                        <button class="btn btn-main" type="submit">{% translate "Create" %}</button>
+                        <a href="{% url 'profile_register' %}" class="btn btn-secondary ml-2" role="button">{% translate "Cancel" %}</a>
                     </div>
                 </form>
             </div>

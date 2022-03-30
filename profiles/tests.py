@@ -31,3 +31,41 @@ class ProfileDetailPageTestCase(TestCase):
         self.profile.user = tintin
         response = self.client.get(reverse('profiles:detail', kwargs={'username': self.profile.user.username}))
         self.assertEqual(response.status_code, 404)
+
+
+'''
+from profiles.models import Profile
+from activities.models import Activity, Grade
+
+Profile.objects.get(user__email='dernier@gmail.com').activities.all()
+activities = self.instance.activities.all()
+Grade.objects.select_related('activity').filter(eval(' | '.join(f'Q(activity="{ activity.pk }")' for activity in activities)))
+
+'''
+
+
+
+'''
+ProfileFormTestCase
+
+from profiles.models import CustomUser, Profile
+from activities.models import Activity, Grade
+
+alpinisme = Activity.objects.create(name="Alpinisme")
+ski = Activity.objects.create(name="Ski")
+alpinismed = Grade.objects.create(activity=alpinisme, name='D', ordering=1)
+alpinismetd = Grade.objects.create(activity=alpinisme, name='TD', ordering=2)
+alpinismeed = Grade.objects.create(activity=alpinisme, name='ED', ordering=3)
+skiquatre = Grade.objects.create(activity=ski, name='4', ordering=1)
+skicinq = Grade.objects.create(activity=ski, name='5', ordering=2)
+
+
+loggedinuser = CustomUser.objects.create_user(email="loggedin@gmail.com", username="loggedin", password="loginpwd", is_profile="True")
+loggedinprofile = Profile.objects.create(user=loggedinuser, availability_area="Alpes")
+loggedinprofile.activities.add(ski, alpinisme)
+loggedinprofile.grades.add(alpinismed, alpinismetd, skiquatre)
+
+print(loggedinprofile.activities)
+print(Profile.objects.get(user__username=loggedin))
+
+''' 

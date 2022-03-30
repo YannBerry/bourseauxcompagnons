@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans 'Contact made' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'Contact made' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div>
-    <p>{% blocktrans %}Your message has been sent by email to {{ username }}. Hopefully, he or she will get back to you soon!{% endblocktrans %}</p>
+    <p>{% blocktranslate %}Your message has been sent by email to {{ username }}. Hopefully, he or she will get back to you soon!{% endblocktranslate %}</p>
 </div>
 {% endblock %}

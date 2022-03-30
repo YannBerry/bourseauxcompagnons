@@ -11,8 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="robots" content="noindex, nofollow">
 
-        <title>{% block title %}{% trans "Mountain Partners" %}{% endblock %}</title>
-        <meta name="description" content="{% trans 'Find partners for your outings in the mountain. Visit and contact for free the profiles and outings. Sort by activity, level, experience, location, etc. Made by a mountaineer who struggled for finding mountain partners.' %}">
+        <title>{% block title %}{% translate "Mountain Partners" %}{% endblock %}</title>
+        <meta name="description" content="{% translate 'Find partners for your outings in the mountain. Visit and contact for free the profiles and outings. Sort by activity, level, experience, location, etc. Made by a mountaineer who struggled for finding mountain partners.' %}">
         <meta name="author" content="Yann Berry">
         <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
@@ -26,7 +26,7 @@
     <body>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-grey">
-            <a class="navbar-brand" href="{% url 'homepage' %}">{% trans "MOUNTAIN PARTNERS" %}</a>
+            <a class="navbar-brand" href="{% url 'homepage' %}">{% translate "MOUNTAIN PARTNERS" %}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,19 +34,19 @@
                 <hr class="d-lg-none separator"></hr>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% trans "Profiles" %}</span><div><img src="{% static 'img/icon_profile.png' %}" class="ml-2" alt="Profile icon"></div></a>
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'profiles:list' %}"><span class="text-uppercase">{% translate "Profiles" %}</span><div><img src="{% static 'img/icon_profile.png' %}" class="ml-2" alt="Profile icon"></div></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% trans "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" alt="Outing icon"></a>
+                        <a class="nav-link d-inline-flex align-items-center" href="{% url 'outings:list' %}"><span class="float-left text-uppercase">{% translate "Outings" %}</span><img src="{% static 'img/icon_outing.png' %}" class="float-left ml-2" alt="Outing icon"></a>
                     </li>
                     <!--<li class="nav-item">
-                        <a class="nav-link" href="{% url 'features:votes' %}">{% trans "FEATURES" %}</a>
+                        <a class="nav-link" href="{% url 'features:votes' %}">{% translate "FEATURES" %}</a>
                     </li>-->
                 </ul>
                 <hr class="d-lg-none separator"></hr>
                 <ul class="navbar-nav text-uppercase mr-2 align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contactpage:contact-page' %}">{% trans "Contact" %}</a>
+                        <a class="nav-link" href="{% url 'contactpage:contact-page' %}">{% translate "Contact" %}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,14 +79,14 @@
                             {% endif %}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'my-profile' %}">{% trans "My profile" %}</a>
+                            <a class="dropdown-item" href="{% url 'my-profile' %}">{% translate "My profile" %}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% trans "Sign out" %}</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% translate "Sign out" %}</a>
                         </div>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Sign in" %}</a>
+                        <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% translate "Sign in" %}</a>
                     </li>
                     {% endif %}
                 </ul>

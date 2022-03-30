@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 {% endblock %}
 
-{% block title %}{% trans 'Create an availability' %} | {{ block.super }}{% endblock %}
+{% block title %}{% translate 'Create an availability' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
 <form method="post" novalidate>
@@ -48,9 +48,9 @@
         </div>
     </div>
     <div class="form-end-buttons-side mb-4">
-        <input type="submit" value="{% trans 'Save' %}" class="btn btn-main" />
+        <input type="submit" value="{% translate 'Save' %}" class="btn btn-main" />
         {% if availability %}
-        <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% trans 'Cancel' %}</a>
+        <a href="{% url 'my-profile' %}" class="btn btn-secondary ml-2" role="button">{% translate 'Cancel' %}</a>
         {% endif %}
     </div>
 </form>
