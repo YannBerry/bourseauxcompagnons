@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-27 21:43+0200\n"
+"POT-Creation-Date: 2022-03-30 15:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: activities/models.py:6 activities/models.py:19
+#: activities/models.py:6 activities/models.py:22
 msgid "name"
 msgstr "nom"
 
-#: activities/models.py:9 activities/models.py:18
+#: activities/models.py:9 activities/models.py:21
 msgid "activity"
 msgstr "activité"
 
@@ -31,15 +31,15 @@ msgstr "activité"
 msgid "activities"
 msgstr "activités"
 
-#: activities/models.py:20
+#: activities/models.py:23
 msgid "ordering"
 msgstr "ordre"
 
-#: activities/models.py:23
+#: activities/models.py:26
 msgid "grade"
 msgstr "cotation"
 
-#: activities/models.py:24 profiles/models.py:72
+#: activities/models.py:27 profiles/models.py:72
 msgid "grades"
 msgstr "cotations"
 
@@ -615,7 +615,9 @@ msgstr "Votre sortie est désormais publiée !"
 #: outings/views.py:134
 msgid ""
 "Your outing is now updated! <a href='{}#cal-events'>Go back to my profile</a>"
-msgstr "Votre sortie a bien été mise à jour ! <a href='{}#cal-events'>Retourner à mon profil</a>"
+msgstr ""
+"Votre sortie a bien été mise à jour ! <a href='{}#cal-events'>Retourner à "
+"mon profil</a>"
 
 #: profiles/admin.py:17
 msgid "Personal info"
@@ -1570,4 +1572,3 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
-
