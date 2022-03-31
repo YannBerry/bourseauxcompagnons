@@ -184,7 +184,10 @@ LOGIN_URL = 'login'
 # LOGIN_REDIRECT_URL = 'homepage' # if 'next' is defined in the request then it is used to redirect (https://docs.djangoproject.com/fr/2.2/topics/auth/default/#django.contrib.auth.views.LoginView)
 LOGOUT_REDIRECT_URL = 'login'
 
-# # Sessions settings
+# Customype of auto-created primary keys
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField' # I set this setting because in the future (after Django 3.2) the default value will be BigAutoField and migrations will occur.
+
+# Sessions settings
 # SESSION_COOKIE_AGE = 1209600 # seconds -> 2 weeks (default value)
 
 # Settings used by Django Debug Toolbar
