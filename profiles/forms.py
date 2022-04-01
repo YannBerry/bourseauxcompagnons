@@ -12,8 +12,8 @@ from core.widgets import OpenLayersWidgetSrid4326
 # from django.contrib.gis.geos import Point
 
 # DJANGO-PHONENUMBER-FIELD
-from phonenumber_field.formfields import PhoneNumberField
-#from phonenumber_field.widgets import PhoneNumberPrefixWidget
+# from phonenumber_field.formfields import PhoneNumberField
+# from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
