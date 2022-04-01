@@ -1,10 +1,10 @@
 asgiref==3.4.1
 Babel==2.8.0
-Django==3.1.14
+Django==3.2.12
 django-classy-tags==2.0.0
-django-debug-toolbar==3.1.1
-django-modeltranslation==0.15.2
-django-phonenumber-field==5.2.0
+django-debug-toolbar==3.2.4
+django-modeltranslation==0.17.5
+django-phonenumber-field==6.0.0
 et-xmlfile==1.0.1
 jdcal==1.4.1
 openpyxl==3.0.1
