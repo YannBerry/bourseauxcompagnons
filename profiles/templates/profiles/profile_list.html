@@ -169,11 +169,17 @@
     const startDateElt = document.getElementById('id_start_date');
     const endDateElt = document.getElementById('id_end_date');
 
-    let startDate = startDateElt.value;
-    let endDate = endDateElt.value;
-
+    let startDate = null;
+    if (endDateElt.value){
+        startDate = new Date(startDateElt.value);
+    }
+    let endDate = null;
+    if (endDateElt.value){
+        endDate = new Date(endDateElt.value);
+    }
+        
     function checkDatesCompatibility(startDate, endDate) {
-        if (startDate <= endDate || endDate === "") {
+        if (startDate <= endDate || endDate === null) {
             const errorListElt = document.getElementById("date_errors");
             if (errorListElt) {
                 errorListElt.parentNode.removeChild(errorListElt);
@@ -197,7 +203,7 @@
         if (startDateElt.value) {
             startDate = new Date(startDateElt.value);
         } else {
-            startDate = "";
+            startDate = null;
         }
         checkDatesCompatibility(startDate, endDate);
     });
@@ -206,7 +212,7 @@
         if (endDateElt.value) {
             endDate = new Date(endDateElt.value);
         } else {
-            endDate = "";
+            endDate = null;
         }
         checkDatesCompatibility(startDate, endDate);
     });
