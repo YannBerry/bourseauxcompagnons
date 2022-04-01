@@ -1,5 +1,5 @@
 asgiref==3.4.1
-Babel==2.8.0
+Babel==2.9.1
 Django==3.2.12
 django-classy-tags==2.0.0
 django-debug-toolbar==3.2.4
@@ -12,7 +12,7 @@ phonenumbers==8.11.4
 Pillow==8.4.0
 pkg_resources==0.0.0
 psycopg2-binary==2.8.4
-pytz==2019.3
-six==1.14.0
-sqlparse==0.3.0
+pytz==2021.3
+six==1.16.0
+sqlparse==0.4.2
 typing_extensions==4.1.1
