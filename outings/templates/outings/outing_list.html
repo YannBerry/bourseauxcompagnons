@@ -160,19 +160,20 @@
     const outingStartDateElt = document.getElementById('id_outing_start_date');
     const outingEndDateElt = document.getElementById('id_outing_end_date');
 
-    let outingStartDate = outingStartDateElt.value;
-    let outingEndDate = outingEndDateElt.value;
+    let outingStartDate = null;
+    if (outingStartDateElt.value){
+        outingStartDate = new Date(outingStartDateElt.value);
+    }
+    let outingEndDate = null;
+    if (outingEndDateElt.value){
+        outingEndDate = new Date(outingEndDateElt.value);
+    }
 
-    function checkDatesCompatibility(startDate, endDate) {
-        if (startDate <= endDate || endDate === "") {
-            const errorListElt = document.getElementById("date_errors");
-            if (errorListElt) {
-                errorListElt.parentNode.removeChild(errorListElt);
-            }
-        } else {
+    function checkDatesCompatibility(startDate, endDate, endDateElt) {
+        if (startDate && endDate && endDate < startDate) {
             const errorListElt = document.getElementById("date_errors");
             if ( errorListElt === null ) {
-                datesFormElt = outingEndDateElt.parentNode.parentNode;
+                datesFormElt = endDateElt.parentNode.parentNode;
                 const errorListElt = document.createElement("ul");
                 errorListElt.id = "date_errors";
                 errorListElt.classList.add("errorlist");
@@ -181,6 +182,11 @@
                 errorItemElt.textContent = "Your end date is not equal or later than your start date.";
                 errorListElt.appendChild(errorItemElt);
             }
+        } else {
+            const errorListElt = document.getElementById("date_errors");
+            if (errorListElt) {
+                errorListElt.parentNode.removeChild(errorListElt);
+            }
         }
     }
 
@@ -188,18 +194,18 @@
         if (outingStartDateElt.value) {
             outingStartDate = new Date(outingStartDateElt.value);
         } else {
-            outingStartDate = "";
+            outingStartDate = null;
         }
-        checkDatesCompatibility(outingStartDate, outingEndDate);
+        checkDatesCompatibility(outingStartDate, outingEndDate, outingEndDateElt);
     });
 
     outingEndDateElt.addEventListener('change', function() {
         if (outingEndDateElt.value) {
             outingEndDate = new Date(outingEndDateElt.value);
         } else {
-            outingEndDate = "";
+            outingEndDate = null;
         }
-        checkDatesCompatibility(outingStartDate, outingEndDate);
+        checkDatesCompatibility(outingStartDate, outingEndDate, outingEndDateElt);
     });
 </script>
 {% endblock %}

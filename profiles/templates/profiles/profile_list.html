@@ -178,13 +178,8 @@
         endDate = new Date(endDateElt.value);
     }
         
-    function checkDatesCompatibility(startDate, endDate) {
-        if (startDate <= endDate || endDate === null) {
-            const errorListElt = document.getElementById("date_errors");
-            if (errorListElt) {
-                errorListElt.parentNode.removeChild(errorListElt);
-            }
-        } else {
+    function checkDatesCompatibility(startDate, endDate, endDateElt) {
+        if (startDate && endDate && endDate < startDate) {
             const errorListElt = document.getElementById("date_errors");
             if ( errorListElt === null ) {
                 datesFormElt = endDateElt.parentNode.parentNode;
@@ -196,6 +191,11 @@
                 errorItemElt.textContent = "Your end date is not equal or later than your start date.";
                 errorListElt.appendChild(errorItemElt);
             }
+        } else {
+            const errorListElt = document.getElementById("date_errors");
+            if (errorListElt) {
+                errorListElt.parentNode.removeChild(errorListElt);
+            }
         }
     }
 
@@ -205,7 +205,7 @@
         } else {
             startDate = null;
         }
-        checkDatesCompatibility(startDate, endDate);
+        checkDatesCompatibility(startDate, endDate, endDateElt);
     });
 
     endDateElt.addEventListener('change', function() {
@@ -214,7 +214,7 @@
         } else {
             endDate = null;
         }
-        checkDatesCompatibility(startDate, endDate);
+        checkDatesCompatibility(startDate, endDate, endDateElt);
     });
 </script>
 <!-- openlayers -->
