@@ -1,6 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
-from django.contrib.gis.admin import OSMGeoAdmin #subclass of GeoModelAdmin
+from django.contrib.gis.admin import GISModelAdmin
+# from django.contrib.gis.forms import OpenLayersWidget # in case I want to change the GISModelAdmin gis_widget attribute which is OSMWidget by default
 from django.contrib.auth.admin import UserAdmin
 
 from profiles.models import CustomUser, Profile
@@ -26,6 +27,7 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
 
+
 def delete_profile_cleanly(modeladmin, request, queryset):
     """When deleting a profile in the profiles admin page, the CustomUser is_profile attribute is set to False."""
     for obj in queryset:
@@ -34,10 +36,12 @@ def delete_profile_cleanly(modeladmin, request, queryset):
         obj.delete()
 delete_profile_cleanly.short_description = _("Delete selected profiles cleanly (user.is_profile=False)")
 
-class ProfileAdmin(OSMGeoAdmin):
+
+class ProfileAdmin(GISModelAdmin):
+    # gis_widget = OpenLayersWidget # OSMWidget is the default value but I added it anyway for the day I want to change it to OpenLayersWidget with another base layer thanks to the template_name attribute.
     list_display = ('email', 'first_name', 'birthdate')
     readonly_fields = ['age']
-    actions = OSMGeoAdmin.actions + [delete_profile_cleanly]
+    actions = GISModelAdmin.actions + [delete_profile_cleanly]
 
     class Meta:
         model = Profile
