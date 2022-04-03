@@ -144,7 +144,7 @@ TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = True # A priori à partir de Django 5.0, USE_L10N sera supprimé. Les dates et les nombres seront affichés par défaut en fonction de la langue active.
 
 USE_TZ = True
 
@@ -189,6 +189,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField' # I set this setting because i
 
 # Sessions settings
 # SESSION_COOKIE_AGE = 1209600 # seconds -> 2 weeks (default value)
+
+# Referrer policy
+# https://docs.djangoproject.com/fr/4.0/releases/3.1/#security
+# SECURE_REFERRER_POLICY = 'origin-when-cross-origin,strict-origin-when-cross-origin' # 'same-origin' by default. I wanted to set it to 'strict-origin-when-cross-origin' (the last value of the list is the one used) because on my development computer on Chromium there was a bug on the admin site on the display of the OSM maps (in profiles for exemple) : the tiles are not download because blocked by CORS policy set to same-origin with my website on http (and not https) because served by runserver. But in fact it works on the web because my website works with https. So I keep 'same-origin' which is safer and allow the CSRF protection of django to work well.
 
 # Settings used by Django Debug Toolbar
 INTERNAL_IPS = [
