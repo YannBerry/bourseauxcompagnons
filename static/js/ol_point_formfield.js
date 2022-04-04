@@ -50,7 +50,7 @@
     // Create a button to allow the user to center the map on its geolocation
     const locate = document.createElement('div');
     locate.className = 'ol-control ol-unselectable locate-button';
-    locate.innerHTML = '<button title="Locate me"><img src="' + locateIcon + '"></button>';
+    locate.innerHTML = '<button title="Locate me" type="button"><img src="' + locateIcon + '"></button>';
     locate.addEventListener('click', function() {
         // Defining success and error functions and the options object
         function success(pos) {
