@@ -328,8 +328,9 @@ class AccountDeleteView(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     def get_object(self):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
 
-    def delete(self, request, *args, **kwargs):
-        response = super(DeleteView, self).delete(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
         subject=_("Profile deleted")
         subject_prefixed = _("[Account] {}").format(subject)
         recipients = [self.object.email]
