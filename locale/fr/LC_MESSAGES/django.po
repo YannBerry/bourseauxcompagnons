@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 20:29+0200\n"
+"POT-Creation-Date: 2022-04-05 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1127,7 +1127,8 @@ msgstr ""
 "trouvé des compagnons grâce à notre site. Si ce n'est pas le cas nous sommes "
 "sûrs que vous en avez trouvé par d'autres moyens. <strong>Nous serions ravis "
 "que vous nous partagiez votre expérience Bourseauxcompagnons en répondant à "
-"ce mail</strong>. Vos retours nous sont utiles pour améliorer votre expérience :)"
+"ce mail</strong>. Vos retours nous sont utiles pour améliorer votre "
+"expérience :)"
 
 #: profiles/templates/profiles/profile_deletion_email_inline.html:121
 msgid ""
@@ -1395,7 +1396,7 @@ msgstr ""
 msgid "Profile registered"
 msgstr "Profil créé"
 
-#: profiles/views.py:241 profiles/views.py:334
+#: profiles/views.py:241 profiles/views.py:335
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
@@ -1406,25 +1407,23 @@ msgstr ""
 "Votre compte et toutes ses données sont supprimées. Et que l'aventure "
 "continue ! Bon vent !"
 
-#: profiles/views.py:333
-#, fuzzy
-#| msgid "Profile registered"
+#: profiles/views.py:334
 msgid "Profile deleted"
-msgstr "Profil créé"
+msgstr "Profil supprimé"
 
-#: profiles/views.py:348 profiles/views.py:350
+#: profiles/views.py:349 profiles/views.py:351
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:352
+#: profiles/views.py:353
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:359 profiles/views.py:361
+#: profiles/views.py:360 profiles/views.py:362
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:363
+#: profiles/views.py:364
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 20:29+0200\n"
+"POT-Creation-Date: 2022-04-05 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1421,7 +1421,7 @@ msgstr ""
 msgid "Profile registered"
 msgstr "Profilo creato"
 
-#: profiles/views.py:241 profiles/views.py:334
+#: profiles/views.py:241 profiles/views.py:335
 msgid "[Account] {}"
 msgstr "[Account] {}"
 
@@ -1430,25 +1430,25 @@ msgid ""
 "Your account and all its data are deleted. Have a good time in the outdoors!"
 msgstr ""
 
-#: profiles/views.py:333
+#: profiles/views.py:334
 #, fuzzy
 #| msgid "Profile registered"
 msgid "Profile deleted"
 msgstr "Profilo creato"
 
-#: profiles/views.py:348 profiles/views.py:350
+#: profiles/views.py:349 profiles/views.py:351
 msgid "Hi {}! You are logged in :)"
 msgstr "Ciao {}! Sei conesso :)"
 
-#: profiles/views.py:352
+#: profiles/views.py:353
 msgid "You are logged in :)"
 msgstr "Sei conesso :)"
 
-#: profiles/views.py:359 profiles/views.py:361
+#: profiles/views.py:360 profiles/views.py:362
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Sei corretamente disconesso. Grazie per la tua visita {}."
 
-#: profiles/views.py:363
+#: profiles/views.py:364
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Sei corretamente disconesso. Grazie per la tua visita."
 
