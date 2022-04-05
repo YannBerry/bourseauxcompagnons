@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 15:21+0200\n"
+"POT-Creation-Date: 2022-04-05 14:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,11 +43,11 @@ msgstr "graduación"
 msgid "grades"
 msgstr "graduaciones"
 
-#: availabilities/forms.py:46 outings/forms.py:47
+#: availabilities/forms.py:48 outings/forms.py:49
 msgid "Your end date is not equal or later than your start date."
 msgstr "La fecha de fin debe ser superior o igual a la fecha de inicio."
 
-#: availabilities/forms.py:54 contactpage/forms.py:37 outings/forms.py:55
+#: availabilities/forms.py:56 contactpage/forms.py:37 outings/forms.py:57
 #: profiles/forms.py:111 profiles/forms.py:149 profiles/forms.py:222
 #: profiles/forms.py:257
 msgid "Please correct detected error / errors."
@@ -208,6 +208,18 @@ msgstr "<slug:slug>/editar/"
 msgid "<slug:slug>/delete/"
 msgstr "<slug:slug>/borrar/"
 
+#: availabilities/views.py:27
+msgid ""
+"Your availability is now published! <a href='{}#cal-events'>Go back to my "
+"profile</a>"
+msgstr ""
+
+#: availabilities/views.py:41
+msgid ""
+"Your availability is now updated! <a href='{}#cal-events'>Go back to my "
+"profile</a>"
+msgstr ""
+
 #: bac/urls.py:27
 msgid "accounts/"
 msgstr "cuentas/"
@@ -294,20 +306,12 @@ msgstr "Contáctanos"
 msgid "Send"
 msgstr "Enviar"
 
-#: contactpage/templates/contactpage/contactpage_done.html:4
-msgid "Contact made successfully"
-msgstr "Contacto realizado correctamente"
-
-#: contactpage/templates/contactpage/contactpage_done.html:8
+#: contactpage/views.py:30
 msgid ""
 "Your message as been sent successfully. We will get back to you as soon as "
 "possible!"
 msgstr ""
 "El mensaje se ha enviado correctamente. Te contactaremos lo antes possible."
-
-#: contactpage/urls.py:10
-msgid "email-sent/"
-msgstr "mensaje-enviado/"
 
 #: core/templates/core/cards/outing.html:6
 #, fuzzy, python-format
@@ -615,36 +619,38 @@ msgid "There is no outing fitting your search criteria."
 msgstr "No hay ninguna salida que corresponda a tus criterios de búsqueda"
 
 #: outings/views.py:123
-msgid "Your outing is now published!"
-msgstr "Tu salida es ahora publicada!"
+msgid ""
+"Your outing is now published! <a href='{}#cal-events'>Go back to my profile</"
+"a>"
+msgstr ""
 
-#: outings/views.py:134
+#: outings/views.py:137
 msgid ""
 "Your outing is now updated! <a href='{}#cal-events'>Go back to my profile</a>"
 msgstr ""
 
-#: profiles/admin.py:17
+#: profiles/admin.py:18
 msgid "Personal info"
 msgstr "Información personal"
 
-#: profiles/admin.py:18
+#: profiles/admin.py:19
 msgid "Permissions"
 msgstr "Permisos"
 
-#: profiles/admin.py:20
+#: profiles/admin.py:21
 msgid "Important dates"
 msgstr "Fechas importantes"
 
-#: profiles/admin.py:35
+#: profiles/admin.py:37
 msgid "Delete selected profiles cleanly (user.is_profile=False)"
 msgstr ""
 "Borrar correctamente los perfiles seleccionados (user.is_profile=False)"
 
-#: profiles/admin.py:48
+#: profiles/admin.py:52
 msgid "Email"
 msgstr "Dirección de correo electrónico"
 
-#: profiles/admin.py:53 profiles/templates/profiles/my_profile.html:67
+#: profiles/admin.py:57 profiles/templates/profiles/my_profile.html:67
 msgid "First name"
 msgstr "Nombre"
 
@@ -791,19 +797,6 @@ msgstr "perfil"
 #: profiles/models.py:100
 msgid "profiles"
 msgstr "perfiles"
-
-#: profiles/templates/profiles/contact_profile_done.html:4
-msgid "Contact made"
-msgstr "Contacto establecido"
-
-#: profiles/templates/profiles/contact_profile_done.html:8
-#, python-format
-msgid ""
-"Your message has been sent by email to %(username)s. Hopefully, he or she "
-"will get back to you soon!"
-msgstr ""
-"Tu mensaje ha sido enviado por correo electrónico a %(username)s. Con "
-"suerte, te contactará con presteza!"
 
 #: profiles/templates/profiles/contact_profile_email.html:10
 #: profiles/templates/profiles/contact_profile_email_inline.html:10
@@ -1121,8 +1114,8 @@ msgid "Imports / Exports for superadmins"
 msgstr "Importación / Exportación para superadministradores"
 
 #: profiles/templates/profiles/my_profile.html:173
-msgid "Export outings"
-msgstr "Exportar salidas"
+msgid "Nothing for now."
+msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:182 templates/base.html:89
 #: templates/registration/login.html:4 templates/registration/login.html:40
@@ -1346,26 +1339,34 @@ msgid "<username>/contact/"
 msgstr "<username>/contacto/"
 
 #: profiles/urls.py:19
-msgid "<username>/contact/done/"
-msgstr "<username>/contacto/realizado/"
-
-#: profiles/urls.py:20
 msgid "export/xlsx/"
 msgstr "exportacion/xlsx/"
 
-#: profiles/urls.py:21
+#: profiles/urls.py:20
 msgid "ajax/load-grades/"
 msgstr "ajax/descargar-graduaciones"
 
-#: profiles/views.py:208
+#: profiles/views.py:206
+#, fuzzy
+#| msgid ""
+#| "Your message has been sent by email to %(username)s. Hopefully, he or she "
+#| "will get back to you soon!"
+msgid ""
+"Your message has been sent by email to {}. Hopefully, he or she will get "
+"back to you soon! :)"
+msgstr ""
+"Tu mensaje ha sido enviado por correo electrónico a %(username)s. Con "
+"suerte, te contactará con presteza!"
+
+#: profiles/views.py:210
 msgid "Initial contact"
 msgstr "Contacto initial"
 
-#: profiles/views.py:209
+#: profiles/views.py:211
 msgid "Hi "
 msgstr "Hola "
 
-#: profiles/views.py:221
+#: profiles/views.py:224
 msgid ""
 "WARNING: your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1375,27 +1376,27 @@ msgstr ""
 "de perfiles de bourseauxcompagnons. Pulsa sobre 'Actualizar mi perfil' para "
 "completarlo o privatizarlo."
 
-#: profiles/views.py:237
+#: profiles/views.py:240
 msgid "Profile registered"
 msgstr "Perfil registrado"
 
-#: profiles/views.py:238
+#: profiles/views.py:241
 msgid "[Account] {}"
 msgstr "[Cuenta] {}"
 
-#: profiles/views.py:331 profiles/views.py:333
+#: profiles/views.py:334 profiles/views.py:336
 msgid "Hi {}! You are logged in :)"
 msgstr "Hola {}! Estás conectado :)"
 
-#: profiles/views.py:335
+#: profiles/views.py:338
 msgid "You are logged in :)"
 msgstr "Estás conectado :)"
 
-#: profiles/views.py:342 profiles/views.py:344
+#: profiles/views.py:345 profiles/views.py:347
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita {}."
 
-#: profiles/views.py:346
+#: profiles/views.py:349
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita."
 
@@ -1616,6 +1617,24 @@ msgstr ""
 #: templates/registration/password_reset_form.html:15
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Validar y recibir el correo electrónico de confirmación"
+
+#~ msgid "Contact made successfully"
+#~ msgstr "Contacto realizado correctamente"
+
+#~ msgid "email-sent/"
+#~ msgstr "mensaje-enviado/"
+
+#~ msgid "Your outing is now published!"
+#~ msgstr "Tu salida es ahora publicada!"
+
+#~ msgid "Contact made"
+#~ msgstr "Contacto establecido"
+
+#~ msgid "Export outings"
+#~ msgstr "Exportar salidas"
+
+#~ msgid "<username>/contact/done/"
+#~ msgstr "<username>/contacto/realizado/"
 
 #~ msgid "Your outing is now updated!"
 #~ msgstr "Tu salida es ahora actualizada!"

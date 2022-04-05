@@ -120,11 +120,14 @@ class OutingDetailView(DetailView):
 class OutingCreateView(SuccessMessageMixin, CreateView):
     form_class = OutingForm
     template_name = 'outings/outing_form.html'
-    success_message = _("Your outing is now published!")
+    success_message = _("Your outing is now published! <a href='{}#cal-events'>Go back to my profile</a>")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+    def get_success_message(self, cleaned_data):
+        return self.success_message.format(reverse_lazy('my-profile'))
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
