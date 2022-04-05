@@ -16,7 +16,6 @@ urlpatterns = [
 #    re_path(r'^search/$', ProfileListView.as_view(), name='search'),
     path('<username>/', ProfileDetailView.as_view(), name='detail'),
     path(_('<username>/contact/'), ContactProfileView, name='contact-profile'),
-    path(_('<username>/contact/done/'), TemplateView.as_view(template_name='profiles/contact_profile_done.html'), name='contact-profile-done'),
     path(_('export/xlsx/'), export_profiles_to_xlsx, name='export-profiles-to-xlsx'),
     path(_('ajax/load-grades/'), load_grades, name='ajax-load-grades')
 ]

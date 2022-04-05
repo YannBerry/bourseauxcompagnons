@@ -203,13 +203,16 @@ def ContactProfileView(request, **kwargs):
                 email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('profiles:contact-profile-done', username=user_contacted_username)
+            msg = _('Your message has been sent by email to {}. Hopefully, he or she will get back to you soon! :)').format(user_contacted_name)
+            messages.add_message(request, messages.SUCCESS, msg)
+            return redirect('profiles:detail', username=user_contacted_username)
     else:
         prepopulated_fields = {'subject': _('Initial contact'),
                                 'message': _('Hi ')+user_contacted_name+',\n'}
         if request.user.is_authenticated:
             prepopulated_fields.update({'from_email': request.user.email})
         form = ContactProfileForm(initial=prepopulated_fields)
+
     return render(request, "profiles/contact_profile_form.html", {'form': form, 'profile_contacted': user_contacted_name, 'profile_phone_number': user_contacted_phone_number})
 
 
