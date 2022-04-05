@@ -1,6 +1,11 @@
-from django.core.mail import EmailMessage, BadHeaderError
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+# Messages
+from django.contrib import messages
+# Translation
+from django.utils.translation import gettext_lazy as _
+# Sending Emails
+from django.core.mail import EmailMessage, BadHeaderError
 
 from contactpage.forms import ContactForm
 
@@ -22,7 +27,9 @@ def ContactPageView(request):
                 email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('contactpage:email-sent')
+            msg = _('Your message as been sent successfully. We will get back to you as soon as possible!')
+            messages.add_message(request, messages.SUCCESS, msg)
+            return redirect('contactpage:contact-page')
     else:
         if request.user.is_authenticated:
             form = ContactForm(initial={'from_email': request.user.email})

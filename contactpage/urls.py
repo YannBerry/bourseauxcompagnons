@@ -7,5 +7,4 @@ from contactpage.views import ContactPageView
 app_name = 'contactpage'
 urlpatterns = [
     path('', ContactPageView, name='contact-page'),
-    path(_('email-sent/'), TemplateView.as_view(template_name='contactpage/contactpage_done.html'), name='email-sent'),
 ]
