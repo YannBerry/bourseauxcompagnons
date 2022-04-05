@@ -203,7 +203,7 @@ def ContactProfileView(request, **kwargs):
                 email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            msg = _('Your message has been sent by email to {}. Hopefully, he or she will get back to you soon! :)').format(user_contacted_name)
+            msg = _('Your message has been sent by email to {}. Hopefully, he or she will get back to you soon! :) <a href="{}">Go back to the profiles page</a>').format(user_contacted_name, reverse_lazy('profiles:list'))
             messages.add_message(request, messages.SUCCESS, msg)
             return redirect('profiles:detail', username=user_contacted_username)
     else:
