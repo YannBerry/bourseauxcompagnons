@@ -161,7 +161,7 @@ class CalEvents(Cal):
         outings = Outing.objects.filter(author__username=self.profile)
         availabilities = Availability.objects.filter(author__username=self.profile)
 
-        cal = f'<table border="0" cellpadding="0" cellspacing="0" class="cal-table">\n'
+        cal = f'<table border="0" cellspacing="0" class="cal-table">\n'
         cal += f'<tr><th><a class="previous-month unstyled text-info">&lt;&lt;</a></th>'
         cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
         cal += f'<th><a class="next-month unstyled text-info">&gt;&gt;</a></th></tr>'

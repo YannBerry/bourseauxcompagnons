@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 16:00+0200\n"
+"POT-Creation-Date: 2022-04-05 20:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -815,6 +815,8 @@ msgstr "Un internaute a pris contact avec vous."
 
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
+#: profiles/templates/profiles/profile_deletion_email.html:324
+#: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
 msgid "Hi"
@@ -853,6 +855,8 @@ msgstr ""
 
 #: profiles/templates/profiles/contact_profile_email.html:347
 #: profiles/templates/profiles/contact_profile_email_inline.html:143
+#: profiles/templates/profiles/profile_deletion_email.html:327
+#: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
 msgid "Sportively yours"
@@ -860,6 +864,8 @@ msgstr "Sportivement"
 
 #: profiles/templates/profiles/contact_profile_email.html:363
 #: profiles/templates/profiles/contact_profile_email_inline.html:159
+#: profiles/templates/profiles/profile_deletion_email.html:343
+#: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
 msgid ""
@@ -1095,6 +1101,55 @@ msgstr ""
 msgid "Sign in"
 msgstr "Connexion"
 
+#: profiles/templates/profiles/profile_deletion_email.html:9
+#: profiles/templates/profiles/profile_deletion_email_inline.html:9
+msgid "Message from Bourse aux compagnons"
+msgstr "Message de la Bourse aux compagnons"
+
+#: profiles/templates/profiles/profile_deletion_email.html:308
+#: profiles/templates/profiles/profile_deletion_email_inline.html:104
+msgid "Your Bourseauxcompagnons account is deleted."
+msgstr "Votre compte Bourseauxcompagnons est supprimé."
+
+#: profiles/templates/profiles/profile_deletion_email.html:325
+msgid ""
+"You have successfully deleted your Bourseauxcompagnons account and all its "
+"data.</p>\n"
+"                                            <p>We hope that you found "
+"partners thanks to our website. If not we're sure that you managed to find "
+"some in other ways. <strong>You're welcome to tell us about your "
+"bourseauxcompagnons experience by responding to this mail</strong>. It's "
+"useful for us to have some feedback :)"
+msgstr ""
+"Vous avez bien supprimé votre compte Bourseauxcompagnons et toutes ses "
+"données.</p>\n"
+"                                            <p>Nous espérons que vous avez "
+"trouvé des compagnons grâce à notre site. Si ce n'est pas le cas nous sommes "
+"sûrs que vous en avez trouvé par d'autres moyens. <strong>Nous serions ravis "
+"que vous nous partagiez votre expérience Bourseauxcompagnons en répondant à "
+"ce mail</strong>. Vos retours nous sont utiles pour améliorer votre expérience :)"
+
+#: profiles/templates/profiles/profile_deletion_email_inline.html:121
+msgid ""
+"You have successfully deleted your Bourseauxcompagnons account and all its "
+"data.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">We hope that you found partners thanks to our website. If not we're sure "
+"that you managed to find some in other ways. <strong>You're welcome to tell "
+"us about your bourseauxcompagnons experience by responding to this mail</"
+"strong>. It's useful for us to have some feedback :)"
+msgstr ""
+"Vous avez bien supprimé votre compte Bourseauxcompagnons et toutes ses "
+"données.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Nous espérons que vous avez trouvé des compagnons grâce à notre site. Si "
+"ce n'est pas le cas nous sommes sûrs que vous en avez trouvé par d'autres "
+"moyens. <strong>Nous serions ravis que vous nous partagiez votre expérience "
+"Bourseauxcompagnons en répondant à ce mail</strong>. Vos retours nous sont "
+"utiles pour améliorer votre expérience :)"
+
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit public profile"
 msgstr "Mettre à jour mon profil public"
@@ -1315,7 +1370,8 @@ msgid ""
 "back to you soon! :) <a href=\"{}\">Go back to the profiles page</a>"
 msgstr ""
 "Votre message a bien été envoyé par email à {}. En espérant qu'il ou elle "
-"revienne rapidement vers vous ! :) <a href=\"{}\">Retour à la pages des profils</a>"
+"revienne rapidement vers vous ! :) <a href=\"{}\">Retour à la pages des "
+"profils</a>"
 
 #: profiles/views.py:210
 msgid "Initial contact"
@@ -1339,23 +1395,36 @@ msgstr ""
 msgid "Profile registered"
 msgstr "Profil créé"
 
-#: profiles/views.py:241
+#: profiles/views.py:241 profiles/views.py:334
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/views.py:334 profiles/views.py:336
+#: profiles/views.py:323
+msgid ""
+"Your account and all its data are deleted. Have a good time in the outdoors!"
+msgstr ""
+"Votre compte et toutes ses données sont supprimées. Et que l'aventure "
+"continue ! Bon vent !"
+
+#: profiles/views.py:333
+#, fuzzy
+#| msgid "Profile registered"
+msgid "Profile deleted"
+msgstr "Profil créé"
+
+#: profiles/views.py:348 profiles/views.py:350
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:338
+#: profiles/views.py:352
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:345 profiles/views.py:347
+#: profiles/views.py:359 profiles/views.py:361
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:349
+#: profiles/views.py:363
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 

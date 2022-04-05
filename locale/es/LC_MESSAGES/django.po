@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 16:00+0200\n"
+"POT-Creation-Date: 2022-04-05 20:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -811,6 +811,8 @@ msgstr "Alguien está tratando de contactar contigo."
 
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
+#: profiles/templates/profiles/profile_deletion_email.html:324
+#: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
 msgid "Hi"
@@ -849,6 +851,8 @@ msgstr ""
 
 #: profiles/templates/profiles/contact_profile_email.html:347
 #: profiles/templates/profiles/contact_profile_email_inline.html:143
+#: profiles/templates/profiles/profile_deletion_email.html:327
+#: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
 msgid "Sportively yours"
@@ -856,6 +860,8 @@ msgstr "Saludos deportivos"
 
 #: profiles/templates/profiles/contact_profile_email.html:363
 #: profiles/templates/profiles/contact_profile_email_inline.html:159
+#: profiles/templates/profiles/profile_deletion_email.html:343
+#: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
 msgid ""
@@ -1123,6 +1129,41 @@ msgstr ""
 msgid "Sign in"
 msgstr "Iniciar sesión"
 
+#: profiles/templates/profiles/profile_deletion_email.html:9
+#: profiles/templates/profiles/profile_deletion_email_inline.html:9
+#, fuzzy
+#| msgid "Welcome on Bourse aux compagnons"
+msgid "Message from Bourse aux compagnons"
+msgstr "Bienvenido a Bourse aux compagnons"
+
+#: profiles/templates/profiles/profile_deletion_email.html:308
+#: profiles/templates/profiles/profile_deletion_email_inline.html:104
+msgid "Your Bourseauxcompagnons account is deleted."
+msgstr ""
+
+#: profiles/templates/profiles/profile_deletion_email.html:325
+msgid ""
+"You have successfully deleted your Bourseauxcompagnons account and all its "
+"data.</p>\n"
+"                                            <p>We hope that you found "
+"partners thanks to our website. If not we're sure that you managed to find "
+"some in other ways. <strong>You're welcome to tell us about your "
+"bourseauxcompagnons experience by responding to this mail</strong>. It's "
+"useful for us to have some feedback :)"
+msgstr ""
+
+#: profiles/templates/profiles/profile_deletion_email_inline.html:121
+msgid ""
+"You have successfully deleted your Bourseauxcompagnons account and all its "
+"data.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">We hope that you found partners thanks to our website. If not we're sure "
+"that you managed to find some in other ways. <strong>You're welcome to tell "
+"us about your bourseauxcompagnons experience by responding to this mail</"
+"strong>. It's useful for us to have some feedback :)"
+msgstr ""
+
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit public profile"
 msgstr "Editar mi perfil público"
@@ -1380,23 +1421,34 @@ msgstr ""
 msgid "Profile registered"
 msgstr "Perfil registrado"
 
-#: profiles/views.py:241
+#: profiles/views.py:241 profiles/views.py:334
 msgid "[Account] {}"
 msgstr "[Cuenta] {}"
 
-#: profiles/views.py:334 profiles/views.py:336
+#: profiles/views.py:323
+msgid ""
+"Your account and all its data are deleted. Have a good time in the outdoors!"
+msgstr ""
+
+#: profiles/views.py:333
+#, fuzzy
+#| msgid "Profile registered"
+msgid "Profile deleted"
+msgstr "Perfil registrado"
+
+#: profiles/views.py:348 profiles/views.py:350
 msgid "Hi {}! You are logged in :)"
 msgstr "Hola {}! Estás conectado :)"
 
-#: profiles/views.py:338
+#: profiles/views.py:352
 msgid "You are logged in :)"
 msgstr "Estás conectado :)"
 
-#: profiles/views.py:345 profiles/views.py:347
+#: profiles/views.py:359 profiles/views.py:361
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita {}."
 
-#: profiles/views.py:349
+#: profiles/views.py:363
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita."
 

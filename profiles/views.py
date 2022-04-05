@@ -315,17 +315,31 @@ class AccountUpdateView(UserPassesTestMixin, UpdateView):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
 
 
-class AccountDeleteView(UserPassesTestMixin, DeleteView):
+class AccountDeleteView(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     '''A view for the authenticated profile to delete its own profile and account'''
     model = CustomUser
     template_name = 'registration/account_confirm_delete.html'
     success_url = reverse_lazy('homepage')
+    success_message = _("Your account and all its data are deleted. Have a good time in the outdoors!")
 
     def test_func(self):
         return self.request.user.username == self.kwargs['username']
 
     def get_object(self):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
+
+    def delete(self, request, *args, **kwargs):
+        response = super(DeleteView, self).delete(request, *args, **kwargs)
+        subject=_("Profile deleted")
+        subject_prefixed = _("[Account] {}").format(subject)
+        recipients = [self.object.email]
+        html_message = render_to_string('profiles/profile_deletion_email_inline.html', {'customuser': self.object})
+        plain_message = strip_tags(html_message)
+        send_mail(subject_prefixed, plain_message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", recipients, html_message=html_message)
+        return response
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message.format(reverse_lazy('my-profile'))
 
 
 @receiver(user_logged_in)
