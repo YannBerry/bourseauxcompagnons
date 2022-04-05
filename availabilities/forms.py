@@ -3,6 +3,8 @@ from django import forms
 
 from availabilities.models import Availability
 from core.forms import NoColonModelForm
+from core.widgets import SelectableItemsWidget
+
 
 class AvailabilityForm(NoColonModelForm):
     #error_css_class = 'contains_errors_as_ul_p'
@@ -30,7 +32,7 @@ class AvailabilityForm(NoColonModelForm):
         model = Availability
         fields = ['start_date', 'end_date', 'description', 'activities']
         widgets = {
-            'activities': forms.CheckboxSelectMultiple(),
+            'activities': SelectableItemsWidget(),
         }
 
     def clean(self):

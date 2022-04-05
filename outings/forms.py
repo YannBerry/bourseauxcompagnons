@@ -4,6 +4,8 @@ from django import forms
 from outings.models import Outing
 from activities.models import Activity
 from core.forms import NoColonModelForm
+from core.widgets import SelectableItemsWidget
+
 
 class OutingForm(NoColonModelForm):
     #error_css_class = 'contains_errors_as_ul_p'
@@ -31,7 +33,7 @@ class OutingForm(NoColonModelForm):
         model = Outing
         fields = ['title', 'start_date', 'end_date', 'description', 'activities', 'topo_link']
         widgets = {
-            'activities': forms.CheckboxSelectMultiple(),
+            'activities': SelectableItemsWidget(),
         }
 
     def clean(self):
