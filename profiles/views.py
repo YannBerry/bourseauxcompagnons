@@ -290,7 +290,7 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
         # return super().form_valid(form)
 
 
-@csrf_exempt
+# @csrf_exempt # I used the csrf exemption before april 2022 when I added the CSRF protection on the ajax request
 def load_grades(request):
     checked_activities = request.POST.getlist('a')
     checked_grades = request.POST.getlist('g')

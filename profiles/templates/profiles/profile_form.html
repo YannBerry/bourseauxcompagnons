@@ -138,10 +138,10 @@ let httpRequest;
 let activitiesElts = document.querySelectorAll("input[name=activities]");
 
 for (let i = 0; i < activitiesElts.length; i++) {
-    activitiesElts[i].addEventListener("change", makeRequest);
+    activitiesElts[i].addEventListener("change", updateGradesDisplay);
 }
 
-function makeRequest() {
+function updateGradesDisplay() {
     let checkedActivities = "";
     for (let i = 0; i < activitiesElts.length; i++) {
         if (activitiesElts[i].checked){
@@ -168,13 +168,36 @@ function makeRequest() {
     } else {
         params = checkedActivities;
     }
-    httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = alertContents;
-    httpRequest.open('POST', '{% url "profiles:ajax-load-grades" %}');
-    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    httpRequest.send(params);
+
+    if (window.fetch) {
+        // Modern Fetch API method to fetch grades data
+        const csrftoken = getCookie('csrftoken');
+        fetch('{% url "profiles:ajax-load-grades" %}', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded', 'X-CSRFToken': csrftoken},
+        mode:'same-origin', body:params}).then(function(response) {
+            if(response.ok) {
+                response.text().then(text => document.getElementById("id_grades").innerHTML = text);
+            } else {
+                console.log('Il y a eu un problème avec le réseau (HTTP 404 n\'est pas une errreur réseau). Le status de la réponse est ' + response.status + ': ' + response.statusText);
+            }
+        // TESTJS: Fetch with async/await
+        /*async function updateGradesDisplay() {
+            let response = await fetch('{% url "profiles:ajax-load-grades" %}');
+            let text = await response.text();
+            let elt = document.getElementById("id_grades");
+            elt.innerHTML = text;
+        }*/
+        });
+    } else {
+        // Old XMLHttpRequest() method to fetch grades data which also needs the definition of the function alertContents()
+        httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('POST', '{% url "profiles:ajax-load-grades" %}');
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        httpRequest.send(params);
+    }
 }
 
+// Old XMLHttpRequest() method to fetch grades data. Can be deleted if I decide to use only Fetch and not XMLHttpRequest anymore.
 function alertContents() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
@@ -183,6 +206,22 @@ function alertContents() {
             alert('Il y a eu un problème avec la requête.');
         }
     }
+}
+// Defined a generic function to get a cookie value by its name
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 </script>
 <!-- flatpickr -->
