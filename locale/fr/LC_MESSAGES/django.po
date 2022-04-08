@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 19:08+0200\n"
+"POT-Creation-Date: 2022-04-08 20:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -863,6 +863,7 @@ msgstr "Un internaute a pris contact avec vous."
 #: profiles/templates/profiles/profile_register_email_inline.html:121
 #: templates/registration/password_reset_email.html:324
 #: templates/registration/password_reset_email_inline.html:120
+#: templates/registration/password_reset_email_plain.html:3
 msgid "Hi"
 msgstr "Bonjour"
 
@@ -905,6 +906,7 @@ msgstr ""
 #: profiles/templates/profiles/profile_register_email_inline.html:148
 #: templates/registration/password_reset_email.html:352
 #: templates/registration/password_reset_email_inline.html:148
+#: templates/registration/password_reset_email_plain.html:9
 msgid "Sportively yours"
 msgstr "Sportivement"
 
@@ -916,6 +918,7 @@ msgstr "Sportivement"
 #: profiles/templates/profiles/profile_register_email_inline.html:164
 #: templates/registration/password_reset_email.html:368
 #: templates/registration/password_reset_email_inline.html:164
+#: templates/registration/password_reset_email_plain.html:11
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
 msgstr "facilite la mise en relation des pratiquants de sports de montagne."
@@ -1687,6 +1690,7 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html:344
 #: templates/registration/password_reset_email_inline.html:140
+#: templates/registration/password_reset_email_plain.html:7
 msgid "Fill in a new password"
 msgstr "Saisir votre nouveau mot de passe"
 
@@ -1703,7 +1707,19 @@ msgstr ""
 "mot de passe de votre compte Bourseauxcompagnons.</p>\n"
 "                                            <p style=\"font-family: sans-"
 "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
-"\">Votre identifiant de connexion est votre adresse email : %(profile_email)s."
+"\">Votre identifiant de connexion est votre adresse email : "
+"%(profile_email)s."
+
+#: templates/registration/password_reset_email_plain.html:5
+#, python-format
+msgid ""
+"You receive this message because you asked for a password reset of your "
+"Bourseauxcompagnons profile.\n"
+"Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+"Vous recevez ce message en réponse à votre demande de réinitialisation du "
+"mot de passe de votre compte Bourseauxcompagnons.\n"
+"Votre identifiant de connexion est votre adresse email : %(profile_email)s."
 
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"
@@ -1712,4 +1728,3 @@ msgstr "Valider et recevoir un email de confirmation"
 #: templates/registration/password_reset_subject.html:2
 msgid "Password reset"
 msgstr "Réinitialisation du mot de passe"
-
