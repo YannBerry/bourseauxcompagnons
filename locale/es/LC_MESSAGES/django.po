@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 21:56+0200\n"
+"POT-Creation-Date: 2022-04-08 22:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -869,6 +869,7 @@ msgstr "Alguien está tratando de contactar contigo."
 #: profiles/templates/profiles/contact_profile_email_plain.html:1
 #: profiles/templates/profiles/profile_deletion_email.html:324
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
+#: profiles/templates/profiles/profile_deletion_email_plain.html:1
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
 #: profiles/templates/profiles/profile_register_email_plain.html:1
@@ -935,6 +936,7 @@ msgstr ""
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
 #: profiles/templates/profiles/profile_deletion_email.html:327
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
+#: profiles/templates/profiles/profile_deletion_email_plain.html:8
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
 #: profiles/templates/profiles/profile_register_email_plain.html:9
@@ -949,6 +951,7 @@ msgstr "Saludos deportivos"
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
 #: profiles/templates/profiles/profile_deletion_email.html:343
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
+#: profiles/templates/profiles/profile_deletion_email_plain.html:10
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
 #: profiles/templates/profiles/profile_register_email_plain.html:11
@@ -1290,6 +1293,17 @@ msgid ""
 "strong>. It's useful for us to have some feedback :)"
 msgstr ""
 
+#: profiles/templates/profiles/profile_deletion_email_plain.html:3
+msgid ""
+"You have successfully deleted your Bourseauxcompagnons account and all its "
+"data.\n"
+"We hope that you found partners thanks to our website. If not we're sure "
+"that you managed to find some in other ways.\n"
+"\n"
+"You're welcome to tell us about your bourseauxcompagnons experience by "
+"responding to this mail. It's useful for us to have some feedback :)"
+msgstr ""
+
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit public profile"
 msgstr "Editar mi perfil público"
@@ -1600,19 +1614,19 @@ msgstr ""
 msgid "Profile deleted"
 msgstr "Perfil registrado"
 
-#: profiles/views.py:358 profiles/views.py:360
+#: profiles/views.py:359 profiles/views.py:361
 msgid "Hi {}! You are logged in :)"
 msgstr "Hola {}! Estás conectado :)"
 
-#: profiles/views.py:362
+#: profiles/views.py:363
 msgid "You are logged in :)"
 msgstr "Estás conectado :)"
 
-#: profiles/views.py:369 profiles/views.py:371
+#: profiles/views.py:370 profiles/views.py:372
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita {}."
 
-#: profiles/views.py:373
+#: profiles/views.py:374
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita."
 

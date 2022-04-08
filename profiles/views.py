@@ -344,7 +344,8 @@ class AccountDeleteView(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
         subject_prefixed = _("[Account] {}").format(subject)
         recipients = [self.object.email]
         html_message = render_to_string('profiles/profile_deletion_email_inline.html', {'customuser': self.object})
-        plain_message = strip_tags(html_message)
+        # plain_message = strip_tags(html_message) # I finally prefer to create a profile_deletion_email_plain.html than just strip the tags off that result in a shitty email.
+        plain_message = render_to_string('profiles/profile_deletion_email_plain.html', {'customuser': self.object})
         send_mail(subject_prefixed, plain_message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", recipients, html_message=html_message)
         return response
 
