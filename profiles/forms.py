@@ -5,19 +5,21 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import models
 from django.db import transaction
 from django.db.models import Q
-
 # GEODJANGO
 from django.contrib.gis.forms.fields import PolygonField as FormPolygonField
 from core.widgets import OpenLayersWidgetSrid4326
 # from django.contrib.gis.geos import Point
-
 # DJANGO-PHONENUMBER-FIELD
 # from phonenumber_field.formfields import PhoneNumberField
 # from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
+# MODELS
 from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
+# FORMS
 from core.forms import NoColonForm, NoColonModelForm, GroupedModelMultipleChoiceField
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
+# WIDGETS
 from core.widgets import ImageWidget, GradesWidget, SelectableItemsWidget, ToggleSwitchWidget
 
 
@@ -86,9 +88,6 @@ class ProfileCreationForm(NoColonForm, CustomUserCreationForm):
     # class Meta(CustomUserForm.Meta):
         # '''Defining the ordering of fields'''
         # fields = ['email', 'username', 'password1', 'password2', 'activities', 'availability_area_geo']
-        # widgets = {
-        #     'activities': SelectableItemsWidget(),
-        # }
 
     @transaction.atomic
     def save(self):
@@ -111,6 +110,72 @@ class ProfileCreationForm(NoColonForm, CustomUserCreationForm):
                     _("Please correct detected error / errors.")
                 )
             )
+
+
+class ProfileAuthenticationForm(NoColonForm, AuthenticationForm):
+    required_css_class = 'required'
+
+
+    def __init__(self, *args, **kwargs):
+        '''Inherit from parent and add the Bootstrap form-control class to the fields'''
+        super().__init__(*args, **kwargs)
+        for field in [f for f in self.fields]:
+            self.fields[field].widget.attrs.update({'class': 'form-control'})
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        
+        if self.errors:
+            self.add_error(
+                None,
+                forms.ValidationError(
+                    _("Please correct detected error / errors.")
+                )
+            )
+
+class ProfilePasswordChangeForm(NoColonForm, PasswordChangeForm):
+    required_css_class = 'required'
+
+    def __init__(self, *args, **kwargs):
+        '''Inherit from parent and add the Bootstrap form-control class to the fields'''
+        super().__init__(*args, **kwargs)
+        if self.is_bound:
+            for field in [f for f in self.fields]:
+                if self.has_error(field):
+                    self.fields[field].widget.attrs.update({'class': 'form-control is-invalid'})
+                else:
+                    self.fields[field].widget.attrs.update({'class': 'form-control is-valid'})
+        else:
+            for field in [f for f in self.fields]:
+                self.fields[field].widget.attrs.update({'class': 'form-control'})
+
+    def clean(self):
+        cleaned_data = super().clean()
+        
+        if self.errors:
+            self.add_error(
+                None,
+                forms.ValidationError(
+                    _("Please correct detected error / errors.")
+                )
+            )
+
+
+class ProfilePasswordResetForm(NoColonForm, PasswordResetForm):
+    required_css_class = 'required'
+    
+    def __init__(self, *args, **kwargs):
+        '''Inherit from parent and add the Bootstrap form-control class to the fields'''
+        super().__init__(*args, **kwargs)
+        if self.is_bound:
+            for field in [f for f in self.fields]:
+                if self.has_error(field):
+                    self.fields[field].widget.attrs.update({'class': 'form-control is-invalid'})
+                else:
+                    self.fields[field].widget.attrs.update({'class': 'form-control is-valid'})
+        else:
+            for field in [f for f in self.fields]:
+                self.fields[field].widget.attrs.update({'class': 'form-control'})
 
 
 class AccountForm(NoColonModelForm):

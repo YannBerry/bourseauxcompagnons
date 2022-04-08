@@ -8,7 +8,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
 from django.conf.urls.static import static
 
-from core.views import HomepageView
+from django.contrib.auth import views as auth_views
+from core.views import HomepageView, ProfileLoginView, ProfilePasswordChangeView, ProfilePasswordResetView
 from profiles.views import (
     ProfileRegisterView,
     ProfileHomepageView,
@@ -17,14 +18,20 @@ from profiles.views import (
     AccountDeleteView,
 )
 
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-    path('robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
+    path('robots.txt', lambda x: HttpResponse('User-Agent: *\nDisallow: /', content_type='text/plain'), name='robots_file'),
 ]
 
 urlpatterns += i18n_patterns(
     path('', HomepageView.as_view(), name='homepage'),
-    path(_('accounts/'), include('django.contrib.auth.urls')),
+    path(_('accounts/login/'), ProfileLoginView.as_view(), name='login'),
+    path(_('accounts/logout/'), auth_views.LogoutView.as_view(), name='logout'),
+    path(_('accounts/password-change/'), ProfilePasswordChangeView.as_view(), name='password_change'),
+    path(_('accounts/password-reset/'), ProfilePasswordResetView.as_view(), name='password_reset'),
+    path(_('accounts/reset/<uidb64>/<token>/'), auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path(_('accounts/reset/done/'), auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path(_('accounts/register/profile/'), ProfileRegisterView.as_view(), name='profile_register'),
     path(_('accounts/profiles/my-profile/'), ProfileHomepageView.as_view(), name='my-profile'),
     path(_('accounts/<username>/update/'), AccountUpdateView.as_view(), name='update-account'),

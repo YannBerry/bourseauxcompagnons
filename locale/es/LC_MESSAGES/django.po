@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 21:27+0200\n"
+"POT-Creation-Date: 2022-04-08 12:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,8 +48,8 @@ msgid "Your end date is not equal or later than your start date."
 msgstr "La fecha de fin debe ser superior o igual a la fecha de inicio."
 
 #: availabilities/forms.py:56 contactpage/forms.py:37 outings/forms.py:57
-#: profiles/forms.py:111 profiles/forms.py:149 profiles/forms.py:222
-#: profiles/forms.py:257
+#: profiles/forms.py:110 profiles/forms.py:132 profiles/forms.py:159
+#: profiles/forms.py:214 profiles/forms.py:287 profiles/forms.py:322
 msgid "Please correct detected error / errors."
 msgstr "Por favor corrige el o los errores."
 
@@ -220,63 +220,91 @@ msgid ""
 "profile</a>"
 msgstr ""
 
-#: bac/urls.py:27
-msgid "accounts/"
+#: bac/urls.py:29
+#, fuzzy
+#| msgid "accounts/"
+msgid "accounts/login/"
 msgstr "cuentas/"
 
-#: bac/urls.py:28
-msgid "accounts/register/profile/"
-msgstr "cuentas/registrar/perfil/"
-
-#: bac/urls.py:29
-msgid "accounts/profiles/my-profile/"
-msgstr "cuentas/perfiles/mi-perfil/"
-
 #: bac/urls.py:30
-msgid "accounts/<username>/update/"
-msgstr "cuentas/<username>/actualizacion/"
+#, fuzzy
+#| msgid "accounts/"
+msgid "accounts/logout/"
+msgstr "cuentas/"
 
 #: bac/urls.py:31
-msgid "accounts/profiles/<username>/update/"
-msgstr "cuentas/perfiles/<username>/actualizacion/"
+msgid "accounts/password_change/"
+msgstr ""
 
 #: bac/urls.py:32
-msgid "accounts/<username>/deletion/"
+#, fuzzy
+#| msgid "accounts/<username>/deletion/"
+msgid "accounts/password_reset/"
 msgstr "cuentas/<username>/eliminacion/"
 
 #: bac/urls.py:33
+msgid "accounts/reset/<uidb64>/<token>/"
+msgstr ""
+
+#: bac/urls.py:34
+#, fuzzy
+#| msgid "accounts/register/profile/"
+msgid "accounts/reset/done/"
+msgstr "cuentas/registrar/perfil/"
+
+#: bac/urls.py:35
+msgid "accounts/register/profile/"
+msgstr "cuentas/registrar/perfil/"
+
+#: bac/urls.py:36
+msgid "accounts/profiles/my-profile/"
+msgstr "cuentas/perfiles/mi-perfil/"
+
+#: bac/urls.py:37
+msgid "accounts/<username>/update/"
+msgstr "cuentas/<username>/actualizacion/"
+
+#: bac/urls.py:38
+msgid "accounts/profiles/<username>/update/"
+msgstr "cuentas/perfiles/<username>/actualizacion/"
+
+#: bac/urls.py:39
+msgid "accounts/<username>/deletion/"
+msgstr "cuentas/<username>/eliminacion/"
+
+#: bac/urls.py:40
 msgid "profiles/"
 msgstr "perfiles/"
 
-#: bac/urls.py:34
+#: bac/urls.py:41
 msgid "outings/"
 msgstr "salidas/"
 
-#: bac/urls.py:35
+#: bac/urls.py:42
 msgid "availabilities/"
 msgstr "disponibilidades/"
 
-#: bac/urls.py:36
+#: bac/urls.py:43
 msgid "contact/"
 msgstr "contacto/"
 
-#: bac/urls.py:37
+#: bac/urls.py:44
 msgid "features/"
 msgstr "funciones/"
 
-#: bac/urls.py:38
+#: bac/urls.py:45
 msgid "admin/"
 msgstr "admin/"
 
-#: contactpage/forms.py:10 profiles/forms.py:230
+#: contactpage/forms.py:10 profiles/forms.py:295
 msgid "Your e-mail address"
 msgstr "Dirección de corre electrónico"
 
-#: contactpage/forms.py:11 profiles/forms.py:231
+#: contactpage/forms.py:11 profiles/forms.py:296
 msgid "Subject"
 msgstr "Título"
 
-#: contactpage/forms.py:12 profiles/forms.py:232
+#: contactpage/forms.py:12 profiles/forms.py:297
 msgid "Message"
 msgstr "Mensaje"
 
@@ -441,6 +469,31 @@ msgstr "Disponible"
 msgid "No activity was associated."
 msgstr "Ninguna actividad fue asociado."
 
+#: core/views.py:35
+#, fuzzy
+#| msgid ""
+#| "The next time you will sign in you will be able to use your new password!"
+msgid ""
+"Password changed! The next time you will sign in you will be able to use "
+"your new password!"
+msgstr ""
+"La próxima vez que iniciarás tu sesión, podrás utilizar tu nueva contraseña!"
+
+#: core/views.py:41
+#, fuzzy
+#| msgid ""
+#| "If you don't receive any e-mail, please check that you have filled the "
+#| "form out with the e-mail address you used to register and check your spam."
+msgid ""
+"Password reset done! You've received an e-mail with a link to choose your "
+"new password. If you haven't received any e-mail, please check that you have "
+"filled the form out with the e-mail address you used to register and check "
+"your spam."
+msgstr ""
+"Si no recibes ningún correo electrónico, por favor comprueba si habes "
+"completado el formulario con la dirección de correo electrónico que "
+"utilizaste para registrar y compruebas que no ha sido detectado como spam."
+
 #: features/urls.py:7
 msgid "votes/"
 msgstr "votos/"
@@ -562,7 +615,7 @@ msgstr "De"
 msgid "Till"
 msgstr "Al"
 
-#: outings/templates/outings/outing_list.html:51 profiles/forms.py:58
+#: outings/templates/outings/outing_list.html:51 profiles/forms.py:60
 #: profiles/templates/profiles/profile_list.html:23
 msgid "Activities"
 msgstr "Actividades"
@@ -654,11 +707,11 @@ msgstr "Dirección de correo electrónico"
 msgid "First name"
 msgstr "Nombre"
 
-#: profiles/forms.py:64 profiles/templates/profiles/profile_detail.html:48
+#: profiles/forms.py:66 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
 msgstr "Área de disponibilidad"
 
-#: profiles/forms.py:65
+#: profiles/forms.py:67
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains."
@@ -666,18 +719,18 @@ msgstr ""
 "Pulsa sobre el mapa para dibujar el área en el que estás disponible para "
 "salir a la montaña."
 
-#: profiles/forms.py:159
+#: profiles/forms.py:224
 msgid "Grades"
 msgstr "Graduaciones"
 
-#: profiles/forms.py:163 profiles/models.py:73
+#: profiles/forms.py:228 profiles/models.py:73
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
 "Selecciona tu graduación (en el que te sientas cómodo) para cada actividad "
 "que has elegido."
 
-#: profiles/forms.py:230
+#: profiles/forms.py:295
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
 "Recibiras la respuesta del perfil contactado sobre este correo electrónico."
@@ -1017,7 +1070,6 @@ msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
 #: profiles/templates/profiles/my_profile.html:61
-#: templates/registration/login.html:24
 msgid "Password"
 msgstr "Contraseña"
 
@@ -1607,12 +1659,6 @@ msgstr "Actualizar mi cuenta"
 msgid "Update my password"
 msgstr "Cambiar mi contraseña"
 
-#: templates/registration/login.html:16
-#, fuzzy
-#| msgid "Email address"
-msgid "E-mail address"
-msgstr "Dirección de correo electrónico"
-
 #: templates/registration/login.html:43
 msgid "Forgot password?"
 msgstr "Olvidaste la contraseña?"
@@ -1625,13 +1671,7 @@ msgstr "Aún no registraste un perfil?"
 msgid "Register"
 msgstr "Registrar"
 
-#: templates/registration/password_change_done.html:12
-msgid ""
-"The next time you will sign in you will be able to use your new password!"
-msgstr ""
-"La próxima vez que iniciarás tu sesión, podrás utilizar tu nueva contraseña!"
-
-#: templates/registration/password_change_form.html:15
+#: templates/registration/password_change_form.html:42
 #: templates/registration/password_reset_confirm.html:16
 msgid "Update password"
 msgstr "Cambiar la contraseña"
@@ -1657,18 +1697,14 @@ msgstr ""
 "\"%(url_password_reset)s\">reinicio de tu contraseña</a>.\n"
 "                        "
 
-#: templates/registration/password_reset_done.html:8
-msgid ""
-"If you don't receive any e-mail, please check that you have filled the form "
-"out with the e-mail address you used to register and check your spam."
-msgstr ""
-"Si no recibes ningún correo electrónico, por favor comprueba si habes "
-"completado el formulario con la dirección de correo electrónico que "
-"utilizaste para registrar y compruebas que no ha sido detectado como spam."
-
-#: templates/registration/password_reset_form.html:15
+#: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Validar y recibir el correo electrónico de confirmación"
+
+#, fuzzy
+#~| msgid "Email address"
+#~ msgid "E-mail address"
+#~ msgstr "Dirección de correo electrónico"
 
 #~ msgid "Contact made successfully"
 #~ msgstr "Contacto realizado correctamente"

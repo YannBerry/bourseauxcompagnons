@@ -13,7 +13,7 @@
                     {{ form.non_field_errors }}
                     <div class="row">
                         <div class="col-12 mb-4">
-                            <label for="{{ form.username.id_for_label }}" class="required">{% translate "E-mail address" %}</label>
+                            {{ form.username.label_tag }}
                             {{ form.username }}
                             {{ form.username.errors }}
                             {% if form.username.help_text %}
@@ -21,7 +21,7 @@
                             {% endif %}
                         </div>
                         <div class="col-12 mb-4">
-                            <label for="{{ form.password.id_for_label }}" class="required">{% translate "Password" %}</label>
+                            {{ form.password.label_tag }}
                             {{ form.password }}
                             {{ form.password.errors }}
                             {% if form.password.help_text %}
@@ -50,18 +50,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block js %}
-<script>
-    let emailInputElt = document.getElementById('id_username');
-    let pwdInputElt = document.getElementById('id_password');
-    let emailLabelElt = emailInputElt.parentNode.childNodes[1];
-    let pwdLabelElt = pwdInputElt.previousSibling.previousSibling;
-
-    emailInputElt.classList.add('form-control');
-    pwdInputElt.classList.add('form-control');
-    emailLabelElt.classList.add('required');
-    pwdLabelElt.classList.add('required');
-</script>
 {% endblock %}
