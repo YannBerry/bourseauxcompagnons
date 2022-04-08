@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 15:13+0200\n"
+"POT-Creation-Date: 2022-04-08 19:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -478,7 +478,7 @@ msgstr ""
 "La prossima volta che effettui il login potrai inserire la tua nuova "
 "password!"
 
-#: core/views.py:42
+#: core/views.py:45
 #, fuzzy
 #| msgid ""
 #| "If you don't receive any e-mail, please check that you have filled the "
@@ -493,7 +493,7 @@ msgstr ""
 "corretamente compilato il modulo con l'indirizzo e-mail che avete usato per "
 "registrarvi e di verificare la cartella spam"
 
-#: core/views.py:48
+#: core/views.py:51
 msgid "Your new password has been activated. You just have to sign in."
 msgstr "La nuova password è attivata. Devi solo connetterti."
 
@@ -871,6 +871,8 @@ msgstr "Qualcuno si è messo in contatto con te."
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
+#: templates/registration/password_reset_email.html:324
+#: templates/registration/password_reset_email_inline.html:120
 msgid "Hi"
 msgstr "Ciao"
 
@@ -911,6 +913,8 @@ msgstr ""
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
+#: templates/registration/password_reset_email.html:352
+#: templates/registration/password_reset_email_inline.html:148
 msgid "Sportively yours"
 msgstr "Sportivi saluti"
 
@@ -920,6 +924,8 @@ msgstr "Sportivi saluti"
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
+#: templates/registration/password_reset_email.html:368
+#: templates/registration/password_reset_email_inline.html:164
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
 msgstr "facilita la messa in contatto dei praticanti di sport di montagna"
@@ -1354,6 +1360,8 @@ msgstr "Creare"
 
 #: profiles/templates/profiles/profile_register_email.html:10
 #: profiles/templates/profiles/profile_register_email_inline.html:10
+#: templates/registration/password_reset_email.html:9
+#: templates/registration/password_reset_email_inline.html:9
 msgid "Welcome on Bourse aux compagnons"
 msgstr "Benvenuto su Compagni di Montagna"
 
@@ -1690,6 +1698,65 @@ msgstr ""
 "perché è già stata utilizzato. Si prega di richiedere un <a href="
 "\"%(url_password_reset)s\">nuova reimpostazione password</a>.\n"
 "                        "
+
+#: templates/registration/password_reset_email.html:308
+#: templates/registration/password_reset_email_inline.html:104
+#, fuzzy
+#| msgid "You successfully created your Bourseauxcompagnons profile!"
+msgid "Password reset of your Bourseauxcompagnons profile"
+msgstr "Il tuo account Bourseauxcompagnons è stato creato!"
+
+#: templates/registration/password_reset_email.html:325
+#, fuzzy, python-format
+#| msgid ""
+#| "Welcome on Bourse aux compagnons! Your profil is now added in the "
+#| "Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+#| "%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.</"
+#| "p>\n"
+#| "                                            <p>Your id to sign in is your "
+#| "email address: %(profile_email)s."
+msgid ""
+"You receive this message because you asked for a password reset of your "
+"Bourseauxcompagnons profile.</p>\n"
+"                                            <p>Your id to sign in is your "
+"email address: %(profile_email)s."
+msgstr ""
+"Benvenuto su Compagni di Montagna! Il tuo profilo è stato pubblicato sulla "
+"lista di Compagni di Montagna: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profili/%(profile_username)s/\">vedere il mio profilo</a>."
+"</p>\n"
+"                                            <p>Il tuo nome utente (login) è "
+"il tuo indirizzo e-mail: %(profile_email)s."
+
+#: templates/registration/password_reset_email.html:344
+#: templates/registration/password_reset_email_inline.html:140
+msgid "Fill in a new password"
+msgstr ""
+
+#: templates/registration/password_reset_email_inline.html:121
+#, fuzzy, python-format
+#| msgid ""
+#| "Welcome on Bourse aux compagnons! Your profil is now added in the "
+#| "Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+#| "%(language_code)s/profiles/%(profile_username)s/\" style=\"color: "
+#| "#3498db; text-decoration: underline;\">see my profile</a>.</p>\n"
+#| "                                            <p style=\"font-family: sans-"
+#| "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: "
+#| "15px;\">Your id to sign in is your email address: %(profile_email)s."
+msgid ""
+"You receive this message because you asked for a password reset of your "
+"Bourseauxcompagnons profile.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+"Benvenuti su Compagni di Montagna! Il tuo profilo è ora aggiunto nelelenco "
+"di Compagni di Montagna: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profili/%(profile_username)s/\" style=\"color: #3498db; "
+"text-decoration: underline;\">vedi il mio profilo</a>.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Il tuo id per accedere è il tuo indirizzo email: %(profile_email)s."
 
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"

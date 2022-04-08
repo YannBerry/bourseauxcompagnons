@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 15:13+0200\n"
+"POT-Creation-Date: 2022-04-08 19:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -475,7 +475,7 @@ msgid ""
 msgstr ""
 "La próxima vez que iniciarás tu sesión, podrás utilizar tu nueva contraseña!"
 
-#: core/views.py:42
+#: core/views.py:45
 #, fuzzy
 #| msgid ""
 #| "If you don't receive any e-mail, please check that you have filled the "
@@ -490,7 +490,7 @@ msgstr ""
 "completado el formulario con la dirección de correo electrónico que "
 "utilizaste para registrar y compruebas que no ha sido detectado como spam."
 
-#: core/views.py:48
+#: core/views.py:51
 msgid "Your new password has been activated. You just have to sign in."
 msgstr ""
 "Tu nueva contraseña se ha activada. Puedes iniciar de nuevo tu sesión cuando "
@@ -870,6 +870,8 @@ msgstr "Alguien está tratando de contactar contigo."
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
+#: templates/registration/password_reset_email.html:324
+#: templates/registration/password_reset_email_inline.html:120
 msgid "Hi"
 msgstr "Hola"
 
@@ -910,6 +912,8 @@ msgstr ""
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
+#: templates/registration/password_reset_email.html:352
+#: templates/registration/password_reset_email_inline.html:148
 msgid "Sportively yours"
 msgstr "Saludos deportivos"
 
@@ -919,6 +923,8 @@ msgstr "Saludos deportivos"
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
+#: templates/registration/password_reset_email.html:368
+#: templates/registration/password_reset_email_inline.html:164
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
 msgstr "facilitarle el trabajo a deportistas de ponerse en contacto."
@@ -1355,6 +1361,8 @@ msgstr "Crear"
 
 #: profiles/templates/profiles/profile_register_email.html:10
 #: profiles/templates/profiles/profile_register_email_inline.html:10
+#: templates/registration/password_reset_email.html:9
+#: templates/registration/password_reset_email_inline.html:9
 msgid "Welcome on Bourse aux compagnons"
 msgstr "Bienvenido a Bourse aux compagnons"
 
@@ -1691,6 +1699,65 @@ msgstr ""
 "válido porque ya ha sido usado. Por favor pides el <a href="
 "\"%(url_password_reset)s\">reinicio de tu contraseña</a>.\n"
 "                        "
+
+#: templates/registration/password_reset_email.html:308
+#: templates/registration/password_reset_email_inline.html:104
+#, fuzzy
+#| msgid "You successfully created your Bourseauxcompagnons profile!"
+msgid "Password reset of your Bourseauxcompagnons profile"
+msgstr "Has creado tu perfil de Bourseauxcompagnons con éxito!"
+
+#: templates/registration/password_reset_email.html:325
+#, fuzzy, python-format
+#| msgid ""
+#| "Welcome on Bourse aux compagnons! Your profil is now added in the "
+#| "Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+#| "%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.</"
+#| "p>\n"
+#| "                                            <p>Your id to sign in is your "
+#| "email address: %(profile_email)s."
+msgid ""
+"You receive this message because you asked for a password reset of your "
+"Bourseauxcompagnons profile.</p>\n"
+"                                            <p>Your id to sign in is your "
+"email address: %(profile_email)s."
+msgstr ""
+"Bienvenido a Bourse aux compagnons! Ahora tu perfil está añadido en la "
+"listade Bourseauxcompagnons: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/perfiles/%(profile_username)s/\">ver mi perfil</a>.</p>\n"
+"                                            <p>Tu ID para iniciar tu sesión "
+"es tu dirección de correo electrónico: %(profile_email)s."
+
+#: templates/registration/password_reset_email.html:344
+#: templates/registration/password_reset_email_inline.html:140
+msgid "Fill in a new password"
+msgstr ""
+
+#: templates/registration/password_reset_email_inline.html:121
+#, fuzzy, python-format
+#| msgid ""
+#| "Welcome on Bourse aux compagnons! Your profil is now added in the "
+#| "Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+#| "%(language_code)s/profiles/%(profile_username)s/\" style=\"color: "
+#| "#3498db; text-decoration: underline;\">see my profile</a>.</p>\n"
+#| "                                            <p style=\"font-family: sans-"
+#| "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: "
+#| "15px;\">Your id to sign in is your email address: %(profile_email)s."
+msgid ""
+"You receive this message because you asked for a password reset of your "
+"Bourseauxcompagnons profile.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+"Bienvenido a Bourse aux compagnons! Ahora tu perfil está añadido en la "
+"listade Bourseauxcompagnons: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/perfiles/%(profile_username)s/\" style=\"color: #3498db; "
+"text-decoration: underline;\">ver mi perfil</a>.</p>\n"
+"                                            <p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\">Tu ID para iniciar tu sesión es tu dirección de correo electrónico: "
+"%(profile_email)s."
 
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"

@@ -38,6 +38,9 @@ class ProfilePasswordChangeView(SuccessMessageMixin, PasswordChangeView):
 class ProfilePasswordResetView(SuccessMessageMixin, PasswordResetView):
     form_class = ProfilePasswordResetForm
     subject_template_name = 'registration/password_reset_subject.html'
+    email_template_name = 'registration/password_reset_email_inline.html'
+    html_email_template_name = 'registration/password_reset_email.html'
+    from_email = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
     success_url = reverse_lazy('login')
     success_message = _("Password reset in progress. You've received an e-mail with a link to choose your new password. If you haven't received any e-mail, please check that you have filled the form out with the e-mail address you used to register and check your spam.")
 
