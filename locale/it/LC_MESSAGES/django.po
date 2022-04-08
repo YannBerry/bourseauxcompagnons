@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 21:36+0200\n"
+"POT-Creation-Date: 2022-04-08 21:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -872,6 +872,7 @@ msgstr "Qualcuno si è messo in contatto con te."
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
+#: profiles/templates/profiles/profile_register_email_plain.html:1
 #: templates/registration/password_reset_email.html:324
 #: templates/registration/password_reset_email_inline.html:120
 #: templates/registration/password_reset_email_plain.html:1
@@ -937,6 +938,7 @@ msgstr ""
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
+#: profiles/templates/profiles/profile_register_email_plain.html:9
 #: templates/registration/password_reset_email.html:352
 #: templates/registration/password_reset_email_inline.html:148
 #: templates/registration/password_reset_email_plain.html:8
@@ -950,6 +952,7 @@ msgstr "Sportivi saluti"
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
+#: profiles/templates/profiles/profile_register_email_plain.html:11
 #: templates/registration/password_reset_email.html:368
 #: templates/registration/password_reset_email_inline.html:164
 #: templates/registration/password_reset_email_plain.html:10
@@ -1499,6 +1502,43 @@ msgstr ""
 "capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;"
 "\">Aggiornare il mio profilo</a>"
 
+#: profiles/templates/profiles/profile_register_email_plain.html:3
+#, fuzzy, python-format
+#| msgid ""
+#| "Welcome on Bourse aux compagnons! Your profil is now added in the "
+#| "Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
+#| "%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.</"
+#| "p>\n"
+#| "                                            <p>Your id to sign in is your "
+#| "email address: %(profile_email)s."
+msgid ""
+"Welcome on Bourse aux compagnons! Your profil is now added in the "
+"Bourseauxcompagnons' list: https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profiles/%(profile_username)s/.\n"
+"\n"
+"Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+"Benvenuto su Compagni di Montagna! Il tuo profilo è stato pubblicato sulla "
+"lista di Compagni di Montagna: <a href=\"https://www.bourseauxcompagnons.fr/"
+"%(language_code)s/profili/%(profile_username)s/\">vedere il mio profilo</a>."
+"</p>\n"
+"                                            <p>Il tuo nome utente (login) è "
+"il tuo indirizzo e-mail: %(profile_email)s."
+
+#: profiles/templates/profiles/profile_register_email_plain.html:7
+#, fuzzy, python-format
+#| msgid ""
+#| "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
+#| "profiles/%(profile_username)s/update/\" target=\"_blank\">Update my "
+#| "profile</a>"
+msgid ""
+"Update my profile: https://www.bourseauxcompagnons.fr/%(language_code)s/"
+"accounts/profiles/%(profile_username)s/update/."
+msgstr ""
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
+"profili/%(profile_username)s/aggiornamento/\" target=\"_blank\">Aggiorna il "
+"mio profilo</a>"
+
 #: profiles/urls.py:18
 msgid "<username>/contact/"
 msgstr "<username>/contatto/"
@@ -1545,34 +1585,34 @@ msgstr ""
 msgid "Profile registered"
 msgstr "Profilo creato"
 
-#: profiles/views.py:249 profiles/views.py:343
+#: profiles/views.py:249 profiles/views.py:344
 msgid "[Account] {}"
 msgstr "[Account] {}"
 
-#: profiles/views.py:331
+#: profiles/views.py:332
 msgid ""
 "Your account and all its data are deleted. Have a good time in the outdoors!"
 msgstr ""
 
-#: profiles/views.py:342
+#: profiles/views.py:343
 #, fuzzy
 #| msgid "Profile registered"
 msgid "Profile deleted"
 msgstr "Profilo creato"
 
-#: profiles/views.py:357 profiles/views.py:359
+#: profiles/views.py:358 profiles/views.py:360
 msgid "Hi {}! You are logged in :)"
 msgstr "Ciao {}! Sei conesso :)"
 
-#: profiles/views.py:361
+#: profiles/views.py:362
 msgid "You are logged in :)"
 msgstr "Sei conesso :)"
 
-#: profiles/views.py:368 profiles/views.py:370
+#: profiles/views.py:369 profiles/views.py:371
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Sei corretamente disconesso. Grazie per la tua visita {}."
 
-#: profiles/views.py:372
+#: profiles/views.py:373
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Sei corretamente disconesso. Grazie per la tua visita."
 

@@ -1,0 +1,11 @@
+{% load i18n %}{% get_current_language as LANGUAGE_CODE %}{% translate 'Hi' %} {{ customuser.username }},
+
+{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/.
+
+Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}
+
+{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username %}Update my profile: https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/.{% endblocktranslate %}
+
+{% translate 'Sportively yours' %}
+
+Bourse aux compagnons (https://bourseauxcompagnons.fr) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}
