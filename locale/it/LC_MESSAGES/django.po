@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 21:20+0200\n"
+"POT-Creation-Date: 2022-04-08 21:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -904,6 +904,7 @@ msgstr ""
 "                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:332
+#: profiles/templates/profiles/contact_profile_email_inline.html:128
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -922,6 +923,7 @@ msgstr ""
 "                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:336
+#: profiles/templates/profiles/contact_profile_email_inline.html:132
 #: profiles/templates/profiles/contact_profile_email_plain.html:8
 msgid ""
 "You will be able give him/her an answer on its personal e-mail address "
@@ -929,7 +931,7 @@ msgid ""
 msgstr ""
 
 #: profiles/templates/profiles/contact_profile_email.html:348
-#: profiles/templates/profiles/contact_profile_email_inline.html:143
+#: profiles/templates/profiles/contact_profile_email_inline.html:144
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
 #: profiles/templates/profiles/profile_deletion_email.html:327
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
@@ -942,7 +944,7 @@ msgid "Sportively yours"
 msgstr "Sportivi saluti"
 
 #: profiles/templates/profiles/contact_profile_email.html:364
-#: profiles/templates/profiles/contact_profile_email_inline.html:159
+#: profiles/templates/profiles/contact_profile_email_inline.html:160
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
 #: profiles/templates/profiles/profile_deletion_email.html:343
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
@@ -957,14 +959,22 @@ msgstr "facilita la messa in contatto dei praticanti di sport di montagna"
 
 #. Translators: Think to translate the urls
 #: profiles/templates/profiles/contact_profile_email_inline.html:124
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                                                You received a message "
+#| "from <a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/"
+#| "profiles/%(profile_making_contact)s/\" style=\"color: #3498db; text-"
+#| "decoration: underline;\">%(profile_making_contact)s</a> through Bourse "
+#| "aux compagnons website:\n"
+#| "                                                "
 msgid ""
 "\n"
 "                                                You received a message from "
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profiles/"
 "%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
 "underline;\">%(profile_making_contact)s</a> through Bourse aux compagnons "
-"website:\n"
+"website.\n"
 "                                                "
 msgstr ""
 "\n"
@@ -972,18 +982,6 @@ msgstr ""
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profili/"
 "%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
 "underline;\">%(profile_making_contact)s</a> dal sito compagni di montagna:\n"
-"                                                "
-
-#: profiles/templates/profiles/contact_profile_email_inline.html:128
-msgid ""
-"\n"
-"                                                You received a message from "
-"somebody through Bourse aux compagnons website:\n"
-"                                                "
-msgstr ""
-"\n"
-"                                                Hai ricevuto un messaggio da "
-"un utente del sito Compagni di Montagna:\n"
 "                                                "
 
 #. Translators: Think to translate the urls
@@ -1858,6 +1856,17 @@ msgstr "Inviare e ricevere una mail di conferma"
 #| msgid "Password"
 msgid "Password reset"
 msgstr "Password"
+
+#~ msgid ""
+#~ "\n"
+#~ "                                                You received a message "
+#~ "from somebody through Bourse aux compagnons website:\n"
+#~ "                                                "
+#~ msgstr ""
+#~ "\n"
+#~ "                                                Hai ricevuto un messaggio "
+#~ "da un utente del sito Compagni di Montagna:\n"
+#~ "                                                "
 
 #, fuzzy
 #~| msgid "accounts/register/profile/"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 21:20+0200\n"
+"POT-Creation-Date: 2022-04-08 21:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -887,6 +887,7 @@ msgstr ""
 "                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:332
+#: profiles/templates/profiles/contact_profile_email_inline.html:128
 msgid ""
 "\n"
 "                                                You received a message from "
@@ -899,6 +900,7 @@ msgstr ""
 "                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:336
+#: profiles/templates/profiles/contact_profile_email_inline.html:132
 #: profiles/templates/profiles/contact_profile_email_plain.html:8
 msgid ""
 "You will be able give him/her an answer on its personal e-mail address "
@@ -908,7 +910,7 @@ msgstr ""
 "répondant à cet e-mail. Voici son message :"
 
 #: profiles/templates/profiles/contact_profile_email.html:348
-#: profiles/templates/profiles/contact_profile_email_inline.html:143
+#: profiles/templates/profiles/contact_profile_email_inline.html:144
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
 #: profiles/templates/profiles/profile_deletion_email.html:327
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
@@ -921,7 +923,7 @@ msgid "Sportively yours"
 msgstr "Sportivement"
 
 #: profiles/templates/profiles/contact_profile_email.html:364
-#: profiles/templates/profiles/contact_profile_email_inline.html:159
+#: profiles/templates/profiles/contact_profile_email_inline.html:160
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
 #: profiles/templates/profiles/profile_deletion_email.html:343
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
@@ -943,7 +945,7 @@ msgid ""
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profiles/"
 "%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
 "underline;\">%(profile_making_contact)s</a> through Bourse aux compagnons "
-"website:\n"
+"website.\n"
 "                                                "
 msgstr ""
 "\n"
@@ -951,20 +953,8 @@ msgstr ""
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profils/"
 "%(profile_making_contact)s/\" style=\"color: #3498db; text-decoration: "
 "underline;\">%(profile_making_contact)s</a> depuis le site de la Bourse aux "
-"compagnons :\n"
+"compagnons.\n"
 "                                                "
-
-#: profiles/templates/profiles/contact_profile_email_inline.html:128
-msgid ""
-"\n"
-"                                                You received a message from "
-"somebody through Bourse aux compagnons website:\n"
-"                                                "
-msgstr ""
-"\n"
-"                                Vous avez reçu un message de la part d'un "
-"internaute depuis le site de la Bourse aux compagnons :\n"
-"                                "
 
 #. Translators: Think to translate the urls
 #: profiles/templates/profiles/contact_profile_email_plain.html:4
@@ -1773,3 +1763,14 @@ msgstr "Valider et recevoir un email de confirmation"
 #: templates/registration/password_reset_subject.html:2
 msgid "Password reset"
 msgstr "Réinitialisation du mot de passe"
+
+#~ msgid ""
+#~ "\n"
+#~ "                                                You received a message "
+#~ "from somebody through Bourse aux compagnons website:\n"
+#~ "                                                "
+#~ msgstr ""
+#~ "\n"
+#~ "                                Vous avez reçu un message de la part d'un "
+#~ "internaute depuis le site de la Bourse aux compagnons :\n"
+#~ "                                "

@@ -122,13 +122,14 @@ table[class=body] .article {
                                             {% if profile_making_contact %}
                                                 {# Translators: Think to translate the urls #}
                                                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktranslate with language_code=LANGUAGE_CODE profile_making_contact=profile_making_contact %}
-                                                You received a message from <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_making_contact }}/" style="color: #3498db; text-decoration: underline;">{{ profile_making_contact }}</a> through Bourse aux compagnons website:
+                                                You received a message from <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_making_contact }}/" style="color: #3498db; text-decoration: underline;">{{ profile_making_contact }}</a> through Bourse aux compagnons website.
                                                 {% endblocktranslate %}</p>
                                             {% else %}
                                                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktranslate %}
-                                                You received a message from somebody through Bourse aux compagnons website:
+                                                You received a message from somebody through Bourse aux compagnons website.
                                                 {% endblocktranslate %}</p>
                                             {% endif %}
+                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% translate 'You will be able give him/her an answer on its personal e-mail address simply by replying to this e-mail. Here is its message:' %}</p>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%; font-style: italic; color: #FE9B0C;" width="100%">
                                                 <tbody>
                                                     <tr>
