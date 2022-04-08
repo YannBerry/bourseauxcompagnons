@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 14:54+0200\n"
+"POT-Creation-Date: 2022-04-08 15:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -460,10 +460,6 @@ msgid ""
 msgstr ""
 "Mot de passe modifié ! La prochaine fois que vous vous connecterez vous "
 "pourrez utiliser votre nouveau mot de passe"
-
-#: core/views.py:40
-msgid "Password reset"
-msgstr "Réinitialisation du mot de passe"
 
 #: core/views.py:42
 msgid ""
@@ -1666,6 +1662,10 @@ msgstr ""
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
+
+#: templates/registration/password_reset_subject.html:2
+msgid "Password reset"
+msgstr "Réinitialisation du mot de passe"
 
 #~ msgid "accounts/reset/done/"
 #~ msgstr "comptes/reinitialisation/reussie/"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 14:54+0200\n"
+"POT-Creation-Date: 2022-04-08 15:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -474,12 +474,6 @@ msgid ""
 "your new password!"
 msgstr ""
 "La próxima vez que iniciarás tu sesión, podrás utilizar tu nueva contraseña!"
-
-#: core/views.py:40
-#, fuzzy
-#| msgid "Password"
-msgid "Password reset"
-msgstr "Contraseña"
 
 #: core/views.py:42
 #, fuzzy
@@ -1701,6 +1695,12 @@ msgstr ""
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Validar y recibir el correo electrónico de confirmación"
+
+#: templates/registration/password_reset_subject.html:2
+#, fuzzy
+#| msgid "Password"
+msgid "Password reset"
+msgstr "Contraseña"
 
 #, fuzzy
 #~| msgid "accounts/register/profile/"
