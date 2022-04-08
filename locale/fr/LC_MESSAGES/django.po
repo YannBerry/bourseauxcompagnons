@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 14:26+0200\n"
+"POT-Creation-Date: 2022-04-08 14:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -461,7 +461,11 @@ msgstr ""
 "Mot de passe modifié ! La prochaine fois que vous vous connecterez vous "
 "pourrez utiliser votre nouveau mot de passe"
 
-#: core/views.py:41
+#: core/views.py:40
+msgid "Password reset"
+msgstr "Réinitialisation du mot de passe"
+
+#: core/views.py:42
 msgid ""
 "Password reset in progress. You've received an e-mail with a link to choose "
 "your new password. If you haven't received any e-mail, please check that you "
@@ -474,7 +478,7 @@ msgstr ""
 "l'adresse email que vous avez utilisé pour vous enregistrer et vérifiez "
 "votre spam."
 
-#: core/views.py:47
+#: core/views.py:48
 msgid "Your new password has been activated. You just have to sign in."
 msgstr ""
 "Votre nouveau mot de passe est activé. Vous n'avez plus qu'à vous connecter."
@@ -1640,11 +1644,11 @@ msgid "Register"
 msgstr "S'inscrire"
 
 #: templates/registration/password_change_form.html:42
-#: templates/registration/password_reset_confirm.html:35
+#: templates/registration/password_reset_confirm.html:34
 msgid "Update password"
 msgstr "Mettre à jour le mot de passe"
 
-#: templates/registration/password_reset_confirm.html:41
+#: templates/registration/password_reset_confirm.html:40
 #, python-format
 msgid ""
 "\n"

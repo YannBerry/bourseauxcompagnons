@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 14:26+0200\n"
+"POT-Creation-Date: 2022-04-08 14:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -478,7 +478,13 @@ msgstr ""
 "La prossima volta che effettui il login potrai inserire la tua nuova "
 "password!"
 
-#: core/views.py:41
+#: core/views.py:40
+#, fuzzy
+#| msgid "Password"
+msgid "Password reset"
+msgstr "Password"
+
+#: core/views.py:42
 #, fuzzy
 #| msgid ""
 #| "If you don't receive any e-mail, please check that you have filled the "
@@ -493,7 +499,7 @@ msgstr ""
 "corretamente compilato il modulo con l'indirizzo e-mail che avete usato per "
 "registrarvi e di verificare la cartella spam"
 
-#: core/views.py:47
+#: core/views.py:48
 msgid "Your new password has been activated. You just have to sign in."
 msgstr "La nuova password è attivata. Devi solo connetterti."
 
@@ -1672,11 +1678,11 @@ msgid "Register"
 msgstr "Registrarsi"
 
 #: templates/registration/password_change_form.html:42
-#: templates/registration/password_reset_confirm.html:35
+#: templates/registration/password_reset_confirm.html:34
 msgid "Update password"
 msgstr "Aggiornare password"
 
-#: templates/registration/password_reset_confirm.html:41
+#: templates/registration/password_reset_confirm.html:40
 #, python-format
 msgid ""
 "\n"
