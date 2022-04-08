@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 12:15+0200\n"
+"POT-Creation-Date: 2022-04-08 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: availabilities/forms.py:56 contactpage/forms.py:37 outings/forms.py:57
 #: profiles/forms.py:110 profiles/forms.py:132 profiles/forms.py:159
-#: profiles/forms.py:214 profiles/forms.py:287 profiles/forms.py:322
+#: profiles/forms.py:231 profiles/forms.py:304 profiles/forms.py:339
 msgid "Please correct detected error / errors."
 msgstr "Veuillez corriger la ou les erreurs détectées."
 
@@ -248,62 +248,58 @@ msgid "accounts/reset/<uidb64>/<token>/"
 msgstr "comptes/reinitialisation/<uidb64>/<token>/"
 
 #: bac/urls.py:34
-msgid "accounts/reset/done/"
-msgstr "comptes/reinitialisation/reussie/"
-
-#: bac/urls.py:35
 msgid "accounts/register/profile/"
 msgstr "comptes/inscription/profil/"
 
-#: bac/urls.py:36
+#: bac/urls.py:35
 msgid "accounts/profiles/my-profile/"
 msgstr "comptes/profils/mon-profil/"
 
-#: bac/urls.py:37
+#: bac/urls.py:36
 msgid "accounts/<username>/update/"
 msgstr "comptes/<username>/mise-a-jour/"
 
-#: bac/urls.py:38
+#: bac/urls.py:37
 msgid "accounts/profiles/<username>/update/"
 msgstr "comptes/profils/<username>/mise-a-jour/"
 
-#: bac/urls.py:39
+#: bac/urls.py:38
 msgid "accounts/<username>/deletion/"
 msgstr "comptes/<username>/suppression/"
 
-#: bac/urls.py:40
+#: bac/urls.py:39
 msgid "profiles/"
 msgstr "profils/"
 
-#: bac/urls.py:41
+#: bac/urls.py:40
 msgid "outings/"
 msgstr "sorties/"
 
-#: bac/urls.py:42
+#: bac/urls.py:41
 msgid "availabilities/"
 msgstr "disponibilites/"
 
-#: bac/urls.py:43
+#: bac/urls.py:42
 msgid "contact/"
 msgstr "contact/"
 
-#: bac/urls.py:44
+#: bac/urls.py:43
 msgid "features/"
 msgstr "fonctionnalites/"
 
-#: bac/urls.py:45
+#: bac/urls.py:44
 msgid "admin/"
 msgstr "admin/"
 
-#: contactpage/forms.py:10 profiles/forms.py:295
+#: contactpage/forms.py:10 profiles/forms.py:312
 msgid "Your e-mail address"
 msgstr "Votre adresse e-mail"
 
-#: contactpage/forms.py:11 profiles/forms.py:296
+#: contactpage/forms.py:11 profiles/forms.py:313
 msgid "Subject"
 msgstr "Sujet"
 
-#: contactpage/forms.py:12 profiles/forms.py:297
+#: contactpage/forms.py:12 profiles/forms.py:314
 msgid "Message"
 msgstr "Message"
 
@@ -467,15 +463,21 @@ msgstr ""
 
 #: core/views.py:41
 msgid ""
-"Password reset done! You've received an e-mail with a link to choose your "
-"new password. If you haven't received any e-mail, please check that you have "
-"filled the form out with the e-mail address you used to register and check "
-"your spam."
+"Password reset in progress. You've received an e-mail with a link to choose "
+"your new password. If you haven't received any e-mail, please check that you "
+"have filled the form out with the e-mail address you used to register and "
+"check your spam."
 msgstr ""
 "Réinitialisation du mot de passe en route ! Vous avez reçu un e-mail avec un "
 "lien pour renseigner votre nouveau mot de passe. Si vous ne recevez aucun "
 "email, veuillez vérifier que vous avez bien renseigné le formulaire avec "
-"l'adresse email que vous avez utilisé pour vous enregistrer et vérifiez votre spam."
+"l'adresse email que vous avez utilisé pour vous enregistrer et vérifiez "
+"votre spam."
+
+#: core/views.py:47
+msgid "Your new password has been activated. You just have to sign in."
+msgstr ""
+"Votre nouveau mot de passe est activé. Vous n'avez plus qu'à vous connecter."
 
 #: features/urls.py:7
 msgid "votes/"
@@ -707,17 +709,17 @@ msgstr ""
 "Cliquez sur la carte pour dessiner la zone où vous êtes disponible pour "
 "sortir en montagne"
 
-#: profiles/forms.py:224
+#: profiles/forms.py:241
 msgid "Grades"
 msgstr "Cotations"
 
-#: profiles/forms.py:228 profiles/models.py:73
+#: profiles/forms.py:245 profiles/models.py:73
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
 "Sélectionnez votre niveau confort pour chaque activité que vous avez choisi."
 
-#: profiles/forms.py:295
+#: profiles/forms.py:312
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr "Vous recevrez la réponse du profil contacté sur cet e-mail."
 
@@ -1136,7 +1138,6 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:182 templates/base.html:89
 #: templates/registration/login.html:4 templates/registration/login.html:40
-#: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
 msgstr "Connexion"
 
@@ -1525,8 +1526,8 @@ msgid ""
 msgstr ""
 "Ce site utilise quelques cookies obligatoires pour son fonctionnement : "
 "protection contre les attaques, données de session, langue. Vos données "
-"personnelles sont stockées sur un serveur sécurisé en France. Pas de publicité. "
-"Pas de données transmises ni vendues."
+"personnelles sont stockées sur un serveur sécurisé en France. Pas de "
+"publicité. Pas de données transmises ni vendues."
 
 #: templates/cookielaw/banner.html:11
 msgid "Accept"
@@ -1639,16 +1640,11 @@ msgid "Register"
 msgstr "S'inscrire"
 
 #: templates/registration/password_change_form.html:42
-#: templates/registration/password_reset_confirm.html:16
+#: templates/registration/password_reset_confirm.html:35
 msgid "Update password"
 msgstr "Mettre à jour le mot de passe"
 
-#: templates/registration/password_reset_complete.html:8
-msgid "Your new password has been activated. You just have to sign in."
-msgstr ""
-"Votre nouveau mot de passe est activé. Vous n'avez plus qu'à vous connecter."
-
-#: templates/registration/password_reset_confirm.html:21
+#: templates/registration/password_reset_confirm.html:41
 #, python-format
 msgid ""
 "\n"
@@ -1667,3 +1663,5 @@ msgstr ""
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Valider et recevoir un email de confirmation"
 
+#~ msgid "accounts/reset/done/"
+#~ msgstr "comptes/reinitialisation/reussie/"

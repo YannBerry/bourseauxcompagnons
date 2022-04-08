@@ -9,7 +9,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
-from core.views import HomepageView, ProfileLoginView, ProfilePasswordChangeView, ProfilePasswordResetView
+from core.views import HomepageView, ProfileLoginView, ProfilePasswordChangeView, ProfilePasswordResetView, ProfilePasswordResetConfirmView
 from profiles.views import (
     ProfileRegisterView,
     ProfileHomepageView,
@@ -30,8 +30,7 @@ urlpatterns += i18n_patterns(
     path(_('accounts/logout/'), auth_views.LogoutView.as_view(), name='logout'),
     path(_('accounts/password-change/'), ProfilePasswordChangeView.as_view(), name='password_change'),
     path(_('accounts/password-reset/'), ProfilePasswordResetView.as_view(), name='password_reset'),
-    path(_('accounts/reset/<uidb64>/<token>/'), auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path(_('accounts/reset/done/'), auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path(_('accounts/reset/<uidb64>/<token>/'), ProfilePasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path(_('accounts/register/profile/'), ProfileRegisterView.as_view(), name='profile_register'),
     path(_('accounts/profiles/my-profile/'), ProfileHomepageView.as_view(), name='my-profile'),
     path(_('accounts/<username>/update/'), AccountUpdateView.as_view(), name='update-account'),

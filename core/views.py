@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.urls import reverse_lazy
 from datetime import date
 # Translation
@@ -10,7 +10,7 @@ from activities.models import Activity
 from profiles.models import Profile
 from outings.models import Outing
 
-from profiles.forms import ProfileAuthenticationForm, ProfilePasswordChangeForm, ProfilePasswordResetForm
+from profiles.forms import ProfileAuthenticationForm, ProfilePasswordChangeForm, ProfilePasswordResetForm, ProfilePasswordResetConfirmForm
 
 
 class HomepageView(TemplateView):
@@ -35,7 +35,13 @@ class ProfilePasswordChangeView(SuccessMessageMixin, PasswordChangeView):
     success_message = _("Password changed! The next time you will sign in you will be able to use your new password!")
 
 
-class ProfilePasswordResetView(SuccessMessageMixin,PasswordResetView):
+class ProfilePasswordResetView(SuccessMessageMixin, PasswordResetView):
     form_class = ProfilePasswordResetForm
     success_url = reverse_lazy('login')
-    success_message = _("Password reset done! You've received an e-mail with a link to choose your new password. If you haven't received any e-mail, please check that you have filled the form out with the e-mail address you used to register and check your spam.")
+    success_message = _("Password reset in progress. You've received an e-mail with a link to choose your new password. If you haven't received any e-mail, please check that you have filled the form out with the e-mail address you used to register and check your spam.")
+
+
+class ProfilePasswordResetConfirmView(SuccessMessageMixin, PasswordResetConfirmView):
+    form_class = ProfilePasswordResetConfirmForm
+    success_url = reverse_lazy('login')
+    success_message = _("Your new password has been activated. You just have to sign in.")

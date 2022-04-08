@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 12:15+0200\n"
+"POT-Creation-Date: 2022-04-08 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "La fecha de fin debe ser superior o igual a la fecha de inicio."
 
 #: availabilities/forms.py:56 contactpage/forms.py:37 outings/forms.py:57
 #: profiles/forms.py:110 profiles/forms.py:132 profiles/forms.py:159
-#: profiles/forms.py:214 profiles/forms.py:287 profiles/forms.py:322
+#: profiles/forms.py:231 profiles/forms.py:304 profiles/forms.py:339
 msgid "Please correct detected error / errors."
 msgstr "Por favor corrige el o los errores."
 
@@ -233,13 +233,15 @@ msgid "accounts/logout/"
 msgstr "cuentas/"
 
 #: bac/urls.py:31
-msgid "accounts/password_change/"
-msgstr ""
+#, fuzzy
+#| msgid "accounts/<username>/deletion/"
+msgid "accounts/password-change/"
+msgstr "cuentas/<username>/eliminacion/"
 
 #: bac/urls.py:32
 #, fuzzy
 #| msgid "accounts/<username>/deletion/"
-msgid "accounts/password_reset/"
+msgid "accounts/password-reset/"
 msgstr "cuentas/<username>/eliminacion/"
 
 #: bac/urls.py:33
@@ -247,64 +249,58 @@ msgid "accounts/reset/<uidb64>/<token>/"
 msgstr ""
 
 #: bac/urls.py:34
-#, fuzzy
-#| msgid "accounts/register/profile/"
-msgid "accounts/reset/done/"
-msgstr "cuentas/registrar/perfil/"
-
-#: bac/urls.py:35
 msgid "accounts/register/profile/"
 msgstr "cuentas/registrar/perfil/"
 
-#: bac/urls.py:36
+#: bac/urls.py:35
 msgid "accounts/profiles/my-profile/"
 msgstr "cuentas/perfiles/mi-perfil/"
 
-#: bac/urls.py:37
+#: bac/urls.py:36
 msgid "accounts/<username>/update/"
 msgstr "cuentas/<username>/actualizacion/"
 
-#: bac/urls.py:38
+#: bac/urls.py:37
 msgid "accounts/profiles/<username>/update/"
 msgstr "cuentas/perfiles/<username>/actualizacion/"
 
-#: bac/urls.py:39
+#: bac/urls.py:38
 msgid "accounts/<username>/deletion/"
 msgstr "cuentas/<username>/eliminacion/"
 
-#: bac/urls.py:40
+#: bac/urls.py:39
 msgid "profiles/"
 msgstr "perfiles/"
 
-#: bac/urls.py:41
+#: bac/urls.py:40
 msgid "outings/"
 msgstr "salidas/"
 
-#: bac/urls.py:42
+#: bac/urls.py:41
 msgid "availabilities/"
 msgstr "disponibilidades/"
 
-#: bac/urls.py:43
+#: bac/urls.py:42
 msgid "contact/"
 msgstr "contacto/"
 
-#: bac/urls.py:44
+#: bac/urls.py:43
 msgid "features/"
 msgstr "funciones/"
 
-#: bac/urls.py:45
+#: bac/urls.py:44
 msgid "admin/"
 msgstr "admin/"
 
-#: contactpage/forms.py:10 profiles/forms.py:295
+#: contactpage/forms.py:10 profiles/forms.py:312
 msgid "Your e-mail address"
 msgstr "Dirección de corre electrónico"
 
-#: contactpage/forms.py:11 profiles/forms.py:296
+#: contactpage/forms.py:11 profiles/forms.py:313
 msgid "Subject"
 msgstr "Título"
 
-#: contactpage/forms.py:12 profiles/forms.py:297
+#: contactpage/forms.py:12 profiles/forms.py:314
 msgid "Message"
 msgstr "Mensaje"
 
@@ -485,14 +481,20 @@ msgstr ""
 #| "If you don't receive any e-mail, please check that you have filled the "
 #| "form out with the e-mail address you used to register and check your spam."
 msgid ""
-"Password reset done! You've received an e-mail with a link to choose your "
-"new password. If you haven't received any e-mail, please check that you have "
-"filled the form out with the e-mail address you used to register and check "
-"your spam."
+"Password reset in progress. You've received an e-mail with a link to choose "
+"your new password. If you haven't received any e-mail, please check that you "
+"have filled the form out with the e-mail address you used to register and "
+"check your spam."
 msgstr ""
 "Si no recibes ningún correo electrónico, por favor comprueba si habes "
 "completado el formulario con la dirección de correo electrónico que "
 "utilizaste para registrar y compruebas que no ha sido detectado como spam."
+
+#: core/views.py:47
+msgid "Your new password has been activated. You just have to sign in."
+msgstr ""
+"Tu nueva contraseña se ha activada. Puedes iniciar de nuevo tu sesión cuando "
+"quieres."
 
 #: features/urls.py:7
 msgid "votes/"
@@ -719,18 +721,18 @@ msgstr ""
 "Pulsa sobre el mapa para dibujar el área en el que estás disponible para "
 "salir a la montaña."
 
-#: profiles/forms.py:224
+#: profiles/forms.py:241
 msgid "Grades"
 msgstr "Graduaciones"
 
-#: profiles/forms.py:228 profiles/models.py:73
+#: profiles/forms.py:245 profiles/models.py:73
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
 "Selecciona tu graduación (en el que te sientas cómodo) para cada actividad "
 "que has elegido."
 
-#: profiles/forms.py:295
+#: profiles/forms.py:312
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
 "Recibiras la respuesta del perfil contactado sobre este correo electrónico."
@@ -1177,7 +1179,6 @@ msgstr ""
 
 #: profiles/templates/profiles/my_profile.html:182 templates/base.html:89
 #: templates/registration/login.html:4 templates/registration/login.html:40
-#: templates/registration/password_reset_complete.html:9
 msgid "Sign in"
 msgstr "Iniciar sesión"
 
@@ -1672,17 +1673,11 @@ msgid "Register"
 msgstr "Registrar"
 
 #: templates/registration/password_change_form.html:42
-#: templates/registration/password_reset_confirm.html:16
+#: templates/registration/password_reset_confirm.html:35
 msgid "Update password"
 msgstr "Cambiar la contraseña"
 
-#: templates/registration/password_reset_complete.html:8
-msgid "Your new password has been activated. You just have to sign in."
-msgstr ""
-"Tu nueva contraseña se ha activada. Puedes iniciar de nuevo tu sesión cuando "
-"quieres."
-
-#: templates/registration/password_reset_confirm.html:21
+#: templates/registration/password_reset_confirm.html:41
 #, python-format
 msgid ""
 "\n"
@@ -1700,6 +1695,11 @@ msgstr ""
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"
 msgstr "Validar y recibir el correo electrónico de confirmación"
+
+#, fuzzy
+#~| msgid "accounts/register/profile/"
+#~ msgid "accounts/reset/done/"
+#~ msgstr "cuentas/registrar/perfil/"
 
 #, fuzzy
 #~| msgid "Email address"

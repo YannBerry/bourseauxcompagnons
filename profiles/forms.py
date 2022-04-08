@@ -18,7 +18,7 @@ from profiles.models import CustomUser, Profile
 from activities.models import Activity, Grade
 # FORMS
 from core.forms import NoColonForm, NoColonModelForm, GroupedModelMultipleChoiceField
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 # WIDGETS
 from core.widgets import ImageWidget, GradesWidget, SelectableItemsWidget, ToggleSwitchWidget
 
@@ -164,6 +164,23 @@ class ProfilePasswordChangeForm(NoColonForm, PasswordChangeForm):
 class ProfilePasswordResetForm(NoColonForm, PasswordResetForm):
     required_css_class = 'required'
     
+    def __init__(self, *args, **kwargs):
+        '''Inherit from parent and add the Bootstrap form-control class to the fields'''
+        super().__init__(*args, **kwargs)
+        if self.is_bound:
+            for field in [f for f in self.fields]:
+                if self.has_error(field):
+                    self.fields[field].widget.attrs.update({'class': 'form-control is-invalid'})
+                else:
+                    self.fields[field].widget.attrs.update({'class': 'form-control is-valid'})
+        else:
+            for field in [f for f in self.fields]:
+                self.fields[field].widget.attrs.update({'class': 'form-control'})
+
+
+class ProfilePasswordResetConfirmForm(NoColonForm, SetPasswordForm):
+    required_css_class = 'required'
+
     def __init__(self, *args, **kwargs):
         '''Inherit from parent and add the Bootstrap form-control class to the fields'''
         super().__init__(*args, **kwargs)
