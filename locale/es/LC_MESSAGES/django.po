@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 20:02+0200\n"
+"POT-Creation-Date: 2022-04-08 21:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -866,25 +866,33 @@ msgstr "Alguien está tratando de contactar contigo."
 
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
+#: profiles/templates/profiles/contact_profile_email_plain.html:1
 #: profiles/templates/profiles/profile_deletion_email.html:324
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_register_email.html:325
 #: profiles/templates/profiles/profile_register_email_inline.html:121
 #: templates/registration/password_reset_email.html:324
 #: templates/registration/password_reset_email_inline.html:120
-#: templates/registration/password_reset_email_plain.html:3
+#: templates/registration/password_reset_email_plain.html:1
 msgid "Hi"
 msgstr "Hola"
 
 #. Translators: Think to translate the urls
 #: profiles/templates/profiles/contact_profile_email.html:328
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                                                You received a message "
+#| "from <a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/"
+#| "profiles/%(profile_making_contact)s/\">%(profile_making_contact)s</a> "
+#| "through Bourse aux compagnons website:\n"
+#| "                                                "
 msgid ""
 "\n"
 "                                                You received a message from "
 "<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/profiles/"
 "%(profile_making_contact)s/\">%(profile_making_contact)s</a> through Bourse "
-"aux compagnons website:\n"
+"aux compagnons website.\n"
 "                                                "
 msgstr ""
 "\n"
@@ -895,11 +903,16 @@ msgstr ""
 "                                                "
 
 #: profiles/templates/profiles/contact_profile_email.html:332
-#: profiles/templates/profiles/contact_profile_email_inline.html:128
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "                                                You received a message "
+#| "from somebody through Bourse aux compagnons website:\n"
+#| "                                                "
 msgid ""
 "\n"
 "                                                You received a message from "
-"somebody through Bourse aux compagnons website:\n"
+"somebody through Bourse aux compagnons website.\n"
 "                                                "
 msgstr ""
 "\n"
@@ -907,27 +920,36 @@ msgstr ""
 "alguien desde el sitio web Bourse aux compagnons:\n"
 "                                                "
 
-#: profiles/templates/profiles/contact_profile_email.html:347
+#: profiles/templates/profiles/contact_profile_email.html:336
+#: profiles/templates/profiles/contact_profile_email_plain.html:8
+msgid ""
+"You will be able give him/her an answer on its personal e-mail address "
+"simply by replying to this e-mail. Here is its message:"
+msgstr ""
+
+#: profiles/templates/profiles/contact_profile_email.html:348
 #: profiles/templates/profiles/contact_profile_email_inline.html:143
+#: profiles/templates/profiles/contact_profile_email_plain.html:14
 #: profiles/templates/profiles/profile_deletion_email.html:327
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email.html:352
 #: profiles/templates/profiles/profile_register_email_inline.html:148
 #: templates/registration/password_reset_email.html:352
 #: templates/registration/password_reset_email_inline.html:148
-#: templates/registration/password_reset_email_plain.html:9
+#: templates/registration/password_reset_email_plain.html:8
 msgid "Sportively yours"
 msgstr "Saludos deportivos"
 
-#: profiles/templates/profiles/contact_profile_email.html:363
+#: profiles/templates/profiles/contact_profile_email.html:364
 #: profiles/templates/profiles/contact_profile_email_inline.html:159
+#: profiles/templates/profiles/contact_profile_email_plain.html:16
 #: profiles/templates/profiles/profile_deletion_email.html:343
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_register_email.html:368
 #: profiles/templates/profiles/profile_register_email_inline.html:164
 #: templates/registration/password_reset_email.html:368
 #: templates/registration/password_reset_email_inline.html:164
-#: templates/registration/password_reset_email_plain.html:11
+#: templates/registration/password_reset_email_plain.html:10
 msgid ""
 "facilitates the bringing together of mountain sportsmen and sportswomen."
 msgstr "facilitarle el trabajo a deportistas de ponerse en contacto."
@@ -951,6 +973,47 @@ msgstr ""
 "underline;\">%(profile_making_contact)s</a> desde el sitio web Bourse aux "
 "compagnons:\n"
 "                                                "
+
+#: profiles/templates/profiles/contact_profile_email_inline.html:128
+msgid ""
+"\n"
+"                                                You received a message from "
+"somebody through Bourse aux compagnons website:\n"
+"                                                "
+msgstr ""
+"\n"
+"                                                Has recibido un mensaje de "
+"alguien desde el sitio web Bourse aux compagnons:\n"
+"                                                "
+
+#. Translators: Think to translate the urls
+#: profiles/templates/profiles/contact_profile_email_plain.html:4
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                                                You received a message "
+#| "from <a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/"
+#| "profiles/%(profile_making_contact)s/\">%(profile_making_contact)s</a> "
+#| "through Bourse aux compagnons website:\n"
+#| "                                                "
+msgid ""
+"You received a message from %(profile_making_contact)s (https://www."
+"bourseauxcompagnons.fr/%(language_code)s/profiles/"
+"%(profile_making_contact)s/) through Bourse aux compagnons website."
+msgstr ""
+"\n"
+"                                                Has recibido un mensaje de "
+"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/perfiles/"
+"%(profile_making_contact)s/\">%(profile_making_contact)s</a> desde el sitio "
+"web Bourse aux compagnons:\n"
+"                                                "
+
+#: profiles/templates/profiles/contact_profile_email_plain.html:6
+#, fuzzy
+#| msgid "Welcome on Bourse aux compagnons"
+msgid ""
+"You received a message from somebody through Bourse aux compagnons website."
+msgstr "Bienvenido a Bourse aux compagnons"
 
 #: profiles/templates/profiles/contact_profile_form.html:4
 #, python-format
@@ -1451,7 +1514,7 @@ msgstr "exportacion/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/descargar-graduaciones"
 
-#: profiles/views.py:206
+#: profiles/views.py:214
 #, fuzzy
 #| msgid ""
 #| "Your message has been sent by email to %(username)s. Hopefully, he or she "
@@ -1463,15 +1526,15 @@ msgstr ""
 "Tu mensaje ha sido enviado por correo electrónico a %(username)s. Con "
 "suerte, te contactará con presteza!"
 
-#: profiles/views.py:210
+#: profiles/views.py:218
 msgid "Initial contact"
 msgstr "Contacto initial"
 
-#: profiles/views.py:211
+#: profiles/views.py:219
 msgid "Hi "
 msgstr "Hola "
 
-#: profiles/views.py:224
+#: profiles/views.py:232
 msgid ""
 "WARNING: your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1481,38 +1544,38 @@ msgstr ""
 "de perfiles de bourseauxcompagnons. Pulsa sobre 'Actualizar mi perfil' para "
 "completarlo o privatizarlo."
 
-#: profiles/views.py:240
+#: profiles/views.py:248
 msgid "Profile registered"
 msgstr "Perfil registrado"
 
-#: profiles/views.py:241 profiles/views.py:335
+#: profiles/views.py:249 profiles/views.py:343
 msgid "[Account] {}"
 msgstr "[Cuenta] {}"
 
-#: profiles/views.py:323
+#: profiles/views.py:331
 msgid ""
 "Your account and all its data are deleted. Have a good time in the outdoors!"
 msgstr ""
 
-#: profiles/views.py:334
+#: profiles/views.py:342
 #, fuzzy
 #| msgid "Profile registered"
 msgid "Profile deleted"
 msgstr "Perfil registrado"
 
-#: profiles/views.py:349 profiles/views.py:351
+#: profiles/views.py:357 profiles/views.py:359
 msgid "Hi {}! You are logged in :)"
 msgstr "Hola {}! Estás conectado :)"
 
-#: profiles/views.py:353
+#: profiles/views.py:361
 msgid "You are logged in :)"
 msgstr "Estás conectado :)"
 
-#: profiles/views.py:360 profiles/views.py:362
+#: profiles/views.py:368 profiles/views.py:370
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita {}."
 
-#: profiles/views.py:364
+#: profiles/views.py:372
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Has cerrado bien tu sesión. Gracias por tu visita."
 
@@ -1733,7 +1796,6 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html:344
 #: templates/registration/password_reset_email_inline.html:140
-#: templates/registration/password_reset_email_plain.html:7
 msgid "Fill in a new password"
 msgstr ""
 
@@ -1763,7 +1825,7 @@ msgstr ""
 "\">Tu ID para iniciar tu sesión es tu dirección de correo electrónico: "
 "%(profile_email)s."
 
-#: templates/registration/password_reset_email_plain.html:5
+#: templates/registration/password_reset_email_plain.html:3
 #, fuzzy, python-format
 #| msgid ""
 #| "Welcome on Bourse aux compagnons! Your profil is now added in the "
@@ -1782,6 +1844,10 @@ msgstr ""
 "%(language_code)s/perfiles/%(profile_username)s/\">ver mi perfil</a>.</p>\n"
 "                                            <p>Tu ID para iniciar tu sesión "
 "es tu dirección de correo electrónico: %(profile_email)s."
+
+#: templates/registration/password_reset_email_plain.html:6
+msgid "Fill in a new password:"
+msgstr ""
 
 #: templates/registration/password_reset_form.html:25
 msgid "Submit and receive a confirmation e-mail"

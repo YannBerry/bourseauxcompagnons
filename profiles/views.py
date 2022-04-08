@@ -190,14 +190,22 @@ def ContactProfileView(request, **kwargs):
                 'message': contact_message
                 }
             )
-            plain_message = strip_tags(html_message)
+            # plain_message = strip_tags(html_message) # I finally prefer to create a contact_profile_email_plain.html than just strip the tags off that result in a shitty email.
+            plain_message = render_to_string(
+                'profiles/contact_profile_email_plain.html',
+                {'profile_contacted': user_contacted_name,
+                'profile_making_contact': request.user.username,
+                'message': contact_message
+                }
+            )
             try:
                 email = EmailMultiAlternatives(
                     subject_prefixed,
                     plain_message,
-                    from_email,
+                    "Bourse aux compagnons <contact@bourseauxcompagnons.fr>",
                     recipients,
                     bcc=['contact@bourseauxcompagnons.fr'],
+                    reply_to=[from_email],
                 )
                 email.attach_alternative(html_message, "text/html")
                 email.send()
