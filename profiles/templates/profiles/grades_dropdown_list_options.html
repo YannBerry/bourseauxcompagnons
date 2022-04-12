@@ -17,7 +17,7 @@
 
             {% for grade in activity.list %}
             <label for="id_grades_{{ grade.pk }}" style="margin-right: 0.8rem;">
-            <input type="checkbox" name="grades" value="{{ grade.pk }}" class="custom-form-check-inline" style="margin-right: 0.3rem;" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
+            <input type="checkbox" name="grades" value="{{ grade.pk }}" style="margin-right: 0.3rem;" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
             {% endfor %}
 
             <!-- <style>

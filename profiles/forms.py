@@ -237,12 +237,13 @@ class ProfileForm(NoColonModelForm):
     required_css_class = 'required'
 
     grades = GroupedModelMultipleChoiceField(
-        queryset=Grade.objects.all(),
-        label=_('Grades'),
-        choices_groupby='activity',
-        widget= GradesWidget(), #forms.CheckboxSelectMultiple(),
-        required=False,
-        help_text=_("Select your comfortable grade for each of the activities you have chosen.")
+        queryset = Grade.objects.all(),
+        label = _('Grades'),
+        choices_groupby = 'activity',
+        #widget = forms.CheckboxSelectMultiple(),
+        widget = GradesWidget(),
+        required = False,
+        help_text = _("Select your comfortable grade for each of the activities you have chosen.")
     )
 
     def __init__(self, *args, **kwargs):
@@ -268,7 +269,6 @@ class ProfileForm(NoColonModelForm):
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
             self.fields['profile_picture'].widget.attrs.update({'class': 'custom-file-input'})
             self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
-            self.fields['grades'].widget.attrs.update({'class': 'custom-form-check-inline'})
         self.fields['public_profile'].widget.label = self.fields['public_profile'].label
         # Dependent lists: grades displaying according to selected activities
         # self.fields['grades'].queryset = Grade.objects.none()

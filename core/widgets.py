@@ -12,7 +12,8 @@ class ImageWidget(ClearableFileInput):
 
 
 class GradesWidget(CheckboxSelectMultiple):
-    template_name = 'forms/widgets/grades.html'
+    template_name = 'forms/widgets/grades.html' # default: 'django/forms/widgets/checkbox_select.html'
+    # option_template_name = # default: 'django/forms/widgets/checkbox_option.html'
     # class Media:
     #     css = {
     #         'all': ('css/20191113nouislider/nouislider.min.css',),
@@ -20,7 +21,7 @@ class GradesWidget(CheckboxSelectMultiple):
     #     js = ('js/20191113nouislider/nouislider.min.js',)
 
 class SelectableItemsWidget(CheckboxSelectMultiple):
-    template_name = 'forms/widgets/selectable_items.html'
+    template_name = 'forms/widgets/selectable_items.html' # default: 'django/forms/widgets/checkbox_select.html'
 
 
 class ToggleSwitchWidget(CheckboxInput):
