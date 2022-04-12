@@ -8,7 +8,7 @@ Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   defa
 <script src="{% static 'js/20191113nouislider/nouislider.min.js' %}"></script> -->
 
 {% with id=widget.attrs.id %}
-<ul{% if id %} id="{{ id }}"{% endif %}>
+<ul{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
     {% for group, options, index in widget.optgroups %}
         {% if group %}
             <li>{{ group }}

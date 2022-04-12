@@ -690,9 +690,7 @@ label.required::after {
 }
 
 .selectable-items-list>li input:checked + label,
-.selectable-items-list.no-touch>li input:checked + label,
-.selectable-items-list>li input:checked + label small,
-.selectable-items-list.no-touch>li input:checked + label small {
+.selectable-items-list.no-touch>li input:checked + label {
     color: rgba(255,255,255,1);
     font-weight: bold;
     background-color: rgba(23,162,184,1);
