@@ -95,6 +95,8 @@
     usernameInputElt.setAttribute('autocomplete','off');
     emailInputElt.setAttribute('autocomplete','username');
 </script>
+<!-- Add a css class to selectable-items-list to avoid :hover on mobiles -->
+<script src="{% static 'js/detect-no-touch.js' %}"></script>
 <!-- openlayers -->
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
 <script>

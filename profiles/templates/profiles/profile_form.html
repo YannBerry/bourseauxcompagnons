@@ -175,7 +175,18 @@ function updateGradesDisplay() {
         fetch('{% url "profiles:ajax-load-grades" %}', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded', 'X-CSRFToken': csrftoken},
         mode:'same-origin', body:params}).then(function(response) {
             if(response.ok) {
-                response.text().then(text => document.getElementById("id_grades").innerHTML = text);
+                response.text().then(text => {
+                    document.getElementById("id_grades").innerHTML = text;
+                    /*load_detect_no_touch_script: Add a css class to selectable-items-list to avoid :hover on mobiles*/
+                    function load_detect_no_touch_script() {
+                        let head= document.getElementsByTagName('head')[0];
+                        let scriptNoTouch= document.createElement('script');
+                        scriptNoTouch.src= "{% static 'js/detect-no-touch.js' %}";
+                        head.appendChild(scriptNoTouch);
+                        scriptNoTouch.remove();
+                   }
+                   load_detect_no_touch_script();
+                })
             } else {
                 console.log('Il y a eu un problème avec le réseau (HTTP 404 n\'est pas une errreur réseau). Le status de la réponse est ' + response.status + ': ' + response.statusText);
             }
@@ -224,6 +235,8 @@ function getCookie(name) {
     return cookieValue;
 }
 </script>
+<!-- Add a css class to selectable-items-list to avoid :hover on mobiles -->
+<script src="{% static 'js/detect-no-touch.js' %}"></script>
 <!-- flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>

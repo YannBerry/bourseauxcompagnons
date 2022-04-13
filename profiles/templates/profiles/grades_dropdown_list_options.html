@@ -1,7 +1,7 @@
 {% regroup grades by activity as activity_list %}
 {% for activity in activity_list %}
     <li>{{ activity.grouper }}
-        <div>
+        <div class="selectable-items-list">
             <!-- <div id="{{ activity.grouper|slugify }}_slider"></div> -->
 <!--             <script>
                 let slider = document.getElementById('{{ activity.grouper|slugify }}_slider');
@@ -16,8 +16,10 @@
             </script> -->
 
             {% for grade in activity.list %}
-            <label for="id_grades_{{ grade.pk }}" style="margin-right: 0.8rem;">
-            <input type="checkbox" name="grades" value="{{ grade.pk }}" style="margin-right: 0.3rem;" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>{{ grade.name }}</label>
+            <div>
+                <input type="checkbox" name="grades" value="{{ grade.pk }}" id="id_grades_{{ grade.pk }}"{% if grade.pk in checked_grades %}checked{% endif %}>
+                <label for="id_grades_{{ grade.pk }}" class="px-2 mb-1">{{ grade.name }}</label>
+            </div>
             {% endfor %}
 
             <!-- <style>

@@ -663,11 +663,13 @@ label.required::after {
     margin-left: .5rem;
 }*/
 
-.selectable-items-list>li input {
+.selectable-items-list>li input,
+.selectable-items-list>div input {
     display: none;
 }
 
-.selectable-items-list>li {
+.selectable-items-list>li,
+.selectable-items-list>div {
     position: relative;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -677,7 +679,8 @@ label.required::after {
     margin-right: 0;
 }
 
-.selectable-items-list>li label {
+.selectable-items-list>li label,
+.selectable-items-list>div label {
     color: rgba(72,72,72,1);
     background-color: rgba(231,231,231,.5);
     border: 1px solid rgba(190,190,190,1);
@@ -690,7 +693,9 @@ label.required::after {
 }
 
 .selectable-items-list>li input:checked + label,
-.selectable-items-list.no-touch>li input:checked + label {
+.selectable-items-list.no-touch>li input:checked + label,
+.selectable-items-list>div input:checked + label,
+.selectable-items-list.no-touch>div input:checked + label {
     color: rgba(255,255,255,1);
     font-weight: bold;
     background-color: rgba(23,162,184,1);
@@ -699,7 +704,8 @@ label.required::after {
             transition: all .2s ease-in-out;
 }
 
-.selectable-items-list.no-touch>li label:hover {
+.selectable-items-list.no-touch>li label:hover,
+.selectable-items-list.no-touch>div label:hover {
     cursor: pointer;
     color: rgba(255,255,255,1);
     background-color: rgba(23,162,184,.5);

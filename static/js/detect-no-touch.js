@@ -1,3 +1,7 @@
-if (!("ontouchstart" in document.querySelector(".selectable-items-list"))) {
-    document.querySelector(".selectable-items-list").classList.add("no-touch");
+var selectableItemsListElts = document.querySelectorAll(".selectable-items-list");
+
+if (!("ontouchstart" in selectableItemsListElts)) {
+    selectableItemsListElts.forEach(function(elts) {
+      elts.classList.add("no-touch");
+    });
 }

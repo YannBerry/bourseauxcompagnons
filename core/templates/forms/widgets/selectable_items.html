@@ -1,5 +1,4 @@
 {% load static %}
-
 {% with id=widget.attrs.id %}
     <ul{% if id %} id="{{ id }}"{% endif %} class="selectable-items-list {% if widget.attrs.class %}{{ widget.attrs.class }}{% endif %}">
     {% for group, options, index in widget.optgroups %}

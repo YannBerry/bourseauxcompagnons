@@ -2,9 +2,9 @@
 Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   default: SelectMultiple -> select.html
                                             or we can choose: CheckboxSelectMultiple -> checkbox_select.html
 -->
-{% load static %}
+<!--{% load static %}
 
-<!-- <link rel="stylesheet" href="{% static 'css/20191113nouislider/nouislider.min.css' %}">
+ <link rel="stylesheet" href="{% static 'css/20191113nouislider/nouislider.min.css' %}">
 <script src="{% static 'js/20191113nouislider/nouislider.min.js' %}"></script> -->
 
 {% with id=widget.attrs.id %}
@@ -13,11 +13,14 @@ Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   defa
         {% if group %}
             <li>{{ group }}
                 <!-- <div id="{{ group|slugify }}_slider"> -->
-                <div{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+                <div class="selectable-items-list">
         {% endif %}
         {% for option in options %}
             {% with widget=option %}
-                {% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} style="margin-right: 0.8rem;">{% endif %}<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} style="margin-right: 0.3rem;" value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %}
+                <div>
+                <!-- {% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} style="margin-right: 0.8rem;">{% endif %}<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} style="margin-right: 0.3rem;" value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %} -->
+                    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} class="px-2 mb-1">{% endif %}{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %}
+                </div>
             {% endwith%}
         {% endfor %}
         {% if group %}
