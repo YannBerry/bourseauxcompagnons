@@ -36,11 +36,7 @@
                                 <form id="profile-outing-form" method="get" action="">
                                     <div class="form-row">
                                         <div class="form-group col-12">
-                                            <ul id="id_activities" class="selectable-items-list">
-                                                {% for activity in all_activities %}
-                                                <li><input type="checkbox" name="a" value="{{ activity }}" class="" id="id_activities_{{ activity|cut:' ' }}"><label for="id_activities_{{ activity|cut:' ' }}" class="px-2 mb-1">{{ activity.name }}</label></li>
-                                                {% endfor %}
-                                            </ul>
+                                            {% include "forms/activities.html" %}
                                         </div>
                                         <div class="form-group col-12">
                                             <button id="search-profile" class="btn btn-outline-main btn-block" type="submit">{% translate "Search Profile" %}</button>

@@ -8,10 +8,10 @@ Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   defa
 <script src="{% static 'js/20191113nouislider/nouislider.min.js' %}"></script> -->
 
 {% with id=widget.attrs.id %}
-<ul{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
+<div{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
     {% for group, options, index in widget.optgroups %}
         {% if group %}
-            <li>{{ group }}
+            <div>{{ group }}
                 <!-- <div id="{{ group|slugify }}_slider"> -->
                 <div class="selectable-items-list">
         {% endif %}
@@ -19,16 +19,17 @@ Manytomany -> ModelMultipleChoiceField (inherit from ModelChoiceField) ->   defa
             {% with widget=option %}
                 <div>
                 <!-- {% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} style="margin-right: 0.8rem;">{% endif %}<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} style="margin-right: 0.3rem;" value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %} -->
-                    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>{% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} class="px-2 mb-1">{% endif %}{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %}
+                    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+                    {% if widget.wrap_label %}<label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} class="px-2 mb-1">{% endif %}{% if widget.wrap_label %}{{ widget.label }}</label>{% endif %}
                 </div>
             {% endwith%}
         {% endfor %}
         {% if group %}
                 </div>
-            </li>
+            </div>
         {% endif %}
     {% endfor %}
-</ul>
+</div>
 {% endwith %}
 
 <!-- {% with id=widget.attrs.id %}

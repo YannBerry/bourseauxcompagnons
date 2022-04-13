@@ -1,22 +1,20 @@
 {% with id=widget.attrs.id %}
-    <ul{% if id %} id="{{ id }}"{% endif %} class="selectable-items-list {% if widget.attrs.class %}{{ widget.attrs.class }}{% endif %}">
+    <div{% if id %} id="{{ id }}"{% endif %} class="selectable-items-list {% if widget.attrs.class %}{{ widget.attrs.class }}{% endif %}">
     {% for group, options, index in widget.optgroups %}
         {% if group %}
-            <li>{{ group }}
-                <ul{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+            <div>{{ group }}
         {% endif %}
         {% for option in options %}
             {% with widget=option %}
-                <li>
+                <div>
                     {% include "django/forms/widgets/input.html" %} 
                     <label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %} class="px-2 mb-1">{{ widget.label }}</label>
-                </li>
+                </div>
             {% endwith %}
         {% endfor %}
         {% if group %}
-                </ul>
-            </li>
+            </div>
         {% endif %}
     {% endfor %}
-    </ul>
+    </div>
 {% endwith %}

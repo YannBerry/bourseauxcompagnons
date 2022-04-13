@@ -21,13 +21,12 @@ class OutingForm(NoColonModelForm):
                 else:
                     self.fields[field].widget.attrs.update({'class': 'form-control is-valid'})
             if self.has_error('activities'):
-                self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-invalid'})
+                self.fields['activities'].widget.attrs.update({'class': 'is-invalid'})
             else:
-                self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
+                self.fields['activities'].widget.attrs.update({'class': 'is-valid'})
         else:
             for field in filter(lambda item: item != 'activities', self.fields):
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
-            self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
 
     class Meta:
         model = Outing

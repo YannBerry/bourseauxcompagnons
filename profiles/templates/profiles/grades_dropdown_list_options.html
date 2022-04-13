@@ -1,6 +1,6 @@
 {% regroup grades by activity as activity_list %}
 {% for activity in activity_list %}
-    <li>{{ activity.grouper }}
+    <div>{{ activity.grouper }}
         <div class="selectable-items-list">
             <!-- <div id="{{ activity.grouper|slugify }}_slider"></div> -->
 <!--             <script>
@@ -55,5 +55,5 @@
                 }
             </script> -->
         </div>
-    </li>
+    </div>
 {% endfor %}

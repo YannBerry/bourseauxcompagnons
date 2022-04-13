@@ -257,18 +257,17 @@ class ProfileForm(NoColonModelForm):
                 else:
                     self.fields[field].widget.attrs.update({'class': 'form-control is-valid'})
             if self.has_error('activities'):
-                self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-invalid'})
+                self.fields['activities'].widget.attrs.update({'class': 'is-invalid'})
             else:
-                self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
+                self.fields['activities'].widget.attrs.update({'class': 'is-valid'})
             if self.has_error('grades'):
-                self.fields['grades'].widget.attrs.update({'class': 'custom-form-check-inline is-invalid'})
+                self.fields['grades'].widget.attrs.update({'class': 'is-invalid'})
             else:
-                self.fields['grades'].widget.attrs.update({'class': 'custom-form-check-inline is-valid'})
+                self.fields['grades'].widget.attrs.update({'class': 'is-valid'})
         else:
             for field in [f for f in self.fields if f not in ('public_profile', 'profile_picture', 'location', 'availability_area_geo', 'activities', 'grades')]:
                 self.fields[field].widget.attrs.update({'class': 'form-control'})
             self.fields['profile_picture'].widget.attrs.update({'class': 'custom-file-input'})
-            self.fields['activities'].widget.attrs.update({'class': 'custom-form-check-inline'})
         self.fields['public_profile'].widget.label = self.fields['public_profile'].label
         # Dependent lists: grades displaying according to selected activities
         # self.fields['grades'].queryset = Grade.objects.none()
