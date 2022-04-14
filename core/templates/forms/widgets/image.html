@@ -86,6 +86,7 @@
             octx.drawImage(oc, 0, 0, cur.width * 2, cur.height * 2, 0, 0, cur.width, cur.height);
             }
             ctx.drawImage(oc, 0, 0, cur.width, cur.height, 0, 0, canvas.width, canvas.height);
+            // ctx.imageSmoothingEnabled = false; // true by default.
             ctx.canvas.toBlob((blob) => {
                 resolve(blob);
             }, fileType, 1);
