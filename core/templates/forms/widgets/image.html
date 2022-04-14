@@ -40,33 +40,107 @@
         return false;
     }
 
-    function updateImageDisplay() {
+    profilePictureInputElt.addEventListener('change', updateImageDisplay);
+
+    function getImageDimensions(image){
+        return new Promise((resolve, reject) => {
+            image.onload = function(e){
+                const originalWidth = this.naturalWidth;
+                const originalHeight = this.naturalHeight;
+                resolve({originalHeight, originalWidth});
+            }
+        });
+    }
+
+    /*Function to compress image. A shorter way to do this is using createImageBitmap but it is not well supported on Safari and Firefox on march 2022 (see on caniuse.com)*/
+    function compressImage(image, compressedWidth, initialWidth, initialHeight, fileType){
+        return new Promise((resolve, reject) => {
+            // METHOD 1: scaling down the canvas in 1 step (NEED scale IN THE ATTRIBUTES OF compressImage())
+            /*const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = scale * initialWidth;
+            canvas.height = scale * initialHeight;
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);*/
+            
+            // METHOD 2: scaling down the canvas in multiple steps (to reduce the aliasing that would have been
+            // created with  METHOD 1 (direct reduction of very big image to small image)
+            // (NEED compressedWidth IN THE ATTRIBUTES OF compressImage())
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext("2d");
+            const oc = document.createElement('canvas');
+            const octx = oc.getContext('2d');
+            canvas.width = compressedWidth; // destination canvas size
+            canvas.height = canvas.width * initialHeight / initialWidth;
+            let cur = {
+                width: Math.floor(initialWidth * 0.5),
+                height: Math.floor(initialHeight * 0.5)
+            }
+            oc.width = cur.width;
+            oc.height = cur.height;
+            octx.drawImage(image, 0, 0, cur.width, cur.height);
+            while (cur.width * 0.5 > compressedWidth) {
+            cur = {
+                width: Math.floor(cur.width * 0.5),
+                height: Math.floor(cur.height * 0.5)
+            };
+            octx.drawImage(oc, 0, 0, cur.width * 2, cur.height * 2, 0, 0, cur.width, cur.height);
+            }
+            ctx.drawImage(oc, 0, 0, cur.width, cur.height, 0, 0, canvas.width, canvas.height);
+            ctx.canvas.toBlob((blob) => {
+                resolve(blob);
+            }, fileType, 1);
+        }); 
+    }
+
+    /* Compress the picture if it is wider than maxWidth and preview the compressed picture (accepts any type of image (jpeg, png, gif, svg, etc.) but compresses it to a jpeg or png or webp depending on the navigator support (eg: gif will be converted as png) OR keep the original picture if its width is less than maxWidth*/
+    async function updateImageDisplay() {
         // Reset errorList if it exists
         let profilePictureErrorListElt = document.getElementById('id_{{ widget.name }}_errorlist');
         if (profilePictureErrorListElt) {
             profilePictureErrorListElt.remove();
         }
-        
+        // Define the maximum width of an image (in pixels)
+        const maxWidth = 600
+
         let curFiles = profilePictureInputElt.files;
-        if(curFiles.length === 0) {
-            
-        } else {
+        if(curFiles.length !== 0) {
+            let processedFiles = new DataTransfer();
             for(let i = 0; i < curFiles.length; i++) {
-                if(imageFileType(curFiles[i])) {
-                    profilePictureUrl = window.URL.createObjectURL(curFiles[i]);
+                // get the type of the file for the compressImage function
+                const fileType = curFiles[i].type;
+                if(imageFileType(curFiles[i]) && fileType!=='image/svg+xml') { // Django doesn't accept SVG by default
+                    // preview the original input image (not compressed). We also use the <img> linked to the picture to have a support to get the size on the following step (otherwise we can create an Image() which is the js side of the html <img>)
+                    const profilePictureUrl = window.URL.createObjectURL(curFiles[i]);
                     profilePicturePreviewElt.setAttribute('src', profilePictureUrl);
+                    // get the dimensions of the input image
+                    const {originalHeight, originalWidth} = await getImageDimensions(profilePicturePreviewElt);
+                    // compress the picture if its width is bigger than the maxWidth or keep the original picture. Add it to the list of processedFiles
+                    if(originalWidth > maxWidth) {
+                        // compress input image
+                        const compressedBlob = await compressImage(profilePicturePreviewElt, maxWidth, originalWidth, originalHeight, fileType);
+                        // delete the blob url of the original input image
+                        window.URL.revokeObjectURL(profilePictureUrl);
+                        // converting the blob to a file and adding it to the list (DataTransfer()) of compressed files
+                        var compressedFile = new File([compressedBlob], curFiles[i].name, {type:fileType, lastModified:new Date().getTime()});
+                        processedFiles.items.add(compressedFile);
+                        // preview the compressed input image instead of the original one
+                        const profileCompressedPictureUrl = window.URL.createObjectURL(compressedFile);
+                        profilePicturePreviewElt.setAttribute('src', profileCompressedPictureUrl);
+                    } else {
+                        processedFiles.items.add(curFiles[i]);
+                    }
                 } else {
                     let profilePictureErrorList = document.createElement('ul');
                     profilePictureErrorList.id = 'id_{{ widget.name }}_errorlist'
                     profilePictureErrorList.classList.add("errorlist");
                     let profilePictureErrorListItem = document.createElement('li');
-                    profilePictureErrorListItem.textContent = curFiles[i].name + ': Not a valid file type. Update your selection.';
+                    profilePictureErrorListItem.textContent = curFiles[i].type + ': Not a valid file type. Update your selection.';
                     profilePictureErrorList.appendChild(profilePictureErrorListItem);
                     profilePictureInputContainerElt.appendChild(profilePictureErrorList);
                 }
             }
+            // Aggregate all the files which are the compressed pictures and not touched pictures
+            profilePictureInputElt.files = processedFiles.files;
         }
     }
-
-    profilePictureInputElt.addEventListener('change', updateImageDisplay);
 </script>
