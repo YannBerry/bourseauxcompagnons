@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # needed by django.contrib.sitemaps. Installed at the same time I installed sitemap (April 2022). I now use it also to give domain names (in emails for ex) automatically according to the env (dev or prod)
+    #'django.contrib.sitemaps',
     'django.contrib.postgres', # needed for the unaccent and trigram lookups (to install postgre extensions : CREATE EXTENSION unaccent; and pg_trgm;)
     'django.contrib.gis',
     'phonenumber_field',
@@ -92,6 +94,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bac.wsgi.application'
 
+# Sites django app (needed by sitemap django app. I now use it also to give domain names (in emails for ex) automatically according to the env (dev or prod))
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
