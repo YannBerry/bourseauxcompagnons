@@ -26,6 +26,8 @@ from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternative
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+# Sites
+from django.contrib.sites.shortcuts import get_current_site
 # Exporting Excel files
 from datetime import datetime
 from datetime import date
@@ -183,11 +185,15 @@ def ContactProfileView(request, **kwargs):
             from_email = form.cleaned_data['from_email']
             recipients = [user_contacted.email]
             contact_message = form.cleaned_data['message']
+            current_site = get_current_site(request)
             html_message = render_to_string(
                 'profiles/contact_profile_email_inline.html',
                 {'profile_contacted': user_contacted_name,
                 'profile_making_contact': request.user.username,
-                'message': contact_message
+                'message': contact_message,
+                'site_name': current_site.name,
+                'domain': current_site.domain,
+                'protocol': "https" if request.is_secure() else "http",
                 }
             )
             # plain_message = strip_tags(html_message) # I finally prefer to create a contact_profile_email_plain.html than just strip the tags off that result in a shitty email.
@@ -195,7 +201,10 @@ def ContactProfileView(request, **kwargs):
                 'profiles/contact_profile_email_plain.html',
                 {'profile_contacted': user_contacted_name,
                 'profile_making_contact': request.user.username,
-                'message': contact_message
+                'message': contact_message,
+                'site_name': current_site.name,
+                'domain': current_site.domain,
+                'protocol': "https" if request.is_secure() else "http",
                 }
             )
             try:

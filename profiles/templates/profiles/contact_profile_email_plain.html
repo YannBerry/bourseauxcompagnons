@@ -1,9 +1,9 @@
-{% load i18n %}{% get_current_language as LANGUAGE_CODE %}{% translate 'Hi' %} {{ profile_contacted }},
+{% load i18n %}{% url 'profiles:detail' profile_making_contact as profile_url %}{% translate 'Hi' %} {{ profile_contacted }},
 {% if profile_making_contact %}
 {# Translators: Think to translate the urls #}
-{% blocktranslate with language_code=LANGUAGE_CODE profile_making_contact=profile_making_contact %}You received a message from {{ profile_making_contact }} (https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_making_contact }}/) through Bourse aux compagnons website.{% endblocktranslate %}
+{% blocktranslate %}You received a message from {{ profile_making_contact }} ({{ protocol }}://{{ domain }}{{ profile_url }}) through {{ site_name }} website.{% endblocktranslate %}
 {% else %}
-{% translate 'You received a message from somebody through Bourse aux compagnons website.' %}
+{% blocktranslate %}You received a message from somebody through {{ site_name }} website.{% endblocktranslate %}
 {% endif %}
 {% translate 'You will be able give him/her an answer on its personal e-mail address simply by replying to this e-mail. Here is its message:' %}
 
@@ -13,4 +13,4 @@
 
 {% translate 'Sportively yours' %}
 
-Bourse aux compagnons (https://bourseauxcompagnons.fr) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}
+{{ site_name }} ({{ protocol }}://{{ domain }}) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}
