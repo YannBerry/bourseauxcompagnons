@@ -1,11 +1,14 @@
-{% load i18n %}{% get_current_language as LANGUAGE_CODE %}{% translate 'Hi' %} {{ customuser.username }},
+{% load i18n %}{% url 'profiles:detail' customuser.username as profile_url %}{% url 'update-account' customuser.username as update_account_url %}{% url 'update-profile' customuser.username as update_profile_url %}{% translate 'Hi' %} {{ customuser.username }},
 
-{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/.
+{% blocktranslate with profile_email=customuser.get_username %}Welcome to {{ site_name }}! Your profil is now added in the {{ site_name }} list: {{ protocol }}://{{ domain }}{{ profile_url }}.
 
 Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}
 
-{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username %}Update my profile: https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/.{% endblocktranslate %}
+{% blocktranslate %}Update my profile: {{ protocol }}://{{ domain }}{{ update_profile_url }}.{% endblocktranslate %}
+
+{% blocktranslate %}Think to also update your account. It is useful to display a clean First name and Last name. And allows you to add a Phonenumber to be contacted by potential partners.{% endblocktranslate %}
+{% blocktranslate %}Update my account: {{ protocol }}://{{ domain }}{{ update_account_url }}.{% endblocktranslate %}
 
 {% translate 'Sportively yours' %}
 
-Bourse aux compagnons (https://bourseauxcompagnons.fr) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}
+{{ site_name }} ({{ protocol }}://{{ domain }}) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}

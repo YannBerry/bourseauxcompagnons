@@ -186,27 +186,16 @@ def ContactProfileView(request, **kwargs):
             recipients = [user_contacted.email]
             contact_message = form.cleaned_data['message']
             current_site = get_current_site(request)
-            html_message = render_to_string(
-                'profiles/contact_profile_email_inline.html',
-                {'profile_contacted': user_contacted_name,
-                'profile_making_contact': request.user.username,
-                'message': contact_message,
-                'site_name': current_site.name,
-                'domain': current_site.domain,
-                'protocol': "https" if request.is_secure() else "http",
-                }
-            )
+            email_context = {'profile_contacted': user_contacted_name,
+                            'profile_making_contact': request.user.username,
+                            'message': contact_message,
+                            'site_name': current_site.name,
+                            'domain': current_site.domain,
+                            'protocol': "https" if request.is_secure() else "http",
+            }
+            html_message = render_to_string('profiles/contact_profile_email_inline.html', email_context)
             # plain_message = strip_tags(html_message) # I finally prefer to create a contact_profile_email_plain.html than just strip the tags off that result in a shitty email.
-            plain_message = render_to_string(
-                'profiles/contact_profile_email_plain.html',
-                {'profile_contacted': user_contacted_name,
-                'profile_making_contact': request.user.username,
-                'message': contact_message,
-                'site_name': current_site.name,
-                'domain': current_site.domain,
-                'protocol': "https" if request.is_secure() else "http",
-                }
-            )
+            plain_message = render_to_string('profiles/contact_profile_email_plain.html', email_context)
             try:
                 email = EmailMultiAlternatives(
                     subject_prefixed,
@@ -257,9 +246,15 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
         subject=_("Profile registered")
         subject_prefixed = _("[Account] {}").format(subject)
         recipients = [self.object.email]
-        html_message = render_to_string('profiles/profile_register_email_inline.html', {'customuser': self.object})
+        current_site = get_current_site(self.request)
+        email_context = {'customuser': self.object,
+                        'site_name': current_site.name,
+                        'domain': current_site.domain,
+                        'protocol': "https" if self.request.is_secure() else "http",
+        }
+        html_message = render_to_string('profiles/profile_register_email_inline.html', email_context)
         # plain_message = strip_tags(html_message) # I finally prefer to create a profile_register_email_plain.html than just strip the tags off that result in a shitty email.
-        plain_message = render_to_string('profiles/profile_register_email_plain.html', {'customuser': self.object})
+        plain_message = render_to_string('profiles/profile_register_email_plain.html', email_context)
         send_mail(subject_prefixed, plain_message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", recipients, html_message=html_message)
         
         login(self.request, self.object)
@@ -352,9 +347,15 @@ class AccountDeleteView(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
         subject=_("Profile deleted")
         subject_prefixed = _("[Account] {}").format(subject)
         recipients = [self.object.email]
-        html_message = render_to_string('profiles/profile_deletion_email_inline.html', {'customuser': self.object})
+        current_site = get_current_site(self.request)
+        email_context = {'customuser': self.object,
+                        'site_name': current_site.name,
+                        'domain': current_site.domain,
+                        'protocol': "https" if self.request.is_secure() else "http",
+        }
+        html_message = render_to_string('profiles/profile_deletion_email_inline.html', email_context)
         # plain_message = strip_tags(html_message) # I finally prefer to create a profile_deletion_email_plain.html than just strip the tags off that result in a shitty email.
-        plain_message = render_to_string('profiles/profile_deletion_email_plain.html', {'customuser': self.object})
+        plain_message = render_to_string('profiles/profile_deletion_email_plain.html', email_context)
         send_mail(subject_prefixed, plain_message, "Bourse aux compagnons <contact@bourseauxcompagnons.fr>", recipients, html_message=html_message)
         return response
 

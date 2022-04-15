@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-15 16:45+0200\n"
+"POT-Creation-Date: 2022-04-15 18:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -843,26 +843,25 @@ msgstr "profil"
 msgid "profiles"
 msgstr "profils"
 
-#: profiles/templates/profiles/contact_profile_email.html:9
-#: profiles/templates/profiles/contact_profile_email_inline.html:9
+#: profiles/templates/profiles/contact_profile_email.html:10
+#: profiles/templates/profiles/contact_profile_email_inline.html:10
 #, python-format
 msgid "Email sent from the contact form of %(site_name)s"
-msgstr ""
-"Email envoyé depuis le formulaire de prise de contact de %(site_name)s"
+msgstr "Email envoyé depuis le formulaire de prise de contact de %(site_name)s"
 
-#: profiles/templates/profiles/contact_profile_email.html:308
-#: profiles/templates/profiles/contact_profile_email_inline.html:104
+#: profiles/templates/profiles/contact_profile_email.html:309
+#: profiles/templates/profiles/contact_profile_email_inline.html:105
 msgid "Somebody is getting in touch with you."
 msgstr "Un internaute a pris contact avec vous."
 
-#: profiles/templates/profiles/contact_profile_email.html:324
-#: profiles/templates/profiles/contact_profile_email_inline.html:120
+#: profiles/templates/profiles/contact_profile_email.html:325
+#: profiles/templates/profiles/contact_profile_email_inline.html:121
 #: profiles/templates/profiles/contact_profile_email_plain.html:1
 #: profiles/templates/profiles/profile_deletion_email.html:324
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_deletion_email_plain.html:1
-#: profiles/templates/profiles/profile_register_email.html:325
-#: profiles/templates/profiles/profile_register_email_inline.html:121
+#: profiles/templates/profiles/profile_register_email.html:327
+#: profiles/templates/profiles/profile_register_email_inline.html:123
 #: profiles/templates/profiles/profile_register_email_plain.html:1
 #: templates/registration/password_reset_email.html:324
 #: templates/registration/password_reset_email_inline.html:120
@@ -871,7 +870,7 @@ msgid "Hi"
 msgstr "Bonjour"
 
 #. Translators: Think to translate the urls
-#: profiles/templates/profiles/contact_profile_email.html:327
+#: profiles/templates/profiles/contact_profile_email.html:328
 #, python-format
 msgid ""
 "\n"
@@ -884,15 +883,15 @@ msgstr ""
 "<a href=\"(%(protocol)s://%(domain)s%(profile_url)s)\">"
 "%(profile_making_contact)s</a> depuis le site %(site_name)s."
 
-#: profiles/templates/profiles/contact_profile_email.html:330
-#: profiles/templates/profiles/contact_profile_email_inline.html:126
+#: profiles/templates/profiles/contact_profile_email.html:331
+#: profiles/templates/profiles/contact_profile_email_inline.html:127
 #: profiles/templates/profiles/contact_profile_email_plain.html:6
 #, python-format
 msgid "You received a message from somebody through %(site_name)s website."
 msgstr "Vous avez reçu un message de quelqu'un depuis le site %(site_name)s."
 
-#: profiles/templates/profiles/contact_profile_email.html:332
-#: profiles/templates/profiles/contact_profile_email_inline.html:128
+#: profiles/templates/profiles/contact_profile_email.html:333
+#: profiles/templates/profiles/contact_profile_email_inline.html:129
 #: profiles/templates/profiles/contact_profile_email_plain.html:8
 msgid ""
 "You will be able give him/her an answer on its personal e-mail address "
@@ -901,30 +900,30 @@ msgstr ""
 "Vous pourrez lui répondre sur son adresse e-mail personnelle simplement en "
 "répondant à cet e-mail. Voici son message :"
 
-#: profiles/templates/profiles/contact_profile_email.html:344
-#: profiles/templates/profiles/contact_profile_email_inline.html:140
+#: profiles/templates/profiles/contact_profile_email.html:345
+#: profiles/templates/profiles/contact_profile_email_inline.html:141
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
 #: profiles/templates/profiles/profile_deletion_email.html:327
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_deletion_email_plain.html:8
-#: profiles/templates/profiles/profile_register_email.html:352
-#: profiles/templates/profiles/profile_register_email_inline.html:148
-#: profiles/templates/profiles/profile_register_email_plain.html:9
+#: profiles/templates/profiles/profile_register_email.html:370
+#: profiles/templates/profiles/profile_register_email_inline.html:166
+#: profiles/templates/profiles/profile_register_email_plain.html:12
 #: templates/registration/password_reset_email.html:352
 #: templates/registration/password_reset_email_inline.html:148
 #: templates/registration/password_reset_email_plain.html:8
 msgid "Sportively yours"
 msgstr "Sportivement"
 
-#: profiles/templates/profiles/contact_profile_email.html:360
-#: profiles/templates/profiles/contact_profile_email_inline.html:156
+#: profiles/templates/profiles/contact_profile_email.html:361
+#: profiles/templates/profiles/contact_profile_email_inline.html:157
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
 #: profiles/templates/profiles/profile_deletion_email.html:343
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_deletion_email_plain.html:10
-#: profiles/templates/profiles/profile_register_email.html:368
-#: profiles/templates/profiles/profile_register_email_inline.html:164
-#: profiles/templates/profiles/profile_register_email_plain.html:11
+#: profiles/templates/profiles/profile_register_email.html:386
+#: profiles/templates/profiles/profile_register_email_inline.html:182
+#: profiles/templates/profiles/profile_register_email_plain.html:14
 #: templates/registration/password_reset_email.html:368
 #: templates/registration/password_reset_email_inline.html:164
 #: templates/registration/password_reset_email_plain.html:10
@@ -933,7 +932,7 @@ msgid ""
 msgstr "facilite la mise en relation des pratiquants de sports de montagne."
 
 #. Translators: Think to translate the urls
-#: profiles/templates/profiles/contact_profile_email_inline.html:123
+#: profiles/templates/profiles/contact_profile_email_inline.html:124
 #, python-format
 msgid ""
 "\n"
@@ -945,8 +944,8 @@ msgstr ""
 "\n"
 "                                                Vous avez reçu un message de "
 "<a href=\"(%(protocol)s://%(domain)s%(profile_url)s)\" style=\"color: "
-"#3498db; text-decoration: underline;\">%(profile_making_contact)s</a> "
-"depuis le site %(site_name)s."
+"#3498db; text-decoration: underline;\">%(profile_making_contact)s</a> depuis "
+"le site %(site_name)s."
 
 #. Translators: Think to translate the urls
 #: profiles/templates/profiles/contact_profile_email_plain.html:4
@@ -1167,21 +1166,24 @@ msgstr "Connexion"
 
 #: profiles/templates/profiles/profile_deletion_email.html:9
 #: profiles/templates/profiles/profile_deletion_email_inline.html:9
-msgid "Message from Bourse aux compagnons"
-msgstr "Message de la Bourse aux compagnons"
+#, python-format
+msgid "Message from %(site_name)s"
+msgstr "Message de %(site_name)s"
 
 #: profiles/templates/profiles/profile_deletion_email.html:308
 #: profiles/templates/profiles/profile_deletion_email_inline.html:104
-msgid "Your Bourseauxcompagnons account is deleted."
-msgstr "Votre compte Bourseauxcompagnons est supprimé."
+#, python-format
+msgid "Your %(site_name)s account is deleted."
+msgstr "Votre compte %(site_name)s est supprimé."
 
 #: profiles/templates/profiles/profile_deletion_email.html:325
+
 msgid ""
 "You have successfully deleted your Bourseauxcompagnons account and all its "
 "data.</p>\n"
 "                                            <p>We hope that you found "
 "partners thanks to our website. If not we're sure that you managed to find "
-"some in other ways. <strong>You're welcome to tell us about your "
+"some in other ways.</p><p><strong>You're welcome to tell us about your "
 "bourseauxcompagnons experience by responding to this mail</strong>. It's "
 "useful for us to have some feedback :)"
 msgstr ""
@@ -1189,7 +1191,7 @@ msgstr ""
 "données.</p>\n"
 "                                            <p>Nous espérons que vous avez "
 "trouvé des compagnons grâce à notre site. Si ce n'est pas le cas nous sommes "
-"sûrs que vous en avez trouvé par d'autres moyens. <strong>Nous serions ravis "
+"sûrs que vous en avez trouvé par d'autres moyens. </p><p><strong>Nous serions ravis "
 "que vous nous partagiez votre expérience Bourseauxcompagnons en répondant à "
 "ce mail</strong>. Vos retours nous sont utiles pour améliorer votre "
 "expérience :)"
@@ -1201,9 +1203,11 @@ msgid ""
 "                                            <p style=\"font-family: sans-"
 "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
 "\">We hope that you found partners thanks to our website. If not we're sure "
-"that you managed to find some in other ways. <strong>You're welcome to tell "
-"us about your bourseauxcompagnons experience by responding to this mail</"
-"strong>. It's useful for us to have some feedback :)"
+"that you managed to find some in other ways.</p><p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\"><strong>You're welcome to tell us about your bourseauxcompagnons "
+"experience by responding to this mail</strong>. It's useful for us to have "
+"some feedback :)"
 msgstr ""
 "Vous avez bien supprimé votre compte Bourseauxcompagnons et toutes ses "
 "données.</p>\n"
@@ -1211,29 +1215,30 @@ msgstr ""
 "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
 "\">Nous espérons que vous avez trouvé des compagnons grâce à notre site. Si "
 "ce n'est pas le cas nous sommes sûrs que vous en avez trouvé par d'autres "
-"moyens. <strong>Nous serions ravis que vous nous partagiez votre expérience "
+"moyens.</p><p style=\"font-family: sans-"
+"serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
+"\"><strong>Nous serions ravis que vous nous partagiez votre expérience "
 "Bourseauxcompagnons en répondant à ce mail</strong>. Vos retours nous sont "
 "utiles pour améliorer votre expérience :)"
 
 #: profiles/templates/profiles/profile_deletion_email_plain.html:3
+#, python-format
 msgid ""
-"You have successfully deleted your Bourseauxcompagnons account and all its "
-"data.\n"
+"You have successfully deleted your %(site_name)s account and all its data.\n"
 "We hope that you found partners thanks to our website. If not we're sure "
 "that you managed to find some in other ways.\n"
 "\n"
-"You're welcome to tell us about your bourseauxcompagnons experience by "
-"responding to this mail. It's useful for us to have some feedback :)"
+"You're welcome to tell us about your %(site_name)s experience by responding "
+"to this mail. It's useful for us to have some feedback :)"
 msgstr ""
-"Vous avez bien supprimé votre compte Bourseauxcompagnons et toutes ses "
-"données.\n"
+"Vous avez bien supprimé votre compte %(site_name)s et toutes ses données.\n"
 "Nous espérons que vous avez trouvé des compagnons grâce à notre site. Si ce "
 "n'est pas le cas nous sommes sûrs que vous en avez trouvé par d'autres "
 "moyens.\n"
 "\n"
-"Nous serions ravis que vous nous partagiez votre expérience "
-"Bourseauxcompagnons en répondant à ce mail. Vos retours nous sont utiles "
-"pour améliorer votre expérience :)"
+"Nous serions ravis que vous nous partagiez votre expérience %(site_name)s en "
+"répondant à ce mail. Vos retours nous sont utiles pour améliorer votre "
+"expérience :)"
 
 #: profiles/templates/profiles/profile_detail.html:24
 msgid "Edit public profile"
@@ -1281,6 +1286,8 @@ msgid "Details of its outing propositions"
 msgstr "Détail de ses propositions de sortie"
 
 #: profiles/templates/profiles/profile_form.html:13
+#: profiles/templates/profiles/profile_register_email.html:346
+#: profiles/templates/profiles/profile_register_email_inline.html:142
 msgid "Update my profile"
 msgstr "Mettre à jour mon profil"
 
@@ -1363,103 +1370,93 @@ msgstr "Tous les champs sont obligatoires."
 msgid "Create"
 msgstr "Créer"
 
-#: profiles/templates/profiles/profile_register_email.html:10
-#: profiles/templates/profiles/profile_register_email_inline.html:10
-msgid "Welcome on Bourse aux compagnons"
-msgstr "Bienvenue sur la Bourse aux compagnons"
+#: profiles/templates/profiles/profile_register_email.html:12
+#: profiles/templates/profiles/profile_register_email_inline.html:12
+#, python-format
+msgid "Welcome to %(site_name)s"
+msgstr "Bienvenue sur %(site_name)s"
 
-#: profiles/templates/profiles/profile_register_email.html:309
-#: profiles/templates/profiles/profile_register_email_inline.html:105
-msgid "You successfully created your Bourseauxcompagnons profile!"
-msgstr "Votre compte Bourseauxcompagnons a été créé!"
+#: profiles/templates/profiles/profile_register_email.html:311
+#: profiles/templates/profiles/profile_register_email_inline.html:107
+#, python-format
+msgid "You successfully created your %(site_name)s profile!"
+msgstr "Votre compte %(site_name)s a été créé!"
 
-#: profiles/templates/profiles/profile_register_email.html:326
+#: profiles/templates/profiles/profile_register_email.html:328
 #, python-format
 msgid ""
-"Welcome on Bourse aux compagnons! Your profil is now added in the "
-"Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/profiles/%(profile_username)s/\">see my profile</a>.</p>\n"
+"Welcome to %(site_name)s! Your profil is now added in the %(site_name)s "
+"list: <a href=\"%(protocol)s://%(domain)s%(profile_url)s\">see my profile</"
+"a>.</p>\n"
 "                                            <p>Your id to sign in is your "
 "email address: %(profile_email)s."
 msgstr ""
-"Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
-"sur la liste de la Bourseauxcompagnons : <a href=\"https://www."
-"bourseauxcompagnons.fr/%(language_code)s/profils/%(profile_username)s/"
-"\">voir mon profil</a>.</p>\n"
+"Bienvenue sur %(site_name)s ! Votre profil est désormais publié sur la liste "
+"de %(site_name)s : <a href=\"%(protocol)s://%(domain)s%(profile_url)s\">voir "
+"mon profil</a>.</p>\n"
 "                                            <p>Votre identifiant de "
 "connexion est votre adresse email : %(profile_email)s."
 
-#: profiles/templates/profiles/profile_register_email.html:344
-#, python-format
+#: profiles/templates/profiles/profile_register_email.html:354
+#: profiles/templates/profiles/profile_register_email_inline.html:150
+#: profiles/templates/profiles/profile_register_email_plain.html:9
 msgid ""
-"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
-"profiles/%(profile_username)s/update/\" target=\"_blank\">Update my profile</"
-"a>"
+"Think to also update your account. It is useful to display a clean First "
+"name and Last name. And allows you to add a Phonenumber to be contacted by "
+"potential partners."
 msgstr ""
-"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/comptes/"
-"profils/%(profile_username)s/mise-a-jour/\" target=\"_blank\">Mettre à jour "
-"mon profil</a>"
+"Pensez aussi à mettre votre compte à jour. C'est utile notamment pour "
+"afficher proprement votre Prénom et votre Nom. Vous pourrez également "
+"ajouter votre numéro de téléphone pour être contacté par de potentiels "
+"partenaires."
 
-#: profiles/templates/profiles/profile_register_email_inline.html:122
+#: profiles/templates/profiles/profile_register_email.html:362
+#: profiles/templates/profiles/profile_register_email_inline.html:158
+#: templates/registration/account_form.html:4
+msgid "Update my account"
+msgstr "Mettre à jour mon compte"
+
+#: profiles/templates/profiles/profile_register_email_inline.html:124
 #, python-format
 msgid ""
-"Welcome on Bourse aux compagnons! Your profil is now added in the "
-"Bourseauxcompagnons' list: <a href=\"https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/profiles/%(profile_username)s/\" style=\"color: #3498db; "
-"text-decoration: underline;\">see my profile</a>.</p>\n"
+"Welcome to %(site_name)s! Your profil is now added in the %(site_name)s "
+"list: <a href=\"%(protocol)s://%(domain)s%(profile_url)s\" style=\"color: "
+"#3498db; text-decoration: underline;\">see my profile</a>.</p>\n"
 "                                            <p style=\"font-family: sans-"
 "serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"
 "\">Your id to sign in is your email address: %(profile_email)s."
 msgstr ""
-"Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
-"sur la liste de la Bourseauxcompagnons : <a href=\"https://www."
-"bourseauxcompagnons.fr/%(language_code)s/profils/%(profile_username)s/"
-"\">voir mon profil</a>.</p>\n"
+"Bienvenue sur %(site_name)s ! Votre profil est désormais publié sur la liste "
+"de %(site_name)s : <a href=\"%(protocol)s://%(domain)s%(profile_url)s\" "
+"style=\"color: #3498db; text-decoration: underline;\">voir mon profil</a>.</"
+"p>\n"
 "                                            <p>Votre identifiant de "
 "connexion est votre adresse email : %(profile_email)s."
-
-#: profiles/templates/profiles/profile_register_email_inline.html:140
-#, python-format
-msgid ""
-"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/accounts/"
-"profiles/%(profile_username)s/update/\" target=\"_blank\" style=\"border: "
-"solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: "
-"pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: "
-"0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; "
-"background-color: #3498db; border-color: #3498db; color: #ffffff;\">Update "
-"my profile</a>"
-msgstr ""
-"<a href=\"https://www.bourseauxcompagnons.fr/%(language_code)s/comptes/"
-"profils/%(profile_username)s/mise-a-jour/\" target=\"_blank\" style="
-"\"border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; "
-"cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; "
-"margin: 0; padding: 12px 25px; text-decoration: none; text-transform: "
-"capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;"
-"\">Mettre à jour mon profil</a>"
 
 #: profiles/templates/profiles/profile_register_email_plain.html:3
 #, python-format
 msgid ""
-"Welcome on Bourse aux compagnons! Your profil is now added in the "
-"Bourseauxcompagnons' list: https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/profiles/%(profile_username)s/.\n"
+"Welcome to %(site_name)s! Your profil is now added in the %(site_name)s "
+"list: %(protocol)s://%(domain)s%(profile_url)s.\n"
 "\n"
 "Your id to sign in is your email address: %(profile_email)s."
 msgstr ""
-"Bienvenue sur la Bourse aux compagnons. Votre profil est désormais publié "
-"sur la liste de la Bourseauxcompagnons : https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/profils/%(profile_username)s/.\n"
+"Bienvenue sur %(site_name)s ! Votre profil est désormais publié sur la liste "
+"de %(site_name)s : %(protocol)s://%(domain)s%(profile_url)s.\n"
 "\n"
 "Votre identifiant de connexion est votre adresse email : %(profile_email)s."
 
 #: profiles/templates/profiles/profile_register_email_plain.html:7
 #, python-format
-msgid ""
-"Update my profile: https://www.bourseauxcompagnons.fr/%(language_code)s/"
-"accounts/profiles/%(profile_username)s/update/."
+msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
 msgstr ""
-"Mettre à jour mon profil : https://www.bourseauxcompagnons.fr/"
-"%(language_code)s/comptes/profils/%(profile_username)s/mise-a-jour/."
+"Mettre à jour mon profil :  %(protocol)s://%(domain)s%(update_profile_url)s."
+
+#: profiles/templates/profiles/profile_register_email_plain.html:10
+#, python-format
+msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
+msgstr ""
+"Mettre à jour mon compte : %(protocol)s://%(domain)s%(update_account_url)s."
 
 #: profiles/urls.py:18
 msgid "<username>/contact/"
@@ -1473,7 +1470,7 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:223
+#: profiles/views.py:212
 msgid ""
 "Your message has been sent by email to {}. Hopefully, he or she will get "
 "back to you soon! :) <a href=\"{}\">Go back to the profiles page</a>"
@@ -1482,15 +1479,15 @@ msgstr ""
 "revienne rapidement vers vous ! :) <a href=\"{}\">Retour à la pages des "
 "profils</a>"
 
-#: profiles/views.py:227
+#: profiles/views.py:216
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:228
+#: profiles/views.py:217
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:241
+#: profiles/views.py:230
 msgid ""
 "WARNING: your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1500,38 +1497,38 @@ msgstr ""
 "dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur "
 "'Mettre à jour mon profil' pour le compléter ou le privatiser."
 
-#: profiles/views.py:257
+#: profiles/views.py:246
 msgid "Profile registered"
 msgstr "Profil créé"
 
-#: profiles/views.py:258 profiles/views.py:353
+#: profiles/views.py:247 profiles/views.py:348
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/views.py:341
+#: profiles/views.py:336
 msgid ""
 "Your account and all its data are deleted. Have a good time in the outdoors!"
 msgstr ""
 "Votre compte et toutes ses données sont supprimées. Et que l'aventure "
 "continue ! Bon vent !"
 
-#: profiles/views.py:352
+#: profiles/views.py:347
 msgid "Profile deleted"
 msgstr "Profil supprimé"
 
-#: profiles/views.py:368 profiles/views.py:370
+#: profiles/views.py:369 profiles/views.py:371
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:372
+#: profiles/views.py:373
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:379 profiles/views.py:381
+#: profiles/views.py:380 profiles/views.py:382
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:383
+#: profiles/views.py:384
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 
@@ -1687,10 +1684,6 @@ msgstr "Ajouter ma sortie"
 msgid "%(user_username)s are you sure you want to delete your account?"
 msgstr "%(user_username)s êtes-vous sûr de vouloir supprimer votre compte ?"
 
-#: templates/registration/account_form.html:4
-msgid "Update my account"
-msgstr "Mettre mon compte à jour"
-
 #: templates/registration/account_form.html:61
 msgid "Update my password"
 msgstr "Changer mon mot de passe"
@@ -1796,3 +1789,5 @@ msgstr "Valider et recevoir un email de confirmation"
 msgid "Password reset"
 msgstr "Réinitialisation du mot de passe"
 
+#~ msgid "Message from Bourse aux compagnons"
+#~ msgstr "Message de la Bourse aux compagnons"

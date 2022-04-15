@@ -1,5 +1,7 @@
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
+{% url 'profiles:detail' customuser.username as profile_url %}
+{% url 'update-account' customuser.username as update_account_url %}
+{% url 'update-profile' customuser.username as update_profile_url %}
 
 <!doctype html>
 <!-- FOR 'INLINING' THE CSS OF THE EMAIL TEMPLATE: https://htmlemail.io/inline/ -->
@@ -7,7 +9,7 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>{% translate 'Welcome on Bourse aux compagnons' %}</title>
+        <title>{% blocktranslate %}Welcome to {{ site_name }}{% endblocktranslate %}</title>
         <style>
 @media only screen and (max-width: 620px) {
   table[class=body] h1 {
@@ -102,7 +104,7 @@ table[class=body] .article {
 </style>
     </head>
     <body class="" style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-        <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">{% translate 'You successfully created your Bourseauxcompagnons profile!' %}</span>
+        <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">{% blocktranslate %}You successfully created your {{ site_name }} profile!{% endblocktranslate %}</span>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f6f6f6; width: 100%;" width="100%" bgcolor="#f6f6f6">
             <tr>
                 <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">&nbsp;</td>
@@ -119,7 +121,7 @@ table[class=body] .article {
                                     <tr>
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">
                                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 1em;">{% translate 'Hi' %} {{ customuser.username }},</p>
-                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/" style="color: #3498db; text-decoration: underline;">see my profile</a>.</p>
+                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktranslate with profile_email=customuser.get_username %}Welcome to {{ site_name }}! Your profil is now added in the {{ site_name }} list: <a href="{{ protocol }}://{{ domain }}{{ profile_url }}" style="color: #3498db; text-decoration: underline;">see my profile</a>.</p>
                                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}</p>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%; font-style: italic; color: #FE9B0C;" width="100%">
                                                 <tbody>
@@ -137,7 +139,23 @@ table[class=body] .article {
                                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #3498db;" valign="top" align="center" bgcolor="#3498db"> {% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username %}<a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/" target="_blank" style="border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;">Update my profile</a>{% endblocktranslate %} </td>
+                                                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #3498db;" valign="top" align="center" bgcolor="#3498db"> <a href="{{ protocol }}://{{ domain }}{{ update_profile_url }}" target="_blank" style="border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;">{% translate 'Update my profile' %}</a> </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{% blocktranslate %}Think to also update your account. It is useful to display a clean First name and Last name. And allows you to add a Phonenumber to be contacted by potential partners.{% endblocktranslate %}</p>
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                    <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">
+                                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #3498db;" valign="top" align="center" bgcolor="#3498db"> <a href="{{ protocol }}://{{ domain }}{{ update_account_url }}" target="_blank" style="border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #3498db; border-color: #3498db; color: #ffffff;">{% translate 'Update my account' %}</a> </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -161,7 +179,7 @@ table[class=body] .article {
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                             <tr>
                                 <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" valign="top" align="center">
-                                    <a href="https://bourseauxcompagnons.fr" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">Bourse aux compagnons</a> <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
+                                    <a href="{{ protocol }}://{{ domain }}" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">{{ site_name }}</a> <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
                                 </td>
                             </tr>
                         </table>

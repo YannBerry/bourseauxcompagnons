@@ -1,5 +1,7 @@
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
+{% url 'profiles:detail' customuser.username as profile_url %}
+{% url 'update-account' customuser.username as update_account_url %}
+{% url 'update-profile' customuser.username as update_profile_url %}
 
 <!doctype html>
 <!-- FOR 'INLINING' THE CSS OF THE EMAIL TEMPLATE: https://htmlemail.io/inline/ -->
@@ -7,7 +9,7 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>{% translate 'Welcome on Bourse aux compagnons' %}</title>
+        <title>{% blocktranslate %}Welcome to {{ site_name }}{% endblocktranslate %}</title>
         <style>
             /* -------------------------------------
               GLOBAL RESETS
@@ -306,7 +308,7 @@
         </style>
     </head>
     <body class="">
-        <span class="preheader">{% translate 'You successfully created your Bourseauxcompagnons profile!' %}</span>
+        <span class="preheader">{% blocktranslate %}You successfully created your {{ site_name }} profile!{% endblocktranslate %}</span>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
             <tr>
                 <td>&nbsp;</td>
@@ -323,7 +325,7 @@
                                     <tr>
                                         <td>
                                             <p style="margin-bottom: 1em;">{% translate 'Hi' %} {{ customuser.username }},</p>
-                                            <p>{% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username profile_email=customuser.get_username %}Welcome on Bourse aux compagnons! Your profil is now added in the Bourseauxcompagnons' list: <a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/profiles/{{ profile_username }}/">see my profile</a>.</p>
+                                            <p>{% blocktranslate with profile_email=customuser.get_username %}Welcome to {{ site_name }}! Your profil is now added in the {{ site_name }} list: <a href="{{ protocol }}://{{ domain }}{{ profile_url }}">see my profile</a>.</p>
                                             <p>Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}</p>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main" style="font-style: italic; color:#FE9B0C;">
                                                 <tbody>
@@ -341,7 +343,23 @@
                                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td> {% blocktranslate with language_code=LANGUAGE_CODE profile_username=customuser.username %}<a href="https://www.bourseauxcompagnons.fr/{{ language_code }}/accounts/profiles/{{ profile_username }}/update/" target="_blank">Update my profile</a>{% endblocktranslate %} </td>
+                                                                    <td> <a href="{{ protocol }}://{{ domain }}{{ update_profile_url }}" target="_blank">{% translate 'Update my profile' %}</a> </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>{% blocktranslate %}Think to also update your account. It is useful to display a clean First name and Last name. And allows you to add a Phonenumber to be contacted by potential partners.{% endblocktranslate %}</p>
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-main">
+                                                <tbody>
+                                                    <tr>
+                                                    <td align="left">
+                                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td> <a href="{{ protocol }}://{{ domain }}{{ update_account_url }}" target="_blank">{% translate 'Update my account' %}</a> </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -365,7 +383,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
+                                    <a href="{{ protocol }}://{{ domain }}">{{ site_name }}</a> <span class="apple-link">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
                                 </td>
                             </tr>
                         </table>

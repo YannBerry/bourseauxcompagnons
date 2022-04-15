@@ -4,9 +4,9 @@
 <!-- FOR 'INLINING' THE CSS OF THE EMAIL TEMPLATE: https://htmlemail.io/inline/ -->
 <html>
     <head>
-        <meta name="viewport" content="width=device-width" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>{% translate 'Message from Bourse aux compagnons' %}</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{% blocktranslate %}Message from {{ site_name }}{% endblocktranslate %}</title>
         <style>
             /* -------------------------------------
               GLOBAL RESETS
@@ -305,7 +305,7 @@
         </style>
     </head>
     <body class="">
-        <span class="preheader">{% translate 'Your Bourseauxcompagnons account is deleted.' %}</span>
+        <span class="preheader">{% blocktranslate %}Your {{ site_name }} account is deleted.{% endblocktranslate %}</span>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
             <tr>
                 <td>&nbsp;</td>
@@ -323,7 +323,7 @@
                                         <td>
                                             <p style="margin-bottom: 1em;">{% translate 'Hi' %} {{ customuser.username }},</p>
                                             <p>{% blocktranslate %}You have successfully deleted your Bourseauxcompagnons account and all its data.</p>
-                                            <p>We hope that you found partners thanks to our website. If not we're sure that you managed to find some in other ways. <strong>You're welcome to tell us about your bourseauxcompagnons experience by responding to this mail</strong>. It's useful for us to have some feedback :){% endblocktranslate %}</p>
+                                            <p>We hope that you found partners thanks to our website. If not we're sure that you managed to find some in other ways.</p><p><strong>You're welcome to tell us about your bourseauxcompagnons experience by responding to this mail</strong>. It's useful for us to have some feedback :){% endblocktranslate %}</p>
                                             <p>{% translate 'Sportively yours' %}</p>
                                         </td>
                                     </tr>
@@ -340,7 +340,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <a href="https://bourseauxcompagnons.fr">Bourse aux compagnons</a> <span class="apple-link">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
+                                    <a href="{{ protocol }}://{{ domain }}">{{ site_name }}</a> <span class="apple-link">{% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}</span>
                                 </td>
                             </tr>
                         </table>
