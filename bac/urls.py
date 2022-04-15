@@ -33,7 +33,7 @@ sitemaps = {
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-    path('robots.txt', lambda x: HttpResponse('User-Agent: *\nAllow: /', content_type='text/plain'), name='robots_file'),
+    path('robots.txt', lambda x: HttpResponse('User-Agent: *\nDisallow:\n\nSitemap: https://bourseauxcompagnons.fr/sitemap.xml', content_type='text/plain'), name='robots_file'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
