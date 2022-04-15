@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'profiles.apps.ProfilesConfig',
     'outings.apps.OutingsConfig',
     'contactpage.apps.ContactpageConfig',
-    'features.apps.FeaturesConfig',
     'activities.apps.ActivitiesConfig',
     'availabilities.apps.AvailabilitiesConfig',
     'django.contrib.admin',
@@ -51,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', # needed by django.contrib.sitemaps. Installed at the same time I installed sitemap (April 2022). I now use it also to give domain names (in emails for ex) automatically according to the env (dev or prod)
-    #'django.contrib.sitemaps',
+    'django.contrib.sitemaps',
     'django.contrib.postgres', # needed for the unaccent and trigram lookups (to install postgre extensions : CREATE EXTENSION unaccent; and pg_trgm;)
     'django.contrib.gis',
     'phonenumber_field',

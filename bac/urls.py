@@ -1,4 +1,3 @@
-from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
 from django.urls import path, include
 #from django.views.generic.base import TemplateView
@@ -7,7 +6,12 @@ from django.conf.urls.i18n import i18n_patterns
 # libraries for static
 from django.conf import settings
 from django.conf.urls.static import static
-
+# Translations
+from django.utils.translation import gettext_lazy as _
+# Sitemap
+from django.contrib.sitemaps.views import sitemap
+from bac.sitemaps import HomepageSitemap, ProfilesAndOutingsListsSitemap, ProfileSitemap, OutingSitemap, ContactPageSitemap
+# Views
 from django.contrib.auth import views as auth_views
 from core.views import HomepageView, ProfileLoginView, ProfilePasswordChangeView, ProfilePasswordResetView, ProfilePasswordResetConfirmView
 from profiles.views import (
@@ -19,9 +23,18 @@ from profiles.views import (
 )
 
 
+sitemaps = {
+    'homepage': HomepageSitemap,
+    'profiles_outings_lists': ProfilesAndOutingsListsSitemap,
+    'profile_details': ProfileSitemap,
+    'outing_details': OutingSitemap,
+    'contact_page': ContactPageSitemap,
+}
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('robots.txt', lambda x: HttpResponse('User-Agent: *\nAllow: /', content_type='text/plain'), name='robots_file'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 urlpatterns += i18n_patterns(
@@ -40,7 +53,6 @@ urlpatterns += i18n_patterns(
     path(_('outings/'), include('outings.urls')),
     path(_('availabilities/'), include('availabilities.urls')),
     path(_('contact/'), include('contactpage.urls')),
-    path(_('features/'), include('features.urls')),
     path(_('admin/'), admin.site.urls),
     #path(_('concept/'), TemplateView.as_view(template_name='concept/index.html'), name='concept'),
 )
