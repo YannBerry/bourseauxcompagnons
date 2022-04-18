@@ -35,8 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation', # must be before django.contrib.admin if admin integration is needed.
-    # If django-debug-toolbar is used together with modeltranslation, use explicit setup for django-debug-toolbar. 
+    'modeltranslation', # must be before django.contrib.admin and django-debug-toolbar
     'core.apps.CoreConfig',
     'profiles.apps.ProfilesConfig',
     'outings.apps.OutingsConfig',
