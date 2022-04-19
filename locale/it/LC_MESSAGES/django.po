@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-15 18:39+0200\n"
+"POT-Creation-Date: 2022-04-19 19:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgid "activity"
 msgstr "attività"
 
 #: activities/models.py:10 availabilities/models.py:18 outings/models.py:26
-#: profiles/models.py:66
+#: profiles/models.py:69
 msgid "activities"
 msgstr "attività"
 
@@ -39,7 +39,7 @@ msgstr "ordine"
 msgid "grade"
 msgstr "grado"
 
-#: activities/models.py:27 profiles/models.py:72
+#: activities/models.py:27 profiles/models.py:75
 msgid "grades"
 msgstr "gradi"
 
@@ -222,75 +222,71 @@ msgid ""
 "profile</a>"
 msgstr ""
 
-#: bac/urls.py:29
+#: bac/urls.py:42
 #, fuzzy
 #| msgid "accounts/"
 msgid "accounts/login/"
 msgstr "accounts/"
 
-#: bac/urls.py:30
+#: bac/urls.py:43
 #, fuzzy
 #| msgid "accounts/"
 msgid "accounts/logout/"
 msgstr "accounts/"
 
-#: bac/urls.py:31
+#: bac/urls.py:44
 #, fuzzy
 #| msgid "accounts/<username>/deletion/"
 msgid "accounts/password-change/"
 msgstr "accounts/<username>/cancellazione/"
 
-#: bac/urls.py:32
+#: bac/urls.py:45
 #, fuzzy
 #| msgid "accounts/<username>/deletion/"
 msgid "accounts/password-reset/"
 msgstr "accounts/<username>/cancellazione/"
 
-#: bac/urls.py:33
+#: bac/urls.py:46
 msgid "accounts/reset/<uidb64>/<token>/"
 msgstr ""
 
-#: bac/urls.py:34
+#: bac/urls.py:47
 msgid "accounts/register/profile/"
 msgstr "accounts/inscrizione/profilo/"
 
-#: bac/urls.py:35
+#: bac/urls.py:48
 msgid "accounts/profiles/my-profile/"
 msgstr "accounts/profili/mio-profilo/"
 
-#: bac/urls.py:36
+#: bac/urls.py:49
 msgid "accounts/<username>/update/"
 msgstr "accounts/<username>/aggiornamento/"
 
-#: bac/urls.py:37
+#: bac/urls.py:50
 msgid "accounts/profiles/<username>/update/"
 msgstr "accounts/profili/<username>/aggiornamento/"
 
-#: bac/urls.py:38
+#: bac/urls.py:51
 msgid "accounts/<username>/deletion/"
 msgstr "accounts/<username>/cancellazione/"
 
-#: bac/urls.py:39
+#: bac/urls.py:52
 msgid "profiles/"
 msgstr "profili/"
 
-#: bac/urls.py:40
+#: bac/urls.py:53
 msgid "outings/"
 msgstr "escursioni/"
 
-#: bac/urls.py:41
+#: bac/urls.py:54
 msgid "availabilities/"
 msgstr "disponibilita/"
 
-#: bac/urls.py:42
+#: bac/urls.py:55
 msgid "contact/"
 msgstr "contatto/"
 
-#: bac/urls.py:43
-msgid "features/"
-msgstr "funzionalita/"
-
-#: bac/urls.py:44
+#: bac/urls.py:56
 msgid "admin/"
 msgstr "admin/"
 
@@ -496,10 +492,6 @@ msgstr ""
 #: core/views.py:51
 msgid "Your new password has been activated. You just have to sign in."
 msgstr "La nuova password è attivata. Devi solo connetterti."
-
-#: features/urls.py:7
-msgid "votes/"
-msgstr "voti/"
 
 #: outings/models.py:14
 msgid "title"
@@ -708,9 +700,19 @@ msgstr "Cancellare correttamente i profili selezionati (user.is_profile=False)"
 msgid "Email"
 msgstr "E-mail"
 
-#: profiles/admin.py:57 profiles/templates/profiles/my_profile.html:67
+#: profiles/admin.py:57 profiles/templates/profiles/my_profile.html:64
+msgid "Username"
+msgstr "Username"
+
+#: profiles/admin.py:62 profiles/templates/profiles/my_profile.html:67
 msgid "First name"
 msgstr "Nome"
+
+#: profiles/admin.py:67
+#, fuzzy
+#| msgid "Last name"
+msgid "Last login"
+msgstr "Cognome"
 
 #: profiles/forms.py:66 profiles/templates/profiles/profile_detail.html:48
 msgid "Availability area"
@@ -728,7 +730,7 @@ msgstr ""
 msgid "Grades"
 msgstr "Gradi"
 
-#: profiles/forms.py:246 profiles/models.py:73
+#: profiles/forms.py:246 profiles/models.py:76
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr "Seleziona il tuo livello di comfort per ogni attività che hai scelto."
@@ -737,53 +739,77 @@ msgstr "Seleziona il tuo livello di comfort per ogni attività che hai scelto."
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr "Riceverai la risposta del profilo contattato in questa e-mail"
 
-#: profiles/models.py:21
+#: profiles/management/commands/deactivateprofile12mnologin.py:23
+#: profiles/management/commands/warningdeactivateprofile12mnologin.py:23
+msgid ""
+"Warning before profile deactivation. Are you still using bourseauxcompagnons?"
+msgstr ""
+
+#: profiles/management/commands/deactivateprofile12mnologin.py:24
+#: profiles/management/commands/reminder12mnoupdate.py:24
+#: profiles/management/commands/reminder6mnologin.py:24
+#: profiles/management/commands/warningdeactivateprofile12mnologin.py:24
+#: profiles/views.py:247 profiles/views.py:348
+msgid "[Account] {}"
+msgstr "[Account] {}"
+
+#: profiles/management/commands/reminder12mnoupdate.py:23
+#, fuzzy
+#| msgid "Create your profile"
+msgid "Think to update your profile!"
+msgstr "Creare il mio profilo"
+
+#: profiles/management/commands/reminder6mnologin.py:23
+msgid "Are you still using {}?"
+msgstr ""
+
+#: profiles/models.py:22
 msgid "e-mail address"
 msgstr "Indirizzo e-mail"
 
-#: profiles/models.py:22
+#: profiles/models.py:23
 msgid "profile status"
 msgstr "stato del profilo"
 
-#: profiles/models.py:24
+#: profiles/models.py:25
 msgid "phone number"
 msgstr ""
 
-#: profiles/models.py:25
+#: profiles/models.py:26
 msgid ""
 "Enter your phone number with your calling country code (Fr +33 | It +39 | Sp "
 "+34 | UK +44). Ex: write +33600000000 instead of 0600000000."
 msgstr ""
 
-#: profiles/models.py:34
+#: profiles/models.py:35
 msgid "base user"
 msgstr "utente di base"
 
-#: profiles/models.py:35
+#: profiles/models.py:36
 msgid "base users"
 msgstr "utenti di base"
 
-#: profiles/models.py:51
+#: profiles/models.py:54
 msgid "public profile"
 msgstr "profilo pubblico"
 
-#: profiles/models.py:51
+#: profiles/models.py:54
 msgid "When your profile is public, it is displayed in the profiles list."
 msgstr "Quando il tuo profilo è pubblico, appare nell'elenco dei profili."
 
-#: profiles/models.py:53
+#: profiles/models.py:56
 msgid "location"
 msgstr "luogo"
 
-#: profiles/models.py:54
+#: profiles/models.py:57
 msgid "Click on the map to show where you live."
 msgstr "Clicca sulla mappa per mostrare dove vivi."
 
-#: profiles/models.py:59
+#: profiles/models.py:62
 msgid "introduction"
 msgstr "presentazione"
 
-#: profiles/models.py:60
+#: profiles/models.py:63
 msgid ""
 "Take your time to write a concise introduction that makes people want to "
 "know your better! The first 200 characters are displayed in the profiles "
@@ -793,11 +819,11 @@ msgstr ""
 "primi 200 caratteri compaiono nell'elenco dei profili, quindi prenditi cura "
 "di loro ;)"
 
-#: profiles/models.py:63
+#: profiles/models.py:66
 msgid "list of courses"
 msgstr "lista dei percorsi"
 
-#: profiles/models.py:67
+#: profiles/models.py:70
 msgid ""
 "Select at least one activity that you practice and for which you are "
 "searching for partners."
@@ -805,11 +831,11 @@ msgstr ""
 "Seleziona al meno un attivitàc he pratichi e per la quale stai cercando dei "
 "compagni."
 
-#: profiles/models.py:77
+#: profiles/models.py:80
 msgid "availability area"
 msgstr "Area di disponibilità"
 
-#: profiles/models.py:78
+#: profiles/models.py:81
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains. Tip: click on 'Shift' key while you draw to activate freehand "
@@ -819,11 +845,11 @@ msgstr ""
 "montagna. Suggerimento: Clicca sul pulsante 'Shift' mentre disegni per "
 "attivare il disegno a mano libera."
 
-#: profiles/models.py:83
+#: profiles/models.py:86
 msgid "availability area (further details)"
 msgstr "area di disponibilità (informazioni aggiuntive)"
 
-#: profiles/models.py:85
+#: profiles/models.py:88
 msgid ""
 "Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the "
 "french Alpes'."
@@ -831,27 +857,27 @@ msgstr ""
 "Esempi: 'Rodano-Alpi' o 'Intorno a Grenoble, Chambéry, Lione' o 'Tutte le "
 "Alpi francesi'."
 
-#: profiles/models.py:90
+#: profiles/models.py:93
 msgid "birthdate"
 msgstr "data di nascita"
 
-#: profiles/models.py:91
+#: profiles/models.py:94
 msgid "Used to display your age on your public profile."
 msgstr "Usato per indicare la tua età sul tuo profilo pubblico."
 
-#: profiles/models.py:95
+#: profiles/models.py:98
 msgid "profile picture"
 msgstr "foto di profilo"
 
-#: profiles/models.py:96
+#: profiles/models.py:99
 msgid "last update"
 msgstr "ultimo aggiornamento"
 
-#: profiles/models.py:99
+#: profiles/models.py:102
 msgid "profile"
 msgstr "profilo"
 
-#: profiles/models.py:100
+#: profiles/models.py:103
 msgid "profiles"
 msgstr "profili"
 
@@ -870,6 +896,9 @@ msgstr "Qualcuno si è messo in contatto con te."
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
 #: profiles/templates/profiles/contact_profile_email_plain.html:1
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:328
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:124
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:1
 #: profiles/templates/profiles/profile_deletion_email.html:324
 #: profiles/templates/profiles/profile_deletion_email_inline.html:120
 #: profiles/templates/profiles/profile_deletion_email_plain.html:1
@@ -924,6 +953,9 @@ msgstr ""
 #: profiles/templates/profiles/contact_profile_email.html:345
 #: profiles/templates/profiles/contact_profile_email_inline.html:141
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:393
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:189
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:15
 #: profiles/templates/profiles/profile_deletion_email.html:327
 #: profiles/templates/profiles/profile_deletion_email_inline.html:123
 #: profiles/templates/profiles/profile_deletion_email_plain.html:8
@@ -939,6 +971,9 @@ msgstr "Sportivi saluti"
 #: profiles/templates/profiles/contact_profile_email.html:361
 #: profiles/templates/profiles/contact_profile_email_inline.html:157
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:409
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:205
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:17
 #: profiles/templates/profiles/profile_deletion_email.html:343
 #: profiles/templates/profiles/profile_deletion_email_inline.html:139
 #: profiles/templates/profiles/profile_deletion_email_plain.html:10
@@ -1045,7 +1080,106 @@ msgid ""
 "                    "
 msgstr ""
 
-#: profiles/templates/profiles/my_profile.html:5 templates/base.html:82
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:13
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:13
+#, fuzzy, python-format
+#| msgid "Welcome on Bourse aux compagnons"
+msgid "Reminder from %(site_name)s"
+msgstr "Benvenuto su Compagni di Montagna"
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:312
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:108
+#, python-format
+msgid "We just want to check if you still use %(site_name)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:329
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:125
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:3
+#, python-format
+msgid ""
+"You haven't signed in for 6 months now. We just wanted to know if you are "
+"still using %(site_name)s to find mountain partners."
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:330
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:126
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:5
+msgid ""
+"If you still use it please sign in to show us that you are still with us :)"
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:338
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:134
+#: profiles/templates/profiles/my_profile.html:182 templates/base.html:86
+#: templates/registration/login.html:4 templates/registration/login.html:40
+msgid "Sign in"
+msgstr "Accesso"
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:353
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:149
+#: profiles/templates/profiles/profile_form.html:13
+#: profiles/templates/profiles/profile_register_email.html:346
+#: profiles/templates/profiles/profile_register_email_inline.html:142
+msgid "Update my profile"
+msgstr "Aggiornare il mio profilo"
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:368
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:164
+#: profiles/templates/profiles/profile_register_email.html:362
+#: profiles/templates/profiles/profile_register_email_inline.html:158
+#: templates/registration/account_form.html:4
+msgid "Update my account"
+msgstr "Aggiornare il mio account"
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:376
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:172
+msgid "If you want to delete your account please follow the link:"
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:384
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:180
+#: profiles/templates/profiles/my_profile.html:80
+#: templates/registration/account_confirm_delete.html:4
+msgid "Delete my account"
+msgstr "Cancellare il mio account"
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:392
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:188
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:13
+#, python-format
+msgid "Reminder: Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:6
+#, python-format
+msgid "Sign in: %(protocol)s://%(domain)s%(url_login)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:7
+msgid "Other usefull links:"
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:8
+#: profiles/templates/profiles/profile_register_email_plain.html:7
+#, python-format
+msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:9
+#: profiles/templates/profiles/profile_register_email_plain.html:10
+#, python-format
+msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:11
+#, python-format
+msgid ""
+"If you want to delete your account please follow the link: %(protocol)s://"
+"%(domain)s%(url_delete_account)s"
+msgstr ""
+
+#: profiles/templates/profiles/my_profile.html:5 templates/base.html:79
 msgid "My profile"
 msgstr "Il mio profilo"
 
@@ -1128,10 +1262,6 @@ msgstr "Indirizzo e-mail"
 msgid "Password"
 msgstr "Password"
 
-#: profiles/templates/profiles/my_profile.html:64
-msgid "Username"
-msgstr "Username"
-
 #: profiles/templates/profiles/my_profile.html:70
 msgid "Last name"
 msgstr "Cognome"
@@ -1139,11 +1269,6 @@ msgstr "Cognome"
 #: profiles/templates/profiles/my_profile.html:77
 msgid "Update my account settings"
 msgstr "Aggiornare i parametri del mio account"
-
-#: profiles/templates/profiles/my_profile.html:80
-#: templates/registration/account_confirm_delete.html:4
-msgid "Delete my account"
-msgstr "Cancellare il mio account"
 
 #: profiles/templates/profiles/my_profile.html:95
 msgid "My calendar"
@@ -1230,11 +1355,6 @@ msgstr "Importa/Esporta per i superamministratori"
 #: profiles/templates/profiles/my_profile.html:173
 msgid "Nothing for now."
 msgstr ""
-
-#: profiles/templates/profiles/my_profile.html:182 templates/base.html:89
-#: templates/registration/login.html:4 templates/registration/login.html:40
-msgid "Sign in"
-msgstr "Accesso"
 
 #: profiles/templates/profiles/profile_deletion_email.html:9
 #: profiles/templates/profiles/profile_deletion_email_inline.html:9
@@ -1331,12 +1451,6 @@ msgstr "Il suo calendario"
 #: profiles/templates/profiles/profile_detail.html:91
 msgid "Details of its outing propositions"
 msgstr "Dettagli delle sue proposte di escursione"
-
-#: profiles/templates/profiles/profile_form.html:13
-#: profiles/templates/profiles/profile_register_email.html:346
-#: profiles/templates/profiles/profile_register_email_inline.html:142
-msgid "Update my profile"
-msgstr "Aggiornare il mio profilo"
 
 #: profiles/templates/profiles/profile_list.html:12
 msgid "Profiles list"
@@ -1468,12 +1582,6 @@ msgid ""
 "potential partners."
 msgstr ""
 
-#: profiles/templates/profiles/profile_register_email.html:362
-#: profiles/templates/profiles/profile_register_email_inline.html:158
-#: templates/registration/account_form.html:4
-msgid "Update my account"
-msgstr "Aggiornare il mio account"
-
 #: profiles/templates/profiles/profile_register_email_inline.html:124
 #, fuzzy, python-format
 #| msgid ""
@@ -1522,16 +1630,6 @@ msgstr ""
 "                                            <p>Il tuo nome utente (login) è "
 "il tuo indirizzo e-mail: %(profile_email)s."
 
-#: profiles/templates/profiles/profile_register_email_plain.html:7
-#, python-format
-msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
-msgstr ""
-
-#: profiles/templates/profiles/profile_register_email_plain.html:10
-#, python-format
-msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
-msgstr ""
-
 #: profiles/urls.py:18
 msgid "<username>/contact/"
 msgstr "<username>/contatto/"
@@ -1543,6 +1641,12 @@ msgstr "esporta/xlsx/"
 #: profiles/urls.py:20
 msgid "ajax/load-grades/"
 msgstr "ajax/caricare-gradi"
+
+#: profiles/views.py:184
+#, fuzzy
+#| msgid "Contact"
+msgid "[Contact] {}"
+msgstr "Contatto"
 
 #: profiles/views.py:212
 #, fuzzy
@@ -1577,10 +1681,6 @@ msgstr ""
 #: profiles/views.py:246
 msgid "Profile registered"
 msgstr "Profilo creato"
-
-#: profiles/views.py:247 profiles/views.py:348
-msgid "[Account] {}"
-msgstr "[Account] {}"
 
 #: profiles/views.py:336
 msgid ""
@@ -1644,15 +1744,11 @@ msgstr "COMPAGNI DI MONTAGNA"
 msgid "Profiles"
 msgstr "Profili"
 
-#: templates/base.html:43
-msgid "FEATURES"
-msgstr "FUNZIONALITÀ"
-
-#: templates/base.html:49
+#: templates/base.html:46
 msgid "Contact"
 msgstr "Contatto"
 
-#: templates/base.html:84
+#: templates/base.html:81
 msgid "Sign out"
 msgstr "Disconessione"
 
@@ -1891,6 +1987,15 @@ msgstr "Inviare e ricevere una mail di conferma"
 #| msgid "Password"
 msgid "Password reset"
 msgstr "Password"
+
+#~ msgid "features/"
+#~ msgstr "funzionalita/"
+
+#~ msgid "votes/"
+#~ msgstr "voti/"
+
+#~ msgid "FEATURES"
+#~ msgstr "FUNZIONALITÀ"
 
 #~ msgid "Welcome on Bourse aux compagnons"
 #~ msgstr "Benvenuto su Compagni di Montagna"

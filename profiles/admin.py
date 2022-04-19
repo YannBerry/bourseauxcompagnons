@@ -38,8 +38,8 @@ delete_profile_cleanly.short_description = _("Delete selected profiles cleanly (
 
 
 class ProfileAdmin(GISModelAdmin):
-    # gis_widget = OpenLayersWidget # OSMWidget is the default value but I added it anyway for the day I want to change it to OpenLayersWidget with another base layer thanks to the template_name attribute.
-    list_display = ('email', 'first_name', 'birthdate')
+    # gis_widget = OpenLayersWidget # OSMWidget is the default value but I added this line anyway if one day I want to change it to OpenLayersWidget with another base layer thanks to the template_name attribute.
+    list_display = ('email', 'username', 'first_name', 'age', 'public_profile', 'loggedin_less_than_6_month_ago', 'last_login', 'updated_less_than_6_month_ago', 'last_update',)
     readonly_fields = ['age']
     actions = GISModelAdmin.actions + [delete_profile_cleanly]
 
@@ -51,10 +51,21 @@ class ProfileAdmin(GISModelAdmin):
     email.admin_order_field  = 'user__email'  #Allows column order sorting
     email.short_description = _('Email')  #Renames column head
 
+    def username(self, obj):
+        return obj.user.username
+    username.admin_order_field  = 'user__username'  #Allows column order sorting
+    username.short_description = _('Username')  #Renames column head
+
     def first_name(self, obj):
         return obj.user.first_name
     first_name.admin_order_field  = 'user__first_name'  #Allows column order sorting
     first_name.short_description = _('First name')  #Renames column head
+
+    def last_login(self, obj):
+        return obj.user.last_login
+    last_login.admin_order_field  = 'user__last_login'  #Allows column order sorting
+    last_login.short_description = _('Last login')  #Renames column head
+
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Profile, ProfileAdmin)

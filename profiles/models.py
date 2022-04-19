@@ -7,6 +7,7 @@ from datetime import date
 from datetime import timedelta
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.admin import display
 
 from activities.models import Activity, Grade
 
@@ -41,12 +42,14 @@ def user_directory_path_pict(instance, filename):
     time_added = f"{timezone.now().hour}{timezone.now().minute}{timezone.now().second}"
     return f"profiles/{username}/pictures/{date_added}_{time_added}-{username}-{filename}"
 
+
 class Profile(models.Model):
     """
     Profile model of bourseauxcompagnons.fr
 
     onetoone relationship with CustomUser
     """
+    # Attributes
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, primary_key=True)
     public_profile = models.BooleanField(verbose_name=_('public profile'), default=True, help_text=_("When your profile is public, it is displayed in the profiles list."))
     location = models.PointField(
@@ -115,9 +118,13 @@ class Profile(models.Model):
             age = None
         return age
 
-    @property
-    def updated_more_than_1_month_ago(self):
-        return self.last_update < timezone.now() - timedelta(days=30)
+    @display(boolean=True)
+    def loggedin_less_than_6_month_ago(self):
+        return self.user.last_login > timezone.now() - timedelta(weeks=26) if self.user.last_login else False
+
+    @display(boolean=True)
+    def updated_less_than_6_month_ago(self):
+        return self.last_update > timezone.now() - timedelta(weeks=26)
 
     @property    
     def completion(self):

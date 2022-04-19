@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
-from django.contrib.auth.mixins import UserPassesTestMixin
+from core.mixins import UserPassesTestMixinNoPermissionDeny
 from django.db.models import Q
 # Messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -25,7 +25,7 @@ from django.contrib.gis.geos import GEOSGeometry
 from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.utils.html import strip_tags
+#from django.utils.html import strip_tags
 # Sites
 from django.contrib.sites.shortcuts import get_current_site
 # Exporting Excel files
@@ -181,7 +181,7 @@ def ContactProfileView(request, **kwargs):
         form = ContactProfileForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
-            subject_prefixed = '[bourseauxcompagnons] ' + subject 
+            subject_prefixed = _("[Contact] {}").format(subject)
             from_email = form.cleaned_data['from_email']
             recipients = [user_contacted.email]
             contact_message = form.cleaned_data['message']
@@ -264,7 +264,7 @@ class ProfileRegisterView(SuccessMessageMixin, CreateView):
 
 # VIEWS FOR AUTHENTICATED PROFILES
 
-class ProfileHomepageView(UserPassesTestMixin, TemplateView):
+class ProfileHomepageView(UserPassesTestMixinNoPermissionDeny, TemplateView):
     template_name = 'profiles/my_profile.html'
 
     def test_func(self):
@@ -286,7 +286,7 @@ class ProfileHomepageView(UserPassesTestMixin, TemplateView):
         return context
 
 
-class ProfileUpdateView(UserPassesTestMixin, UpdateView):
+class ProfileUpdateView(UserPassesTestMixinNoPermissionDeny, UpdateView):
     '''A view for the authenticated profile to update its profile.'''
     form_class = ProfileForm
 
@@ -315,7 +315,7 @@ def load_grades(request):
     return render(request, 'profiles/grades_dropdown_list_options.html', {'grades': grades, 'checked_grades': checked_grades})
 
 
-class AccountUpdateView(UserPassesTestMixin, UpdateView):
+class AccountUpdateView(UserPassesTestMixinNoPermissionDeny, UpdateView):
     '''A view for the authenticated profile to update its profile account settings.'''
     form_class = AccountForm
     template_name = 'registration/account_form.html'
@@ -328,7 +328,7 @@ class AccountUpdateView(UserPassesTestMixin, UpdateView):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
 
 
-class AccountDeleteView(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class AccountDeleteView(UserPassesTestMixinNoPermissionDeny, SuccessMessageMixin, DeleteView):
     '''A view for the authenticated profile to delete its own profile and account'''
     model = CustomUser
     template_name = 'registration/account_confirm_delete.html'

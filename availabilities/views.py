@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
-from django.contrib.auth.mixins import UserPassesTestMixin
+from core.mixins import UserPassesTestMixinNoPermissionDeny
 # Messages
 from django.contrib.messages.views import SuccessMessageMixin
 # Translation
@@ -35,7 +35,7 @@ class AvailabilityCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
-class AvailabilityUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class AvailabilityUpdateView(UserPassesTestMixinNoPermissionDeny, SuccessMessageMixin, UpdateView):
     model = Availability
     form_class = AvailabilityForm
     success_message = _("Your availability is now updated! <a href='{}#cal-events'>Go back to my profile</a>")
@@ -49,7 +49,7 @@ class AvailabilityUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateVie
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
-class AvailabilityDeleteView(UserPassesTestMixin, DeleteView):
+class AvailabilityDeleteView(UserPassesTestMixinNoPermissionDeny, DeleteView):
     model = Availability
     success_url = reverse_lazy('my-profile')
 

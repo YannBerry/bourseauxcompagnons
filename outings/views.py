@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator
-from django.contrib.auth.mixins import UserPassesTestMixin
+from core.mixins import UserPassesTestMixinNoPermissionDeny
 from django.db.models import Q
 # Translation
 from django.utils.translation import gettext_lazy as _
@@ -131,7 +131,7 @@ class OutingCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
-class OutingUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class OutingUpdateView(UserPassesTestMixinNoPermissionDeny, SuccessMessageMixin, UpdateView):
     model = Outing
     form_class = OutingForm
     success_message = _("Your outing is now updated! <a href='{}#cal-events'>Go back to my profile</a>")
@@ -145,7 +145,7 @@ class OutingUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
 
 
 @method_decorator([login_required, profile_required], name='dispatch')
-class OutingDeleteView(UserPassesTestMixin, DeleteView):
+class OutingDeleteView(UserPassesTestMixinNoPermissionDeny, DeleteView):
     model = Outing
     success_url = reverse_lazy('my-profile')
 
