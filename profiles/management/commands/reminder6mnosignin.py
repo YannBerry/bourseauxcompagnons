@@ -1,6 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from datetime import timedelta
+from django.template.loader import render_to_string
+from django.db.models import Q
 # Translations
 from django.utils.translation import gettext_lazy as _
 from django.utils import translation
@@ -8,14 +10,12 @@ from django.utils import translation
 from django.contrib.sites.models import Site
 # Sending Emails
 from django.core.mail import BadHeaderError, EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.db.models import Q
 
 from profiles.models import Profile
 
 
 class Command(BaseCommand):
-    help = 'Send a reminder email to profiles that did not connect to their account for more than 6 months'
+    help = 'Send a reminder email to profiles that did not sign in to their account for more than 6 months'
 
     def handle(self, *args, **options):
         profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=26)) | Q(user__last_login = None))
@@ -34,8 +34,8 @@ class Command(BaseCommand):
                                 'domain': current_site.domain,
                                 'protocol': "https"
                 }
-                html_message = render_to_string('profiles/emails/reminder_6m_no_login_email_inline.html', email_context)
-                plain_message = render_to_string('profiles/emails/reminder_6m_no_login_email_plain.html', email_context)
+                html_message = render_to_string('profiles/emails/reminder_6m_no_signin_email_inline.html', email_context)
+                plain_message = render_to_string('profiles/emails/reminder_6m_no_signin_email_plain.html', email_context)
                 try:
                     email = EmailMultiAlternatives(subject_prefixed, plain_message, from_email, recipients, bcc=[bcc_bac])
                     email.attach_alternative(html_message, "text/html")
@@ -45,6 +45,6 @@ class Command(BaseCommand):
             # Get the list of email adress of outdated profiles
             profileslist = ', '.join(str(p) for p in profiles)
             # Set the stdout display for the shell
-            self.stdout.write(self.style.SUCCESS('Successfully sent a reminder email to profiles that did not connect in the past 6 months. Emails sent to: ' + profileslist))
+            self.stdout.write(self.style.SUCCESS('Successfully sent a reminder email to profiles that did not sign in in the past 6 months. Emails sent to: ' + profileslist))
         else:
             self.stdout.write(self.style.SUCCESS('All the profiles have at least 1 connection in the past 6 months. No email sent.'))

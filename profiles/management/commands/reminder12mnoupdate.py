@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from datetime import timedelta
+from django.template.loader import render_to_string
 # Translations
 from django.utils.translation import gettext_lazy as _
 from django.utils import translation
@@ -8,8 +9,6 @@ from django.utils import translation
 from django.contrib.sites.models import Site
 # Sending Emails
 from django.core.mail import BadHeaderError, EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.db.models import Q
 
 from profiles.models import Profile
 
@@ -18,7 +17,7 @@ class Command(BaseCommand):
     help = 'Send a reminder email to profiles that did not update their account in the past 12 months'
 
     def handle(self, *args, **options):
-        profiles = Profile.objects.select_related('user').filter(last_update__lt = timezone.now() - timedelta(weeks=2))
+        profiles = Profile.objects.select_related('user').filter(last_update__lt = timezone.now() - timedelta(weeks=52))
         if profiles:
             translation.activate('fr')
             current_site = Site.objects.get_current()
