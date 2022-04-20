@@ -1,0 +1,12 @@
+{% load i18n %}{% url 'login' as url_login %}{% translate 'Hi' %} {{ customuser.username }},
+
+{% blocktranslate %}You received an email from us 4 weeks ago warning you that without an action from you your account will be deleted as you haven't signed in for 2 years now. That's it. From now on, your account is deleted.{% endblocktranslate %}
+
+{% blocktranslate %}All your profile infos and all your personal data are deleted with no possibility to recover them.{% endblocktranslate %}
+
+{% blocktranslate %}If you want to create a new account please follow the link.{% endblocktranslate %}
+{% blocktranslate %}Create an account: {{ protocol }}://{{ domain }}{{ url_login }}.{% endblocktranslate %}
+
+{% translate 'Sportively yours' %}
+
+{{ site_name }} ({{ protocol }}://{{ domain }}) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}

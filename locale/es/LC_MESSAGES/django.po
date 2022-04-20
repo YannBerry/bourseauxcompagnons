@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 16:43+0200\n"
+"POT-Creation-Date: 2022-04-20 17:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -744,6 +744,7 @@ msgid "Your profile has been deactivated"
 msgstr ""
 
 #: profiles/management/commands/deactivation12mnosignin.py:26
+#: profiles/management/commands/deletion24mnosignin.py:26
 #: profiles/management/commands/reminder12mnoupdate.py:25
 #: profiles/management/commands/reminder6mnosignin.py:26
 #: profiles/management/commands/warning12mnosignin.py:26
@@ -751,6 +752,12 @@ msgstr ""
 #: profiles/views.py:348
 msgid "[Account] {}"
 msgstr "[Cuenta] {}"
+
+#: profiles/management/commands/deletion24mnosignin.py:25
+#, fuzzy
+#| msgid "Your outing is now updated!"
+msgid "Your account has been deleted"
+msgstr "Tu salida es ahora actualizada!"
 
 #: profiles/management/commands/reminder12mnoupdate.py:24
 #, fuzzy
@@ -905,6 +912,9 @@ msgstr "Alguien está tratando de contactar contigo."
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:327
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:123
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:1
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:325
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:121
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:1
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:326
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:122
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:1
@@ -974,6 +984,9 @@ msgstr ""
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:377
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:173
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:13
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:344
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:140
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:10
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:360
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:156
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:12
@@ -1004,6 +1017,9 @@ msgstr "Saludos deportivos"
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:393
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:189
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:15
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:360
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:156
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:12
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:376
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:172
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:14
@@ -1125,6 +1141,8 @@ msgstr ""
 
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:12
 #: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:12
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:10
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:10
 #: profiles/templates/profiles/profile_deletion_email.html:9
 #: profiles/templates/profiles/profile_deletion_email_inline.html:9
 #, fuzzy, python-format
@@ -1260,6 +1278,48 @@ msgstr ""
 msgid ""
 "If you want to delete your account please follow the link: %(protocol)s://"
 "%(domain)s%(url_delete_account)s"
+msgstr ""
+
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:309
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:105
+#, fuzzy
+#| msgid "Your outing is now updated!"
+msgid "Your account and all its data are deleted"
+msgstr "Tu salida es ahora actualizada!"
+
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:326
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:122
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:3
+msgid ""
+"You received an email from us 4 weeks ago warning you that without an action "
+"from you your account will be deleted as you haven't signed in for 2 years "
+"now. That's it. From now on, your account is deleted."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:327
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:123
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:5
+msgid ""
+"All your profile infos and all your personal data are deleted with no "
+"possibility to recover them."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:328
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:124
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:7
+msgid "If you want to create a new account please follow the link."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email.html:336
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_inline.html:132
+#, fuzzy
+#| msgid "Create an outing"
+msgid "Create an account"
+msgstr "Crear una salida"
+
+#: profiles/templates/profiles/emails/deletion_24m_no_signin_email_plain.html:8
+#, python-format
+msgid "Create an account: %(protocol)s://%(domain)s%(url_login)s."
 msgstr ""
 
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:11
@@ -2327,9 +2387,6 @@ msgstr "Contraseña"
 
 #~ msgid "<username>/contact/done/"
 #~ msgstr "<username>/contacto/realizado/"
-
-#~ msgid "Your outing is now updated!"
-#~ msgstr "Tu salida es ahora actualizada!"
 
 #~ msgid "Click to select activities"
 #~ msgstr "Pulsa para seleccionar actividades"

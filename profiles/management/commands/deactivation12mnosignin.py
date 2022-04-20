@@ -15,7 +15,7 @@ from profiles.models import Profile
 
 
 class Command(BaseCommand):
-    help = 'Deactivate the profiles that did not sign in to their account for more than 12 months + 2 week and inform them by email'
+    help = 'Deactivate profiles that did not sign in to their account for more than 12 months + 2 week and inform them by email'
 
     def handle(self, *args, **options):
         profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=54)) | Q(user__last_login = None))
@@ -48,6 +48,6 @@ class Command(BaseCommand):
             # Get the list of email adress of outdated profiles
             profileslist = ', '.join(str(p) for p in profiles)
             # Set the stdout display for the shell
-            self.stdout.write(self.style.SUCCESS('Successfully deactivated the profiles that did not sign in in the past 12 months + 2 week and informed them by email. Emails sent to: ' + profileslist))
+            self.stdout.write(self.style.SUCCESS('Successfully deactivated profiles that did not sign in in the past 12 months + 2 week and informed them by email. Emails sent to: ' + profileslist))
         else:
             self.stdout.write(self.style.SUCCESS('All the profiles have at least 1 connection in the past 12 months + 1 week. No email sent.'))
