@@ -18,7 +18,7 @@ class Command(BaseCommand):
     help = 'Send a warning email to profiles that did not sign in to their account for more than 12 months'
 
     def handle(self, *args, **options):
-        profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=52)) | Q(user__last_login = None))
+        profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=2)) | Q(user__last_login = None))
         if profiles:
             translation.activate('fr')
             current_site = Site.objects.get_current()
@@ -34,11 +34,11 @@ class Command(BaseCommand):
                                 'domain': current_site.domain,
                                 'protocol': "https"
                 }
-                #html_message = render_to_string('profiles/emails/warning_12m_no_signin_email_inline.html', email_context)
+                html_message = render_to_string('profiles/emails/warning_12m_no_signin_email_inline.html', email_context)
                 plain_message = render_to_string('profiles/emails/warning_12m_no_signin_email_plain.html', email_context)
                 try:
                     email = EmailMultiAlternatives(subject_prefixed, plain_message, from_email, recipients, bcc=[bcc_bac])
-                    #email.attach_alternative(html_message, "text/html")
+                    email.attach_alternative(html_message, "text/html")
                     email.send()
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')

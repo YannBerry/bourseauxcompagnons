@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 17:20+0200\n"
+"POT-Creation-Date: 2022-04-20 21:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -738,10 +738,8 @@ msgid "[Account] {}"
 msgstr "[Compte] {}"
 
 #: profiles/management/commands/deletion24mnosignin.py:25
-#, fuzzy
-#| msgid "Your profile has been deactivated"
 msgid "Your account has been deleted"
-msgstr "Votre profil a été désactivé"
+msgstr "Votre compte a été supprimé"
 
 #: profiles/management/commands/reminder12mnoupdate.py:24
 msgid "Think to update your profile!"
@@ -1427,15 +1425,15 @@ msgstr ""
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:127
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:5
 msgid ""
-"Otherwise your profile will be deactivated in 2 weeks meaning that you will "
-"not appear anymore in the profiles list. Then if you want to make your "
-"profile public once again you will just have to switch it on in your profile "
-"update form."
+"Otherwise your profile will be automatically deactivated in 2 weeks meaning "
+"that you will not appear anymore in the profiles list. Then if you want to "
+"make your profile public once again you will just have to switch it on in "
+"your profile update form."
 msgstr ""
-"Sinon votre profil sera désactivé dans 2 semaines. Vous n'apparaitrez plus "
-"dans la liste des profils. Et quand vous souhaiterez à nouveau rendre votre "
-"profil public il vous faudra vous rendre dans votre formulaire de mise à "
-"jour du profil pour l'activer en mode public."
+"Sinon votre profil sera automatiquement désactivé dans 2 semaines. Vous "
+"n'apparaitrez plus dans la liste des profils. Et quand vous souhaiterez à "
+"nouveau rendre votre profil public il vous faudra vous rendre dans votre "
+"formulaire de mise à jour du profil pour l'activer en mode public."
 
 #: profiles/templates/profiles/emails/warning_23m_no_signin_email.html:312
 #: profiles/templates/profiles/emails/warning_23m_no_signin_email_inline.html:108
@@ -2207,3 +2205,14 @@ msgstr "Valider et recevoir un email de confirmation"
 #: templates/registration/password_reset_subject.html:2
 msgid "Password reset"
 msgstr "Réinitialisation du mot de passe"
+
+#~ msgid ""
+#~ "Otherwise your profile will be deactivated in 2 weeks meaning that you "
+#~ "will not appear anymore in the profiles list. Then if you want to make "
+#~ "your profile public once again you will just have to switch it on in your "
+#~ "profile update form."
+#~ msgstr ""
+#~ "Sinon votre profil sera désactivé dans 2 semaines. Vous n'apparaitrez "
+#~ "plus dans la liste des profils. Et quand vous souhaiterez à nouveau "
+#~ "rendre votre profil public il vous faudra vous rendre dans votre "
+#~ "formulaire de mise à jour du profil pour l'activer en mode public."
