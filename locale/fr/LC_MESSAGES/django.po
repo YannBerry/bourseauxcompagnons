@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 21:18+0200\n"
+"POT-Creation-Date: 2022-04-20 21:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -750,9 +750,8 @@ msgid "Are you still using {}?"
 msgstr "Utilisez vous toujours {} ?"
 
 #: profiles/management/commands/warning12mnosignin.py:25
-msgid "Warning before profile deactivation. Are you still using {}?"
-msgstr ""
-"Alerte avant désactivation de votre profil. Utilisez vous toujours {} ?"
+msgid "Warning before profile deactivation"
+msgstr "Alerte avant désactivation de votre profil"
 
 #: profiles/management/commands/warning23mnosignin.py:25
 msgid "Warning before account deletion. Are you still using {}?"

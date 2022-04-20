@@ -22,7 +22,7 @@ class Command(BaseCommand):
         if profiles:
             translation.activate('fr')
             current_site = Site.objects.get_current()
-            subject=_("Warning before profile deactivation. Are you still using {}?").format(current_site.name)
+            subject=_("Warning before profile deactivation")
             subject_prefixed = _("[Account] {}").format(subject)
             from_email = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
             bcc_bac = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
