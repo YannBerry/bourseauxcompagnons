@@ -15,7 +15,7 @@ from profiles.models import Profile
 
 
 class Command(BaseCommand):
-    help = 'Send an reminder email to profiles that did not connect to their account for more than 6 months'
+    help = 'Send a reminder email to profiles that did not connect to their account for more than 6 months'
 
     def handle(self, *args, **options):
         profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=26)) | Q(user__last_login = None))

@@ -1,0 +1,14 @@
+{% load i18n %}{% url 'update-account' customuser.username as update_account_url %}{% url 'update-profile' customuser.username as update_profile_url %}{% translate 'Hi' %} {{ customuser.username }},
+
+{% blocktranslate %}You haven't updated your profile for 1 year now. As you can guess it, it is advisable to keep your profile updated in order to be contacted by the relevant partners.{% endblocktranslate %}
+
+{% blocktranslate %}It takes very little time and you will get more value from {{ site_name }}. With a complete, attractive and updated profile you highly increase the chances to be contacted :) And it's easy as pie!{% endblocktranslate %}
+
+{% blocktranslate %}Update my profile: {{ protocol }}://{{ domain }}{{ update_profile_url }}.{% endblocktranslate %}
+{% blocktranslate %}Update my account: {{ protocol }}://{{ domain }}{{ update_account_url }}.{% endblocktranslate %}
+
+{% blocktranslate with profile_email=customuser.get_username%}Reminder: Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}
+
+{% translate 'Sportively yours' %}
+
+{{ site_name }} ({{ protocol }}://{{ domain }}) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-19 19:04+0200\n"
+"POT-Creation-Date: 2022-04-20 14:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -730,18 +730,18 @@ msgid ""
 msgstr ""
 
 #: profiles/management/commands/deactivateprofile12mnologin.py:24
-#: profiles/management/commands/reminder12mnoupdate.py:24
-#: profiles/management/commands/reminder6mnologin.py:24
+#: profiles/management/commands/reminder12mnoupdate.py:26
+#: profiles/management/commands/reminder6mnologin.py:26
 #: profiles/management/commands/warningdeactivateprofile12mnologin.py:24
 #: profiles/views.py:247 profiles/views.py:348
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/management/commands/reminder12mnoupdate.py:23
+#: profiles/management/commands/reminder12mnoupdate.py:25
 msgid "Think to update your profile!"
 msgstr "Pensez à mettre à jour votre profil !"
 
-#: profiles/management/commands/reminder6mnologin.py:23
+#: profiles/management/commands/reminder6mnologin.py:25
 msgid "Are you still using {}?"
 msgstr "Utilisez vous toujours {} ?"
 
@@ -879,6 +879,9 @@ msgstr "Un internaute a pris contact avec vous."
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
 #: profiles/templates/profiles/contact_profile_email_plain.html:1
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:326
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:122
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:1
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:328
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:124
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:1
@@ -928,6 +931,9 @@ msgstr ""
 #: profiles/templates/profiles/contact_profile_email.html:345
 #: profiles/templates/profiles/contact_profile_email_inline.html:141
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:360
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:156
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:12
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:393
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:189
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:15
@@ -946,6 +952,9 @@ msgstr "Sportivement"
 #: profiles/templates/profiles/contact_profile_email.html:361
 #: profiles/templates/profiles/contact_profile_email_inline.html:157
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:376
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:172
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:14
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:409
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:205
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:17
@@ -1029,17 +1038,109 @@ msgstr ""
 "%(profile_contacted)s. Il/Elle préfère être contacté par e-mail.\n"
 "                    "
 
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:11
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:11
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:13
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:13
 #, python-format
 msgid "Reminder from %(site_name)s"
 msgstr "Rappel de %(site_name)s"
 
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:310
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:106
+msgid "Just a reminder to update your profile :)"
+msgstr "Un simple rappel de mise à jour de votre profil !"
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:327
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:123
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:3
+msgid ""
+"You haven't updated your profile for 1 year now. As you can guess it, it is "
+"advisable to keep your profile updated in order to be contacted by the "
+"relevant partners."
+msgstr ""
+"Vous n'avez pas mis à jour votre profile depuis 1 an maintenant. Comme vous "
+"vous en doutez, il est préférable de le garder à jour pour être contacté par "
+"des partenaires pertinents."
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:328
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:124
+#, python-format
+msgid ""
+"It takes <strong>very little time</strong> and you will get more value from "
+"%(site_name)s. <strong>With a complete, attractive and updated profile you "
+"highly increase the chances to be contacted :)</strong> And it's easy as pie!"
+msgstr ""
+"Ca prend <strong>peu de temps</strong> et vous obtiendrez plus de "
+"%(site_name)s. <strong>Avec un profil complet, attractif et à jour vous "
+"augmentez significativement les chances d'être contacté</strong> :) Et c'est "
+"simple comme bonjour !"
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:336
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:132
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:353
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:149
+#: profiles/templates/profiles/profile_form.html:13
+#: profiles/templates/profiles/profile_register_email.html:346
+#: profiles/templates/profiles/profile_register_email_inline.html:142
+msgid "Update my profile"
+msgstr "Mettre à jour mon profil"
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:351
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:147
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:368
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:164
+#: profiles/templates/profiles/profile_register_email.html:362
+#: profiles/templates/profiles/profile_register_email_inline.html:158
+#: templates/registration/account_form.html:4
+msgid "Update my account"
+msgstr "Mettre à jour mon compte"
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:359
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:155
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:10
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:392
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:188
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:13
+#, python-format
+msgid "Reminder: Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+"Rappel : Votre identifiant de connexion est votre adresse email : "
+"%(profile_email)s."
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:5
+#, python-format
+msgid ""
+"It takes very little time and you will get more value from %(site_name)s. "
+"With a complete, attractive and updated profile you highly increase the "
+"chances to be contacted :) And it's easy as pie!"
+msgstr ""
+"Ca prend peu de temps et vous obtiendrez plus de %(site_name)s. Avec un profil "
+"complet, attractif et à jour vous augmentez significativement les chances "
+"d'être contacté :) Et c'est simple comme bonjour !"
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:7
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:8
+#: profiles/templates/profiles/profile_register_email_plain.html:7
+#, python-format
+msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
+msgstr ""
+"Mettre à jour mon profil :  %(protocol)s://%(domain)s%(update_profile_url)s."
+
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:8
+#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:9
+#: profiles/templates/profiles/profile_register_email_plain.html:10
+#, python-format
+msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
+msgstr ""
+"Mettre à jour mon compte : %(protocol)s://%(domain)s%(update_account_url)s."
+
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:312
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:108
 #, python-format
 msgid "We just want to check if you still use %(site_name)s."
-msgstr "Nous souhaitons simplement savoir si vous utilisez encore %(site_name)s."
+msgstr ""
+"Nous souhaitons simplement savoir si vous utilisez encore %(site_name)s."
 
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:329
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:125
@@ -1059,8 +1160,8 @@ msgstr ""
 msgid ""
 "If you still use it please sign in to show us that you are still with us :)"
 msgstr ""
-"Si vous l'utilisez encore merci de vous connecter pour nous indiquer que vous "
-"êtes toujours avec nous :)"
+"Si vous l'utilisez encore merci de vous connecter pour nous indiquer que "
+"vous êtes toujours avec nous :)"
 
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:338
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:134
@@ -1068,22 +1169,6 @@ msgstr ""
 #: templates/registration/login.html:4 templates/registration/login.html:40
 msgid "Sign in"
 msgstr "Connexion"
-
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:353
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:149
-#: profiles/templates/profiles/profile_form.html:13
-#: profiles/templates/profiles/profile_register_email.html:346
-#: profiles/templates/profiles/profile_register_email_inline.html:142
-msgid "Update my profile"
-msgstr "Mettre à jour mon profil"
-
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:368
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:164
-#: profiles/templates/profiles/profile_register_email.html:362
-#: profiles/templates/profiles/profile_register_email_inline.html:158
-#: templates/registration/account_form.html:4
-msgid "Update my account"
-msgstr "Mettre à jour mon compte"
 
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:376
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:172
@@ -1097,38 +1182,14 @@ msgstr "Si vous souhaitez supprimer votre compte suivez le lien suivant :"
 msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email.html:392
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email_inline.html:188
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:13
-#, python-format
-msgid "Reminder: Your id to sign in is your email address: %(profile_email)s."
-msgstr ""
-"Rappel : Votre identifiant de connexion est votre adresse email : "
-"%(profile_email)s."
-
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:6
 #, python-format
 msgid "Sign in: %(protocol)s://%(domain)s%(url_login)s."
-msgstr ""
-"Connexion :  %(protocol)s://%(domain)s%(url_login)s."
+msgstr "Connexion :  %(protocol)s://%(domain)s%(url_login)s."
 
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:7
 msgid "Other usefull links:"
 msgstr "Autres lien utiles :"
-
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:8
-#: profiles/templates/profiles/profile_register_email_plain.html:7
-#, python-format
-msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
-msgstr ""
-"Mettre à jour mon profil :  %(protocol)s://%(domain)s%(update_profile_url)s."
-
-#: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:9
-#: profiles/templates/profiles/profile_register_email_plain.html:10
-#, python-format
-msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
-msgstr ""
-"Mettre à jour mon compte : %(protocol)s://%(domain)s%(update_account_url)s."
 
 #: profiles/templates/profiles/emails/reminder_6m_no_login_email_plain.html:11
 #, python-format
@@ -1887,14 +1948,4 @@ msgstr "Valider et recevoir un email de confirmation"
 msgid "Password reset"
 msgstr "Réinitialisation du mot de passe"
 
-#~ msgid "features/"
-#~ msgstr "fonctionnalites/"
 
-#~ msgid "votes/"
-#~ msgstr "votes/"
-
-#~ msgid "FEATURES"
-#~ msgstr "FONCTIONNALITES"
-
-#~ msgid "Message from Bourse aux compagnons"
-#~ msgstr "Message de la Bourse aux compagnons"
