@@ -1,0 +1,17 @@
+{% load i18n %}{% url 'login' as url_login %}{% url 'update-account' customuser.username as update_account_url %}{% url 'update-profile' customuser.username as update_profile_url %}{% url 'delete-account' customuser.username as url_delete_account %}{% translate 'Hi' %} {{ customuser.username }},
+
+{% blocktranslate %}You haven't signed in for almost 2 years now. We just wanted to know if you are still using {{ site_name }} to find mountain partners.{% endblocktranslate %}
+
+{% blocktranslate %}If you still use it please sign in to show us that you are still with us :){% endblocktranslate %} {% blocktranslate %}Otherwise your account will be automatically deleted in 1 months. All your profile infos and all your personal data will be deleted with no possibility to recover them.{% endblocktranslate %}
+-{% blocktranslate %}Sign in: {{ protocol }}://{{ domain }}{{ url_login }}.{% endblocktranslate %}
+-{% blocktranslate %}Other usefull links:{% endblocktranslate %}
+   -{% blocktranslate %}Update my profile: {{ protocol }}://{{ domain }}{{ update_profile_url }}.{% endblocktranslate %}
+   -{% blocktranslate %}Update my account: {{ protocol }}://{{ domain }}{{ update_account_url }}.{% endblocktranslate %}
+
+{% blocktranslate %}If you want to delete your account please follow the link: {{ protocol }}://{{ domain }}{{ url_delete_account }}{% endblocktranslate %}
+
+{% blocktranslate with profile_email=customuser.get_username%}Reminder: Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}
+
+{% translate 'Sportively yours' %}
+
+{{ site_name }} ({{ protocol }}://{{ domain }}) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}
