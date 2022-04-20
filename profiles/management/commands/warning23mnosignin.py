@@ -47,4 +47,4 @@ class Command(BaseCommand):
             # Set the stdout display for the shell
             self.stdout.write(self.style.SUCCESS('Successfully sent a warning email to profiles that did not sign in in the past 23 months. Emails sent to: ' + profileslist))
         else:
-            self.stdout.write(self.style.SUCCESS('All the profiles have at least 1 connection in the past 12 months. No email sent.'))
+            self.stdout.write(self.style.SUCCESS('All the profiles have at least 1 connection in the past 23 months. No email sent.'))
