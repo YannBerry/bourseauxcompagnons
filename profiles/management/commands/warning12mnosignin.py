@@ -34,11 +34,11 @@ class Command(BaseCommand):
                                 'domain': current_site.domain,
                                 'protocol': "https"
                 }
-                html_message = render_to_string('profiles/emails/warning_12m_no_signin_email_inline.html', email_context)
+                #html_message = render_to_string('profiles/emails/warning_12m_no_signin_email_inline.html', email_context)
                 plain_message = render_to_string('profiles/emails/warning_12m_no_signin_email_plain.html', email_context)
                 try:
                     email = EmailMultiAlternatives(subject_prefixed, plain_message, from_email, recipients, bcc=[bcc_bac])
-                    email.attach_alternative(html_message, "text/html")
+                    #email.attach_alternative(html_message, "text/html")
                     email.send()
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
