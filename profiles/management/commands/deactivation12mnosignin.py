@@ -18,7 +18,7 @@ class Command(BaseCommand):
     help = 'Deactivate the profiles that did not sign in to their account for more than 12 months + 2 week and inform them by email'
 
     def handle(self, *args, **options):
-        profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=53)) | Q(user__last_login = None))
+        profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=54)) | Q(user__last_login = None))
         if profiles:
             translation.activate('fr')
             current_site = Site.objects.get_current()
