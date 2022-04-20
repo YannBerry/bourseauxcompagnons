@@ -119,12 +119,12 @@ class Profile(models.Model):
         return age
 
     @display(boolean=True)
-    def loggedin_less_than_6_month_ago(self):
-        return self.user.last_login > timezone.now() - timedelta(weeks=26) if self.user.last_login else False
+    def loggedin_less_than_12_month_ago(self):
+        return self.user.last_login > timezone.now() - timedelta(weeks=52) if self.user.last_login else False
 
     @display(boolean=True)
-    def updated_less_than_6_month_ago(self):
-        return self.last_update > timezone.now() - timedelta(weeks=26)
+    def updated_less_than_12_month_ago(self):
+        return self.last_update > timezone.now() - timedelta(weeks=52)
 
     @property    
     def completion(self):

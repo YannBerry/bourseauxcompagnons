@@ -39,7 +39,7 @@ delete_profile_cleanly.short_description = _("Delete selected profiles cleanly (
 
 class ProfileAdmin(GISModelAdmin):
     # gis_widget = OpenLayersWidget # OSMWidget is the default value but I added this line anyway if one day I want to change it to OpenLayersWidget with another base layer thanks to the template_name attribute.
-    list_display = ('email', 'username', 'first_name', 'age', 'public_profile', 'loggedin_less_than_6_month_ago', 'last_login', 'updated_less_than_6_month_ago', 'last_update',)
+    list_display = ('email', 'username', 'first_name', 'age', 'public_profile', 'loggedin_less_than_12_month_ago', 'last_login', 'updated_less_than_12_month_ago', 'last_update',)
     readonly_fields = ['age']
     actions = GISModelAdmin.actions + [delete_profile_cleanly]
 

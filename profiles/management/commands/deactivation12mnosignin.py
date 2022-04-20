@@ -34,17 +34,17 @@ class Command(BaseCommand):
                                 'domain': current_site.domain,
                                 'protocol': "https"
                 }
-                #html_message = render_to_string('profiles/emails/deactivation_12m_no_signin_email_inline.html', email_context)
+                html_message = render_to_string('profiles/emails/deactivation_12m_no_signin_email_inline.html', email_context)
                 plain_message = render_to_string('profiles/emails/deactivation_12m_no_signin_email_plain.html', email_context)
                 try:
                     email = EmailMultiAlternatives(subject_prefixed, plain_message, from_email, recipients, bcc=[bcc_bac])
-                    # email.attach_alternative(html_message, "text/html")
+                    email.attach_alternative(html_message, "text/html")
                     email.send()
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
                 # Deactivate profiles
-                # p.public_profile = False
-                # p.save(update_fields=['public_profile'])
+                p.public_profile = False
+                p.save(update_fields=['public_profile'])
             # Get the list of email adress of outdated profiles
             profileslist = ', '.join(str(p) for p in profiles)
             # Set the stdout display for the shell

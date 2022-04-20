@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 15:22+0200\n"
+"POT-Creation-Date: 2022-04-20 16:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -897,6 +897,9 @@ msgstr "Alguien está tratando de contactar contigo."
 #: profiles/templates/profiles/contact_profile_email.html:325
 #: profiles/templates/profiles/contact_profile_email_inline.html:121
 #: profiles/templates/profiles/contact_profile_email_plain.html:1
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:327
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:123
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:1
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:326
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:122
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:1
@@ -960,6 +963,9 @@ msgstr ""
 #: profiles/templates/profiles/contact_profile_email.html:345
 #: profiles/templates/profiles/contact_profile_email_inline.html:141
 #: profiles/templates/profiles/contact_profile_email_plain.html:14
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:377
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:173
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:13
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:360
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:156
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:12
@@ -984,6 +990,9 @@ msgstr "Saludos deportivos"
 #: profiles/templates/profiles/contact_profile_email.html:361
 #: profiles/templates/profiles/contact_profile_email_inline.html:157
 #: profiles/templates/profiles/contact_profile_email_plain.html:16
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:393
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:189
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:15
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:376
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:172
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:14
@@ -1100,6 +1109,131 @@ msgid ""
 "                    "
 msgstr ""
 
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:12
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:12
+#: profiles/templates/profiles/profile_deletion_email.html:9
+#: profiles/templates/profiles/profile_deletion_email_inline.html:9
+#, fuzzy, python-format
+#| msgid "Welcome on Bourse aux compagnons"
+msgid "Message from %(site_name)s"
+msgstr "Bienvenido a Bourse aux compagnons"
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:311
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:107
+#, fuzzy
+#| msgid "Your outing is now published!"
+msgid "Your profile is not public anymore."
+msgstr "Tu salida es ahora publicada!"
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:328
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:124
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:3
+msgid ""
+"You received an email from us 2 weeks ago warning you that without an action "
+"from you your profile will be desactivated as you haven't signed in for 1 "
+"year now. That's it. From now on, your profile doesn't appear anymore in the "
+"profiles list."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:329
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:125
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:5
+msgid ""
+"If you want to make your profile public once again you just have to switch "
+"it on in your profile update form."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:337
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:133
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:336
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:132
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:353
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:149
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:354
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:150
+#: profiles/templates/profiles/profile_form.html:13
+#: profiles/templates/profiles/profile_register_email.html:346
+#: profiles/templates/profiles/profile_register_email_inline.html:142
+msgid "Update my profile"
+msgstr "Actualizar mi perfil"
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:352
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:148
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:351
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:147
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:368
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:164
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:369
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:165
+#: profiles/templates/profiles/profile_register_email.html:362
+#: profiles/templates/profiles/profile_register_email_inline.html:158
+#: templates/registration/account_form.html:4
+msgid "Update my account"
+msgstr "Actualizar mi cuenta"
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:360
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:156
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:376
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:172
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:377
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:173
+msgid "If you want to delete your account please follow the link:"
+msgstr ""
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:368
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:164
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:384
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:180
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:385
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:181
+#: profiles/templates/profiles/my_profile.html:80
+#: templates/registration/account_confirm_delete.html:4
+msgid "Delete my account"
+msgstr "Borrar mi cuenta"
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email.html:376
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_inline.html:172
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:11
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:359
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:155
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:10
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:392
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:188
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:13
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:393
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:189
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:13
+#, python-format
+msgid "Reminder: Your id to sign in is your email address: %(profile_email)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:6
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:7
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:8
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:8
+#: profiles/templates/profiles/profile_register_email_plain.html:7
+#, python-format
+msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:7
+#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:8
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:9
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:9
+#: profiles/templates/profiles/profile_register_email_plain.html:10
+#, python-format
+msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
+msgstr ""
+
+#: profiles/templates/profiles/emails/deactivation_12m_no_signin_email_plain.html:9
+#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:11
+#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:11
+#, python-format
+msgid ""
+"If you want to delete your account please follow the link: %(protocol)s://"
+"%(domain)s%(url_delete_account)s"
+msgstr ""
+
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:11
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:11
 #: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:13
@@ -1134,65 +1268,12 @@ msgid ""
 "highly increase the chances to be contacted :)</strong> And it's easy as pie!"
 msgstr ""
 
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:336
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:132
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:353
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:149
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:354
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:150
-#: profiles/templates/profiles/profile_form.html:13
-#: profiles/templates/profiles/profile_register_email.html:346
-#: profiles/templates/profiles/profile_register_email_inline.html:142
-msgid "Update my profile"
-msgstr "Actualizar mi perfil"
-
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:351
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:147
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:368
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:164
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:369
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:165
-#: profiles/templates/profiles/profile_register_email.html:362
-#: profiles/templates/profiles/profile_register_email_inline.html:158
-#: templates/registration/account_form.html:4
-msgid "Update my account"
-msgstr "Actualizar mi cuenta"
-
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email.html:359
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email_inline.html:155
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:10
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:392
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:188
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:13
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:393
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:189
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:13
-#, python-format
-msgid "Reminder: Your id to sign in is your email address: %(profile_email)s."
-msgstr ""
-
 #: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:5
 #, python-format
 msgid ""
 "It takes very little time and you will get more value from %(site_name)s. "
 "With a complete, attractive and updated profile you highly increase the "
 "chances to be contacted :) And it's easy as pie!"
-msgstr ""
-
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:7
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:8
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:8
-#: profiles/templates/profiles/profile_register_email_plain.html:7
-#, python-format
-msgid "Update my profile: %(protocol)s://%(domain)s%(update_profile_url)s."
-msgstr ""
-
-#: profiles/templates/profiles/emails/reminder_12m_no_update_email_plain.html:8
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:9
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:9
-#: profiles/templates/profiles/profile_register_email_plain.html:10
-#, python-format
-msgid "Update my account: %(protocol)s://%(domain)s%(update_account_url)s."
 msgstr ""
 
 #: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:312
@@ -1228,22 +1309,6 @@ msgstr ""
 msgid "Sign in"
 msgstr "Iniciar sesión"
 
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:376
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:172
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:377
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:173
-msgid "If you want to delete your account please follow the link:"
-msgstr ""
-
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email.html:384
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_inline.html:180
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:385
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:181
-#: profiles/templates/profiles/my_profile.html:80
-#: templates/registration/account_confirm_delete.html:4
-msgid "Delete my account"
-msgstr "Borrar mi cuenta"
-
 #: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:5
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:5
 msgid ""
@@ -1261,14 +1326,6 @@ msgstr ""
 msgid "Other usefull links:"
 msgstr ""
 
-#: profiles/templates/profiles/emails/reminder_6m_no_signin_email_plain.html:11
-#: profiles/templates/profiles/emails/warning_12m_no_signin_email_plain.html:11
-#, python-format
-msgid ""
-"If you want to delete your account please follow the link: %(protocol)s://"
-"%(domain)s%(url_delete_account)s"
-msgstr ""
-
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:13
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:13
 #, fuzzy, python-format
@@ -1278,10 +1335,8 @@ msgstr "Bienvenido a Bourse aux compagnons"
 
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:312
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:108
-#, fuzzy
-#| msgid "Your outing is now published!"
-msgid "Your profile is not public anymore."
-msgstr "Tu salida es ahora publicada!"
+msgid "Warning before deactivation of your profile"
+msgstr ""
 
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email.html:330
 #: profiles/templates/profiles/emails/warning_12m_no_signin_email_inline.html:126
@@ -1479,13 +1534,6 @@ msgstr "Importación / Exportación para superadministradores"
 #: profiles/templates/profiles/my_profile.html:173
 msgid "Nothing for now."
 msgstr ""
-
-#: profiles/templates/profiles/profile_deletion_email.html:9
-#: profiles/templates/profiles/profile_deletion_email_inline.html:9
-#, fuzzy, python-format
-#| msgid "Welcome on Bourse aux compagnons"
-msgid "Message from %(site_name)s"
-msgstr "Bienvenido a Bourse aux compagnons"
 
 #: profiles/templates/profiles/profile_deletion_email.html:308
 #: profiles/templates/profiles/profile_deletion_email_inline.html:104

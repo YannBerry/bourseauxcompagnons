@@ -1,0 +1,15 @@
+{% load i18n %}{% url 'update-account' customuser.username as update_account_url %}{% url 'update-profile' customuser.username as update_profile_url %}{% url 'delete-account' customuser.username as url_delete_account %}{% translate 'Hi' %} {{ customuser.username }},
+
+{% blocktranslate %}You received an email from us 2 weeks ago warning you that without an action from you your profile will be desactivated as you haven't signed in for 1 year now. That's it. From now on, your profile doesn't appear anymore in the profiles list.{% endblocktranslate %}
+
+{% blocktranslate %}If you want to make your profile public once again you just have to switch it on in your profile update form.{% endblocktranslate %}
+{% blocktranslate %}Update my profile: {{ protocol }}://{{ domain }}{{ update_profile_url }}.{% endblocktranslate %}
+{% blocktranslate %}Update my account: {{ protocol }}://{{ domain }}{{ update_account_url }}.{% endblocktranslate %}
+
+{% blocktranslate %}If you want to delete your account please follow the link: {{ protocol }}://{{ domain }}{{ url_delete_account }}{% endblocktranslate %}
+
+{% blocktranslate with profile_email=customuser.get_username%}Reminder: Your id to sign in is your email address: {{ profile_email }}.{% endblocktranslate %}
+
+{% translate 'Sportively yours' %}
+
+{{ site_name }} ({{ protocol }}://{{ domain }}) {% translate 'facilitates the bringing together of mountain sportsmen and sportswomen.' %}
