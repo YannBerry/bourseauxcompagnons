@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 from django.contrib.messages import constants as messages
+from django.utils.translation import gettext_lazy as _
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -135,10 +136,10 @@ DATABASES = {
 LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('fr', 'French'),
-    ('es', 'Spanish'),
-    ('it', 'Italian'),
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('es', _('Spanish')),
+    ('it', _('Italian')),
 ]
 
 

@@ -16,7 +16,7 @@ from django.contrib.auth.signals import user_logged_out, user_logged_in
 from django.dispatch import receiver
 # Translation
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import get_language
+from django.utils.translation import activate, get_language
 # GeoDjango
 from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geos import fromstr
@@ -179,7 +179,9 @@ def ContactProfileView(request, **kwargs):
 
     if request.method == 'POST':
         form = ContactProfileForm(request.POST)
+        cur_language = get_language()
         if form.is_valid():
+            activate(user_contacted.language)
             subject = form.cleaned_data['subject']
             subject_prefixed = _("[Contact] {}").format(subject)
             from_email = form.cleaned_data['from_email']
@@ -209,6 +211,7 @@ def ContactProfileView(request, **kwargs):
                 email.send()
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+            activate(cur_language)
             msg = _('Your message has been sent by email to {}. Hopefully, he or she will get back to you soon! :) <a href="{}">Go back to the profiles page</a>').format(user_contacted_name, reverse_lazy('profiles:list'))
             messages.add_message(request, messages.SUCCESS, msg)
             return redirect('profiles:detail', username=user_contacted_username)

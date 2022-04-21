@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django.db.models import Q
 # Translations
 from django.utils.translation import gettext_lazy as _
-from django.utils import translation
+from django.utils.translation import activate, get_language
 # Sites
 from django.contrib.sites.models import Site
 # Sending Emails
@@ -20,14 +20,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=100)) | Q(user__last_login = None))
         if profiles:
-            translation.activate('fr')
             current_site = Site.objects.get_current()
-            subject=_("Warning before account deletion. Are you still using {}?").format(current_site.name)
-            subject_prefixed = _("[Account] {}").format(subject)
             from_email = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
             bcc_bac = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
+            cur_language = get_language()
             for p in profiles:
                 # Send warning email
+                activate(p.user.language)
+                subject=_("Warning before account deletion. Are you still using {}?").format(current_site.name)
+                subject_prefixed = _("[Account] {}").format(subject)
                 recipients = [p.user.email]
                 email_context = {'customuser': p.user,
                                 'site_name': current_site.name,
@@ -42,6 +43,7 @@ class Command(BaseCommand):
                     email.send()
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
+            activate(cur_language)
             # Get the list of email adress of outdated profiles
             profileslist = ', '.join(str(p) for p in profiles)
             # Set the stdout display for the shell

@@ -8,6 +8,7 @@ from datetime import timedelta
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.admin import display
+from bac.settings import LANGUAGES
 
 from activities.models import Activity, Grade
 
@@ -26,6 +27,13 @@ class CustomUser(AbstractUser):
         help_text=_("Enter your phone number with your calling country code (Fr +33 | It +39 | Sp +34 | UK +44). Ex: write +33600000000 instead of 0600000000."),
         null=True,
         blank=True
+    )
+    language = models.CharField(
+        verbose_name=_('language'),
+        help_text=_("Language that will be used in the email we will send to you."),
+        max_length=30,
+        choices=LANGUAGES,
+        default='fr'
     )
 
     USERNAME_FIELD = 'email'

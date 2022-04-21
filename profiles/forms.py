@@ -93,6 +93,7 @@ class ProfileCreationForm(NoColonForm, CustomUserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.is_profile = True
+        user.language = get_language()
         user.save()
         profile = Profile.objects.create(user=user)
         profile.activities.add(*self.cleaned_data.get('activities'))
@@ -219,7 +220,7 @@ class AccountForm(NoColonModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['email', 'username', 'first_name', 'last_name', 'phone_number']
+        fields = ['email', 'username', 'first_name', 'last_name', 'phone_number', 'language']
 
     def clean(self):
         cleaned_data = super().clean()
