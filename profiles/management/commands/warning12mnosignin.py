@@ -40,11 +40,7 @@ class Command(BaseCommand):
                 try:
                     email = EmailMultiAlternatives(subject_prefixed, plain_message, from_email, recipients, bcc=[bcc_bac])
                     email.attach_alternative(html_message, "text/html")
-                    #email.send()
-                    content_text = email.message().as_bytes()
-                    file_name = "/tmp/djangomail{}.eml".format(p.user.username)
-                    with open(file_name, "wb") as outfile:
-                        outfile.write(content_text)
+                    email.send()
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
             activate(cur_language)
