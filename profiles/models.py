@@ -105,6 +105,7 @@ class Profile(models.Model):
     )
     profile_picture = models.ImageField(verbose_name = _('profile picture'), upload_to=user_directory_path_pict, null=True, blank=True)
     last_update = models.DateTimeField(verbose_name=_('last update'), auto_now=True)
+    #profile_inactivity_email_sent = models.JSONField()
 
     class Meta:
         verbose_name = _('profile')
