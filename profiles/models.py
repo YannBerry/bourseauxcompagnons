@@ -35,6 +35,7 @@ class CustomUser(AbstractUser):
         choices=LANGUAGES,
         default='fr'
     )
+    inactivity_email_sent = models.JSONField(verbose_name=_('inactivity email sent'), blank=True, default=list) # I want the default value to be an empty list ([]). The default value one should be a immutable object or a callable objet. I want to set it to an empty list but [] is a mutable, so I use the list() fonction by giving the callable objet list which is a class and will be called by list(). In the admin the form validation of the JSONField raise an error if it equal [] because EMPTY_VALUES = (None, '', [], (), {}). So I add blank=True.
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -105,8 +106,7 @@ class Profile(models.Model):
     )
     profile_picture = models.ImageField(verbose_name = _('profile picture'), upload_to=user_directory_path_pict, null=True, blank=True)
     last_update = models.DateTimeField(verbose_name=_('last update'), auto_now=True)
-    #profile_inactivity_email_sent = models.JSONField()
-
+    
     class Meta:
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')

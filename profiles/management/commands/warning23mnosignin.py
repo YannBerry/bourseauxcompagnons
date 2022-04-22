@@ -1,52 +1,68 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from datetime import timedelta
-from django.template.loader import render_to_string
 from django.db.models import Q
+from profiles.management.commands.utils import send_notif_email, remove_account_inactivity_email_sent
 # Translations
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import activate, get_language
 # Sites
 from django.contrib.sites.models import Site
-# Sending Emails
-from django.core.mail import BadHeaderError, EmailMultiAlternatives
 
 from profiles.models import Profile
 
+
+command_name = 'warning23mnosignin'
 
 class Command(BaseCommand):
     help = 'Send a warning email to profiles that did not sign in to their account for more than 23 months'
 
     def handle(self, *args, **options):
-        profiles = Profile.objects.select_related('user').filter(Q(user__last_login__lt = timezone.now() - timedelta(weeks=100)) | Q(user__last_login = None))
-        if profiles:
+        ### Get the queryset ###
+        referencedate = timezone.now() - timedelta(weeks=100)
+        profiles_inactive = Profile.objects.select_related('user').filter(Q(user__last_login__lt = referencedate) | Q(user__last_login = None)).exclude(user__inactivity_email_sent__contains=command_name)
+        profiles_active_again = Profile.objects.filter(Q(user__inactivity_email_sent__contains=command_name) & Q(user__last_login__gte = referencedate))
+        
+        ### Treat the case of profiles_active_again ###
+        if profiles_active_again:
+            for p in profiles_active_again:
+                remove_account_inactivity_email_sent(command_name=command_name, profile=p)
+        
+        ### Treat the case of profiles_inactive ###
+        if profiles_inactive:
             current_site = Site.objects.get_current()
-            from_email = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
-            bcc_bac = "Bourse aux compagnons <contact@bourseauxcompagnons.fr>"
             cur_language = get_language()
-            for p in profiles:
+            for p in profiles_inactive:
                 # Send warning email
                 activate(p.user.language)
                 subject=_("Warning before account deletion. Are you still using {}?").format(current_site.name)
-                subject_prefixed = _("[Account] {}").format(subject)
-                recipients = [p.user.email]
-                email_context = {'customuser': p.user,
-                                'site_name': current_site.name,
-                                'domain': current_site.domain,
-                                'protocol': "https"
-                }
-                html_message = render_to_string('profiles/emails/warning_23m_no_signin_email_inline.html', email_context)
-                plain_message = render_to_string('profiles/emails/warning_23m_no_signin_email_plain.html', email_context)
-                try:
-                    email = EmailMultiAlternatives(subject_prefixed, plain_message, from_email, recipients, bcc=[bcc_bac])
-                    email.attach_alternative(html_message, "text/html")
-                    email.send()
-                except BadHeaderError:
-                    return HttpResponse('Invalid header found.')
+                send_notif_email(profile=p,
+                                site_name=current_site.name,
+                                site_domain = current_site.domain,
+                                subject=subject,
+                                html_message_name='warning_23m_no_signin_email_inline',
+                                plain_message_name='warning_23m_no_signin_email_plain',
+                                command_name=command_name
+                )
             activate(cur_language)
-            # Get the list of email adress of outdated profiles
-            profileslist = ', '.join(str(p) for p in profiles)
-            # Set the stdout display for the shell
-            self.stdout.write(self.style.SUCCESS('Successfully sent a warning email to profiles that did not sign in in the past 23 months. Emails sent to: ' + profileslist))
+        
+        ### Set the stdout display for the shell ###
+        # Get the list of email adress of profiles_inactive
+        profiles_inactive_list = ', '.join(str(p) for p in profiles_inactive)
+        # Get the list of email adress of profiles_active_again
+        profiles_active_again_list = ', '.join(str(p) for p in profiles_active_again)
+        # Defining stdout messages
+        main_message_profiles_inactive = 'Successfully sent a warning email to profiles that did not sign in in the past 23 months. Emails sent to: ' + profiles_inactive_list
+        main_message_no_profiles_inactive = 'All the profiles have at least 1 connection in the past 23 months or are already informed by mail. No email sent.'
+        extra_message_profiles_active_again = '\nList of profiles back to activity: ' + profiles_active_again_list
+        # Set the stdout display for the shell
+        if profiles_inactive:
+            if profiles_active_again_list:
+                self.stdout.write(self.style.SUCCESS(main_message_profiles_inactive + extra_message_profiles_active_again))
+            else:
+                self.stdout.write(self.style.SUCCESS(main_message_profiles_inactive))
         else:
-            self.stdout.write(self.style.SUCCESS('All the profiles have at least 1 connection in the past 23 months. No email sent.'))
+            if profiles_active_again_list:
+                self.stdout.write(self.style.SUCCESS(main_message_no_profiles_inactive + extra_message_profiles_active_again))
+            else:
+                self.stdout.write(self.style.SUCCESS(main_message_no_profiles_inactive))

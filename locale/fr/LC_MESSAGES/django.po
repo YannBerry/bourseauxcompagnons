@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 16:08+0200\n"
+"POT-Creation-Date: 2022-04-22 20:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgid "activity"
 msgstr "activité"
 
 #: activities/models.py:10 availabilities/models.py:18 outings/models.py:26
-#: profiles/models.py:77
+#: profiles/models.py:78
 msgid "activities"
 msgstr "activités"
 
@@ -39,7 +39,7 @@ msgstr "ordre"
 msgid "grade"
 msgstr "cotation"
 
-#: activities/models.py:27 profiles/models.py:83
+#: activities/models.py:27 profiles/models.py:84
 msgid "grades"
 msgstr "cotations"
 
@@ -693,23 +693,27 @@ msgstr "Autorisations"
 msgid "Important dates"
 msgstr "Dates importantes"
 
-#: profiles/admin.py:37
+#: profiles/admin.py:22
+msgid "Inactivity email sent"
+msgstr "E-mail d'inactivité envoyé"
+
+#: profiles/admin.py:38
 msgid "Delete selected profiles cleanly (user.is_profile=False)"
 msgstr "Supprimer proprement les profils sélectionnés (user.is_profile=False)"
 
-#: profiles/admin.py:54
+#: profiles/admin.py:55
 msgid "Email"
 msgstr "Email"
 
-#: profiles/admin.py:59 profiles/templates/profiles/my_profile.html:64
+#: profiles/admin.py:60 profiles/templates/profiles/my_profile.html:64
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: profiles/admin.py:64 profiles/templates/profiles/my_profile.html:67
+#: profiles/admin.py:65 profiles/templates/profiles/my_profile.html:67
 msgid "First name"
 msgstr "Prénom"
 
-#: profiles/admin.py:69
+#: profiles/admin.py:70
 msgid "Last login"
 msgstr "Last login"
 
@@ -729,7 +733,7 @@ msgstr ""
 msgid "Grades"
 msgstr "Cotations"
 
-#: profiles/forms.py:247 profiles/models.py:84
+#: profiles/forms.py:247 profiles/models.py:85
 msgid ""
 "Select your comfortable grade for each of the activities you have chosen."
 msgstr ""
@@ -746,10 +750,8 @@ msgstr "Votre profil a été désactivé"
 #: profiles/management/commands/deactivation12mnosignin.py:31
 #: profiles/management/commands/deletion24mnosignin.py:31
 #: profiles/management/commands/reminder12mnoupdate.py:30
-#: profiles/management/commands/reminder6mnosignin.py:31
-#: profiles/management/commands/warning12mnosignin.py:31
-#: profiles/management/commands/warning23mnosignin.py:31 profiles/views.py:247
-#: profiles/views.py:348
+#: profiles/management/commands/utils.py:29 profiles/views.py:250
+#: profiles/views.py:351
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
@@ -761,15 +763,15 @@ msgstr "Votre compte a été supprimé"
 msgid "Think to update your profile!"
 msgstr "Pensez à mettre à jour votre profil !"
 
-#: profiles/management/commands/reminder6mnosignin.py:30
+#: profiles/management/commands/reminder6mnosignin.py:38
 msgid "Are you still using {}?"
 msgstr "Utilisez vous toujours {} ?"
 
-#: profiles/management/commands/warning12mnosignin.py:30
+#: profiles/management/commands/warning12mnosignin.py:38
 msgid "Warning before profile deactivation"
 msgstr "Alerte avant désactivation de votre profil"
 
-#: profiles/management/commands/warning23mnosignin.py:30
+#: profiles/management/commands/warning23mnosignin.py:38
 msgid "Warning before account deletion. Are you still using {}?"
 msgstr "Alerte avant suppression de votre profil. Utilisez vous toujours {} ?"
 
@@ -801,35 +803,39 @@ msgstr "langue"
 msgid "Language that will be used in the email we will send to you."
 msgstr "Langue qui sera utilisée dans les e-mails que nous vous enverrons."
 
-#: profiles/models.py:43
+#: profiles/models.py:38
+msgid "inactivity email sent"
+msgstr "e-mail d'inactivité envoyé"
+
+#: profiles/models.py:44
 msgid "base user"
 msgstr "utilisateur de base"
 
-#: profiles/models.py:44
+#: profiles/models.py:45
 msgid "base users"
 msgstr "utilisateurs de base"
 
-#: profiles/models.py:62
+#: profiles/models.py:63
 msgid "public profile"
 msgstr "profil public"
 
-#: profiles/models.py:62
+#: profiles/models.py:63
 msgid "When your profile is public, it is displayed in the profiles list."
 msgstr "Quand votre profil est public, il apparait dans la liste des profils."
 
-#: profiles/models.py:64
+#: profiles/models.py:65
 msgid "location"
 msgstr "emplacement"
 
-#: profiles/models.py:65
+#: profiles/models.py:66
 msgid "Click on the map to show where you live."
 msgstr "Cliquez sur la carte pour montrer où vous résidez."
 
-#: profiles/models.py:70
+#: profiles/models.py:71
 msgid "introduction"
 msgstr "présentation"
 
-#: profiles/models.py:71
+#: profiles/models.py:72
 msgid ""
 "Take your time to write a concise introduction that makes people want to "
 "know your better! The first 200 characters are displayed in the profiles "
@@ -839,11 +845,11 @@ msgstr ""
 "premiers caractères apparaissent dans la liste des profils donc soignez-"
 "les :)"
 
-#: profiles/models.py:74
+#: profiles/models.py:75
 msgid "list of courses"
 msgstr "liste de courses"
 
-#: profiles/models.py:78
+#: profiles/models.py:79
 msgid ""
 "Select at least one activity that you practice and for which you are "
 "searching for partners."
@@ -851,11 +857,11 @@ msgstr ""
 "Sélectionnez au moins une activité que vous pratiquez et pour laquelle vous "
 "cherchez des partenaires."
 
-#: profiles/models.py:88
+#: profiles/models.py:89
 msgid "availability area"
 msgstr "zone de disponibilité"
 
-#: profiles/models.py:89
+#: profiles/models.py:90
 msgid ""
 "Click on the map to build the area where you are available for going out in "
 "the mountains. Tip: click on 'Shift' key while you draw to activate freehand "
@@ -865,11 +871,11 @@ msgstr ""
 "sortir en montagne. Astuce : cliquez sur la touche 'Shift' pendant que vous "
 "dessinez pour activer le dessin à main levée."
 
-#: profiles/models.py:94
+#: profiles/models.py:95
 msgid "availability area (further details)"
 msgstr "zone de disponibilité (complément d'informations)"
 
-#: profiles/models.py:96
+#: profiles/models.py:97
 msgid ""
 "Examples: 'Rhône-Alpes' or 'Around Grenoble, Chambéry, Lyon' or 'All the "
 "french Alpes'."
@@ -877,27 +883,27 @@ msgstr ""
 "Exemples : 'Rhône-Alpes' ou 'Autour de Grenoble, Chambéry, Lyon' ou 'Toutes "
 "les Alpes françaises'"
 
-#: profiles/models.py:101
+#: profiles/models.py:102
 msgid "birthdate"
 msgstr "date de naissance"
 
-#: profiles/models.py:102
+#: profiles/models.py:103
 msgid "Used to display your age on your public profile."
 msgstr "Utilisée pour indiquer votre âge sur votre profil public."
 
-#: profiles/models.py:106
+#: profiles/models.py:107
 msgid "profile picture"
 msgstr "photo de profil"
 
-#: profiles/models.py:107
+#: profiles/models.py:108
 msgid "last update"
 msgstr "dernière mise à jour"
 
-#: profiles/models.py:110
+#: profiles/models.py:111
 msgid "profile"
 msgstr "profil"
 
-#: profiles/models.py:111
+#: profiles/models.py:112
 msgid "profiles"
 msgstr "profils"
 
@@ -1914,11 +1920,11 @@ msgstr "export/xlsx/"
 msgid "ajax/load-grades/"
 msgstr "ajax/load-grades/"
 
-#: profiles/views.py:184
+#: profiles/views.py:186
 msgid "[Contact] {}"
 msgstr "[Contact] {}"
 
-#: profiles/views.py:212
+#: profiles/views.py:215
 msgid ""
 "Your message has been sent by email to {}. Hopefully, he or she will get "
 "back to you soon! :) <a href=\"{}\">Go back to the profiles page</a>"
@@ -1927,15 +1933,15 @@ msgstr ""
 "revienne rapidement vers vous ! :) <a href=\"{}\">Retour à la pages des "
 "profils</a>"
 
-#: profiles/views.py:216
+#: profiles/views.py:219
 msgid "Initial contact"
 msgstr "Prise de contact"
 
-#: profiles/views.py:217
+#: profiles/views.py:220
 msgid "Hi "
 msgstr "Bonjour "
 
-#: profiles/views.py:230
+#: profiles/views.py:233
 msgid ""
 "WARNING: your profile is public by default. That is to say that it will be "
 "displayed in the profile list available on bourseauxcompagnons. Click on "
@@ -1945,34 +1951,34 @@ msgstr ""
 "dans la liste des profils consultables sur bourseauxcompagnons. Cliquez sur "
 "'Mettre à jour mon profil' pour le compléter ou le privatiser."
 
-#: profiles/views.py:246
+#: profiles/views.py:249
 msgid "Profile registered"
 msgstr "Profil créé"
 
-#: profiles/views.py:336
+#: profiles/views.py:339
 msgid ""
 "Your account and all its data are deleted. Have a good time in the outdoors!"
 msgstr ""
 "Votre compte et toutes ses données sont supprimées. Et que l'aventure "
 "continue ! Bon vent !"
 
-#: profiles/views.py:347
+#: profiles/views.py:350
 msgid "Profile deleted"
 msgstr "Profil supprimé"
 
-#: profiles/views.py:369 profiles/views.py:371
+#: profiles/views.py:372 profiles/views.py:374
 msgid "Hi {}! You are logged in :)"
 msgstr "Bonjour {} ! Vous êtes connecté :)"
 
-#: profiles/views.py:373
+#: profiles/views.py:376
 msgid "You are logged in :)"
 msgstr "Vous êtes connecté :)"
 
-#: profiles/views.py:380 profiles/views.py:382
+#: profiles/views.py:383 profiles/views.py:385
 msgid "You have securely logged out. Thank you for visiting {}."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite {}."
 
-#: profiles/views.py:384
+#: profiles/views.py:387
 msgid "You have securely logged out. Thank you for visiting."
 msgstr "Vous êtes bien déconnecté. Merci pour votre visite."
 
