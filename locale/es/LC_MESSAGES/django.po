@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-22 20:26+0200\n"
+"POT-Creation-Date: 2022-04-23 15:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -692,40 +692,40 @@ msgid ""
 "Your outing is now updated! <a href='{}#cal-events'>Go back to my profile</a>"
 msgstr ""
 
-#: profiles/admin.py:18
+#: profiles/admin.py:19
 msgid "Personal info"
 msgstr "Información personal"
 
-#: profiles/admin.py:19
+#: profiles/admin.py:20
 msgid "Permissions"
 msgstr "Permisos"
 
-#: profiles/admin.py:21
+#: profiles/admin.py:22
 msgid "Important dates"
 msgstr "Fechas importantes"
 
-#: profiles/admin.py:22
+#: profiles/admin.py:23
 msgid "Inactivity email sent"
 msgstr ""
 
-#: profiles/admin.py:38
+#: profiles/admin.py:39
 msgid "Delete selected profiles cleanly (user.is_profile=False)"
 msgstr ""
 "Borrar correctamente los perfiles seleccionados (user.is_profile=False)"
 
-#: profiles/admin.py:55
+#: profiles/admin.py:57
 msgid "Email"
 msgstr "Dirección de correo electrónico"
 
-#: profiles/admin.py:60 profiles/templates/profiles/my_profile.html:64
+#: profiles/admin.py:62 profiles/templates/profiles/my_profile.html:64
 msgid "Username"
 msgstr "Nombre usuario"
 
-#: profiles/admin.py:65 profiles/templates/profiles/my_profile.html:67
+#: profiles/admin.py:67 profiles/templates/profiles/my_profile.html:67
 msgid "First name"
 msgstr "Nombre"
 
-#: profiles/admin.py:70
+#: profiles/admin.py:72
 #, fuzzy
 #| msgid "Last name"
 msgid "Last login"
@@ -759,39 +759,36 @@ msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr ""
 "Recibiras la respuesta del perfil contactado sobre este correo electrónico."
 
-#: profiles/management/commands/deactivation12mnosignin.py:30
+#: profiles/management/commands/deactivation12mnosignin.py:14
 msgid "Your profile has been deactivated"
 msgstr ""
 
-#: profiles/management/commands/deactivation12mnosignin.py:31
-#: profiles/management/commands/deletion24mnosignin.py:31
-#: profiles/management/commands/reminder12mnoupdate.py:30
-#: profiles/management/commands/utils.py:29 profiles/views.py:250
-#: profiles/views.py:351
-msgid "[Account] {}"
-msgstr "[Cuenta] {}"
-
-#: profiles/management/commands/deletion24mnosignin.py:30
+#: profiles/management/commands/deletion24mnosignin.py:14
 #, fuzzy
 #| msgid "Your outing is now updated!"
 msgid "Your account has been deleted"
 msgstr "Tu salida es ahora actualizada!"
 
-#: profiles/management/commands/reminder12mnoupdate.py:29
+#: profiles/management/commands/reminder12mnoupdate.py:14
 #, fuzzy
 #| msgid "Create your profile"
 msgid "Think to update your profile!"
 msgstr "Crear tu perfil"
 
-#: profiles/management/commands/reminder6mnosignin.py:38
+#: profiles/management/commands/reminder6mnosignin.py:17
 msgid "Are you still using {}?"
 msgstr ""
 
-#: profiles/management/commands/warning12mnosignin.py:38
+#: profiles/management/commands/utils.py:49 profiles/views.py:250
+#: profiles/views.py:351
+msgid "[Account] {}"
+msgstr "[Cuenta] {}"
+
+#: profiles/management/commands/warning12mnosignin.py:14
 msgid "Warning before profile deactivation"
 msgstr ""
 
-#: profiles/management/commands/warning23mnosignin.py:38
+#: profiles/management/commands/warning23mnosignin.py:17
 msgid "Warning before account deletion. Are you still using {}?"
 msgstr ""
 

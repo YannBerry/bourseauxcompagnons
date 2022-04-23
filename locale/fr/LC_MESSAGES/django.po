@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-22 20:26+0200\n"
+"POT-Creation-Date: 2022-04-23 15:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -681,39 +681,39 @@ msgstr ""
 "Votre sortie a bien été mise à jour ! <a href='{}#cal-events'>Retourner à "
 "mon profil</a>"
 
-#: profiles/admin.py:18
+#: profiles/admin.py:19
 msgid "Personal info"
 msgstr "Informations personnelles"
 
-#: profiles/admin.py:19
+#: profiles/admin.py:20
 msgid "Permissions"
 msgstr "Autorisations"
 
-#: profiles/admin.py:21
+#: profiles/admin.py:22
 msgid "Important dates"
 msgstr "Dates importantes"
 
-#: profiles/admin.py:22
+#: profiles/admin.py:23
 msgid "Inactivity email sent"
 msgstr "E-mail d'inactivité envoyé"
 
-#: profiles/admin.py:38
+#: profiles/admin.py:39
 msgid "Delete selected profiles cleanly (user.is_profile=False)"
 msgstr "Supprimer proprement les profils sélectionnés (user.is_profile=False)"
 
-#: profiles/admin.py:55
+#: profiles/admin.py:57
 msgid "Email"
 msgstr "Email"
 
-#: profiles/admin.py:60 profiles/templates/profiles/my_profile.html:64
+#: profiles/admin.py:62 profiles/templates/profiles/my_profile.html:64
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: profiles/admin.py:65 profiles/templates/profiles/my_profile.html:67
+#: profiles/admin.py:67 profiles/templates/profiles/my_profile.html:67
 msgid "First name"
 msgstr "Prénom"
 
-#: profiles/admin.py:70
+#: profiles/admin.py:72
 msgid "Last login"
 msgstr "Last login"
 
@@ -743,35 +743,32 @@ msgstr ""
 msgid "You will receive the contacted profile's answer on this e-mail."
 msgstr "Vous recevrez la réponse du profil contacté sur cet e-mail."
 
-#: profiles/management/commands/deactivation12mnosignin.py:30
+#: profiles/management/commands/deactivation12mnosignin.py:14
 msgid "Your profile has been deactivated"
 msgstr "Votre profil a été désactivé"
 
-#: profiles/management/commands/deactivation12mnosignin.py:31
-#: profiles/management/commands/deletion24mnosignin.py:31
-#: profiles/management/commands/reminder12mnoupdate.py:30
-#: profiles/management/commands/utils.py:29 profiles/views.py:250
+#: profiles/management/commands/deletion24mnosignin.py:14
+msgid "Your account has been deleted"
+msgstr "Votre compte a été supprimé"
+
+#: profiles/management/commands/reminder12mnoupdate.py:14
+msgid "Think to update your profile!"
+msgstr "Pensez à mettre à jour votre profil !"
+
+#: profiles/management/commands/reminder6mnosignin.py:17
+msgid "Are you still using {}?"
+msgstr "Utilisez vous toujours {} ?"
+
+#: profiles/management/commands/utils.py:49 profiles/views.py:250
 #: profiles/views.py:351
 msgid "[Account] {}"
 msgstr "[Compte] {}"
 
-#: profiles/management/commands/deletion24mnosignin.py:30
-msgid "Your account has been deleted"
-msgstr "Votre compte a été supprimé"
-
-#: profiles/management/commands/reminder12mnoupdate.py:29
-msgid "Think to update your profile!"
-msgstr "Pensez à mettre à jour votre profil !"
-
-#: profiles/management/commands/reminder6mnosignin.py:38
-msgid "Are you still using {}?"
-msgstr "Utilisez vous toujours {} ?"
-
-#: profiles/management/commands/warning12mnosignin.py:38
+#: profiles/management/commands/warning12mnosignin.py:14
 msgid "Warning before profile deactivation"
 msgstr "Alerte avant désactivation de votre profil"
 
-#: profiles/management/commands/warning23mnosignin.py:38
+#: profiles/management/commands/warning23mnosignin.py:17
 msgid "Warning before account deletion. Are you still using {}?"
 msgstr "Alerte avant suppression de votre profil. Utilisez vous toujours {} ?"
 
@@ -2235,13 +2232,3 @@ msgstr "Valider et recevoir un email de confirmation"
 msgid "Password reset"
 msgstr "Réinitialisation du mot de passe"
 
-#~ msgid ""
-#~ "Otherwise your profile will be deactivated in 2 weeks meaning that you "
-#~ "will not appear anymore in the profiles list. Then if you want to make "
-#~ "your profile public once again you will just have to switch it on in your "
-#~ "profile update form."
-#~ msgstr ""
-#~ "Sinon votre profil sera désactivé dans 2 semaines. Vous n'apparaitrez "
-#~ "plus dans la liste des profils. Et quand vous souhaiterez à nouveau "
-#~ "rendre votre profil public il vous faudra vous rendre dans votre "
-#~ "formulaire de mise à jour du profil pour l'activer en mode public."

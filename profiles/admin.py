@@ -12,7 +12,8 @@ class CustomUserAdmin(UserAdmin):
     """Small customisation to adapt the CustomUser model to the admin_site"""
     add_form = CustomUserCreationForm
     form = CustomUserForm
-    list_display = ('username', 'email', 'is_staff', 'is_profile', 'date_joined')
+    list_display = ('username', 'email', 'is_profile', 'date_joined', 'last_login', 'inactivity_email_sent')
+    list_editable = ['email']
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'language')}),
@@ -40,10 +41,11 @@ delete_profile_cleanly.short_description = _("Delete selected profiles cleanly (
 
 class ProfileAdmin(GISModelAdmin):
     # gis_widget = OpenLayersWidget # OSMWidget is the default value but I added this line anyway if one day I want to change it to OpenLayersWidget with another base layer thanks to the template_name attribute.
-    list_display = ('email', 'username', 'first_name', 'age', 'public_profile', 
+    list_display = ('username', 'email', 'first_name', 'age', 'public_profile', 
                     'loggedin_less_than_12_month_ago', 'last_login',
                     'updated_less_than_12_month_ago', 'last_update',)
-    readonly_fields = ['age']
+    list_display_links = ['username']
+    readonly_fields = ['age','last_update']
     actions = GISModelAdmin.actions + [delete_profile_cleanly]
 
     class Meta:
