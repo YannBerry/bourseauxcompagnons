@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from profiles.management.commands.utils import send_notif_email_to_profiles_inactive
 # Translations
 from django.utils.translation import gettext_lazy as _
+from core.utils.translations import Translatable
 # Sites
 from django.contrib.sites.models import Site
 
@@ -14,7 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        subject=_("Warning before account deletion. Are you still using {}?").format(current_site.name)
+        subject=Translatable(_("Warning before account deletion. Are you still using {site_name}?"), context={'site_name': current_site.name})
         html_message_name='warning_23m_no_signin_email_inline'
         plain_message_name='warning_23m_no_signin_email_plain'
 

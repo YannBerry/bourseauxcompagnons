@@ -85,7 +85,7 @@ def send_notif_email_to_profiles_inactive(self, nb_of_weeks_ago, command_name, s
             send_notif_email(profile=p,
                             site_name=current_site.name,
                             site_domain = current_site.domain,
-                            subject=subject,
+                            subject=str(subject),
                             html_message_name=html_message_name,
                             plain_message_name=plain_message_name,
                             command_name=command_name
@@ -141,7 +141,7 @@ def send_notif_email_to_profiles_outdated(self, nb_of_weeks_ago, command_name, s
             send_notif_email(profile=p,
                             site_name=current_site.name,
                             site_domain = current_site.domain,
-                            subject=subject,
+                            subject=str(subject),
                             html_message_name=html_message_name,
                             plain_message_name=plain_message_name,
                             command_name=command_name

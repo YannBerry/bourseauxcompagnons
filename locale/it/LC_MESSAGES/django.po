@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 15:56+0200\n"
+"POT-Creation-Date: 2022-04-23 18:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -775,8 +775,9 @@ msgstr "La tua escursione è stata aggiornata corretamente!"
 msgid "Think to update your profile!"
 msgstr "Creare il mio profilo"
 
-#: profiles/management/commands/reminder6mnosignin.py:17
-msgid "Are you still using {}?"
+#: profiles/management/commands/reminder6mnosignin.py:18
+#, python-brace-format
+msgid "Are you still using {site_name}?"
 msgstr ""
 
 #: profiles/management/commands/utils.py:49 profiles/views.py:250
@@ -788,8 +789,9 @@ msgstr "[Account] {}"
 msgid "Warning before profile deactivation"
 msgstr ""
 
-#: profiles/management/commands/warning23mnosignin.py:17
-msgid "Warning before account deletion. Are you still using {}?"
+#: profiles/management/commands/warning23mnosignin.py:18
+#, python-brace-format
+msgid "Warning before account deletion. Are you still using {site_name}?"
 msgstr ""
 
 #: profiles/models.py:23
