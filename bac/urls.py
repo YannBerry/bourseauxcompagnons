@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-#from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib.staticfiles.storage import staticfiles_storage
 # libraries for static
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,6 +21,8 @@ from profiles.views import (
     AccountUpdateView,
     AccountDeleteView,
 )
+#from django.views.generic.base import TemplateView
+from django.views.generic.base import RedirectView
 
 
 sitemaps = {
@@ -33,6 +35,7 @@ sitemaps = {
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))), # just to have a https://bourseauxcompagnons.fr/favicon.ico URL in case browsers needs it on pages with no <link rel="icon" href=...
     path('robots.txt', lambda x: HttpResponse('User-Agent: *\nDisallow:\n\nSitemap: https://bourseauxcompagnons.fr/sitemap.xml', content_type='text/plain'), name='robots_file'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
