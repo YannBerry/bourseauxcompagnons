@@ -767,7 +767,7 @@ msgstr "[Compte] {}"
 
 #: profiles/management/commands/warning12mnosignin.py:14
 msgid "Warning before profile deactivation"
-msgstr "Alerte avant desactivation de votre profil"
+msgstr "Alerte avant désactivation de votre profil"
 
 #: profiles/management/commands/warning23mnosignin.py:18
 #, python-brace-format
