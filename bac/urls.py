@@ -36,7 +36,7 @@ sitemaps = {
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))), # to have a https://bourseauxcompagnons.fr/favicon.ico URL in case browsers needs it on pages with no <link rel="icon" href=... For example my /robots.txt and /sitemap.xml
-    path('robots.txt', lambda x: HttpResponse('User-Agent: *\nDisallow:\n\nSitemap: https://bourseauxcompagnons.fr/sitemap.xml', content_type='text/plain'), name='robots_file'),
+    path('robots.txt', lambda x: HttpResponse('User-Agent: *\nDisallow: /contact/\nDisallow: /contacto/\nDisallow: /contatto/\n\nSitemap: https://bourseauxcompagnons.fr/sitemap.xml', content_type='text/plain'), name='robots_file'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
