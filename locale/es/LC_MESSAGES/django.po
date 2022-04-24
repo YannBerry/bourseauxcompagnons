@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 18:33+0200\n"
+"POT-Creation-Date: 2022-04-24 19:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,71 +236,71 @@ msgstr ""
 msgid "Italian"
 msgstr ""
 
-#: bac/urls.py:42
+#: bac/urls.py:45
 #, fuzzy
 #| msgid "accounts/"
 msgid "accounts/login/"
 msgstr "cuentas/"
 
-#: bac/urls.py:43
+#: bac/urls.py:46
 #, fuzzy
 #| msgid "accounts/"
 msgid "accounts/logout/"
 msgstr "cuentas/"
 
-#: bac/urls.py:44
+#: bac/urls.py:47
 #, fuzzy
 #| msgid "accounts/<username>/deletion/"
 msgid "accounts/password-change/"
 msgstr "cuentas/<username>/eliminacion/"
 
-#: bac/urls.py:45
+#: bac/urls.py:48
 #, fuzzy
 #| msgid "accounts/<username>/deletion/"
 msgid "accounts/password-reset/"
 msgstr "cuentas/<username>/eliminacion/"
 
-#: bac/urls.py:46
+#: bac/urls.py:49
 msgid "accounts/reset/<uidb64>/<token>/"
 msgstr ""
 
-#: bac/urls.py:47
+#: bac/urls.py:50
 msgid "accounts/register/profile/"
 msgstr "cuentas/registrar/perfil/"
 
-#: bac/urls.py:48
+#: bac/urls.py:51
 msgid "accounts/profiles/my-profile/"
 msgstr "cuentas/perfiles/mi-perfil/"
 
-#: bac/urls.py:49
+#: bac/urls.py:52
 msgid "accounts/<username>/update/"
 msgstr "cuentas/<username>/actualizacion/"
 
-#: bac/urls.py:50
+#: bac/urls.py:53
 msgid "accounts/profiles/<username>/update/"
 msgstr "cuentas/perfiles/<username>/actualizacion/"
 
-#: bac/urls.py:51
+#: bac/urls.py:54
 msgid "accounts/<username>/deletion/"
 msgstr "cuentas/<username>/eliminacion/"
 
-#: bac/urls.py:52
+#: bac/urls.py:55
 msgid "profiles/"
 msgstr "perfiles/"
 
-#: bac/urls.py:53
+#: bac/urls.py:56
 msgid "outings/"
 msgstr "salidas/"
 
-#: bac/urls.py:54
+#: bac/urls.py:57
 msgid "availabilities/"
 msgstr "disponibilidades/"
 
-#: bac/urls.py:55
+#: bac/urls.py:58
 msgid "contact/"
 msgstr "contacto/"
 
-#: bac/urls.py:56
+#: bac/urls.py:59
 msgid "admin/"
 msgstr "admin/"
 

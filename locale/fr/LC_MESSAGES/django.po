@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 18:33+0200\n"
+"POT-Creation-Date: 2022-04-24 19:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: YANN BERRY <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,63 +243,63 @@ msgstr "Espagnol"
 msgid "Italian"
 msgstr "Italien"
 
-#: bac/urls.py:42
+#: bac/urls.py:45
 msgid "accounts/login/"
 msgstr "comptes/connexion/"
 
-#: bac/urls.py:43
+#: bac/urls.py:46
 msgid "accounts/logout/"
 msgstr "comptes/deconnexion/"
 
-#: bac/urls.py:44
+#: bac/urls.py:47
 msgid "accounts/password-change/"
 msgstr "comptes/changement-mot-de-passe/"
 
-#: bac/urls.py:45
+#: bac/urls.py:48
 msgid "accounts/password-reset/"
 msgstr "comptes/reinitialisation-mot-de-passe/"
 
-#: bac/urls.py:46
+#: bac/urls.py:49
 msgid "accounts/reset/<uidb64>/<token>/"
 msgstr "comptes/reinitialisation/<uidb64>/<token>/"
 
-#: bac/urls.py:47
+#: bac/urls.py:50
 msgid "accounts/register/profile/"
 msgstr "comptes/inscription/profil/"
 
-#: bac/urls.py:48
+#: bac/urls.py:51
 msgid "accounts/profiles/my-profile/"
 msgstr "comptes/profils/mon-profil/"
 
-#: bac/urls.py:49
+#: bac/urls.py:52
 msgid "accounts/<username>/update/"
 msgstr "comptes/<username>/mise-a-jour/"
 
-#: bac/urls.py:50
+#: bac/urls.py:53
 msgid "accounts/profiles/<username>/update/"
 msgstr "comptes/profils/<username>/mise-a-jour/"
 
-#: bac/urls.py:51
+#: bac/urls.py:54
 msgid "accounts/<username>/deletion/"
 msgstr "comptes/<username>/suppression/"
 
-#: bac/urls.py:52
+#: bac/urls.py:55
 msgid "profiles/"
 msgstr "profils/"
 
-#: bac/urls.py:53
+#: bac/urls.py:56
 msgid "outings/"
 msgstr "sorties/"
 
-#: bac/urls.py:54
+#: bac/urls.py:57
 msgid "availabilities/"
 msgstr "disponibilites/"
 
-#: bac/urls.py:55
+#: bac/urls.py:58
 msgid "contact/"
 msgstr "contact/"
 
-#: bac/urls.py:56
+#: bac/urls.py:59
 msgid "admin/"
 msgstr "admin/"
 
@@ -772,7 +772,9 @@ msgstr "Alerte avant désactivation de votre profil"
 #: profiles/management/commands/warning23mnosignin.py:18
 #, python-brace-format
 msgid "Warning before account deletion. Are you still using {site_name}?"
-msgstr "Alerte avant suppression de votre profil. Utilisez vous toujours {site_name} ?"
+msgstr ""
+"Alerte avant suppression de votre profil. Utilisez vous toujours "
+"{site_name} ?"
 
 #: profiles/models.py:23
 msgid "e-mail address"
