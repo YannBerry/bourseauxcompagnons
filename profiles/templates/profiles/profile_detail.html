@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block css %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css">
 {% endblock %}
 
 {% block title %}{{ profile.user.username }} | {{ block.super }}{% endblock %}
@@ -110,7 +110,7 @@
 {% if profile.user.outing_set.all or profile.user.availability_set.all %}
 <script src="{% static 'js/calendar.js' %}"></script>
 {% endif %}
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
 {% if profile.location or availability_area_geo_poly %}
 <script>
     // BASE MAP
