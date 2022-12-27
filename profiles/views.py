@@ -166,7 +166,7 @@ class ProfileDetailView(DetailView):
 def ContactProfileView(request, **kwargs):
     '''A view for the web surfer to send an email to the user through a contact form.'''
     user_contacted_username = kwargs['username']
-    user_contacted = CustomUser.objects.get(username=user_contacted_username)
+    user_contacted = get_object_or_404(CustomUser, username=user_contacted_username)
     if user_contacted.first_name and user_contacted.last_name:
         user_contacted_name = user_contacted.first_name + ' ' + user_contacted.last_name
     elif user_contacted.first_name:
